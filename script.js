@@ -3,7 +3,7 @@
 // ===============================
 const CONSUMOS = {
 
-previa: {
+  previa: {
     cervezaMlPorPersona: 500,   // 2 x 330cc
     destiladoMlPorPersona: 100,
     bebidaFactor: 0.75,
