@@ -7,25 +7,25 @@ const CONSUMOS = {
     cervezaMlPorPersona: 500,   // 2 x 330cc
     destiladoMlPorPersona: 100,
     bebidaFactor: 0.75,
-    hieloBolsasPorPersona: 0.1
+    hieloBolsasPorPersona: 1/16
     },
   trabajo: {
     cervezaMlPorPersona: 660,   // 2 x 330cc
     destiladoMlPorPersona: 120,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 0.125
+    hieloBolsasPorPersona: 1/12
   },
   pongamosle: {
     cervezaMlPorPersona: 990,   // 3 x 330cc
     destiladoMlPorPersona: 200,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 0.15
+    hieloBolsasPorPersona: 1/10
   },
   modo18: {
     cervezaMlPorPersona: 1650,  // 5 x 330cc
     destiladoMlPorPersona: 300,
     bebidaFactor: 1.2,
-    hieloBolsasPorPersona: 0.175
+    hieloBolsasPorPersona: 1/8
   }
 };
 
