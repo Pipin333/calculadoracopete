@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Carrete</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+
+    .card,
+    .result-box {
+      border-radius: 1rem;
+    }
+
+    .result-box {
+      background: white;
+      padding: 1.25rem;
+      box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.06);
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .small-note {
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+
+    .strategy-card {
+      border: 1px solid #dee2e6;
+      border-radius: 0.9rem;
+      padding: 1rem;
+      background: #fff;
+      height: 100%;
+    }
+
+    .strategy-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .mono {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-11">
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+            <h1 class="mb-2 text-center">Calculadora de Carrete</h1>
+            <p class="text-muted text-center mb-4">
+              Base heurística para cotizar carrete por presupuesto, preferencias y tienda.
+            </p>
+
+            <form id="carreteForm" class="row g-3">
+              <div class="col-md-4">
+                <label for="personas" class="form-label">¿Cuántos son?</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="personas"
+                  min="1"
+                  value="4"
+                  required
+                />
+              </div>
+
+              <div class="col-md-4">
+                <label for="aporte" class="form-label">¿Cuánto pone cada uno? (CLP)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="aporte"
+                  min="0"
+                  value="5000"
+                  required
+                />
+              </div>
+
+              <div class="col-md-4">
+                <label for="modo" class="form-label">Modo</label>
+                <select class="form-select" id="modo" required>
+                  <option value="trabajo">Trabajo mañana</option>
+                  <option value="pongamosle">Pongámosle</option>
+                  <option value="modo18">Modo 18</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">¿Qué quieren tomar?</label>
+
+                <div class="dropdown">
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
+                    type="button"
+                    id="bebidasDropdown"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false"
+                  >
+                    Selecciona uno o más tipos de copete
+                  </button>
+
+                  <div class="dropdown-menu w-100 p-3" aria-labelledby="bebidasDropdown">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input bebida-check" type="checkbox" value="cerveza" id="chkCerveza">
+                      <label class="form-check-label" for="chkCerveza">Cerveza</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                      <input class="form-check-input bebida-check" type="checkbox" value="piscola" id="chkPiscola">
+                      <label class="form-check-label" for="chkPiscola">Piscola</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                      <input class="form-check-input bebida-check" type="checkbox" value="vodka" id="chkVodka">
+                      <label class="form-check-label" for="chkVodka">Vodka + bebida</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input bebida-check" type="checkbox" value="ron" id="chkRon">
+                      <label class="form-check-label" for="chkRon">Ron + bebida</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-text mt-2">
+                  Si marcas varias, puedes repartir manualmente el presupuesto entre ellas.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div id="budgetSplitSection" class="d-none">
+                  <div class="section-title">Reparto del presupuesto</div>
+                  <div id="budgetSliders" class="row g-3"></div>
+                  <div class="form-text mt-2" id="budgetSplitHint">
+                    Ajusta qué porcentaje del presupuesto va a cada tipo. Debe sumar 100%.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 d-grid mt-3">
+                <button type="submit" class="btn btn-dark btn-lg">
+                  Calcular carrete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="resultado" class="result-box mt-4 d-none">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+            <div>
+              <h2 class="h4 mb-1">Resultado</h2>
+              <div id="resumen" class="text-muted"></div>
+            </div>
+            <div id="estadoPresupuesto"></div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-lg-6">
+              <div class="strategy-card">
+                <h3>Compra óptima (varias tiendas)</h3>
+                <p class="small-note mb-2">
+                  Elige cada categoría donde convenga más.
+                </p>
+                <ul id="listaMultiTienda" class="mb-3"></ul>
+                <div class="small-note mb-2" id="detalleTiendasMulti"></div>
+                <div><strong>Total:</strong> <span id="totalMulti" class="mono"></span></div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="strategy-card">
+                <h3>Compra simple (una sola tienda)</h3>
+                <p class="small-note mb-2">
+                  Intenta resolver todo en una sola tienda.
+                </p>
+                <ul id="listaTiendaUnica" class="mb-3"></ul>
+                <div class="small-note mb-2" id="detalleTiendaUnica"></div>
+                <div><strong>Total:</strong> <span id="totalUnica" class="mono"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div><strong>Presupuesto total</strong></div>
+              <div id="presupuestoTotal" class="mono"></div>
+            </div>
+            <div class="col-md-4">
+              <div><strong>Saldo si eliges multi-tienda</strong></div>
+              <div id="saldoMulti" class="mono"></div>
+            </div>
+            <div class="col-md-4">
+              <div><strong>Saldo si eliges tienda única</strong></div>
+              <div id="saldoUnica" class="mono"></div>
+            </div>
+          </div>
+
+          <div class="alert mt-4 d-none" id="alertaPresupuesto" role="alert"></div>
+          <p class="small-note mt-3 mb-0" id="notaResultado">
+            Estimación heurística. Después se puede ajustar con datos reales desde la API.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===============================
+    // CONFIG / REGLAS DE CONSUMO
+    // ===============================
+    const CONSUMOS = {
+      trabajo: {
+        cervezaMlPorPersona: 660,   // 2 x 330cc
+        destiladoMlPorPersona: 120,
+        bebidaFactor: 1.0,
+        hieloBolsasPorPersona: 1 / 6
+      },
+      pongamosle: {
+        cervezaMlPorPersona: 990,   // 3 x 330cc
+        destiladoMlPorPersona: 200,
+        bebidaFactor: 1.0,
+        hieloBolsasPorPersona: 1 / 4
+      },
+      modo18: {
+        cervezaMlPorPersona: 1650,  // 5 x 330cc
+        destiladoMlPorPersona: 300,
+        bebidaFactor: 1.2,
+        hieloBolsasPorPersona: 1 / 3
+      }
+    };
+
+    const PENALIZACION_POR_TIENDA_EXTRA = 2000;
+
+    // ===============================
+    // API MOCK
+    // ===============================
+    const mockProducts = [
+      { id: 1, categoria: "cerveza", nombre: "Cerveza Lager lata 470cc", tienda: "Lider", precio: 1690, unidades: 1, volumenMlUnidad: 470 },
+      { id: 2, categoria: "cerveza", nombre: "Cerveza Lager six pack 6x330cc", tienda: "Lider", precio: 6990, unidades: 6, volumenMlUnidad: 330 },
+      { id: 3, categoria: "cerveza", nombre: "Cerveza Lager maletín 12x330cc", tienda: "Lider", precio: 13990, unidades: 12, volumenMlUnidad: 330 },
+
+      { id: 4, categoria: "cerveza", nombre: "Cerveza Lager lata 710cc", tienda: "Jumbo", precio: 2490, unidades: 1, volumenMlUnidad: 710 },
+      { id: 5, categoria: "cerveza", nombre: "Cerveza Lager six pack 6x470cc", tienda: "Jumbo", precio: 11990, unidades: 6, volumenMlUnidad: 470 },
+      { id: 6, categoria: "cerveza", nombre: "Cerveza Lager caja 24x330cc", tienda: "Jumbo", precio: 26990, unidades: 24, volumenMlUnidad: 330 },
+
+      { id: 7, categoria: "cerveza", nombre: "Cerveza Lager botellín 660cc", tienda: "Unimarc", precio: 2290, unidades: 1, volumenMlUnidad: 660 },
+      { id: 8, categoria: "cerveza", nombre: "Cerveza Lager maletín 12x330cc", tienda: "Unimarc", precio: 14490, unidades: 12, volumenMlUnidad: 330 },
+
+      { id: 20, categoria: "piscola", nombre: "Pisco 750ml", tienda: "Lider", precio: 6990, unidades: 1, volumenMlUnidad: 750 },
+      { id: 21, categoria: "piscola", nombre: "Pisco 1L", tienda: "Lider", precio: 9290, unidades: 1, volumenMlUnidad: 1000 },
+
+      { id: 22, categoria: "piscola", nombre: "Pisco 750ml", tienda: "Jumbo", precio: 6790, unidades: 1, volumenMlUnidad: 750 },
+      { id: 23, categoria: "piscola", nombre: "Pisco 1L", tienda: "Jumbo", precio: 9490, unidades: 1, volumenMlUnidad: 1000 },
+
+      { id: 30, categoria: "vodka", nombre: "Vodka 750ml", tienda: "Lider", precio: 7490, unidades: 1, volumenMlUnidad: 750 },
+      { id: 31, categoria: "vodka", nombre: "Vodka 1L", tienda: "Jumbo", precio: 9990, unidades: 1, volumenMlUnidad: 1000 },
+      { id: 32, categoria: "vodka", nombre: "Vodka 750ml", tienda: "Unimarc", precio: 7890, unidades: 1, volumenMlUnidad: 750 },
+
+      { id: 40, categoria: "ron", nombre: "Ron 750ml", tienda: "Lider", precio: 7290, unidades: 1, volumenMlUnidad: 750 },
+      { id: 41, categoria: "ron", nombre: "Ron 1L", tienda: "Jumbo", precio: 9890, unidades: 1, volumenMlUnidad: 1000 },
+      { id: 42, categoria: "ron", nombre: "Ron 750ml", tienda: "Unimarc", precio: 7590, unidades: 1, volumenMlUnidad: 750 },
+
+      { id: 50, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 1500 },
+      { id: 51, categoria: "bebida", nombre: "Bebida cola 2L", tienda: "Lider", precio: 2390, unidades: 1, volumenMlUnidad: 2000 },
+
+      { id: 52, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Jumbo", precio: 1890, unidades: 1, volumenMlUnidad: 1500 },
+      { id: 53, categoria: "bebida", nombre: "Bebida cola 2L", tienda: "Jumbo", precio: 2490, unidades: 1, volumenMlUnidad: 2000 },
+
+      { id: 54, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Unimarc", precio: 2090, unidades: 1, volumenMlUnidad: 1500 },
+
+      { id: 60, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 2000 },
+      { id: 61, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Jumbo", precio: 1790, unidades: 1, volumenMlUnidad: 2000 },
+      { id: 62, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Unimarc", precio: 2190, unidades: 1, volumenMlUnidad: 2000 }
+    ];
+
+    const productApi = {
+      async getProductsByCategory(category) {
+        return mockProducts
+          .filter(p => p.categoria === category)
+          .map(p => ({
+            ...p,
+            volumenTotalMl: p.unidades * p.volumenMlUnidad,
+            precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
+          }));
+      }
+    };
+
+    // ===============================
+    // HELPERS UI
+    // ===============================
+    function formatCLP(value) {
+      return new Intl.NumberFormat("es-CL", {
+        style: "currency",
+        currency: "CLP",
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    function clearElement(element) {
+      element.innerHTML = "";
+    }
+
+    function addLi(element, text) {
+      const li = document.createElement("li");
+      li.textContent = text;
+      element.appendChild(li);
+    }
+
+    function getSelectedDrinks() {
+      return Array.from(document.querySelectorAll(".bebida-check:checked"))
+        .map(input => input.value);
+    }
+
+    function getModeLabel(mode) {
+      if (mode === "trabajo") return "Trabajo mañana";
+      if (mode === "pongamosle") return "Pongámosle";
+      return "Modo 18";
+    }
+
+    function getDrinkLabel(drink) {
+      if (drink === "cerveza") return "Cerveza";
+      if (drink === "piscola") return "Piscola";
+      if (drink === "vodka") return "Vodka + bebida";
+      if (drink === "ron") return "Ron + bebida";
+      return drink;
+    }
+
+    function actualizarTextoDropdownBebidas() {
+      const seleccionadas = Array.from(document.querySelectorAll(".bebida-check:checked"))
+        .map(input => input.nextElementSibling.textContent.trim());
+
+      const boton = document.getElementById("bebidasDropdown");
+
+      if (seleccionadas.length === 0) {
+        boton.textContent = "Selecciona uno o más tipos de copete";
+      } else if (seleccionadas.length === 1) {
+        boton.textContent = seleccionadas[0];
+      } else {
+        boton.textContent = `${seleccionadas.length} opciones seleccionadas`;
+      }
+    }
+
+    // ===============================
+    // SLIDERS DE PRESUPUESTO
+    // ===============================
+    function renderBudgetSliders() {
+      const selected = getSelectedDrinks();
+      const section = document.getElementById("budgetSplitSection");
+      const container = document.getElementById("budgetSliders");
+
+      container.innerHTML = "";
+
+      if (selected.length === 0) {
+        section.classList.add("d-none");
+        return;
+      }
+
+      section.classList.remove("d-none");
+
+      const evenValue = Math.floor(100 / selected.length);
+      let remainder = 100 - evenValue * selected.length;
+
+      selected.forEach((drink) => {
+        const initialValue = evenValue + (remainder > 0 ? 1 : 0);
+        if (remainder > 0) remainder--;
+
+        const col = document.createElement("div");
+        col.className = "col-md-6";
+
+        col.innerHTML = `
+          <div class="border rounded p-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label for="slider_${drink}" class="form-label mb-0">${getDrinkLabel(drink)}</label>
+              <span id="sliderValue_${drink}" class="fw-semibold">${initialValue}%</span>
+            </div>
+            <input
+              type="range"
+              class="form-range budget-slider"
+              id="slider_${drink}"
+              data-drink="${drink}"
+              min="0"
+              max="100"
+              step="1"
+              value="${initialValue}"
+            />
+          </div>
+        `;
+
+        container.appendChild(col);
+      });
+
+      document.querySelectorAll(".budget-slider").forEach(slider => {
+        slider.addEventListener("input", handleSliderInput);
+      });
+
+      updateBudgetSplitState();
+    }
+
+    function handleSliderInput(e) {
+      const drink = e.target.dataset.drink;
+      document.getElementById(`sliderValue_${drink}`).textContent = `${e.target.value}%`;
+      updateBudgetSplitState();
+    }
+
+    function getBudgetSplit() {
+      const sliders = Array.from(document.querySelectorAll(".budget-slider"));
+      const split = {};
+
+      sliders.forEach(slider => {
+        split[slider.dataset.drink] = parseInt(slider.value, 10);
+      });
+
+      return split;
+    }
+
+    function getBudgetSplitTotal() {
+      return Object.values(getBudgetSplit()).reduce((acc, val) => acc + val, 0);
+    }
+
+    function updateBudgetSplitState() {
+      const hint = document.getElementById("budgetSplitHint");
+      const total = getBudgetSplitTotal();
+
+      if (total === 100) {
+        hint.textContent = "Reparto válido. El presupuesto está distribuido al 100%.";
+        hint.className = "form-text mt-2 text-success";
+      } else {
+        hint.textContent = `El reparto actual suma ${total}%. Debe sumar 100%.`;
+        hint.className = "form-text mt-2 text-danger";
+      }
+    }
+
+    // ===============================
+    // REQUERIMIENTOS
+    // ===============================
+    function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
+      const rules = CONSUMOS[mode];
+      const requirements = [];
+
+      for (const drink of selectedDrinks) {
+        const porcentaje = budgetSplit[drink] || 0;
+        const subBudget = budget * (porcentaje / 100);
+
+        if (drink === "cerveza") {
+          requirements.push({
+            categoria: "cerveza",
+            nombre: "Cerveza",
+            requiredMl: Math.ceil(people * rules.cervezaMlPorPersona),
+            budget: subBudget
+          });
+        } else {
+          const destiladoMl = Math.ceil(people * rules.destiladoMlPorPersona);
+          const bebidaMl = Math.ceil(destiladoMl * 2 * rules.bebidaFactor);
+          const hieloBolsas = Math.max(1, Math.ceil(people * rules.hieloBolsasPorPersona));
+
+          requirements.push({
+            categoria: drink,
+            nombre: drink === "piscola" ? "Pisco" : drink === "vodka" ? "Vodka" : "Ron",
+            requiredMl: destiladoMl,
+            budget: subBudget * 0.7
+          });
+
+          requirements.push({
+            categoria: "bebida",
+            nombre: "Bebida",
+            requiredMl: bebidaMl,
+            budget: subBudget * 0.2
+          });
+
+          requirements.push({
+            categoria: "hielo",
+            nombre: "Hielo",
+            requiredMl: hieloBolsas * 2000,
+            budget: subBudget * 0.1
+          });
+        }
+      }
+
+      return mergeRequirementsByCategory(requirements);
+    }
+
+    function mergeRequirementsByCategory(requirements) {
+      const map = new Map();
+
+      for (const item of requirements) {
+        if (!map.has(item.categoria)) {
+          map.set(item.categoria, { ...item });
+        } else {
+          const current = map.get(item.categoria);
+          current.requiredMl += item.requiredMl;
+          current.budget = (current.budget || 0) + (item.budget || 0);
+        }
+      }
+
+      return Array.from(map.values());
+    }
+
+    // ===============================
+    // OPTIMIZACIÓN SIMPLE POR CATEGORÍA
+    // ===============================
+    function findCheapestCombination(products, requiredMl) {
+      if (!products || products.length === 0) return null;
+
+      const maxVolume = Math.max(...products.map(p => p.volumenTotalMl));
+      const upperBound = requiredMl + maxVolume * 2;
+
+      const dp = Array(upperBound + 1).fill(null);
+      dp[0] = { cost: 0, items: [] };
+
+      for (let volume = 0; volume <= upperBound; volume++) {
+        if (!dp[volume]) continue;
+
+        for (const product of products) {
+          const nextVolume = Math.min(upperBound, volume + product.volumenTotalMl);
+          const nextCost = dp[volume].cost + product.precio;
+          const nextItems = [...dp[volume].items, product];
+
+          if (!dp[nextVolume] || nextCost < dp[nextVolume].cost) {
+            dp[nextVolume] = {
+              cost: nextCost,
+              items: nextItems
+            };
+          }
+        }
+      }
+
+      let best = null;
+      for (let volume = requiredMl; volume <= upperBound; volume++) {
+        if (!dp[volume]) continue;
+        if (!best || dp[volume].cost < best.cost) {
+          best = {
+            totalVolume: volume,
+            totalCost: dp[volume].cost,
+            items: dp[volume].items
+          };
+        }
+      }
+
+      return best;
+    }
+
+    function summarizeItems(items) {
+      const map = new Map();
+
+      for (const item of items) {
+        const key = `${item.tienda}__${item.nombre}__${item.precio}`;
+        if (!map.has(key)) {
+          map.set(key, { ...item, cantidad: 1 });
+        } else {
+          map.get(key).cantidad += 1;
+        }
+      }
+
+      return Array.from(map.values());
+    }
+
+    function getUniqueStores(items) {
+      return [...new Set(items.map(item => item.tienda))];
+    }
+
+    // ===============================
+    // ESTRATEGIA 1: MULTI-TIENDA
+    // ===============================
+    async function buildMultiStorePlan(requirements) {
+      const details = [];
+      let total = 0;
+      const allItems = [];
+
+      for (const req of requirements) {
+        const products = await productApi.getProductsByCategory(req.categoria);
+        const best = findCheapestCombination(products, req.requiredMl);
+
+        if (!best) {
+          return {
+            ok: false,
+            reason: `No hay productos disponibles para ${req.nombre}.`
+          };
+        }
+
+        details.push({
+          requirement: req,
+          result: best
+        });
+
+        total += best.totalCost;
+        allItems.push(...best.items);
+      }
+
+      const stores = getUniqueStores(allItems);
+      const adjustedTotal = total + Math.max(0, stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA;
+
+      return {
+        ok: true,
+        total,
+        adjustedTotal,
+        stores,
+        details,
+        allItems
+      };
+    }
+
+    // ===============================
+    // ESTRATEGIA 2: TIENDA ÚNICA
+    // ===============================
+    async function buildSingleStorePlan(requirements) {
+      const storeSet = new Set(mockProducts.map(p => p.tienda));
+      let bestStorePlan = null;
+
+      for (const store of storeSet) {
+        let storeTotal = 0;
+        const storeDetails = [];
+        const storeItems = [];
+        let valid = true;
+
+        for (const req of requirements) {
+          const products = (await productApi.getProductsByCategory(req.categoria))
+            .filter(p => p.tienda === store);
+
+          const best = findCheapestCombination(products, req.requiredMl);
+
+          if (!best) {
+            valid = false;
+            break;
+          }
+
+          storeTotal += best.totalCost;
+          storeDetails.push({
+            requirement: req,
+            result: best
+          });
+          storeItems.push(...best.items);
+        }
+
+        if (!valid) continue;
+
+        if (!bestStorePlan || storeTotal < bestStorePlan.total) {
+          bestStorePlan = {
+            ok: true,
+            store,
+            total: storeTotal,
+            details: storeDetails,
+            allItems: storeItems
+          };
+        }
+      }
+
+      if (!bestStorePlan) {
+        return {
+          ok: false,
+          reason: "No existe una sola tienda que cubra todo lo requerido."
+        };
+      }
+
+      return bestStorePlan;
+    }
+
+    // ===============================
+    // RENDER
+    // ===============================
+    function renderPlan(listElement, plan) {
+      clearElement(listElement);
+
+      if (!plan.ok) {
+        addLi(listElement, plan.reason);
+        return;
+      }
+
+      for (const detail of plan.details) {
+        const summarized = summarizeItems(detail.result.items);
+
+        for (const item of summarized) {
+          addLi(
+            listElement,
+            `${item.cantidad} x ${item.nombre} (${item.tienda}) — ${formatCLP(item.precio * item.cantidad)}`
+          );
+        }
+      }
+    }
+
+    function renderBudgetState(budget, multiPlan, singlePlan) {
+      const estadoEl = document.getElementById("estadoPresupuesto");
+      const alertaEl = document.getElementById("alertaPresupuesto");
+
+      alertaEl.classList.add("d-none");
+      alertaEl.className = "alert mt-4 d-none";
+
+      const validPlans = [multiPlan, singlePlan].filter(p => p.ok);
+      const cheapestValid = validPlans.length
+        ? Math.min(...validPlans.map(p => p.total))
+        : null;
+
+      if (cheapestValid === null) {
+        estadoEl.innerHTML = `<span class="badge text-bg-danger">Sin solución</span>`;
+        alertaEl.textContent = "No se pudo armar una recomendación con los productos disponibles.";
+        alertaEl.classList.remove("d-none");
+        alertaEl.classList.add("alert-danger");
+        return;
+      }
+
+      if (cheapestValid > budget) {
+        estadoEl.innerHTML = `<span class="badge text-bg-warning">Presupuesto insuficiente</span>`;
+        alertaEl.textContent = `No alcanza el presupuesto. Faltan ${formatCLP(cheapestValid - budget)} para la opción más barata disponible.`;
+        alertaEl.classList.remove("d-none");
+        alertaEl.classList.add("alert-warning");
+        return;
+      }
+
+      estadoEl.innerHTML = `<span class="badge text-bg-success">Dentro de presupuesto</span>`;
+    }
+
+    // ===============================
+    // MAIN
+    // ===============================
+    const form = document.getElementById("carreteForm");
+    const resultado = document.getElementById("resultado");
+    const resumen = document.getElementById("resumen");
+    const presupuestoTotalEl = document.getElementById("presupuestoTotal");
+    const saldoMultiEl = document.getElementById("saldoMulti");
+    const saldoUnicaEl = document.getElementById("saldoUnica");
+    const totalMultiEl = document.getElementById("totalMulti");
+    const totalUnicaEl = document.getElementById("totalUnica");
+    const listaMultiTienda = document.getElementById("listaMultiTienda");
+    const listaTiendaUnica = document.getElementById("listaTiendaUnica");
+    const detalleTiendasMulti = document.getElementById("detalleTiendasMulti");
+    const detalleTiendaUnica = document.getElementById("detalleTiendaUnica");
+
+    document.querySelectorAll(".bebida-check").forEach(input => {
+      input.addEventListener("change", () => {
+        actualizarTextoDropdownBebidas();
+        renderBudgetSliders();
+      });
+    });
+
+    actualizarTextoDropdownBebidas();
+    renderBudgetSliders();
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const people = parseInt(document.getElementById("personas").value, 10);
+      const aporte = parseInt(document.getElementById("aporte").value, 10);
+      const mode = document.getElementById("modo").value;
+      const selectedDrinks = getSelectedDrinks();
+
+      if (!people || people < 1 || aporte < 0) {
+        alert("Ingresa valores válidos.");
+        return;
+      }
+
+      if (selectedDrinks.length === 0) {
+        alert("Selecciona al menos un tipo de copete.");
+        return;
+      }
+
+      const budget = people * aporte;
+      const budgetSplit = getBudgetSplit();
+      const budgetSplitTotal = getBudgetSplitTotal();
+
+      if (budgetSplitTotal !== 100) {
+        alert("El reparto del presupuesto debe sumar 100%.");
+        return;
+      }
+
+      const requirements = buildRequirements(selectedDrinks, people, mode, budget, budgetSplit);
+
+      const multiPlan = await buildMultiStorePlan(requirements);
+      const singlePlan = await buildSingleStorePlan(requirements);
+
+      renderPlan(listaMultiTienda, multiPlan);
+      renderPlan(listaTiendaUnica, singlePlan);
+
+      if (multiPlan.ok) {
+        totalMultiEl.textContent = `${formatCLP(multiPlan.total)} + penalización heurística ${formatCLP(Math.max(0, multiPlan.stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA)} = ${formatCLP(multiPlan.adjustedTotal)}`;
+        detalleTiendasMulti.textContent = `Tiendas involucradas: ${multiPlan.stores.join(", ")}`;
+        saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
+      } else {
+        totalMultiEl.textContent = "No disponible";
+        detalleTiendasMulti.textContent = multiPlan.reason;
+        saldoMultiEl.textContent = "—";
+      }
+
+      if (singlePlan.ok) {
+        totalUnicaEl.textContent = formatCLP(singlePlan.total);
+        detalleTiendaUnica.textContent = `Tienda sugerida: ${singlePlan.store}`;
+        saldoUnicaEl.textContent = formatCLP(budget - singlePlan.total);
+      } else {
+        totalUnicaEl.textContent = "No disponible";
+        detalleTiendaUnica.textContent = singlePlan.reason;
+        saldoUnicaEl.textContent = "—";
+      }
+
+      renderBudgetState(budget, multiPlan, singlePlan);
+
+      presupuestoTotalEl.textContent = formatCLP(budget);
+      resumen.textContent = `${people} persona(s) · ${selectedDrinks.map(getDrinkLabel).join(", ")} · ${getModeLabel(mode)}`;
+
+      resultado.classList.remove("d-none");
+    });
+  </script>
+</body>
+</html>
