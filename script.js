@@ -5,26 +5,26 @@ const CONSUMOS = {
   previa: {
     cervezaMlPorPersona: 500,
     destiladoMlPorPersona: 100,
-    bebidaFactor: 0.75,
-    hieloBolsasPorPersona: 1 / 16
+    bebidaFactor: 0.8,
+    hieloBolsasPorPersona: 1 / 8
   },
   trabajo: {
     cervezaMlPorPersona: 660,
     destiladoMlPorPersona: 120,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1 / 12
+    hieloBolsasPorPersona: 1 /8
   },
   pongamosle: {
     cervezaMlPorPersona: 990,
     destiladoMlPorPersona: 200,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1 / 10
+    hieloBolsasPorPersona: 1 / 4
   },
   modo18: {
     cervezaMlPorPersona: 1650,
     destiladoMlPorPersona: 300,
     bebidaFactor: 1.2,
-    hieloBolsasPorPersona: 1 / 8
+    hieloBolsasPorPersona: 1 / 2
   }
 };
 
