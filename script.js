@@ -601,6 +601,10 @@ function getBudgetWarnings(plan) {
       const porcentajeSobre = (realCost / expectedBudget) - 1;
 
       if (porcentajeSobre > 0.25) {
+        if (req.nombre === "Hielo") {
+          //ignorar el hielo para las advertencias de presupuesto
+          continue;
+        }
         warnings.push(
           `${req.nombre}: esta recomendación se pasa bastante del presupuesto sugerido para esa categoría (${formatCLP(realCost)} vs ${formatCLP(expectedBudget)}).`
         );
