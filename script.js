@@ -706,6 +706,33 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
   return requirements;
 }
 
+function mergeRequirementsByCategoria(requirements) {
+  const merged = new Map();
+
+  for (const req of requirements) {
+    const key = req.categoria;
+
+    if (!merged.has(key)) {
+      merged.set(key, {
+        ...req,
+        nombresOriginales: [req.nombre]
+      });
+    } else {
+      const current = merged.get(key);
+      current.requiredMl += req.requiredMl;
+      current.budget = (current.budget || 0) + (req.budget || 0);
+
+      if (!current.nombresOriginales.includes(req.nombre)) {
+        current.nombresOriginales.push(req.nombre);
+      }
+
+      // nombre visible combinado
+      current.nombre = current.nombresOriginales.join(" + ");
+    }
+  }
+
+  return Array.from(merged.values());
+}
 function getConsumptionWarnings(requirements) {
   const warnings = [];
 
@@ -1054,7 +1081,8 @@ form.addEventListener("submit", async function (e) {
     return;
   }
 
-  const requirements = buildRequirements(selectedDrinks, people, mode, budget, budgetSplit);
+  const rawRequirements = buildRequirements(selectedDrinks, people, mode, budget, budgetSplit);
+  const requirements = mergeRequirementsByCategoria(rawRequirements);
 
   const multiPlan = await buildMultiStorePlan(requirements);
   const singlePlan = await buildSingleStorePlan(requirements);
