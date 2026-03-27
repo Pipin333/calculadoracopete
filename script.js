@@ -28,10 +28,27 @@ const CONSUMOS = {
   }
 };
 
-const PENALIZACION_POR_TIENDA_EXTRA = 2000;
 const EXPONENTE_SLIDER_CONSUMO = 0.6;
 const UMBRAL_ADVERTENCIA_DESTILADO_ML = 300;
 
+// ===============================
+// HEURÍSTICA
+// ===============================
+
+// A nivel de combinación por categoría
+const PENALIZACION_ITEM_COMBINACION = 120;      // castiga muchas unidades
+const PENALIZACION_SKU_COMBINACION = 180;       // castiga variedad rara de formatos
+const PENALIZACION_SOBRECOMPRA_POR_LITRO = 120; // castiga comprar mucho más de lo necesario
+
+// A nivel de plan total
+const PENALIZACION_TIENDA_EXTRA = 6;
+const PENALIZACION_SKU_PLAN = 2;
+const PENALIZACION_ITEM_PLAN = 1;
+const PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO = 1.5;
+
+// ===============================
+// OPCIONES DE CONSUMO
+// ===============================
 const OPCIONES_CONSUMO = {
   cerveza: {
     nombre: "Cerveza",
@@ -52,7 +69,7 @@ const OPCIONES_CONSUMO = {
     llevaHielo: true
   },
   ron: {
-    nombre: "Ron + bebida",
+    nombre: "Roncola",
     grupo: "mix_simple",
     categoriaBase: "ron",
     llevaMixer: true,
@@ -79,14 +96,14 @@ const OPCIONES_CONSUMO = {
     llevaHielo: true
   },
   whiscola: {
-  nombre: "Whiscola",
-  grupo: "mix_simple",
-  categoriaBase: "whiskey",
-  llevaMixer: true,
-  mixerCategoria: "bebida",
-  mixerFactor: 2,
-  llevaHielo: true
-},
+    nombre: "Whiscola",
+    grupo: "mix_simple",
+    categoriaBase: "whiskey",
+    llevaMixer: true,
+    mixerCategoria: "bebida",
+    mixerFactor: 2,
+    llevaHielo: true
+  },
   gin_tonic: {
     nombre: "Gin tonic",
     grupo: "mix_simple",
@@ -123,18 +140,15 @@ const mockProducts = [
   { id: 1, categoria: "cerveza", nombre: "Cerveza Lager lata 470ml", tienda: "Jumbo", precio: 1000, unidades: 1, volumenMlUnidad: 470 },
   { id: 2, categoria: "cerveza", nombre: "Cerveza Lager six pack 6x350ml", tienda: "Lider", precio: 6200, unidades: 6, volumenMlUnidad: 350 },
   { id: 3, categoria: "cerveza", nombre: "Cerveza Lager maletín 12x350ml", tienda: "Lider", precio: 9490, unidades: 12, volumenMlUnidad: 350 },
-
   { id: 4, categoria: "cerveza", nombre: "Cerveza Lager lata 710cc", tienda: "Liquidos", precio: 1500, unidades: 1, volumenMlUnidad: 710 },
   { id: 5, categoria: "cerveza", nombre: "Cerveza Lager six pack 6x470ml", tienda: "Jumbo", precio: 5990, unidades: 6, volumenMlUnidad: 470 },
   { id: 6, categoria: "cerveza", nombre: "Cerveza Lager caja 24x330cc", tienda: "Jumbo", precio: 24990, unidades: 24, volumenMlUnidad: 330 },
-
   { id: 7, categoria: "cerveza", nombre: "Cerveza Lager botellín 660cc", tienda: "Lider", precio: 1000, unidades: 1, volumenMlUnidad: 660 },
   { id: 8, categoria: "cerveza", nombre: "Cerveza Lager maletín 12x330cc", tienda: "Unimarc", precio: 10990, unidades: 12, volumenMlUnidad: 330 },
 
   { id: 20, categoria: "piscola", nombre: "Pisco 750ml", tienda: "Lider", precio: 5990, unidades: 1, volumenMlUnidad: 750 },
   { id: 21, categoria: "piscola", nombre: "Pisco 1L", tienda: "Lider", precio: 6990, unidades: 1, volumenMlUnidad: 1000 },
   { id: 22, categoria: "piscola", nombre: "Pisco 1.5L", tienda: "Lider", precio: 8490, unidades: 1, volumenMlUnidad: 1500 },
-
   { id: 23, categoria: "piscola", nombre: "Pisco 750ml", tienda: "Jumbo", precio: 5500, unidades: 1, volumenMlUnidad: 750 },
   { id: 24, categoria: "piscola", nombre: "Pisco 1L", tienda: "Jumbo", precio: 7490, unidades: 1, volumenMlUnidad: 1000 },
   { id: 25, categoria: "piscola", nombre: "Pisco 1.5L", tienda: "Jumbo", precio: 8450, unidades: 1, volumenMlUnidad: 1500 },
@@ -143,36 +157,29 @@ const mockProducts = [
   { id: 31, categoria: "vodka", nombre: "Vodka 1L", tienda: "Jumbo", precio: 9990, unidades: 1, volumenMlUnidad: 1000 },
   { id: 32, categoria: "vodka", nombre: "Vodka 750ml", tienda: "Unimarc", precio: 7890, unidades: 1, volumenMlUnidad: 750 },
 
-  { id: 70, categoria: "whiskey", nombre: "Whiskey 750ml", tienda: "Lider", precio: 10000, unidades: 1, volumenMlUnidad: 750 },
-  { id: 71, categoria: "whiskey", nombre: "Whiskey 1L", tienda: "Jumbo", precio: 12000, unidades: 1, volumenMlUnidad: 1000 },
-  { id: 72, categoria: "whiskey", nombre: "Whiskey 750ml", tienda: "Unimarc", precio: 10500, unidades: 1, volumenMlUnidad: 750 },
-
   { id: 40, categoria: "ron", nombre: "Ron 750ml", tienda: "Lider", precio: 7290, unidades: 1, volumenMlUnidad: 750 },
   { id: 41, categoria: "ron", nombre: "Ron 1L", tienda: "Jumbo", precio: 9890, unidades: 1, volumenMlUnidad: 1000 },
   { id: 42, categoria: "ron", nombre: "Ron 750ml", tienda: "Unimarc", precio: 7590, unidades: 1, volumenMlUnidad: 750 },
 
-  { id: 50, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 1500 },
-  { id: 51, categoria: "bebida", nombre: "Coca-Cola 2L", tienda: "Lider", precio: 2390, unidades: 1, volumenMlUnidad: 2000 },
-  { id: 52, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Lider", precio: 2890, unidades: 1, volumenMlUnidad: 3000 },
+  { id: 70, categoria: "whiskey", nombre: "Whiskey 750ml", tienda: "Lider", precio: 10000, unidades: 1, volumenMlUnidad: 750 },
+  { id: 71, categoria: "whiskey", nombre: "Whiskey 1L", tienda: "Jumbo", precio: 12000, unidades: 1, volumenMlUnidad: 1000 },
+  { id: 72, categoria: "whiskey", nombre: "Whiskey 750ml", tienda: "Unimarc", precio: 10500, unidades: 1, volumenMlUnidad: 750 },
 
-  { id: 53, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Jumbo", precio: 1890, unidades: 1, volumenMlUnidad: 1500 },
-  { id: 54, categoria: "bebida", nombre: "Coca-Cola 2L", tienda: "Jumbo", precio: 2490, unidades: 1, volumenMlUnidad: 2000 },
-  { id: 55, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Jumbo", precio: 3090, unidades: 1, volumenMlUnidad: 3000 },
-
-  { id: 56, categoria: "bebida", nombre: "Coca-Cola 1L", tienda: "Unimarc", precio: 1000, unidades: 1, volumenMlUnidad: 1000 },
-  { id: 57, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Unimarc", precio: 2090, unidades: 1, volumenMlUnidad: 1500 },
-  { id: 58, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Unimarc", precio: 2600, unidades: 1, volumenMlUnidad: 3000 },
-
-  { id: 60, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 2000 },
-  { id: 61, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Jumbo", precio: 1790, unidades: 1, volumenMlUnidad: 2000 },
-  { id: 62, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Unimarc", precio: 2190, unidades: 1, volumenMlUnidad: 2000 },
-
-  //gin, jaeger, redbull y tonica, ids 80 a 110
   { id: 80, categoria: "gin", nombre: "Gin 750ml", tienda: "Lider", precio: 12000, unidades: 1, volumenMlUnidad: 750 },
   { id: 81, categoria: "gin", nombre: "Gin 1L", tienda: "Jumbo", precio: 15000, unidades: 1, volumenMlUnidad: 1000 },
   { id: 82, categoria: "gin", nombre: "Gin 750ml", tienda: "Unimarc", precio: 13000, unidades: 1, volumenMlUnidad: 750 },
 
   { id: 90, categoria: "jaeger", nombre: "Jaeger 750ml", tienda: "Lider", precio: 15000, unidades: 1, volumenMlUnidad: 750 },
+
+  { id: 50, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 51, categoria: "bebida", nombre: "Coca-Cola 2L", tienda: "Lider", precio: 2390, unidades: 1, volumenMlUnidad: 2000 },
+  { id: 52, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Lider", precio: 2890, unidades: 1, volumenMlUnidad: 3000 },
+  { id: 53, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Jumbo", precio: 1890, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 54, categoria: "bebida", nombre: "Coca-Cola 2L", tienda: "Jumbo", precio: 2490, unidades: 1, volumenMlUnidad: 2000 },
+  { id: 55, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Jumbo", precio: 3090, unidades: 1, volumenMlUnidad: 3000 },
+  { id: 56, categoria: "bebida", nombre: "Coca-Cola 1L", tienda: "Unimarc", precio: 1000, unidades: 1, volumenMlUnidad: 1000 },
+  { id: 57, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Unimarc", precio: 2090, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 58, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Unimarc", precio: 2600, unidades: 1, volumenMlUnidad: 3000 },
 
   { id: 100, categoria: "redbull", nombre: "Red Bull lata 250ml", tienda: "Lider", precio: 1200, unidades: 1, volumenMlUnidad: 250 },
   { id: 101, categoria: "redbull", nombre: "Red Bull lata 250ml", tienda: "Jumbo", precio: 1100, unidades: 1, volumenMlUnidad: 250 },
@@ -184,6 +191,10 @@ const mockProducts = [
   { id: 110, categoria: "tonica", nombre: "Tónica 1.5L", tienda: "Lider", precio: 2000, unidades: 1, volumenMlUnidad: 1500 },
   { id: 111, categoria: "tonica", nombre: "Tónica 1.5L", tienda: "Jumbo", precio: 1900, unidades: 1, volumenMlUnidad: 1500 },
   { id: 112, categoria: "tonica", nombre: "Tónica 1.5L", tienda: "Unimarc", precio: 2100, unidades: 1, volumenMlUnidad: 1500 },
+
+  { id: 60, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 2000 },
+  { id: 61, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Jumbo", precio: 1790, unidades: 1, volumenMlUnidad: 2000 },
+  { id: 62, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Unimarc", precio: 2190, unidades: 1, volumenMlUnidad: 2000 }
 ];
 
 const productApi = {
@@ -248,6 +259,13 @@ function actualizarTextoDropdownBebidas() {
   } else {
     boton.textContent = `${seleccionadas.length} opciones seleccionadas`;
   }
+}
+
+function getPracticalLevel(score) {
+  if (score <= 8) return "Muy conveniente";
+  if (score <= 15) return "Conveniente";
+  if (score <= 24) return "Medio pajera";
+  return "Solo si quieres exprimir precio";
 }
 
 // ===============================
@@ -585,7 +603,6 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
   const solos = opciones.filter(op => op.grupo === "solo");
   const mixes = opciones.filter(op => op.grupo === "mix_simple");
 
-  // 1) Cerveza
   if (cervezas.length > 0) {
     const beerBudget = budget * ((budgetSplit["cerveza"] || 0) / 100);
 
@@ -598,13 +615,10 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
     });
   }
 
-  // 2) Todos los destilados comparten un pool total
   const opcionesDestilado = [...solos, ...mixes];
 
   if (opcionesDestilado.length > 0) {
     const factorCantidadDestilados = 0.7 + 0.3 * opcionesDestilado.length;
-
-    // Si hay solo tragos solos y ningún mix, que rindan un poco más
     const factorSolo = mixes.length === 0 ? 0.85 : 1.0;
 
     const totalDestiladoBaseMl = Math.ceil(
@@ -616,7 +630,6 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
       0
     );
 
-    // Pesos suavizados para repartir consumo entre las opciones seleccionadas
     const pesos = {};
     let sumaPesos = 0;
 
@@ -653,15 +666,10 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
       });
     });
 
-    // 3) Mixers globales por tipo de mixer
-    const mixesConConsumo = requirements.filter(req =>
-      mixes.some(op => op.key === req.opcionKey)
-    );
-
     const mixerMap = new Map();
 
     mixes.forEach(op => {
-      const req = mixesConConsumo.find(r => r.opcionKey === op.key);
+      const req = requirements.find(r => r.opcionKey === op.key);
       if (!req) return;
 
       const current = mixerMap.get(op.mixerCategoria) || {
@@ -672,10 +680,13 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
             : op.mixerCategoria === "redbull"
             ? "Energética"
             : "Bebida",
-        requiredMl: 0
+        requiredMl: 0,
+        budget: 0
       };
 
       current.requiredMl += Math.ceil(req.requiredMl * op.mixerFactor);
+      current.budget += presupuestoDestilados * 0.2 / mixes.length;
+
       mixerMap.set(op.mixerCategoria, current);
     });
 
@@ -684,11 +695,10 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
         categoria: mixerReq.categoria,
         nombre: mixerReq.nombre,
         requiredMl: mixerReq.requiredMl,
-        budget: presupuestoDestilados * 0.2 / mixerMap.size
+        budget: mixerReq.budget
       });
     });
 
-    // 4) Hielo global para todos los destilados
     const hieloBolsas = Math.max(
       1,
       Math.ceil(people / 3),
@@ -726,13 +736,13 @@ function mergeRequirementsByCategoria(requirements) {
         current.nombresOriginales.push(req.nombre);
       }
 
-      // nombre visible combinado
       current.nombre = current.nombresOriginales.join(" + ");
     }
   }
 
   return Array.from(merged.values());
 }
+
 function getConsumptionWarnings(requirements) {
   const warnings = [];
 
@@ -765,11 +775,9 @@ function getBudgetWarnings(plan) {
     if (realCost > expectedBudget) {
       const porcentajeSobre = (realCost / expectedBudget) - 1;
 
+      if (req.nombre === "Hielo") continue;
+
       if (porcentajeSobre > 0.25) {
-        if (req.nombre === "Hielo") {
-          //ignorar el hielo para las advertencias de presupuesto
-          continue;
-        }
         warnings.push(
           `${req.nombre}: esta recomendación se pasa bastante del presupuesto sugerido para esa categoría (${formatCLP(realCost)} vs ${formatCLP(expectedBudget)}).`
         );
@@ -785,6 +793,29 @@ function getBudgetWarnings(plan) {
 }
 
 // ===============================
+// HEURÍSTICA DE COMBINACIÓN
+// ===============================
+function getCombinationStats(items) {
+  const skuSet = new Set(items.map(item => `${item.tienda}__${item.nombre}`));
+  return {
+    totalItems: items.length,
+    skuDistintos: skuSet.size
+  };
+}
+
+function getCombinationScore(totalCost, items, totalVolume, requiredMl) {
+  const { totalItems, skuDistintos } = getCombinationStats(items);
+  const sobrecompraMl = Math.max(0, totalVolume - requiredMl);
+
+  return (
+    totalCost +
+    totalItems * PENALIZACION_ITEM_COMBINACION +
+    skuDistintos * PENALIZACION_SKU_COMBINACION +
+    (sobrecompraMl / 1000) * PENALIZACION_SOBRECOMPRA_POR_LITRO
+  );
+}
+
+// ===============================
 // OPTIMIZACIÓN SIMPLE POR CATEGORÍA
 // ===============================
 function findCheapestCombination(products, requiredMl) {
@@ -794,7 +825,7 @@ function findCheapestCombination(products, requiredMl) {
   const upperBound = requiredMl + maxVolume * 2;
 
   const dp = Array(upperBound + 1).fill(null);
-  dp[0] = { cost: 0, items: [] };
+  dp[0] = { cost: 0, score: 0, items: [] };
 
   for (let volume = 0; volume <= upperBound; volume++) {
     if (!dp[volume]) continue;
@@ -803,10 +834,16 @@ function findCheapestCombination(products, requiredMl) {
       const nextVolume = Math.min(upperBound, volume + product.volumenTotalMl);
       const nextCost = dp[volume].cost + product.precio;
       const nextItems = [...dp[volume].items, product];
+      const nextScore = getCombinationScore(nextCost, nextItems, nextVolume, requiredMl);
 
-      if (!dp[nextVolume] || nextCost < dp[nextVolume].cost) {
+      if (
+        !dp[nextVolume] ||
+        nextScore < dp[nextVolume].score ||
+        (nextScore === dp[nextVolume].score && nextCost < dp[nextVolume].cost)
+      ) {
         dp[nextVolume] = {
           cost: nextCost,
+          score: nextScore,
           items: nextItems
         };
       }
@@ -816,10 +853,16 @@ function findCheapestCombination(products, requiredMl) {
   let best = null;
   for (let volume = requiredMl; volume <= upperBound; volume++) {
     if (!dp[volume]) continue;
-    if (!best || dp[volume].cost < best.cost) {
+
+    if (
+      !best ||
+      dp[volume].score < best.score ||
+      (dp[volume].score === best.score && dp[volume].cost < best.totalCost)
+    ) {
       best = {
         totalVolume: volume,
         totalCost: dp[volume].cost,
+        score: dp[volume].score,
         items: dp[volume].items
       };
     }
@@ -845,6 +888,28 @@ function summarizeItems(items) {
 
 function getUniqueStores(items) {
   return [...new Set(items.map(item => item.tienda))];
+}
+
+function getPlanPracticalScore(plan) {
+  if (!plan || !plan.ok) return Infinity;
+
+  const stores = getUniqueStores(plan.allItems);
+  const summarized = summarizeItems(plan.allItems);
+  const totalItems = plan.allItems.length;
+  const skuDistintos = summarized.length;
+  const totalSobrecompraMl = plan.details.reduce((sum, detail) => {
+    const sobre = Math.max(0, detail.result.totalVolume - detail.requirement.requiredMl);
+    return sum + sobre;
+  }, 0);
+
+  const tiendasExtra = Math.max(0, stores.length - 1);
+
+  return (
+    tiendasExtra * PENALIZACION_TIENDA_EXTRA +
+    skuDistintos * PENALIZACION_SKU_PLAN +
+    totalItems * PENALIZACION_ITEM_PLAN +
+    (totalSobrecompraMl / 1000) * PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO
+  );
 }
 
 // ===============================
@@ -875,14 +940,12 @@ async function buildMultiStorePlan(requirements) {
     allItems.push(...best.items);
   }
 
-  const stores = getUniqueStores(allItems);
-  const adjustedTotal = total + Math.max(0, stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA;
-
   return {
     ok: true,
     total,
-    adjustedTotal,
-    stores,
+    practicalScore: 0,
+    practicalLabel: "",
+    stores: getUniqueStores(allItems),
     details,
     allItems
   };
@@ -1043,6 +1106,8 @@ const listaMultiTienda = document.getElementById("listaMultiTienda");
 const listaTiendaUnica = document.getElementById("listaTiendaUnica");
 const detalleTiendasMulti = document.getElementById("detalleTiendasMulti");
 const detalleTiendaUnica = document.getElementById("detalleTiendaUnica");
+const costoPracticoMultiEl = document.getElementById("costoPracticoMulti");
+const costoPracticoUnicaEl = document.getElementById("costoPracticoUnica");
 
 document.querySelectorAll(".bebida-check").forEach(input => {
   input.addEventListener("change", () => {
@@ -1087,7 +1152,17 @@ form.addEventListener("submit", async function (e) {
   const multiPlan = await buildMultiStorePlan(requirements);
   const singlePlan = await buildSingleStorePlan(requirements);
 
-  const consumoWarnings = getConsumptionWarnings(requirements);
+  if (multiPlan.ok) {
+    multiPlan.practicalScore = getPlanPracticalScore(multiPlan);
+    multiPlan.practicalLabel = getPracticalLevel(multiPlan.practicalScore);
+  }
+
+  if (singlePlan.ok) {
+    singlePlan.practicalScore = getPlanPracticalScore(singlePlan);
+    singlePlan.practicalLabel = getPracticalLevel(singlePlan.practicalScore);
+  }
+
+  const consumoWarnings = getConsumptionWarnings(rawRequirements);
   const budgetWarningsMulti = getBudgetWarnings(multiPlan);
 
   const globalWarnings = [];
@@ -1116,23 +1191,27 @@ form.addEventListener("submit", async function (e) {
   renderWarnings(warnings);
 
   if (multiPlan.ok) {
-    totalMultiEl.textContent = `${formatCLP(multiPlan.total)} + penalización heurística ${formatCLP(Math.max(0, multiPlan.stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA)} = ${formatCLP(multiPlan.adjustedTotal)}`;
+    totalMultiEl.textContent = formatCLP(multiPlan.total);
     detalleTiendasMulti.textContent = `Tiendas involucradas: ${multiPlan.stores.join(", ")}`;
     saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
+    costoPracticoMultiEl.textContent = `${multiPlan.practicalLabel} (${multiPlan.practicalScore.toFixed(1)} pts) + tu preciado tiempo`;
   } else {
     totalMultiEl.textContent = "No disponible";
     detalleTiendasMulti.textContent = multiPlan.reason;
     saldoMultiEl.textContent = "—";
+    costoPracticoMultiEl.textContent = "—";
   }
 
   if (singlePlan.ok) {
     totalUnicaEl.textContent = formatCLP(singlePlan.total);
     detalleTiendaUnica.textContent = `Tienda sugerida: ${singlePlan.store}`;
     saldoUnicaEl.textContent = formatCLP(budget - singlePlan.total);
+    costoPracticoUnicaEl.textContent = `${singlePlan.practicalLabel} (${singlePlan.practicalScore.toFixed(1)} pts) + tu preciado tiempo`;
   } else {
     totalUnicaEl.textContent = "No disponible";
     detalleTiendaUnica.textContent = singlePlan.reason;
     saldoUnicaEl.textContent = "—";
+    costoPracticoUnicaEl.textContent = "—";
   }
 
   renderBudgetState(budget, multiPlan, singlePlan);

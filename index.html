@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cuanto rinde?</title>
+  <title>Cuánto Rinde</title>
 
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
   />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="styles.css" /> 
-
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container py-5">
@@ -19,9 +17,9 @@
       <div class="col-xl-10 col-lg-11">
         <div class="card shadow-sm">
           <div class="card-body p-4">
-            <h1 class="mb-2 text-center">Cuanto rinde?</h1>
+            <h1 class="mb-2 text-center">Cuánto Rinde</h1>
             <p class="text-muted text-center mb-4">
-              Deja de cranearte tu compra de viernes, nosotros lo hacemos por ti.
+              Calcula cuánto rinde tu presupuesto para un carrete.
             </p>
 
             <form id="carreteForm" class="row g-3">
@@ -86,41 +84,42 @@
                     </div>
 
                     <div class="form-check mb-2">
+                      <input class="form-check-input bebida-check" type="checkbox" value="ron" id="chkRon">
+                      <label class="form-check-label" for="chkRon">Roncola</label>
+                    </div>
+
+                    <div class="form-check mb-2">
                       <input class="form-check-input bebida-check" type="checkbox" value="vodka" id="chkVodka">
                       <label class="form-check-label" for="chkVodka">Vodka + bebida</label>
                     </div>
 
-                    <div class="form-check">
-                      <input class="form-check-input bebida-check" type="checkbox" value="Roncola" id="chkRoncola">
-                      <label class="form-check-label" for="chkRoncola">Roncola</label>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input bebida-check" type="checkbox" value="whiskey" id="chkWhiskey">
+                      <label class="form-check-label" for="chkWhiskey">Whiskey solo</label>
                     </div>
 
-                    <div class="form-check">
+                    <div class="form-check mb-2">
                       <input class="form-check-input bebida-check" type="checkbox" value="whiscola" id="chkWhiscola">
                       <label class="form-check-label" for="chkWhiscola">Whiscola</label>
                     </div>
 
-                      <div class="form-check mb-2">
-                        <input class="form-check-input bebida-check" type="checkbox" value="whiskey" id="chkWhiskey">
-                        <label class="form-check-label" for="chkWhiskey">Whiskey solo</label>
-                      </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input bebida-check" type="checkbox" value="gin_tonic" id="chkGinTonic">
+                      <label class="form-check-label" for="chkGinTonic">Gin tonic</label>
+                    </div>
 
-                      <div class="form-check mb-2">
-                        <input class="form-check-input bebida-check" type="checkbox" value="gin_tonic" id="chkGinTonic">
-                        <label class="form-check-label" for="chkGinTonic">Gin tonic</label>
-                      </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input bebida-check" type="checkbox" value="gin_redbull" id="chkGinRedbull">
+                      <label class="form-check-label" for="chkGinRedbull">Gin + energética</label>
+                    </div>
 
-                      <div class="form-check mb-2">
-                        <input class="form-check-input bebida-check" type="checkbox" value="gin_redbull" id="chkGinRedbull">
-                        <label class="form-check-label" for="chkGinRedbull">Gin + energética</label>
-                      </div>
-
-                      <div class="form-check">
-                        <input class="form-check-input bebida-check" type="checkbox" value="jaeger_redbull" id="chkJaegerRedbull">
-                        <label class="form-check-label" for="chkJaegerRedbull">Jäger + energética</label>
-                      </div>
+                    <div class="form-check">
+                      <input class="form-check-input bebida-check" type="checkbox" value="jaeger_redbull" id="chkJaegerRedbull">
+                      <label class="form-check-label" for="chkJaegerRedbull">Jäger + energética</label>
+                    </div>
                   </div>
                 </div>
+
                 <div class="form-text mt-2">
                   Si marcas varias, puedes repartir manualmente el presupuesto entre ellas.
                 </div>
@@ -163,7 +162,8 @@
                 </p>
                 <ul id="listaMultiTienda" class="mb-3"></ul>
                 <div class="small-note mb-2" id="detalleTiendasMulti"></div>
-                <div><strong>Total:</strong> <span id="totalMulti" class="mono"></span></div>
+                <div><strong>Total productos:</strong> <span id="totalMulti" class="mono"></span></div>
+                <div><strong>Costo práctico:</strong> <span id="costoPracticoMulti"></span></div>
               </div>
             </div>
 
@@ -175,7 +175,8 @@
                 </p>
                 <ul id="listaTiendaUnica" class="mb-3"></ul>
                 <div class="small-note mb-2" id="detalleTiendaUnica"></div>
-                <div><strong>Total:</strong> <span id="totalUnica" class="mono"></span></div>
+                <div><strong>Total productos:</strong> <span id="totalUnica" class="mono"></span></div>
+                <div><strong>Costo práctico:</strong> <span id="costoPracticoUnica"></span></div>
               </div>
             </div>
           </div>
@@ -188,25 +189,25 @@
               <div id="presupuestoTotal" class="mono"></div>
             </div>
             <div class="col-md-4">
-              <div><strong>Presupuesto restante (varias tiendas)</strong></div>
+              <div><strong>Saldo si eliges multi-tienda</strong></div>
               <div id="saldoMulti" class="mono"></div>
             </div>
             <div class="col-md-4">
-              <div><strong>Presupuesto restante (una tienda)</strong></div>
+              <div><strong>Saldo si eliges tienda única</strong></div>
               <div id="saldoUnica" class="mono"></div>
             </div>
           </div>
 
           <div class="alert mt-4 d-none" id="alertaPresupuesto" role="alert"></div>
           <p class="small-note mt-3 mb-0" id="notaResultado">
-            Los datos actualmente se basan en estimaciones, puede que no esten actualizados.
+            Precios referenciales, pueden variar según tienda y fecha.
           </p>
         </div>
       </div>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
