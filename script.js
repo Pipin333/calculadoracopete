@@ -655,13 +655,13 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
 
     // 3) Mixers globales por tipo de mixer
     const mixesConConsumo = requirements.filter(req =>
-      mixes.some(op => op.categoriaBase === req.categoria && op.nombre === req.nombre)
+      mixes.some(op => op.key === req.opcionKey)
     );
 
     const mixerMap = new Map();
 
     mixes.forEach(op => {
-      const req = mixesConConsumo.find(r => r.nombre === op.nombre && r.categoria === op.categoriaBase);
+      const req = mixesConConsumo.find(r => r.opcionKey === op.key);
       if (!req) return;
 
       const current = mixerMap.get(op.mixerCategoria) || {
