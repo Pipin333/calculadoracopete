@@ -199,6 +199,32 @@ const mockProducts = [
 
 const productApi = {
   async getProductsByCategory(category) {
+    try {
+      // Intenta cargar desde archivo JSON local (para producción/GitHub Pages)
+      const response = await fetch('./productos.json');
+      
+      if (!response.ok) {
+        console.warn(`No se pudo cargar productos.json, usando mock products`);
+        return this._getMockProducts(category);
+      }
+      
+      const data = await response.json();
+      
+      return data.productos
+        .filter(p => p.categoria === category)
+        .map(p => ({
+          ...p,
+          volumenTotalMl: p.unidades * p.volumenMlUnidad,
+          precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
+        }));
+        
+    } catch (error) {
+      console.warn(`Error cargando productos.json: ${error.message}, usando mock products`);
+      return this._getMockProducts(category);
+    }
+  },
+  
+  _getMockProducts(category) {
     return mockProducts
       .filter(p => p.categoria === category)
       .map(p => ({
