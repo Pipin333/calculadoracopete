@@ -848,8 +848,8 @@ form.addEventListener("submit", async function (e) {
   renderWarnings(warnings);
 
   if (multiPlan.ok) {
-    totalMultiEl.textContent = `${formatCLP(multiPlan.total)} + penalización heurística ${formatCLP(Math.max(0, multiPlan.stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA)} = ${formatCLP(multiPlan.adjustedTotal)}`;
-    detalleTiendasMulti.textContent = `Tiendas involucradas: ${multiPlan.stores.join(", ")}`;
+    totalMultiEl.textContent = `${formatCLP(multiPlan.total)} + algo mas de tu preciado tiempo ${formatCLP(Math.max(0, multiPlan.stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA)} = ${formatCLP(multiPlan.adjustedTotal)}`;
+    detalleTiendasMulti.textContent = `Tiendas: ${multiPlan.stores.join(", ")}`;
     saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
   } else {
     totalMultiEl.textContent = "No disponible";
