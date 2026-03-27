@@ -32,19 +32,103 @@ const PENALIZACION_POR_TIENDA_EXTRA = 2000;
 const EXPONENTE_SLIDER_CONSUMO = 0.6;
 const UMBRAL_ADVERTENCIA_DESTILADO_ML = 300;
 
+const OPCIONES_CONSUMO = {
+  cerveza: {
+    nombre: "Cerveza",
+    grupo: "cerveza",
+    categoriaBase: "cerveza",
+    llevaMixer: false,
+    mixerCategoria: null,
+    mixerFactor: 0,
+    llevaHielo: false
+  },
+  piscola: {
+    nombre: "Piscola",
+    grupo: "mix_simple",
+    categoriaBase: "piscola",
+    llevaMixer: true,
+    mixerCategoria: "bebida",
+    mixerFactor: 2,
+    llevaHielo: true
+  },
+  ron: {
+    nombre: "Ron + bebida",
+    grupo: "mix_simple",
+    categoriaBase: "ron",
+    llevaMixer: true,
+    mixerCategoria: "bebida",
+    mixerFactor: 2,
+    llevaHielo: true
+  },
+  vodka: {
+    nombre: "Vodka + bebida",
+    grupo: "mix_simple",
+    categoriaBase: "vodka",
+    llevaMixer: true,
+    mixerCategoria: "bebida",
+    mixerFactor: 2,
+    llevaHielo: true
+  },
+  whiskey: {
+    nombre: "Whiskey solo",
+    grupo: "solo",
+    categoriaBase: "whiskey",
+    llevaMixer: false,
+    mixerCategoria: null,
+    mixerFactor: 0,
+    llevaHielo: true
+  },
+  whiscola: {
+  nombre: "Whiscola",
+  grupo: "mix_simple",
+  categoriaBase: "whiskey",
+  llevaMixer: true,
+  mixerCategoria: "bebida",
+  mixerFactor: 2,
+  llevaHielo: true
+},
+  gin_tonic: {
+    nombre: "Gin tonic",
+    grupo: "mix_simple",
+    categoriaBase: "gin",
+    llevaMixer: true,
+    mixerCategoria: "tonica",
+    mixerFactor: 2,
+    llevaHielo: true
+  },
+  gin_redbull: {
+    nombre: "Gin + energética",
+    grupo: "mix_simple",
+    categoriaBase: "gin",
+    llevaMixer: true,
+    mixerCategoria: "redbull",
+    mixerFactor: 2,
+    llevaHielo: true
+  },
+  jaeger_redbull: {
+    nombre: "Jäger + energética",
+    grupo: "mix_simple",
+    categoriaBase: "jaeger",
+    llevaMixer: true,
+    mixerCategoria: "redbull",
+    mixerFactor: 2,
+    llevaHielo: true
+  }
+};
+
 // ===============================
 // API MOCK
 // ===============================
 const mockProducts = [
-  { id: 1, categoria: "cerveza", nombre: "Cerveza Lager lata 470ml", tienda: "Lider", precio: 1000, unidades: 1, volumenMlUnidad: 470 },
+  { id: 1, categoria: "cerveza", nombre: "Cerveza Lager lata 470ml", tienda: "Jumbo", precio: 1000, unidades: 1, volumenMlUnidad: 470 },
   { id: 2, categoria: "cerveza", nombre: "Cerveza Lager six pack 6x350ml", tienda: "Lider", precio: 6200, unidades: 6, volumenMlUnidad: 350 },
   { id: 3, categoria: "cerveza", nombre: "Cerveza Lager maletín 12x350ml", tienda: "Lider", precio: 9490, unidades: 12, volumenMlUnidad: 350 },
 
-  { id: 4, categoria: "cerveza", nombre: "Cerveza Lager lata 710cc", tienda: "Jumbo", precio: 1500, unidades: 1, volumenMlUnidad: 710 },
+  { id: 4, categoria: "cerveza", nombre: "Cerveza Lager lata 710cc", tienda: "Liquidos", precio: 1500, unidades: 1, volumenMlUnidad: 710 },
   { id: 5, categoria: "cerveza", nombre: "Cerveza Lager six pack 6x470ml", tienda: "Jumbo", precio: 5990, unidades: 6, volumenMlUnidad: 470 },
   { id: 6, categoria: "cerveza", nombre: "Cerveza Lager caja 24x330cc", tienda: "Jumbo", precio: 24990, unidades: 24, volumenMlUnidad: 330 },
 
-  { id: 7, categoria: "cerveza", nombre: "Cerveza Lager botellín 660cc", tienda: "Unimarc", precio: 1000, unidades: 1, volumenMlUnidad: 660 },
+  { id: 7, categoria: "cerveza", nombre: "Cerveza Lager botellín 660cc", tienda: "Lider", precio: 1000, unidades: 1, volumenMlUnidad: 660 },
   { id: 8, categoria: "cerveza", nombre: "Cerveza Lager maletín 12x330cc", tienda: "Unimarc", precio: 10990, unidades: 12, volumenMlUnidad: 330 },
 
   { id: 20, categoria: "piscola", nombre: "Pisco 750ml", tienda: "Lider", precio: 5990, unidades: 1, volumenMlUnidad: 750 },
@@ -59,24 +143,47 @@ const mockProducts = [
   { id: 31, categoria: "vodka", nombre: "Vodka 1L", tienda: "Jumbo", precio: 9990, unidades: 1, volumenMlUnidad: 1000 },
   { id: 32, categoria: "vodka", nombre: "Vodka 750ml", tienda: "Unimarc", precio: 7890, unidades: 1, volumenMlUnidad: 750 },
 
+  { id: 70, categoria: "whiskey", nombre: "Whiskey 750ml", tienda: "Lider", precio: 10000, unidades: 1, volumenMlUnidad: 750 },
+  { id: 71, categoria: "whiskey", nombre: "Whiskey 1L", tienda: "Jumbo", precio: 12000, unidades: 1, volumenMlUnidad: 1000 },
+  { id: 72, categoria: "whiskey", nombre: "Whiskey 750ml", tienda: "Unimarc", precio: 10500, unidades: 1, volumenMlUnidad: 750 },
+
   { id: 40, categoria: "ron", nombre: "Ron 750ml", tienda: "Lider", precio: 7290, unidades: 1, volumenMlUnidad: 750 },
   { id: 41, categoria: "ron", nombre: "Ron 1L", tienda: "Jumbo", precio: 9890, unidades: 1, volumenMlUnidad: 1000 },
   { id: 42, categoria: "ron", nombre: "Ron 750ml", tienda: "Unimarc", precio: 7590, unidades: 1, volumenMlUnidad: 750 },
 
-  { id: 50, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 1500 },
-  { id: 51, categoria: "bebida", nombre: "Bebida cola 2L", tienda: "Lider", precio: 2390, unidades: 1, volumenMlUnidad: 2000 },
-  { id: 52, categoria: "bebida", nombre: "Bebida cola 3L", tienda: "Lider", precio: 2890, unidades: 1, volumenMlUnidad: 3000 },
+  { id: 50, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 51, categoria: "bebida", nombre: "Coca-Cola 2L", tienda: "Lider", precio: 2390, unidades: 1, volumenMlUnidad: 2000 },
+  { id: 52, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Lider", precio: 2890, unidades: 1, volumenMlUnidad: 3000 },
 
-  { id: 53, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Jumbo", precio: 1890, unidades: 1, volumenMlUnidad: 1500 },
-  { id: 54, categoria: "bebida", nombre: "Bebida cola 2L", tienda: "Jumbo", precio: 2490, unidades: 1, volumenMlUnidad: 2000 },
-  { id: 55, categoria: "bebida", nombre: "Bebida cola 3L", tienda: "Jumbo", precio: 3090, unidades: 1, volumenMlUnidad: 3000 },
+  { id: 53, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Jumbo", precio: 1890, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 54, categoria: "bebida", nombre: "Coca-Cola 2L", tienda: "Jumbo", precio: 2490, unidades: 1, volumenMlUnidad: 2000 },
+  { id: 55, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Jumbo", precio: 3090, unidades: 1, volumenMlUnidad: 3000 },
 
-  { id: 56, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Unimarc", precio: 2090, unidades: 1, volumenMlUnidad: 1500 },
-  { id: 57, categoria: "bebida", nombre: "Bebida cola 3L", tienda: "Unimarc", precio: 2600, unidades: 1, volumenMlUnidad: 3000 },
+  { id: 56, categoria: "bebida", nombre: "Coca-Cola 1L", tienda: "Unimarc", precio: 1000, unidades: 1, volumenMlUnidad: 1000 },
+  { id: 57, categoria: "bebida", nombre: "Coca-Cola 1.5L", tienda: "Unimarc", precio: 2090, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 58, categoria: "bebida", nombre: "Coca-Cola 3L", tienda: "Unimarc", precio: 2600, unidades: 1, volumenMlUnidad: 3000 },
 
   { id: 60, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 2000 },
   { id: 61, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Jumbo", precio: 1790, unidades: 1, volumenMlUnidad: 2000 },
-  { id: 62, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Unimarc", precio: 2190, unidades: 1, volumenMlUnidad: 2000 }
+  { id: 62, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Unimarc", precio: 2190, unidades: 1, volumenMlUnidad: 2000 },
+
+  //gin, jaeger, redbull y tonica, ids 80 a 110
+  { id: 80, categoria: "gin", nombre: "Gin 750ml", tienda: "Lider", precio: 12000, unidades: 1, volumenMlUnidad: 750 },
+  { id: 81, categoria: "gin", nombre: "Gin 1L", tienda: "Jumbo", precio: 15000, unidades: 1, volumenMlUnidad: 1000 },
+  { id: 82, categoria: "gin", nombre: "Gin 750ml", tienda: "Unimarc", precio: 13000, unidades: 1, volumenMlUnidad: 750 },
+
+  { id: 90, categoria: "jaeger", nombre: "Jaeger 750ml", tienda: "Lider", precio: 15000, unidades: 1, volumenMlUnidad: 750 },
+
+  { id: 100, categoria: "redbull", nombre: "Red Bull lata 250ml", tienda: "Lider", precio: 1200, unidades: 1, volumenMlUnidad: 250 },
+  { id: 101, categoria: "redbull", nombre: "Red Bull lata 250ml", tienda: "Jumbo", precio: 1100, unidades: 1, volumenMlUnidad: 250 },
+  { id: 102, categoria: "redbull", nombre: "Red Bull lata 250ml", tienda: "Unimarc", precio: 1300, unidades: 1, volumenMlUnidad: 250 },
+  { id: 103, categoria: "redbull", nombre: "Red Bull pack 4 latas", tienda: "Lider", precio: 4800, unidades: 4, volumenMlUnidad: 250 },
+  { id: 104, categoria: "redbull", nombre: "Red Bull pack 4 latas", tienda: "Jumbo", precio: 4400, unidades: 4, volumenMlUnidad: 250 },
+  { id: 105, categoria: "redbull", nombre: "Red Bull pack 4 latas", tienda: "Unimarc", precio: 5200, unidades: 4, volumenMlUnidad: 250 },
+
+  { id: 110, categoria: "tonica", nombre: "Tónica 1.5L", tienda: "Lider", precio: 2000, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 111, categoria: "tonica", nombre: "Tónica 1.5L", tienda: "Jumbo", precio: 1900, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 112, categoria: "tonica", nombre: "Tónica 1.5L", tienda: "Unimarc", precio: 2100, unidades: 1, volumenMlUnidad: 1500 },
 ];
 
 const productApi = {
@@ -125,11 +232,7 @@ function getModeLabel(mode) {
 }
 
 function getDrinkLabel(drink) {
-  if (drink === "cerveza") return "Cerveza";
-  if (drink === "piscola") return "Piscola";
-  if (drink === "vodka") return "Vodka + bebida";
-  if (drink === "ron") return "Ron + bebida";
-  return drink;
+  return OPCIONES_CONSUMO[drink]?.nombre || drink;
 }
 
 function actualizarTextoDropdownBebidas() {
@@ -474,13 +577,16 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
   }
 
   const requirements = [];
+  const opciones = selectedDrinks
+    .map(key => ({ key, ...OPCIONES_CONSUMO[key] }))
+    .filter(Boolean);
 
-  const selectedBeer = selectedDrinks.includes("cerveza");
-  const selectedDestilados = selectedDrinks.filter(drink =>
-    ["piscola", "vodka", "ron"].includes(drink)
-  );
+  const cervezas = opciones.filter(op => op.grupo === "cerveza");
+  const solos = opciones.filter(op => op.grupo === "solo");
+  const mixes = opciones.filter(op => op.grupo === "mix_simple");
 
-  if (selectedBeer) {
+  // 1) Cerveza
+  if (cervezas.length > 0) {
     const beerBudget = budget * ((budgetSplit["cerveza"] || 0) / 100);
 
     requirements.push({
@@ -492,66 +598,97 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
     });
   }
 
-  if (selectedDestilados.length > 0) {
-    const factorCantidadDestilados = 0.7 + 0.3 * selectedDestilados.length;
+  // 2) Todos los destilados comparten un pool total
+  const opcionesDestilado = [...solos, ...mixes];
+
+  if (opcionesDestilado.length > 0) {
+    const factorCantidadDestilados = 0.7 + 0.3 * opcionesDestilado.length;
+
+    // Si hay solo tragos solos y ningún mix, que rindan un poco más
+    const factorSolo = mixes.length === 0 ? 0.85 : 1.0;
 
     const totalDestiladoBaseMl = Math.ceil(
-      people * rules.destiladoMlPorPersona * factorCantidadDestilados
+      people * rules.destiladoMlPorPersona * factorCantidadDestilados * factorSolo
     );
 
-    const presupuestoDestilados = selectedDestilados.reduce(
-      (sum, drink) => sum + budget * ((budgetSplit[drink] || 0) / 100),
+    const presupuestoDestilados = opcionesDestilado.reduce(
+      (sum, op) => sum + budget * ((budgetSplit[op.key] || 0) / 100),
       0
     );
 
+    // Pesos suavizados para repartir consumo entre las opciones seleccionadas
     const pesos = {};
     let sumaPesos = 0;
 
-    selectedDestilados.forEach(drink => {
-      const porcentaje = (budgetSplit[drink] || 0) / 100;
+    opcionesDestilado.forEach(op => {
+      const porcentaje = (budgetSplit[op.key] || 0) / 100;
       const peso = Math.pow(Math.max(porcentaje, 0.01), EXPONENTE_SLIDER_CONSUMO);
-      pesos[drink] = peso;
+      pesos[op.key] = peso;
       sumaPesos += peso;
     });
 
     let totalAsignado = 0;
 
-    selectedDestilados.forEach((drink, index) => {
-      const proporcion = pesos[drink] / sumaPesos;
+    opcionesDestilado.forEach((op, index) => {
+      const proporcion = pesos[op.key] / sumaPesos;
 
       let requiredMl;
-      if (index === selectedDestilados.length - 1) {
+      if (index === opcionesDestilado.length - 1) {
         requiredMl = totalDestiladoBaseMl - totalAsignado;
       } else {
         requiredMl = Math.round(totalDestiladoBaseMl * proporcion);
         totalAsignado += requiredMl;
       }
 
-      const subBudget = budget * ((budgetSplit[drink] || 0) / 100);
+      const subBudget = budget * ((budgetSplit[op.key] || 0) / 100);
 
       requirements.push({
-        categoria: drink,
-        nombre:
-          drink === "piscola"
-            ? "Pisco"
-            : drink === "vodka"
-            ? "Vodka"
-            : "Ron",
+        categoria: op.categoriaBase,
+        nombre: op.nombre,
         requiredMl,
         budget: subBudget,
-        porcentaje: budgetSplit[drink] || 0
+        porcentaje: budgetSplit[op.key] || 0,
+        opcionKey: op.key,
+        grupo: op.grupo
       });
     });
 
-    const bebidaMl = Math.ceil(totalDestiladoBaseMl * 2 * rules.bebidaFactor);
+    // 3) Mixers globales por tipo de mixer
+    const mixesConConsumo = requirements.filter(req =>
+      mixes.some(op => op.categoriaBase === req.categoria && op.nombre === req.nombre)
+    );
 
-    requirements.push({
-      categoria: "bebida",
-      nombre: "Bebida",
-      requiredMl: bebidaMl,
-      budget: presupuestoDestilados * 0.2
+    const mixerMap = new Map();
+
+    mixes.forEach(op => {
+      const req = mixesConConsumo.find(r => r.nombre === op.nombre && r.categoria === op.categoriaBase);
+      if (!req) return;
+
+      const current = mixerMap.get(op.mixerCategoria) || {
+        categoria: op.mixerCategoria,
+        nombre:
+          op.mixerCategoria === "tonica"
+            ? "Tónica"
+            : op.mixerCategoria === "redbull"
+            ? "Energética"
+            : "Bebida",
+        requiredMl: 0
+      };
+
+      current.requiredMl += Math.ceil(req.requiredMl * op.mixerFactor);
+      mixerMap.set(op.mixerCategoria, current);
     });
 
+    mixerMap.forEach(mixerReq => {
+      requirements.push({
+        categoria: mixerReq.categoria,
+        nombre: mixerReq.nombre,
+        requiredMl: mixerReq.requiredMl,
+        budget: presupuestoDestilados * 0.2 / mixerMap.size
+      });
+    });
+
+    // 4) Hielo global para todos los destilados
     const hieloBolsas = Math.max(
       1,
       Math.ceil(people / 3),
@@ -573,12 +710,13 @@ function getConsumptionWarnings(requirements) {
   const warnings = [];
 
   requirements.forEach(req => {
-    if (["piscola", "vodka", "ron"].includes(req.categoria)) {
-      if (req.requiredMl < UMBRAL_ADVERTENCIA_DESTILADO_ML) {
-        warnings.push(
-          `${req.nombre}: el reparto actual lo deja con muy poco protagonismo (${req.requiredMl} ml aprox.). Puede que no valga la pena incluirlo.`
-        );
-      }
+    if (
+      ["piscola", "vodka", "ron", "whiskey", "gin", "jaeger"].includes(req.categoria) &&
+      req.requiredMl < UMBRAL_ADVERTENCIA_DESTILADO_ML
+    ) {
+      warnings.push(
+        `${req.nombre}: el reparto actual lo deja con muy poco protagonismo (${req.requiredMl} ml aprox.). Puede que no valga la pena incluirlo.`
+      );
     }
   });
 
