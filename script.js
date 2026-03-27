@@ -5,26 +5,26 @@ const CONSUMOS = {
   previa: {
     cervezaMlPorPersona: 500,
     destiladoMlPorPersona: 100,
-    bebidaFactor: 0.8,
-    hieloBolsasPorPersona: 1 / 8
+    bebidaFactor: 0.75,
+    hieloBolsasPorPersona: 1 / 16
   },
   trabajo: {
     cervezaMlPorPersona: 660,
     destiladoMlPorPersona: 120,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1 /8
+    hieloBolsasPorPersona: 1 / 12
   },
   pongamosle: {
     cervezaMlPorPersona: 990,
     destiladoMlPorPersona: 200,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1 / 4
+    hieloBolsasPorPersona: 1 / 10
   },
   modo18: {
     cervezaMlPorPersona: 1650,
     destiladoMlPorPersona: 300,
     bebidaFactor: 1.2,
-    hieloBolsasPorPersona: 1 / 2
+    hieloBolsasPorPersona: 1 / 8
   }
 };
 
@@ -176,19 +176,32 @@ function renderBudgetSliders() {
 
     col.innerHTML = `
       <div class="border rounded p-3 bg-white">
-        <div class="d-flex justify-content-between align-items-center mb-2">
+        <div class="d-flex justify-content-between align-items-center mb-2 gap-2">
           <label for="slider_${drink}" class="form-label mb-0">${getDrinkLabel(drink)}</label>
-          <input
-            type="number"
-            class="form-control form-control-sm text-end budget-input"
-            id="input_${drink}"
-            data-drink="${drink}"
-            min="0"
-            max="100"
-            step="1"
-            value="${initialValue}"
-            style="width: 90px;"
-          />
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="form-check form-switch m-0">
+              <input
+                class="form-check-input budget-lock"
+                type="checkbox"
+                id="lock_${drink}"
+                data-drink="${drink}"
+              />
+              <label class="form-check-label small" for="lock_${drink}">Fijar %</label>
+            </div>
+
+            <input
+              type="number"
+              class="form-control form-control-sm text-end budget-input"
+              id="input_${drink}"
+              data-drink="${drink}"
+              min="0"
+              max="100"
+              step="1"
+              value="${initialValue}"
+              style="width: 90px;"
+            />
+          </div>
         </div>
 
         <input
@@ -216,6 +229,10 @@ function renderBudgetSliders() {
     input.addEventListener("blur", normalizeBudgetSplit);
   });
 
+  document.querySelectorAll(".budget-lock").forEach(lock => {
+    lock.addEventListener("change", handleLockChange);
+  });
+
   updateBudgetSplitState();
 }
 
@@ -223,7 +240,14 @@ function getBudgetControls() {
   return Array.from(document.querySelectorAll(".budget-slider")).map(slider => {
     const drink = slider.dataset.drink;
     const input = document.getElementById(`input_${drink}`);
-    return { drink, slider, input };
+    const lock = document.getElementById(`lock_${drink}`);
+    return {
+      drink,
+      slider,
+      input,
+      lock,
+      locked: lock ? lock.checked : false
+    };
   });
 }
 
@@ -247,46 +271,79 @@ function syncControlValue(drink, value) {
   input.value = value;
 }
 
+function handleLockChange(e) {
+  const controls = getBudgetControls();
+  const lockedControls = controls.filter(c => c.locked);
+
+  if (lockedControls.length === controls.length) {
+    e.target.checked = false;
+    alert("Debe quedar al menos una opción desbloqueada para ajustar el reparto.");
+    return;
+  }
+
+  normalizeBudgetSplit();
+}
+
 function rebalanceFromChangedDrink(changedDrink, newValue) {
   const controls = getBudgetControls();
-  const others = controls.filter(c => c.drink !== changedDrink);
 
   newValue = Math.max(0, Math.min(100, Math.round(newValue)));
+  syncControlValue(changedDrink, newValue);
 
-  if (others.length === 0) {
-    syncControlValue(changedDrink, 100);
+  const adjustableOthers = controls.filter(c => c.drink !== changedDrink && !c.locked);
+  const lockedOthers = controls.filter(c => c.drink !== changedDrink && c.locked);
+
+  const lockedTotal = lockedOthers.reduce(
+    (sum, c) => sum + (parseInt(c.slider.value, 10) || 0),
+    0
+  );
+
+  const targetRemaining = 100 - newValue - lockedTotal;
+
+  if (targetRemaining < 0) {
+    const correctedValue = Math.max(0, 100 - lockedTotal);
+    syncControlValue(changedDrink, correctedValue);
     updateBudgetSplitState();
     return;
   }
 
-  const remaining = 100 - newValue;
-  const currentOthersTotal = others.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
+  if (adjustableOthers.length === 0) {
+    const correctedValue = Math.max(0, 100 - lockedTotal);
+    syncControlValue(changedDrink, correctedValue);
+    updateBudgetSplitState();
+    return;
+  }
 
-  syncControlValue(changedDrink, newValue);
+  const currentAdjustableTotal = adjustableOthers.reduce(
+    (sum, c) => sum + (parseInt(c.slider.value, 10) || 0),
+    0
+  );
 
-  if (currentOthersTotal <= 0) {
-    const base = Math.floor(remaining / others.length);
-    let extra = remaining - base * others.length;
+  if (currentAdjustableTotal <= 0) {
+    const base = Math.floor(targetRemaining / adjustableOthers.length);
+    let extra = targetRemaining - base * adjustableOthers.length;
 
-    others.forEach(c => {
+    adjustableOthers.forEach(c => {
       const value = base + (extra > 0 ? 1 : 0);
       if (extra > 0) extra--;
       syncControlValue(c.drink, value);
     });
 
-    updateBudgetSplitState();
+    normalizeBudgetSplit();
     return;
   }
 
   let assigned = 0;
 
-  others.forEach((c, index) => {
+  adjustableOthers.forEach((c, index) => {
     let value;
 
-    if (index === others.length - 1) {
-      value = remaining - assigned;
+    if (index === adjustableOthers.length - 1) {
+      value = targetRemaining - assigned;
     } else {
-      value = Math.round(((parseInt(c.slider.value, 10) || 0) / currentOthersTotal) * remaining);
+      value = Math.round(
+        ((parseInt(c.slider.value, 10) || 0) / currentAdjustableTotal) * targetRemaining
+      );
       assigned += value;
     }
 
@@ -298,7 +355,6 @@ function rebalanceFromChangedDrink(changedDrink, newValue) {
 
 function normalizeBudgetSplit() {
   const controls = getBudgetControls();
-  let total = controls.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
 
   if (controls.length === 0) return;
 
@@ -308,30 +364,72 @@ function normalizeBudgetSplit() {
     return;
   }
 
-  if (total === 100) {
+  const lockedControls = controls.filter(c => c.locked);
+  const unlockedControls = controls.filter(c => !c.locked);
+
+  if (unlockedControls.length === 0) {
+    if (controls[controls.length - 1].lock) {
+      controls[controls.length - 1].lock.checked = false;
+    }
     updateBudgetSplitState();
     return;
   }
 
-  let diff = 100 - total;
+  const lockedTotal = lockedControls.reduce(
+    (sum, c) => sum + (parseInt(c.slider.value, 10) || 0),
+    0
+  );
 
-  for (let i = controls.length - 1; i >= 0 && diff !== 0; i--) {
-    const current = parseInt(controls[i].slider.value, 10) || 0;
-    let next = current + diff;
+  let available = 100 - lockedTotal;
 
-    if (next < 0) next = 0;
-    if (next > 100) next = 100;
-
-    diff -= (next - current);
-    syncControlValue(controls[i].drink, next);
+  if (available < 0) {
+    const lastLocked = lockedControls[lockedControls.length - 1];
+    const current = parseInt(lastLocked.slider.value, 10) || 0;
+    syncControlValue(lastLocked.drink, Math.max(0, current + available));
+    updateBudgetSplitState();
+    return;
   }
 
-  total = getBudgetSplitTotal();
+  const unlockedTotal = unlockedControls.reduce(
+    (sum, c) => sum + (parseInt(c.slider.value, 10) || 0),
+    0
+  );
 
-  if (total !== 100) {
-    const first = controls[0];
-    syncControlValue(first.drink, (parseInt(first.slider.value, 10) || 0) + (100 - total));
+  if (unlockedTotal === available) {
+    updateBudgetSplitState();
+    return;
   }
+
+  if (unlockedTotal <= 0) {
+    const base = Math.floor(available / unlockedControls.length);
+    let extra = available - base * unlockedControls.length;
+
+    unlockedControls.forEach(c => {
+      const value = base + (extra > 0 ? 1 : 0);
+      if (extra > 0) extra--;
+      syncControlValue(c.drink, value);
+    });
+
+    updateBudgetSplitState();
+    return;
+  }
+
+  let assigned = 0;
+
+  unlockedControls.forEach((c, index) => {
+    let value;
+
+    if (index === unlockedControls.length - 1) {
+      value = available - assigned;
+    } else {
+      value = Math.round(
+        ((parseInt(c.slider.value, 10) || 0) / unlockedTotal) * available
+      );
+      assigned += value;
+    }
+
+    syncControlValue(c.drink, Math.max(0, value));
+  });
 
   updateBudgetSplitState();
 }
@@ -454,18 +552,18 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
       budget: presupuestoDestilados * 0.2
     });
 
-const hieloBolsas = Math.max(
-  1,
-  Math.ceil(people / 3),
-  Math.ceil(totalDestiladoBaseMl / 1500)
-);
+    const hieloBolsas = Math.max(
+      1,
+      Math.ceil(people / 3),
+      Math.ceil(totalDestiladoBaseMl / 1500)
+    );
 
-requirements.push({
-  categoria: "hielo",
-  nombre: "Hielo",
-  requiredMl: hieloBolsas * 2000,
-  budget: presupuestoDestilados * 0.1
-  });
+    requirements.push({
+      categoria: "hielo",
+      nombre: "Hielo",
+      requiredMl: hieloBolsas * 2000,
+      budget: presupuestoDestilados * 0.1
+    });
   }
 
   return requirements;
@@ -848,8 +946,8 @@ form.addEventListener("submit", async function (e) {
   renderWarnings(warnings);
 
   if (multiPlan.ok) {
-    totalMultiEl.textContent = `${formatCLP(multiPlan.total)} + algo mas de tu preciado tiempo ${formatCLP(Math.max(0, multiPlan.stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA)} = ${formatCLP(multiPlan.adjustedTotal)}`;
-    detalleTiendasMulti.textContent = `Tiendas: ${multiPlan.stores.join(", ")}`;
+    totalMultiEl.textContent = `${formatCLP(multiPlan.total)} + penalización heurística ${formatCLP(Math.max(0, multiPlan.stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA)} = ${formatCLP(multiPlan.adjustedTotal)}`;
+    detalleTiendasMulti.textContent = `Tiendas involucradas: ${multiPlan.stores.join(", ")}`;
     saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
   } else {
     totalMultiEl.textContent = "No disponible";
