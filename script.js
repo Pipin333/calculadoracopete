@@ -454,14 +454,18 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
       budget: presupuestoDestilados * 0.2
     });
 
-    const hieloBolsas = Math.max(1, Math.ceil(people * rules.hieloBolsasPorPersona));
+const hieloBolsas = Math.max(
+  1,
+  Math.ceil(people / 3),
+  Math.ceil(totalDestiladoBaseMl / 1500)
+);
 
-    requirements.push({
-      categoria: "hielo",
-      nombre: "Hielo",
-      requiredMl: hieloBolsas * 2000,
-      budget: presupuestoDestilados * 0.1
-    });
+requirements.push({
+  categoria: "hielo",
+  nombre: "Hielo",
+  requiredMl: hieloBolsas * 2000,
+  budget: presupuestoDestilados * 0.1
+  });
   }
 
   return requirements;
