@@ -2,34 +2,35 @@
 // CONFIG / REGLAS DE CONSUMO
 // ===============================
 const CONSUMOS = {
-
   previa: {
-    cervezaMlPorPersona: 500,   // 2 x 330cc
+    cervezaMlPorPersona: 500,
     destiladoMlPorPersona: 100,
     bebidaFactor: 0.75,
-    hieloBolsasPorPersona: 1/16
-    },
+    hieloBolsasPorPersona: 1 / 16
+  },
   trabajo: {
-    cervezaMlPorPersona: 660,   // 2 x 330cc
+    cervezaMlPorPersona: 660,
     destiladoMlPorPersona: 120,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1/12
+    hieloBolsasPorPersona: 1 / 12
   },
   pongamosle: {
-    cervezaMlPorPersona: 990,   // 3 x 330cc
+    cervezaMlPorPersona: 990,
     destiladoMlPorPersona: 200,
     bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1/10
+    hieloBolsasPorPersona: 1 / 10
   },
   modo18: {
-    cervezaMlPorPersona: 1650,  // 5 x 330cc
+    cervezaMlPorPersona: 1650,
     destiladoMlPorPersona: 300,
     bebidaFactor: 1.2,
-    hieloBolsasPorPersona: 1/8
+    hieloBolsasPorPersona: 1 / 8
   }
 };
 
 const PENALIZACION_POR_TIENDA_EXTRA = 2000;
+const EXPONENTE_SLIDER_CONSUMO = 0.6;
+const UMBRAL_ADVERTENCIA_DESTILADO_ML = 300;
 
 // ===============================
 // API MOCK
@@ -70,8 +71,8 @@ const mockProducts = [
   { id: 54, categoria: "bebida", nombre: "Bebida cola 2L", tienda: "Jumbo", precio: 2490, unidades: 1, volumenMlUnidad: 2000 },
   { id: 55, categoria: "bebida", nombre: "Bebida cola 3L", tienda: "Jumbo", precio: 3090, unidades: 1, volumenMlUnidad: 3000 },
 
-  { id: 54, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Unimarc", precio: 2090, unidades: 1, volumenMlUnidad: 1500 },
-  { id: 55, categoria: "bebida", nombre: "Bebida cola 3L", tienda: "Unimarc", precio: 2600, unidades: 1, volumenMlUnidad: 3000 },
+  { id: 56, categoria: "bebida", nombre: "Bebida cola 1.5L", tienda: "Unimarc", precio: 2090, unidades: 1, volumenMlUnidad: 1500 },
+  { id: 57, categoria: "bebida", nombre: "Bebida cola 3L", tienda: "Unimarc", precio: 2600, unidades: 1, volumenMlUnidad: 3000 },
 
   { id: 60, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Lider", precio: 1990, unidades: 1, volumenMlUnidad: 2000 },
   { id: 61, categoria: "hielo", nombre: "Hielo 2kg", tienda: "Jumbo", precio: 1790, unidades: 1, volumenMlUnidad: 2000 },
@@ -150,283 +151,366 @@ function actualizarTextoDropdownBebidas() {
 // SLIDERS DE PRESUPUESTO
 // ===============================
 function renderBudgetSliders() {
-    const selected = getSelectedDrinks();
-    const section = document.getElementById("budgetSplitSection");
-    const container = document.getElementById("budgetSliders");
-  
-    container.innerHTML = "";
-  
-    if (selected.length === 0) {
-      section.classList.add("d-none");
-      return;
-    }
-  
-    section.classList.remove("d-none");
-  
-    const evenValue = Math.floor(100 / selected.length);
-    let remainder = 100 - evenValue * selected.length;
-  
-    selected.forEach((drink) => {
-      const initialValue = evenValue + (remainder > 0 ? 1 : 0);
-      if (remainder > 0) remainder--;
-  
-      const col = document.createElement("div");
-      col.className = "col-md-6";
-  
-      col.innerHTML = `
-        <div class="border rounded p-3 bg-white">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <label for="slider_${drink}" class="form-label mb-0">${getDrinkLabel(drink)}</label>
-            <input
-              type="number"
-              class="form-control form-control-sm text-end budget-input"
-              id="input_${drink}"
-              data-drink="${drink}"
-              min="0"
-              max="100"
-              step="1"
-              value="${initialValue}"
-              style="width: 90px;"
-            />
-          </div>
-  
+  const selected = getSelectedDrinks();
+  const section = document.getElementById("budgetSplitSection");
+  const container = document.getElementById("budgetSliders");
+
+  container.innerHTML = "";
+
+  if (selected.length === 0) {
+    section.classList.add("d-none");
+    return;
+  }
+
+  section.classList.remove("d-none");
+
+  const evenValue = Math.floor(100 / selected.length);
+  let remainder = 100 - evenValue * selected.length;
+
+  selected.forEach((drink) => {
+    const initialValue = evenValue + (remainder > 0 ? 1 : 0);
+    if (remainder > 0) remainder--;
+
+    const col = document.createElement("div");
+    col.className = "col-md-6";
+
+    col.innerHTML = `
+      <div class="border rounded p-3 bg-white">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <label for="slider_${drink}" class="form-label mb-0">${getDrinkLabel(drink)}</label>
           <input
-            type="range"
-            class="form-range budget-slider"
-            id="slider_${drink}"
+            type="number"
+            class="form-control form-control-sm text-end budget-input"
+            id="input_${drink}"
             data-drink="${drink}"
             min="0"
             max="100"
             step="1"
             value="${initialValue}"
+            style="width: 90px;"
           />
         </div>
-      `;
-  
-      container.appendChild(col);
-    });
-  
-    document.querySelectorAll(".budget-slider").forEach(slider => {
-      slider.addEventListener("input", handleSliderChange);
-    });
-  
-    document.querySelectorAll(".budget-input").forEach(input => {
-      input.addEventListener("input", handleInputChange);
-      input.addEventListener("blur", normalizeBudgetSplit);
-    });
-  
+
+        <input
+          type="range"
+          class="form-range budget-slider"
+          id="slider_${drink}"
+          data-drink="${drink}"
+          min="0"
+          max="100"
+          step="1"
+          value="${initialValue}"
+        />
+      </div>
+    `;
+
+    container.appendChild(col);
+  });
+
+  document.querySelectorAll(".budget-slider").forEach(slider => {
+    slider.addEventListener("input", handleSliderChange);
+  });
+
+  document.querySelectorAll(".budget-input").forEach(input => {
+    input.addEventListener("input", handleInputChange);
+    input.addEventListener("blur", normalizeBudgetSplit);
+  });
+
+  updateBudgetSplitState();
+}
+
+function getBudgetControls() {
+  return Array.from(document.querySelectorAll(".budget-slider")).map(slider => {
+    const drink = slider.dataset.drink;
+    const input = document.getElementById(`input_${drink}`);
+    return { drink, slider, input };
+  });
+}
+
+function getBudgetSplit() {
+  const split = {};
+  getBudgetControls().forEach(({ drink, slider }) => {
+    split[drink] = parseInt(slider.value, 10) || 0;
+  });
+  return split;
+}
+
+function getBudgetSplitTotal() {
+  return Object.values(getBudgetSplit()).reduce((acc, val) => acc + val, 0);
+}
+
+function syncControlValue(drink, value) {
+  const slider = document.getElementById(`slider_${drink}`);
+  const input = document.getElementById(`input_${drink}`);
+
+  slider.value = value;
+  input.value = value;
+}
+
+function rebalanceFromChangedDrink(changedDrink, newValue) {
+  const controls = getBudgetControls();
+  const others = controls.filter(c => c.drink !== changedDrink);
+
+  newValue = Math.max(0, Math.min(100, Math.round(newValue)));
+
+  if (others.length === 0) {
+    syncControlValue(changedDrink, 100);
     updateBudgetSplitState();
+    return;
   }
 
-  function getBudgetControls() {
-    return Array.from(document.querySelectorAll(".budget-slider")).map(slider => {
-      const drink = slider.dataset.drink;
-      const input = document.getElementById(`input_${drink}`);
-      return { drink, slider, input };
+  const remaining = 100 - newValue;
+  const currentOthersTotal = others.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
+
+  syncControlValue(changedDrink, newValue);
+
+  if (currentOthersTotal <= 0) {
+    const base = Math.floor(remaining / others.length);
+    let extra = remaining - base * others.length;
+
+    others.forEach(c => {
+      const value = base + (extra > 0 ? 1 : 0);
+      if (extra > 0) extra--;
+      syncControlValue(c.drink, value);
     });
-  }
-  
-  function getBudgetSplit() {
-    const split = {};
-    getBudgetControls().forEach(({ drink, slider }) => {
-      split[drink] = parseInt(slider.value, 10) || 0;
-    });
-    return split;
-  }
-  
-  function getBudgetSplitTotal() {
-    return Object.values(getBudgetSplit()).reduce((acc, val) => acc + val, 0);
-  }
-  
-  function syncControlValue(drink, value) {
-    const slider = document.getElementById(`slider_${drink}`);
-    const input = document.getElementById(`input_${drink}`);
-  
-    slider.value = value;
-    input.value = value;
-  }
-  
-  function rebalanceFromChangedDrink(changedDrink, newValue) {
-    const controls = getBudgetControls();
-    const others = controls.filter(c => c.drink !== changedDrink);
-  
-    newValue = Math.max(0, Math.min(100, Math.round(newValue)));
-  
-    if (others.length === 0) {
-      syncControlValue(changedDrink, 100);
-      updateBudgetSplitState();
-      return;
-    }
-  
-    const remaining = 100 - newValue;
-    const currentOthersTotal = others.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
-  
-    syncControlValue(changedDrink, newValue);
-  
-    if (currentOthersTotal <= 0) {
-      const base = Math.floor(remaining / others.length);
-      let extra = remaining - base * others.length;
-  
-      others.forEach(c => {
-        const value = base + (extra > 0 ? 1 : 0);
-        if (extra > 0) extra--;
-        syncControlValue(c.drink, value);
-      });
-  
-      updateBudgetSplitState();
-      return;
-    }
-  
-    let assigned = 0;
-  
-    others.forEach((c, index) => {
-      let value;
-  
-      if (index === others.length - 1) {
-        value = remaining - assigned;
-      } else {
-        value = Math.round(((parseInt(c.slider.value, 10) || 0) / currentOthersTotal) * remaining);
-        assigned += value;
-      }
-  
-      syncControlValue(c.drink, Math.max(0, value));
-    });
-  
-    normalizeBudgetSplit();
-  }
-  
-  function normalizeBudgetSplit() {
-    const controls = getBudgetControls();
-    let total = controls.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
-  
-    if (controls.length === 0) return;
-  
-    if (controls.length === 1) {
-      syncControlValue(controls[0].drink, 100);
-      updateBudgetSplitState();
-      return;
-    }
-  
-    if (total === 100) {
-      updateBudgetSplitState();
-      return;
-    }
-  
-    let diff = 100 - total;
-  
-    for (let i = controls.length - 1; i >= 0 && diff !== 0; i--) {
-      const current = parseInt(controls[i].slider.value, 10) || 0;
-      let next = current + diff;
-  
-      if (next < 0) next = 0;
-      if (next > 100) next = 100;
-  
-      diff -= (next - current);
-      syncControlValue(controls[i].drink, next);
-    }
-  
-    total = getBudgetSplitTotal();
-  
-    if (total !== 100) {
-      const first = controls[0];
-      syncControlValue(first.drink, (parseInt(first.slider.value, 10) || 0) + (100 - total));
-    }
-  
+
     updateBudgetSplitState();
+    return;
   }
-  
-  function handleSliderChange(e) {
-    const drink = e.target.dataset.drink;
-    const value = parseInt(e.target.value, 10) || 0;
-    rebalanceFromChangedDrink(drink, value);
-  }
-  
-  function handleInputChange(e) {
-    const drink = e.target.dataset.drink;
-    let value = parseInt(e.target.value, 10);
-  
-    if (Number.isNaN(value)) value = 0;
-    value = Math.max(0, Math.min(100, value));
-  
-    rebalanceFromChangedDrink(drink, value);
-  }
-  
-  function updateBudgetSplitState() {
-    const hint = document.getElementById("budgetSplitHint");
-    const total = getBudgetSplitTotal();
-  
-    if (total === 100) {
-      hint.textContent = "Reparto válido. El presupuesto está distribuido al 100%.";
-      hint.className = "form-text mt-2 text-success";
+
+  let assigned = 0;
+
+  others.forEach((c, index) => {
+    let value;
+
+    if (index === others.length - 1) {
+      value = remaining - assigned;
     } else {
-      hint.textContent = `El reparto actual suma ${total}%. Debe sumar 100%.`;
-      hint.className = "form-text mt-2 text-danger";
+      value = Math.round(((parseInt(c.slider.value, 10) || 0) / currentOthersTotal) * remaining);
+      assigned += value;
     }
+
+    syncControlValue(c.drink, Math.max(0, value));
+  });
+
+  normalizeBudgetSplit();
+}
+
+function normalizeBudgetSplit() {
+  const controls = getBudgetControls();
+  let total = controls.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
+
+  if (controls.length === 0) return;
+
+  if (controls.length === 1) {
+    syncControlValue(controls[0].drink, 100);
+    updateBudgetSplitState();
+    return;
   }
+
+  if (total === 100) {
+    updateBudgetSplitState();
+    return;
+  }
+
+  let diff = 100 - total;
+
+  for (let i = controls.length - 1; i >= 0 && diff !== 0; i--) {
+    const current = parseInt(controls[i].slider.value, 10) || 0;
+    let next = current + diff;
+
+    if (next < 0) next = 0;
+    if (next > 100) next = 100;
+
+    diff -= (next - current);
+    syncControlValue(controls[i].drink, next);
+  }
+
+  total = getBudgetSplitTotal();
+
+  if (total !== 100) {
+    const first = controls[0];
+    syncControlValue(first.drink, (parseInt(first.slider.value, 10) || 0) + (100 - total));
+  }
+
+  updateBudgetSplitState();
+}
+
+function handleSliderChange(e) {
+  const drink = e.target.dataset.drink;
+  const value = parseInt(e.target.value, 10) || 0;
+  rebalanceFromChangedDrink(drink, value);
+}
+
+function handleInputChange(e) {
+  const drink = e.target.dataset.drink;
+  let value = parseInt(e.target.value, 10);
+
+  if (Number.isNaN(value)) value = 0;
+  value = Math.max(0, Math.min(100, value));
+
+  rebalanceFromChangedDrink(drink, value);
+}
+
+function updateBudgetSplitState() {
+  const hint = document.getElementById("budgetSplitHint");
+  const total = getBudgetSplitTotal();
+
+  if (total === 100) {
+    hint.textContent = "Reparto válido. El presupuesto está distribuido al 100%.";
+    hint.className = "form-text mt-2 text-success";
+  } else {
+    hint.textContent = `El reparto actual suma ${total}%. Debe sumar 100%.`;
+    hint.className = "form-text mt-2 text-danger";
+  }
+}
 
 // ===============================
 // REQUERIMIENTOS
 // ===============================
 function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
   const rules = CONSUMOS[mode];
+
+  if (!rules) {
+    throw new Error(`Modo inválido recibido en buildRequirements: ${mode}`);
+  }
+
   const requirements = [];
 
-  for (const drink of selectedDrinks) {
-    const porcentaje = budgetSplit[drink] || 0;
-    const subBudget = budget * (porcentaje / 100);
+  const selectedBeer = selectedDrinks.includes("cerveza");
+  const selectedDestilados = selectedDrinks.filter(drink =>
+    ["piscola", "vodka", "ron"].includes(drink)
+  );
 
-    if (drink === "cerveza") {
-      requirements.push({
-        categoria: "cerveza",
-        nombre: "Cerveza",
-        requiredMl: Math.ceil(people * rules.cervezaMlPorPersona),
-        budget: subBudget
-      });
-    } else {
-      const destiladoMl = Math.ceil(people * rules.destiladoMlPorPersona);
-      const bebidaMl = Math.ceil(destiladoMl * 2 * rules.bebidaFactor);
-      const hieloBolsas = Math.max(1, Math.ceil(people * rules.hieloBolsasPorPersona));
+  if (selectedBeer) {
+    const beerBudget = budget * ((budgetSplit["cerveza"] || 0) / 100);
+
+    requirements.push({
+      categoria: "cerveza",
+      nombre: "Cerveza",
+      requiredMl: Math.ceil(people * rules.cervezaMlPorPersona),
+      budget: beerBudget,
+      porcentaje: budgetSplit["cerveza"] || 0
+    });
+  }
+
+  if (selectedDestilados.length > 0) {
+    const factorCantidadDestilados = 0.7 + 0.3 * selectedDestilados.length;
+
+    const totalDestiladoBaseMl = Math.ceil(
+      people * rules.destiladoMlPorPersona * factorCantidadDestilados
+    );
+
+    const presupuestoDestilados = selectedDestilados.reduce(
+      (sum, drink) => sum + budget * ((budgetSplit[drink] || 0) / 100),
+      0
+    );
+
+    const pesos = {};
+    let sumaPesos = 0;
+
+    selectedDestilados.forEach(drink => {
+      const porcentaje = (budgetSplit[drink] || 0) / 100;
+      const peso = Math.pow(Math.max(porcentaje, 0.01), EXPONENTE_SLIDER_CONSUMO);
+      pesos[drink] = peso;
+      sumaPesos += peso;
+    });
+
+    let totalAsignado = 0;
+
+    selectedDestilados.forEach((drink, index) => {
+      const proporcion = pesos[drink] / sumaPesos;
+
+      let requiredMl;
+      if (index === selectedDestilados.length - 1) {
+        requiredMl = totalDestiladoBaseMl - totalAsignado;
+      } else {
+        requiredMl = Math.round(totalDestiladoBaseMl * proporcion);
+        totalAsignado += requiredMl;
+      }
+
+      const subBudget = budget * ((budgetSplit[drink] || 0) / 100);
 
       requirements.push({
         categoria: drink,
-        nombre: drink === "piscola" ? "Pisco" : drink === "vodka" ? "Vodka" : "Ron",
-        requiredMl: destiladoMl,
-        budget: subBudget * 0.7
+        nombre:
+          drink === "piscola"
+            ? "Pisco"
+            : drink === "vodka"
+            ? "Vodka"
+            : "Ron",
+        requiredMl,
+        budget: subBudget,
+        porcentaje: budgetSplit[drink] || 0
       });
+    });
 
-      requirements.push({
-        categoria: "bebida",
-        nombre: "Bebida",
-        requiredMl: bebidaMl,
-        budget: subBudget * 0.2
-      });
+    const bebidaMl = Math.ceil(totalDestiladoBaseMl * 2 * rules.bebidaFactor);
 
-      requirements.push({
-        categoria: "hielo",
-        nombre: "Hielo",
-        requiredMl: hieloBolsas * 2000,
-        budget: subBudget * 0.1
-      });
-    }
+    requirements.push({
+      categoria: "bebida",
+      nombre: "Bebida",
+      requiredMl: bebidaMl,
+      budget: presupuestoDestilados * 0.2
+    });
+
+    const hieloBolsas = Math.max(1, Math.ceil(people * rules.hieloBolsasPorPersona));
+
+    requirements.push({
+      categoria: "hielo",
+      nombre: "Hielo",
+      requiredMl: hieloBolsas * 2000,
+      budget: presupuestoDestilados * 0.1
+    });
   }
 
-  return mergeRequirementsByCategory(requirements);
+  return requirements;
 }
 
-function mergeRequirementsByCategory(requirements) {
-  const map = new Map();
+function getConsumptionWarnings(requirements) {
+  const warnings = [];
 
-  for (const item of requirements) {
-    if (!map.has(item.categoria)) {
-      map.set(item.categoria, { ...item });
-    } else {
-      const current = map.get(item.categoria);
-      current.requiredMl += item.requiredMl;
-      current.budget = (current.budget || 0) + (item.budget || 0);
+  requirements.forEach(req => {
+    if (["piscola", "vodka", "ron"].includes(req.categoria)) {
+      if (req.requiredMl < UMBRAL_ADVERTENCIA_DESTILADO_ML) {
+        warnings.push(
+          `${req.nombre}: el reparto actual lo deja con muy poco protagonismo (${req.requiredMl} ml aprox.). Puede que no valga la pena incluirlo.`
+        );
+      }
+    }
+  });
+
+  return warnings;
+}
+
+function getBudgetWarnings(plan) {
+  const warnings = [];
+
+  if (!plan || !plan.ok) return warnings;
+
+  for (const detail of plan.details) {
+    const req = detail.requirement;
+    const realCost = detail.result.totalCost;
+    const expectedBudget = req.budget ?? 0;
+
+    if (expectedBudget <= 0) continue;
+
+    if (realCost > expectedBudget) {
+      const porcentajeSobre = (realCost / expectedBudget) - 1;
+
+      if (porcentajeSobre > 0.25) {
+        warnings.push(
+          `${req.nombre}: esta recomendación se pasa bastante del presupuesto sugerido para esa categoría (${formatCLP(realCost)} vs ${formatCLP(expectedBudget)}).`
+        );
+      } else {
+        warnings.push(
+          `${req.nombre}: se pasa un poco del presupuesto sugerido (${formatCLP(realCost)} vs ${formatCLP(expectedBudget)}).`
+        );
+      }
     }
   }
 
-  return Array.from(map.values());
+  return warnings;
 }
 
 // ===============================
@@ -642,6 +726,37 @@ function renderBudgetState(budget, multiPlan, singlePlan) {
   estadoEl.innerHTML = `<span class="badge text-bg-success">Dentro de presupuesto</span>`;
 }
 
+function ensureWarningsBox() {
+  let box = document.getElementById("advertenciasConsumo");
+
+  if (!box) {
+    box = document.createElement("div");
+    box.id = "advertenciasConsumo";
+    box.className = "alert alert-secondary mt-3 d-none";
+    resultado.appendChild(box);
+  }
+
+  return box;
+}
+
+function renderWarnings(warnings) {
+  const box = ensureWarningsBox();
+
+  if (!warnings || warnings.length === 0) {
+    box.classList.add("d-none");
+    box.innerHTML = "";
+    return;
+  }
+
+  box.classList.remove("d-none");
+  box.innerHTML = `
+    <strong>Ojo:</strong>
+    <ul class="mb-0 mt-2">
+      ${warnings.map(w => `<li>${w}</li>`).join("")}
+    </ul>
+  `;
+}
+
 // ===============================
 // MAIN
 // ===============================
@@ -700,8 +815,33 @@ form.addEventListener("submit", async function (e) {
   const multiPlan = await buildMultiStorePlan(requirements);
   const singlePlan = await buildSingleStorePlan(requirements);
 
+  const consumoWarnings = getConsumptionWarnings(requirements);
+  const budgetWarningsMulti = getBudgetWarnings(multiPlan);
+
+  const globalWarnings = [];
+  const validPlans = [multiPlan, singlePlan].filter(p => p.ok);
+
+  if (validPlans.length > 0) {
+    const cheapestPlan = validPlans.reduce((best, current) =>
+      current.total < best.total ? current : best
+    );
+
+    if (cheapestPlan.total > budget) {
+      globalWarnings.push(
+        "No te alcanza cómodo con esta combinación. Considera poner más plata por persona o bajarle un poco al consumo."
+      );
+    }
+  }
+
+  const warnings = [
+    ...globalWarnings,
+    ...consumoWarnings,
+    ...budgetWarningsMulti
+  ];
+
   renderPlan(listaMultiTienda, multiPlan);
   renderPlan(listaTiendaUnica, singlePlan);
+  renderWarnings(warnings);
 
   if (multiPlan.ok) {
     totalMultiEl.textContent = `${formatCLP(multiPlan.total)} + penalización heurística ${formatCLP(Math.max(0, multiPlan.stores.length - 1) * PENALIZACION_POR_TIENDA_EXTRA)} = ${formatCLP(multiPlan.adjustedTotal)}`;
