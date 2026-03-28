@@ -119,7 +119,7 @@ const OPCIONES_CONSUMO = {
     categoriaBase: "gin",
     llevaMixer: true,
     mixerCategoria: "redbull",
-    mixerFactor: 2.5,
+    mixerFactor: 2.75,
     llevaHielo: true
   },
   jaeger_redbull: {
@@ -128,7 +128,7 @@ const OPCIONES_CONSUMO = {
     categoriaBase: "jaeger",
     llevaMixer: true,
     mixerCategoria: "redbull",
-    mixerFactor: 2.5,
+    mixerFactor: 2.75,
     llevaHielo: true
   }
 };
