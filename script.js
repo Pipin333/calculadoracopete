@@ -198,30 +198,37 @@ const mockProducts = [
 ];
 
 const productApi = {
-  async getProductsByCategory(category) {
+  _data: null,
+  
+  async _loadData() {
+    if (this._data) return this._data;
+    
     try {
-      // Intenta cargar desde archivo JSON local (para producción/GitHub Pages)
       const response = await fetch('./productos.json');
-      
-      if (!response.ok) {
-        console.warn(`No se pudo cargar productos.json, usando mock products`);
-        return this._getMockProducts(category);
-      }
-      
-      const data = await response.json();
-      
-      return data.productos
-        .filter(p => p.categoria === category)
-        .map(p => ({
-          ...p,
-          volumenTotalMl: p.unidades * p.volumenMlUnidad,
-          precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
-        }));
-        
+      if (!response.ok) throw new Error('No se pudo cargar productos.json');
+      this._data = await response.json();
+      return this._data;
     } catch (error) {
-      console.warn(`Error cargando productos.json: ${error.message}, usando mock products`);
-      return this._getMockProducts(category);
+      console.warn(`Error cargando productos.json: ${error.message}`);
+      return { timestamp: new Date().toISOString(), total: mockProducts.length, productos: mockProducts };
     }
+  },
+  
+  async getProductsByCategory(category) {
+    const data = await this._loadData();
+    
+    return data.productos
+      .filter(p => p.categoria === category)
+      .map(p => ({
+        ...p,
+        volumenTotalMl: p.unidades * p.volumenMlUnidad,
+        precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
+      }));
+  },
+  
+  async getTimestamp() {
+    const data = await this._loadData();
+    return data.timestamp;
   },
   
   _getMockProducts(category) {
@@ -1246,4 +1253,18 @@ form.addEventListener("submit", async function (e) {
   resumen.textContent = `${people} persona(s) · ${selectedDrinks.map(getDrinkLabel).join(", ")} · ${getModeLabel(mode)}`;
 
   resultado.classList.remove("d-none");
+  
+  // Muestra el timestamp de actualización de datos
+  const timestamp = await productApi.getTimestamp();
+  if (timestamp) {
+    const date = new Date(timestamp);
+    const fechaFormato = date.toLocaleDateString('es-CL', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    document.getElementById('timestamp').textContent = fechaFormato;
+  }
 });
