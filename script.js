@@ -1258,12 +1258,13 @@ form.addEventListener("submit", async function (e) {
   const timestamp = await productApi.getTimestamp();
   if (timestamp) {
     const date = new Date(timestamp);
-    const fechaFormato = date.toLocaleDateString('es-CL', { 
+    const fechaFormato = date.toLocaleString('es-CL', { 
       year: 'numeric', 
       month: 'long', 
       day: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
+      second: '2-digit'
     });
     document.getElementById('timestamp').textContent = fechaFormato;
   }
