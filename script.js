@@ -1220,7 +1220,7 @@ form.addEventListener("submit", async function (e) {
     totalMultiEl.textContent = formatCLP(multiPlan.total);
     detalleTiendasMulti.textContent = `Tiendas involucradas: ${multiPlan.stores.join(", ")}`;
     saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
-    costoPracticoMultiEl.textContent = `${multiPlan.practicalLabel} (${multiPlan.practicalScore.toFixed(1)} pts) + tu preciado tiempo`;
+    costoPracticoMultiEl.textContent = `${multiPlan.practicalLabel} + tu preciado tiempo`;
   } else {
     totalMultiEl.textContent = "No disponible";
     detalleTiendasMulti.textContent = multiPlan.reason;
@@ -1232,7 +1232,7 @@ form.addEventListener("submit", async function (e) {
     totalUnicaEl.textContent = formatCLP(singlePlan.total);
     detalleTiendaUnica.textContent = `Tienda sugerida: ${singlePlan.store}`;
     saldoUnicaEl.textContent = formatCLP(budget - singlePlan.total);
-    costoPracticoUnicaEl.textContent = `${singlePlan.practicalLabel} (${singlePlan.practicalScore.toFixed(1)} pts) + tu preciado tiempo`;
+    costoPracticoUnicaEl.textContent = `${singlePlan.practicalLabel}`;
   } else {
     totalUnicaEl.textContent = "No disponible";
     detalleTiendaUnica.textContent = singlePlan.reason;
