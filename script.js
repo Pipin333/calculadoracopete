@@ -133,6 +133,7 @@ const OPCIONES_CONSUMO = {
   }
 };
 
+const mockProducts = []; // Remove or leave empty as we are now relying on productos.json
 // ===============================
 // API MOCK
 // ===============================
@@ -171,15 +172,6 @@ const productApi = {
     return data.timestamp;
   },
   
-  _getMockProducts(category) {
-    return mockProducts
-      .filter(p => p.categoria === category)
-      .map(p => ({
-        ...p,
-        volumenTotalMl: p.unidades * p.volumenMlUnidad,
-        precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
-      }));
-  }
 };
 
 // ===============================
