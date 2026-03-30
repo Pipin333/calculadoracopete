@@ -1098,7 +1098,11 @@ function ensureWarningsBox() {
     box = document.createElement("div");
     box.id = "advertenciasConsumo";
     box.className = "alert alert-secondary mt-3 d-none";
-    resultado.appendChild(box);
+    // Append to modal body
+    const modalBody = document.querySelector("#resultadoModal .modal-body");
+    if (modalBody) {
+      modalBody.appendChild(box);
+    }
   }
 
   return box;
