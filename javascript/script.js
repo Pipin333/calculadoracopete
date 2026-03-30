@@ -121,6 +121,7 @@ function onModoChange(e) {
 }
 
 function onBebidasChange(e) {
+  console.log('🍻 onBebidasChange triggered');
   actualizarTextoDropdownBebidas(OPCIONES_CONSUMO);
   renderBudgetSliders(
     OPCIONES_CONSUMO,
@@ -134,11 +135,15 @@ function onBebidasChange(e) {
 // ===== CALCULATION FLOW =====
 async function calcularPresupuesto() {
   try {
+    console.log('🔄 Iniciando calcularPresupuesto...');
+    
     // 1. Validar inputs
     const personasInput = parseInt(document.getElementById('personas').value, 10);
     const aporteInput = parseInt(document.getElementById('aporte').value, 10);
     const bebidas = getSelectedDrinks();
     const modo = getSelectedMode();
+    
+    console.log('📊 Inputs:', { personasInput, aporteInput, bebidas, modo });
 
     const validation = validateInputs(
       { personas: personasInput, aporte: aporteInput },
@@ -146,12 +151,17 @@ async function calcularPresupuesto() {
     );
 
     if (!validation.valid) {
+      console.warn('❌ Validación fallida:', validation.error);
       showErrorMessage(validation.error);
       return;
     }
+    
+    console.log('✅ Validación exitosa');
 
     // 2. Calcular requerimientos
     const budgetSplit = getBudgetSplit();
+    console.log('💰 Budget split:', budgetSplit);
+    
     const requirements = await calcularRequirements(
       personasInput,
       aporteInput,
@@ -162,13 +172,17 @@ async function calcularPresupuesto() {
       FACTOR_ESTACIONAL_POR_MES,
       OPCIONES_CONSUMO
     );
+    
+    console.log('📋 Requirements:', requirements);
 
     // 3. Mostrar warnings
     const warnings = getConsumptionWarnings(requirements, PENALIZACION_CONFIG);
     if (warnings.length > 0) {
-      console.warn('Warnings:', warnings);
+      console.warn('⚠️ Warnings:', warnings);
     }
 
+    console.log('🔄 Calculando presupuesto completo...');
+    
     // 4. Calcular presupuesto con ambas estrategias
     const presupuestoData = await calcularPresupuestoCompleto(
       {
@@ -182,11 +196,16 @@ async function calcularPresupuesto() {
       PENALIZACION_CONFIG
     );
 
+    console.log('📊 Presupuesto data:', presupuestoData);
+    
     if (presupuestoData.error) {
+      console.error('❌ Error en cálculo:', presupuestoData.error);
       showErrorMessage(presupuestoData.error);
       return;
     }
 
+    console.log('✅ Presupuesto calculado exitosamente');
+    
     // 5. Crear objeto presupuesto completo
     const presupuesto = crearPresupuesto(
       {
@@ -199,14 +218,20 @@ async function calcularPresupuesto() {
       presupuestoData.singlePlan
     );
 
+    console.log('📦 Presupuesto object:', presupuesto);
+
     // 6. Guardar en memoria para compartir
     window.presupuestoActual = presupuesto;
+    console.log('💾 Presupuesto guardado en window.presupuestoActual');
 
     // 7. Renderizar resultados
+    console.log('🎨 Renderizando modal de resultados...');
     renderResultsModal(presupuesto, OPCIONES_CONSUMO);
+    console.log('✅ Modal renderizado exitosamente');
 
   } catch (error) {
-    console.error('Error calculando presupuesto:', error);
+    console.error('❌ CATCH ERROR - Error calculando presupuesto:', error);
+    console.error('Stack:', error.stack);
     showErrorMessage('Error en el cálculo. Por favor intenta de nuevo.');
   }
 }
