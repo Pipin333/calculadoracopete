@@ -68,6 +68,32 @@ const PENALIZACION_ITEM_PLAN = 1;
 const PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO = 1.5;
 
 // ===============================
+// FACTOR ESTACIONAL (ajuste automático por mes)
+// ===============================
+// Calibración: Septiembre (primavera) = 1.0 (baseline)
+// Invierno (junio-julio) = 0.8 (menos hielo, menos cerveza fría)
+// Verano (enero-febrero) = 1.1 (más hielo, más cerveza fría)
+const FACTOR_ESTACIONAL_POR_MES = [
+  1.10,  // Enero (verano pico)
+  1.10,  // Febrero (verano pico)
+  1.05,  // Marzo (otoño inicial, aún calor)
+  0.95,  // Abril (otoño, enfría)
+  0.85,  // Mayo (invierno inicial)
+  0.80,  // Junio (invierno pico) ⚠️
+  0.80,  // Julio (invierno pico) ⚠️
+  0.85,  // Agosto (invierno final, empieza mejorar)
+  1.00,  // Septiembre (primavera, BASELINE)
+  1.05,  // Octubre (primavera, calentando)
+  1.10,  // Noviembre (pre-verano)
+  1.10   // Diciembre (verano)
+];
+
+function getFactorEstacional() {
+  const mes = new Date().getMonth(); // 0-11
+  return FACTOR_ESTACIONAL_POR_MES[mes];
+}
+
+// ===============================
 // OPCIONES DE CONSUMO
 // ===============================
 const OPCIONES_CONSUMO = {
@@ -226,7 +252,7 @@ function getModeLabel(mode) {
   if (mode === "trabajo") return "Trabajo mañana";
   if (mode === "pongamosle") return "Pongámosle";
   if (mode === "modo18") return "Modo 18";
-  if (mode === "modo18plus") return "Modo 18++ (Multi-día)";
+  if (mode === "proyectox") return "Proyecto X";
   return "Modo desconocido";
 }
 
@@ -593,11 +619,12 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
 
   if (cervezas.length > 0) {
     const beerBudget = budget * ((budgetSplit["cerveza"] || 0) / 100);
+    const factorEstacional = getFactorEstacional();
 
     requirements.push({
       categoria: "cerveza",
       nombre: "Cerveza",
-      requiredMl: Math.ceil(people * rules.cervezaMlPorPersona),
+      requiredMl: Math.ceil(people * rules.cervezaMlPorPersona * factorEstacional),
       budget: beerBudget,
       porcentaje: budgetSplit["cerveza"] || 0
     });
@@ -687,9 +714,10 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
       });
     });
 
+    const factorEstacional = getFactorEstacional();
     const hieloBolsas = Math.max(
       1,
-      Math.ceil(people / 3),
+      Math.ceil((people / 3) * factorEstacional),
       Math.ceil(totalDestiladoBaseMl / 1500)
     );
 

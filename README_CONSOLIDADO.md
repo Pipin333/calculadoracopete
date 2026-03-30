@@ -87,7 +87,7 @@ TIENDA ÚNICA (Jumbo):
 | **📊 Trabajo** | 1200ml | 180ml | 2.0× | 1/8 | 2-3h | Viernes post-oficina |
 | **🎊 Pongámosle** | 1700ml | 250ml | 2.0× | 1/4 | 4-6h | Sábado sin compromisos |
 | **🔥 Modo 18** | 3000ml | 400ml | 2.5× | 1/3 | 8-12h | Feriado largo/Jornada épica |
-| **🌪️ Modo 18++** | **4500ml** | **600ml** | **3.0×** | **1/2** | **12h+/2-3d** | **Multi-día extremo ⭐** |
+| **🌪️ Proyecto X** | **3750ml** | **500ml** | **2.8×** | **1/3** | **20h+/multi-día** | **Parcela sostenida ⭐** |
 
 ---
 
@@ -197,30 +197,30 @@ Concho: PRODUCTIVO (para mañana o próximo evento)
 Perfil: Anfitrión Pro, parcela/quinta propia
 ```
 
-#### 5️⃣ MODO 18++ (Multi-día EXTREMO) ⭐ NUEVO
+#### 5️⃣ PROYECTO X (Multi-día Sostenido) ⭐ NUEVO
 ```
 ¿Cuándo elegir?
-✅ Feriado de 3+ días (Fondos, Nochevieja, Carnaval)
-✅ Parcela en Septiembre con 50+ personas
-✅ No hay límite de presupuesto, es "legendario"
-✅ Infraestructura profesional disponible (visicooler comercial)
-✅ Mentalizados de pasar 2-3 días bebiendo sin parar
+✅ Feriado largo (3+ días moderado, no extremo)
+✅ Parcela en Septiembre 25-50 personas
+✅ Infraestructura normal-buena (visicooler + refri secundaria)
+✅ Ritmo sostenido, no "sin parar"
+✅ Presupuesto disponible ($10-15k/persona)
 
 Consumo:
-- Cerveza: 4500ml/persona (+50% vs Modo 18)
-- Destilado: 600ml/persona (+50% vs Modo 18)
-- Bebida Factor: 3.0× (+20% vs Modo 18)
-- Hielo: 1 bolsa cada 2 personas (AGRESIVO)
+- Cerveza: 3750ml/persona (+25% vs Modo 18, NO +50%)
+- Destilado: 500ml/persona (+25% vs Modo 18, NO +50%)
+- Bebida Factor: 2.8× (+12% vs Modo 18)
+- Hielo: 1 bolsa cada 3 personas (similar a Modo 18)
 
-Infraestructura OBLIGATORIA:
-✅ Visicooler COMERCIAL (300+ litros)
-✅ 2+ refris secundarias llenas de backup
-✅ MÍNIMO 25-30 bolsas de hielo
-✅ Generador de energía (si es en parcela)
+Infraestructura RECOMENDADA:
+✅ Visicooler mediano-grande (200+ litros)
+✅ 1-2 refris secundarias de apoyo
+✅ 15-20 bolsas de hielo (suficiente)
+✅ Opcional: generador si es en parcela remota
 
-Presupuesto: $12-18k CLP/persona
-Concho: LEGENDARIO (muchas botellas para después/próximo evento)
-Perfil: Anfitrión Pro Leyenda, eventos corporativos grandes
+Presupuesto: $10-15k CLP/persona
+Concho: BUENO (útil para día siguiente o próximo evento)
+Perfil: Anfitrión Pro, eventos 20-50 personas, multi-día balanceado
 ```
 
 ---
@@ -251,29 +251,29 @@ RECOMENDACIÓN DE COMPRA (Tienda Única):
   🧊 Concho: Útil para la noche siguiente
 ```
 
-### Caso 2: Fondos de 4 Días (Modo 18++)
+### Caso 2: Feriado 3 Días (Proyecto X)
 ```
-📍 Parcela grande con generador
-👥 50 personas
-⏰ Viernes mediodía → Lunes mediodía (3+ días)
-🌞 Clima: Perfecto
-🚫 Cero responsabilidades
+📍 Parcela mediana
+👥 30 personas
+⏰ Viernes tarde → Domingo noche (48-60 horas)
+🌞 Clima: Calor
+✅ Sin compromisos lunes
 
 CONSUMO REQUERIDO:
-  Cerveza: 50 × 4500ml = 225L ⚠️
-  Destilado: 50 × 600ml = 30L ⚠️
-  Bebida: 50 × 1500ml (3.0×) = 75L ⚠️
-  Hielo: ⌈50/2⌉ = 25 bolsas ⚠️
+  Cerveza: 30 × 3750ml = 112.5L ✅
+  Destilado: 30 × 500ml = 15L ✅
+  Bebida: 30 × 1250ml (2.8×) = 37.5L ✅
+  Hielo: ⌈30/3⌉ = 10 bolsas ✅
 
-RECOMENDACIÓN DE COMPRA (Tienda Única - Liquidadores):
-  ✅ 19 packs cerveza 12×330ml = 228L (~$152,000)
-  ✅ 20 botellas Pisco 1.5L = 30L (~$106,800)
-  ✅ 25 botellas Coca-Cola 3L = 75L (~$65,000)
-  ✅ 25 bolsas Hielo 2kg = 50kg (~$49,750)
+RECOMENDACIÓN DE COMPRA (Tienda Única - Jumbo):
+  ✅ 9-10 packs cerveza 12×330ml = 120L (~$80,000)
+  ✅ 10 botellas Pisco 1.5L = 15L (~$84,500)
+  ✅ 12-13 botellas Coca-Cola 3L = 38L (~$40,000)
+  ✅ 10 bolsas Hielo 2kg = 20kg (~$19,900)
   ────────────────────────────
-  💰 TOTAL: ~$373,550 CLP
-  📦 CONCHO: ✨ LEGENDARIO (20-30% extra)
-  🏪 TIENDA: 1 sola (máxima eficiencia)
+  💰 TOTAL: ~$224,400 CLP (~$7.5k/persona)
+  📦 CONCHO: BUENO (5-10L cerveza + hielo para después)
+  🏪 TIENDA: 1 sola (máxima practicidad)
 ```
 
 ---
@@ -418,25 +418,35 @@ CONSUMOS = {
 
 ## 📜 Changelog - Historial de Versiones
 
-### v2.1 (29-Mar-2026) ✅ ACTUAL
-**Cambio Mayor:** Modo 18++ Multi-día
+### v2.2 (29-Mar-2026) ✅ ACTUAL
+**Cambio Mayor:** Proyecto X Calibración Final
 
-- ✅ Agregado `modo18plus` en CONSUMOS (4500ml cerveza, 600ml destilado)
-- ✅ Actualizado `getModeLabel()` para incluir "Modo 18++ (Multi-día)"
-- ✅ Agregada opción en selector HTML `<select>`
-- ✅ Documentación específica completada
-- ✅ Sintaxis JavaScript validada (sin errores)
-- ✅ 100% backward compatible con v2.0
+- ✅ Rebajados parámetros: 3750ml cerveza (no 4500ml), 500ml destilado (no 600ml)
+- ✅ Reducido bebida factor a 2.8× (no 3.0×) - más realista
+- ✅ Hielo normalizado a 1/3 bolsas (igual a Modo 18)
+- ✅ Actualizado toda documentación y ejemplos prácticos
+- ✅ Presupuesto reajustado: $10-15k/persona (no $12-18k)
+- ✅ Mejor balance: +25% sobre Modo 18 (no +50%)
+- ✅ 100% backward compatible con v2.1
+
+**Justificación:** Proyecto X para ritmo sostenido (48-60h), no extremo. Salto de +50% era matemáticamente incorrecto para la duración propuesta.
 
 **Matriz de Cambios:**
-| Parámetro | Modo 18 | Modo 18++ | Cambio |
+| Parámetro | Modo 18 | Proyecto X | Cambio |
 |-----------|---------|-----------|--------|
-| Cerveza | 3000ml | 4500ml | +50% |
-| Destilado | 400ml | 600ml | +50% |
-| Bebida Factor | 2.5× | 3.0× | +20% |
-| Hielo/Persona | 1/3 | 1/2 | +67% |
+| Cerveza | 3000ml | 3750ml | +25% |
+| Destilado | 400ml | 500ml | +25% |
+| Bebida Factor | 2.5× | 2.8× | +12% |
+| Hielo/Persona | 1/3 | 1/3 | 0% |
 
-### v2.0 (Antes) ✅ ARCHIVADO
+### v2.1 (29-Mar-2026) ✅ ARCHIVADO
+**Cambios:** Proyecto X Inicial (valores muy altos)
+
+- Agregado `proyectox` en CONSUMOS (4500ml, 600ml - demasiado)
+- Sintaxis validada pero parámetros reajustados en v2.2
+- Conceptualmente correcto, pero numéricamente incorrecto
+
+### v2.0 ✅ ARCHIVADO
 **Cambios:** Pro Anfitrión Base
 
 - Consumos optimizados para clima cálido
@@ -461,7 +471,7 @@ R: Depende del modo:
 - **Trabajo:** $5-8k/persona
 - **Pongámosle:** $10-15k/persona
 - **Modo 18:** $8-12k/persona
-- **Modo 18++:** $12-18k/persona
+- **Proyecto X:** $10-15k/persona (multi-día sostenido)
 
 ### P: ¿El hielo es realmente tan crítico?
 R: **SÍ**. En clima cálido (Septiembre) es lo más importante. Mejor tener de más que de menos. Se derrite constantemente.
@@ -475,16 +485,16 @@ R: Se recomienda multi-tienda, pero con penalización (menos óptimo).
 ### P: ¿El concho es malo?
 R: **No**. Para el "Anfitrión Pro" es **BUENO**: guardalo para el día siguiente o próximo carrete.
 
-### P: ¿Modo 18++ rompe mis datos v2.0?
+### P: ¿Proyecto X rompe mis datos v2.0?
 R: **No**. Es completamente backward compatible.
 
-### P: ¿Cómo sé si debo usar Modo 18 o Modo 18++?
+### P: ¿Cómo sé si debo usar Modo 18 o Proyecto X?
 R: 
-- **Modo 18:** 1 día (8-12 horas) o feriado largo
-- **Modo 18++:** Multi-día (12h+ o 2-3 días seguidos)
+- **Modo 18:** 1 día largo (8-12 horas) o feriado con ritmo alto
+- **Proyecto X:** Multi-día (24-60 horas) con ritmo sostenido, no extremo
 
-### P: ¿Qué pasa si uso Modo 18++ pero es solo 1 día?
-R: No hay problema. Vas a tener más concho, eso es todo.
+### P: ¿Qué pasa si uso Proyecto X pero es solo 1 día?
+R: No hay problema. Vas a tener concho, pero será menos que con Modo 18 (más relajado). Recomendamos Modo 18 si es solo 12 horas.
 
 ---
 
