@@ -10,179 +10,6 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
-  
-  <style>
-    .boleta-container {
-      background: white;
-      border: 2px dashed #dee2e6;
-      border-radius: 1rem;
-      padding: 2rem;
-      margin: 2rem 0;
-      font-family: 'Courier New', monospace;
-    }
-
-    .boleta-header {
-      text-align: center;
-      border-bottom: 2px solid #dee2e6;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .boleta-titulo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .boleta-fecha {
-      font-size: 0.85rem;
-      color: #6c757d;
-      margin-top: 0.5rem;
-    }
-
-    .boleta-section {
-      margin: 1.5rem 0;
-      padding: 1rem 0;
-      border-bottom: 1px solid #e9ecef;
-    }
-
-    .boleta-section:last-child {
-      border-bottom: none;
-    }
-
-    .boleta-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.5rem 0;
-      font-size: 0.95rem;
-    }
-
-    .boleta-item.total {
-      font-weight: bold;
-      font-size: 1.1rem;
-      padding-top: 1rem;
-      border-top: 2px solid #dee2e6;
-    }
-
-    .boleta-label {
-      color: #495057;
-    }
-
-    .boleta-value {
-      color: #212529;
-      font-weight: 500;
-    }
-
-    .opcion-compra {
-      background: #f8f9fa;
-      border: 1px solid #dee2e6;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-
-    .opcion-compra h4 {
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-      color: #212529;
-    }
-
-    .ahorro-badge {
-      display: inline-block;
-      background: #d4edda;
-      color: #155724;
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-left: 0.5rem;
-    }
-
-    .botones-accion {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .botones-accion .btn {
-      flex: 1;
-      min-width: 150px;
-    }
-
-    @media (max-width: 576px) {
-      .boleta-container {
-        padding: 1rem;
-        margin: 1rem 0;
-      }
-
-      .botones-accion {
-        flex-direction: column;
-      }
-
-      .botones-accion .btn {
-        width: 100%;
-      }
-    }
-
-    .error-message {
-      background: #f8d7da;
-      border: 1px solid #f5c6cb;
-      color: #721c24;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      margin: 2rem 0;
-      text-align: center;
-    }
-
-    .success-message {
-      background: #d4edda;
-      border: 1px solid #c3e6cb;
-      color: #155724;
-      padding: 0.75rem 1rem;
-      border-radius: 0.75rem;
-      margin: 1rem 0;
-      text-align: center;
-      display: none;
-    }
-
-    .cargando {
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 2rem;
-      height: 2rem;
-      border: 3px solid #f3f3f3;
-      border-top: 3px solid #0d6efd;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .bebidas-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .bebida-badge {
-      background: #e7f3ff;
-      color: #0d6efd;
-      padding: 0.25rem 0.75rem;
-      border-radius: 1rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-  </style>
 </head>
 <body>
   <div class="container py-4">
@@ -196,14 +23,14 @@
         </div>
 
         <!-- Mensaje de error -->
-        <div id="error" class="error-message" style="display: none;">
+        <div id="error" class="error-message hidden">
           <h5>❌ No se pudo cargar el presupuesto</h5>
           <p id="errorMsg"></p>
           <small>Es posible que el enlace sea inválido o haya expirado.</small>
         </div>
 
         <!-- Contenido de boleta -->
-        <div id="contenido" style="display: none;">
+        <div id="contenido" class="hidden">
           
           <div class="text-center mb-4">
             <h1 class="h3">Cuánto Rinde</h1>
@@ -263,7 +90,7 @@
                   <span class="boleta-label">Total:</span>
                   <span class="boleta-value" id="totalMulti"></span>
                 </div>
-                <div id="itemsMulti" style="margin-top: 0.75rem; font-size: 0.9rem;"></div>
+                <div id="itemsMulti" class="items-container"></div>
               </div>
 
               <!-- Tienda Única -->
@@ -280,7 +107,7 @@
                   <span class="boleta-label">Total:</span>
                   <span class="boleta-value" id="totalUnica"></span>
                 </div>
-                <div id="itemsUnica" style="margin-top: 0.75rem; font-size: 0.9rem;"></div>
+                <div id="itemsUnica" class="items-container"></div>
               </div>
             </div>
 
@@ -389,9 +216,17 @@
         document.getElementById('presupuestoTotal').textContent = formatCLP(boleta.presupuestoTotal);
         document.getElementById('modo').textContent = boleta.modo;
 
-        // Bebidas
-        const bebidasHTML = boleta.bebidas
-          .map(b => `<span class="bebida-badge">${b}</span>`)
+        // Bebidas - Agrupar repetidas (3x Cerveza en lugar de listar 3 veces)
+        const bebidaCounts = {};
+        for (const bebida of boleta.bebidas) {
+          bebidaCounts[bebida] = (bebidaCounts[bebida] || 0) + 1;
+        }
+        
+        const bebidasHTML = Object.entries(bebidaCounts)
+          .map(([nombre, cantidad]) => {
+            const etiqueta = cantidad > 1 ? `${cantidad}x ${nombre}` : nombre;
+            return `<span class="bebida-badge">${etiqueta}</span>`;
+          })
           .join('');
         document.getElementById('bebidasList').innerHTML = bebidasHTML;
 
@@ -416,11 +251,11 @@
           
           // Renderizar por tienda
           for (const tienda in itemsPorTienda) {
-            itemsMultiHTML += `<div style="margin: 0.75rem 0; padding: 0.5rem 0; border-left: 2px solid #28a745; padding-left: 0.75rem;">
-              <strong style="color: #28a745;">${tienda}</strong>`;
+            itemsMultiHTML += `<div class="tienda-section">
+              <strong>${tienda}</strong>`;
             
             for (const item of itemsPorTienda[tienda]) {
-              itemsMultiHTML += `<div style="margin: 0.3rem 0; font-size: 0.9rem; color: #495057;">
+              itemsMultiHTML += `<div class="item-detalle">
                 • ${item.nombre} (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(item.precio)}
               </div>`;
             }
@@ -429,10 +264,10 @@
         } else if (boleta.multiTienda.items && boleta.multiTienda.items.length > 0) {
           // Fallback si está en otra estructura
           itemsMultiHTML = boleta.multiTienda.items
-            .map(item => `<div style="margin: 0.35rem 0; color: #495057;">• ${item.product || item.nombre} (${item.cantidad || item.unidades})</div>`)
+            .map(item => `<div class="item-detalle">• ${item.product || item.nombre} (${item.cantidad || item.unidades})</div>`)
             .join('');
         } else {
-          itemsMultiHTML = '<div style="color: #999;">Sin detalles de artículos</div>';
+          itemsMultiHTML = '<div class="sin-detalles">Sin detalles de artículos</div>';
         }
         document.getElementById('itemsMulti').innerHTML = itemsMultiHTML;
 
@@ -447,23 +282,23 @@
         let itemsUnicaHTML = '';
         if (boleta.tiendaUnica.allItems && boleta.tiendaUnica.allItems.length > 0) {
           itemsUnicaHTML = boleta.tiendaUnica.allItems
-            .map(item => `<div style="margin: 0.35rem 0; color: #495057;">
+            .map(item => `<div class="item-detalle">
               • ${item.nombre} (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(item.precio)}
             </div>`)
             .join('');
         } else if (boleta.tiendaUnica.items && boleta.tiendaUnica.items.length > 0) {
           // Fallback
           itemsUnicaHTML = boleta.tiendaUnica.items
-            .map(item => `<div style="margin: 0.35rem 0; color: #495057;">• ${item.product || item.nombre} (${item.cantidad || item.unidades})</div>`)
+            .map(item => `<div class="item-detalle">• ${item.product || item.nombre} (${item.cantidad || item.unidades})</div>`)
             .join('');
         } else {
-          itemsUnicaHTML = '<div style="color: #999;">Sin detalles de artículos</div>';
+          itemsUnicaHTML = '<div class="sin-detalles">Sin detalles de artículos</div>';
         }
         document.getElementById('itemsUnica').innerHTML = itemsUnicaHTML;
 
         // Mostrar contenido, ocultar carga
-        document.getElementById('cargando').style.display = 'none';
-        document.getElementById('contenido').style.display = 'block';
+        document.getElementById('cargando').classList.add('hidden');
+        document.getElementById('contenido').classList.remove('hidden');
 
       } catch (error) {
         console.error('Error cargando presupuesto:', error);
@@ -472,8 +307,8 @@
     }
 
     function mostrarError(mensaje) {
-      document.getElementById('cargando').style.display = 'none';
-      document.getElementById('error').style.display = 'block';
+      document.getElementById('cargando').classList.add('hidden');
+      document.getElementById('error').classList.remove('hidden');
       document.getElementById('errorMsg').textContent = mensaje;
     }
 
@@ -484,9 +319,9 @@
 
         if (exito) {
           const successMsg = document.getElementById('successMsg');
-          successMsg.style.display = 'block';
+          successMsg.classList.remove('hidden');
           setTimeout(() => {
-            successMsg.style.display = 'none';
+            successMsg.classList.add('hidden');
           }, 3000);
         } else {
           alert('No se pudo copiar el enlace. Intenta manualmente.');

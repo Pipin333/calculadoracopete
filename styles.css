@@ -304,3 +304,213 @@ body {
       color: #212529;
     }
 
+    /* ===== PRESUPUESTO PAGE STYLES (v3.0) ===== */
+
+    .boleta-container {
+      background: white;
+      border: 2px dashed #dee2e6;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    .boleta-header {
+      text-align: center;
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .boleta-titulo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .boleta-fecha {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-top: 0.5rem;
+    }
+
+    .boleta-section {
+      margin: 1.5rem 0;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .boleta-section:last-child {
+      border-bottom: none;
+    }
+
+    .boleta-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .boleta-item.total {
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding-top: 1rem;
+      border-top: 2px solid #dee2e6;
+    }
+
+    .boleta-label {
+      color: #495057;
+    }
+
+    .boleta-value {
+      color: #212529;
+      font-weight: 500;
+    }
+
+    .opcion-compra {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .opcion-compra h4 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #212529;
+    }
+
+    .ahorro-badge {
+      display: inline-block;
+      background: #d4edda;
+      color: #155724;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    .botones-accion {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .botones-accion .btn {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .error-message {
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .success-message {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+      text-align: center;
+      display: none;
+    }
+
+    .cargando {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #0d6efd;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .bebidas-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .bebida-badge {
+      background: #e7f3ff;
+      color: #0d6efd;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .tienda-section {
+      margin: 0.75rem 0;
+      padding: 0.5rem 0;
+      border-left: 2px solid #28a745;
+      padding-left: 0.75rem;
+    }
+
+    .tienda-section strong {
+      color: #28a745;
+    }
+
+    .item-detalle {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      color: #495057;
+    }
+
+    .items-container {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .sin-detalles {
+      color: #999;
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+
+    /* Hidden state for dynamic content */
+    .hidden {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    @media (max-width: 576px) {
+      .boleta-container {
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .botones-accion {
+        flex-direction: column;
+      }
+
+      .botones-accion .btn {
+        width: 100%;
+      }
+    }
+
