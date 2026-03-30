@@ -36,6 +36,9 @@ export const productApi = {
     console.log(`🔎 getProductsByCategory("${category}") - total productos disponibles:`, data.productos.length);
     console.log(`   Categorías únicas en JSON:`, [...new Set(data.productos.map(p => p.categoria))]);
     
+    // Debug: mostrar todos los productos
+    console.log(`   📋 TODOS LOS PRODUCTOS en JSON:`, data.productos);
+    
     // Debug: mostrar productos que tienen categoría similar
     if (category === 'piscola') {
       console.log(`   🔍 Buscando productos con categoría que contenga "piscola":`);
