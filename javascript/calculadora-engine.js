@@ -168,7 +168,13 @@ export function findCheapestCombination(products, requiredMl, categoria) {
 
   const upperBound = Math.ceil(requiredMl * 1.3); // Permitir 30% de sobrecompra
   console.log(`🔄 findCheapestCombination - ${categoria}: requiredMl=${requiredMl}, upperBound=${upperBound}`);
-  console.log(`📦 Productos disponibles:`, products.map(p => ({ nombre: p.nombre, volumen: p.volumenTotalMl, precio: p.precio })));
+  console.log(`📦 Productos disponibles (${products.length}):`, products.map(p => ({ 
+    nombre: p.nombre, 
+    unidades: p.unidades,
+    volumenMlUnidad: p.volumenMlUnidad,
+    volumenTotalMl: p.volumenTotalMl,
+    precio: p.precio 
+  })));
   
   const dp = {};
 
@@ -179,6 +185,8 @@ export function findCheapestCombination(products, requiredMl, categoria) {
   };
 
   for (const product of products) {
+    console.log(`🔄 Procesando producto: ${product.nombre}, volumen=${product.volumenTotalMl}`);
+    
     // Iterar de atrás para adelante para evitar usar el mismo producto múltiples veces
     for (let volume = upperBound; volume >= product.volumenTotalMl; volume--) {
       if (!dp[volume - product.volumenTotalMl]) continue;
@@ -202,7 +210,7 @@ export function findCheapestCombination(products, requiredMl, categoria) {
     }
   }
 
-  console.log(`💾 DP table keys:`, Object.keys(dp).map(k => parseInt(k)).sort((a, b) => a - b));
+  console.log(`💾 DP table keys después de procesar:`, Object.keys(dp).map(k => parseInt(k)).sort((a, b) => a - b));
   
   let best = null;
   for (let volume = requiredMl; volume <= upperBound; volume++) {
