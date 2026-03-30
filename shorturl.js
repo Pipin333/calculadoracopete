@@ -338,7 +338,7 @@ function obtenerPresupuestoDeURLCorta() {
 }
 
 /**
- * Copia URL corta al portapapeles
+ * Copia URL corta al portapapeles - ROBUSTO
  * @param {string} id - ID corto del presupuesto
  * @returns {Promise<boolean>}
  */
@@ -346,21 +346,48 @@ async function copiarURLCortaAlPortapapeles(id) {
   try {
     const url = generarURLCorta(id);
     
-    if (navigator.clipboard) {
-      await navigator.clipboard.writeText(url);
+    // Método 1: Clipboard API (Chrome, Edge, Firefox, Opera)
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(url);
+        console.log('✅ URL copiada con Clipboard API');
+        return true;
+      } catch (clipError) {
+        console.warn('⚠️ Clipboard API falló:', clipError.message);
+        // Continuar con fallback
+      }
+    }
+    
+    // Método 2: document.execCommand (fallback para navegadores antiguos)
+    const textarea = document.createElement('textarea');
+    textarea.value = url;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    textarea.style.top = '-9999px';
+    textarea.style.opacity = '0';
+    textarea.setAttribute('readonly', '');
+    
+    document.body.appendChild(textarea);
+    
+    // En iOS, necesitamos hacer focus
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+      textarea.setSelectionRange(0, url.length);
+    } else {
+      textarea.select();
+    }
+    
+    const success = document.execCommand('copy');
+    document.body.removeChild(textarea);
+    
+    if (success) {
+      console.log('✅ URL copiada con execCommand');
       return true;
     } else {
-      // Fallback
-      const textarea = document.createElement('textarea');
-      textarea.value = url;
-      document.body.appendChild(textarea);
-      textarea.select();
-      const success = document.execCommand('copy');
-      document.body.removeChild(textarea);
-      return success;
+      console.warn('⚠️ execCommand retornó false');
+      return false;
     }
   } catch (error) {
-    console.error('Error copiando URL corta:', error);
+    console.error('❌ Error copiando URL corta:', error);
     return false;
   }
 }
@@ -368,7 +395,7 @@ async function copiarURLCortaAlPortapapeles(id) {
 /**
  * Crea todo el flow completo: guardar presupuesto + copiar URL
  * @param {Object} presupuestoData - Datos del presupuesto
- * @returns {Promise<string|null>} - ID corto generado o null
+ * @returns {Promise<{id: string, url: string, success: boolean, error: string|null}>}
  */
 async function crearYCompartirPresupuestoCorto(presupuestoData) {
   try {
@@ -376,17 +403,44 @@ async function crearYCompartirPresupuestoCorto(presupuestoData) {
     const id = await guardarPresupuestoCorto(presupuestoData);
     
     if (!id) {
-      console.error('No se pudo generar ID');
-      return null;
+      console.error('❌ No se pudo generar ID');
+      return {
+        id: null,
+        url: null,
+        success: false,
+        error: 'No se pudo generar el ID del presupuesto'
+      };
     }
     
     // Copiar URL al portapapeles
-    await copiarURLCortaAlPortapapeles(id);
+    const copiado = await copiarURLCortaAlPortapapeles(id);
+    const url = generarURLCorta(id);
     
-    return id;
+    if (!copiado) {
+      console.warn('⚠️ ID generado pero fallo al copiar al portapapeles');
+      return {
+        id: id,
+        url: url,
+        success: false,
+        error: 'Presupuesto guardado pero no se pudo copiar al portapapeles. Aquí está: ' + url
+      };
+    }
+    
+    console.log(`✅ Workflow completo exitoso: ${id}`);
+    return {
+      id: id,
+      url: url,
+      success: true,
+      error: null
+    };
   } catch (error) {
-    console.error('Error en workflow de compartir:', error);
-    return null;
+    console.error('❌ Error en workflow de compartir:', error);
+    return {
+      id: null,
+      url: null,
+      success: false,
+      error: error.message || 'Error desconocido al compartir'
+    };
   }
 }
 

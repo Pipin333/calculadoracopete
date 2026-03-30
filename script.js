@@ -1333,79 +1333,143 @@ form.addEventListener("submit", async function (e) {
 async function compartirPresupuestoActual() {
   try {
     if (!window.currentPresupuesto) {
-      alert('No hay presupuesto para compartir');
+      alert('❌ No hay presupuesto para compartir');
       return;
     }
 
     const btnCompartir = document.getElementById('btnCompartirPresupuesto');
     const msgDiv = document.getElementById('msgCompartir');
     
+    if (!btnCompartir) {
+      console.warn('⚠️ Botón compartir no encontrado');
+      return;
+    }
+
     // Animación: cambiar botón a "cargando"
     const textOriginal = btnCompartir.innerHTML;
     btnCompartir.disabled = true;
     btnCompartir.innerHTML = '⏳ Compartiendo...';
     btnCompartir.style.opacity = '0.7';
 
-    // Usar sistema de URL corta
-    const id = await crearYCompartirPresupuestoCorto(window.currentPresupuesto);
+    // Usar sistema de URL corta mejorado
+    const resultado = await crearYCompartirPresupuestoCorto(window.currentPresupuesto);
 
-    if (id) {
-      // Construir URL directamente
-      const baseURL = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-      const urlCompleta = `${baseURL}presupuesto.html?id=${id}`;
-      const urlCorta = `...presupuesto.html?id=${id}`;
-      
-      // Copiar a portapapeles automáticamente
-      try {
-        await navigator.clipboard.writeText(urlCompleta);
-        console.log(`✅ URL copiada al portapapeles: ${urlCompleta}`);
-      } catch (clipError) {
-        console.warn("⚠️ No se pudo copiar al portapapeles:", clipError);
-      }
+    if (resultado.success) {
+      // ✅ TODO BIEN - Copiar exitosa
+      console.log(`✅ Compartir exitoso: ${resultado.id}`);
       
       // Mostrar mensaje elegante
-      msgDiv.innerHTML = `✅ ¡Copiado! ${urlCorta}`;
-      msgDiv.style.display = 'block';
-      msgDiv.style.opacity = '0';
-      msgDiv.style.transition = 'opacity 0.3s ease-in';
-      
-      // Trigger animación fade-in
-      setTimeout(() => {
-        msgDiv.style.opacity = '1';
-      }, 10);
+      if (msgDiv) {
+        msgDiv.innerHTML = `✅ ¡Compartido! Enlace copiado`;
+        msgDiv.style.display = 'block';
+        msgDiv.style.opacity = '0';
+        msgDiv.style.transition = 'opacity 0.3s ease-in';
+        msgDiv.classList.remove('error-msg');
+        msgDiv.classList.add('success-msg');
+        
+        // Trigger animación fade-in
+        setTimeout(() => {
+          msgDiv.style.opacity = '1';
+        }, 10);
+      }
       
       // Cambiar botón a estado exitoso
       btnCompartir.innerHTML = '✅ ¡Compartido!';
-      btnCompartir.classList.remove('btn-success');
       btnCompartir.classList.add('btn-success');
       
       // Auto-reset del botón después de 3 segundos
       setTimeout(() => {
-        msgDiv.style.opacity = '0';
+        if (msgDiv) msgDiv.style.opacity = '0';
         btnCompartir.disabled = false;
         btnCompartir.innerHTML = textOriginal;
         btnCompartir.style.opacity = '1';
+        btnCompartir.classList.remove('btn-success');
         
         setTimeout(() => {
-          msgDiv.style.display = 'none';
+          if (msgDiv) msgDiv.style.display = 'none';
         }, 300);
       }, 3000);
+    } else if (resultado.id && !resultado.success) {
+      // ⚠️ PARCIAL - Se guardó pero no se copió
+      console.warn(`⚠️ Presupuesto guardado (${resultado.id}) pero copy falló`);
+      
+      // Mostrar URL manualmente
+      if (msgDiv) {
+        msgDiv.innerHTML = `
+          <div style="text-align: left; line-height: 1.5;">
+            ✅ Presupuesto guardado (pero copy falló)<br/>
+            <small>Copia manualmente:</small><br/>
+            <code style="background: #f0f0f0; padding: 0.25rem 0.5rem; border-radius: 3px; display: inline-block; margin-top: 0.5rem;">
+              ${resultado.url}
+            </code>
+          </div>
+        `;
+        msgDiv.style.display = 'block';
+        msgDiv.style.opacity = '0';
+        msgDiv.style.transition = 'opacity 0.3s ease-in';
+        msgDiv.classList.add('error-msg');
+        msgDiv.classList.remove('success-msg');
+        
+        setTimeout(() => {
+          msgDiv.style.opacity = '1';
+        }, 10);
+      }
+      
+      btnCompartir.innerHTML = '⚠️ Copiar manualmente';
+      btnCompartir.classList.add('btn-warning');
+      
+      setTimeout(() => {
+        if (msgDiv) msgDiv.style.opacity = '0';
+        btnCompartir.disabled = false;
+        btnCompartir.innerHTML = textOriginal;
+        btnCompartir.style.opacity = '1';
+        btnCompartir.classList.remove('btn-warning');
+        
+        setTimeout(() => {
+          if (msgDiv) msgDiv.style.display = 'none';
+        }, 300);
+      }, 5000);
     } else {
-      // Reset botón si falla
-      btnCompartir.disabled = false;
-      btnCompartir.innerHTML = textOriginal;
-      btnCompartir.style.opacity = '1';
-      alert('No se pudo generar el enlace. Intenta nuevamente.');
+      // ❌ ERROR TOTAL
+      console.error(`❌ Error compartiendo: ${resultado.error}`);
+      
+      if (msgDiv) {
+        msgDiv.innerHTML = `❌ Error: ${resultado.error}`;
+        msgDiv.style.display = 'block';
+        msgDiv.style.opacity = '0';
+        msgDiv.style.transition = 'opacity 0.3s ease-in';
+        msgDiv.classList.add('error-msg');
+        msgDiv.classList.remove('success-msg');
+        
+        setTimeout(() => {
+          msgDiv.style.opacity = '1';
+        }, 10);
+      }
+      
+      btnCompartir.innerHTML = '❌ Error - Intenta de nuevo';
+      btnCompartir.classList.add('btn-danger');
+      
+      setTimeout(() => {
+        if (msgDiv) msgDiv.style.opacity = '0';
+        btnCompartir.disabled = false;
+        btnCompartir.innerHTML = textOriginal;
+        btnCompartir.style.opacity = '1';
+        btnCompartir.classList.remove('btn-danger');
+        
+        setTimeout(() => {
+          if (msgDiv) msgDiv.style.display = 'none';
+        }, 300);
+      }, 5000);
     }
   } catch (error) {
-    // Reset botón en caso de error
+    // Error no manejado
     const btnCompartir = document.getElementById('btnCompartirPresupuesto');
     const textOriginal = btnCompartir.getAttribute('data-original-text') || '📋 Compartir';
     btnCompartir.disabled = false;
     btnCompartir.innerHTML = textOriginal;
     btnCompartir.style.opacity = '1';
     
-    // Solo loguear error, no mostrar al usuario
-    console.error('⚠️ Error durante compartir (pero funciona):', error);
+    console.error('❌ Error durante compartir:', error);
+    alert('❌ Error al compartir: ' + error.message);
   }
 }
