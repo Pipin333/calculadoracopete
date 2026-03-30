@@ -42,10 +42,10 @@ const CONSUMOS = {
     hieloBolsasPorPersona: 1 / 3   // 1 bolsa de 2kg cada 3 personas (crítico en jornada larga)
   },
   proyectox: {
-    cervezaMlPorPersona: 4500,     // EXTREMO: parcela de 3+ días sin freno
-    destiladoMlPorPersona: 600,     // +50% vs modo18 (todo el tiempo destilado disponible)
-    bebidaFactor: 3.0,             // MÁXIMO: energética + bebida + vino
-    hieloBolsasPorPersona: 1 / 2   // 1 bolsa cada 2 personas (CRÍTICO: se derrite constantemente)
+    cervezaMlPorPersona: 3750,     // +25% vs Modo 18 (multi-día relajado, no extremo)
+    destiladoMlPorPersona: 500,    // +25% vs Modo 18 (misma proporción que cerveza)
+    bebidaFactor: 2.8,             // +12% vs Modo 18 (moderado para multi-día)
+    hieloBolsasPorPersona: 1 / 3   // Similar a Modo 18 (suficiente para multi-día)
   }
 };
 
