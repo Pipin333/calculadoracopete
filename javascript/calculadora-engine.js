@@ -279,8 +279,11 @@ export async function buildMultiStorePlan(requirements, config) {
   return {
     ok: true,
     total,
-    allItems,
-    details
+    items: allItems,
+    stores: getUniqueStores(allItems),
+    details,
+    practicalScore: 0,
+    practicalLabel: ""
   };
 }
 
@@ -332,8 +335,11 @@ export async function buildSingleStorePlan(requirements, config) {
       ok: true,
       tienda,
       total,
-      allItems,
-      details
+      items: allItems,
+      stores: getUniqueStores(allItems),
+      details,
+      practicalScore: 0,
+      practicalLabel: ""
     };
 
     const score = getPlanPracticalScore(plan, config);
@@ -364,11 +370,51 @@ export async function buildSingleStorePlan(requirements, config) {
  * @param {Object} config - Config con constantes y penalizaciones
  * @returns {Object} { multiPlan, singlePlan, recomendacion }
  */
+// ===============================
+// UTILIDAD: MERGE REQUIREMENTS
+// ===============================
+
+/**
+ * Agrupa requirements por categoría (combina destilados con sus mixers)
+ * Por ejemplo: ["vodka", "bebida"] -> ["vodka + bebida"]
+ * @param {Array} requirements - Requirements originales
+ * @returns {Array} Requirements mergeados por categoría
+ */
+function mergeRequirementsByCategoria(requirements) {
+  const merged = new Map();
+
+  for (const req of requirements) {
+    const key = req.categoria;
+
+    if (!merged.has(key)) {
+      merged.set(key, {
+        ...req,
+        nombresOriginales: [req.nombre]
+      });
+    } else {
+      const current = merged.get(key);
+      current.requiredMl += req.requiredMl;
+      current.budget = (current.budget || 0) + (req.budget || 0);
+
+      if (!current.nombresOriginales.includes(req.nombre)) {
+        current.nombresOriginales.push(req.nombre);
+      }
+
+      current.nombre = current.nombresOriginales.join(" + ");
+    }
+  }
+
+  return Array.from(merged.values());
+}
+
 export async function calcularPresupuestoCompleto(datos, requirements, config) {
+  // Merge requirements por categoría (agrupa bebida + mixer si es necesario)
+  const mergedRequirements = mergeRequirementsByCategoria(requirements);
+  
   // Calcular ambos planes en paralelo
   const [multiPlan, singlePlan] = await Promise.all([
-    buildMultiStorePlan(requirements, config),
-    buildSingleStorePlan(requirements, config)
+    buildMultiStorePlan(mergedRequirements, config),
+    buildSingleStorePlan(mergedRequirements, config)
   ]);
 
   // Determinar recomendación

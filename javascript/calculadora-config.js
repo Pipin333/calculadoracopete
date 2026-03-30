@@ -245,11 +245,11 @@ export async function calcularRequirements(
   // Destilados y mixers
   const mixes = Object.entries(OPCIONES_CONFIG)
     .filter(([key, op]) => bebidas.includes(key) && op.grupo !== "cerveza")
-    .map(([key, op]) => ({...op, drinkKey: key}));  // Preservar la key como drinkKey
+    .map(([key, op]) => ({...op, drinkKey: key}));
 
   let totalAsignado = 0;
   mixes.forEach(op => {
-    const split = (budgetSplit[op.drinkKey] || 0) / 100;  // Usar drinkKey en lugar de categoriaBase
+    const split = (budgetSplit[op.drinkKey] || 0) / 100;
     let requiredMl;
 
     if (mixes.length === 1) {
@@ -267,9 +267,46 @@ export async function calcularRequirements(
       nombre: op.nombre,
       requiredMl,
       budget: subBudget,
-      porcentaje: budgetSplit[op.drinkKey] || 0,  // Usar drinkKey en lugar de categoriaBase
-      opcionKey: op.drinkKey,  // Usar drinkKey en lugar de categoriaBase
+      porcentaje: budgetSplit[op.drinkKey] || 0,
+      opcionKey: op.drinkKey,
       grupo: op.grupo
+    });
+  });
+
+  // Generar requirements para MIXERS (como en v3.0)
+  const mixerMap = new Map();
+  mixes.forEach(op => {
+    if (!op.llevaMixer) return;  // Skip si no lleva mixer
+
+    const current = mixerMap.get(op.mixerCategoria) || {
+      categoria: op.mixerCategoria,
+      nombre:
+        op.mixerCategoria === "tonica"
+          ? "Tónica"
+          : op.mixerCategoria === "redbull"
+          ? "Energética"
+          : "Bebida",
+      requiredMl: 0,
+      budget: 0
+    };
+
+    // Buscar el requirement de la bebida seleccionada
+    const bebidaReq = requirements.find(r => r.opcionKey === op.drinkKey);
+    if (bebidaReq) {
+      current.requiredMl += Math.ceil(bebidaReq.requiredMl * op.mixerFactor);
+      current.budget += presupuestoDestilados * 0.2 / mixes.length;
+    }
+
+    mixerMap.set(op.mixerCategoria, current);
+  });
+
+  // Agregar los mixers como requirements separados
+  mixerMap.forEach(mixerReq => {
+    requirements.push({
+      categoria: mixerReq.categoria,
+      nombre: mixerReq.nombre,
+      requiredMl: mixerReq.requiredMl,
+      budget: mixerReq.budget
     });
   });
 
