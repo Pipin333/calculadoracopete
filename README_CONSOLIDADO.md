@@ -296,7 +296,7 @@ Se han optimizado los valores para reflejar hábitos de consumo **reales del chi
 |-----------|----------|-------|--------|
 | PENALIZACION_ITEM_COMBINACION | 250 | **400** | Penaliza fuertemente comprar sueltas |
 | PENALIZACION_SKU_COMBINACION | 100 | **80** | Favorece packs grandes aunque sobre |
-| PENALIZACION_TIENDA_EXTRA | 6 | **50** | FUERZA tienda única (logística chilena) |
+| PENALIZACION_TIENDA_EXTRA | 6 | **25** | Permite elegir: single vs multi-tienda |
 | PENALIZACION_SOBRECOMPRA_POR_LITRO | 120 | **100** | Permite excedentes marginales |
 
 **Impacto:** Compra inteligente = packs grandes + tienda única + botellas 3L favorecidas
