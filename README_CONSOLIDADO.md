@@ -345,9 +345,10 @@ El usuario "Anfitrión Pro" está optimizado para:
 - 3L recibe +20 puntos bonus, 1.5L recibe +5 puntos
 - Latas individuales penalizadas fuertemente
 
-**Regla 3: Tienda Única**
-- Cada tienda extra = 50 puntos de castigo
-- Plan multi-tienda viable solo si es 15-20% más barato
+**Regla 3: Tienda Única (Flexible)**
+- Cada tienda extra = 25 puntos de castigo (penalización moderada)
+- Plan multi-tienda es viable si es ~10-15% más barato
+- **Permite elegir:** El usuario verá ambas opciones y decide según preferencia (precio vs. practicidad)
 
 **Regla 4: Sobrecompra en Bebidas**
 - Bebidas pueden sobrecomprar 20% sin castigo

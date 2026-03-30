@@ -62,7 +62,7 @@ const PENALIZACION_SKU_COMBINACION = 80;   // Bajo: priorizar botellas grandes (
 const PENALIZACION_SOBRECOMPRA_POR_LITRO = 100; // Permite excedentes marginales en bebidas
 
 // A nivel de plan total
-const PENALIZACION_TIENDA_EXTRA = 25;     // FUERTE: fuerza tienda única (logística chilena)
+const PENALIZACION_TIENDA_EXTRA = 25;     // Moderada: permite que usuario elija (single vs multi-tienda)
 const PENALIZACION_SKU_PLAN = 2;
 const PENALIZACION_ITEM_PLAN = 1;
 const PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO = 1.5;
