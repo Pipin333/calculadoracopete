@@ -33,14 +33,19 @@ export const productApi = {
   
   async getProductsByCategory(category) {
     const data = await this._loadData();
+    console.log(`🔎 getProductsByCategory("${category}") - total productos disponibles:`, data.productos.length);
+    console.log(`   Categorías únicas en JSON:`, [...new Set(data.productos.map(p => p.categoria))]);
     
-    return data.productos
+    const filtered = data.productos
       .filter(p => p.categoria === category)
       .map(p => ({
         ...p,
         volumenTotalMl: p.unidades * p.volumenMlUnidad,
         precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
       }));
+    
+    console.log(`   Productos encontrados para "${category}":`, filtered.length, filtered);
+    return filtered;
   },
   
   async getTimestamp() {
