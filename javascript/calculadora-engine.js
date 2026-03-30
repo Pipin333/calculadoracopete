@@ -294,21 +294,26 @@ export async function buildMultiStorePlan(requirements, config) {
  * @returns {Object} Plan con mejor tienda única
  */
 export async function buildSingleStorePlan(requirements, config) {
-  const tiendas = ['jumbo', 'lider', 'unimarc'];
+  console.log('🏬 buildSingleStorePlan - requirements:', requirements);
+  const tiendas = ['Jumbo', 'Lider', 'Unimarc', 'Liquidos'];  // Incluir todas las tiendas del JSON
   let bestPlan = null;
   let bestScore = Infinity;
 
   for (const tienda of tiendas) {
+    console.log(`   🔍 Probando tienda: ${tienda}`);
     const details = [];
     let total = 0;
     const allItems = [];
     let possible = true;
 
     for (const req of requirements) {
+      console.log(`      📦 Buscando ${req.categoria} en ${tienda}...`);
       const products = await productApi.getProductsByCategory(req.categoria);
-      const productsEnTienda = products.filter(p => p.tienda === tienda);
+      const productsEnTienda = products.filter(p => p.tienda.toLowerCase() === tienda.toLowerCase());
+      console.log(`      ✓ Encontrados en ${tienda}: ${productsEnTienda.length}`);
 
       if (productsEnTienda.length === 0) {
+        console.log(`      ✗ Sin productos en ${tienda}, saltando...`);
         possible = false;
         break;
       }
@@ -316,10 +321,12 @@ export async function buildSingleStorePlan(requirements, config) {
       const best = findCheapestCombination(productsEnTienda, req.requiredMl, req.categoria);
 
       if (!best) {
+        console.log(`      ✗ No hay combinación válida en ${tienda}`);
         possible = false;
         break;
       }
 
+      console.log(`      ✓ Combinación encontrada: $${best.totalCost}`);
       details.push({
         requirement: req,
         result: best
@@ -329,7 +336,10 @@ export async function buildSingleStorePlan(requirements, config) {
       allItems.push(...best.items);
     }
 
-    if (!possible) continue;
+    if (!possible) {
+      console.log(`   ✗ Tienda ${tienda} no viable, continuando...`);
+      continue;
+    }
 
     const plan = {
       ok: true,
@@ -343,12 +353,14 @@ export async function buildSingleStorePlan(requirements, config) {
     };
 
     const score = getPlanPracticalScore(plan, config);
+    console.log(`   ✓ Plan en ${tienda}: $${total}, score: ${score}`);
     if (score < bestScore) {
       bestScore = score;
       bestPlan = plan;
     }
   }
 
+  console.log(`🏬 buildSingleStorePlan resultado: bestPlan=${bestPlan ? 'ok' : 'null'}`);
   if (!bestPlan) {
     return {
       ok: false,
