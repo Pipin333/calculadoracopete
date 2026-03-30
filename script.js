@@ -73,6 +73,7 @@ const PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO = 1.5;
 // Calibración: Septiembre (primavera) = 1.0 (baseline)
 // Invierno (junio-julio) = 0.8 (menos hielo, menos cerveza fría)
 // Verano (enero-febrero) = 1.1 (más hielo, más cerveza fría)
+
 const FACTOR_ESTACIONAL_POR_MES = [
   1.10,  // Enero (verano pico)
   1.10,  // Febrero (verano pico)
@@ -280,6 +281,13 @@ function getPracticalLevel(score) {
   if (score <= 15) return "Conveniente";
   if (score <= 24) return "Medio pajera";
   return "Solo si quieres exprimir precio";
+}
+
+function getRatioBudget(spent, total) {
+  if (total <= 0) return "—";
+  const percentage = Math.round((spent / total) * 100);
+  const remaining = total - spent;
+  return `${percentage}% utilizado (${formatCLP(remaining)} restante)`;
 }
 
 // ===============================
@@ -1217,11 +1225,13 @@ form.addEventListener("submit", async function (e) {
     totalMultiEl.textContent = formatCLP(multiPlan.total);
     detalleTiendasMulti.textContent = `Tiendas involucradas: ${multiPlan.stores.join(", ")}`;
     saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
+    document.getElementById("ratioMulti").textContent = getRatioBudget(multiPlan.total, budget);
     costoPracticoMultiEl.textContent = `${multiPlan.practicalLabel} + tu preciado tiempo`;
   } else {
     totalMultiEl.textContent = "No disponible";
     detalleTiendasMulti.textContent = multiPlan.reason;
     saldoMultiEl.textContent = "—";
+    document.getElementById("ratioMulti").textContent = "—";
     costoPracticoMultiEl.textContent = "—";
   }
 
@@ -1229,11 +1239,13 @@ form.addEventListener("submit", async function (e) {
     totalUnicaEl.textContent = formatCLP(singlePlan.total);
     detalleTiendaUnica.textContent = `Tienda sugerida: ${singlePlan.store}`;
     saldoUnicaEl.textContent = formatCLP(budget - singlePlan.total);
+    document.getElementById("ratioUnica").textContent = getRatioBudget(singlePlan.total, budget);
     costoPracticoUnicaEl.textContent = `${singlePlan.practicalLabel}`;
   } else {
     totalUnicaEl.textContent = "No disponible";
     detalleTiendaUnica.textContent = singlePlan.reason;
     saldoUnicaEl.textContent = "—";
+    document.getElementById("ratioUnica").textContent = "—";
     costoPracticoUnicaEl.textContent = "—";
   }
 
