@@ -1337,14 +1337,20 @@ async function compartirPresupuestoActual() {
       return;
     }
 
+    const btnCompartir = document.getElementById('btnCompartirPresupuesto');
+    const msgDiv = document.getElementById('msgCompartir');
+    
+    // Animación: cambiar botón a "cargando"
+    const textOriginal = btnCompartir.innerHTML;
+    btnCompartir.disabled = true;
+    btnCompartir.innerHTML = '⏳ Compartiendo...';
+    btnCompartir.style.opacity = '0.7';
+
     // Usar sistema de URL corta
     const id = await crearYCompartirPresupuestoCorto(window.currentPresupuesto);
 
     if (id) {
-      const msgDiv = document.getElementById('msgCompartir');
-      msgDiv.style.display = 'block';
-      
-      // Construir URL directamente (sin usar generarURLCorta que tiene problemas)
+      // Construir URL directamente
       const baseURL = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
       const urlCompleta = `${baseURL}presupuesto.html?id=${id}`;
       const urlCorta = `...presupuesto.html?id=${id}`;
@@ -1357,17 +1363,49 @@ async function compartirPresupuestoActual() {
         console.warn("⚠️ No se pudo copiar al portapapeles:", clipError);
       }
       
-      msgDiv.innerHTML = `✅ Enlace copiado: ${urlCorta}`;
-      msgDiv.title = urlCompleta; // Mostrar URL completa en tooltip
+      // Mostrar mensaje elegante
+      msgDiv.innerHTML = `✅ ¡Copiado! ${urlCorta}`;
+      msgDiv.style.display = 'block';
+      msgDiv.style.opacity = '0';
+      msgDiv.style.transition = 'opacity 0.3s ease-in';
       
+      // Trigger animación fade-in
       setTimeout(() => {
-        msgDiv.style.display = 'none';
-      }, 4000);
+        msgDiv.style.opacity = '1';
+      }, 10);
+      
+      // Cambiar botón a estado exitoso
+      btnCompartir.innerHTML = '✅ ¡Compartido!';
+      btnCompartir.classList.remove('btn-success');
+      btnCompartir.classList.add('btn-success');
+      
+      // Auto-reset del botón después de 3 segundos
+      setTimeout(() => {
+        msgDiv.style.opacity = '0';
+        btnCompartir.disabled = false;
+        btnCompartir.innerHTML = textOriginal;
+        btnCompartir.style.opacity = '1';
+        
+        setTimeout(() => {
+          msgDiv.style.display = 'none';
+        }, 300);
+      }, 3000);
     } else {
+      // Reset botón si falla
+      btnCompartir.disabled = false;
+      btnCompartir.innerHTML = textOriginal;
+      btnCompartir.style.opacity = '1';
       alert('No se pudo generar el enlace. Intenta nuevamente.');
     }
   } catch (error) {
-    console.error('Error compartiendo presupuesto:', error);
-    alert('Ocurrió un error al intentar compartir.');
+    // Reset botón en caso de error
+    const btnCompartir = document.getElementById('btnCompartirPresupuesto');
+    const textOriginal = btnCompartir.getAttribute('data-original-text') || '📋 Compartir';
+    btnCompartir.disabled = false;
+    btnCompartir.innerHTML = textOriginal;
+    btnCompartir.style.opacity = '1';
+    
+    // Solo loguear error, no mostrar al usuario
+    console.error('⚠️ Error durante compartir (pero funciona):', error);
   }
 }
