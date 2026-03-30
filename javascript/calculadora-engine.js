@@ -34,6 +34,16 @@ export const productApi = {
   async getProductsByCategory(category) {
     const data = await this._loadData();
     console.log(`🔎 getProductsByCategory("${category}") - total productos disponibles:`, data.productos.length);
+    
+    // Debug: contar productos por categoría
+    const categoriasConConteo = {};
+    data.productos.forEach(p => {
+      if (!categoriasConConteo[p.categoria]) {
+        categoriasConConteo[p.categoria] = 0;
+      }
+      categoriasConConteo[p.categoria]++;
+    });
+    console.log(`   Categorías con conteo:`, categoriasConConteo);
     console.log(`   Categorías únicas en JSON:`, [...new Set(data.productos.map(p => p.categoria))]);
     
     // Debug: mostrar todos los productos
