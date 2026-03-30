@@ -19,12 +19,14 @@ export const productApi = {
     if (this._data) return this._data;
     
     try {
+      console.log('📦 Cargando productos.json desde ../json/productos.json...');
       const response = await fetch('../json/productos.json');
       if (!response.ok) throw new Error('No se pudo cargar productos.json');
       this._data = await response.json();
+      console.log('✅ Productos cargados:', this._data);
       return this._data;
     } catch (error) {
-      console.warn(`Error cargando productos.json: ${error.message}`);
+      console.error('❌ Error cargando productos.json:', error);
       return { timestamp: new Date().toISOString(), total: 0, productos: [] };
     }
   },
@@ -229,15 +231,21 @@ export function findCheapestCombination(products, requiredMl, categoria) {
  * @returns {Object} Plan con { ok, reason?, total, allItems, details }
  */
 export async function buildMultiStorePlan(requirements, config) {
+  console.log('🏪 buildMultiStorePlan - requirements:', requirements);
   const details = [];
   let total = 0;
   const allItems = [];
 
   for (const req of requirements) {
+    console.log(`🔍 Buscando productos para ${req.categoria}...`);
     const products = await productApi.getProductsByCategory(req.categoria);
+    console.log(`📊 Productos encontrados para ${req.categoria}:`, products);
+    
     const best = findCheapestCombination(products, req.requiredMl, req.categoria);
+    console.log(`✨ Best combination para ${req.categoria}:`, best);
 
     if (!best) {
+      console.error(`❌ No hay productos disponibles para ${req.nombre}.`);
       return {
         ok: false,
         reason: `No hay productos disponibles para ${req.nombre}.`
@@ -253,6 +261,7 @@ export async function buildMultiStorePlan(requirements, config) {
     allItems.push(...best.items);
   }
 
+  console.log('✅ buildMultiStorePlan completado con éxito');
   return {
     ok: true,
     total,
