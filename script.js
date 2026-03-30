@@ -154,6 +154,7 @@ const OPCIONES_CONSUMO = {
   }
 };
 
+const mockProducts = []; // Remove or leave empty as we are now relying on productos.json
 // ===============================
 // API MOCK
 // ===============================
@@ -192,15 +193,6 @@ const productApi = {
     return data.timestamp;
   },
   
-  _getMockProducts(category) {
-    return mockProducts
-      .filter(p => p.categoria === category)
-      .map(p => ({
-        ...p,
-        volumenTotalMl: p.unidades * p.volumenMlUnidad,
-        precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
-      }));
-  }
 };
 
 // ===============================
@@ -965,55 +957,48 @@ async function buildMultiStorePlan(requirements) {
 // ESTRATEGIA 2: TIENDA ÚNICA
 // ===============================
 async function buildSingleStorePlan(requirements) {
-  const storeSet = new Set(mockProducts.map(p => p.tienda));
+  const data = await productApi._loadData();
+  const productos = Array.isArray(data?.productos) ? data.productos : [];
+
+  const stores = [...new Set(productos.map(p => p.tienda).filter(Boolean))];
+
   let bestStorePlan = null;
 
-  for (const store of storeSet) {
-    let storeTotal = 0;
-    const storeDetails = [];
-    const storeItems = [];
+  for (const store of stores) {
+    let total = 0;
+    const details = [];
+    const allItems = [];
     let valid = true;
 
     for (const req of requirements) {
-      const products = (await productApi.getProductsByCategory(req.categoria))
+      // Trae productos de la categoría y deja solo los de la tienda actual
+      const productsInStore = (await productApi.getProductsByCategory(req.categoria))
         .filter(p => p.tienda === store);
 
-      const best = findCheapestCombination(products, req.requiredMl, req.categoria);
+      // Ojo: findCheapestCombination debe existir y devolver { totalCost, items, ... }
+      const best = findCheapestCombination(productsInStore, req.requiredMl);
 
       if (!best) {
         valid = false;
         break;
       }
 
-      storeTotal += best.totalCost;
-      storeDetails.push({
-        requirement: req,
-        result: best
-      });
-      storeItems.push(...best.items);
+      total += best.totalCost;
+      details.push({ requirement: req, result: best });
+      allItems.push(...best.items);
     }
 
     if (!valid) continue;
 
-    if (!bestStorePlan || storeTotal < bestStorePlan.total) {
-      bestStorePlan = {
-        ok: true,
-        store,
-        total: storeTotal,
-        details: storeDetails,
-        allItems: storeItems
-      };
+    if (!bestStorePlan || total < bestStorePlan.total) {
+      bestStorePlan = { ok: true, store, total, details, allItems };
     }
   }
 
-  if (!bestStorePlan) {
-    return {
-      ok: false,
-      reason: "No existe una sola tienda que cubra todo lo requerido."
-    };
-  }
-
-  return bestStorePlan;
+  return bestStorePlan ?? {
+    ok: false,
+    reason: "No existe una sola tienda que cubra todo lo requerido."
+  };
 }
 
 // ===============================
