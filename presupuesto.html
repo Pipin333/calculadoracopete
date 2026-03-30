@@ -294,9 +294,6 @@
             <button class="btn btn-outline-secondary" id="btnVolver">
               ← Volver a Inicio
             </button>
-            <button class="btn btn-outline-secondary" id="btnImprimir">
-              🖨️ Imprimir
-            </button>
           </div>
 
         </div>
@@ -343,13 +340,15 @@
         multiTienda: {
           total: presupuestoData.multiPlan?.total || 0,
           items: presupuestoData.multiPlan?.items || [],
+          allItems: presupuestoData.multiPlan?.allItems || [],
           tiendas: presupuestoData.multiPlan?.tiendas || {}
         },
         
         tiendaUnica: {
           total: presupuestoData.singlePlan?.total || 0,
           items: presupuestoData.singlePlan?.items || [],
-          tienda: presupuestoData.singlePlan?.tienda || 'N/A'
+          allItems: presupuestoData.singlePlan?.allItems || [],
+          tienda: presupuestoData.singlePlan?.store || presupuestoData.singlePlan?.tienda || 'N/A'
         }
       };
     }
@@ -402,11 +401,40 @@
         document.getElementById('totalMulti').textContent = formatCLP(boleta.multiTienda.total);
         document.getElementById('ahorroMulti').textContent = `Ahorra $${formatCLP(ahorroMulti)} (${ahorroMultiPct}%)`;
         
-        // Items multi-tienda
-        const itemsMulti = boleta.multiTienda.items
-          .map(item => `<div>• ${item.product} (${item.cantidad}) - ${formatCLP(item.precio)}</div>`)
-          .join('');
-        document.getElementById('itemsMulti').innerHTML = itemsMulti;
+        // Items multi-tienda agrupados por tienda
+        let itemsMultiHTML = '';
+        if (boleta.multiTienda.allItems && boleta.multiTienda.allItems.length > 0) {
+          // Agrupar por tienda
+          const itemsPorTienda = {};
+          for (const item of boleta.multiTienda.allItems) {
+            const tienda = item.tienda || 'Sin Tienda';
+            if (!itemsPorTienda[tienda]) {
+              itemsPorTienda[tienda] = [];
+            }
+            itemsPorTienda[tienda].push(item);
+          }
+          
+          // Renderizar por tienda
+          for (const tienda in itemsPorTienda) {
+            itemsMultiHTML += `<div style="margin: 0.75rem 0; padding: 0.5rem 0; border-left: 2px solid #28a745; padding-left: 0.75rem;">
+              <strong style="color: #28a745;">${tienda}</strong>`;
+            
+            for (const item of itemsPorTienda[tienda]) {
+              itemsMultiHTML += `<div style="margin: 0.3rem 0; font-size: 0.9rem; color: #495057;">
+                • ${item.nombre} (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(item.precio)}
+              </div>`;
+            }
+            itemsMultiHTML += '</div>';
+          }
+        } else if (boleta.multiTienda.items && boleta.multiTienda.items.length > 0) {
+          // Fallback si está en otra estructura
+          itemsMultiHTML = boleta.multiTienda.items
+            .map(item => `<div style="margin: 0.35rem 0; color: #495057;">• ${item.product || item.nombre} (${item.cantidad || item.unidades})</div>`)
+            .join('');
+        } else {
+          itemsMultiHTML = '<div style="color: #999;">Sin detalles de artículos</div>';
+        }
+        document.getElementById('itemsMulti').innerHTML = itemsMultiHTML;
 
         // Tienda Única
         const ahorroUnica = boleta.presupuestoTotal - boleta.tiendaUnica.total;
@@ -415,11 +443,23 @@
         document.getElementById('totalUnica').textContent = formatCLP(boleta.tiendaUnica.total);
         document.getElementById('ahorroUnica').textContent = `Ahorra $${formatCLP(ahorroUnica)} (${ahorroUnicaPct}%)`;
 
-        // Items tienda única
-        const itemsUnica = boleta.tiendaUnica.items
-          .map(item => `<div>• ${item.product} (${item.cantidad}) - ${formatCLP(item.precio)}</div>`)
-          .join('');
-        document.getElementById('itemsUnica').innerHTML = itemsUnica;
+        // Items tienda única (sin repetir tienda)
+        let itemsUnicaHTML = '';
+        if (boleta.tiendaUnica.allItems && boleta.tiendaUnica.allItems.length > 0) {
+          itemsUnicaHTML = boleta.tiendaUnica.allItems
+            .map(item => `<div style="margin: 0.35rem 0; color: #495057;">
+              • ${item.nombre} (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(item.precio)}
+            </div>`)
+            .join('');
+        } else if (boleta.tiendaUnica.items && boleta.tiendaUnica.items.length > 0) {
+          // Fallback
+          itemsUnicaHTML = boleta.tiendaUnica.items
+            .map(item => `<div style="margin: 0.35rem 0; color: #495057;">• ${item.product || item.nombre} (${item.cantidad || item.unidades})</div>`)
+            .join('');
+        } else {
+          itemsUnicaHTML = '<div style="color: #999;">Sin detalles de artículos</div>';
+        }
+        document.getElementById('itemsUnica').innerHTML = itemsUnicaHTML;
 
         // Mostrar contenido, ocultar carga
         document.getElementById('cargando').style.display = 'none';
