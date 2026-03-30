@@ -315,6 +315,34 @@ script.js (refactorizado)    (200 líneas)
               └────────┘     └─────────┘  └──────────┘
 ```
 
+### Deployment Notes v3.1
+
+**Integration Status: ✅ COMPLETADO**
+
+Componentes Desplegados:
+- ✅ calculadora-config.js (164 líneas)
+- ✅ calculadora-engine.js (397 líneas)
+- ✅ calculadora-ui.js (464 líneas)
+- ✅ calculadora-utils.js (293 líneas)
+- ✅ script.js refactorizado (231 líneas vs 1,258 original)
+
+Validaciones Realizadas:
+- ✅ Cero ciclos de dependencia
+- ✅ Todos los imports validados
+- ✅ App funciona en navegador
+- ✅ Commit a GitHub: 79931e5
+
+Testing Pendiente:
+- Firefox (modal, clipboard, compartir)
+- Safari (clipboard fallback - execCommand)
+- Edge (cálculo, modal, compartir)
+- Opera GX (clipboard 3-level fallback - **CRÍTICO**)
+- Firebase sharing (generar URL, guardar presupuesto)
+
+Archivos de Backup:
+- script-v3.0-backup.js: Original monolítico (1,258 líneas)
+- Disponible para rollback si es necesario
+
 ---
 
 
