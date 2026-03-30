@@ -17,6 +17,30 @@
 import { crearYCompartirPresupuestoCorto } from './shorturl.js';
 
 // ===============================
+// UTILIDADES
+// ===============================
+/**
+ * Crea un objeto presupuesto con los datos calculados
+ * @param {Object} datos - Datos básicos (personas, aporte, modo, bebidas, tiendaSplit)
+ * @param {Object} multiPlan - Plan de compra multi-tienda
+ * @param {Object} singlePlan - Plan de compra tienda única
+ * @returns {Object} Presupuesto completo
+ */
+function crearPresupuesto(datos, multiPlan, singlePlan) {
+  return {
+    personas: datos.personas || 0,
+    aporte: datos.aporte || 0,
+    modo: datos.modo || 'N/A',
+    bebidas: datos.bebidas || [],
+    tiendaSplit: datos.tiendaSplit || false,
+    presupuestoTotal: (datos.personas || 0) * (datos.aporte || 0),
+    multiPlan: multiPlan || {},
+    singlePlan: singlePlan || {},
+    timestamp: new Date().toISOString()
+  };
+}
+
+// ===============================
 // CONFIG / REGLAS DE CONSUMO
 // ===============================
 const CONSUMOS = {
