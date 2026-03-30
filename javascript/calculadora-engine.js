@@ -295,7 +295,12 @@ export async function buildMultiStorePlan(requirements, config) {
  */
 export async function buildSingleStorePlan(requirements, config) {
   console.log('🏬 buildSingleStorePlan - requirements:', requirements);
-  const tiendas = ['Jumbo', 'Lider', 'Unimarc', 'Liquidos'];  // Incluir todas las tiendas del JSON
+  
+  // Obtener tiendas únicas del JSON
+  const allProducts = await productApi._loadData();
+  const tiendas = [...new Set(allProducts.productos.map(p => p.tienda).filter(Boolean))];
+  console.log(`   Tiendas disponibles: ${tiendas.join(', ')}`);
+  
   let bestPlan = null;
   let bestScore = Infinity;
 
@@ -309,7 +314,7 @@ export async function buildSingleStorePlan(requirements, config) {
     for (const req of requirements) {
       console.log(`      📦 Buscando ${req.categoria} en ${tienda}...`);
       const products = await productApi.getProductsByCategory(req.categoria);
-      const productsEnTienda = products.filter(p => p.tienda.toLowerCase() === tienda.toLowerCase());
+      const productsEnTienda = products.filter(p => p.tienda === tienda);  // Comparación exacta como v3.0
       console.log(`      ✓ Encontrados en ${tienda}: ${productsEnTienda.length}`);
 
       if (productsEnTienda.length === 0) {
