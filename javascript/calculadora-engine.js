@@ -19,7 +19,7 @@ export const productApi = {
     if (this._data) return this._data;
     
     try {
-      const response = await fetch('./productos.json');
+      const response = await fetch('../json/productos.json');
       if (!response.ok) throw new Error('No se pudo cargar productos.json');
       this._data = await response.json();
       return this._data;

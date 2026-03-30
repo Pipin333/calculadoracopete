@@ -393,71 +393,99 @@ export function createNormalizeBudgetSplit() {
  * @param {Object} OPCIONES_CONSUMO - Config de opciones
  */
 export function renderResultsModal(presupuesto, OPCIONES_CONSUMO) {
-  const modal = new bootstrap.Modal(document.getElementById("resultModal"));
+  // Actualizar resumen en header del modal
+  const resumenEl = document.getElementById("resumen");
+  if (resumenEl) {
+    const bebidasLabels = presupuesto.bebidas
+      .map(key => getDrinkLabel(key, OPCIONES_CONSUMO))
+      .join(", ");
+    resumenEl.textContent = `${presupuesto.personas} persona(s) · ${bebidasLabels} · ${getModeLabel(presupuesto.modo)}`;
+  }
 
-  // Llenar datos
-  document.getElementById("personasResult").textContent = presupuesto.personas;
-  document.getElementById("aporteResult").textContent = formatCLP(presupuesto.aporte);
-  document.getElementById("presupuestoResult").textContent = formatCLP(presupuesto.presupuestoTotal);
-  document.getElementById("modoResult").textContent = getModeLabel(presupuesto.modo);
+  // Actualizar presupuesto total
+  const presupuestoTotalEl = document.getElementById("presupuestoTotal");
+  if (presupuestoTotalEl) {
+    presupuestoTotalEl.textContent = formatCLP(presupuesto.presupuestoTotal);
+  }
 
   // Multi-tienda
   renderPlanResults(
     presupuesto.multiPlan,
-    "multiTienda",
-    presupuesto.presupuestoTotal,
-    OPCIONES_CONSUMO
+    "listaMultiTienda",
+    "detalleTiendasMulti",
+    "totalMulti",
+    "saldoMulti",
+    "ratioMulti",
+    "costoPracticoMulti",
+    presupuesto.presupuestoTotal
   );
 
   // Tienda única
   renderPlanResults(
     presupuesto.singlePlan,
-    "tiendaUnica",
-    presupuesto.presupuestoTotal,
-    OPCIONES_CONSUMO
+    "listaTiendaUnica",
+    "detalleTiendaUnica",
+    "totalUnica",
+    "saldoUnica",
+    "ratioUnica",
+    "costoPracticoUnica",
+    presupuesto.presupuestoTotal
   );
 
   // Mostrar modal
+  const modal = new bootstrap.Modal(document.getElementById("resultadoModal"));
   modal.show();
 }
 
 /**
  * Renderiza resultado de un plan (multi o single)
  */
-function renderPlanResults(plan, containerId, presupuestoTotal, OPCIONES_CONSUMO) {
-  const container = document.getElementById(containerId);
+function renderPlanResults(
+  plan,
+  listaId,
+  detalleId,
+  totalId,
+  saldoId,
+  ratioId,
+  costoPracticoId,
+  presupuestoTotal
+) {
+  const listaEl = document.getElementById(listaId);
+  const detalleEl = document.getElementById(detalleId);
+  const totalEl = document.getElementById(totalId);
+  const saldoEl = document.getElementById(saldoId);
+  const ratioEl = document.getElementById(ratioId);
+  const costoPracticoEl = document.getElementById(costoPracticoId);
   
   if (!plan || !plan.ok) {
-    container.innerHTML = '<p class="text-danger">Error: No se pudo calcular</p>';
+    if (listaEl) listaEl.innerHTML = '';
+    if (detalleEl) detalleEl.textContent = 'No disponible';
+    if (totalEl) totalEl.textContent = 'No disponible';
+    if (saldoEl) saldoEl.textContent = '—';
+    if (ratioEl) ratioEl.textContent = '—';
+    if (costoPracticoEl) costoPracticoEl.textContent = '—';
     return;
   }
 
-  const ahorro = presupuestoTotal - plan.total;
-  const ahorroText = `Ahorra ${formatCLP(ahorro)} (${Math.round((ahorro / presupuestoTotal) * 100)}%)`;
-
-  let html = `<p><strong>Costo:</strong> ${formatCLP(plan.total)}</p>`;
-  html += `<p><strong>Ahorro:</strong> ${ahorroText}</p>`;
-
-  if (plan.details && plan.details.length > 0) {
-    html += '<div class="items-detail">';
-    
-    plan.details.forEach(detail => {
-      const req = detail.requirement;
-      const result = detail.result;
-      
-      html += `<p><strong>${req.nombre}:</strong> ${formatCLP(result.totalCost)}</p>`;
-      
-      if (result.items && result.items.length > 0) {
-        html += '<ul style="margin-left: 1rem;">';
-        result.items.forEach(item => {
-          html += `<li>${item.nombre} (${item.tienda}): ${formatCLP(item.precio)}</li>`;
-        });
-        html += '</ul>';
-      }
+  // Renderizar lista de items
+  if (listaEl) {
+    listaEl.innerHTML = '';
+    plan.items.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.nombre} (${item.tienda}) - ${formatCLP(item.precio)}`;
+      listaEl.appendChild(li);
     });
-    
-    html += '</div>';
   }
 
-  container.innerHTML = html;
+  // Actualizar detalles
+  if (detalleEl) {
+    const stores = [...new Set(plan.items.map(i => i.tienda))].join(", ");
+    detalleEl.textContent = `Tienda(s): ${stores}`;
+  }
+
+  // Actualizar total y saldo
+  if (totalEl) totalEl.textContent = formatCLP(plan.total);
+  if (saldoEl) saldoEl.textContent = formatCLP(presupuestoTotal - plan.total);
+  if (ratioEl) ratioEl.textContent = getPracticalLevel(plan.total, presupuestoTotal);
+  if (costoPracticoEl) costoPracticoEl.textContent = plan.practicalLabel || "Normal";
 }

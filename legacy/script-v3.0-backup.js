@@ -14,7 +14,7 @@
  */
 
 // ✅ v3.0 FIREBASE IMPORTS
-import { crearYCompartirPresupuestoCorto } from './shorturl.js';
+import { crearYCompartirPresupuestoCorto } from './javascript/shorturl.js';
 
 // ===============================
 // UTILIDADES
