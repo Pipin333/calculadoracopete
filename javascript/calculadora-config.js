@@ -245,11 +245,11 @@ export async function calcularRequirements(
   // Destilados y mixers
   const mixes = Object.entries(OPCIONES_CONFIG)
     .filter(([key, op]) => bebidas.includes(key) && op.grupo !== "cerveza")
-    .map(([key, op]) => op);
+    .map(([key, op]) => ({...op, drinkKey: key}));  // Preservar la key como drinkKey
 
   let totalAsignado = 0;
   mixes.forEach(op => {
-    const split = (budgetSplit[op.categoriaBase] || 0) / 100;
+    const split = (budgetSplit[op.drinkKey] || 0) / 100;  // Usar drinkKey en lugar de categoriaBase
     let requiredMl;
 
     if (mixes.length === 1) {
@@ -267,8 +267,8 @@ export async function calcularRequirements(
       nombre: op.nombre,
       requiredMl,
       budget: subBudget,
-      porcentaje: budgetSplit[op.categoriaBase] || 0,
-      opcionKey: op.categoriaBase,
+      porcentaje: budgetSplit[op.drinkKey] || 0,  // Usar drinkKey en lugar de categoriaBase
+      opcionKey: op.drinkKey,  // Usar drinkKey en lugar de categoriaBase
       grupo: op.grupo
     });
   });

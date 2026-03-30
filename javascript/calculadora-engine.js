@@ -33,42 +33,14 @@ export const productApi = {
   
   async getProductsByCategory(category) {
     const data = await this._loadData();
-    console.log(`🔎 getProductsByCategory("${category}") - total productos disponibles:`, data.productos.length);
     
-    // Debug: contar productos por categoría
-    const categoriasConConteo = {};
-    data.productos.forEach(p => {
-      if (!categoriasConConteo[p.categoria]) {
-        categoriasConConteo[p.categoria] = 0;
-      }
-      categoriasConConteo[p.categoria]++;
-    });
-    console.log(`   Categorías con conteo:`, categoriasConConteo);
-    console.log(`   Categorías únicas en JSON:`, [...new Set(data.productos.map(p => p.categoria))]);
-    
-    // Debug: mostrar todos los productos
-    console.log(`   📋 TODOS LOS PRODUCTOS en JSON:`, data.productos);
-    
-    // Debug: mostrar productos que tienen categoría similar
-    if (category === 'piscola') {
-      console.log(`   🔍 Buscando productos con categoría que contenga "piscola":`);
-      data.productos.forEach(p => {
-        if (p.categoria && p.categoria.toLowerCase().includes('pisco')) {
-          console.log(`      - Producto: "${p.nombre}", categoria: "${p.categoria}" (tipo: ${typeof p.categoria})`);
-        }
-      });
-    }
-    
-    const filtered = data.productos
+    return data.productos
       .filter(p => p.categoria === category)
       .map(p => ({
         ...p,
         volumenTotalMl: p.unidades * p.volumenMlUnidad,
         precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
       }));
-    
-    console.log(`   Productos encontrados para "${category}":`, filtered.length, filtered);
-    return filtered;
   },
   
   async getTimestamp() {

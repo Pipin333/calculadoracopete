@@ -92,8 +92,10 @@ export function getBudgetControls() {
  */
 export function getBudgetSplit() {
   const split = {};
+  // Usar data-drink attribute como en v3.0, NO el ID
   document.querySelectorAll(".budget-slider").forEach(slider => {
-    split[slider.id] = parseInt(slider.value, 10);
+    const drink = slider.dataset.drink;
+    split[drink] = parseInt(slider.value, 10);
   });
   return split;
 }
