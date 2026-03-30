@@ -20,7 +20,24 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+
+// IMPORTANTE: Necesitas agregar la URL de tu Realtime Database aquí
+// Si tu RTDB está en región sudamericana, puede ser:
+// - https://calculadoracopete-default-rtdb.firebaseio.com/ (por defecto)
+// - https://calculadoracopete-default-rtdb.sa-east-1.firebasedatabase.app/ (São Paulo)
+// - https://calculadoracopete-default-rtdb.southamerica-east1.firebasedatabase.app/ (Buenos Aires)
+
+let database;
+try {
+  database = getDatabase(app, "https://calculadoracopete-default-rtdb.firebaseio.com/");
+  console.log("🔥 Firebase Database inicializado");
+} catch (error) {
+  console.warn("⚠️ No se pudo conectar a Firebase RTDB. Verifica:");
+  console.warn("  1. Que existe una Realtime Database en tu proyecto");
+  console.warn("  2. Que la URL es correcta");
+  console.warn("  3. Que las reglas permiten lecturas/escrituras públicas (test mode)");
+  database = null;
+}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // FIREBASE FUNCTIONS
@@ -34,6 +51,10 @@ const database = getDatabase(app);
  */
 async function guardarPresupuestoFirebase(id, data) {
   try {
+    if (!database) {
+      console.warn("⚠️ Firebase no disponible, se guardará en localStorage");
+      return false;
+    }
     const presupuestoRef = ref(database, `presupuestos/${id}`);
     await set(presupuestoRef, {
       data: data,
@@ -45,6 +66,7 @@ async function guardarPresupuestoFirebase(id, data) {
     return true;
   } catch (error) {
     console.error(`❌ Error guardando en Firebase:`, error);
+    console.warn("⚠️ Usando localStorage como fallback");
     return false;
   }
 }
@@ -56,6 +78,10 @@ async function guardarPresupuestoFirebase(id, data) {
  */
 async function obtenerPresupuestoFirebase(id) {
   try {
+    if (!database) {
+      console.warn("⚠️ Firebase no disponible");
+      return null;
+    }
     const presupuestoRef = ref(database, `presupuestos/${id}`);
     const snapshot = await get(presupuestoRef);
     
@@ -88,6 +114,10 @@ async function obtenerPresupuestoFirebase(id) {
  */
 async function eliminarPresupuestoFirebase(id) {
   try {
+    if (!database) {
+      console.warn("⚠️ Firebase no disponible");
+      return false;
+    }
     const presupuestoRef = ref(database, `presupuestos/${id}`);
     await remove(presupuestoRef);
     console.log(`✅ Presupuesto eliminado de Firebase: ${id}`);
@@ -121,13 +151,18 @@ async function contarPresupuestosFirebase() {
  */
 async function verificarConexionFirebase() {
   try {
+    if (!database) {
+      console.warn("⚠️ Firebase Database no inicializado. Verifica tu conexión a internet y configuración de Firebase.");
+      return false;
+    }
     const testRef = ref(database, '.info/connected');
     const snapshot = await get(testRef);
     const isConnected = snapshot.val() === true;
-    console.log(`🔗 Firebase conectado: ${isConnected}`);
+    console.log(`🔗 Firebase conectado: ${isConnected ? '✅ Sí' : '❌ No'}`);
     return isConnected;
   } catch (error) {
     console.error(`❌ Error verificando conexión:`, error);
+    console.warn("⚠️ Firebase no disponible. La app usará localStorage como fallback.");
     return false;
   }
 }
