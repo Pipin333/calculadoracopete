@@ -167,6 +167,9 @@ export function findCheapestCombination(products, requiredMl, categoria) {
   if (!products || products.length === 0) return null;
 
   const upperBound = Math.ceil(requiredMl * 1.3); // Permitir 30% de sobrecompra
+  console.log(`🔄 findCheapestCombination - ${categoria}: requiredMl=${requiredMl}, upperBound=${upperBound}`);
+  console.log(`📦 Productos disponibles:`, products.map(p => ({ nombre: p.nombre, volumen: p.volumenTotalMl, precio: p.precio })));
+  
   const dp = {};
 
   dp[0] = {
@@ -199,6 +202,8 @@ export function findCheapestCombination(products, requiredMl, categoria) {
     }
   }
 
+  console.log(`💾 DP table keys:`, Object.keys(dp).map(k => parseInt(k)).sort((a, b) => a - b));
+  
   let best = null;
   for (let volume = requiredMl; volume <= upperBound; volume++) {
     if (!dp[volume]) continue;
@@ -217,6 +222,7 @@ export function findCheapestCombination(products, requiredMl, categoria) {
     }
   }
 
+  console.log(`🎯 Best para ${categoria}:`, best);
   return best;
 }
 
