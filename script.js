@@ -87,11 +87,20 @@ function attachEventListeners() {
     checkbox.addEventListener('change', onBebidasChange);
   });
 
-  // Botón calcular
-  document.getElementById('btnCalcular').addEventListener('click', calcularPresupuesto);
+  // Formulario submit (botón calcular)
+  const form = document.getElementById('carreteForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      calcularPresupuesto();
+    });
+  }
 
   // Botón compartir (en modal)
-  document.getElementById('btnCompartir').addEventListener('click', compartirPresupuestoActual);
+  const btnCompartir = document.getElementById('btnCompartirPresupuesto');
+  if (btnCompartir) {
+    btnCompartir.addEventListener('click', compartirPresupuestoActual);
+  }
 }
 
 // ===== ASYNC LOADING =====
