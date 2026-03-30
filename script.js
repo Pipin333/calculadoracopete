@@ -30,13 +30,13 @@ const CONSUMOS = {
     hieloBolsasPorPersona: 1 / 8
   },
   pongamosle: {
-    cervezaMlPorPersona: 1700,     // Estilo parcela/patota: +50% vs trabajo
+    cervezaMlPorPersona: 1500,     // Estilo parcela/patota: +50% vs trabajo
     destiladoMlPorPersona: 250,    // +40% vs trabajo 
     bebidaFactor: 2.0,            // Piscola estándar
     hieloBolsasPorPersona: 1 / 4  // 1 bolsa de 2kg cada 4 personas (crítico en septiembre/calor)
   },
   modo18: {
-    cervezaMlPorPersona: 3000,     // Basado en rotación de 200 unidades
+    cervezaMlPorPersona: 2500,     // Basado en rotación de 200 unidades
     destiladoMlPorPersona: 400,     // +60% vs pongámosle (mayor protagonismo)
     bebidaFactor: 2.5,             // Energética: ideal para latas de 250ml
     hieloBolsasPorPersona: 1 / 3   // 1 bolsa de 2kg cada 3 personas (crítico en jornada larga)
