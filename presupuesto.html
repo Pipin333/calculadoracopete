@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presupuesto - Cuánto Rinde</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  
+  <style>
+    .boleta-container {
+      background: white;
+      border: 2px dashed #dee2e6;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    .boleta-header {
+      text-align: center;
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .boleta-titulo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .boleta-fecha {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-top: 0.5rem;
+    }
+
+    .boleta-section {
+      margin: 1.5rem 0;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .boleta-section:last-child {
+      border-bottom: none;
+    }
+
+    .boleta-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .boleta-item.total {
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding-top: 1rem;
+      border-top: 2px solid #dee2e6;
+    }
+
+    .boleta-label {
+      color: #495057;
+    }
+
+    .boleta-value {
+      color: #212529;
+      font-weight: 500;
+    }
+
+    .opcion-compra {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .opcion-compra h4 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #212529;
+    }
+
+    .ahorro-badge {
+      display: inline-block;
+      background: #d4edda;
+      color: #155724;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    .botones-accion {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .botones-accion .btn {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    @media (max-width: 576px) {
+      .boleta-container {
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .botones-accion {
+        flex-direction: column;
+      }
+
+      .botones-accion .btn {
+        width: 100%;
+      }
+    }
+
+    .error-message {
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .success-message {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+      text-align: center;
+      display: none;
+    }
+
+    .cargando {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #0d6efd;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .bebidas-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .bebida-badge {
+      background: #e7f3ff;
+      color: #0d6efd;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-11 col-md-12">
+        
+        <!-- Estado de carga -->
+        <div id="cargando" class="cargando">
+          <div class="spinner"></div>
+          <p class="mt-3">Cargando presupuesto...</p>
+        </div>
+
+        <!-- Mensaje de error -->
+        <div id="error" class="error-message" style="display: none;">
+          <h5>❌ No se pudo cargar el presupuesto</h5>
+          <p id="errorMsg"></p>
+          <small>Es posible que el enlace sea inválido o haya expirado.</small>
+        </div>
+
+        <!-- Contenido de boleta -->
+        <div id="contenido" style="display: none;">
+          
+          <div class="text-center mb-4">
+            <h1 class="h3">Cuánto Rinde</h1>
+            <p class="text-muted">Boleta de Presupuesto Compartida</p>
+          </div>
+
+          <div id="successMsg" class="success-message">
+            ✅ URL copiada al portapapeles
+          </div>
+
+          <!-- BOLETA -->
+          <div class="boleta-container">
+            
+            <!-- Header -->
+            <div class="boleta-header">
+              <p class="boleta-titulo">BOLETA DE PRESUPUESTO</p>
+              <p class="boleta-fecha" id="fechaBoleta"></p>
+            </div>
+
+            <!-- Datos Generales -->
+            <div class="boleta-section">
+              <div class="boleta-item">
+                <span class="boleta-label">Personas:</span>
+                <span class="boleta-value" id="personas"></span>
+              </div>
+              <div class="boleta-item">
+                <span class="boleta-label">Aporte por persona:</span>
+                <span class="boleta-value" id="aporte"></span>
+              </div>
+              <div class="boleta-item">
+                <span class="boleta-label">Presupuesto total:</span>
+                <span class="boleta-value" id="presupuestoTotal"></span>
+              </div>
+              <div class="boleta-item">
+                <span class="boleta-label">Modo:</span>
+                <span class="boleta-value" id="modo"></span>
+              </div>
+            </div>
+
+            <!-- Bebidas -->
+            <div class="boleta-section">
+              <div class="boleta-label mb-2">Bebidas seleccionadas:</div>
+              <div class="bebidas-list" id="bebidasList"></div>
+            </div>
+
+            <!-- Opciones de Compra -->
+            <div class="boleta-section">
+              <h5 class="mb-3">Opciones de Compra</h5>
+
+              <!-- Multi-tienda -->
+              <div class="opcion-compra">
+                <h4>
+                  Compra Óptima (Varias Tiendas)
+                  <span class="ahorro-badge" id="ahorroMulti"></span>
+                </h4>
+                <div class="boleta-item">
+                  <span class="boleta-label">Total:</span>
+                  <span class="boleta-value" id="totalMulti"></span>
+                </div>
+                <div id="itemsMulti" style="margin-top: 0.75rem; font-size: 0.9rem;"></div>
+              </div>
+
+              <!-- Tienda Única -->
+              <div class="opcion-compra">
+                <h4>
+                  Compra Simple (Una Tienda)
+                  <span class="ahorro-badge" id="ahorroUnica"></span>
+                </h4>
+                <div class="boleta-item">
+                  <span class="boleta-label">Tienda:</span>
+                  <span class="boleta-value" id="tiendaUnica"></span>
+                </div>
+                <div class="boleta-item">
+                  <span class="boleta-label">Total:</span>
+                  <span class="boleta-value" id="totalUnica"></span>
+                </div>
+                <div id="itemsUnica" style="margin-top: 0.75rem; font-size: 0.9rem;"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Botones de acción -->
+          <div class="botones-accion">
+            <button class="btn btn-primary" id="btnCompartir">
+              📋 Copiar Enlace
+            </button>
+            <button class="btn btn-outline-secondary" id="btnVolver">
+              ← Volver a Inicio
+            </button>
+            <button class="btn btn-outline-secondary" id="btnImprimir">
+              🖨️ Imprimir
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { obtenerPresupuestoCorto, obtenerIDCortoDeURL } from './shorturl.js';
+    
+    /**
+     * Script principal para mostrar presupuesto compartido - v3.0 Firebase Edition
+     */
+
+    document.addEventListener('DOMContentLoaded', function() {
+      cargarPresupuesto();
+      
+      // Conectar botones
+      document.getElementById('btnCompartir').addEventListener('click', compartirPresupuesto);
+      document.getElementById('btnVolver').addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+      document.getElementById('btnImprimir').addEventListener('click', () => {
+        window.print();
+      });
+    });
+
+    // ===== HELPER FUNCTIONS (from presupuesto.js) =====
+
+    /**
+     * Formatea presupuesto para mostrar en boleta
+     */
+    function formatearPresupuestoParaBoleta(presupuestoData) {
+      return {
+        personas: presupuestoData.personas || 0,
+        aportePorPersona: presupuestoData.aporte || 0,
+        presupuestoTotal: (presupuestoData.personas || 0) * (presupuestoData.aporte || 0),
+        modo: presupuestoData.modo || 'N/A',
+        bebidas: presupuestoData.bebidas || [],
+        tiendaSplit: presupuestoData.tiendaSplit || false,
+        fechaGeneracion: new Date(presupuestoData.timestamp || Date.now()).toLocaleString('es-CL'),
+        
+        multiTienda: {
+          total: presupuestoData.multiPlan?.total || 0,
+          items: presupuestoData.multiPlan?.items || [],
+          tiendas: presupuestoData.multiPlan?.tiendas || {}
+        },
+        
+        tiendaUnica: {
+          total: presupuestoData.singlePlan?.total || 0,
+          items: presupuestoData.singlePlan?.items || [],
+          tienda: presupuestoData.singlePlan?.tienda || 'N/A'
+        }
+      };
+    }
+
+    /**
+     * Valida que un presupuesto tenga campos necesarios
+     */
+    function validarPresupuesto(presupuestoData) {
+      if (!presupuestoData) return false;
+      const camposRequeridos = ['personas', 'aporte', 'modo', 'bebidas', 'multiPlan', 'singlePlan'];
+      return camposRequeridos.every(campo => campo in presupuestoData);
+    }
+
+    async function cargarPresupuesto() {
+      try {
+        const id = obtenerIDCortoDeURL();
+        
+        if (!id) {
+          mostrarError('No hay presupuesto para mostrar. Enlace inválido.');
+          return;
+        }
+
+        // Obtener desde Firebase (con fallback a localStorage)
+        const presupuestoData = await obtenerPresupuestoCorto(id);
+
+        if (!presupuestoData || !validarPresupuesto(presupuestoData)) {
+          mostrarError('El presupuesto no existe, es inválido o ha expirado.');
+          return;
+        }
+
+        // Formatear para boleta
+        const boleta = formatearPresupuestoParaBoleta(presupuestoData);
+
+        // Llenar HTML
+        document.getElementById('fechaBoleta').textContent = boleta.fechaGeneracion;
+        document.getElementById('personas').textContent = boleta.personas;
+        document.getElementById('aporte').textContent = formatCLP(boleta.aportePorPersona);
+        document.getElementById('presupuestoTotal').textContent = formatCLP(boleta.presupuestoTotal);
+        document.getElementById('modo').textContent = boleta.modo;
+
+        // Bebidas
+        const bebidasHTML = boleta.bebidas
+          .map(b => `<span class="bebida-badge">${b}</span>`)
+          .join('');
+        document.getElementById('bebidasList').innerHTML = bebidasHTML;
+
+        // Multi-tienda
+        const ahorroMulti = boleta.presupuestoTotal - boleta.multiTienda.total;
+        const ahorroMultiPct = Math.round((ahorroMulti / boleta.presupuestoTotal) * 100);
+        document.getElementById('totalMulti').textContent = formatCLP(boleta.multiTienda.total);
+        document.getElementById('ahorroMulti').textContent = `Ahorra $${formatCLP(ahorroMulti)} (${ahorroMultiPct}%)`;
+        
+        // Items multi-tienda
+        const itemsMulti = boleta.multiTienda.items
+          .map(item => `<div>• ${item.product} (${item.cantidad}) - ${formatCLP(item.precio)}</div>`)
+          .join('');
+        document.getElementById('itemsMulti').innerHTML = itemsMulti;
+
+        // Tienda Única
+        const ahorroUnica = boleta.presupuestoTotal - boleta.tiendaUnica.total;
+        const ahorroUnicaPct = Math.round((ahorroUnica / boleta.presupuestoTotal) * 100);
+        document.getElementById('tiendaUnica').textContent = boleta.tiendaUnica.tienda;
+        document.getElementById('totalUnica').textContent = formatCLP(boleta.tiendaUnica.total);
+        document.getElementById('ahorroUnica').textContent = `Ahorra $${formatCLP(ahorroUnica)} (${ahorroUnicaPct}%)`;
+
+        // Items tienda única
+        const itemsUnica = boleta.tiendaUnica.items
+          .map(item => `<div>• ${item.product} (${item.cantidad}) - ${formatCLP(item.precio)}</div>`)
+          .join('');
+        document.getElementById('itemsUnica').innerHTML = itemsUnica;
+
+        // Mostrar contenido, ocultar carga
+        document.getElementById('cargando').style.display = 'none';
+        document.getElementById('contenido').style.display = 'block';
+
+      } catch (error) {
+        console.error('Error cargando presupuesto:', error);
+        mostrarError('Ocurrió un error al cargar el presupuesto.');
+      }
+    }
+
+    function mostrarError(mensaje) {
+      document.getElementById('cargando').style.display = 'none';
+      document.getElementById('error').style.display = 'block';
+      document.getElementById('errorMsg').textContent = mensaje;
+    }
+
+    async function compartirPresupuesto() {
+      try {
+        const presupuestoData = obtenerPresupuestoDeURL();
+        const exito = await copiarURLAlPortapapeles(presupuestoData);
+
+        if (exito) {
+          const successMsg = document.getElementById('successMsg');
+          successMsg.style.display = 'block';
+          setTimeout(() => {
+            successMsg.style.display = 'none';
+          }, 3000);
+        } else {
+          alert('No se pudo copiar el enlace. Intenta manualmente.');
+        }
+      } catch (error) {
+        console.error('Error compartiendo:', error);
+        alert('Ocurrió un error al intentar copiar.');
+      }
+    }
+
+    /**
+     * Formatea número a CLP (importado de script.js)
+     * Si no existe, crear función local
+     */
+    function formatCLP(valor) {
+      if (typeof window.formatCLP === 'function') {
+        return window.formatCLP(valor);
+      }
+      // Fallback
+      return new Intl.NumberFormat('es-CL', {
+        style: 'currency',
+        currency: 'CLP',
+        minimumFractionDigits: 0
+      }).format(valor);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

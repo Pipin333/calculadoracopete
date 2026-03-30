@@ -1,319 +1,635 @@
-# 🍺 Calculadora de Presupuesto para Carretes - CHILE
+# 📋 README CONSOLIDADO - Cuánto Rinde v3.0# 🍺 Calculadora de Presupuesto para Carretes - CHILE
 
-**Versión:** 2.4 (Modal Popup + Factor Estacional)  
+
+
+## 🎯 ¿Qué es?**Versión:** 2.4 (Modal Popup + Factor Estacional)  
+
 **Última actualización:** 29 de Marzo de 2026  
-**Estado:** ✅ Producción Ready  
-**Autor:** Anfitrión Pro Algorithm
 
----
+**Calculadora inteligente de presupuestos para carretes en Chile** que optimiza la compra de bebidas usando programación dinámica. Calcula:**Estado:** ✅ Producción Ready  
 
-## 📋 Tabla de Contenidos
+- Cantidad exacta de cerveza, destilados e hielo**Autor:** Anfitrión Pro Algorithm
 
-1. [¿Qué es?](#-qué-es)
+- Mejores opciones de compra (multi-tienda vs single-tienda)
+
+- URLs cortas para compartir presupuestos entre dispositivos (Firebase)---
+
+
+
+---## 📋 Tabla de Contenidos
+
+
+
+## ✨ Stack Tecnológico1. [¿Qué es?](#-qué-es)
+
 2. [Características](#-características-principales)
-3. [Documentación Complementaria](#-documentación-complementaria-new)
-4. [Modos de Consumo](#-5-modos-de-consumo-disponibles)
-5. [Guía Rápida](#-guía-rápida-seleccionar-modo)
-6. [Ejemplos Prácticos](#-ejemplos-prácticos)
-7. [Seleccionar Modo](#-cómo-seleccionar-el-modo-correcto)
-8. [Ajustes & Heurística](#-ajustes-realizados-v20)
-9. [Perfil Usuario](#-perfil-anfitrión-pro)
+
+| Layer | Tech |3. [Documentación Complementaria](#-documentación-complementaria-new)
+
+|-------|------|4. [Modos de Consumo](#-5-modos-de-consumo-disponibles)
+
+| Frontend | HTML5 + Bootstrap 5 + Vanilla JavaScript (ES6 modules) |5. [Guía Rápida](#-guía-rápida-seleccionar-modo)
+
+| Storage Primary | Firebase Realtime Database (Global) |6. [Ejemplos Prácticos](#-ejemplos-prácticos)
+
+| Storage Fallback | localStorage (Local, 30 días) |7. [Seleccionar Modo](#-cómo-seleccionar-el-modo-correcto)
+
+| Hosting | GitHub Pages (Free) |8. [Ajustes & Heurística](#-ajustes-realizados-v20)
+
+| URL System | 6-8 caracteres + query params |9. [Perfil Usuario](#-perfil-anfitrión-pro)
+
 10. [Configuración](#-configuración-de-constantes)
-11. [Changelog](#-changelog)
+
+---11. [Changelog](#-changelog)
+
 12. [FAQ](#-preguntas-frecuentes)
 
+## 🏗️ Arquitectura v3.0
+
 ---
 
-## 📋 ¿Qué es?
+```
 
-Una **calculadora inteligente** que te dice exactamente cuánto alcohol, bebida e hielo necesitas para tu carrete, según el tipo de evento y duración.
+index.html (Formulario)## 📋 ¿Qué es?
 
-### Características Principales
+    ↓
 
-✅ **5 Modos de Consumo** calibrados para eventos chilenos  
-✅ **Hielo CRÍTICO** (Math.ceil) - Nunca falte  
-✅ **Botellas Grandes Favorecidas** (3L > 1.5L)  
-✅ **Tienda Única Preferida** (menos logística)  
-✅ **Concho Productivo Permitido** (40% sobrecompra en bebidas)  
-✅ **Soporte Multi-bebida** (Piscola, Roncola, Cerveza, Red Bull, etc)  
-✅ **Presupuesto Flexible** (reparte dinero automáticamente)  
-✅ **Multi-tienda o Tienda Única** (elige la estrategia óptima)  
+script.js (Algoritmo DP + UI) [importa shorturl.js]Una **calculadora inteligente** que te dice exactamente cuánto alcohol, bebida e hielo necesitas para tu carrete, según el tipo de evento y duración.
+
+    ↓
+
+shorturl.js (v3.0: Firebase primary + localStorage backup)### Características Principales
+
+    ├─ guardarPresupuestoCorto() → Firebase
+
+    └─ obtenerPresupuestoCorto() → Firebase primero, localStorage fallback✅ **5 Modos de Consumo** calibrados para eventos chilenos  
+
+    ↓✅ **Hielo CRÍTICO** (Math.ceil) - Nunca falte  
+
+firebase-config.js (SDK Firebase Realtime DB)✅ **Botellas Grandes Favorecidas** (3L > 1.5L)  
+
+    ↓✅ **Tienda Única Preferida** (menos logística)  
+
+Firebase Realtime DB (Global: presupuestos/{id}/data)✅ **Concho Productivo Permitido** (40% sobrecompra en bebidas)  
+
+    ↓✅ **Soporte Multi-bebida** (Piscola, Roncola, Cerveza, Red Bull, etc)  
+
+presupuesto.html (Boleta compartida) [módulo async]✅ **Presupuesto Flexible** (reparte dinero automáticamente)  
+
+```✅ **Multi-tienda o Tienda Única** (elige la estrategia óptima)  
+
 ✅ **Factor Estacional** (v2.3) - App usable 365 días automáticamente  
-✅ **Modal Popup Responsivo** (v2.4) - Fullscreen móvil, popup tablets, modal desktop  
 
----
+---✅ **Modal Popup Responsivo** (v2.4) - Fullscreen móvil, popup tablets, modal desktop  
 
-## 📚 Documentación Complementaria (NEW)
 
-### 📖 Guías de Inicio
-- **[RESUMEN_v24_FINAL.md](RESUMEN_v24_FINAL.md)** - Qué cambió en v2.4 (Modal Popup + Ratio)
-- **[INDICE_DOCUMENTACION.md](INDICE_DOCUMENTACION.md)** - Índice completo de documentación
 
-### 🛠️ Documentación Técnica UI (v2.4)
-- **[MODAL_CHANGES.md](MODAL_CHANGES.md)** - Cambios técnicos detallados (HTML, JS, CSS)
-- **[ANTES_DESPUES_MODAL.md](ANTES_DESPUES_MODAL.md)** - Comparativa visual Scroll vs Modal
-- **[VISUAL_GUIDE_MODAL.md](VISUAL_GUIDE_MODAL.md)** - Mockups ASCII por dispositivo (móvil, tablet, desktop)
+## 📁 Archivos---
 
-### ✅ Testing & Validación
+
+
+```## 📚 Documentación Complementaria (NEW)
+
+index.html              # Página principal + formulario
+
+presupuesto.html        # Boleta compartida (carga async desde Firebase)### 📖 Guías de Inicio
+
+script.js               # Core algorithm + UI (v3.0: importa shorturl)- **[RESUMEN_v24_FINAL.md](RESUMEN_v24_FINAL.md)** - Qué cambió en v2.4 (Modal Popup + Ratio)
+
+shorturl.js             # URLs cortas v3.0 (Firebase + localStorage)- **[INDICE_DOCUMENTACION.md](INDICE_DOCUMENTACION.md)** - Índice completo de documentación
+
+firebase-config.js      # NUEVO: Firebase SDK + funciones
+
+presupuesto.js          # Legacy base64url (compatibilidad)### 🛠️ Documentación Técnica UI (v2.4)
+
+productos.json          # Precios Jumbo/Tottus/Walmart- **[MODAL_CHANGES.md](MODAL_CHANGES.md)** - Cambios técnicos detallados (HTML, JS, CSS)
+
+styles.css              # Bootstrap 5 + custom CSS- **[ANTES_DESPUES_MODAL.md](ANTES_DESPUES_MODAL.md)** - Comparativa visual Scroll vs Modal
+
+_config.yml             # GitHub Pages config- **[VISUAL_GUIDE_MODAL.md](VISUAL_GUIDE_MODAL.md)** - Mockups ASCII por dispositivo (móvil, tablet, desktop)
+
+README_CONSOLIDADO.md   # Este archivo (único archivo .md)
+
+```### ✅ Testing & Validación
+
 - **[TESTING_CHECKLIST_v24.md](TESTING_CHECKLIST_v24.md)** - Checklist exhaustivo para testing
-- **[ESTADO_FINAL_v24.md](ESTADO_FINAL_v24.md)** - Checklist de completitud y estado final
 
-### 📜 Historial & Changelog
+---- **[ESTADO_FINAL_v24.md](ESTADO_FINAL_v24.md)** - Checklist de completitud y estado final
+
+
+
+## 🚀 Cómo Usar### 📜 Historial & Changelog
+
 - **[CHANGELOG.md](CHANGELOG.md)** - Evolución completa v1.0 → v2.4 con detalles de cada versión
 
----
+### 1. Crear Presupuesto
 
-## 🚀 Cómo Funciona
+- Abre: https://pipin333.github.io/calculadoracopete/---
+
+- Llena formulario (personas, aporte, bebidas, modo)
+
+- Click "Calcular"## 🚀 Cómo Funciona
+
+- Ver 2 opciones de compra
 
 ### Paso 1: Ingresa Datos Básicos
-```
-Personas: 20
-Presupuesto: $10.000/persona ($200.000 total)
-Modo: Pongámosle (sábado 4-6h)
-```
 
-### Paso 2: Elige Bebidas
-```
-✓ Cerveza
-✓ Piscola  
+### 2. Compartir Presupuesto (v3.0 Firebase)```
+
+- Click "Compartir presupuesto"Personas: 20
+
+- ✅ URL copiada (ej: presupuesto.html?id=Xm7Kb2)Presupuesto: $10.000/persona ($200.000 total)
+
+- Comparte a otro dispositivo/personaModo: Pongámosle (sábado 4-6h)
+
+- Datos guardados en Firebase (global)```
+
+
+
+### 3. Ver Presupuesto Compartido### Paso 2: Elige Bebidas
+
+- Abre URL en otro navegador/dispositivo```
+
+- ✅ Firebase carga datos automáticamente✓ Cerveza
+
+- Funciona sin localStorage (incognito = prueba)✓ Piscola  
+
 ✓ Roncola
+
+---```
+
+
+
+## 🧮 Algoritmo Core### Paso 3: Reparte Presupuesto
+
 ```
 
-### Paso 3: Reparte Presupuesto
-```
-Cerveza:  50%
+### Consumos por ModoCerveza:  50%
+
 Piscola:  30%
-Roncola:  20%
-```
 
-### Paso 4: Recibe Recomendación
-```
-TIENDA ÚNICA (Jumbo):
-✅ 3 packs cerveza 12×350ml = $24.000
+| Modo | Cerveza (ml) | Destilado (ml) | Hielo (pers) |Roncola:  20%
+
+|------|---|---|---|```
+
+| Previa | 700 | 120 | 1/10 |
+
+| Trabajo | 1200 | 180 | 1/8 |### Paso 4: Recibe Recomendación
+
+| Pongámosle | 1500 | 250 | 1/4 |```
+
+| Modo 18 | 2500 | 400 | 1/3 |TIENDA ÚNICA (Jumbo):
+
+| Proyecto X | 3750 | 500 | 1/3 |✅ 3 packs cerveza 12×350ml = $24.000
+
 ✅ 3 botellas Pisco 1.5L = $25.000
-✅ 3 botellas Coca-Cola 3L = $9.000
-✅ 5 bolsas Hielo 2kg = $10.000
-────────────────────────
-💰 TOTAL: $68.000 (dentro presupuesto)
-📦 Items: 14 productos
-🏪 Tienda: 1 sola (máxima praticidad)
-🧊 Concho: 3L bebida + 10kg hielo extra
+
+### Penalizaciones (DP Optimization)✅ 3 botellas Coca-Cola 3L = $9.000
+
+```✅ 5 bolsas Hielo 2kg = $10.000
+
+TIENDA_EXTRA: 25         (multi-tienda vs single)────────────────────────
+
+ITEM_COMBINACION: 400    (pack mixto)💰 TOTAL: $68.000 (dentro presupuesto)
+
+SKU_COMBINACION: 80      (SKU mixto)📦 Items: 14 productos
+
+SOBRECOMPRA_LITRO: 100   (si > consumo)🏪 Tienda: 1 sola (máxima praticidad)
+
+```🧊 Concho: 3L bebida + 10kg hielo extra
+
 ```
 
----
+### Factor Estacional (0.80-1.10x)
 
-## 📊 5 Modos de Consumo Disponibles
+Ajusta automáticamente según mes/clima.---
 
-| Modo | Cerveza | Destilado | Bebida | Hielo | Duración | Caso |
+
+
+---## 📊 5 Modos de Consumo Disponibles
+
+
+
+## 🔄 Flujo Compartibilidad (v3.0 Solución)| Modo | Cerveza | Destilado | Bebida | Hielo | Duración | Caso |
+
 |------|---------|-----------|--------|-------|----------|------|
-| **🎉 Previa** | 700ml | 120ml | 1.5× | 1/10 | 1-2h | Pre-copete social |
-| **📊 Trabajo** | 1200ml | 180ml | 2.0× | 1/8 | 2-3h | Viernes post-oficina |
-| **🎊 Pongámosle** | 1700ml | 250ml | 2.0× | 1/4 | 4-6h | Sábado sin compromisos |
-| **🔥 Modo 18** | 3000ml | 400ml | 2.5× | 1/3 | 8-12h | Feriado largo/Jornada épica |
-| **🌪️ Proyecto X** | **3750ml** | **500ml** | **2.8×** | **1/3** | **20h+/multi-día** | **Parcela sostenida ⭐** |
 
----
+### ❌ ANTES (v2.5 - Problema)| **🎉 Previa** | 700ml | 120ml | 1.5× | 1/10 | 1-2h | Pre-copete social |
 
-## 🎯 Guía Rápida: Seleccionar Modo
+```| **📊 Trabajo** | 1200ml | 180ml | 2.0× | 1/8 | 2-3h | Viernes post-oficina |
 
-### Árbol de Decisión
+Usuario A genera presupuesto| **🎊 Pongámosle** | 1700ml | 250ml | 2.0× | 1/4 | 4-6h | Sábado sin compromisos |
+
+  → localStorage['presupuesto_Xm7Kb2']| **🔥 Modo 18** | 3000ml | 400ml | 2.5× | 1/3 | 8-12h | Feriado largo/Jornada épica |
+
+  → Comparte URL| **🌪️ Proyecto X** | **3750ml** | **500ml** | **2.8×** | **1/3** | **20h+/multi-día** | **Parcela sostenida ⭐** |
+
+  → Usuario B en otro dispositivo
+
+  → localStorage VACÍO (dispositivo diferente)---
+
+  → ❌ PANTALLA EN BLANCO
+
+```## 🎯 Guía Rápida: Seleccionar Modo
+
+
+
+### ✅ AHORA (v3.0 - Solucionado)### Árbol de Decisión
 
 ```
-┌─ ¿Cuántas HORAS?
-├─ 1-2h → PREVIA ✅
-├─ 2-3h → TRABAJO MAÑANA ✅
-├─ 4-6h → PONGÁMOSLE ✅
-├─ 8-12h → MODO 18 ✅
-└─ 12h+ o 2-3 DÍAS → MODO 18++ ✅
 
-┌─ ¿Responsabilidades mañana?
-├─ Sí (7-9 AM) → PREVIA o TRABAJO
+Usuario A genera presupuesto```
+
+  → guardarPresupuestoCorto()┌─ ¿Cuántas HORAS?
+
+  → guardarPresupuestoFirebase() ✅ GLOBAL├─ 1-2h → PREVIA ✅
+
+  → localStorage backup├─ 2-3h → TRABAJO MAÑANA ✅
+
+  → Comparte URL├─ 4-6h → PONGÁMOSLE ✅
+
+  → Usuario B en otro dispositivo├─ 8-12h → MODO 18 ✅
+
+  → obtenerPresupuestoCorto() [ASYNC]└─ 12h+ o 2-3 DÍAS → MODO 18++ ✅
+
+  → obtenerPresupuestoFirebase() ✅ ENCUENTRA
+
+  → ✅ BOLETA RENDERIZADA┌─ ¿Responsabilidades mañana?
+
+```├─ Sí (7-9 AM) → PREVIA o TRABAJO
+
 ├─ Sí (después mediodía) → PONGÁMOSLE
-└─ NO → MODO 18 o MODO 18++
 
-┌─ ¿Qué infraestructura tienes?
+---└─ NO → MODO 18 o MODO 18++
+
+
+
+## 🔥 Firebase Setup (v3.0)┌─ ¿Qué infraestructura tienes?
+
 ├─ Solo heladera → PREVIA
-├─ Heladera + Visicooler pequeño → TRABAJO o PONGÁMOSLE
-├─ Visicooler + Refri secundaria → MODO 18
-└─ Visicooler comercial + 2 refris → MODO 18++
+
+### Credenciales (YA CONFIGURADAS)├─ Heladera + Visicooler pequeño → TRABAJO o PONGÁMOSLE
+
+```javascript├─ Visicooler + Refri secundaria → MODO 18
+
+apiKey: "AIzaSyAYVQjyCGzka7tdJsqScvFg_UnYfHm9N6U"└─ Visicooler comercial + 2 refris → MODO 18++
+
+projectId: "calculadoracopete"```
+
 ```
 
 ### Descripción Detallada de Cada Modo
 
-#### 1️⃣ PREVIA (1-2 horas)
-```
-¿Cuándo elegir?
-✅ Son las 10 PM, hay que salir en 30 min a otro lado
-✅ Vamos al cine después + disco después
-✅ Queremos "pedir" algunas copas antes de la actividad real
-✅ Mañana hay que estar fresco (trabajo/universidad)
+### Estructura DB
 
-Consumo:
+```#### 1️⃣ PREVIA (1-2 horas)
+
+presupuestos/```
+
+├── Xm7Kb2/¿Cuándo elegir?
+
+│   ├── data: { personas, aporte, bebidas, ... }✅ Son las 10 PM, hay que salir en 30 min a otro lado
+
+│   ├── createdAt: "2026-03-30T18:45:00Z"✅ Vamos al cine después + disco después
+
+│   ├── expiresAt: "2026-04-29T18:45:00Z" (30 días)✅ Queremos "pedir" algunas copas antes de la actividad real
+
+│   └── viewCount: 5✅ Mañana hay que estar fresco (trabajo/universidad)
+
+└── ... más presupuestos
+
+```Consumo:
+
 - Cerveza: 700ml/persona
-- Destilado: 120ml/persona
-- Bebida Factor: 1.5×
-- Hielo: 1 bolsa cada 10 personas
 
-Infraestructura: Nevera normal de casa
+### Expiración Automática- Destilado: 120ml/persona
+
+- 30 días de inactividad → Firebase elimina- Bebida Factor: 1.5×
+
+- `limpiarPresupuestosExpirados()` ejecuta cada 1 hora- Hielo: 1 bolsa cada 10 personas
+
+
+
+---Infraestructura: Nevera normal de casa
+
 Presupuesto: $3-5k CLP/persona
-Concho: NULO (todo se bebe)
+
+## 🧪 TestingConcho: NULO (todo se bebe)
+
 Perfil: Ejecutivo, estudiante, joven profesional
+
+### Test 1: Firebase Guardando```
+
 ```
 
-#### 2️⃣ TRABAJO MAÑANA (2-3 horas)
-```
-¿Cuándo elegir?
-✅ Es viernes después del trabajo (6-7 PM)
-✅ Lunes a jueves con colegas después de oficina
+1. Genera presupuesto#### 2️⃣ TRABAJO MAÑANA (2-3 horas)
+
+2. Click "Compartir"```
+
+3. Ve a: firebase.google.com → calculadoracopete → Realtime DB¿Cuándo elegir?
+
+4. Deberías ver: presupuestos/Xm7Kb2/data✅ Es viernes después del trabajo (6-7 PM)
+
+```✅ Lunes a jueves con colegas después de oficina
+
 ✅ Tengo que estar presentable mañana a las 9 AM
-✅ No quiero llegar destrozado al trabajo
 
-Consumo:
-- Cerveza: 1200ml/persona
-- Destilado: 180ml/persona
-- Bebida Factor: 2.0×
-- Hielo: 1 bolsa cada 8 personas
+### Test 2: Otro Navegador (Incognito = localStorage limpio)✅ No quiero llegar destrozado al trabajo
 
-Infraestructura: Heladera normal + hielo congelador
-Presupuesto: $5-8k CLP/persona
-Concho: PEQUEÑO (queda algo para tomar al día siguiente)
-Perfil: Oficinista, profesional, persona responsable
 ```
 
-#### 3️⃣ PONGÁMOSLE (4-6 horas)
+1. Pega URL en navegador INCOGNITOConsumo:
+
+2. ✅ Debería mostrar presupuesto- Cerveza: 1200ml/persona
+
+3. Viene de Firebase (no localStorage)- Destilado: 180ml/persona
+
+4. Console: "Presupuesto cargado desde Firebase"- Bebida Factor: 2.0×
+
+```- Hielo: 1 bolsa cada 8 personas
+
+
+
+### Test 3: Verificar FallbackInfraestructura: Heladera normal + hielo congelador
+
+```Presupuesto: $5-8k CLP/persona
+
+1. Modo airplane (desconectar internet)Concho: PEQUEÑO (queda algo para tomar al día siguiente)
+
+2. Abre presupuesto en MISMO dispositivoPerfil: Oficinista, profesional, persona responsable
+
+3. ✅ Funciona con localStorage```
+
+4. Console: "Presupuesto cargado desde localStorage (fallback)"
+
+```#### 3️⃣ PONGÁMOSLE (4-6 horas)
+
 ```
-¿Cuándo elegir?
-✅ Es sábado, no hay nada importante hasta el domingo mediodía
-✅ Almuerzo/tarde con asado en casa/parcela pequeña
-✅ Carrete "de barrio" sin compromisos
+
+### Test 4: Debug¿Cuándo elegir?
+
+```javascript✅ Es sábado, no hay nada importante hasta el domingo mediodía
+
+// Console✅ Almuerzo/tarde con asado en casa/parcela pequeña
+
+await mostrarEstadoSistema()✅ Carrete "de barrio" sin compromisos
+
 ✅ Clima cálido, hay sol, ganas de disfrutar
 
-Consumo:
-- Cerveza: 1700ml/persona
-- Destilado: 250ml/persona
-- Bebida Factor: 2.0×
-- Hielo: 1 bolsa cada 4 personas
+// Output:
+
+📊 Estado del Sistema - v3.0Consumo:
+
+🔗 Firebase: ✅ Conectado- Cerveza: 1700ml/persona
+
+💾 localStorage: ✅ Disponible (3 presupuestos)- Destilado: 250ml/persona
+
+🌐 URL actual: presupuesto.html?id=Xm7Kb2- Bebida Factor: 2.0×
+
+📝 ID en URL: Xm7Kb2- Hielo: 1 bolsa cada 4 personas
+
+```
 
 Infraestructura: Visicooler pequeño O heladera + congelador
-Presupuesto: $10-15k CLP/persona
+
+---Presupuesto: $10-15k CLP/persona
+
 Concho: ÚTIL (sobra para la noche o el domingo)
-Perfil: Anfitrión social, familia en fin de semana
+
+## 📊 VersionesPerfil: Anfitrión social, familia en fin de semana
+
 ```
 
-#### 4️⃣ MODO 18 (8-12 horas)
-```
-¿Cuándo elegir?
-✅ Feriado largo (3-4 días sin trabajo)
-✅ Parcela en Septiembre (clima perfecto)
-✅ Evento que empieza al mediodía y termina tarde
+| Versión | Fecha | Cambio |
+
+|---------|-------|--------|#### 4️⃣ MODO 18 (8-12 horas)
+
+| **v3.0** | Marzo 2026 | ✅ Firebase Realtime (compartible global) |```
+
+| v2.5 | Marzo 2026 | URLs cortas + GitHub Pages optimized |¿Cuándo elegir?
+
+| v2.4 | Marzo 2026 | Modal responsivo + getRatioBudget() |✅ Feriado largo (3-4 días sin trabajo)
+
+| v2.0 | Marzo 2026 | Factor estacional |✅ Parcela en Septiembre (clima perfecto)
+
+| v1.0 | Marzo 2026 | Core algorithm DP |✅ Evento que empieza al mediodía y termina tarde
+
 ✅ Puede haber rotación: algunos se van, otros llegan
 
-Consumo:
-- Cerveza: 3000ml/persona
-- Destilado: 400ml/persona
-- Bebida Factor: 2.5×
-- Hielo: 1 bolsa cada 3 personas
+---
 
-Infraestructura: Visicooler GRANDE + refri secundaria + 15-20 bolsas hielo
-Presupuesto: $8-12k CLP/persona
+Consumo:
+
+## 🎨 Responsive Design- Cerveza: 3000ml/persona
+
+- Destilado: 400ml/persona
+
+```- Bebida Factor: 2.5×
+
+≤576px    → Fullscreen modal- Hielo: 1 bolsa cada 3 personas
+
+577-1366px → Popup modal
+
+≥1367px   → Standard modal (side-by-side)Infraestructura: Visicooler GRANDE + refri secundaria + 15-20 bolsas hielo
+
+```Presupuesto: $8-12k CLP/persona
+
 Concho: PRODUCTIVO (para mañana o próximo evento)
-Perfil: Anfitrión Pro, parcela/quinta propia
+
+---Perfil: Anfitrión Pro, parcela/quinta propia
+
 ```
+
+## 🔧 Mantenimiento
 
 #### 5️⃣ PROYECTO X (Multi-día Sostenido) ⭐ NUEVO
-```
-¿Cuándo elegir?
-✅ Feriado largo (3+ días moderado, no extremo)
-✅ Parcela en Septiembre 25-50 personas
-✅ Infraestructura normal-buena (visicooler + refri secundaria)
-✅ Ritmo sostenido, no "sin parar"
-✅ Presupuesto disponible ($10-15k/persona)
 
-Consumo:
-- Cerveza: 3750ml/persona (+25% vs Modo 18, NO +50%)
-- Destilado: 500ml/persona (+25% vs Modo 18, NO +50%)
-- Bebida Factor: 2.8× (+12% vs Modo 18)
+### Deploy a GitHub Pages```
+
+```bash¿Cuándo elegir?
+
+git add .✅ Feriado largo (3+ días moderado, no extremo)
+
+git commit -m "v3.0: Firebase"✅ Parcela en Septiembre 25-50 personas
+
+git push origin main✅ Infraestructura normal-buena (visicooler + refri secundaria)
+
+# Auto-deploy ✅✅ Ritmo sostenido, no "sin parar"
+
+```✅ Presupuesto disponible ($10-15k/persona)
+
+
+
+### Si Firebase FallaConsumo:
+
+- App sigue funcionando con localStorage- Cerveza: 3750ml/persona (+25% vs Modo 18, NO +50%)
+
+- Fallback elegante a local- Destilado: 500ml/persona (+25% vs Modo 18, NO +50%)
+
+- Usuario no ve errores- Bebida Factor: 2.8× (+12% vs Modo 18)
+
 - Hielo: 1 bolsa cada 3 personas (similar a Modo 18)
 
-Infraestructura RECOMENDADA:
-✅ Visicooler mediano-grande (200+ litros)
-✅ 1-2 refris secundarias de apoyo
-✅ 15-20 bolsas de hielo (suficiente)
-✅ Opcional: generador si es en parcela remota
+### Limpiar Presupuestos Expirados
 
-Presupuesto: $10-15k CLP/persona
-Concho: BUENO (útil para día siguiente o próximo evento)
-Perfil: Anfitrión Pro, eventos 20-50 personas, multi-día balanceado
+```javascriptInfraestructura RECOMENDADA:
+
+// Automático cada 1 hora✅ Visicooler mediano-grande (200+ litros)
+
+// O manual en console:✅ 1-2 refris secundarias de apoyo
+
+limpiarPresupuestosExpirados()✅ 15-20 bolsas de hielo (suficiente)
+
+```✅ Opcional: generador si es en parcela remota
+
+
+
+### Descargar BackupPresupuesto: $10-15k CLP/persona
+
+```javascriptConcho: BUENO (útil para día siguiente o próximo evento)
+
+descargarPresupuestosJSON()Perfil: Anfitrión Pro, eventos 20-50 personas, multi-día balanceado
+
+// Descarga: presupuestos-backup-2026-03-30.json```
+
 ```
+
+---
 
 ---
 
 ## 🔢 Ejemplos Prácticos
 
+## 🚨 Troubleshooting
+
 ### Caso 1: Sábado de Parcela (Modo Pongámosle)
-```
-📍 Parcela privada en Maipo
-👥 20 personas  
-⏰ 3 PM - 10 PM (7 horas)
-🌞 Clima: Calor (Septiembre)
-🍖 Con asado incluido
 
-CONSUMO REQUERIDO:
+| Problema | Solución |```
+
+|----------|----------|📍 Parcela privada en Maipo
+
+| Presupuesto no encontrado | Verificar URL (6+ caracteres) o ha expirado (>30 días) |👥 20 personas  
+
+| URL no se copia | HTTPS requerido (GitHub Pages = HTTPS ✅) |⏰ 3 PM - 10 PM (7 horas)
+
+| Firebase 403 | Verificar credentials o rules `.read: true` |🌞 Clima: Calor (Septiembre)
+
+| Lento | Internet lento → usa localStorage local |🍖 Con asado incluido
+
+
+
+---CONSUMO REQUERIDO:
+
   Cerveza: 20 × 1700ml = 34L
-  Piscola: 20 × 250ml = 5L
+
+## 📈 Roadmap  Piscola: 20 × 250ml = 5L
+
   Bebida: 20 × 250ml × 2.0 = 10L
-  Hielo: ⌈20/4⌉ = 5 bolsas (10kg)
 
-RECOMENDACIÓN DE COMPRA (Tienda Única):
-  ✅ 3 packs cerveza 12×350ml = 36L (~$21,600)
+### v4.0 (2-3 meses)  Hielo: ⌈20/4⌉ = 5 bolsas (10kg)
+
+- Autenticación Google OAuth
+
+- Historial personal de presupuestosRECOMENDACIÓN DE COMPRA (Tienda Única):
+
+- Presupuestos favoritos  ✅ 3 packs cerveza 12×350ml = 36L (~$21,600)
+
   ✅ 4 botellas Pisco 1.5L = 6L (~$26,800)
-  ✅ 3 botellas Coca-Cola 3L = 9L (~$7,650)
-  ✅ 5 bolsas Hielo 2kg = 10kg (~$7,950)
-  ────────────────────────────
-  💰 TOTAL: ~$63,000 CLP
-  🧊 Concho: Útil para la noche siguiente
-```
 
-### Caso 2: Feriado 3 Días (Proyecto X)
-```
+### v5.0 (6 meses)  ✅ 3 botellas Coca-Cola 3L = 9L (~$7,650)
+
+- Analytics dashboard  ✅ 5 bolsas Hielo 2kg = 10kg (~$7,950)
+
+- Tendencias de bebidas  ────────────────────────────
+
+- ML recommendations  💰 TOTAL: ~$63,000 CLP
+
+  🧊 Concho: Útil para la noche siguiente
+
+### v6.0 (12 meses)```
+
+- Migración a Supabase PostgreSQL
+
+- SQL queries para análisis### Caso 2: Feriado 3 Días (Proyecto X)
+
+- Backups automáticos```
+
 📍 Parcela mediana
-👥 30 personas
+
+---👥 30 personas
+
 ⏰ Viernes tarde → Domingo noche (48-60 horas)
-🌞 Clima: Calor
+
+## 📖 Documentación Consolidada🌞 Clima: Calor
+
 ✅ Sin compromisos lunes
 
-CONSUMO REQUERIDO:
-  Cerveza: 30 × 3750ml = 112.5L ✅
-  Destilado: 30 × 500ml = 15L ✅
-  Bebida: 30 × 1250ml (2.8×) = 37.5L ✅
-  Hielo: ⌈30/3⌉ = 10 bolsas ✅
+Todos los archivos `.md` anteriores resumidos aquí:
 
-RECOMENDACIÓN DE COMPRA (Tienda Única - Jumbo):
-  ✅ 9-10 packs cerveza 12×330ml = 120L (~$80,000)
-  ✅ 10 botellas Pisco 1.5L = 15L (~$84,500)
-  ✅ 12-13 botellas Coca-Cola 3L = 38L (~$40,000)
-  ✅ 10 bolsas Hielo 2kg = 20kg (~$19,900)
+CONSUMO REQUERIDO:
+
+| Original | Contenido |  Cerveza: 30 × 3750ml = 112.5L ✅
+
+|----------|-----------|  Destilado: 30 × 500ml = 15L ✅
+
+| SHORTURL_DOCS.md | URLs cortas 6 caracteres, localStorage, expiración 30 días |  Bebida: 30 × 1250ml (2.8×) = 37.5L ✅
+
+| FIREBASE_SETUP.md | Arquitectura v3.0, Firebase primary + localStorage fallback |  Hielo: ⌈30/3⌉ = 10 bolsas ✅
+
+| BACKEND_COMPARISON.md | NoSQL vs SQL análisis (decisión: Supabase v4.0+) |
+
+| BACKEND_SETUP_GUIDE.md | Ejemplos implementación Firebase/Supabase/PostgreSQL |RECOMENDACIÓN DE COMPRA (Tienda Única - Jumbo):
+
+| GITHUB_PAGES_SHORTURL.md | Query params compatible con GitHub Pages |  ✅ 9-10 packs cerveza 12×330ml = 120L (~$80,000)
+
+| PRESUPUESTOS_COMPARTIBLES.md | Flujo de compartibilidad entre dispositivos |  ✅ 10 botellas Pisco 1.5L = 15L (~$84,500)
+
+| SHORTURL_QUICK_START.md | Inicio rápido URLs cortas |  ✅ 12-13 botellas Coca-Cola 3L = 38L (~$40,000)
+
+| SHORTURL_CHANGELOG.md | Versiones URLs (v2.4 → v2.5) |  ✅ 10 bolsas Hielo 2kg = 20kg (~$19,900)
+
   ────────────────────────────
-  💰 TOTAL: ~$224,400 CLP (~$7.5k/persona)
+
+---  💰 TOTAL: ~$224,400 CLP (~$7.5k/persona)
+
   📦 CONCHO: BUENO (5-10L cerveza + hielo para después)
-  🏪 TIENDA: 1 sola (máxima practicidad)
+
+## 🎓 Conclusión  🏪 TIENDA: 1 sola (máxima practicidad)
+
 ```
 
----
+**v3.0 = MVP Producción**
 
-## 🛠️ Ajustes Realizados (v2.0)
+- ✅ Algoritmo optimizado---
 
-### Parámetros de Consumo Calibrados
+- ✅ UX responsivo (Bootstrap 5)
+
+- ✅ URLs cortas shareable## 🛠️ Ajustes Realizados (v2.0)
+
+- ✅ Presupuestos GLOBALES (Firebase)
+
+- ✅ Fallback elegante (Firebase + localStorage)### Parámetros de Consumo Calibrados
+
+- ✅ Zero-cost infrastructure
 
 Se han optimizado los valores para reflejar hábitos de consumo **reales del chileno promedio** en clima cálido (Septiembre):
 
-| Modo | Cambio | Justificación |
-|------|--------|---------------|
-| **Pongámosle** | +50% cerveza vs Trabajo | Evento alto de rotación, parrilla con calor |
-| **Modo 18** | 3L cerveza, 400ml destilado | Incluye almuerzo + merienda + noche |
-| **Modo 18++** | 4.5L cerveza, 600ml destilado | Multi-día sin limitaciones |
+**Próximo paso:** Deploy → 🚀 LIVE
 
-### Heurística de Compra Rebalanceada
+| Modo | Cambio | Justificación |
+
+---|------|--------|---------------|
+
+| **Pongámosle** | +50% cerveza vs Trabajo | Evento alto de rotación, parrilla con calor |
+
+**Última actualización:** 30 de Marzo 2026  | **Modo 18** | 3L cerveza, 400ml destilado | Incluye almuerzo + merienda + noche |
+
+**Versión:** 3.0 - Firebase Edition  | **Modo 18++** | 4.5L cerveza, 600ml destilado | Multi-día sin limitaciones |
+
+**Autor:** Pipin333  
+
+**Repo:** https://github.com/Pipin333/calculadoracopete### Heurística de Compra Rebalanceada
+
 
 | Parámetro | Anterior | Nuevo | Efecto |
 |-----------|----------|-------|--------|

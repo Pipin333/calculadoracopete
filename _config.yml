@@ -1,0 +1,36 @@
+# Configuración para GitHub Pages
+# Permite URLs más limpias y mejor rendimiento
+
+# Tema (opcional, puedes comentar si no necesitas)
+theme: null
+
+# Incluir archivos que normalmente se ignoran
+include:
+  - presupuesto.html
+  - presupuesto.js
+  - shorturl.js
+
+# Excluir archivos innecesarios
+exclude:
+  - .venv
+  - .github
+  - .gitignore
+  - README.md
+  - node_modules
+
+# Permutaciones para URLs
+# Permite que /presupuesto funcione además de /presupuesto.html
+#permalink: /:basename
+
+# Forzar HTTPS (muy recomendado)
+# Lo hace automáticamente GitHub Pages
+
+# Configuración de caché
+keep_files:
+  - presupuesto.html
+  - presupuesto.js
+  - shorturl.js
+  - styles.css
+  - script.js
+  - index.html
+  - productos.json

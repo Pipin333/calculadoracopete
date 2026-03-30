@@ -1,0 +1,46 @@
+# .htaccess - Reescritura de URLs para hosting Apache (NO se usa en GitHub Pages)
+#
+# Este archivo es SOLO para futuro hosting Apache o Vercel
+# GitHub Pages NO soporta .htaccess
+# 
+# Para GitHub Pages, se usan URLs con parámetros query:
+# presupuesto.html?id=abc123
+#
+# Si migras a Apache o Vercel, descomenta las líneas abajo
+
+# Habilitar mod_rewrite
+#<IfModule mod_rewrite.c>
+#  RewriteEngine On
+#  
+#  # Establecer base URL
+#  RewriteBase /
+#  
+#  # NO reescribir archivos reales o directorios
+#  RewriteCond %{REQUEST_FILENAME} !-f
+#  RewriteCond %{REQUEST_FILENAME} !-d
+#  
+#  # Reescribir /p/(id) a presupuesto.html?id=...
+#  RewriteRule ^p/([a-zA-Z0-9]+)/?$ presupuesto.html?id=$1 [QSA,L]
+#  
+#  # Reescribir /presupuesto a presupuesto.html
+#  RewriteRule ^presupuesto/?$ presupuesto.html [QSA,L]
+#  
+#  # Permitir acceso a archivos CSS, JS, imágenes
+#  RewriteCond %{REQUEST_FILENAME} -f
+#  RewriteRule \.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ - [L]
+#</IfModule>
+
+# Comprimir respuestas (opcional, mejora rendimiento)
+#<IfModule mod_deflate.c>
+#  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json
+#</IfModule>
+
+# Cache de navegador (opcional)
+#<IfModule mod_expires.c>
+#  ExpiresActive On
+#  ExpiresByType text/html "access plus 1 day"
+#  ExpiresByType text/css "access plus 1 week"
+#  ExpiresByType application/javascript "access plus 1 week"
+#  ExpiresByType image/* "access plus 1 month"
+#</IfModule>
+

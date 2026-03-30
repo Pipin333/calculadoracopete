@@ -13,6 +13,9 @@
  * - Packs vs sueltas: Penalización MUY FUERTE (400) para evitar compras de novato
  */
 
+// ✅ v3.0 FIREBASE IMPORTS
+import { crearYCompartirPresupuestoCorto } from './shorturl.js';
+
 // ===============================
 // CONFIG / REGLAS DE CONSUMO
 // ===============================
@@ -1275,4 +1278,64 @@ form.addEventListener("submit", async function (e) {
     });
     document.getElementById('timestamp').textContent = fechaFormato;
   }
+
+  // ===== INTEGRACIÓN CON PRESUPUESTO COMPARTIBLE =====
+  // Guardar datos actuales del presupuesto para compartir
+  window.currentPresupuesto = crearPresupuesto(
+    {
+      personas: people,
+      aporte: parseFloat(document.getElementById('aporte').value),
+      modo: mode,
+      bebidas: selectedDrinks.map(getDrinkLabel),
+      tiendaSplit: selectedDrinks.some(d => d.split)
+    },
+    multiPlan,
+    singlePlan
+  );
+
+  // Conectar botón de compartir
+  const btnCompartir = document.getElementById('btnCompartirPresupuesto');
+  if (btnCompartir && !btnCompartir.__listener_attached) {
+    btnCompartir.__listener_attached = true;
+    btnCompartir.addEventListener('click', async function() {
+      await compartirPresupuestoActual();
+    });
+  }
 });
+
+/**
+ * Comparte el presupuesto actual usando URL corta
+ */
+async function compartirPresupuestoActual() {
+  try {
+    if (!window.currentPresupuesto) {
+      alert('No hay presupuesto para compartir');
+      return;
+    }
+
+    // Usar sistema de URL corta
+    const id = await crearYCompartirPresupuestoCorto(window.currentPresupuesto);
+
+    if (id) {
+      const msgDiv = document.getElementById('msgCompartir');
+      msgDiv.style.display = 'block';
+      
+      // Extraer solo el dominio + ID para visualización elegante
+      const url = generarURLCorta(id);
+      const urlDisplay = url.split('presupuesto.html')[0] + `presupuesto.html?id=${id}`;
+      const urlCorta = `...presupuesto?id=${id}`;
+      
+      msgDiv.innerHTML = `✅ Enlace copiado`;
+      msgDiv.title = urlDisplay; // Mostrar URL completa en tooltip
+      
+      setTimeout(() => {
+        msgDiv.style.display = 'none';
+      }, 4000);
+    } else {
+      alert('No se pudo generar el enlace. Intenta nuevamente.');
+    }
+  } catch (error) {
+    console.error('Error compartiendo presupuesto:', error);
+    alert('Ocurrió un error al intentar compartir.');
+  }
+}
