@@ -36,6 +36,16 @@ export const productApi = {
     console.log(`🔎 getProductsByCategory("${category}") - total productos disponibles:`, data.productos.length);
     console.log(`   Categorías únicas en JSON:`, [...new Set(data.productos.map(p => p.categoria))]);
     
+    // Debug: mostrar productos que tienen categoría similar
+    if (category === 'piscola') {
+      console.log(`   🔍 Buscando productos con categoría que contenga "piscola":`);
+      data.productos.forEach(p => {
+        if (p.categoria && p.categoria.toLowerCase().includes('pisco')) {
+          console.log(`      - Producto: "${p.nombre}", categoria: "${p.categoria}" (tipo: ${typeof p.categoria})`);
+        }
+      });
+    }
+    
     const filtered = data.productos
       .filter(p => p.categoria === category)
       .map(p => ({
