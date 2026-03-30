@@ -1,8 +1,8 @@
 # 🍺 Calculadora de Presupuesto para Carretes - CHILE
 
-**Versión:** 2.1 (Pro Anfitrión Multi-día)  
+**Versión:** 2.4 (Modal Popup + Factor Estacional)  
 **Última actualización:** 29 de Marzo de 2026  
-**Estado:** ✅ En Producción  
+**Estado:** ✅ Producción Ready  
 **Autor:** Anfitrión Pro Algorithm
 
 ---
@@ -11,15 +11,16 @@
 
 1. [¿Qué es?](#-qué-es)
 2. [Características](#-características-principales)
-3. [Modos de Consumo](#-5-modos-de-consumo-disponibles)
-4. [Guía Rápida](#-guía-rápida-seleccionar-modo)
-5. [Ejemplos Prácticos](#-ejemplos-prácticos)
-6. [Seleccionar Modo](#-cómo-seleccionar-el-modo-correcto)
-7. [Ajustes & Heurística](#-ajustes-realizados-v20)
-8. [Perfil Usuario](#-perfil-anfitrión-pro)
-9. [Configuración](#-configuración-de-constantes)
-10. [Changelog](#-changelog)
-11. [FAQ](#-preguntas-frecuentes)
+3. [Documentación Complementaria](#-documentación-complementaria-new)
+4. [Modos de Consumo](#-5-modos-de-consumo-disponibles)
+5. [Guía Rápida](#-guía-rápida-seleccionar-modo)
+6. [Ejemplos Prácticos](#-ejemplos-prácticos)
+7. [Seleccionar Modo](#-cómo-seleccionar-el-modo-correcto)
+8. [Ajustes & Heurística](#-ajustes-realizados-v20)
+9. [Perfil Usuario](#-perfil-anfitrión-pro)
+10. [Configuración](#-configuración-de-constantes)
+11. [Changelog](#-changelog)
+12. [FAQ](#-preguntas-frecuentes)
 
 ---
 
@@ -36,7 +37,29 @@ Una **calculadora inteligente** que te dice exactamente cuánto alcohol, bebida 
 ✅ **Concho Productivo Permitido** (40% sobrecompra en bebidas)  
 ✅ **Soporte Multi-bebida** (Piscola, Roncola, Cerveza, Red Bull, etc)  
 ✅ **Presupuesto Flexible** (reparte dinero automáticamente)  
-✅ **Multi-tienda o Tienda Única** (elige la estrategia óptima)
+✅ **Multi-tienda o Tienda Única** (elige la estrategia óptima)  
+✅ **Factor Estacional** (v2.3) - App usable 365 días automáticamente  
+✅ **Modal Popup Responsivo** (v2.4) - Fullscreen móvil, popup tablets, modal desktop  
+
+---
+
+## 📚 Documentación Complementaria (NEW)
+
+### 📖 Guías de Inicio
+- **[RESUMEN_v24_FINAL.md](RESUMEN_v24_FINAL.md)** - Qué cambió en v2.4 (Modal Popup + Ratio)
+- **[INDICE_DOCUMENTACION.md](INDICE_DOCUMENTACION.md)** - Índice completo de documentación
+
+### 🛠️ Documentación Técnica UI (v2.4)
+- **[MODAL_CHANGES.md](MODAL_CHANGES.md)** - Cambios técnicos detallados (HTML, JS, CSS)
+- **[ANTES_DESPUES_MODAL.md](ANTES_DESPUES_MODAL.md)** - Comparativa visual Scroll vs Modal
+- **[VISUAL_GUIDE_MODAL.md](VISUAL_GUIDE_MODAL.md)** - Mockups ASCII por dispositivo (móvil, tablet, desktop)
+
+### ✅ Testing & Validación
+- **[TESTING_CHECKLIST_v24.md](TESTING_CHECKLIST_v24.md)** - Checklist exhaustivo para testing
+- **[ESTADO_FINAL_v24.md](ESTADO_FINAL_v24.md)** - Checklist de completitud y estado final
+
+### 📜 Historial & Changelog
+- **[CHANGELOG.md](CHANGELOG.md)** - Evolución completa v1.0 → v2.4 con detalles de cada versión
 
 ---
 
@@ -569,17 +592,79 @@ R: No hay problema. Vas a tener concho, pero será menos que con Modo 18 (más r
 
 ---
 
-## 📁 Estructura de Archivos
+---
 
+## 🎯 Roadmap
+
+### v2.4 (Actual) ✅ MODAL POPUP + RATIO
+- ✅ Modal popup responsivo (fullscreen móvil, popup tablet, modal desktop)
+- ✅ Ratio presupuesto visual (X% utilizado, $restante)
+- ✅ Documentación completa (7 archivos .md nuevos)
+- ✅ Testing exhaustivo (checklist incluido)
+- ✅ Listo para producción
+
+### v2.5 (Próximo - 4 semanas)
+- 🔄 API real con retailers chilenos (Jumbo, Lider, Unimarc)
+- 🔄 Scraper web + cache automático 24h
+- 🔄 Fallback si API down (datos stale)
+- � Admin panel para ajustar precios
+
+### v3.0 (Futuro)
+- 📱 App móvil nativa (iOS/Android)
+- 🤖 Geolocalización + tiendas cercanas
+- ⭐ Rating: "¿Fue exacto?"
+- 📊 Analytics: Tracking de carretes
+
+---
+
+## 🎉 ¡Comienza Ahora!
+
+**Pasos rápidos:**
+
+1. Abre `index.html` en tu navegador
+2. Ingresa personas y presupuesto
+3. Elige modo (✨ Prueba Proyecto X para multi-día)
+4. Selecciona bebidas
+5. Reparte presupuesto entre categorías
+6. **¡Recibe recomendación de compra optimizada!**
+7. **Modal popup muestra resultados** (sin scroll exterior)
+8. Copia la lista y ¡a comprar!
+
+---
+
+## �📁 Estructura de Archivos & Documentación
+
+### Archivos de Código
 ```
 calculadoracopete/
-├── index.html           # Interfaz web
-├── script.js            # Algoritmo principal (1249 líneas)
-├── styles.css           # Estilos CSS
-├── productos.json       # Catálogo de productos (46 SKUs)
-├── README.md            # Documentación (versión anterior)
-├── README_CONSOLIDADO.md # Este archivo (NUEVO - USAR ESTE)
-└── .gitignore           # Archivos ignorados en Git
+├── index.html               # Interfaz web (224 líneas)
+├── script.js                # Algoritmo principal (1276 líneas)
+├── styles.css               # Estilos CSS + modal responsive
+├── productos.json           # Catálogo de productos (46 SKUs)
+```
+
+### Documentación Principal
+```
+├── README_CONSOLIDADO.md    # Este archivo (CORE)
+├── QUICK_REFERENCE.txt      # Referencia rápida
+```
+
+### Documentación v2.4 (NEW) - Guías & UI
+```
+├── RESUMEN_v24_FINAL.md          # ← LEER PRIMERO: Qué cambió en v2.4
+├── INDICE_DOCUMENTACION.md       # Índice completo de documentación
+├── MODAL_CHANGES.md              # Cambios técnicos (HTML/JS/CSS)
+├── ANTES_DESPUES_MODAL.md        # Comparativa visual (Scroll vs Modal)
+├── VISUAL_GUIDE_MODAL.md         # Mockups ASCII por dispositivo
+├── TESTING_CHECKLIST_v24.md      # Checklist exhaustivo para testing
+├── ESTADO_FINAL_v24.md           # Checklist de completitud final
+├── CHANGELOG.md                  # Historial completo v1.0 → v2.4
+```
+
+### Configuración
+```
+├── .gitignore               # Archivos ignorados en Git
+├── .github/workflows/       # Deploy automático a GitHub Pages
 ```
 
 ---
@@ -587,7 +672,7 @@ calculadoracopete/
 ## 📝 Licencia & Créditos
 
 **Desarrollado para:** Comunidad de Anfitriones Chilenos  
-**Versión:** 2.1 (Pro Anfitrión Multi-día)  
+**Versión:** 2.4 (Modal Popup + Factor Estacional)  
 **Última actualización:** 29 de Marzo de 2026  
 **Mantenedor:** Algoritmo Pro Anfitrión  
 **Licencia:** Uso libre para fines educativos y comerciales  
@@ -596,6 +681,15 @@ calculadoracopete/
 
 **Lema:** *"Frío, eficiente, legendario. Para cada carrete, su modo."* 🍺❄️🔥
 
-**Estado:** 🟢 ACTIVO Y FUNCIONAL
+**Estado:** 🟢 ACTIVO Y FUNCIONAL (v2.4 - Producción Ready)
+
+---
+
+## 🚀 Próximos Pasos
+
+1. ✅ **Probar:** Abre `index.html` en tu navegador
+2. 📖 **Leer:** Consulta `RESUMEN_v24_FINAL.md` para entender v2.4
+3. 🧪 **Testear:** Sigue `TESTING_CHECKLIST_v24.md`
+4. 📊 **Deploy:** Versión lista para producción en GitHub Pages
 
 ¡Que disfrutes tu carrete! 🎉

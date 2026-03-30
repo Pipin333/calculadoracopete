@@ -1126,7 +1126,6 @@ function renderWarnings(warnings) {
 // MAIN
 // ===============================
 const form = document.getElementById("carreteForm");
-const resultado = document.getElementById("resultado");
 const resumen = document.getElementById("resumen");
 const presupuestoTotalEl = document.getElementById("presupuestoTotal");
 const saldoMultiEl = document.getElementById("saldoMulti");
@@ -1254,7 +1253,9 @@ form.addEventListener("submit", async function (e) {
   presupuestoTotalEl.textContent = formatCLP(budget);
   resumen.textContent = `${people} persona(s) · ${selectedDrinks.map(getDrinkLabel).join(", ")} · ${getModeLabel(mode)}`;
 
-  resultado.classList.remove("d-none");
+  // Abre el modal de resultados (en lugar de mostrar div con scroll)
+  const resultadoModal = new bootstrap.Modal(document.getElementById("resultadoModal"));
+  resultadoModal.show();
   
   // Muestra el timestamp de actualización de datos
   const timestamp = await productApi.getTimestamp();

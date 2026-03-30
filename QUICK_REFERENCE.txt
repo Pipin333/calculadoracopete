@@ -2,15 +2,49 @@
 🍺 CALCULADORA DE CARRETES - QUICK REFERENCE CARD
 ================================================================================
 
-📚 DOCUMENTACIÓN CONSOLIDADA
+📚 DOCUMENTACIÓN CONSOLIDADA (v2.4)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-👉 USAR ESTE ARCHIVO: README_CONSOLIDADO.md
-   Contiene TODA la documentación en 1 solo lugar:
-   ✅ 5 Modos de consumo (Previa, Trabajo, Pongámosle, Modo 18, Modo 18++)
-   ✅ Guía rápida de selección
-   ✅ Ejemplos prácticos
-   ✅ Configuración de constantes
+👉 ARCHIVO PRINCIPAL: README_CONSOLIDADO.md
+   Contiene TODO incluyendo:
+   ✅ 5 Modos de consumo (Previa, Trabajo, Pongámosle, Modo 18, Proyecto X)
+   ✅ Factor estacional automático (v2.3)
+   ✅ Modal popup responsivo (v2.4)
+   ✅ Ratio de presupuesto visual (v2.4)
+   ✅ Sección "📚 Documentación Complementaria" con links a 8 .md
+
+📚 DOCUMENTACIÓN COMPLEMENTARIA (NEW v2.4) - 8 ARCHIVOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ver sección "� Documentación Complementaria" en README_CONSOLIDADO.md:
+• RESUMEN_v24_FINAL.md          ← Qué cambió en v2.4 (LEER PRIMERO)
+• INDICE_DOCUMENTACION.md       ← Índice completo de docs
+• MODAL_CHANGES.md              ← Cambios técnicos (HTML, JS, CSS)
+• ANTES_DESPUES_MODAL.md        ← Comparativa visual
+• VISUAL_GUIDE_MODAL.md         ← Mockups por dispositivo
+• TESTING_CHECKLIST_v24.md      ← Testing exhaustivo
+• ESTADO_FINAL_v24.md           ← Checklist final
+• CHANGELOG.md                  ← Historial v1.0 → v2.4
+   • 3 breakpoints (móvil, tablet, desktop)
+   • Integración JavaScript
+
+📖 ANTES_DESPUES_MODAL.md
+   Comparativa visual Scroll (v2.3) vs Modal (v2.4):
+   • Screenshots ASCII en cada dispositivo
+   • Ventajas de cada enfoque
+   • Flujo de usuario mejorado
+
+📖 VISUAL_GUIDE_MODAL.md
+   Guía completa con detalles visuales:
+   • Mock-ups de cada viewport
+   • Detalles de diseño (header, body, footer)
+   • Casos de uso prácticos
+
+📖 TESTING_CHECKLIST_v24.md
+   Checklist completo para testing:
+   • Desktop, Móvil, Tablet
+   • Interacción, Scroll, Recálculos
+   • Edge cases y compatibilidad
    ✅ Heurística del algoritmo
    ✅ Perfiles de usuario
    ✅ FAQ

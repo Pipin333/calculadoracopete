@@ -147,72 +147,90 @@
           </div>
         </div>
 
-        <div id="resultado" class="result-box mt-4 d-none">
-          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
-            <div>
-              <h2 class="h4 mb-1">Resultado</h2>
-              <div id="resumen" class="text-muted"></div>
-            </div>
-            <div id="estadoPresupuesto"></div>
-          </div>
+        <!-- MODAL POPUP PARA RESULTADOS (Móviles & Pantallas pequeñas) -->
+        <div class="modal fade" id="resultadoModal" tabindex="-1" aria-labelledby="resultadoModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen-sm-down modal-lg">
+            <div class="modal-content">
+              <div class="modal-header border-bottom">
+                <div>
+                  <h2 class="modal-title h4 mb-0" id="resultadoModalLabel">Resultado</h2>
+                  <div id="resumen" class="text-muted small mt-1"></div>
+                </div>
+                <div id="estadoPresupuesto" class="ms-2"></div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              
+              <div class="modal-body overflow-y-auto" style="max-height: 70vh;">
+                <div class="row g-3">
+                  <!-- Multi-tienda -->
+                  <div class="col-12">
+                    <div class="strategy-card">
+                      <h3 class="h5">Compra óptima (varias tiendas)</h3>
+                      <p class="small-note mb-2">
+                        Elige cada categoría donde convenga más.
+                      </p>
+                      <ul id="listaMultiTienda" class="mb-3"></ul>
+                      <div class="small-note mb-2" id="detalleTiendasMulti"></div>
+                      <div><strong>Total productos:</strong> <span id="totalMulti" class="mono"></span></div>
+                      <div><strong>Costo práctico:</strong> <span id="costoPracticoMulti"></span></div>
+                    </div>
+                  </div>
 
-          <div class="row g-3">
-            <div class="col-lg-6">
-              <div class="strategy-card">
-                <h3>Compra óptima (varias tiendas)</h3>
-                <p class="small-note mb-2">
-                  Elige cada categoría donde convenga más.
+                  <!-- Tienda única -->
+                  <div class="col-12">
+                    <div class="strategy-card">
+                      <h3 class="h5">Compra simple (una sola tienda)</h3>
+                      <p class="small-note mb-2">
+                        Intenta resolver todo en una sola tienda.
+                      </p>
+                      <ul id="listaTiendaUnica" class="mb-3"></ul>
+                      <div class="small-note mb-2" id="detalleTiendaUnica"></div>
+                      <div><strong>Total productos:</strong> <span id="totalUnica" class="mono"></span></div>
+                      <div><strong>Costo práctico:</strong> <span id="costoPracticoUnica"></span></div>
+                    </div>
+                  </div>
+
+                  <hr />
+
+                  <!-- Resumen de presupuesto -->
+                  <div class="col-12">
+                    <div class="row g-3">
+                      <div class="col-md-4">
+                        <div><strong>Presupuesto total</strong></div>
+                        <div id="presupuestoTotal" class="mono"></div>
+                      </div>
+                      <div class="col-md-4">
+                        <div><strong>Multi-tienda</strong></div>
+                        <div id="saldoMulti" class="mono"></div>
+                        <div class="small text-muted mt-1">
+                          <span id="ratioMulti"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div><strong>Tienda única</strong></div>
+                        <div id="saldoUnica" class="mono"></div>
+                        <div class="small text-muted mt-1">
+                          <span id="ratioUnica"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Alertas -->
+                  <div class="col-12">
+                    <div class="alert mt-2 d-none" id="alertaPresupuesto" role="alert"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer border-top">
+                <p class="small-note mb-0 me-auto" id="notaResultado">
+                  Datos actualizados al: <span id="timestamp" class="mono"></span>
                 </p>
-                <ul id="listaMultiTienda" class="mb-3"></ul>
-                <div class="small-note mb-2" id="detalleTiendasMulti"></div>
-                <div><strong>Total productos:</strong> <span id="totalMulti" class="mono"></span></div>
-                <div><strong>Costo práctico:</strong> <span id="costoPracticoMulti"></span></div>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div class="strategy-card">
-                <h3>Compra simple (una sola tienda)</h3>
-                <p class="small-note mb-2">
-                  Intenta resolver todo en una sola tienda.
-                </p>
-                <ul id="listaTiendaUnica" class="mb-3"></ul>
-                <div class="small-note mb-2" id="detalleTiendaUnica"></div>
-                <div><strong>Total productos:</strong> <span id="totalUnica" class="mono"></span></div>
-                <div><strong>Costo práctico:</strong> <span id="costoPracticoUnica"></span></div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
-
-          <hr />
-
-          <div class="row g-3">
-            <div class="col-md-4">
-              <div><strong>Presupuesto total</strong></div>
-              <div id="presupuestoTotal" class="mono"></div>
-            </div>
-            <div class="col-md-4">
-              <div><strong>Multi-tienda</strong></div>
-              <div id="saldoMulti" class="mono"></div>
-              <div class="small text-muted mt-1">
-                <span id="ratioMulti"></span>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div><strong>Tienda única</strong></div>
-              <div id="saldoUnica" class="mono"></div>
-              <div class="small text-muted mt-1">
-                <span id="ratioUnica"></span>
-              </div>
-            </div>
-</div>
-
-
-
-<div class="alert mt-4 d-none" id="alertaPresupuesto" role="alert"></div>
-          <p class="small-note mt-3 mb-0" id="notaResultado">
-            Datos actualizados al: <span id="timestamp" class="mono"></span>
-          </p>
         </div>
       </div>
     </div>
