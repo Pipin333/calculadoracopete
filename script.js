@@ -14,7 +14,7 @@
  */
 
 // ✅ v3.0 FIREBASE IMPORTS
-import { crearYCompartirPresupuestoCorto, generarURLCorta } from './shorturl.js';
+import { crearYCompartirPresupuestoCorto } from './shorturl.js';
 
 // ===============================
 // UTILIDADES
@@ -1344,13 +1344,21 @@ async function compartirPresupuestoActual() {
       const msgDiv = document.getElementById('msgCompartir');
       msgDiv.style.display = 'block';
       
-      // Extraer solo el dominio + ID para visualización elegante
-      const url = generarURLCorta(id);
-      const urlDisplay = url.split('presupuesto.html')[0] + `presupuesto.html?id=${id}`;
-      const urlCorta = `...presupuesto?id=${id}`;
+      // Construir URL directamente (sin usar generarURLCorta que tiene problemas)
+      const baseURL = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      const urlCompleta = `${baseURL}presupuesto.html?id=${id}`;
+      const urlCorta = `...presupuesto.html?id=${id}`;
       
-      msgDiv.innerHTML = `✅ Enlace copiado`;
-      msgDiv.title = urlDisplay; // Mostrar URL completa en tooltip
+      // Copiar a portapapeles automáticamente
+      try {
+        await navigator.clipboard.writeText(urlCompleta);
+        console.log(`✅ URL copiada al portapapeles: ${urlCompleta}`);
+      } catch (clipError) {
+        console.warn("⚠️ No se pudo copiar al portapapeles:", clipError);
+      }
+      
+      msgDiv.innerHTML = `✅ Enlace copiado: ${urlCorta}`;
+      msgDiv.title = urlCompleta; // Mostrar URL completa en tooltip
       
       setTimeout(() => {
         msgDiv.style.display = 'none';
