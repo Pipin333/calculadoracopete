@@ -1,0 +1,146 @@
+================================================================================
+🍺 CALCULADORA DE CARRETES - QUICK REFERENCE CARD
+================================================================================
+
+📚 DOCUMENTACIÓN CONSOLIDADA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 USAR ESTE ARCHIVO: README_CONSOLIDADO.md
+   Contiene TODA la documentación en 1 solo lugar:
+   ✅ 5 Modos de consumo (Previa, Trabajo, Pongámosle, Modo 18, Modo 18++)
+   ✅ Guía rápida de selección
+   ✅ Ejemplos prácticos
+   ✅ Configuración de constantes
+   ✅ Heurística del algoritmo
+   ✅ Perfiles de usuario
+   ✅ FAQ
+   ✅ Changelog
+
+📦 ARCHIVOS DE CÓDIGO (Core)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+index.html
+  → Interfaz web Bootstrap 5
+  → Formulario interactivo
+  → 5 modos disponibles en dropdown
+
+script.js (1249 líneas)
+  → Algoritmo principal Dynamic Programming
+  → 5 modos de consumo
+  → Heurística de scoring
+  → Cálculos de presupuesto
+
+styles.css
+  → Estilos CSS Bootstrap
+  → Responsive design
+
+productos.json
+  → 46 SKUs
+  → 8 categorías (cerveza, destilados, bebidas, etc)
+  → Retailers chilenos (Jumbo, Lider, Unimarc, Líquidos)
+
+.gitignore
+  → Ignora archivos .md de documentación
+  → Ignora .venv, .vscode, node_modules, etc
+  → Clean git tracking
+
+🎯 5 MODOS DISPONIBLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. PREVIA (1-2 horas)
+   → Pre-copete antes de salir
+   → Consumo: 700ml cerveza, 120ml destilado
+   → Infraestructura: Nevera normal
+   → Presupuesto: $3-5k/persona
+
+2. TRABAJO MAÑANA (2-3 horas)
+   → Viernes post-oficina
+   → Consumo: 1200ml cerveza, 180ml destilado
+   → Infraestructura: Heladera
+   → Presupuesto: $5-8k/persona
+
+3. PONGÁMOSLE (4-6 horas)
+   → Sábado sin compromisos
+   → Consumo: 1700ml cerveza, 250ml destilado
+   → Infraestructura: Visicooler pequeño
+   → Presupuesto: $10-15k/persona
+
+4. MODO 18 (8-12 horas)
+   → Feriado largo / Jornada épica
+   → Consumo: 3000ml cerveza, 400ml destilado
+   → Infraestructura: Visicooler + refri secundaria
+   → Presupuesto: $8-12k/persona
+
+5. MODO 18++ (12h+/2-3 días) ⭐ NUEVO
+   → Multi-día extremo
+   → Consumo: 4500ml cerveza, 600ml destilado
+   → Infraestructura: Visicooler comercial + 2 refris
+   → Presupuesto: $12-18k/persona
+
+⚙️ CONFIGURACIÓN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Penalizaciones (en script.js):
+  • PENALIZACION_ITEM_COMBINACION: 400 (favorece packs)
+  • PENALIZACION_TIENDA_EXTRA: 50 (fuerza tienda única)
+  • PENALIZACION_SOBRECOMPRA_POR_LITRO: 100 (base)
+  
+Factores:
+  • mixerFactor para energética: 2.75
+  • bebidaFactor por modo: 1.5× a 3.0×
+  • hieloBolsasPorPersona: 1/10 a 1/2 por modo
+
+🧠 HEURÍSTICA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Packs > Botellas sueltas
+2. Botellas grandes (3L) > Botellas pequeñas (1.5L)
+3. Tienda única > Multi-tienda
+4. Hielo SIEMPRE Math.ceil()
+5. Sobrecompra permitida en bebidas (40%)
+
+❓ CUANDO USAR CADA MODO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¿Cuántas horas?
+  1-2h        → PREVIA
+  2-3h        → TRABAJO
+  4-6h        → PONGÁMOSLE
+  8-12h       → MODO 18
+  12h+ / 2-3d → MODO 18++
+
+¿Responsabilidades mañana?
+  Sí (7-9 AM)     → PREVIA / TRABAJO
+  Sí (mediodía)   → PONGÁMOSLE
+  No              → MODO 18 / MODO 18++
+
+¿Infraestructura?
+  Solo heladera                           → PREVIA
+  Heladera + Visicooler pequeño           → TRABAJO / PONGÁMOSLE
+  Visicooler + refri secundaria           → MODO 18
+  Visicooler comercial + 2+ refris        → MODO 18++
+
+📋 CHECKLIST GIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Para mantener Git limpio:
+
+git add .gitignore README_CONSOLIDADO.md
+
+git commit -m "consolidate: merge all docs into README_CONSOLIDADO.md"
+
+(Los archivos .md de documentación serán ignorados automáticamente)
+
+🎯 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Lee README_CONSOLIDADO.md para entender el sistema
+2. Abre index.html en navegador
+3. Ingresa: personas, presupuesto, modo
+4. Selecciona bebidas y reparte presupuesto
+5. Recibe recomendación de compra optimizada
+6. ¡A comprar y disfrutar! 🍺
+
+================================================================================
+Versión: 2.1 | Estado: ✅ ACTIVO | Última actualización: 29-Mar-2026
+================================================================================

@@ -1,30 +1,51 @@
+/**
+ * CALCULADORA DE PRESUPUESTO PARA CARRETES - CHILE
+ * 
+ * Versión: Pro Anfitrión (Septiembre 2026)
+ * Optimizado para eventos tipo "Parcela/Patota" con clima cálido
+ * 
+ * AJUSTES PRINCIPALES:
+ * - Consumos calibrados para alta rotación y visicooler/refri secundario
+ * - Factor energética: 2.75 (ideal para latas 250ml vs destilados 100ml)
+ * - Hielo: SIEMPRE Math.ceil() (crítico en clima caluroso)
+ * - Preferencia: Botellas grandes 2.5L/3L con bonus para "concho" del día siguiente
+ * - Tienda única: Penalización FUERTE (50) para forzar logística simplificada
+ * - Packs vs sueltas: Penalización MUY FUERTE (400) para evitar compras de novato
+ */
+
 // ===============================
 // CONFIG / REGLAS DE CONSUMO
 // ===============================
 const CONSUMOS = {
   previa: {
-    cervezaMlPorPersona: 500,
-    destiladoMlPorPersona: 100,
-    bebidaFactor: 0.75,
-    hieloBolsasPorPersona: 1 / 16
+    cervezaMlPorPersona: 700,
+    destiladoMlPorPersona: 120,
+    bebidaFactor: 1.5,
+    hieloBolsasPorPersona: 1 / 10 
   },
   trabajo: {
-    cervezaMlPorPersona: 660,
-    destiladoMlPorPersona: 120,
-    bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1 / 12
+    cervezaMlPorPersona: 1200,
+    destiladoMlPorPersona: 180,
+    bebidaFactor: 2.0,
+    hieloBolsasPorPersona: 1 / 8
   },
   pongamosle: {
-    cervezaMlPorPersona: 990,
-    destiladoMlPorPersona: 200,
-    bebidaFactor: 1.0,
-    hieloBolsasPorPersona: 1 / 10
+    cervezaMlPorPersona: 1700,     // Estilo parcela/patota: +50% vs trabajo
+    destiladoMlPorPersona: 250,    // +40% vs trabajo 
+    bebidaFactor: 2.0,            // Piscola estándar
+    hieloBolsasPorPersona: 1 / 4  // 1 bolsa de 2kg cada 4 personas (crítico en septiembre/calor)
   },
   modo18: {
-    cervezaMlPorPersona: 1650,
-    destiladoMlPorPersona: 300,
-    bebidaFactor: 1.2,
-    hieloBolsasPorPersona: 1 / 8
+    cervezaMlPorPersona: 3000,     // Basado en rotación de 200 unidades
+    destiladoMlPorPersona: 400,     // +60% vs pongámosle (mayor protagonismo)
+    bebidaFactor: 2.5,             // Energética: ideal para latas de 250ml
+    hieloBolsasPorPersona: 1 / 3   // 1 bolsa de 2kg cada 3 personas (crítico en jornada larga)
+  },
+  proyectox: {
+    cervezaMlPorPersona: 4500,     // EXTREMO: parcela de 3+ días sin freno
+    destiladoMlPorPersona: 600,     // +50% vs modo18 (todo el tiempo destilado disponible)
+    bebidaFactor: 3.0,             // MÁXIMO: energética + bebida + vino
+    hieloBolsasPorPersona: 1 / 2   // 1 bolsa cada 2 personas (CRÍTICO: se derrite constantemente)
   }
 };
 
@@ -36,12 +57,12 @@ const UMBRAL_ADVERTENCIA_DESTILADO_ML = 300;
 // ===============================
 
 // A nivel de combinación por categoría
-const PENALIZACION_ITEM_COMBINACION = 120;      // castiga muchas unidades
-const PENALIZACION_SKU_COMBINACION = 180;       // castiga variedad rara de formatos
-const PENALIZACION_SOBRECOMPRA_POR_LITRO = 120; // castiga comprar mucho más de lo necesario
+const PENALIZACION_ITEM_COMBINACION = 400; // Penaliza FUERTEMENTE comprar unidades sueltas si hay pack
+const PENALIZACION_SKU_COMBINACION = 80;   // Bajo: priorizar botellas grandes (2.5L, 3L) aunque sobre
+const PENALIZACION_SOBRECOMPRA_POR_LITRO = 100; // Permite excedentes marginales en bebidas
 
 // A nivel de plan total
-const PENALIZACION_TIENDA_EXTRA = 6;
+const PENALIZACION_TIENDA_EXTRA = 50;     // FUERTE: fuerza tienda única (logística chilena)
 const PENALIZACION_SKU_PLAN = 2;
 const PENALIZACION_ITEM_PLAN = 1;
 const PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO = 1.5;
@@ -119,7 +140,7 @@ const OPCIONES_CONSUMO = {
     categoriaBase: "gin",
     llevaMixer: true,
     mixerCategoria: "redbull",
-    mixerFactor: 2.75,
+    mixerFactor: 2.75,  // Factor energética: ideal para latas 250ml vs 100ml destilado
     llevaHielo: true
   },
   jaeger_redbull: {
@@ -128,7 +149,7 @@ const OPCIONES_CONSUMO = {
     categoriaBase: "jaeger",
     llevaMixer: true,
     mixerCategoria: "redbull",
-    mixerFactor: 2.75,
+    mixerFactor: 2.75,  // Factor energética: ideal para latas 250ml vs 100ml destilado
     llevaHielo: true
   }
 };
@@ -212,7 +233,9 @@ function getModeLabel(mode) {
   if (mode === "previa") return "Previa";
   if (mode === "trabajo") return "Trabajo mañana";
   if (mode === "pongamosle") return "Pongámosle";
-  return "Modo 18";
+  if (mode === "modo18") return "Modo 18";
+  if (mode === "modo18plus") return "Modo 18++ (Multi-día)";
+  return "Modo desconocido";
 }
 
 function getDrinkLabel(drink) {
@@ -776,22 +799,36 @@ function getCombinationStats(items) {
   };
 }
 
-function getCombinationScore(totalCost, items, totalVolume, requiredMl) {
+function getCombinationScore(totalCost, items, totalVolume, requiredMl, categoria = null) {
   const { totalItems, skuDistintos } = getCombinationStats(items);
   const sobrecompraMl = Math.max(0, totalVolume - requiredMl);
+
+  // BONUS: favorecer productos con mayor volumen por unidad (botellas grandes 2.5L, 3L)
+  // Calcula el volumen promedio por item
+  const volumePromedioPorItem = items.length > 0 ? totalVolume / items.length : 0;
+  const bonusBotellasGrandes = Math.max(0, (volumePromedioPorItem - 1000) / 100); // Bonus por cada 100ml extra/item
+
+  // PENALIZACIÓN DE SOBRECOMPRA AJUSTADA POR CATEGORÍA
+  // Bebidas/mixers: menor penalización (permitir "concho" para el día siguiente)
+  // Alcohol: penalización normal
+  const esBebenida = ["bebida", "redbull", "tonica"].includes(categoria);
+  const penalizacionSobrecompra = esBebenida 
+    ? (sobrecompraMl / 1000) * (PENALIZACION_SOBRECOMPRA_POR_LITRO * 0.4)  // 40% de la penalización
+    : (sobrecompraMl / 1000) * PENALIZACION_SOBRECOMPRA_POR_LITRO;
 
   return (
     totalCost +
     totalItems * PENALIZACION_ITEM_COMBINACION +
     skuDistintos * PENALIZACION_SKU_COMBINACION +
-    (sobrecompraMl / 1000) * PENALIZACION_SOBRECOMPRA_POR_LITRO
+    penalizacionSobrecompra -
+    bonusBotellasGrandes  // RESTAR el bonus (menor score = mejor)
   );
 }
 
 // ===============================
 // OPTIMIZACIÓN SIMPLE POR CATEGORÍA
 // ===============================
-function findCheapestCombination(products, requiredMl) {
+function findCheapestCombination(products, requiredMl, categoria = null) {
   if (!products || products.length === 0) return null;
 
   const maxVolume = Math.max(...products.map(p => p.volumenTotalMl));
@@ -807,7 +844,7 @@ function findCheapestCombination(products, requiredMl) {
       const nextVolume = Math.min(upperBound, volume + product.volumenTotalMl);
       const nextCost = dp[volume].cost + product.precio;
       const nextItems = [...dp[volume].items, product];
-      const nextScore = getCombinationScore(nextCost, nextItems, nextVolume, requiredMl);
+      const nextScore = getCombinationScore(nextCost, nextItems, nextVolume, requiredMl, categoria);
 
       if (
         !dp[nextVolume] ||
@@ -895,7 +932,7 @@ async function buildMultiStorePlan(requirements) {
 
   for (const req of requirements) {
     const products = await productApi.getProductsByCategory(req.categoria);
-    const best = findCheapestCombination(products, req.requiredMl);
+    const best = findCheapestCombination(products, req.requiredMl, req.categoria);
 
     if (!best) {
       return {
@@ -941,7 +978,7 @@ async function buildSingleStorePlan(requirements) {
       const products = (await productApi.getProductsByCategory(req.categoria))
         .filter(p => p.tienda === store);
 
-      const best = findCheapestCombination(products, req.requiredMl);
+      const best = findCheapestCombination(products, req.requiredMl, req.categoria);
 
       if (!best) {
         valid = false;
