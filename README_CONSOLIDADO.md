@@ -403,6 +403,7 @@ CONSUMOS = {
 
 ### Penalizaciones a Nivel de Plan
 
+- **PENALIZACION_TIENDA_EXTRA: 25** - Permite que usuario elija entre single vs multi-tienda
 - **PENALIZACION_SKU_PLAN: 2** - SKUs distintos en plan total
 - **PENALIZACION_ITEM_PLAN: 1** - Items totales en plan
 - **PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO: 1.5** - Sobrecompra total
