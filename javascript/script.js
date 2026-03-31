@@ -560,7 +560,6 @@ function rebalanceFromChangedDrink(changedDrink, newValue) {
       const value = valuePerSlider + (extra > 0 ? 1 : 0);
       if (extra > 0) extra--;
       syncControlValue(c.drink, value);
-      console.log(`    → ${c.drink}: ${value}%`);
     });
 
     updateBudgetSplitState();
