@@ -293,7 +293,7 @@ function generarURLCorta(id) {
   const baseURL = window.location.origin + basePath;
   
   // Retornar URL con parámetro query (compatible con GitHub Pages)
-  return `${baseURL}html/presupuesto.html?id=${id}`;
+  return `${baseURL}presupuesto.html?id=${id}`;
 }
 
 /**
