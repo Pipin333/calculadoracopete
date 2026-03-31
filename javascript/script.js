@@ -517,57 +517,56 @@ function handleInputChange(e) {
  */
 function rebalanceFromChangedDrink(changedDrink, newValue) {
   const controls = getBudgetControls();
-
   newValue = Math.max(0, Math.min(100, Math.round(newValue)));
-  
-  const adjustableOthers = controls.filter(c => c.drink !== changedDrink && !c.locked);
+
+  const changed = controls.find(c => c.drink === changedDrink);
+  if (!changed) return;
+
   const lockedOthers = controls.filter(c => c.drink !== changedDrink && c.locked);
+  const adjustableOthers = controls.filter(c => c.drink !== changedDrink && !c.locked);
 
   const lockedTotal = lockedOthers.reduce(
     (sum, c) => sum + (parseInt(c.slider.value, 10) || 0),
     0
   );
 
-  const targetRemaining = 100 - newValue - lockedTotal;
-  
-  // Si targetRemaining es negativo, el usuario cambió a un valor muy alto
-  if (targetRemaining < 0) {
-    console.log(`  ⚠️  Valor ${newValue} excede límite. Corrigiendo...`);
-    const correctedValue = Math.max(0, 100 - lockedTotal);
-    console.log(`  🔄 Rebalance: ${changedDrink} → ${correctedValue}% (corregido), Total controls: ${controls.length}`);
-    syncControlValue(changedDrink, correctedValue);
-    updateBudgetSplitState();
-    return;
-  }
+  const maxForChanged = Math.max(0, 100 - lockedTotal);
+  if (newValue > maxForChanged) newValue = maxForChanged;
 
   syncControlValue(changedDrink, newValue);
-  console.log(`🔄 Rebalance: ${changedDrink} → ${newValue}%, Total controls: ${controls.length}`);
-  console.log(`  📊 Adjustable: ${adjustableOthers.length}, Locked total: ${lockedTotal}, Target remaining: ${targetRemaining}`);
 
-  // Si no hay otros sliders ajustables, nada que hacer
+  const remaining = 100 - lockedTotal - newValue;
+
   if (adjustableOthers.length === 0) {
     updateBudgetSplitState();
     return;
   }
 
-  // 🎯 NUEVA LÓGICA: Rebalancear si hay 2+ sliders desbloqueados (incluyendo el que cambió)
-  // Es decir, si adjustableOthers.length >= 1 (más el changedDrink = 2+)
-  if (adjustableOthers.length >= 1) {
-    // Distribuir equitativamente el restante entre los adjustableOthers
-    const valuePerSlider = Math.floor(targetRemaining / adjustableOthers.length);
-    let extra = targetRemaining - (valuePerSlider * adjustableOthers.length);
+  const currentSum = adjustableOthers.reduce(
+    (sum, c) => sum + (parseInt(c.slider.value, 10) || 0),
+    0
+  );
 
-    console.log(`  ⚖️  Distribuyendo ${targetRemaining}% entre ${adjustableOthers.length} sliders: ${valuePerSlider}% c/u + ${extra} extra`);
+  if (currentSum <= 0) {
+    const base = Math.floor(remaining / adjustableOthers.length);
+    let extra = remaining - base * adjustableOthers.length;
 
-    adjustableOthers.forEach((c, index) => {
-      const value = valuePerSlider + (extra > 0 ? 1 : 0);
+    adjustableOthers.forEach(c => {
+      const value = base + (extra > 0 ? 1 : 0);
       if (extra > 0) extra--;
-      syncControlValue(c.drink, value);
-      console.log(`    → ${c.drink}: ${value}%`);
+      syncControlValue(c.drink, Math.max(0, value));
     });
-
-    updateBudgetSplitState();
-    return;
+  } else {
+    let assigned = 0;
+    adjustableOthers.forEach((c, index) => {
+      if (index === adjustableOthers.length - 1) {
+        syncControlValue(c.drink, Math.max(0, remaining - assigned));
+      } else {
+        const val = Math.round(((parseInt(c.slider.value, 10) || 0) / currentSum) * remaining);
+        assigned += val;
+        syncControlValue(c.drink, Math.max(0, val));
+      }
+    });
   }
 
   updateBudgetSplitState();
