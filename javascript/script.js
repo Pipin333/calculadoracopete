@@ -480,7 +480,7 @@ function handleSliderChange(e) {
   debounceTimer = setTimeout(() => {
     rebalanceFromChangedDrink(drink, value);
     debounceTimer = null;
-  }, 30);
+  }, 10);
 }
 
 function handleInputChange(e) {
