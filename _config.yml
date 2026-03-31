@@ -6,9 +6,10 @@ theme: null
 
 # Incluir archivos que normalmente se ignoran
 include:
-  - presupuesto.html
-  - presupuesto.js
-  - shorturl.js
+  - html/presupuesto.html
+  - html/index.html
+  - javascript/presupuesto.js
+  - javascript/shorturl.js
 
 # Excluir archivos innecesarios
 exclude:
@@ -27,10 +28,10 @@ exclude:
 
 # Configuración de caché
 keep_files:
-  - presupuesto.html
-  - presupuesto.js
-  - shorturl.js
-  - styles.css
-  - script.js
-  - index.html
-  - productos.json
+  - html/presupuesto.html
+  - html/index.html
+  - javascript/presupuesto.js
+  - javascript/shorturl.js
+  - css/styles.css
+  - javascript/script.js
+  - json/productos.json

@@ -4,7 +4,7 @@
 # GitHub Pages NO soporta .htaccess
 # 
 # Para GitHub Pages, se usan URLs con parámetros query:
-# presupuesto.html?id=abc123
+# html/presupuesto.html?id=abc123
 #
 # Si migras a Apache o Vercel, descomenta las líneas abajo
 
@@ -19,11 +19,11 @@
 #  RewriteCond %{REQUEST_FILENAME} !-f
 #  RewriteCond %{REQUEST_FILENAME} !-d
 #  
-#  # Reescribir /p/(id) a presupuesto.html?id=...
-#  RewriteRule ^p/([a-zA-Z0-9]+)/?$ presupuesto.html?id=$1 [QSA,L]
+#  # Reescribir /p/(id) a html/presupuesto.html?id=...
+#  RewriteRule ^p/([a-zA-Z0-9]+)/?$ html/presupuesto.html?id=$1 [QSA,L]
 #  
-#  # Reescribir /presupuesto a presupuesto.html
-#  RewriteRule ^presupuesto/?$ presupuesto.html [QSA,L]
+#  # Reescribir /presupuesto a html/presupuesto.html
+#  RewriteRule ^presupuesto/?$ html/presupuesto.html [QSA,L]
 #  
 #  # Permitir acceso a archivos CSS, JS, imágenes
 #  RewriteCond %{REQUEST_FILENAME} -f

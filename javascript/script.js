@@ -406,6 +406,7 @@ function renderBudgetSliders() {
   updateBudgetSplitState();
 }
 
+// Funciones helper para acceder a los controles
 function getBudgetControls() {
   return Array.from(document.querySelectorAll(".budget-slider")).map(slider => {
     const drink = slider.dataset.drink;
@@ -454,12 +455,71 @@ function handleLockChange(e) {
   normalizeBudgetSplit();
 }
 
+// Debounce timer para evitar recálculos durante cambios rápidos
+let debounceTimer = null;
+
+function handleSliderChange(e) {
+  const drink = e.target.dataset.drink;
+  let value = parseInt(e.target.value, 10) || 0;
+  
+  // 🚨 VALIDACIÓN INMEDIATA: Asegurar que no se pase de 100%
+  const controls = getBudgetControls();
+  const lockedOthers = controls.filter(c => c.drink !== drink && c.locked);
+  const lockedTotal = lockedOthers.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
+  
+  // Si el nuevo valor + locked total > 100, ajustar inmediatamente
+  if (value + lockedTotal > 100) {
+    value = Math.max(0, 100 - lockedTotal);
+    e.target.value = value;
+  }
+  
+  // Cancelar timer anterior
+  if (debounceTimer) clearTimeout(debounceTimer);
+  
+  // Nuevo timer: rebalancea después de 30ms sin cambios
+  debounceTimer = setTimeout(() => {
+    rebalanceFromChangedDrink(drink, value);
+    debounceTimer = null;
+  }, 30);
+}
+
+function handleInputChange(e) {
+  const drink = e.target.dataset.drink;
+  let value = parseInt(e.target.value, 10);
+
+  if (Number.isNaN(value)) value = 0;
+  value = Math.max(0, Math.min(100, value));
+  
+  // 🚨 VALIDACIÓN INMEDIATA: Asegurar que no se pase de 100%
+  const controls = getBudgetControls();
+  const lockedOthers = controls.filter(c => c.drink !== drink && c.locked);
+  const lockedTotal = lockedOthers.reduce((sum, c) => sum + (parseInt(c.slider.value, 10) || 0), 0);
+  
+  // Si el nuevo valor + locked total > 100, ajustar inmediatamente
+  if (value + lockedTotal > 100) {
+    value = Math.max(0, 100 - lockedTotal);
+    e.target.value = value;
+  }
+
+  // Cancelar timer anterior
+  if (debounceTimer) clearTimeout(debounceTimer);
+  
+  // Nuevo timer: rebalancea después de 30ms sin cambios
+  debounceTimer = setTimeout(() => {
+    rebalanceFromChangedDrink(drink, value);
+    debounceTimer = null;
+  }, 30);
+}
+
+/**
+ * Rebalancea los sliders cuando uno cambia
+ * VERSIÓN MEJORADA: Más robusta contra edge cases
+ */
 function rebalanceFromChangedDrink(changedDrink, newValue) {
   const controls = getBudgetControls();
 
   newValue = Math.max(0, Math.min(100, Math.round(newValue)));
-  syncControlValue(changedDrink, newValue);
-
+  
   const adjustableOthers = controls.filter(c => c.drink !== changedDrink && !c.locked);
   const lockedOthers = controls.filter(c => c.drink !== changedDrink && c.locked);
 
@@ -469,58 +529,48 @@ function rebalanceFromChangedDrink(changedDrink, newValue) {
   );
 
   const targetRemaining = 100 - newValue - lockedTotal;
-
+  
+  // Si targetRemaining es negativo, el usuario cambió a un valor muy alto
   if (targetRemaining < 0) {
+    console.log(`  ⚠️  Valor ${newValue} excede límite. Corrigiendo...`);
     const correctedValue = Math.max(0, 100 - lockedTotal);
+    console.log(`  🔄 Rebalance: ${changedDrink} → ${correctedValue}% (corregido), Total controls: ${controls.length}`);
     syncControlValue(changedDrink, correctedValue);
     updateBudgetSplitState();
     return;
   }
 
+  syncControlValue(changedDrink, newValue);
+  console.log(`🔄 Rebalance: ${changedDrink} → ${newValue}%, Total controls: ${controls.length}`);
+  console.log(`  📊 Adjustable: ${adjustableOthers.length}, Locked total: ${lockedTotal}, Target remaining: ${targetRemaining}`);
+
+  // Si no hay otros sliders ajustables, nada que hacer
   if (adjustableOthers.length === 0) {
-    const correctedValue = Math.max(0, 100 - lockedTotal);
-    syncControlValue(changedDrink, correctedValue);
     updateBudgetSplitState();
     return;
   }
 
-  const currentAdjustableTotal = adjustableOthers.reduce(
-    (sum, c) => sum + (parseInt(c.slider.value, 10) || 0),
-    0
-  );
+  // 🎯 NUEVA LÓGICA: Rebalancear si hay 2+ sliders desbloqueados (incluyendo el que cambió)
+  // Es decir, si adjustableOthers.length >= 1 (más el changedDrink = 2+)
+  if (adjustableOthers.length >= 1) {
+    // Distribuir equitativamente el restante entre los adjustableOthers
+    const valuePerSlider = Math.floor(targetRemaining / adjustableOthers.length);
+    let extra = targetRemaining - (valuePerSlider * adjustableOthers.length);
 
-  if (currentAdjustableTotal <= 0) {
-    const base = Math.floor(targetRemaining / adjustableOthers.length);
-    let extra = targetRemaining - base * adjustableOthers.length;
+    console.log(`  ⚖️  Distribuyendo ${targetRemaining}% entre ${adjustableOthers.length} sliders: ${valuePerSlider}% c/u + ${extra} extra`);
 
-    adjustableOthers.forEach(c => {
-      const value = base + (extra > 0 ? 1 : 0);
+    adjustableOthers.forEach((c, index) => {
+      const value = valuePerSlider + (extra > 0 ? 1 : 0);
       if (extra > 0) extra--;
       syncControlValue(c.drink, value);
+      console.log(`    → ${c.drink}: ${value}%`);
     });
 
-    normalizeBudgetSplit();
+    updateBudgetSplitState();
     return;
   }
 
-  let assigned = 0;
-
-  adjustableOthers.forEach((c, index) => {
-    let value;
-
-    if (index === adjustableOthers.length - 1) {
-      value = targetRemaining - assigned;
-    } else {
-      value = Math.round(
-        ((parseInt(c.slider.value, 10) || 0) / currentAdjustableTotal) * targetRemaining
-      );
-      assigned += value;
-    }
-
-    syncControlValue(c.drink, Math.max(0, value));
-  });
-
-  normalizeBudgetSplit();
+  updateBudgetSplitState();
 }
 
 function normalizeBudgetSplit() {
@@ -602,22 +652,6 @@ function normalizeBudgetSplit() {
   });
 
   updateBudgetSplitState();
-}
-
-function handleSliderChange(e) {
-  const drink = e.target.dataset.drink;
-  const value = parseInt(e.target.value, 10) || 0;
-  rebalanceFromChangedDrink(drink, value);
-}
-
-function handleInputChange(e) {
-  const drink = e.target.dataset.drink;
-  let value = parseInt(e.target.value, 10);
-
-  if (Number.isNaN(value)) value = 0;
-  value = Math.max(0, Math.min(100, value));
-
-  rebalanceFromChangedDrink(drink, value);
 }
 
 function updateBudgetSplitState() {
@@ -1170,15 +1204,24 @@ const detalleTiendaUnica = document.getElementById("detalleTiendaUnica");
 const costoPracticoMultiEl = document.getElementById("costoPracticoMulti");
 const costoPracticoUnicaEl = document.getElementById("costoPracticoUnica");
 
-document.querySelectorAll(".bebida-check").forEach(input => {
-  input.addEventListener("change", () => {
+// Event delegation para checkboxes de bebidas (funciona con Bootstrap dropdown)
+document.addEventListener("change", function(event) {
+  if (event.target.classList.contains("bebida-check")) {
+    actualizarTextoDropdownBebidas();
+    renderBudgetSliders();
+  }
+});
+
+// Inicializar estado visual
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", function() {
     actualizarTextoDropdownBebidas();
     renderBudgetSliders();
   });
-});
-
-actualizarTextoDropdownBebidas();
-renderBudgetSliders();
+} else {
+  actualizarTextoDropdownBebidas();
+  renderBudgetSliders();
+}
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
