@@ -764,8 +764,9 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
   const cervezas = opciones.filter(op => op.grupo === "cerveza");
   const solos = opciones.filter(op => op.grupo === "solo");
   const mixes = opciones.filter(op => op.grupo === "mix_simple");
+  const destilados = opciones.filter(op => op.grupo === "destilado");
 
-  console.log(`   Cervezas: ${cervezas.length}, Solos: ${solos.length}, Mixes: ${mixes.length}`);
+  console.log(`   Cervezas: ${cervezas.length}, Solos: ${solos.length}, Mixes: ${mixes.length}, Destilados: ${destilados.length}`);
 
   if (cervezas.length > 0) {
     const beerBudget = budget * ((budgetSplit["cerveza"] || 0) / 100);
@@ -780,7 +781,7 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
     });
   }
 
-  const opcionesDestilado = [...solos, ...mixes];
+  const opcionesDestilado = [...solos, ...mixes, ...destilados];
 
   if (opcionesDestilado.length > 0) {
     const factorCantidadDestilados = 0.7 + 0.3 * opcionesDestilado.length;

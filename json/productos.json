@@ -1,5 +1,153 @@
 {
   "timestamp": "2026-03-27T00:00:00",
+  "categorias": {
+    "cerveza": {
+      "nombre": "Cerveza",
+      "grupo": "cerveza",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": false,
+      "displayName": "Cerveza"
+    },
+    "piscola": {
+      "nombre": "Piscola",
+      "grupo": "mix_simple",
+      "llevaMixer": true,
+      "mixerCategoria": "bebida",
+      "mixerFactor": 2,
+      "llevaHielo": true,
+      "displayName": "Piscola"
+    },
+    "ron": {
+      "nombre": "Roncola",
+      "grupo": "mix_simple",
+      "llevaMixer": true,
+      "mixerCategoria": "bebida",
+      "mixerFactor": 2,
+      "llevaHielo": true,
+      "displayName": "Roncola"
+    },
+    "vodka": {
+      "nombre": "Vodka + bebida",
+      "grupo": "mix_simple",
+      "llevaMixer": true,
+      "mixerCategoria": "bebida",
+      "mixerFactor": 2,
+      "llevaHielo": true,
+      "displayName": "Vodka + bebida"
+    },
+    "whiskey": {
+      "nombre": "Whiskey solo",
+      "grupo": "solo",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": true,
+      "displayName": "Whiskey solo"
+    },
+    "gin": {
+      "nombre": "Gin",
+      "grupo": "destilado",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": true,
+      "displayName": "Gin"
+    },
+    "jaeger": {
+      "nombre": "Jäger",
+      "grupo": "destilado",
+      "llevaMixer": true,
+      "mixerCategoria": "bebida",
+      "mixerFactor": 2,
+      "llevaHielo": true,
+      "displayName": "Jäger",
+      "esSeleccionable": true
+    },
+    "bebida": {
+      "nombre": "Bebida",
+      "grupo": "mixer",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": false,
+      "esSeleccionable": false,
+      "displayName": "Bebida"
+    },
+    "redbull": {
+      "nombre": "Red Bull",
+      "grupo": "mixer",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": false,
+      "esSeleccionable": false,
+      "displayName": "Red Bull"
+    },
+    "tonica": {
+      "nombre": "Tónica",
+      "grupo": "mixer",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": false,
+      "esSeleccionable": false,
+      "displayName": "Tónica"
+    },
+    "hielo": {
+      "nombre": "Hielo",
+      "grupo": "complemento",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": false,
+      "esSeleccionable": false,
+      "displayName": "Hielo"
+    }
+  },
+  "combinaciones_especiales": {
+    "whiscola": {
+      "nombre": "Whiscola",
+      "grupo": "mix_simple",
+      "categoriaBase": "whiskey",
+      "llevaMixer": true,
+      "mixerCategoria": "bebida",
+      "mixerFactor": 2,
+      "llevaHielo": true,
+      "displayName": "Whiscola"
+    },
+    "gin_tonic": {
+      "nombre": "Gin tonic",
+      "grupo": "mix_simple",
+      "categoriaBase": "gin",
+      "llevaMixer": true,
+      "mixerCategoria": "tonica",
+      "mixerFactor": 2,
+      "llevaHielo": true,
+      "displayName": "Gin tonic"
+    },
+    "gin_redbull": {
+      "nombre": "Gin + energética",
+      "grupo": "mix_simple",
+      "categoriaBase": "gin",
+      "llevaMixer": true,
+      "mixerCategoria": "redbull",
+      "mixerFactor": 2.75,
+      "llevaHielo": true,
+      "displayName": "Gin + energética"
+    },
+    "jaeger_redbull": {
+      "nombre": "Jäger + energética",
+      "grupo": "mix_simple",
+      "categoriaBase": "jaeger",
+      "llevaMixer": true,
+      "mixerCategoria": "redbull",
+      "mixerFactor": 2.75,
+      "llevaHielo": true,
+      "displayName": "Jäger + energética"
+    }
+  },
   "total": 46,
   "productos": [
     { "id": 1, "categoria": "cerveza", "nombre": "Cerveza Lager lata 470ml", "tienda": "Jumbo", "precio": 1000, "unidades": 1, "volumenMlUnidad": 470 },
