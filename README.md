@@ -7,7 +7,7 @@
 * **Frontend**: HTML5, CSS3 y Bootstrap 5.3.3.
 * **Lógica**: JavaScript ES6+ para el motor de cálculo y manipulación del DOM.
 * **Despliegue**: GitHub Pages, automatizado por un flujo de CI/CD en GitHub Actions.
-* **Persistencia de presupuestos**: integrado con Firebase para guardar listas y compartirlas mediante un código de 6–8 dígitos (característica extendida no reflejada en DeepWiki).
+* **Persistencia de presupuestos**: integrado con Firebase para guardar listas y compartirlas mediante un código de 6–8 dígitos.
 * **Portabilidad**: aplicación 100 % cliente, sin backend, lo que la hace fácil de desplegar.
 
 ## 🎯 Características principales
