@@ -122,93 +122,147 @@ function getFactorEstacional() {
 }
 
 // ===============================
-// OPCIONES DE CONSUMO
+// BUILDER AUTOMÁTICO DESDE productos.json
 // ===============================
-const OPCIONES_CONSUMO = {
-  cerveza: {
-    nombre: "Cerveza",
-    grupo: "cerveza",
-    categoriaBase: "cerveza",
-    llevaMixer: false,
-    mixerCategoria: null,
-    mixerFactor: 0,
-    llevaHielo: false
-  },
-  piscola: {
-    nombre: "Piscola",
-    grupo: "mix_simple",
-    categoriaBase: "piscola",
-    llevaMixer: true,
-    mixerCategoria: "bebida",
-    mixerFactor: 2,
-    llevaHielo: true
-  },
-  ron: {
-    nombre: "Roncola",
-    grupo: "mix_simple",
-    categoriaBase: "ron",
-    llevaMixer: true,
-    mixerCategoria: "bebida",
-    mixerFactor: 2,
-    llevaHielo: true
-  },
-  vodka: {
-    nombre: "Vodka + bebida",
-    grupo: "mix_simple",
-    categoriaBase: "vodka",
-    llevaMixer: true,
-    mixerCategoria: "bebida",
-    mixerFactor: 2,
-    llevaHielo: true
-  },
-  whiskey: {
-    nombre: "Whiskey solo",
-    grupo: "solo",
-    categoriaBase: "whiskey",
-    llevaMixer: false,
-    mixerCategoria: null,
-    mixerFactor: 0,
-    llevaHielo: true
-  },
-  whiscola: {
-    nombre: "Whiscola",
-    grupo: "mix_simple",
-    categoriaBase: "whiskey",
-    llevaMixer: true,
-    mixerCategoria: "bebida",
-    mixerFactor: 2,
-    llevaHielo: true
-  },
-  gin_tonic: {
-    nombre: "Gin tonic",
-    grupo: "mix_simple",
-    categoriaBase: "gin",
-    llevaMixer: true,
-    mixerCategoria: "tonica",
-    mixerFactor: 2,
-    llevaHielo: true
-  },
-  gin_redbull: {
-    nombre: "Gin + energética",
-    grupo: "mix_simple",
-    categoriaBase: "gin",
-    llevaMixer: true,
-    mixerCategoria: "redbull",
-    mixerFactor: 2.75,  // Factor energética: ideal para latas 250ml vs 100ml destilado
-    llevaHielo: true
-  },
-  jaeger_redbull: {
-    nombre: "Jäger + energética",
-    grupo: "mix_simple",
-    categoriaBase: "jaeger",
-    llevaMixer: true,
-    mixerCategoria: "redbull",
-    mixerFactor: 2.75,  // Factor energética: ideal para latas 250ml vs 100ml destilado
-    llevaHielo: true
+/**
+ * Sistema completamente modular que lee categorías desde productos.json
+ * 
+ * VENTAJAS:
+ * - Agregar bebida = solo agregar a productos.json
+ * - Checkboxes se generan automáticamente
+ * - OPCIONES_CONSUMO se construye automáticamente
+ * - Sin código hardcodeado en script.js
+ * 
+ * CÓMO AGREGAR UNA BEBIDA:
+ * 1. En productos.json → categorias → agregar nueva categoría con metadata
+ * 2. O en productos.json → combinaciones_especiales → agregar SKU especial
+ * 3. LISTO - Todo se genera automáticamente
+ */
+
+let CATEGORIAS_JSON = {};
+let COMBINACIONES_ESPECIALES_JSON = {};
+
+/**
+ * Carga configuración desde productos.json
+ */
+async function cargarConfiguracionDesdeJSON() {
+  try {
+    const response = await fetch('../json/productos.json');
+    const data = await response.json();
+    
+    CATEGORIAS_JSON = data.categorias || {};
+    COMBINACIONES_ESPECIALES_JSON = data.combinaciones_especiales || {};
+    
+    console.log(`📥 Configuración cargada desde productos.json`);
+    console.log(`   📊 Categorías: ${Object.keys(CATEGORIAS_JSON).length}`);
+    console.log(`   🔗 Combinaciones: ${Object.keys(COMBINACIONES_ESPECIALES_JSON).length}`);
+    
+    return true;
+  } catch (error) {
+    console.error(`❌ Error cargando productos.json:`, error);
+    return false;
   }
-};
+}
+
+/**
+ * Construye OPCIONES_CONSUMO desde JSON
+ */
+function buildOpcionesConsumoDesdeJSON() {
+  const opciones = {};
+
+  // 1. Agregar categorías simples (seleccionables)
+  for (const [key, config] of Object.entries(CATEGORIAS_JSON)) {
+    if (config.esSeleccionable !== false) {
+      opciones[key] = {
+        nombre: config.nombre,
+        grupo: config.grupo,
+        categoriaBase: key,
+        llevaMixer: config.llevaMixer,
+        mixerCategoria: config.mixerCategoria,
+        mixerFactor: config.mixerFactor,
+        llevaHielo: config.llevaHielo
+      };
+    }
+  }
+
+  // 2. Agregar combinaciones especiales
+  for (const [key, config] of Object.entries(COMBINACIONES_ESPECIALES_JSON)) {
+    opciones[key] = {
+      nombre: config.nombre,
+      grupo: config.grupo,
+      categoriaBase: config.categoriaBase,
+      llevaMixer: config.llevaMixer,
+      mixerCategoria: config.mixerCategoria,
+      mixerFactor: config.mixerFactor,
+      llevaHielo: config.llevaHielo
+    };
+  }
+
+  console.log(`📦 OPCIONES_CONSUMO construidas desde JSON: ${Object.keys(opciones).length} opciones`);
+  return opciones;
+}
+
+/**
+ * Genera checkboxes dinámicamente en el dropdown
+ */
+function generarCheckboxesDinámicos() {
+  const dropdownMenu = document.querySelector('.dropdown-menu[aria-labelledby="bebidasDropdown"]');
+  
+  if (!dropdownMenu) {
+    console.error(`❌ Dropdown menu no encontrado`);
+    return;
+  }
+
+  // Limpiar checkboxes existentes (excepto el primero si es un divider)
+  dropdownMenu.innerHTML = '';
+
+  // Generar checkboxes para categorías seleccionables + combinaciones especiales
+  const bebidas = {
+    ...Object.entries(CATEGORIAS_JSON)
+      .filter(([_, config]) => config.esSeleccionable !== false)
+      .reduce((acc, [key, config]) => ({...acc, [key]: config}), {}),
+    ...COMBINACIONES_ESPECIALES_JSON
+  };
+
+  console.log(`🔲 Generando ${Object.keys(bebidas).length} checkboxes...`);
+  console.log(`📋 Bebidas a generar:`, Object.keys(bebidas));
+
+  for (const [key, config] of Object.entries(bebidas)) {
+    const checkId = `chk${key.charAt(0).toUpperCase()}${key.slice(1).replace(/_/g, '')}`;
+    const checkbox = document.createElement('div');
+    checkbox.className = 'form-check mb-2';
+    checkbox.innerHTML = `
+      <input class="form-check-input bebida-check" type="checkbox" value="${key}" id="${checkId}">
+      <label class="form-check-label" for="${checkId}">${config.displayName || config.nombre}</label>
+    `;
+    dropdownMenu.appendChild(checkbox);
+    
+    console.log(`  ✓ ${key} → ${config.displayName || config.nombre}`);
+  }
+
+  console.log(`✅ Checkboxes generados dinámicamente`);
+
+  // Re-adjuntar event listeners al dropdown actualizado
+  adjuntarEventListeners();
+}
+
+/**
+ * Re-adjunta event listeners después de generar checkboxes
+ */
+function adjuntarEventListeners() {
+  // El event delegation ya está configurado en handleSliderChange
+  // pero podemos forzar una actualización visual
+  actualizarTextoDropdownBebidas();
+}
 
 const mockProducts = []; // Remove or leave empty as we are now relying on productos.json
+
+// ===============================
+// OPCIONES_CONSUMO GLOBAL
+// ===============================
+// Se construirá dinámicamente al cargar productos.json
+let OPCIONES_CONSUMO = {};
+
 // ===============================
 // API MOCK
 // ===============================
@@ -271,8 +325,16 @@ function addLi(element, text) {
 }
 
 function getSelectedDrinks() {
-  return Array.from(document.querySelectorAll(".bebida-check:checked"))
-    .map(input => input.value);
+  const selected = Array.from(document.querySelectorAll(".bebida-check:checked"))
+    .map(input => input.value)
+    .filter(key => OPCIONES_CONSUMO && OPCIONES_CONSUMO[key]);
+
+  console.log(`📊 Bebidas seleccionadas:`, selected);
+  if (OPCIONES_CONSUMO) {
+    console.log(`   Disponibles en OPCIONES_CONSUMO:`, Object.keys(OPCIONES_CONSUMO));
+  }
+
+  return selected;
 }
 
 function getModeLabel(mode) {
@@ -673,14 +735,37 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
     throw new Error(`Modo inválido recibido en buildRequirements: ${mode}`);
   }
 
+  // ✅ VALIDACIÓN: Verificar OPCIONES_CONSUMO
+  if (!OPCIONES_CONSUMO || Object.keys(OPCIONES_CONSUMO).length === 0) {
+    console.error(`❌ OPCIONES_CONSUMO vacío o no inicializado`);
+    console.log(`OPCIONES_CONSUMO actual:`, OPCIONES_CONSUMO);
+    return [];
+  }
+
   const requirements = [];
+  
+  console.log(`\n🔧 buildRequirements() - Procesando ${selectedDrinks.length} bebidas`);
+  
   const opciones = selectedDrinks
-    .map(key => ({ key, ...OPCIONES_CONSUMO[key] }))
+    .map(key => {
+      const opcion = OPCIONES_CONSUMO[key];
+      if (!opcion) {
+        console.warn(`⚠️ Bebida "${key}" NO EXISTE en OPCIONES_CONSUMO`);
+        console.log(`   Disponibles:`, Object.keys(OPCIONES_CONSUMO));
+        return null;
+      }
+      console.log(`  ✓ Procesando: ${key} (grupo: ${opcion.grupo}, nombre: ${opcion.nombre})`);
+      return { key, ...opcion };
+    })
     .filter(Boolean);
+
+  console.log(`📊 Opciones válidas después de filtro: ${opciones.length}`);
 
   const cervezas = opciones.filter(op => op.grupo === "cerveza");
   const solos = opciones.filter(op => op.grupo === "solo");
   const mixes = opciones.filter(op => op.grupo === "mix_simple");
+
+  console.log(`   Cervezas: ${cervezas.length}, Solos: ${solos.length}, Mixes: ${mixes.length}`);
 
   if (cervezas.length > 0) {
     const beerBudget = budget * ((budgetSplit["cerveza"] || 0) / 100);
@@ -1184,6 +1269,35 @@ function renderWarnings(warnings) {
 }
 
 // ===============================
+// INICIALIZACIÓN
+// ===============================
+/**
+ * Inicializa la app:
+ * 1. Carga configuración desde productos.json
+ * 2. Construye OPCIONES_CONSUMO
+ * 3. Genera checkboxes dinámicamente
+ * 4. Inicia listeners
+ */
+async function inicializarApp() {
+  console.log(`🚀 Iniciando app...`);
+  
+  // Cargar JSON
+  const cargado = await cargarConfiguracionDesdeJSON();
+  if (!cargado) {
+    console.error(`❌ No se pudo cargar productos.json`);
+    return;
+  }
+  
+  // Construir opciones
+  OPCIONES_CONSUMO = buildOpcionesConsumoDesdeJSON();
+  
+  // Generar checkboxes
+  generarCheckboxesDinámicos();
+  
+  console.log(`✅ App inicializada`);
+}
+
+// ===============================
 // MAIN
 // ===============================
 const form = document.getElementById("carreteForm");
@@ -1200,13 +1314,27 @@ const detalleTiendaUnica = document.getElementById("detalleTiendaUnica");
 const costoPracticoMultiEl = document.getElementById("costoPracticoMulti");
 const costoPracticoUnicaEl = document.getElementById("costoPracticoUnica");
 
+// Inicializar app cuando DOM esté listo
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", inicializarApp);
+} else {
+  inicializarApp();
+}
+
 // Event delegation para checkboxes de bebidas (funciona con Bootstrap dropdown)
 document.addEventListener("change", function(event) {
   if (event.target.classList.contains("bebida-check")) {
+    // Prevenir comportamiento default (importante para evitar reinicios en dropdowns)
+    event.preventDefault?.();
+    
+    console.log(`✅ Bebida: ${event.target.value} - ${event.target.checked ? 'seleccionada' : 'deseleccionada'}`);
+    
     actualizarTextoDropdownBebidas();
     renderBudgetSliders();
+    
+    return false;
   }
-});
+}, true);
 
 // Inicializar estado visual
 if (document.readyState === "loading") {
@@ -1221,11 +1349,19 @@ if (document.readyState === "loading") {
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
+  console.log(`\n🚀 Form Submit - Iniciando cálculo de presupuesto`);
 
   const people = parseInt(document.getElementById("personas").value, 10);
   const aporte = parseInt(document.getElementById("aporte").value, 10);
   const mode = document.getElementById("modo").value;
   const selectedDrinks = getSelectedDrinks();
+
+  console.log(`📊 Parámetros del formulario:`);
+  console.log(`   Personas: ${people}`);
+  console.log(`   Aporte: ${aporte}`);
+  console.log(`   Modo: ${mode}`);
+  console.log(`   Bebidas seleccionadas: ${selectedDrinks.length}`);
+  console.log(`   Bebidas: [${selectedDrinks.join(', ')}]`);
 
   if (!people || people < 1 || aporte < 0) {
     alert("Ingresa valores válidos.");
