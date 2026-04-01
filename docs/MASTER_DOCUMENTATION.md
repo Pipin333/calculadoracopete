@@ -824,6 +824,158 @@ El sitio estará disponible en: `https://pipin333.github.io/calculadoracopete/`
 
 ---
 
+## Sistema Modular de Categorías (v3.1+)
+
+### 🎯 Descripción General
+
+El sistema de categorías ahora es **completamente modular y configurable**. Agregar una nueva bebida requiere SOLO editar `productos.json` - sin tocar JavaScript ni HTML.
+
+**Ventaja:** Nueva bebida = 30 segundos, 0 riesgo de bugs.
+
+### 📦 Arquitectura del Builder
+
+```
+productos.json
+├─ "categorias": { ... }           ← Define cada bebida/tipo
+├─ "combinaciones_especiales": { } ← Combinaciones (whiscola, gin tonic, etc.)
+└─ "productos": [ ... ]            ← SKUs (1 bebida en múltiples tiendas)
+
+                ↓
+          
+    [inicializarApp()]
+          ↓
+    cargarConfiguracionDesdeJSON()
+          ↓
+    buildOpcionesConsumoDesdeJSON()
+          ↓
+    generarCheckboxesDinámicos()
+          ↓
+    ✅ Checkboxes generados automáticamente
+    ✅ OPCIONES_CONSUMO construido
+    ✅ Sliders funcionando
+```
+
+### 🔧 Cómo Agregar una Bebida
+
+**Paso 1:** Abre `json/productos.json`
+
+**Paso 2:** En sección `"categorias"`, agrega:
+
+```json
+"mi_bebida": {
+  "nombre": "Mi Bebida",
+  "grupo": "mix_simple",
+  "llevaMixer": true,
+  "mixerCategoria": "bebida",
+  "mixerFactor": 2,
+  "llevaHielo": true,
+  "displayName": "Mi Bebida",
+  "esSeleccionable": true
+}
+```
+
+**Paso 3:** En sección `"productos"`, agrega al menos 1:
+
+```json
+{ 
+  "id": 999, 
+  "categoria": "mi_bebida", 
+  "nombre": "Mi Bebida 750ml", 
+  "tienda": "Lider", 
+  "precio": 10000, 
+  "unidades": 1, 
+  "volumenMlUnidad": 750 
+}
+```
+
+**Paso 4:** Recarga la página
+
+**✅ LISTO** - Aparece automáticamente en el dropdown
+
+### 📊 Guía Rápida de Grupos
+
+| grupo | Ejemplos | Notas |
+|-------|----------|-------|
+| `"cerveza"` | Cerveza, Vino, Espumante | Bebida base, sin mixer |
+| `"solo"` | Whiskey, Vodka puro | Destilado puro con hielo |
+| `"mix_simple"` | Piscola, Aperol, Whiscola | Destilado + mixer 1:2 |
+| `"destilado"` | Gin, Tequila (base) | NO seleccionable directo |
+| `"mixer"` | Cola, Tónica, Red Bull | NO seleccionable directo |
+| `"complemento"` | Hielo, Limón | NO seleccionable directo |
+
+### 🔗 Referencia de Mixers
+
+| mixerCategoria | Factor | Uso |
+|--------|--------|-----|
+| `"bebida"` | `2` | Cola, Sprite (1 parte destilado : 2 partes bebida) |
+| `"tonica"` | `2` | Tónica para Gin tonic |
+| `"redbull"` | `2.75` | Energéticas (250ml lata) |
+| `null` | `0` | Sin mixer (puro) |
+
+### 🎯 Ejemplo Completo: Agregar "Aperol"
+
+```json
+{
+  "categorias": {
+    "aperol": {
+      "nombre": "Aperol",
+      "grupo": "mix_simple",
+      "llevaMixer": true,
+      "mixerCategoria": "bebida",
+      "mixerFactor": 2,
+      "llevaHielo": true,
+      "displayName": "Aperol Spritz",
+      "esSeleccionable": true
+    }
+  },
+  "productos": [
+    { "id": 200, "categoria": "aperol", "nombre": "Aperol 750ml", "tienda": "Lider", "precio": 12000, "unidades": 1, "volumenMlUnidad": 750 },
+    { "id": 201, "categoria": "aperol", "nombre": "Aperol 1L", "tienda": "Jumbo", "precio": 15000, "unidades": 1, "volumenMlUnidad": 1000 }
+  ]
+}
+```
+
+**✅ LISTO** - Recarga → Aperol Spritz aparece en dropdown
+
+### 🔄 Flujo Completo
+
+**Usuario abre app:**
+1. `script.js` llama `inicializarApp()`
+2. `cargarConfiguracionDesdeJSON()` lee `productos.json`
+3. `buildOpcionesConsumoDesdeJSON()` construye OPCIONES_CONSUMO
+4. `generarCheckboxesDinámicos()` crea checkboxes en dropdown
+5. Event listeners se adjuntan automáticamente
+6. ✅ App lista
+
+**Usuario selecciona bebida:**
+1. Checkbox change event → event delegation
+2. `actualizarTextoDropdownBebidas()` actualiza texto botón
+3. `renderBudgetSliders()` muestra sliders
+4. Sliders se rebalancean automáticamente
+5. ✅ Presupuesto se calcula
+
+### 💡 Ventajas
+
+| Aspecto | Antes | Ahora |
+|--------|-------|-------|
+| Agregar bebida | Editar 5 archivos | Editar 1 JSON |
+| Riesgo bugs | Alto | Bajo |
+| Checkboxes | Hardcodeados | Dinámicos |
+| Tiempo implementación | 10 min | 30 seg |
+| Escalabilidad | Limitada | Ilimitada |
+
+### 🚀 Características Técnicas
+
+✅ Event delegation (funciona con Bootstrap)  
+✅ Validación inmediata de cambios  
+✅ Rebalanceo equitativo de sliders  
+✅ Dropdown cierra automáticamente después de seleccionar  
+✅ Checkboxes generados dinámicamente  
+✅ OPCIONES_CONSUMO construido automáticamente  
+✅ Sin hardcoding en script.js ni index.html  
+
+---
+
 ## FAQ
 
 ### ❓ ¿Cuánto tiempo dura un presupuesto?
