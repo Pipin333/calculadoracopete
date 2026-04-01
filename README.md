@@ -123,7 +123,7 @@ La app ahora es 100% modular. Para agregar una bebida, solo necesitas editar `js
 
 ¿Quieres ayudar a mejorar Cuánto Rinde?
 
-**👉 [Responde la encuesta aquí]((https://forms.gle/Jo2LfY5Uqam4DWEKA))** (3 minutos)
+**👉 [Responde la encuesta aquí](https://forms.gle/Jo2LfY5Uqam4DWEKA)** (3 minutos)
 
 Tu feedback (anonimato garantizado) nos ayuda a:
 - Validar que los consumos estimados sean realistas
