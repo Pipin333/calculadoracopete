@@ -45,26 +45,26 @@ function crearPresupuesto(datos, multiPlan, singlePlan) {
 // ===============================
 const CONSUMOS = {
   previa: {
-    cervezaMlPorPersona: 700,
-    destiladoMlPorPersona: 120,
-    bebidaFactor: 1.5,
+    cervezaMlPorPersona: 1000,
+    destiladoMlPorPersona: 150,
+    bebidaFactor: 1.75,
     hieloBolsasPorPersona: 1 / 10 
   },
   trabajo: {
-    cervezaMlPorPersona: 1200,
-    destiladoMlPorPersona: 180,
+    cervezaMlPorPersona: 1500,
+    destiladoMlPorPersona: 200,
     bebidaFactor: 2.0,
     hieloBolsasPorPersona: 1 / 8
   },
   pongamosle: {
-    cervezaMlPorPersona: 1500,     // Estilo parcela/patota: +50% vs trabajo
-    destiladoMlPorPersona: 250,    // +40% vs trabajo 
+    cervezaMlPorPersona: 2000,     // Estilo parcela/patota: +50% vs trabajo
+    destiladoMlPorPersona: 300,    // +40% vs trabajo 
     bebidaFactor: 2.0,            // Piscola estándar
     hieloBolsasPorPersona: 1 / 4  // 1 bolsa de 2kg cada 4 personas (crítico en septiembre/calor)
   },
   modo18: {
-    cervezaMlPorPersona: 2500,     // Basado en rotación de 200 unidades
-    destiladoMlPorPersona: 400,     // +60% vs pongámosle (mayor protagonismo)
+    cervezaMlPorPersona: 3000,     // Basado en rotación de 200 unidades
+    destiladoMlPorPersona: 450,     // +60% vs pongámosle (mayor protagonismo)
     bebidaFactor: 2.5,             // Energética: ideal para latas de 250ml
     hieloBolsasPorPersona: 1 / 3   // 1 bolsa de 2kg cada 3 personas (crítico en jornada larga)
   },
