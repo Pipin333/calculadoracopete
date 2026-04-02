@@ -550,10 +550,34 @@ function renderBudgetSliders() {
       if (bebidaKey) {
         const mixerValue = this.dataset.mixerValue || this.value;
         setMixerPreference(bebidaKey, mixerValue);
-        renderBudgetSliders(); // Actualizar presupuesto si cambia mixer
+        // NO reiniciar sliders, solo actualizar los valores
+        updateMixerDropdownLabel(bebidaKey);
       }
     });
   });
+}
+
+/**
+ * Actualiza el label del dropdown de mixer sin reiniciar los sliders
+ */
+function updateMixerDropdownLabel(bebidaKey) {
+  const mixerNames = {
+    null: "Sin mixer",
+    "tonica": "Tónica",
+    "redbull": "Energética",
+    "bebida": "Coca-Cola",
+    "sprite": "Sprite",
+    "jugo_watts": "Jugo Watts"
+  };
+  
+  const currentMixer = getMixerPreference(bebidaKey);
+  const mixerName = mixerNames[currentMixer] || "Selecciona mixer";
+  
+  // Actualizar el label del botón del dropdown
+  const dropdownButton = document.getElementById(`mixerDropdown_${bebidaKey}`);
+  if (dropdownButton) {
+    dropdownButton.textContent = mixerName;
+  }
 }
 
 // Funciones helper para acceder a los controles
