@@ -32,6 +32,7 @@ function crearPresupuesto(datos, multiPlan, singlePlan) {
     aporte: datos.aporte || 0,
     modo: datos.modo || 'N/A',
     bebidas: datos.bebidas || [],
+    mixerPreferences: MIXER_PREFERENCES || {},
     tiendaSplit: datos.tiendaSplit || false,
     presupuestoTotal: (datos.personas || 0) * (datos.aporte || 0),
     multiPlan: multiPlan || {},
@@ -180,7 +181,9 @@ function buildOpcionesConsumoDesdeJSON() {
         llevaMixer: config.llevaMixer,
         mixerCategoria: config.mixerCategoria,
         mixerFactor: config.mixerFactor,
-        llevaHielo: config.llevaHielo
+        mixerAlternativas: config.mixerAlternativas || [null],
+        llevaHielo: config.llevaHielo,
+        displayName: config.displayName || config.nombre
       };
     }
   }
@@ -194,11 +197,14 @@ function buildOpcionesConsumoDesdeJSON() {
       llevaMixer: config.llevaMixer,
       mixerCategoria: config.mixerCategoria,
       mixerFactor: config.mixerFactor,
-      llevaHielo: config.llevaHielo
+      mixerAlternativas: config.mixerAlternativas || [null],
+      llevaHielo: config.llevaHielo,
+      displayName: config.displayName || config.nombre
     };
   }
 
   console.log(`📦 OPCIONES_CONSUMO construidas desde JSON: ${Object.keys(opciones).length} opciones`);
+  console.log(`📋 Contenido de OPCIONES_CONSUMO:`, opciones);
   return opciones;
 }
 
@@ -262,6 +268,66 @@ const mockProducts = []; // Remove or leave empty as we are now relying on produ
 // ===============================
 // Se construirá dinámicamente al cargar productos.json
 let OPCIONES_CONSUMO = {};
+
+// ===============================
+// PREFERENCIAS DE MIXER
+// ===============================
+// Rastrear qué mixer elige el usuario para bebidas con múltiples opciones
+// Ej: { ron: "sprite", piscola: "bebida", jaeger: "redbull" }
+let MIXER_PREFERENCES = {};
+
+/**
+ * Obtiene qué mixers alternativos tiene una bebida
+ */
+function getMixerAlternativas(bebidaKey) {
+  const config = OPCIONES_CONSUMO[bebidaKey];
+  return config?.mixerAlternativas || [];
+}
+
+/**
+ * Establece la preferencia de mixer para una bebida
+ */
+function setMixerPreference(bebidaKey, mixerKey) {
+  // Convertir string "null" a null real
+  const actualValue = mixerKey === "null" || mixerKey === null ? null : mixerKey;
+  MIXER_PREFERENCES[bebidaKey] = actualValue;
+  console.log(`✓ Preferencia de mixer guardada: ${bebidaKey} → ${actualValue}`);
+  // Guardar en localStorage para persistencia
+  localStorage.setItem("MIXER_PREFERENCES", JSON.stringify(MIXER_PREFERENCES));
+}
+
+/**
+ * Obtiene la preferencia de mixer para una bebida
+ */
+function getMixerPreference(bebidaKey) {
+  return MIXER_PREFERENCES[bebidaKey] || OPCIONES_CONSUMO[bebidaKey]?.mixerCategoria;
+}
+
+/**
+ * Carga preferencias de mixer desde localStorage
+ */
+function cargarMixerPreferences() {
+  try {
+    const saved = localStorage.getItem("MIXER_PREFERENCES");
+    if (saved) {
+      MIXER_PREFERENCES = JSON.parse(saved);
+      console.log(`📥 Preferencias de mixer cargadas:`, MIXER_PREFERENCES);
+    }
+  } catch (error) {
+    console.warn(`⚠️ Error cargando preferencias de mixer:`, error);
+  }
+}
+
+/**
+ * Limpia preferencias de mixer de bebidas no seleccionadas
+ */
+function limpiarPreferenciasNoSeleccionadas(selectedDrinks) {
+  const toDelete = Object.keys(MIXER_PREFERENCES).filter(key => !selectedDrinks.includes(key));
+  for (const key of toDelete) {
+    delete MIXER_PREFERENCES[key];
+  }
+  localStorage.setItem("MIXER_PREFERENCES", JSON.stringify(MIXER_PREFERENCES));
+}
 
 // ===============================
 // API MOCK
@@ -406,6 +472,13 @@ function renderBudgetSliders() {
     const col = document.createElement("div");
     col.className = "col-md-6";
 
+    // Generar selector de mixer si la bebida tiene alternativas
+    const alternativas = getMixerAlternativas(drink);
+    let mixerHTML = '';
+    if (alternativas && alternativas.length > 1) {
+      mixerHTML = generarUISelectoresDemixer(drink) || '';
+    }
+
     col.innerHTML = `
       <div class="border rounded p-3 bg-white">
         <div class="d-flex justify-content-between align-items-center mb-2 gap-2">
@@ -446,6 +519,8 @@ function renderBudgetSliders() {
           step="1"
           value="${initialValue}"
         />
+
+        ${mixerHTML}
       </div>
     `;
 
@@ -466,6 +541,19 @@ function renderBudgetSliders() {
   });
 
   updateBudgetSplitState();
+  
+  // 🎯 Adjuntar event listeners a los radio buttons de mixer dentro de las tarjetas
+  document.querySelectorAll(".mixer-option").forEach(radio => {
+    radio.addEventListener("change", function() {
+      const matches = this.name.match(/mixer_(.+)/);
+      const bebidaKey = matches ? matches[1] : null;
+      if (bebidaKey) {
+        const mixerValue = this.dataset.mixerValue || this.value;
+        setMixerPreference(bebidaKey, mixerValue);
+        renderBudgetSliders(); // Actualizar presupuesto si cambia mixer
+      }
+    });
+  });
 }
 
 // Funciones helper para acceder a los controles
@@ -762,11 +850,9 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
   console.log(`📊 Opciones válidas después de filtro: ${opciones.length}`);
 
   const cervezas = opciones.filter(op => op.grupo === "cerveza");
-  const solos = opciones.filter(op => op.grupo === "solo");
-  const mixes = opciones.filter(op => op.grupo === "mix_simple");
   const destilados = opciones.filter(op => op.grupo === "destilado");
 
-  console.log(`   Cervezas: ${cervezas.length}, Solos: ${solos.length}, Mixes: ${mixes.length}, Destilados: ${destilados.length}`);
+  console.log(`   Cervezas: ${cervezas.length}, Destilados: ${destilados.length}`);
 
   if (cervezas.length > 0) {
     const beerBudget = budget * ((budgetSplit["cerveza"] || 0) / 100);
@@ -781,11 +867,13 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
     });
   }
 
-  const opcionesDestilado = [...solos, ...mixes, ...destilados];
+  // Solo destilados (ya no separamos puros vs mixtos)
+  const opcionesDestilado = destilados;
 
   if (opcionesDestilado.length > 0) {
     const factorCantidadDestilados = 0.7 + 0.3 * opcionesDestilado.length;
-    const factorSolo = mixes.length === 0 ? 0.85 : 1.0;
+    // Factor solo: 0.85 si hay destilados que típicamente se toman sin mixer
+    const factorSolo = destilados.some(op => op.mixerAlternativas?.includes(null)) ? 0.85 : 1.0;
 
     const totalDestiladoBaseMl = Math.ceil(
       people * rules.destiladoMlPorPersona * factorCantidadDestilados * factorSolo
@@ -832,19 +920,48 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
       });
     });
 
-    mixes.forEach(op => {
-      const req = requirements.find(r => r.opcionKey === op.key);
-      if (!req) return;
+    // 🎯 PROCESAR TODOS LOS DESTILADOS CON MIXER ELEGIDO POR USUARIO
+    // El usuario puede elegir mixer o "sin mixer" desde los selectores
+    opcionesDestilado.forEach(op => {
+      const alternativas = op.mixerAlternativas || [];
       
-      // CREA UNA ENTRADA SEPARADA POR CADA DESTILADO
-      const mixerReq = {
-        categoria: op.mixerCategoria,
-        nombre: `${op.mixerCategoria === "tonica" ? "Tónica" : op.mixerCategoria === "redbull" ? "Energética" : "Bebida"} (para ${op.nombre})`,
-        requiredMl: Math.ceil(req.requiredMl * op.mixerFactor),
-        budget: presupuestoDestilados * 0.2 / mixes.length
-      };
-      
-      requirements.push(mixerReq);
+      // Si tiene múltiples opciones (ej: [null, "bebida"], [null, "sprite"]), procesar mixer
+      if (alternativas.length > 1) {
+        const req = requirements.find(r => r.opcionKey === op.key);
+        if (!req) return;
+        
+        // USAR PREFERENCIA DE MIXER SI EXISTE
+        const mixerKey = getMixerPreference(op.key) || op.mixerCategoria;
+        
+        // Si el mixer es null, no agregar mixer
+        if (mixerKey === null) {
+          console.log(`  ℹ️ ${op.nombre}: Sin mixer seleccionado`);
+          return;
+        }
+        
+        const mixerFactor = CATEGORIAS_JSON[mixerKey]?.mixerFactor || op.mixerFactor;
+        
+        // Mapeo de nombres para display
+        const mixerNames = {
+          "tonica": "Tónica",
+          "redbull": "Energética",
+          "bebida": "Coca-Cola",
+          "sprite": "Sprite",
+          "jugo_watts": "Jugo Watts"
+        };
+        
+        const mixerDisplayName = mixerNames[mixerKey] || mixerKey;
+        
+        // CREA UNA ENTRADA SEPARADA POR CADA BEBIDA CON MIXER
+        const mixerReq = {
+          categoria: mixerKey,
+          nombre: `${mixerDisplayName} (para ${op.nombre})`,
+          requiredMl: Math.ceil(req.requiredMl * mixerFactor),
+          budget: presupuestoDestilados * 0.15 / opcionesDestilado.length
+        };
+        
+        requirements.push(mixerReq);
+      }
     });
 
     const factorEstacional = getFactorEstacional();
@@ -1252,6 +1369,112 @@ function renderWarnings(warnings) {
 }
 
 // ===============================
+// UI PARA SELECCIÓN DE MIXERS
+// ===============================
+/**
+ * Genera UI para seleccionar mixer alternativo para una bebida
+ */
+function generarUISelectoresDemixer(bebidaKey) {
+  const alternativas = getMixerAlternativas(bebidaKey);
+  if (!alternativas || alternativas.length <= 1) return null;
+  
+  const config = OPCIONES_CONSUMO[bebidaKey];
+  const bebidaNombre = config?.displayName || config?.nombre;
+  
+  const mixerNames = {
+    null: "Sin mixer",
+    "tonica": "Tónica",
+    "redbull": "Energética",
+    "bebida": "Coca-Cola",
+    "sprite": "Sprite",
+    "jugo_watts": "Jugo Watts"
+  };
+  
+  // Obtener mixer seleccionado actualmente
+  const currentMixer = getMixerPreference(bebidaKey) || config?.mixerCategoria;
+  const currentMixerName = mixerNames[currentMixer] || "Selecciona mixer";
+  
+  // Generar dropdown con opciones de mixer
+  let html = `
+    <div class="mt-3 pt-2 border-top">
+      <small class="text-muted d-block mb-2"><strong>🥤 Mixer para ${bebidaNombre}</strong></small>
+      <div class="dropdown">
+        <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 text-start" 
+                type="button" id="mixerDropdown_${bebidaKey}" data-bs-toggle="dropdown" 
+                data-bs-auto-close="outside" aria-expanded="false">
+          ${currentMixerName}
+        </button>
+        <div class="dropdown-menu w-100 p-2" aria-labelledby="mixerDropdown_${bebidaKey}">
+  `;
+  
+  for (const mixerKey of alternativas) {
+    const mixerName = mixerNames[mixerKey] || mixerKey;
+    const safeId = mixerKey === null ? "sin_mixer" : mixerKey;
+    const checkId = `mixer_${bebidaKey}_${safeId}`;
+    const isSelected = getMixerPreference(bebidaKey) === mixerKey;
+    const isDefault = config?.mixerCategoria === mixerKey;
+    
+    html += `
+      <div class="form-check mb-2">
+        <input class="form-check-input mixer-option" type="radio" name="mixer_${bebidaKey}" 
+               value="${safeId}" data-mixer-value="${mixerKey === null ? 'null' : mixerKey}" 
+               id="${checkId}" ${isSelected ? 'checked' : ''}>
+        <label class="form-check-label" for="${checkId}">
+          ${mixerName} ${isDefault ? '<span class="badge bg-secondary ms-1">Recomendado</span>' : ''}
+        </label>
+      </div>
+    `;
+  }
+  
+  html += `
+        </div>
+      </div>
+    </div>
+  `;
+  
+  return html;
+}
+
+/**
+ * Renderiza selectores de mixer para todas las bebidas seleccionadas con alternativas
+ */
+function renderizarSelectoresDeMixers() {
+  const selectedDrinks = getSelectedDrinks();
+  let mixerHTML = '';
+  
+  for (const bebidaKey of selectedDrinks) {
+    const alternativas = getMixerAlternativas(bebidaKey);
+    if (alternativas && alternativas.length > 1) {
+      const selectorHTML = generarUISelectoresDemixer(bebidaKey);
+      if (selectorHTML) {
+        mixerHTML += selectorHTML;
+      }
+    }
+  }
+  
+  const mixerSection = document.getElementById("mixerSelectorsSection");
+  if (mixerHTML && mixerSection) {
+    mixerSection.innerHTML = mixerHTML;
+    mixerSection.classList.remove("d-none");
+    
+    // Adjuntar event listeners a los radio buttons
+    document.querySelectorAll(".mixer-option").forEach(radio => {
+      radio.addEventListener("change", function() {
+        const [_, bebidaKey, mixerKey] = this.name.match(/mixer_(.+)/) || [];
+        if (bebidaKey) {
+          // Obtener valor real del mixer (puede ser "null" como string)
+          const mixerValue = this.dataset.mixerValue || this.value;
+          setMixerPreference(bebidaKey, mixerValue);
+          renderBudgetSliders(); // Actualizar presupuesto
+        }
+      });
+    });
+  } else if (mixerSection) {
+    mixerSection.classList.add("d-none");
+  }
+}
+
+// ===============================
 // INICIALIZACIÓN
 // ===============================
 /**
@@ -1263,6 +1486,9 @@ function renderWarnings(warnings) {
  */
 async function inicializarApp() {
   console.log(`🚀 Iniciando app...`);
+  
+  // Cargar preferencias de mixer guardadas
+  cargarMixerPreferences();
   
   // Cargar JSON
   const cargado = await cargarConfiguracionDesdeJSON();
@@ -1314,6 +1540,10 @@ document.addEventListener("change", function(event) {
     
     actualizarTextoDropdownBebidas();
     renderBudgetSliders();
+    
+    // 🎯 LIMPIAR PREFERENCIAS DE BEBIDAS NO SELECCIONADAS
+    const selectedDrinks = getSelectedDrinks();
+    limpiarPreferenciasNoSeleccionadas(selectedDrinks);
     
     return false;
   }

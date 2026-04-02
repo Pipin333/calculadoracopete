@@ -243,6 +243,12 @@
           return;
         }
 
+        // 🎯 Restaurar preferencias de mixer en localStorage
+        if (presupuestoData.mixerPreferences) {
+          localStorage.setItem("MIXER_PREFERENCES", JSON.stringify(presupuestoData.mixerPreferences));
+          console.log(`✓ Preferencias de mixer restauradas:`, presupuestoData.mixerPreferences);
+        }
+
         // Formatear para boleta
         const boleta = formatearPresupuestoParaBoleta(presupuestoData);
 

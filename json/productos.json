@@ -7,44 +7,49 @@
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null],
       "llevaHielo": false,
       "displayName": "Cerveza"
     },
     "piscola": {
       "nombre": "Piscola",
-      "grupo": "mix_simple",
+      "grupo": "destilado",
       "llevaMixer": true,
-      "mixerCategoria": "sprite",
+      "mixerCategoria": "bebida",
       "mixerFactor": 2,
+      "mixerAlternativas": ["bebida", "sprite"],
       "llevaHielo": true,
-      "displayName": "Piscola"
+      "displayName": "Pisco"
     },
     "ron": {
-      "nombre": "Roncola",
-      "grupo": "mix_simple",
+      "nombre": "Ron",
+      "grupo": "destilado",
       "llevaMixer": true,
-      "mixerCategoria": "sprite",
+      "mixerCategoria": "bebida",
       "mixerFactor": 2,
+      "mixerAlternativas": ["bebida", "sprite"],
       "llevaHielo": true,
-      "displayName": "Roncola"
+      "displayName": "Ron"
     },
     "vodka": {
       "nombre": "Vodka + Watts",
-      "grupo": "mix_simple",
+      "grupo": "destilado",
       "llevaMixer": true,
       "mixerCategoria": "jugo_watts",
       "mixerFactor": 2,
+      "mixerAlternativas": ["jugo_watts", "sprite"],
       "llevaHielo": true,
-      "displayName": "Vodka + Watts"
+      "displayName": "Vodka"
     },
     "whiskey": {
-      "nombre": "Whiskey solo",
-      "grupo": "solo",
+      "nombre": "Whiskey",
+      "grupo": "destilado",
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null, "bebida", "sprite"],
       "llevaHielo": true,
-      "displayName": "Whiskey solo"
+      "displayName": "Whiskey"
     },
     "gin": {
       "nombre": "Gin",
@@ -52,6 +57,7 @@
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null, "redbull", "tonica"],
       "llevaHielo": true,
       "displayName": "Gin"
     },
@@ -59,21 +65,23 @@
       "nombre": "Jäger",
       "grupo": "destilado",
       "llevaMixer": true,
-      "mixerCategoria": "sprite",
+      "mixerCategoria": null,
       "mixerFactor": 2,
+      "mixerAlternativas": [null, "redbull"],
       "llevaHielo": true,
       "displayName": "Jäger",
       "esSeleccionable": true
     },
     "bebida": {
-      "nombre": "Bebida",
+      "nombre": "Coca-Cola",
       "grupo": "mixer",
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null],
       "llevaHielo": false,
       "esSeleccionable": false,
-      "displayName": "Bebida"
+      "displayName": "Coca-Cola"
     },
     "redbull": {
       "nombre": "Red Bull",
@@ -81,6 +89,7 @@
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null],
       "llevaHielo": false,
       "esSeleccionable": false,
       "displayName": "Red Bull"
@@ -91,6 +100,7 @@
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null],
       "llevaHielo": false,
       "esSeleccionable": false,
       "displayName": "Tónica"
@@ -101,6 +111,7 @@
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null],
       "llevaHielo": false,
       "esSeleccionable": false,
       "displayName": "Sprite"
@@ -111,6 +122,7 @@
       "llevaMixer": false,
       "mixerCategoria": null,
       "mixerFactor": 0,
+      "mixerAlternativas": [null],
       "llevaHielo": false,
       "esSeleccionable": false,
       "displayName": "Jugo Watts"
@@ -127,46 +139,6 @@
     }
   },
   "combinaciones_especiales": {
-    "whiscola": {
-      "nombre": "Whiscola",
-      "grupo": "mix_simple",
-      "categoriaBase": "whiskey",
-      "llevaMixer": true,
-      "mixerCategoria": "bebida",
-      "mixerFactor": 2,
-      "llevaHielo": true,
-      "displayName": "Whiscola"
-    },
-    "gin_tonic": {
-      "nombre": "Gin tonic",
-      "grupo": "mix_simple",
-      "categoriaBase": "gin",
-      "llevaMixer": true,
-      "mixerCategoria": "tonica",
-      "mixerFactor": 2,
-      "llevaHielo": true,
-      "displayName": "Gin tonic"
-    },
-    "gin_redbull": {
-      "nombre": "Gin + energética",
-      "grupo": "mix_simple",
-      "categoriaBase": "gin",
-      "llevaMixer": true,
-      "mixerCategoria": "redbull",
-      "mixerFactor": 2.75,
-      "llevaHielo": true,
-      "displayName": "Gin + energética"
-    },
-    "jaeger_redbull": {
-      "nombre": "Jäger + energética",
-      "grupo": "mix_simple",
-      "categoriaBase": "jaeger",
-      "llevaMixer": true,
-      "mixerCategoria": "redbull",
-      "mixerFactor": 2.75,
-      "llevaHielo": true,
-      "displayName": "Jäger + energética"
-    }
   },
   "total": 52,
   "productos": [
