@@ -369,7 +369,7 @@ function getPracticalLevel(score) {
   if (score <= 8) return "Muy conveniente";
   if (score <= 15) return "Conveniente";
   if (score <= 24) return "Medio pajera";
-  return "Solo si quieres exprimir precio";
+  return "Solo si estai justo de plata";
 }
 
 function getRatioBudget(spent, total) {
@@ -832,37 +832,19 @@ function buildRequirements(selectedDrinks, people, mode, budget, budgetSplit) {
       });
     });
 
-    const mixerMap = new Map();
-
     mixes.forEach(op => {
       const req = requirements.find(r => r.opcionKey === op.key);
       if (!req) return;
-
-      const current = mixerMap.get(op.mixerCategoria) || {
+      
+      // CREA UNA ENTRADA SEPARADA POR CADA DESTILADO
+      const mixerReq = {
         categoria: op.mixerCategoria,
-        nombre:
-          op.mixerCategoria === "tonica"
-            ? "Tónica"
-            : op.mixerCategoria === "redbull"
-            ? "Energética"
-            : "Bebida",
-        requiredMl: 0,
-        budget: 0
+        nombre: `${op.mixerCategoria === "tonica" ? "Tónica" : op.mixerCategoria === "redbull" ? "Energética" : "Bebida"} (para ${op.nombre})`,
+        requiredMl: Math.ceil(req.requiredMl * op.mixerFactor),
+        budget: presupuestoDestilados * 0.2 / mixes.length
       };
-
-      current.requiredMl += Math.ceil(req.requiredMl * op.mixerFactor);
-      current.budget += presupuestoDestilados * 0.2 / mixes.length;
-
-      mixerMap.set(op.mixerCategoria, current);
-    });
-
-    mixerMap.forEach(mixerReq => {
-      requirements.push({
-        categoria: mixerReq.categoria,
-        nombre: mixerReq.nombre,
-        requiredMl: mixerReq.requiredMl,
-        budget: mixerReq.budget
-      });
+      
+      requirements.push(mixerReq);
     });
 
     const factorEstacional = getFactorEstacional();

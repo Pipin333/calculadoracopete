@@ -14,7 +14,7 @@
       "nombre": "Piscola",
       "grupo": "mix_simple",
       "llevaMixer": true,
-      "mixerCategoria": "bebida",
+      "mixerCategoria": "sprite",
       "mixerFactor": 2,
       "llevaHielo": true,
       "displayName": "Piscola"
@@ -23,19 +23,19 @@
       "nombre": "Roncola",
       "grupo": "mix_simple",
       "llevaMixer": true,
-      "mixerCategoria": "bebida",
+      "mixerCategoria": "sprite",
       "mixerFactor": 2,
       "llevaHielo": true,
       "displayName": "Roncola"
     },
     "vodka": {
-      "nombre": "Vodka + bebida",
+      "nombre": "Vodka + Watts",
       "grupo": "mix_simple",
       "llevaMixer": true,
-      "mixerCategoria": "bebida",
+      "mixerCategoria": "jugo_watts",
       "mixerFactor": 2,
       "llevaHielo": true,
-      "displayName": "Vodka + bebida"
+      "displayName": "Vodka + Watts"
     },
     "whiskey": {
       "nombre": "Whiskey solo",
@@ -59,7 +59,7 @@
       "nombre": "Jäger",
       "grupo": "destilado",
       "llevaMixer": true,
-      "mixerCategoria": "bebida",
+      "mixerCategoria": "sprite",
       "mixerFactor": 2,
       "llevaHielo": true,
       "displayName": "Jäger",
@@ -94,6 +94,26 @@
       "llevaHielo": false,
       "esSeleccionable": false,
       "displayName": "Tónica"
+    },
+    "sprite": {
+      "nombre": "Sprite",
+      "grupo": "mixer",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": false,
+      "esSeleccionable": false,
+      "displayName": "Sprite"
+    },
+    "jugo_watts": {
+      "nombre": "Jugo Watts",
+      "grupo": "mixer",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "llevaHielo": false,
+      "esSeleccionable": false,
+      "displayName": "Jugo Watts"
     },
     "hielo": {
       "nombre": "Hielo",
@@ -148,7 +168,7 @@
       "displayName": "Jäger + energética"
     }
   },
-  "total": 46,
+  "total": 52,
   "productos": [
     { "id": 1, "categoria": "cerveza", "nombre": "Cerveza Lager lata 470ml", "tienda": "Jumbo", "precio": 1000, "unidades": 1, "volumenMlUnidad": 470 },
     { "id": 2, "categoria": "cerveza", "nombre": "Cerveza Lager six pack 6x350ml", "tienda": "Lider", "precio": 6200, "unidades": 6, "volumenMlUnidad": 350 },
@@ -195,6 +215,12 @@
     { "id": 110, "categoria": "tonica", "nombre": "Tónica 1.5L", "tienda": "Lider", "precio": 2000, "unidades": 1, "volumenMlUnidad": 1500 },
     { "id": 111, "categoria": "tonica", "nombre": "Tónica 1.5L", "tienda": "Jumbo", "precio": 1900, "unidades": 1, "volumenMlUnidad": 1500 },
     { "id": 112, "categoria": "tonica", "nombre": "Tónica 1.5L", "tienda": "Unimarc", "precio": 2100, "unidades": 1, "volumenMlUnidad": 1500 },
+    { "id": 120, "categoria": "sprite", "nombre": "Sprite 1.5L", "tienda": "Lider", "precio": 1890, "unidades": 1, "volumenMlUnidad": 1500 },
+    { "id": 121, "categoria": "sprite", "nombre": "Sprite 2L", "tienda": "Jumbo", "precio": 2290, "unidades": 1, "volumenMlUnidad": 2000 },
+    { "id": 122, "categoria": "sprite", "nombre": "Sprite 1.5L", "tienda": "Unimarc", "precio": 1990, "unidades": 1, "volumenMlUnidad": 1500 },
+    { "id": 130, "categoria": "jugo_watts", "nombre": "Jugo Watts 1.5L", "tienda": "Lider", "precio": 2290, "unidades": 1, "volumenMlUnidad": 1500 },
+    { "id": 131, "categoria": "jugo_watts", "nombre": "Jugo Watts 2L", "tienda": "Jumbo", "precio": 2690, "unidades": 1, "volumenMlUnidad": 2000 },
+    { "id": 132, "categoria": "jugo_watts", "nombre": "Jugo Watts 1.5L", "tienda": "Unimarc", "precio": 2390, "unidades": 1, "volumenMlUnidad": 1500 },
     { "id": 60, "categoria": "hielo", "nombre": "Hielo 2kg", "tienda": "Lider", "precio": 1990, "unidades": 1, "volumenMlUnidad": 2000 },
     { "id": 61, "categoria": "hielo", "nombre": "Hielo 2kg", "tienda": "Jumbo", "precio": 1790, "unidades": 1, "volumenMlUnidad": 2000 },
     { "id": 62, "categoria": "hielo", "nombre": "Hielo 2kg", "tienda": "Unimarc", "precio": 2190, "unidades": 1, "volumenMlUnidad": 2000 }
