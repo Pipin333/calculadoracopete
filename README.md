@@ -7,7 +7,7 @@
 * **Frontend**: HTML5, CSS3 y Bootstrap 5.3.3.
 * **Lógica**: JavaScript ES6+ para el motor de cálculo y manipulación del DOM.
 * **Despliegue**: GitHub Pages, automatizado por un flujo de CI/CD en GitHub Actions.
-* **Persistencia de presupuestos**: integrado con Firebase para guardar listas y compartirlas mediante un código de 6–8 dígitos (característica extendida no reflejada en DeepWiki).
+* **Persistencia de presupuestos**: integrado con Firebase para guardar listas y compartirlas mediante un código de 6–8 dígitos.
 * **Portabilidad**: aplicación 100 % cliente, sin backend, lo que la hace fácil de desplegar.
 
 ## 🎯 Características principales
@@ -94,13 +94,13 @@ La app ahora es 100% modular. Para agregar una bebida, solo necesitas editar `js
 
 **Estrategia dual:** Mantener v3 en producción mientras se explora v4 en paralelo.
 
-### 🎯 Hito 1: Lanzamiento & Recolección de Datos (Abril)
+### 🎯 Hito 1: Lanzamiento & Recolección de Datos (Marzo)
 - ✅ Aplicación v3 en producción
 - 📊 Google Form de validación (100+ respuestas)
 - 📈 GA4 Analytics integrado
 - 🐛 Documentar bugs reportados
 
-### 🔧 Hito 2: Hotfixes v3.1 (Mayo)
+### 🔧 Hito 2: Hotfixes v3.1 (Abril)
 - 🔨 Arreglar slider bug detectado
 - 📋 Ajustar reglas de consumo (basado en form)
 - 🏷️ Mejorar nombres de modos si es necesario
@@ -123,7 +123,7 @@ La app ahora es 100% modular. Para agregar una bebida, solo necesitas editar `js
 
 ¿Quieres ayudar a mejorar Cuánto Rinde?
 
-**👉 [Responde la encuesta aquí](https://forms.gle/cuantorinde)** (3 minutos)
+**👉 [Responde la encuesta aquí](https://forms.gle/Jo2LfY5Uqam4DWEKA)** (3 minutos)
 
 Tu feedback (anonimato garantizado) nos ayuda a:
 - Validar que los consumos estimados sean realistas
@@ -135,24 +135,10 @@ Tu feedback (anonimato garantizado) nos ayuda a:
 ## �🧩 Extensiones y mejoras sugeridas
 
 * **Ampliar la base de datos**: integrar scraping automático para productos de supermercados y botillerías.
-* **Soporte multi-moneda**: permitir conversiones entre CLP y otras divisas.
 * **Modo sin conexión**: cachear los datos de productos para funcionar sin internet.
 * **Refactorizar a framework**: migrar a un framework frontend (React/Vue/Svelte) para separar mejor la lógica y la vista.
-* **Mobile app nativa**: Flet (Python) o React Native
 
 ---
-
-## 📖 Documentación
-
-| Documento | Contenido |
-|-----------|-----------|
-| [`docs/MASTER_DOCUMENTATION.md`](docs/MASTER_DOCUMENTATION.md) | Documentación técnica completa |
-| [`docs/SCRAPER_IMPLEMENTATION.md`](docs/SCRAPER_IMPLEMENTATION.md) | Guía de implementación de scraper de precios |
-| [`SCRAPER_TODO.md`](SCRAPER_TODO.md) | Lista de tareas paso-a-paso para scraper |
-| [`docs/ROADMAP_v4.md`](docs/ROADMAP_v4.md) | Plan detallado 6 meses |
-| [`docs/BUGS_ANALYSIS.md`](docs/BUGS_ANALYSIS.md) | Análisis de bugs reportados |
-| [`docs/GOOGLE_FORM_PREGUNTAS.md`](docs/GOOGLE_FORM_PREGUNTAS.md) | Estructura de encuesta |
-| [`docs/SINTESIS_EJECUTIVA.md`](docs/SINTESIS_EJECUTIVA.md) | Resumen para el equipo |
 
 
 
