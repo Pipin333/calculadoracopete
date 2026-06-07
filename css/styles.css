@@ -690,3 +690,8 @@ h1 {
   color: var(--text-primary) !important;
   font-size: 0.85rem;
 }
+
+.form-select option {
+  background-color: #110c26 !important;
+  color: var(--text-primary) !important;
+}
