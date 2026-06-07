@@ -41,7 +41,7 @@
             </p>
 
             <form id="carreteForm" class="row g-3">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="personas" class="form-label">¿Cuántos son?</label>
                 <input
                   type="number"
@@ -53,7 +53,7 @@
                 />
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="aporte" class="form-label">¿Cuánto pone cada uno? (CLP)</label>
                 <input
                   type="number"
@@ -65,14 +65,22 @@
                 />
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="modo" class="form-label">Modo</label>
                 <select class="form-select" id="modo" required>
                   <option value="previa">Previa</option>
                   <option value="trabajo">Trabajo mañana</option>
                   <option value="pongamosle">Pongámosle</option>
                   <option value="modo18">Modo 18</option>
-                  </option>
+                </select>
+              </div>
+
+              <div class="col-md-3">
+                <label for="gama" class="form-label">Gama (Calidad)</label>
+                <select class="form-select" id="gama" required>
+                  <option value="rata">Rata 🐀 (Baltica, Capel, etc.)</option>
+                  <option value="normal" selected>Normal 🍺 (Alto/Mistral, Royal, Heineken)</option>
+                  <option value="sobrado">Sobrado 🥃 (Reservados, Johnnie Black, Austral)</option>
                 </select>
               </div>
 

@@ -1,0 +1,23 @@
+{
+  "search_queries": {
+    "cerveza": ["cerveza lager", "cerveza lata", "cerveza pack"],
+    "piscola": ["pisco"],
+    "ron": ["ron añejo", "ron blanco"],
+    "vodka": ["vodka"],
+    "whiskey": ["whisky", "whiskey"],
+    "gin": ["gin", "ginebra"],
+    "jaeger": ["jagermeister", "jager"],
+    "bebida": ["coca-cola", "coca cola", "fanta", "limon soda"],
+    "redbull": ["red bull", "redbull"],
+    "tonica": ["tonica", "agua tonica"],
+    "sprite": ["sprite"],
+    "jugo_watts": ["jugo watts", "jugo"],
+    "hielo": ["hielo bolsa", "hielo 2kg"]
+  },
+  "stores": ["Jumbo", "Lider", "Unimarc", "La Barra", "Liquidos", "Booze", "miCocaCola"],
+  "settings": {
+    "timeout_seconds": 15,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "output_file": "json/productos.json"
+  }
+}

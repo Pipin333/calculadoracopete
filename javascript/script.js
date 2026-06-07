@@ -31,6 +31,7 @@ function crearPresupuesto(datos, multiPlan, singlePlan) {
     personas: datos.personas || 0,
     aporte: datos.aporte || 0,
     modo: datos.modo || 'N/A',
+    gama: datos.gama || 'normal',
     bebidas: datos.bebidas || [],
     mixerPreferences: MIXER_PREFERENCES || {},
     tiendaSplit: datos.tiendaSplit || false,
@@ -353,13 +354,34 @@ const productApi = {
   async getProductsByCategory(category) {
     const data = await this._loadData();
     
-    return data.productos
-      .filter(p => p.categoria === category)
-      .map(p => ({
-        ...p,
-        volumenTotalMl: p.unidades * p.volumenMlUnidad,
-        precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
-      }));
+    // Read selected gama from DOM (fall back to 'normal' if element doesn't exist)
+    const gamaSelect = document.getElementById("gama");
+    const selectedGama = gamaSelect ? gamaSelect.value : "normal";
+    
+    // Filter by category
+    let filtered = data.productos.filter(p => p.categoria === category);
+    
+    // Filter by gama (mixers and ice are neutral, so they are always included)
+    const allowedProducts = filtered.filter(p => {
+      const pGama = p.gama || "normal"; // Default if missing
+      return pGama === selectedGama || pGama === "neutral";
+    });
+    
+    // Guard: If there are NO products in the selected gama for this category, fall back to 'normal'
+    // to prevent the Knapsack solver from failing entirely.
+    let finalProducts = allowedProducts;
+    if (allowedProducts.length === 0 && selectedGama !== "normal") {
+      finalProducts = filtered.filter(p => {
+        const pGama = p.gama || "normal";
+        return pGama === "normal" || pGama === "neutral";
+      });
+    }
+    
+    return finalProducts.map(p => ({
+      ...p,
+      volumenTotalMl: p.unidades * p.volumenMlUnidad,
+      precioPorMl: p.precio / (p.unidades * p.volumenMlUnidad)
+    }));
   },
   
   async getTimestamp() {
@@ -1722,6 +1744,7 @@ form.addEventListener("submit", async function (e) {
       personas: people,
       aporte: parseFloat(document.getElementById('aporte').value),
       modo: mode,
+      gama: document.getElementById('gama')?.value || 'normal',
       bebidas: selectedDrinks.map(getDrinkLabel),
       tiendaSplit: selectedDrinks.some(d => d.split)
     },

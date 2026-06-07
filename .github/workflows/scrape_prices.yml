@@ -1,0 +1,53 @@
+name: Scrape and Update Drink Prices
+
+on:
+  schedule:
+    # Runs every day at 04:00 AM UTC (approx. 12:00 AM / 1:00 AM Chile time)
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    # Allows manual triggers from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r workers/requirements.txt
+
+      - name: Install Playwright Browsers
+        run: |
+          playwright install chromium
+
+      - name: Run price scraper worker
+        run: |
+          python workers/run.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if there are changes in the products database
+          if git status --porcelain json/productos.json | grep -q "json/productos.json"; then
+            echo "Changes detected in products database. Committing..."
+            git add json/productos.json
+            git commit -m "Auto-update drink prices: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          else
+            echo "No price changes detected today."
+          fi

@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Debug and temporary files
+*.log
+*debug*.png
+lider_playwright_debug.png
+la barra_screenshot.png
+booz_search_result.png
+liquidos_results.png
+liquidos_screenshot.png
+micocacola_screenshot.png
+micocacola_search_result.png
+tottus_screenshot.png
+unimarc_screenshot.png
+*.html
+*.txt
+*.json
+!json/productos.json
+!workers/config.json

@@ -86,6 +86,10 @@
                 <span class="boleta-label">Modo:</span>
                 <span class="boleta-value" id="modo"></span>
               </div>
+              <div class="boleta-item">
+                <span class="boleta-label">Gama (Calidad):</span>
+                <span class="boleta-value" id="gama"></span>
+              </div>
             </div>
 
             <!-- Bebidas -->
@@ -178,6 +182,7 @@
         aportePorPersona: presupuestoData.aporte || 0,
         presupuestoTotal: (presupuestoData.personas || 0) * (presupuestoData.aporte || 0),
         modo: presupuestoData.modo || 'N/A',
+        gama: presupuestoData.gama || 'normal',
         bebidas: presupuestoData.bebidas || [],
         tiendaSplit: presupuestoData.tiendaSplit || false,
         fechaGeneracion: new Date(presupuestoData.timestamp || Date.now()).toLocaleString('es-CL'),
@@ -258,6 +263,13 @@
         document.getElementById('aporte').textContent = formatCLP(boleta.aportePorPersona);
         document.getElementById('presupuestoTotal').textContent = formatCLP(boleta.presupuestoTotal);
         document.getElementById('modo').textContent = boleta.modo;
+        
+        const gamaLabels = {
+          rata: 'Rata 🐀',
+          normal: 'Normal 🍺',
+          sobrado: 'Sobrado 🥃'
+        };
+        document.getElementById('gama').textContent = gamaLabels[boleta.gama] || boleta.gama;
 
         // Bebidas - Agrupar repetidas (3x Cerveza en lugar de listar 3 veces)
         const bebidaCounts = {};
