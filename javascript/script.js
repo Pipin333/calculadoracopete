@@ -487,9 +487,9 @@ function actualizarTextoDropdownBebidas() {
 }
 
 function getPracticalLevel(score) {
-  if (score <= 8) return "Muy conveniente";
-  if (score <= 15) return "Conveniente";
-  if (score <= 24) return "Medio pajera";
+  if (score <= 12) return "Muy conveniente";
+  if (score <= 20) return "Conveniente";
+  if (score <= 32) return "Medio pajera";
   return "Solo si estai justo de plata";
 }
 
@@ -498,15 +498,15 @@ function getConvenienceBadge(score, isMulti = false) {
   let text = "";
   let icon = "";
   
-  if (score <= 8) {
+  if (score <= 12) {
     badgeClass = "level-easy";
     text = "Muy conveniente";
     icon = "⚡";
-  } else if (score <= 15) {
+  } else if (score <= 20) {
     badgeClass = "level-easy";
     text = "Conveniente";
     icon = "🟢";
-  } else if (score <= 24) {
+  } else if (score <= 32) {
     badgeClass = "level-medium";
     text = "Medio pajera";
     icon = "🟡";
