@@ -516,10 +516,6 @@ function getConvenienceBadge(score, isMulti = false) {
     icon = "🔴";
   }
   
-  if (isMulti) {
-    text += " + tu tiempo";
-  }
-  
   return `<span class="convenience-badge ${badgeClass}">${icon} ${text}</span>`;
 }
 
@@ -1862,16 +1858,12 @@ form.addEventListener("submit", async function (e) {
   resultadoModal.show();
   
   // Muestra el timestamp de actualización de datos
-  const timestamp = await productApi.getTimestamp();
   if (timestamp) {
     const date = new Date(timestamp);
-    const fechaFormato = date.toLocaleString('es-CL', { 
+    const fechaFormato = date.toLocaleDateString('es-CL', { 
       year: 'numeric', 
       month: 'long', 
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
+      day: 'numeric'
     });
     document.getElementById('timestamp').textContent = fechaFormato;
   }
