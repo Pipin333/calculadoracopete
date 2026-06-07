@@ -655,3 +655,38 @@ h1 {
     padding: 1.25rem;
   }
 }
+
+/* ===== SLIDER CARD & DYNAMIC CONTROLS (DARK THEME) ===== */
+.slider-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.slider-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.slider-card .btn-outline-secondary {
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--text-primary) !important;
+  font-size: 0.85rem !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.slider-card .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.dropdown-menu .form-check-label {
+  color: var(--text-primary) !important;
+  font-size: 0.85rem;
+}

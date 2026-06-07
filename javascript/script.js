@@ -561,7 +561,7 @@ function renderBudgetSliders() {
     }
 
     col.innerHTML = `
-      <div class="border rounded p-3 bg-white">
+      <div class="slider-card p-3">
         <div class="d-flex justify-content-between align-items-center mb-2 gap-2">
           <label for="slider_${drink}" class="form-label mb-0">${getDrinkLabel(drink)}</label>
 
