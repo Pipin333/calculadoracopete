@@ -214,17 +214,17 @@ function buildOpcionesConsumoDesdeJSON() {
  * Genera checkboxes dinámicamente en el dropdown
  */
 function generarCheckboxesDinámicos() {
-  const dropdownMenu = document.querySelector('.dropdown-menu[aria-labelledby="bebidasDropdown"]');
+  const gridContainer = document.getElementById('bebidasGrid');
   
-  if (!dropdownMenu) {
-    console.error(`❌ Dropdown menu no encontrado`);
+  if (!gridContainer) {
+    console.error(`❌ Contenedor de bebidas (#bebidasGrid) no encontrado`);
     return;
   }
 
-  // Limpiar checkboxes existentes (excepto el primero si es un divider)
-  dropdownMenu.innerHTML = '';
+  // Limpiar grid
+  gridContainer.innerHTML = '';
 
-  // Generar checkboxes para categorías seleccionables + combinaciones especiales
+  // Generar tarjetas para categorías seleccionables + combinaciones especiales
   const bebidas = {
     ...Object.entries(CATEGORIAS_JSON)
       .filter(([_, config]) => config.esSeleccionable !== false)
@@ -232,34 +232,61 @@ function generarCheckboxesDinámicos() {
     ...COMBINACIONES_ESPECIALES_JSON
   };
 
-  console.log(`🔲 Generando ${Object.keys(bebidas).length} checkboxes...`);
-  console.log(`📋 Bebidas a generar:`, Object.keys(bebidas));
+  const drinkIcons = {
+    cerveza: '🍺',
+    piscola: '🥃',
+    ron: '🍹',
+    vodka: '🍸',
+    whiskey: '🥃',
+    gin: '🧪',
+    jaeger: '🦌'
+  };
+
+  console.log(`🔲 Generando ${Object.keys(bebidas).length} tarjetas de bebidas...`);
 
   for (const [key, config] of Object.entries(bebidas)) {
     const checkId = `chk${key.charAt(0).toUpperCase()}${key.slice(1).replace(/_/g, '')}`;
-    const checkbox = document.createElement('div');
-    checkbox.className = 'form-check mb-2';
-    checkbox.innerHTML = `
-      <input class="form-check-input bebida-check" type="checkbox" value="${key}" id="${checkId}">
-      <label class="form-check-label" for="${checkId}">${config.displayName || config.nombre}</label>
+    const icon = drinkIcons[key] || '🥂';
+    const cardName = config.displayName || config.nombre;
+
+    const card = document.createElement('div');
+    card.className = 'drink-card';
+    card.setAttribute('data-value', key);
+    card.innerHTML = `
+      <input class="form-check-input bebida-check d-none" type="checkbox" value="${key}" id="${checkId}">
+      <div class="drink-card-icon">${icon}</div>
+      <div class="drink-card-name">${cardName}</div>
+      <div class="drink-card-badge">✓</div>
     `;
-    dropdownMenu.appendChild(checkbox);
     
-    console.log(`  ✓ ${key} → ${config.displayName || config.nombre}`);
+    // Al hacer clic en la tarjeta, alternamos la selección
+    card.addEventListener('click', function(e) {
+      const checkbox = this.querySelector('.bebida-check');
+      checkbox.checked = !checkbox.checked;
+      
+      if (checkbox.checked) {
+        this.classList.add('selected');
+      } else {
+        this.classList.remove('selected');
+      }
+      
+      console.log(`🖱️ Tarjeta clickeada: ${key} -> ${checkbox.checked ? 'seleccionada' : 'deseleccionada'}`);
+      
+      // Lanzar evento change en el checkbox para que el gestor general lo escuche
+      checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    
+    gridContainer.appendChild(card);
   }
 
-  console.log(`✅ Checkboxes generados dinámicamente`);
-
-  // Re-adjuntar event listeners al dropdown actualizado
-  adjuntarEventListeners();
+  console.log(`✅ Tarjetas de bebidas generadas dinámicamente`);
+  actualizarTextoDropdownBebidas();
 }
 
 /**
- * Re-adjunta event listeners después de generar checkboxes
+ * Re-adjunta event listeners después de generar checkboxes (no requerida en la nueva versión)
  */
 function adjuntarEventListeners() {
-  // El event delegation ya está configurado en handleSliderChange
-  // pero podemos forzar una actualización visual
   actualizarTextoDropdownBebidas();
 }
 
@@ -440,10 +467,15 @@ function getDrinkLabel(drink) {
 }
 
 function actualizarTextoDropdownBebidas() {
-  const seleccionadas = Array.from(document.querySelectorAll(".bebida-check:checked"))
-    .map(input => input.nextElementSibling.textContent.trim());
-
   const boton = document.getElementById("bebidasDropdown");
+  if (!boton) return; // Retornar si el botón de dropdown ya no se usa (grid activo)
+
+  const seleccionadas = Array.from(document.querySelectorAll(".bebida-check:checked"))
+    .map(input => {
+      const cardName = input.closest(".drink-card")?.querySelector(".drink-card-name");
+      return cardName ? cardName.textContent.trim() : (input.nextElementSibling ? input.nextElementSibling.textContent.trim() : "");
+    })
+    .filter(name => name !== "");
 
   if (seleccionadas.length === 0) {
     boton.textContent = "Selecciona uno o más tipos de copete";
@@ -459,6 +491,36 @@ function getPracticalLevel(score) {
   if (score <= 15) return "Conveniente";
   if (score <= 24) return "Medio pajera";
   return "Solo si estai justo de plata";
+}
+
+function getConvenienceBadge(score, isMulti = false) {
+  let badgeClass = "";
+  let text = "";
+  let icon = "";
+  
+  if (score <= 8) {
+    badgeClass = "level-easy";
+    text = "Muy conveniente";
+    icon = "⚡";
+  } else if (score <= 15) {
+    badgeClass = "level-easy";
+    text = "Conveniente";
+    icon = "🟢";
+  } else if (score <= 24) {
+    badgeClass = "level-medium";
+    text = "Medio pajera";
+    icon = "🟡";
+  } else {
+    badgeClass = "level-hard";
+    text = "Solo si estai pato";
+    icon = "🔴";
+  }
+  
+  if (isMulti) {
+    text += " + tu tiempo";
+  }
+  
+  return `<span class="convenience-badge ${badgeClass}">${icon} ${text}</span>`;
 }
 
 function getRatioBudget(spent, total) {
@@ -1572,6 +1634,49 @@ async function inicializarApp() {
     });
   }
   
+  // Conectar botones de Modo de Formulario (Simple vs Pro)
+  const btnSimple = document.getElementById("btnModoSimple");
+  const btnPro = document.getElementById("btnModoPro");
+  const carreteForm = document.getElementById("carreteForm");
+  
+  if (btnSimple && btnPro && carreteForm) {
+    btnSimple.addEventListener("click", () => {
+      btnSimple.classList.add("active");
+      btnPro.classList.remove("active");
+      carreteForm.classList.add("mode-simple");
+      carreteForm.classList.remove("mode-pro");
+      
+      // Resetear a valores por defecto en modo simple
+      const modoSelect = document.getElementById("modo");
+      const gamaSelect = document.getElementById("gama");
+      
+      if (modoSelect) modoSelect.value = "previa";
+      if (gamaSelect) gamaSelect.value = "normal";
+      
+      if (sinCuotaCheck && sinCuotaCheck.checked) {
+        sinCuotaCheck.checked = false;
+        if (aporteInput) {
+          aporteInput.disabled = false;
+          aporteInput.setAttribute("required", "required");
+          aporteInput.value = "5000";
+        }
+      }
+      
+      // Re-renderizar sliders para actualizar valores equitativos
+      renderBudgetSliders();
+    });
+    
+    btnPro.addEventListener("click", () => {
+      btnPro.classList.add("active");
+      btnSimple.classList.remove("active");
+      carreteForm.classList.remove("mode-simple");
+      carreteForm.classList.add("mode-pro");
+      
+      // Re-renderizar sliders
+      renderBudgetSliders();
+    });
+  }
+  
   console.log(`✅ App inicializada`);
 }
 
@@ -1719,13 +1824,13 @@ form.addEventListener("submit", async function (e) {
       saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
       document.getElementById("ratioMulti").textContent = getRatioBudget(multiPlan.total, budget);
     }
-    costoPracticoMultiEl.textContent = `${multiPlan.practicalLabel} + tu preciado tiempo`;
+    costoPracticoMultiEl.innerHTML = getConvenienceBadge(multiPlan.practicalScore, true);
   } else {
     totalMultiEl.textContent = "No disponible";
     detalleTiendasMulti.textContent = multiPlan.reason;
     saldoMultiEl.textContent = "—";
     document.getElementById("ratioMulti").textContent = "—";
-    costoPracticoMultiEl.textContent = "—";
+    costoPracticoMultiEl.innerHTML = "—";
   }
 
   if (singlePlan.ok) {
@@ -1738,13 +1843,13 @@ form.addEventListener("submit", async function (e) {
       saldoUnicaEl.textContent = formatCLP(budget - singlePlan.total);
       document.getElementById("ratioUnica").textContent = getRatioBudget(singlePlan.total, budget);
     }
-    costoPracticoUnicaEl.textContent = `${singlePlan.practicalLabel}`;
+    costoPracticoUnicaEl.innerHTML = getConvenienceBadge(singlePlan.practicalScore, false);
   } else {
     totalUnicaEl.textContent = "No disponible";
     detalleTiendaUnica.textContent = singlePlan.reason;
     saldoUnicaEl.textContent = "—";
     document.getElementById("ratioUnica").textContent = "—";
-    costoPracticoUnicaEl.textContent = "—";
+    costoPracticoUnicaEl.innerHTML = "—";
   }
 
   renderBudgetState(budget, multiPlan, singlePlan, sinCuota);
