@@ -28,3 +28,5 @@ unimarc_screenshot.png
 *.json
 !json/productos.json
 !workers/config.json
+!index.html
+!presupuesto.html

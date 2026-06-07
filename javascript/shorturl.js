@@ -283,7 +283,7 @@ function limpiarPresupuestosExpirados() {
  * @param {string} id - ID corto del presupuesto
  * @returns {string} - URL completa
  * 
- * Ejemplo: https://usuario.github.io/repo/html/presupuesto.html?id=abc123
+ * Ejemplo: https://usuario.github.io/repo/presupuesto.html?id=abc123
  * Nota: Compatible con GitHub Pages (no requiere .htaccess)
  */
 function generarURLCorta(id) {
