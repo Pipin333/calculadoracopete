@@ -180,9 +180,10 @@
       return {
         personas: presupuestoData.personas || 0,
         aportePorPersona: presupuestoData.aporte || 0,
-        presupuestoTotal: (presupuestoData.personas || 0) * (presupuestoData.aporte || 0),
+        presupuestoTotal: presupuestoData.sinCuota ? 0 : ((presupuestoData.personas || 0) * (presupuestoData.aporte || 0)),
         modo: presupuestoData.modo || 'N/A',
         gama: presupuestoData.gama || 'normal',
+        sinCuota: presupuestoData.sinCuota || false,
         bebidas: presupuestoData.bebidas || [],
         tiendaSplit: presupuestoData.tiendaSplit || false,
         fechaGeneracion: new Date(presupuestoData.timestamp || Date.now()).toLocaleString('es-CL'),
@@ -260,8 +261,8 @@
         // Llenar HTML
         document.getElementById('fechaBoleta').textContent = boleta.fechaGeneracion;
         document.getElementById('personas').textContent = boleta.personas;
-        document.getElementById('aporte').textContent = formatCLP(boleta.aportePorPersona);
-        document.getElementById('presupuestoTotal').textContent = formatCLP(boleta.presupuestoTotal);
+        document.getElementById('aporte').textContent = boleta.sinCuota ? "Sin cuota definida" : formatCLP(boleta.aportePorPersona);
+        document.getElementById('presupuestoTotal').textContent = boleta.sinCuota ? "Sin cuota definida" : formatCLP(boleta.presupuestoTotal);
         document.getElementById('modo').textContent = boleta.modo;
         
         const gamaLabels = {
@@ -286,10 +287,14 @@
         document.getElementById('bebidasList').innerHTML = bebidasHTML;
 
         // Multi-tienda
-        const ahorroMulti = boleta.presupuestoTotal - boleta.multiTienda.total;
-        const ahorroMultiPct = Math.round((ahorroMulti / boleta.presupuestoTotal) * 100);
+        if (boleta.sinCuota) {
+          document.getElementById('ahorroMulti').textContent = `Cuota: ${formatCLP(Math.ceil(boleta.multiTienda.total / boleta.personas))} / pers.`;
+        } else {
+          const ahorroMulti = boleta.presupuestoTotal - boleta.multiTienda.total;
+          const ahorroMultiPct = boleta.presupuestoTotal > 0 ? Math.round((ahorroMulti / boleta.presupuestoTotal) * 100) : 0;
+          document.getElementById('ahorroMulti').textContent = `Ahorra $${formatCLP(ahorroMulti)} (${ahorroMultiPct}%)`;
+        }
         document.getElementById('totalMulti').textContent = formatCLP(boleta.multiTienda.total);
-        document.getElementById('ahorroMulti').textContent = `Ahorra $${formatCLP(ahorroMulti)} (${ahorroMultiPct}%)`;
         
         // Items multi-tienda agrupados por tienda
         let itemsMultiHTML = '';
@@ -330,11 +335,15 @@
         document.getElementById('itemsMulti').innerHTML = itemsMultiHTML;
 
         // Tienda Única
-        const ahorroUnica = boleta.presupuestoTotal - boleta.tiendaUnica.total;
-        const ahorroUnicaPct = Math.round((ahorroUnica / boleta.presupuestoTotal) * 100);
         document.getElementById('tiendaUnica').textContent = boleta.tiendaUnica.tienda;
         document.getElementById('totalUnica').textContent = formatCLP(boleta.tiendaUnica.total);
-        document.getElementById('ahorroUnica').textContent = `Ahorra $${formatCLP(ahorroUnica)} (${ahorroUnicaPct}%)`;
+        if (boleta.sinCuota) {
+          document.getElementById('ahorroUnica').textContent = `Cuota: ${formatCLP(Math.ceil(boleta.tiendaUnica.total / boleta.personas))} / pers.`;
+        } else {
+          const ahorroUnica = boleta.presupuestoTotal - boleta.tiendaUnica.total;
+          const ahorroUnicaPct = boleta.presupuestoTotal > 0 ? Math.round((ahorroUnica / boleta.presupuestoTotal) * 100) : 0;
+          document.getElementById('ahorroUnica').textContent = `Ahorra $${formatCLP(ahorroUnica)} (${ahorroUnicaPct}%)`;
+        }
 
         // Items tienda única (sin repetir tienda)
         let itemsUnicaHTML = '';

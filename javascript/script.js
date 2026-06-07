@@ -32,10 +32,11 @@ function crearPresupuesto(datos, multiPlan, singlePlan) {
     aporte: datos.aporte || 0,
     modo: datos.modo || 'N/A',
     gama: datos.gama || 'normal',
+    sinCuota: datos.sinCuota || false,
     bebidas: datos.bebidas || [],
     mixerPreferences: MIXER_PREFERENCES || {},
     tiendaSplit: datos.tiendaSplit || false,
-    presupuestoTotal: (datos.personas || 0) * (datos.aporte || 0),
+    presupuestoTotal: datos.sinCuota ? 0 : ((datos.personas || 0) * (datos.aporte || 0)),
     multiPlan: multiPlan || {},
     singlePlan: singlePlan || {},
     timestamp: new Date().toISOString()
@@ -1348,7 +1349,7 @@ function renderPlan(listElement, plan) {
   }
 }
 
-function renderBudgetState(budget, multiPlan, singlePlan) {
+function renderBudgetState(budget, multiPlan, singlePlan, sinCuota = false) {
   const estadoEl = document.getElementById("estadoPresupuesto");
   const alertaEl = document.getElementById("alertaPresupuesto");
 
@@ -1365,6 +1366,11 @@ function renderBudgetState(budget, multiPlan, singlePlan) {
     alertaEl.textContent = "No se pudo armar una recomendación con los productos disponibles.";
     alertaEl.classList.remove("d-none");
     alertaEl.classList.add("alert-danger");
+    return;
+  }
+
+  if (sinCuota) {
+    estadoEl.innerHTML = `<span class="badge text-bg-info">Lista de Compra</span>`;
     return;
   }
 
@@ -1549,6 +1555,23 @@ async function inicializarApp() {
   // Generar checkboxes
   generarCheckboxesDinámicos();
   
+  // Conectar checkbox sin cuota
+  const sinCuotaCheck = document.getElementById("sinCuota");
+  const aporteInput = document.getElementById("aporte");
+  if (sinCuotaCheck && aporteInput) {
+    sinCuotaCheck.addEventListener("change", function() {
+      if (this.checked) {
+        aporteInput.disabled = true;
+        aporteInput.removeAttribute("required");
+        aporteInput.value = "";
+      } else {
+        aporteInput.disabled = false;
+        aporteInput.setAttribute("required", "required");
+        aporteInput.value = "5000";
+      }
+    });
+  }
+  
   console.log(`✅ App inicializada`);
 }
 
@@ -1610,19 +1633,20 @@ form.addEventListener("submit", async function (e) {
   e.preventDefault();
   console.log(`\n🚀 Form Submit - Iniciando cálculo de presupuesto`);
 
+  const sinCuota = document.getElementById("sinCuota")?.checked || false;
   const people = parseInt(document.getElementById("personas").value, 10);
-  const aporte = parseInt(document.getElementById("aporte").value, 10);
+  const aporte = sinCuota ? 0 : parseInt(document.getElementById("aporte").value, 10);
   const mode = document.getElementById("modo").value;
   const selectedDrinks = getSelectedDrinks();
 
   console.log(`📊 Parámetros del formulario:`);
   console.log(`   Personas: ${people}`);
-  console.log(`   Aporte: ${aporte}`);
+  console.log(`   Aporte: ${sinCuota ? 'Sin cuota' : aporte}`);
   console.log(`   Modo: ${mode}`);
   console.log(`   Bebidas seleccionadas: ${selectedDrinks.length}`);
   console.log(`   Bebidas: [${selectedDrinks.join(', ')}]`);
 
-  if (!people || people < 1 || aporte < 0) {
+  if (!people || people < 1 || (!sinCuota && (Number.isNaN(aporte) || aporte < 0))) {
     alert("Ingresa valores válidos.");
     return;
   }
@@ -1632,7 +1656,7 @@ form.addEventListener("submit", async function (e) {
     return;
   }
 
-  const budget = people * aporte;
+  const budget = sinCuota ? 9999999 : (people * aporte);
   const budgetSplit = getBudgetSplit();
   const budgetSplitTotal = getBudgetSplitTotal();
 
@@ -1658,12 +1682,12 @@ form.addEventListener("submit", async function (e) {
   }
 
   const consumoWarnings = getConsumptionWarnings(rawRequirements);
-  const budgetWarningsMulti = getBudgetWarnings(multiPlan);
+  const budgetWarningsMulti = sinCuota ? [] : getBudgetWarnings(multiPlan);
 
   const globalWarnings = [];
   const validPlans = [multiPlan, singlePlan].filter(p => p.ok);
 
-  if (validPlans.length > 0) {
+  if (!sinCuota && validPlans.length > 0) {
     const cheapestPlan = validPlans.reduce((best, current) =>
       current.total < best.total ? current : best
     );
@@ -1688,8 +1712,13 @@ form.addEventListener("submit", async function (e) {
   if (multiPlan.ok) {
     totalMultiEl.textContent = formatCLP(multiPlan.total);
     detalleTiendasMulti.textContent = `Tiendas involucradas: ${multiPlan.stores.join(", ")}`;
-    saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
-    document.getElementById("ratioMulti").textContent = getRatioBudget(multiPlan.total, budget);
+    if (sinCuota) {
+      saldoMultiEl.textContent = `${formatCLP(Math.ceil(multiPlan.total / people))} / persona`;
+      document.getElementById("ratioMulti").textContent = `Costo total: ${formatCLP(multiPlan.total)}`;
+    } else {
+      saldoMultiEl.textContent = formatCLP(budget - multiPlan.total);
+      document.getElementById("ratioMulti").textContent = getRatioBudget(multiPlan.total, budget);
+    }
     costoPracticoMultiEl.textContent = `${multiPlan.practicalLabel} + tu preciado tiempo`;
   } else {
     totalMultiEl.textContent = "No disponible";
@@ -1702,8 +1731,13 @@ form.addEventListener("submit", async function (e) {
   if (singlePlan.ok) {
     totalUnicaEl.textContent = formatCLP(singlePlan.total);
     detalleTiendaUnica.textContent = `Tienda sugerida: ${singlePlan.store}`;
-    saldoUnicaEl.textContent = formatCLP(budget - singlePlan.total);
-    document.getElementById("ratioUnica").textContent = getRatioBudget(singlePlan.total, budget);
+    if (sinCuota) {
+      saldoUnicaEl.textContent = `${formatCLP(Math.ceil(singlePlan.total / people))} / persona`;
+      document.getElementById("ratioUnica").textContent = `Costo total: ${formatCLP(singlePlan.total)}`;
+    } else {
+      saldoUnicaEl.textContent = formatCLP(budget - singlePlan.total);
+      document.getElementById("ratioUnica").textContent = getRatioBudget(singlePlan.total, budget);
+    }
     costoPracticoUnicaEl.textContent = `${singlePlan.practicalLabel}`;
   } else {
     totalUnicaEl.textContent = "No disponible";
@@ -1713,9 +1747,9 @@ form.addEventListener("submit", async function (e) {
     costoPracticoUnicaEl.textContent = "—";
   }
 
-  renderBudgetState(budget, multiPlan, singlePlan);
+  renderBudgetState(budget, multiPlan, singlePlan, sinCuota);
 
-  presupuestoTotalEl.textContent = formatCLP(budget);
+  presupuestoTotalEl.textContent = sinCuota ? "Sin cuota definida" : formatCLP(budget);
   resumen.textContent = `${people} persona(s) · ${selectedDrinks.map(getDrinkLabel).join(", ")} · ${getModeLabel(mode)}`;
 
   // Abre el modal de resultados (en lugar de mostrar div con scroll)
@@ -1742,9 +1776,10 @@ form.addEventListener("submit", async function (e) {
   window.currentPresupuesto = crearPresupuesto(
     {
       personas: people,
-      aporte: parseFloat(document.getElementById('aporte').value),
+      aporte: aporte,
       modo: mode,
       gama: document.getElementById('gama')?.value || 'normal',
+      sinCuota: sinCuota,
       bebidas: selectedDrinks.map(getDrinkLabel),
       tiendaSplit: selectedDrinks.some(d => d.split)
     },
