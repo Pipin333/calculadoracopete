@@ -117,17 +117,27 @@ def validate_category(name, category):
     """Validates that a product fits the target category (filters out glasses, false search hits, etc.)."""
     name_lower = name.lower()
     
-    # Filter out accessories/glasses
-    accessories = ["vaso", "copa", "shoper", "hielera", "dispensador", "polera", "destapador", "cooler", "servicio", "juego de loza", "plancha", "plato"]
+    # Filter out accessories/glasses/garbage
+    accessories = [
+        "vaso", "copa", "shoper", "hielera", "dispensador", "polera", "destapador", 
+        "cooler", "servicio", "juego de loza", "plancha", "plato", "galleta", "desinfectante",
+        "donut", "rosquilla", "dulce", "limpieza", "aerosol", "detergente", "jabón", "jabon"
+    ]
     for acc in accessories:
-        # Guard: allow "copas" only if it's not the primary product (e.g. "Pisco Tres Erres + 2 Vasos" is OK, but "Set 6 Vasos" is not)
         if acc in name_lower:
-            # If the category is alcohol and the name is strictly the accessory
-            if name_lower.startswith(acc) or f"set {acc}" in name_lower or f"juego {acc}" in name_lower:
+            if name_lower.startswith(acc) or f"set {acc}" in name_lower or f"juego {acc}" in name_lower or category in ["cerveza", "piscola", "ron", "vodka", "whiskey", "gin", "jaeger"]:
                 return False
-                
+
+    # Filter out Ready-To-Drink (RTD) / pre-mixed cocktails from pure spirits
+    if category in ["piscola", "ron", "vodka", "whiskey", "gin"]:
+        rtd_keywords = ["coctel", "cóctel", "cocktail", "sour", "ice", "mix", "preparado", "limonada", "cola", "sprite en lata", "lata sprite", "tonic en lata", "cola en lata"]
+        if any(x in name_lower for x in rtd_keywords):
+            return False
+
     if category == "cerveza":
-        return any(x in name_lower for x in ["cerveza", "beer", "lata", "pack", "escudo", "cristal", "becker", "royal", "heineken", "stella", "corona", "kross", "kunstmann"])
+        # Do NOT allow "pack" or "lata" by themselves as they match cookies, soda, donuts, etc.
+        beer_keywords = ["cerveza", "beer", "pilsen", "lager", "ale", "stout", "ipa", "escudo", "cristal", "becker", "royal", "heineken", "stella", "corona", "kross", "kunstmann", "austral", "budweiser", "coors", "sol", "baltica", "patagonia"]
+        return any(x in name_lower for x in beer_keywords)
     elif category == "piscola":
         return "pisco" in name_lower
     elif category == "ron":
@@ -137,8 +147,9 @@ def validate_category(name, category):
     elif category == "whiskey":
         return "whisky" in name_lower or "whiskey" in name_lower
     elif category == "gin":
-        # Avoid matching ginger ale as gin unless category is mixer
-        return ("gin" in name_lower or "ginebra" in name_lower) and "ginger" not in name_lower
+        # Avoid matching "original" or "ginger ale" as "gin".
+        has_gin = re.search(r"\bgin\b|\bginebra\b", name_lower) is not None
+        return has_gin and "ginger" not in name_lower
     elif category == "jaeger":
         return "jager" in name_lower or "jäger" in name_lower
     elif category == "bebida":
@@ -151,7 +162,10 @@ def validate_category(name, category):
     elif category == "sprite":
         return "sprite" in name_lower
     elif category == "jugo_watts":
-        return "jugo" in name_lower or "watts" in name_lower
+        # Exclude powdered juice (polvo, sobre, livean, zuko, tang, yupi)
+        is_juice = "jugo" in name_lower or "watts" in name_lower
+        is_powder = any(x in name_lower for x in ["polvo", "sobre", "livean", "zuko", "tang", "yupi"])
+        return is_juice and not is_powder
     elif category == "hielo":
         return "hielo" in name_lower
         
