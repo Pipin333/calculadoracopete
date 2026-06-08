@@ -1858,14 +1858,24 @@ form.addEventListener("submit", async function (e) {
   resultadoModal.show();
   
   // Muestra el timestamp de actualización de datos
+  const timestamp = await productApi.getTimestamp();
   if (timestamp) {
-    const date = new Date(timestamp);
-    const fechaFormato = date.toLocaleDateString('es-CL', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric'
-    });
-    document.getElementById('timestamp').textContent = fechaFormato;
+    let date = new Date(timestamp);
+    if (isNaN(date.getTime())) {
+      date = new Date(timestamp.replace(/-/g, "/").replace("T", " ").split('.')[0]);
+    }
+    
+    if (!isNaN(date.getTime())) {
+      const fechaFormato = date.toLocaleDateString('es-CL', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric'
+      });
+      document.getElementById('timestamp').textContent = fechaFormato;
+    } else {
+      const cleanDate = timestamp.split('T')[0].split('-').reverse().join('/');
+      document.getElementById('timestamp').textContent = cleanDate || timestamp;
+    }
   }
 
   // ===== INTEGRACIÓN CON PRESUPUESTO COMPARTIBLE =====
@@ -1963,10 +1973,10 @@ async function compartirPresupuestoActual() {
       // Mostrar URL manualmente
       if (msgDiv) {
         msgDiv.innerHTML = `
-          <div style="text-align: left; line-height: 1.5;">
-            ✅ Presupuesto guardado (pero copy falló)<br/>
-            <small>Copia manualmente:</small><br/>
-            <code style="background: #f0f0f0; padding: 0.25rem 0.5rem; border-radius: 3px; display: inline-block; margin-top: 0.5rem;">
+          <div style="text-align: left; line-height: 1.4; font-size: 0.85rem;">
+            ⚠️ <strong>Guardado en la base de datos</strong> (pero el navegador bloqueó la copia automática).<br/>
+            <span class="text-secondary small">Copia el enlace manualmente:</span><br/>
+            <code style="background: rgba(0, 0, 0, 0.3); color: #fff; padding: 0.4rem 0.6rem; border-radius: 6px; display: block; margin-top: 0.5rem; word-break: break-all; border: 1px solid rgba(255, 255, 255, 0.15); font-family: monospace;">
               ${resultado.url}
             </code>
           </div>
@@ -1974,8 +1984,9 @@ async function compartirPresupuestoActual() {
         msgDiv.style.display = 'block';
         msgDiv.style.opacity = '0';
         msgDiv.style.transition = 'opacity 0.3s ease-in';
-        msgDiv.classList.add('error-msg');
+        msgDiv.classList.add('warning-msg');
         msgDiv.classList.remove('success-msg');
+        msgDiv.classList.remove('error-msg');
         
         setTimeout(() => {
           msgDiv.style.opacity = '1';
