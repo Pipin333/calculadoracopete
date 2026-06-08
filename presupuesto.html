@@ -214,6 +214,32 @@
     }
 
     /**
+     * Genera el enlace de búsqueda del producto en la tienda correspondiente
+     */
+    function getStoreSearchUrl(storeName, productName) {
+      const query = encodeURIComponent(productName);
+      const nameLower = storeName.toLowerCase();
+      
+      if (nameLower.includes("lider")) {
+        return `https://www.lider.cl/supermercado/search?query=${query}`;
+      } else if (nameLower.includes("jumbo")) {
+        return `https://www.jumbo.cl/busqueda?ft=${query}`;
+      } else if (nameLower.includes("unimarc")) {
+        return `https://www.unimarc.cl/search/${query}`;
+      } else if (nameLower.includes("barra")) {
+        return `https://labarra.cl/buscar?q=${query}`;
+      } else if (nameLower.includes("liquidos") || nameLower.includes("líquidos")) {
+        return `https://www.liquidos.cl/resultados?busqueda=${query}`;
+      } else if (nameLower.includes("booz")) {
+        return `https://www.booz.cl/buscar?q=${query}`;
+      } else if (nameLower.includes("cocacola") || nameLower.includes("coca-cola") || nameLower.includes("coca cola")) {
+        return `https://www.micocacola.cl/search?q=${query}`;
+      }
+      
+      return `https://www.google.com/search?q=${encodeURIComponent(storeName + " " + productName)}`;
+    }
+
+    /**
      * Agrupa items idénticos (mismo nombre + tienda + precio)
      * y suma sus cantidades
      */
@@ -327,8 +353,9 @@
             
             for (const item of itemsPorTienda[tienda]) {
               const totalPrice = item.precio * item.cantidad;
+              const searchUrl = getStoreSearchUrl(tienda, item.nombre);
               itemsMultiHTML += `<div class="item-detalle">
-                • ${item.cantidad}x ${item.nombre} (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(totalPrice)}
+                • ${item.cantidad}x <a href="${searchUrl}" target="_blank" class="store-link">${item.nombre}</a> (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(totalPrice)}
               </div>`;
             }
             itemsMultiHTML += '</div>';
@@ -361,8 +388,9 @@
           itemsUnicaHTML = itemsSummarized
             .map(item => {
               const totalPrice = item.precio * item.cantidad;
+              const searchUrl = getStoreSearchUrl(boleta.tiendaUnica.tienda, item.nombre);
               return `<div class="item-detalle">
-              • ${item.cantidad}x ${item.nombre} (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(totalPrice)}
+              • ${item.cantidad}x <a href="${searchUrl}" target="_blank" class="store-link">${item.nombre}</a> (${item.unidades}x${item.volumenMlUnidad}ml) - ${formatCLP(totalPrice)}
             </div>`;
             })
             .join('');

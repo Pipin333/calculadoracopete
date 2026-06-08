@@ -1387,6 +1387,38 @@ async function buildSingleStorePlan(requirements) {
 // ===============================
 // RENDER
 // ===============================
+/**
+ * Genera el enlace de búsqueda del producto en la tienda correspondiente
+ */
+function getStoreSearchUrl(storeName, productName) {
+  const query = encodeURIComponent(productName);
+  const nameLower = storeName.toLowerCase();
+  
+  if (nameLower.includes("lider")) {
+    return `https://www.lider.cl/supermercado/search?query=${query}`;
+  } else if (nameLower.includes("jumbo")) {
+    return `https://www.jumbo.cl/busqueda?ft=${query}`;
+  } else if (nameLower.includes("unimarc")) {
+    return `https://www.unimarc.cl/search/${query}`;
+  } else if (nameLower.includes("barra")) {
+    return `https://labarra.cl/buscar?q=${query}`;
+  } else if (nameLower.includes("liquidos") || nameLower.includes("líquidos")) {
+    return `https://www.liquidos.cl/resultados?busqueda=${query}`;
+  } else if (nameLower.includes("booz")) {
+    return `https://www.booz.cl/buscar?q=${query}`;
+  } else if (nameLower.includes("cocacola") || nameLower.includes("coca-cola") || nameLower.includes("coca cola")) {
+    return `https://www.micocacola.cl/search?q=${query}`;
+  }
+  
+  return `https://www.google.com/search?q=${encodeURIComponent(storeName + " " + productName)}`;
+}
+
+function addLiHtml(element, html) {
+  const li = document.createElement("li");
+  li.innerHTML = html;
+  element.appendChild(li);
+}
+
 function renderPlan(listElement, plan) {
   clearElement(listElement);
 
@@ -1399,9 +1431,11 @@ function renderPlan(listElement, plan) {
     const summarized = summarizeItems(detail.result.items);
 
     for (const item of summarized) {
-      addLi(
+      const searchUrl = getStoreSearchUrl(item.tienda, item.nombre);
+      const storeLink = `<a href="${searchUrl}" target="_blank" class="store-link">${item.tienda}</a>`;
+      addLiHtml(
         listElement,
-        `${item.cantidad} x ${item.nombre} (${item.tienda}) — ${formatCLP(item.precio * item.cantidad)}`
+        `${item.cantidad} x ${item.nombre} (${storeLink}) — ${formatCLP(item.precio * item.cantidad)}`
       );
     }
   }

@@ -107,10 +107,10 @@ def scrape_store(store_name, category, keyword):
     elif store_name == "Booz":
         direct_url = f"https://www.booz.cl/busqueda?search={urllib.parse.quote(keyword)}"
     elif store_name == "La Barra":
-        direct_url = f"https://www.labarra.cl/search?q={urllib.parse.quote(keyword)}"
+        direct_url = f"https://labarra.cl/buscar?q={urllib.parse.quote(keyword)}"
     elif store_name == "Liquidos":
-        direct_url = "https://www.liquidos.cl/"
-        need_homepage_search = True
+        direct_url = f"https://www.liquidos.cl/resultados?busqueda={urllib.parse.quote(keyword)}"
+        need_homepage_search = False
     elif store_name == "miCocaCola":
         direct_url = "https://andina.micoca-cola.cl/"
         need_homepage_search = True
