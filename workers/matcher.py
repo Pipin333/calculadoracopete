@@ -152,15 +152,24 @@ def validate_category(name, category):
         return has_gin and "ginger" not in name_lower
     elif category == "jaeger":
         return "jager" in name_lower or "jäger" in name_lower
-    elif category == "bebida":
-        # Standard mixers (excluding sprite, tonica, jugo, energy)
-        return any(x in name_lower for x in ["coca-cola", "coca cola", "fanta", "quatro", "kem", "canada dry", "nordic", "bebida"]) and not any(y in name_lower for y in ["sprite", "tonica", "tónica", "jugo", "red bull", "redbull"])
+    elif category == "cola":
+        # Colas: Coca-Cola, Pepsi y variantes
+        return any(x in name_lower for x in ["coca-cola", "coca cola", "pepsi"]) \
+            and not any(y in name_lower for y in ["sprite", "canada dry", "7up", "tonica", "tónica", "jugo", "red bull", "redbull"])
+    elif category == "fanta":
+        # Bebidas de naranja/sabor: Fanta, Crush
+        return any(x in name_lower for x in ["fanta", "crush"]) \
+            and "naranja" not in name_lower or "fanta" in name_lower
+    elif category == "ginger":
+        # Ginger ales: Canada Dry, Nordic Ginger, Schweppes Ginger
+        return any(x in name_lower for x in ["canada dry", "nordic ginger", "schweppes ginger"])
     elif category == "redbull":
         return "red bull" in name_lower or "redbull" in name_lower or "energ" in name_lower
     elif category == "tonica":
         return "tonica" in name_lower or "tónica" in name_lower
     elif category == "sprite":
-        return "sprite" in name_lower
+        # Lima-limón: Sprite, 7Up
+        return "sprite" in name_lower or "7up" in name_lower
     elif category == "jugo_watts":
         # Exclude powdered juice (polvo, sobre, livean, zuko, tang, yupi)
         is_juice = "jugo" in name_lower or "watts" in name_lower
