@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-07T21:56:57.114237",
+  "timestamp": "2026-06-08T18:34:46Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -201,68 +201,8 @@
     }
   },
   "combinaciones_especiales": {},
-  "total": 111,
+  "total": 212,
   "productos": [
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Odissea Tropic Ale 4.5° Lata 470 cc",
-      "tienda": "Jumbo",
-      "precio": 1000,
-      "unidades": 1,
-      "volumenMlUnidad": 470,
-      "gama": "normal",
-      "id": 1
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Pack 24 un. Cerveza Coors Lager 5.0° 355 cc",
-      "tienda": "Jumbo",
-      "precio": 14290,
-      "unidades": 24,
-      "volumenMlUnidad": 355,
-      "gama": "normal",
-      "id": 2
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Pack 18 un. Cerveza Heineken Lager 5.0° 330 cc",
-      "tienda": "Jumbo",
-      "precio": 12594,
-      "unidades": 18,
-      "volumenMlUnidad": 330,
-      "gama": "normal",
-      "id": 3
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Pack 4 un. Cerveza Kunstmann Lager Sin Alcohol 330 cc",
-      "tienda": "Jumbo",
-      "precio": 5593,
-      "unidades": 4,
-      "volumenMlUnidad": 330,
-      "gama": "sobrado",
-      "id": 4
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Pack 6 un. Cerveza Royal Guard Premium Lager Sin Alcohol 355 cc",
-      "tienda": "Jumbo",
-      "precio": 4893,
-      "unidades": 6,
-      "volumenMlUnidad": 355,
-      "gama": "normal",
-      "id": 5
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Pack 24 un. Cerveza Stella Artois Lager 5.2° 330 cc",
-      "tienda": "Jumbo",
-      "precio": 13974,
-      "unidades": 24,
-      "volumenMlUnidad": 330,
-      "gama": "normal",
-      "id": 6
-    },
     {
       "categoria": "cerveza",
       "nombre": "Pack 6 un. Cerveza Stella Artois Lager 4.8° 330 cc",
@@ -271,17 +211,27 @@
       "unidades": 6,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 7
+      "id": 1
     },
     {
       "categoria": "cerveza",
-      "nombre": "Pack 18 un. Cerveza Royal Guard Premium Lager 5.0° 355 cc",
+      "nombre": "Cerveza Odissea Tropic Ale 4.5° Lata 470 cc",
       "tienda": "Jumbo",
-      "precio": 12990,
-      "unidades": 18,
-      "volumenMlUnidad": 355,
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 470,
       "gama": "normal",
-      "id": 8
+      "id": 2
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Royal Dutch Lager 5.0° Barril 5 L",
+      "tienda": "Jumbo",
+      "precio": 20990,
+      "unidades": 1,
+      "volumenMlUnidad": 5000,
+      "gama": "normal",
+      "id": 3
     },
     {
       "categoria": "cerveza",
@@ -291,7 +241,37 @@
       "unidades": 1,
       "volumenMlUnidad": 500,
       "gama": "normal",
-      "id": 9
+      "id": 4
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack 4 un. Cerveza Kunstmann Lager Sin Alcohol 330 cc",
+      "tienda": "Jumbo",
+      "precio": 5593,
+      "unidades": 4,
+      "volumenMlUnidad": 330,
+      "gama": "sobrado",
+      "id": 5
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Royal Dutch Lager Sin Alcohol 330 cc",
+      "tienda": "Jumbo",
+      "precio": 890,
+      "unidades": 1,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 6
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack 6 un. Cerveza Royal Guard Premium Lager Sin Alcohol 355 cc",
+      "tienda": "Jumbo",
+      "precio": 4893,
+      "unidades": 6,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
+      "id": 7
     },
     {
       "categoria": "cerveza",
@@ -301,17 +281,27 @@
       "unidades": 6,
       "volumenMlUnidad": 470,
       "gama": "normal",
-      "id": 10
+      "id": 8
     },
     {
       "categoria": "cerveza",
-      "nombre": "Cerveza Barcelona Lager 4.0° 330 cc",
+      "nombre": "Pack 24 un. Cerveza Stella Artois Lager 5.2° 330 cc",
       "tienda": "Jumbo",
-      "precio": 1490,
-      "unidades": 1,
+      "precio": 13974,
+      "unidades": 24,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 11
+      "id": 9
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack 18 un. Cerveza Royal Guard Premium Lager 5.0° 355 cc",
+      "tienda": "Jumbo",
+      "precio": 12990,
+      "unidades": 18,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
+      "id": 10
     },
     {
       "categoria": "cerveza",
@@ -321,7 +311,7 @@
       "unidades": 12,
       "volumenMlUnidad": 354,
       "gama": "normal",
-      "id": 12
+      "id": 11
     },
     {
       "categoria": "cerveza",
@@ -331,7 +321,7 @@
       "unidades": 1,
       "volumenMlUnidad": 350,
       "gama": "sobrado",
-      "id": 13
+      "id": 12
     },
     {
       "categoria": "cerveza",
@@ -341,7 +331,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "normal",
-      "id": 14
+      "id": 13
     },
     {
       "categoria": "cerveza",
@@ -351,7 +341,7 @@
       "unidades": 24,
       "volumenMlUnidad": 300,
       "gama": "normal",
-      "id": 15
+      "id": 14
     },
     {
       "categoria": "cerveza",
@@ -361,27 +351,7 @@
       "unidades": 10,
       "volumenMlUnidad": 250,
       "gama": "normal",
-      "id": 16
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Pack 12 un. Cerveza Escudo Lager 4.6° 350 cc",
-      "tienda": "Jumbo",
-      "precio": 6490,
-      "unidades": 12,
-      "volumenMlUnidad": 350,
-      "gama": "rata",
-      "id": 17
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Pack 6 un. Cerveza Stones Sandía 2.5° Lata 350 cc",
-      "tienda": "Jumbo",
-      "precio": 4990,
-      "unidades": 6,
-      "volumenMlUnidad": 350,
-      "gama": "normal",
-      "id": 18
+      "id": 15
     },
     {
       "categoria": "cerveza",
@@ -391,7 +361,7 @@
       "unidades": 24,
       "volumenMlUnidad": 350,
       "gama": "normal",
-      "id": 19
+      "id": 16
     },
     {
       "categoria": "cerveza",
@@ -401,7 +371,17 @@
       "unidades": 24,
       "volumenMlUnidad": 354,
       "gama": "normal",
-      "id": 20
+      "id": 17
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack 12 un. Cerveza Escudo Lager 4.6° 350 cc",
+      "tienda": "Jumbo",
+      "precio": 6490,
+      "unidades": 12,
+      "volumenMlUnidad": 350,
+      "gama": "rata",
+      "id": 18
     },
     {
       "categoria": "cerveza",
@@ -411,7 +391,7 @@
       "unidades": 6,
       "volumenMlUnidad": 473,
       "gama": "normal",
-      "id": 21
+      "id": 19
     },
     {
       "categoria": "cerveza",
@@ -421,17 +401,47 @@
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "normal",
+      "id": 20
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack 12 un. Cerveza Miller Lager 4.7° 330 cc",
+      "tienda": "Jumbo",
+      "precio": 9990,
+      "unidades": 12,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 21
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack 18 un. Cerveza Heineken Lager 5.0° 330 cc",
+      "tienda": "Jumbo",
+      "precio": 12594,
+      "unidades": 18,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
       "id": 22
     },
     {
       "categoria": "cerveza",
-      "nombre": "Pack 12 un. Cerveza Kunstmann Torobayo Pale Ale 5.0° 330 cc",
+      "nombre": "Pack 24 un. Cerveza Coors Lager 5.0° 355 cc",
       "tienda": "Jumbo",
-      "precio": 15690,
-      "unidades": 12,
-      "volumenMlUnidad": 330,
-      "gama": "sobrado",
+      "precio": 14290,
+      "unidades": 24,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
       "id": 23
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack 6 un. Cerveza Stones Berries 2.5° 350 cc",
+      "tienda": "Jumbo",
+      "precio": 4990,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 24
     },
     {
       "categoria": "cerveza",
@@ -441,16 +451,6 @@
       "unidades": 4,
       "volumenMlUnidad": 350,
       "gama": "normal",
-      "id": 24
-    },
-    {
-      "categoria": "piscola",
-      "nombre": "Caja 6 un. Pisco Alto del Carmen Reservado Transparente 40° 750 cc",
-      "tienda": "Jumbo",
-      "precio": 38990,
-      "unidades": 6,
-      "volumenMlUnidad": 750,
-      "gama": "sobrado",
       "id": 25
     },
     {
@@ -465,21 +465,21 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Pisco Alto del Carmen Especial 35° Botella 1.5 L",
-      "tienda": "Jumbo",
-      "precio": 12990,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "normal",
-      "id": 27
-    },
-    {
-      "categoria": "piscola",
       "nombre": "Pisco Artesanos del Cochiguaz Especial 35° 1 L",
       "tienda": "Jumbo",
       "precio": 5450,
       "unidades": 1,
       "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 27
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Pisco Alto del Carmen Especial 35° Botella 1.5 L",
+      "tienda": "Jumbo",
+      "precio": 12990,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
       "gama": "normal",
       "id": 28
     },
@@ -495,13 +495,23 @@
     },
     {
       "categoria": "piscola",
+      "nombre": "Caja 6 un. Pisco Alto del Carmen Reservado Transparente 40° 750 cc",
+      "tienda": "Jumbo",
+      "precio": 53940,
+      "unidades": 6,
+      "volumenMlUnidad": 750,
+      "gama": "sobrado",
+      "id": 30
+    },
+    {
+      "categoria": "piscola",
       "nombre": "Pisco Horcón Quemado 40° 645 cc",
       "tienda": "Jumbo",
       "precio": 11490,
       "unidades": 1,
       "volumenMlUnidad": 645,
       "gama": "normal",
-      "id": 30
+      "id": 31
     },
     {
       "categoria": "ron",
@@ -511,7 +521,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 31
+      "id": 32
     },
     {
       "categoria": "ron",
@@ -521,7 +531,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 32
+      "id": 33
     },
     {
       "categoria": "ron",
@@ -531,7 +541,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 33
+      "id": 34
     },
     {
       "categoria": "ron",
@@ -541,7 +551,7 @@
       "unidades": 1,
       "volumenMlUnidad": 980,
       "gama": "normal",
-      "id": 34
+      "id": 35
     },
     {
       "categoria": "vodka",
@@ -551,7 +561,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 35
+      "id": 36
     },
     {
       "categoria": "vodka",
@@ -561,7 +571,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 36
+      "id": 37
     },
     {
       "categoria": "vodka",
@@ -571,7 +581,7 @@
       "unidades": 1,
       "volumenMlUnidad": 950,
       "gama": "normal",
-      "id": 37
+      "id": 38
     },
     {
       "categoria": "vodka",
@@ -581,35 +591,25 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 38
+      "id": 39
     },
     {
       "categoria": "vodka",
       "nombre": "Vodka Absolut y Sprite Lata 5° 269 cc",
       "tienda": "Jumbo",
-      "precio": 2030,
+      "precio": 1890,
       "unidades": 1,
       "volumenMlUnidad": 269,
-      "gama": "normal",
-      "id": 39
-    },
-    {
-      "categoria": "whiskey",
-      "nombre": "Whisky Blenders Pride 29° 750 cc",
-      "tienda": "Jumbo",
-      "precio": 8120,
-      "unidades": 1,
-      "volumenMlUnidad": 750,
       "gama": "normal",
       "id": 40
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky Blenders Pride 40° 1 L",
+      "nombre": "Whisky Blenders Pride 29° 750 cc",
       "tienda": "Jumbo",
-      "precio": 7490,
+      "precio": 7990,
       "unidades": 1,
-      "volumenMlUnidad": 1000,
+      "volumenMlUnidad": 750,
       "gama": "normal",
       "id": 41
     },
@@ -625,23 +625,13 @@
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky Jack Daniel's Old N°7 40° 350 cc",
+      "nombre": "Whisky Blenders Pride 40° 1 L",
       "tienda": "Jumbo",
-      "precio": 15990,
+      "precio": 7490,
       "unidades": 1,
-      "volumenMlUnidad": 350,
+      "volumenMlUnidad": 1000,
       "gama": "normal",
       "id": 43
-    },
-    {
-      "categoria": "gin",
-      "nombre": "Caja 6 un. Gin Hendrick's 700 cc",
-      "tienda": "Jumbo",
-      "precio": 114990,
-      "unidades": 6,
-      "volumenMlUnidad": 700,
-      "gama": "sobrado",
-      "id": 44
     },
     {
       "categoria": "gin",
@@ -651,7 +641,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 45
+      "id": 44
     },
     {
       "categoria": "gin",
@@ -661,6 +651,16 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
+      "id": 45
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Caja 6 un. Gin Hendrick's 700 cc",
+      "tienda": "Jumbo",
+      "precio": 167940,
+      "unidades": 6,
+      "volumenMlUnidad": 700,
+      "gama": "sobrado",
       "id": 46
     },
     {
@@ -675,9 +675,9 @@
     },
     {
       "categoria": "jaeger",
-      "nombre": "Licor Jägermeister 35° 700 cc",
+      "nombre": "Licor Jagermeister Coldbrew 33° 700 cc",
       "tienda": "Jumbo",
-      "precio": 17190,
+      "precio": 15990,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
@@ -687,7 +687,7 @@
       "categoria": "jaeger",
       "nombre": "Licor Jägermeister 35° 1 L",
       "tienda": "Jumbo",
-      "precio": 23640,
+      "precio": 22990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
@@ -705,23 +705,13 @@
     },
     {
       "categoria": "cola",
-      "nombre": "Pack 6 un. Bebida Coca-Cola Light 350 cc",
+      "nombre": "Bebida Pepsi 1.5 L",
       "tienda": "Jumbo",
-      "precio": 4190,
-      "unidades": 6,
-      "volumenMlUnidad": 350,
-      "gama": "neutral",
-      "id": 51
-    },
-    {
-      "categoria": "cola",
-      "nombre": "Bebida Coca Cola retornable 3 L + Envase",
-      "tienda": "Jumbo",
-      "precio": 2690,
+      "precio": 1398,
       "unidades": 1,
-      "volumenMlUnidad": 3000,
-      "gama": "neutral",
-      "id": 52
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 51
     },
     {
       "categoria": "cola",
@@ -730,18 +720,38 @@
       "precio": 12990,
       "unidades": 24,
       "volumenMlUnidad": 220,
-      "gama": "neutral",
+      "gama": "normal",
+      "id": 52
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida Pepsi Zero 3 L",
+      "tienda": "Jumbo",
+      "precio": 2113,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
       "id": 53
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Pack 6 un. Bebida Pepsi Zero 350 ml",
+      "tienda": "Jumbo",
+      "precio": 3803,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 54
     },
     {
       "categoria": "cola",
       "nombre": "Bebida Coca-Cola Original 591 ml",
       "tienda": "Jumbo",
-      "precio": 1390,
+      "precio": 1350,
       "unidades": 1,
       "volumenMlUnidad": 591,
-      "gama": "neutral",
-      "id": 54
+      "gama": "normal",
+      "id": 55
     },
     {
       "categoria": "cola",
@@ -750,18 +760,18 @@
       "precio": 5190,
       "unidades": 6,
       "volumenMlUnidad": 220,
-      "gama": "neutral",
-      "id": 55
+      "gama": "normal",
+      "id": 56
     },
     {
       "categoria": "cola",
-      "nombre": "Bebida Coca-Cola Zero Lata 473 cc",
+      "nombre": "Bebida Pepsi Zero Lata 473 cc",
       "tienda": "Jumbo",
-      "precio": 1000,
+      "precio": 813,
       "unidades": 1,
       "volumenMlUnidad": 473,
-      "gama": "neutral",
-      "id": 56
+      "gama": "normal",
+      "id": 57
     },
     {
       "categoria": "cola",
@@ -770,8 +780,8 @@
       "precio": 5990,
       "unidades": 6,
       "volumenMlUnidad": 473,
-      "gama": "neutral",
-      "id": 57
+      "gama": "normal",
+      "id": 58
     },
     {
       "categoria": "cola",
@@ -780,8 +790,8 @@
       "precio": 2050,
       "unidades": 1,
       "volumenMlUnidad": 2000,
-      "gama": "neutral",
-      "id": 58
+      "gama": "normal",
+      "id": 59
     },
     {
       "categoria": "cola",
@@ -790,8 +800,38 @@
       "precio": 4990,
       "unidades": 4,
       "volumenMlUnidad": 300,
-      "gama": "neutral",
-      "id": 59
+      "gama": "normal",
+      "id": 60
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida Pepsi Zero 1.75 L",
+      "tienda": "Jumbo",
+      "precio": 1554,
+      "unidades": 1,
+      "volumenMlUnidad": 1750,
+      "gama": "normal",
+      "id": 61
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida Pepsi Zero 600 ml",
+      "tienda": "Jumbo",
+      "precio": 878,
+      "unidades": 1,
+      "volumenMlUnidad": 600,
+      "gama": "normal",
+      "id": 62
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida Pepsi Zero retornable 2.5 L + Envase",
+      "tienda": "Jumbo",
+      "precio": 2190,
+      "unidades": 1,
+      "volumenMlUnidad": 2500,
+      "gama": "normal",
+      "id": 63
     },
     {
       "categoria": "fanta",
@@ -800,8 +840,58 @@
       "precio": 990,
       "unidades": 1,
       "volumenMlUnidad": 1250,
-      "gama": "neutral",
-      "id": 60
+      "gama": "normal",
+      "id": 64
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida Fanta Sin Azúcar 3 L",
+      "tienda": "Jumbo",
+      "precio": 3350,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
+      "id": 65
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida Fanta Sin Azúcar 1.5 L",
+      "tienda": "Jumbo",
+      "precio": 2290,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 66
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Pack 6 un. Bebida Fanta Naranja Sin Azúcar 350 ml",
+      "tienda": "Jumbo",
+      "precio": 4190,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 67
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida Fanta Sin Azúcar 591 ml",
+      "tienda": "Jumbo",
+      "precio": 1370,
+      "unidades": 1,
+      "volumenMlUnidad": 591,
+      "gama": "normal",
+      "id": 68
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Pack 6 un. Bebida Fanta Lata 220 cc",
+      "tienda": "Jumbo",
+      "precio": 5190,
+      "unidades": 6,
+      "volumenMlUnidad": 220,
+      "gama": "normal",
+      "id": 69
     },
     {
       "categoria": "fanta",
@@ -810,8 +900,8 @@
       "precio": 750,
       "unidades": 1,
       "volumenMlUnidad": 250,
-      "gama": "neutral",
-      "id": 61
+      "gama": "normal",
+      "id": 70
     },
     {
       "categoria": "fanta",
@@ -820,8 +910,108 @@
       "precio": 3990,
       "unidades": 6,
       "volumenMlUnidad": 250,
+      "gama": "normal",
+      "id": 71
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida Canada Dry Zero 1.75 L",
+      "tienda": "Jumbo",
+      "precio": 1690,
+      "unidades": 1,
+      "volumenMlUnidad": 1750,
+      "gama": "normal",
+      "id": 72
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida Canada Dry Ginger Ale 3 L",
+      "tienda": "Jumbo",
+      "precio": 3290,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
+      "id": 73
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida Canada Dry Ginger Ale 1.5 L",
+      "tienda": "Jumbo",
+      "precio": 2140,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 74
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida Sprite Sin Azucar 1.25 L",
+      "tienda": "Jumbo",
+      "precio": 990,
+      "unidades": 1,
+      "volumenMlUnidad": 1250,
       "gama": "neutral",
-      "id": 62
+      "id": 75
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida 7Up Zero 1.5 L",
+      "tienda": "Jumbo",
+      "precio": 2150,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "neutral",
+      "id": 76
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Pack 6 un. Bebida Sprite Sin Azúcar 220 ml",
+      "tienda": "Jumbo",
+      "precio": 5190,
+      "unidades": 6,
+      "volumenMlUnidad": 220,
+      "gama": "neutral",
+      "id": 77
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida Sprite retornable 3 L + Envase",
+      "tienda": "Jumbo",
+      "precio": 2690,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "neutral",
+      "id": 78
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida Sprite Sin Azúcar 591 ml",
+      "tienda": "Jumbo",
+      "precio": 1350,
+      "unidades": 1,
+      "volumenMlUnidad": 591,
+      "gama": "neutral",
+      "id": 79
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Pack 6 un. Bebida Sprite Sin Azúcar Lata 350 ml",
+      "tienda": "Jumbo",
+      "precio": 4190,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "neutral",
+      "id": 80
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida Sprite Zero retornable 2 L + Envase",
+      "tienda": "Jumbo",
+      "precio": 1890,
+      "unidades": 1,
+      "volumenMlUnidad": 2000,
+      "gama": "neutral",
+      "id": 81
     },
     {
       "categoria": "redbull",
@@ -831,7 +1021,7 @@
       "unidades": 24,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 63
+      "id": 82
     },
     {
       "categoria": "redbull",
@@ -841,7 +1031,7 @@
       "unidades": 1,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 64
+      "id": 83
     },
     {
       "categoria": "redbull",
@@ -851,27 +1041,27 @@
       "unidades": 4,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 65
+      "id": 84
     },
     {
       "categoria": "redbull",
-      "nombre": "Bebida Energética Red Bull 355 ml",
+      "nombre": "Bebida Energética Red Bull Sin Azúcar 355 ml",
       "tienda": "Jumbo",
-      "precio": 2530,
+      "precio": 2490,
       "unidades": 1,
       "volumenMlUnidad": 355,
       "gama": "neutral",
-      "id": 66
+      "id": 85
     },
     {
       "categoria": "redbull",
-      "nombre": "Bebida Energética Red Bull Sin Azúcar 473 ml",
+      "nombre": "Bebida Energética Red Bull 473 ml",
       "tienda": "Jumbo",
       "precio": 3090,
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "neutral",
-      "id": 67
+      "id": 86
     },
     {
       "categoria": "redbull",
@@ -881,7 +1071,7 @@
       "unidades": 6,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 68
+      "id": 87
     },
     {
       "categoria": "redbull",
@@ -891,7 +1081,7 @@
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "neutral",
-      "id": 69
+      "id": 88
     },
     {
       "categoria": "tonica",
@@ -901,7 +1091,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 70
+      "id": 89
     },
     {
       "categoria": "tonica",
@@ -911,17 +1101,7 @@
       "unidades": 6,
       "volumenMlUnidad": 310,
       "gama": "neutral",
-      "id": 71
-    },
-    {
-      "categoria": "tonica",
-      "nombre": "Agua Tónica Canada Dry Zero 310 ml",
-      "tienda": "Jumbo",
-      "precio": 1050,
-      "unidades": 1,
-      "volumenMlUnidad": 310,
-      "gama": "neutral",
-      "id": 72
+      "id": 90
     },
     {
       "categoria": "tonica",
@@ -931,7 +1111,17 @@
       "unidades": 6,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 73
+      "id": 91
+    },
+    {
+      "categoria": "tonica",
+      "nombre": "Agua Tónica Canada Dry Zero 310 ml",
+      "tienda": "Jumbo",
+      "precio": 1050,
+      "unidades": 1,
+      "volumenMlUnidad": 310,
+      "gama": "neutral",
+      "id": 92
     },
     {
       "categoria": "tonica",
@@ -941,7 +1131,7 @@
       "unidades": 4,
       "volumenMlUnidad": 200,
       "gama": "neutral",
-      "id": 74
+      "id": 93
     },
     {
       "categoria": "tonica",
@@ -951,7 +1141,7 @@
       "unidades": 1,
       "volumenMlUnidad": 200,
       "gama": "neutral",
-      "id": 75
+      "id": 94
     },
     {
       "categoria": "tonica",
@@ -961,7 +1151,7 @@
       "unidades": 1,
       "volumenMlUnidad": 355,
       "gama": "neutral",
-      "id": 76
+      "id": 95
     },
     {
       "categoria": "tonica",
@@ -971,57 +1161,17 @@
       "unidades": 1,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 77
+      "id": 96
     },
     {
       "categoria": "jugo_watts",
-      "nombre": "Pack 6 un. Jugo Watt's Naranja Manzana 200 ml",
-      "tienda": "Jumbo",
-      "precio": 4090,
-      "unidades": 6,
-      "volumenMlUnidad": 200,
-      "gama": "neutral",
-      "id": 78
-    },
-    {
-      "categoria": "jugo_watts",
-      "nombre": "Jugo Selección Watt's Piña Guayaba 1 L",
+      "nombre": "Jugo Selección Watt's Mango Maracuyá 1 L",
       "tienda": "Jumbo",
       "precio": 2090,
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "neutral",
-      "id": 79
-    },
-    {
-      "categoria": "jugo_watts",
-      "nombre": "Jugo Watt's Selección Naranja Valencia 350 cc",
-      "tienda": "Jumbo",
-      "precio": 1000,
-      "unidades": 1,
-      "volumenMlUnidad": 350,
-      "gama": "neutral",
-      "id": 80
-    },
-    {
-      "categoria": "jugo_watts",
-      "nombre": "Jugo Fresco Watt's Naranja 1.6 L",
-      "tienda": "Jumbo",
-      "precio": 5990,
-      "unidades": 1,
-      "volumenMlUnidad": 1600,
-      "gama": "neutral",
-      "id": 81
-    },
-    {
-      "categoria": "jugo_watts",
-      "nombre": "Jugo de Fruta Watt's Selección Naranja 100% 1500 cc",
-      "tienda": "Jumbo",
-      "precio": 4490,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral",
-      "id": 82
+      "id": 97
     },
     {
       "categoria": "jugo_watts",
@@ -1031,7 +1181,7 @@
       "unidades": 1,
       "volumenMlUnidad": 300,
       "gama": "neutral",
-      "id": 83
+      "id": 98
     },
     {
       "categoria": "jugo_watts",
@@ -1041,7 +1191,17 @@
       "unidades": 3,
       "volumenMlUnidad": 190,
       "gama": "neutral",
-      "id": 84
+      "id": 99
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Pack 6 un. Jugo Watt's 100% Fruta Natural Manzana 200 ml",
+      "tienda": "Jumbo",
+      "precio": 4090,
+      "unidades": 6,
+      "volumenMlUnidad": 200,
+      "gama": "neutral",
+      "id": 100
     },
     {
       "categoria": "hielo",
@@ -1051,7 +1211,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 85
+      "id": 101
     },
     {
       "categoria": "hielo",
@@ -1061,7 +1221,997 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "neutral",
-      "id": 86
+      "id": 102
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza patagonia austral hoppy lager lata 470 cc",
+      "tienda": "Unimarc",
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 470,
+      "gama": "sobrado",
+      "id": 103
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza becker classic lager lata 710 cc",
+      "tienda": "Unimarc",
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 710,
+      "gama": "rata",
+      "id": 104
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza corelli lager lata 6 un de 330 cc",
+      "tienda": "Unimarc",
+      "precio": 3990,
+      "unidades": 6,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 105
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza cristal ultra liviana lata 6 un de 470 cc",
+      "tienda": "Unimarc",
+      "precio": 4790,
+      "unidades": 6,
+      "volumenMlUnidad": 470,
+      "gama": "rata",
+      "id": 106
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza coors original botella 6 un de 355 cc",
+      "tienda": "Unimarc",
+      "precio": 5990,
+      "unidades": 6,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
+      "id": 107
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza rose royal guard lata 350ml",
+      "tienda": "Unimarc",
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 108
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza royal guard lager cero alcohol botella 355 cc",
+      "tienda": "Unimarc",
+      "precio": 1350,
+      "unidades": 1,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
+      "id": 109
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza mahou lager cinco estrellas botella 330 cc",
+      "tienda": "Unimarc",
+      "precio": 1390,
+      "unidades": 1,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 110
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza cusqueña red lager botella 4 un de 330 cc",
+      "tienda": "Unimarc",
+      "precio": 3990,
+      "unidades": 4,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 111
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza cristal cero radler sin alcohol lata 6 un de 350 cc",
+      "tienda": "Unimarc",
+      "precio": 4690,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "rata",
+      "id": 112
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza escudo lata 12 un de 350 cc",
+      "tienda": "Unimarc",
+      "precio": 6990,
+      "unidades": 12,
+      "volumenMlUnidad": 350,
+      "gama": "rata",
+      "id": 113
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza becker lata 6 un de 473 cc",
+      "tienda": "Unimarc",
+      "precio": 4690,
+      "unidades": 6,
+      "volumenMlUnidad": 473,
+      "gama": "rata",
+      "id": 114
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza kunstmann torobayo lata 10 un de 350 cc",
+      "tienda": "Unimarc",
+      "precio": 12990,
+      "unidades": 10,
+      "volumenMlUnidad": 350,
+      "gama": "sobrado",
+      "id": 115
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza cristal lata 18 un de 350 cc",
+      "tienda": "Unimarc",
+      "precio": 10490,
+      "unidades": 18,
+      "volumenMlUnidad": 350,
+      "gama": "rata",
+      "id": 116
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza leyendas de origen trauco lata 473 cc",
+      "tienda": "Unimarc",
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 473,
+      "gama": "normal",
+      "id": 117
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza sol botella 12 un de 330 cc",
+      "tienda": "Unimarc",
+      "precio": 10490,
+      "unidades": 12,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 118
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza royal guard lata 24 un de 350 cc",
+      "tienda": "Unimarc",
+      "precio": 14990,
+      "unidades": 24,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 119
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza becker lata 24 un de 354 cc",
+      "tienda": "Unimarc",
+      "precio": 10490,
+      "unidades": 24,
+      "volumenMlUnidad": 354,
+      "gama": "rata",
+      "id": 120
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza cristal botella 24 un de 355 cc",
+      "tienda": "Unimarc",
+      "precio": 12990,
+      "unidades": 24,
+      "volumenMlUnidad": 355,
+      "gama": "rata",
+      "id": 121
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza heineken lata 12 un de 355 cc",
+      "tienda": "Unimarc",
+      "precio": 9490,
+      "unidades": 12,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
+      "id": 122
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza stella artois botella 24 un de 330 cc",
+      "tienda": "Unimarc",
+      "precio": 15990,
+      "unidades": 24,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 123
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza quilmes clásica botella 24 un de 300 cc",
+      "tienda": "Unimarc",
+      "precio": 13990,
+      "unidades": 24,
+      "volumenMlUnidad": 300,
+      "gama": "normal",
+      "id": 124
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Pack cerveza quilmes clásica lata 12 un de 354 cc",
+      "tienda": "Unimarc",
+      "precio": 7490,
+      "unidades": 12,
+      "volumenMlUnidad": 354,
+      "gama": "normal",
+      "id": 125
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Pisco especial tres erres 750 cc",
+      "tienda": "Unimarc",
+      "precio": 5990,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
+      "gama": "rata",
+      "id": 126
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Pisco artesanos del cochiguaz especial 35° botella 1 l",
+      "tienda": "Unimarc",
+      "precio": 4990,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 127
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Pisco diablo reservado botella 700 cc",
+      "tienda": "Unimarc",
+      "precio": 8490,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
+      "gama": "normal",
+      "id": 128
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Pisco horcón quemado 35° añejado botella 645 cc",
+      "tienda": "Unimarc",
+      "precio": 11890,
+      "unidades": 1,
+      "volumenMlUnidad": 645,
+      "gama": "normal",
+      "id": 129
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Pisco alto del carmen especial botella 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 12990,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 130
+    },
+    {
+      "categoria": "ron",
+      "nombre": "Ron bacardi añejo botella 700 cc",
+      "tienda": "Unimarc",
+      "precio": 11690,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
+      "gama": "normal",
+      "id": 131
+    },
+    {
+      "categoria": "ron",
+      "nombre": "Ron blanco bacardi superior botella 980 cc",
+      "tienda": "Unimarc",
+      "precio": 9490,
+      "unidades": 1,
+      "volumenMlUnidad": 980,
+      "gama": "normal",
+      "id": 132
+    },
+    {
+      "categoria": "ron",
+      "nombre": "Ron blanco sierra morena botella 1 l",
+      "tienda": "Unimarc",
+      "precio": 6390,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 133
+    },
+    {
+      "categoria": "ron",
+      "nombre": "Ron blanco sierra morena 39.5° botella 750 cc",
+      "tienda": "Unimarc",
+      "precio": 6290,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
+      "gama": "normal",
+      "id": 134
+    },
+    {
+      "categoria": "vodka",
+      "nombre": "Vodka ustinov original botella 700 cc",
+      "tienda": "Unimarc",
+      "precio": 4290,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
+      "gama": "normal",
+      "id": 135
+    },
+    {
+      "categoria": "vodka",
+      "nombre": "Vodka stoli premium 40° 1000 cc",
+      "tienda": "Unimarc",
+      "precio": 11190,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 136
+    },
+    {
+      "categoria": "vodka",
+      "nombre": "Vodka puklaro botella 750 cc",
+      "tienda": "Unimarc",
+      "precio": 10790,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
+      "gama": "normal",
+      "id": 137
+    },
+    {
+      "categoria": "vodka",
+      "nombre": "Vodka eristoff original botella 950 cc",
+      "tienda": "Unimarc",
+      "precio": 8190,
+      "unidades": 1,
+      "volumenMlUnidad": 950,
+      "gama": "normal",
+      "id": 138
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "Whisky white horse fine old 750 cc",
+      "tienda": "Unimarc",
+      "precio": 7990,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
+      "gama": "normal",
+      "id": 139
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "Whisky blenders pride botella 1 l",
+      "tienda": "Unimarc",
+      "precio": 7490,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 140
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "Whisky ballantines wild cereza botella 700 cc",
+      "tienda": "Unimarc",
+      "precio": 10990,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
+      "gama": "normal",
+      "id": 141
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "Whisky ballantines finest botella 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 21990,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 142
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Gin kantal botella 750 cc",
+      "tienda": "Unimarc",
+      "precio": 11990,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
+      "gama": "normal",
+      "id": 143
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Gin brighton pink botella 700 cc",
+      "tienda": "Unimarc",
+      "precio": 10990,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
+      "gama": "normal",
+      "id": 144
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Gin bombay sapphire botella 1 l",
+      "tienda": "Unimarc",
+      "precio": 19490,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 145
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Gin kantal berries lata 473 cc",
+      "tienda": "Unimarc",
+      "precio": 2390,
+      "unidades": 1,
+      "volumenMlUnidad": 473,
+      "gama": "normal",
+      "id": 146
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Cerveza patagonia hoppy lager gin tonic lata 350 cc",
+      "tienda": "Unimarc",
+      "precio": 1450,
+      "unidades": 1,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 147
+    },
+    {
+      "categoria": "jaeger",
+      "nombre": "Licor de hierbas jagermeister 700 cc",
+      "tienda": "Unimarc",
+      "precio": 17490,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
+      "gama": "normal",
+      "id": 148
+    },
+    {
+      "categoria": "jaeger",
+      "nombre": "Licor de hierbas jagermeister botella 1 l",
+      "tienda": "Unimarc",
+      "precio": 23650,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 149
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida coca cola original 1 l",
+      "tienda": "Unimarc",
+      "precio": 2000,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 150
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida pepsi zero no retornable 3 l",
+      "tienda": "Unimarc",
+      "precio": 2290,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
+      "id": 151
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Pack bebida coca cola original lata 6 un de 350 ml",
+      "tienda": "Unimarc",
+      "precio": 4290,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 152
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida coca cola original botella 591 ml",
+      "tienda": "Unimarc",
+      "precio": 1990,
+      "unidades": 1,
+      "volumenMlUnidad": 591,
+      "gama": "normal",
+      "id": 153
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Pack bebida coca cola + fanta 2 un de 3 l",
+      "tienda": "Unimarc",
+      "precio": 4990,
+      "unidades": 2,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
+      "id": 154
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida coca cola zero lata 473 ml (diseño aleatorio)",
+      "tienda": "Unimarc",
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 473,
+      "gama": "normal",
+      "id": 155
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida coca cola retornable 2 l + envase",
+      "tienda": "Unimarc",
+      "precio": 1990,
+      "unidades": 1,
+      "volumenMlUnidad": 2000,
+      "gama": "normal",
+      "id": 156
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida pepsi zero no retornable 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 2090,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 157
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Cóctel whisky jack daniels y coca cola sin azúcar lata 350 ml",
+      "tienda": "Unimarc",
+      "precio": 2150,
+      "unidades": 1,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 158
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida pepsi zero desechable 1.25 l",
+      "tienda": "Unimarc",
+      "precio": 2000,
+      "unidades": 1,
+      "volumenMlUnidad": 1250,
+      "gama": "normal",
+      "id": 159
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida pepsi zero 600 ml",
+      "tienda": "Unimarc",
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 600,
+      "gama": "normal",
+      "id": 160
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida fanta naranja desechable 1.25 l",
+      "tienda": "Unimarc",
+      "precio": 2000,
+      "unidades": 1,
+      "volumenMlUnidad": 1250,
+      "gama": "normal",
+      "id": 161
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Fanta naranja full sugar 591 ml pet",
+      "tienda": "Unimarc",
+      "precio": 1990,
+      "unidades": 1,
+      "volumenMlUnidad": 591,
+      "gama": "normal",
+      "id": 162
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Pack bebida sabor original fanta lata 6un de 350 ml",
+      "tienda": "Unimarc",
+      "precio": 4290,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 163
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida orange crush light no retornable 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 2090,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 164
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida orange crush no retornable 3 l",
+      "tienda": "Unimarc",
+      "precio": 2350,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
+      "id": 165
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Fanta naranja full sugar 350ml lata",
+      "tienda": "Unimarc",
+      "precio": 1090,
+      "unidades": 1,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 166
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida fanta zero retornable 2 l + envase",
+      "tienda": "Unimarc",
+      "precio": 1990,
+      "unidades": 1,
+      "volumenMlUnidad": 2000,
+      "gama": "normal",
+      "id": 167
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Pack bebida coca cola + fanta 2 un de 3 l",
+      "tienda": "Unimarc",
+      "precio": 4990,
+      "unidades": 2,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
+      "id": 168
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "Bebida crush 600 cc",
+      "tienda": "Unimarc",
+      "precio": 1000,
+      "unidades": 1,
+      "volumenMlUnidad": 600,
+      "gama": "normal",
+      "id": 169
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Pack bebida canada dry ginger ale lata 6 un de 350 ml",
+      "tienda": "Unimarc",
+      "precio": 12690,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 170
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida canada dry ginger ale no retornable 3 l",
+      "tienda": "Unimarc",
+      "precio": 2350,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "normal",
+      "id": 171
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida canada dry agua tónica no retornable 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 1590,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 172
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida schweppes ginger ale sin azúcar desechable 1.25 l",
+      "tienda": "Unimarc",
+      "precio": 2000,
+      "unidades": 1,
+      "volumenMlUnidad": 1250,
+      "gama": "normal",
+      "id": 173
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida schweppes ginger ale sin azúcar lata 6 un de 310 ml",
+      "tienda": "Unimarc",
+      "precio": 4290,
+      "unidades": 6,
+      "volumenMlUnidad": 310,
+      "gama": "normal",
+      "id": 174
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida sprite desechable 1.25 l",
+      "tienda": "Unimarc",
+      "precio": 2000,
+      "unidades": 1,
+      "volumenMlUnidad": 1250,
+      "gama": "neutral",
+      "id": 175
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida sprite botella 591 ml",
+      "tienda": "Unimarc",
+      "precio": 1990,
+      "unidades": 1,
+      "volumenMlUnidad": 591,
+      "gama": "neutral",
+      "id": 176
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Pack bebida sprite lata 6 un de 350 ml",
+      "tienda": "Unimarc",
+      "precio": 4290,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "neutral",
+      "id": 177
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida sprite zero desechable 3 l",
+      "tienda": "Unimarc",
+      "precio": 3290,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "neutral",
+      "id": 178
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida sprite zero 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 2290,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "neutral",
+      "id": 179
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Bebida sprite retornable 2 l + envase",
+      "tienda": "Unimarc",
+      "precio": 1990,
+      "unidades": 1,
+      "volumenMlUnidad": 2000,
+      "gama": "neutral",
+      "id": 180
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Pack bebida coca cola + sprite sin azúcar 2 un 3 l",
+      "tienda": "Unimarc",
+      "precio": 4990,
+      "unidades": 2,
+      "volumenMlUnidad": 3000,
+      "gama": "neutral",
+      "id": 181
+    },
+    {
+      "categoria": "sprite",
+      "nombre": "Cóctel vodka absolute con sprite lata 269 cc",
+      "tienda": "Unimarc",
+      "precio": 2150,
+      "unidades": 1,
+      "volumenMlUnidad": 269,
+      "gama": "neutral",
+      "id": 182
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Red bull bebida energética lata 250 ml",
+      "tienda": "Unimarc",
+      "precio": 3220,
+      "unidades": 1,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 183
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Red bull bebida energética lata 355 ml",
+      "tienda": "Unimarc",
+      "precio": 2000,
+      "unidades": 1,
+      "volumenMlUnidad": 355,
+      "gama": "neutral",
+      "id": 184
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Red bull bebida energética sabor tropical 4 latas de 250 ml",
+      "tienda": "Unimarc",
+      "precio": 6690,
+      "unidades": 4,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 185
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Red bull bebida energética lata 473 ml",
+      "tienda": "Unimarc",
+      "precio": 3290,
+      "unidades": 1,
+      "volumenMlUnidad": 473,
+      "gama": "neutral",
+      "id": 186
+    },
+    {
+      "categoria": "tonica",
+      "nombre": "Pack bebida canada dry agua tónica lata 6 un de 350 ml",
+      "tienda": "Unimarc",
+      "precio": 12690,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "neutral",
+      "id": 187
+    },
+    {
+      "categoria": "tonica",
+      "nombre": "Bebida canada dry agua tónica no retornable 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 1590,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "neutral",
+      "id": 188
+    },
+    {
+      "categoria": "tonica",
+      "nombre": "Bebida agua tónica schweppes lata 6 un de 310 ml",
+      "tienda": "Unimarc",
+      "precio": 4290,
+      "unidades": 6,
+      "volumenMlUnidad": 310,
+      "gama": "neutral",
+      "id": 189
+    },
+    {
+      "categoria": "tonica",
+      "nombre": "Pack agua tónica san pellegrino citrus 4 un de 200 ml",
+      "tienda": "Unimarc",
+      "precio": 7350,
+      "unidades": 4,
+      "volumenMlUnidad": 200,
+      "gama": "neutral",
+      "id": 190
+    },
+    {
+      "categoria": "tonica",
+      "nombre": "Agua tónica san pellegrino citrus botella 200 ml",
+      "tienda": "Unimarc",
+      "precio": 2090,
+      "unidades": 1,
+      "volumenMlUnidad": 200,
+      "gama": "neutral",
+      "id": 191
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Jugo exprimido de naranja selección watts 1.5 l",
+      "tienda": "Unimarc",
+      "precio": 5190,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "neutral",
+      "id": 192
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Jugo fresco watt's selección naranja tetra 1.6 l",
+      "tienda": "Unimarc",
+      "precio": 6990,
+      "unidades": 1,
+      "volumenMlUnidad": 1600,
+      "gama": "neutral",
+      "id": 193
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Jugo guallarauco naranja 0% azúcar añadida botella 1 l",
+      "tienda": "Unimarc",
+      "precio": 2690,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "neutral",
+      "id": 194
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Pack néctar watts manzana light 6 un de 200 ml",
+      "tienda": "Unimarc",
+      "precio": 2290,
+      "unidades": 6,
+      "volumenMlUnidad": 200,
+      "gama": "neutral",
+      "id": 195
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Jugo de naranja quillayes natural one 1.3 l",
+      "tienda": "Unimarc",
+      "precio": 5890,
+      "unidades": 1,
+      "volumenMlUnidad": 1300,
+      "gama": "neutral",
+      "id": 196
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Jugo quillayes natural one pink lemonade 900 ml",
+      "tienda": "Unimarc",
+      "precio": 3790,
+      "unidades": 1,
+      "volumenMlUnidad": 900,
+      "gama": "neutral",
+      "id": 197
+    },
+    {
+      "categoria": "jugo_watts",
+      "nombre": "Jugo orgánico kombucha frambuesa lata 355 ml",
+      "tienda": "Unimarc",
+      "precio": 2390,
+      "unidades": 1,
+      "volumenMlUnidad": 355,
+      "gama": "neutral",
+      "id": 198
+    },
+    {
+      "categoria": "hielo",
+      "nombre": "Hielo nuestra cocina bolsa 1 kg",
+      "tienda": "Unimarc",
+      "precio": 760,
+      "unidades": 1,
+      "volumenMlUnidad": 2000,
+      "gama": "neutral",
+      "id": 199
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "700cc Otros Whisky",
+      "tienda": "Booz",
+      "precio": 22990,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
+      "gama": "normal",
+      "id": 200
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "750cc Otros Whisky",
+      "tienda": "Booz",
+      "precio": 17490,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
+      "gama": "normal",
+      "id": 201
     },
     {
       "categoria": "cerveza",
@@ -1071,7 +2221,7 @@
       "unidades": 12,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 87
+      "id": 202
     },
     {
       "categoria": "cerveza",
@@ -1081,7 +2231,7 @@
       "unidades": 1,
       "volumenMlUnidad": 660,
       "gama": "normal",
-      "id": 88
+      "id": 203
     },
     {
       "categoria": "cerveza",
@@ -1091,7 +2241,7 @@
       "unidades": 1,
       "volumenMlUnidad": 500,
       "gama": "sobrado",
-      "id": 89
+      "id": 204
     },
     {
       "categoria": "cerveza",
@@ -1101,7 +2251,7 @@
       "unidades": 1,
       "volumenMlUnidad": 620,
       "gama": "normal",
-      "id": 90
+      "id": 205
     },
     {
       "categoria": "cerveza",
@@ -1111,7 +2261,7 @@
       "unidades": 24,
       "volumenMlUnidad": 330,
       "gama": "rata",
-      "id": 91
+      "id": 206
     },
     {
       "categoria": "cerveza",
@@ -1121,7 +2271,7 @@
       "unidades": 24,
       "volumenMlUnidad": 354,
       "gama": "normal",
-      "id": 92
+      "id": 207
     },
     {
       "categoria": "cerveza",
@@ -1131,7 +2281,7 @@
       "unidades": 12,
       "volumenMlUnidad": 350,
       "gama": "normal",
-      "id": 93
+      "id": 208
     },
     {
       "categoria": "piscola",
@@ -1141,7 +2291,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 94
+      "id": 209
     },
     {
       "categoria": "whiskey",
@@ -1151,7 +2301,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 95
+      "id": 210
     },
     {
       "categoria": "cola",
@@ -1161,10 +2311,10 @@
       "unidades": 1,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 96
+      "id": 211
     },
     {
-      "id": 97,
+      "id": 212,
       "categoria": "cerveza",
       "nombre": "Cerveza Baltica lata 710cc",
       "tienda": "Liquidos",
@@ -1172,146 +2322,6 @@
       "unidades": 1,
       "volumenMlUnidad": 710,
       "gama": "rata"
-    },
-    {
-      "id": 98,
-      "categoria": "cerveza",
-      "nombre": "Cerveza Kunstmann maletín 12x330cc",
-      "tienda": "Unimarc",
-      "precio": 11990,
-      "unidades": 12,
-      "volumenMlUnidad": 330,
-      "gama": "sobrado"
-    },
-    {
-      "id": 99,
-      "categoria": "vodka",
-      "nombre": "Vodka Grey Goose 750ml",
-      "tienda": "Unimarc",
-      "precio": 24890,
-      "unidades": 1,
-      "volumenMlUnidad": 750,
-      "gama": "sobrado"
-    },
-    {
-      "id": 100,
-      "categoria": "ron",
-      "nombre": "Ron Havana Club Añejo 750ml",
-      "tienda": "Unimarc",
-      "precio": 7590,
-      "unidades": 1,
-      "volumenMlUnidad": 750,
-      "gama": "normal"
-    },
-    {
-      "id": 101,
-      "categoria": "whiskey",
-      "nombre": "Whiskey Johnnie Walker Black Label 750ml",
-      "tienda": "Unimarc",
-      "precio": 21500,
-      "unidades": 1,
-      "volumenMlUnidad": 750,
-      "gama": "sobrado"
-    },
-    {
-      "id": 102,
-      "categoria": "gin",
-      "nombre": "Gin Hendrick's 750ml",
-      "tienda": "Unimarc",
-      "precio": 23000,
-      "unidades": 1,
-      "volumenMlUnidad": 750,
-      "gama": "sobrado"
-    },
-    {
-      "id": 103,
-      "categoria": "cola",
-      "nombre": "Coca-Cola 1L",
-      "tienda": "Unimarc",
-      "precio": 1000,
-      "unidades": 1,
-      "volumenMlUnidad": 1000,
-      "gama": "neutral"
-    },
-    {
-      "id": 104,
-      "categoria": "cola",
-      "nombre": "Coca-Cola 1.5L",
-      "tienda": "Unimarc",
-      "precio": 2090,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral"
-    },
-    {
-      "id": 105,
-      "categoria": "cola",
-      "nombre": "Coca-Cola 3L",
-      "tienda": "Unimarc",
-      "precio": 2600,
-      "unidades": 1,
-      "volumenMlUnidad": 3000,
-      "gama": "neutral"
-    },
-    {
-      "id": 106,
-      "categoria": "redbull",
-      "nombre": "Red Bull lata 250ml",
-      "tienda": "Unimarc",
-      "precio": 1300,
-      "unidades": 1,
-      "volumenMlUnidad": 250,
-      "gama": "neutral"
-    },
-    {
-      "id": 107,
-      "categoria": "redbull",
-      "nombre": "Red Bull pack 4 latas",
-      "tienda": "Unimarc",
-      "precio": 5200,
-      "unidades": 4,
-      "volumenMlUnidad": 250,
-      "gama": "neutral"
-    },
-    {
-      "id": 108,
-      "categoria": "tonica",
-      "nombre": "Tónica 1.5L",
-      "tienda": "Unimarc",
-      "precio": 2100,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral"
-    },
-    {
-      "id": 109,
-      "categoria": "sprite",
-      "nombre": "Sprite 1.5L",
-      "tienda": "Unimarc",
-      "precio": 1990,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral"
-    },
-    {
-      "id": 110,
-      "categoria": "jugo_watts",
-      "nombre": "Jugo Watts 1.5L",
-      "tienda": "Unimarc",
-      "precio": 2390,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral"
-    },
-    {
-      "id": 111,
-      "categoria": "hielo",
-      "nombre": "Hielo 2kg",
-      "tienda": "Unimarc",
-      "precio": 2190,
-      "unidades": 1,
-      "volumenMlUnidad": 2000,
-      "gama": "neutral"
     }
   ]
 }
