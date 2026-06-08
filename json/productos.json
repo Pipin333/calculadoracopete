@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-07T21:44:58.684226",
+  "timestamp": "2026-06-07T21:56:57.114237",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -171,7 +171,7 @@
     }
   },
   "combinaciones_especiales": {},
-  "total": 110,
+  "total": 115,
   "productos": [
     {
       "categoria": "cerveza",
@@ -645,13 +645,33 @@
     },
     {
       "categoria": "jaeger",
-      "nombre": "Licor Jagermeister Coldbrew 33° 700 cc",
+      "nombre": "Licor Jägermeister 35° 700 cc",
       "tienda": "Jumbo",
       "precio": 17190,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
       "id": 48
+    },
+    {
+      "categoria": "jaeger",
+      "nombre": "Licor Jägermeister 35° 1 L",
+      "tienda": "Jumbo",
+      "precio": 23640,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 49
+    },
+    {
+      "categoria": "jaeger",
+      "nombre": "Licor Jagermeister 35° 1.75 L",
+      "tienda": "Jumbo",
+      "precio": 33990,
+      "unidades": 1,
+      "volumenMlUnidad": 1750,
+      "gama": "normal",
+      "id": 50
     },
     {
       "categoria": "bebida",
@@ -661,7 +681,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 49
+      "id": 51
     },
     {
       "categoria": "bebida",
@@ -671,7 +691,7 @@
       "unidades": 6,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 50
+      "id": 52
     },
     {
       "categoria": "bebida",
@@ -681,7 +701,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 51
+      "id": 53
     },
     {
       "categoria": "bebida",
@@ -691,7 +711,7 @@
       "unidades": 24,
       "volumenMlUnidad": 220,
       "gama": "neutral",
-      "id": 52
+      "id": 54
     },
     {
       "categoria": "bebida",
@@ -701,7 +721,7 @@
       "unidades": 1,
       "volumenMlUnidad": 591,
       "gama": "neutral",
-      "id": 53
+      "id": 55
     },
     {
       "categoria": "bebida",
@@ -711,7 +731,7 @@
       "unidades": 6,
       "volumenMlUnidad": 220,
       "gama": "neutral",
-      "id": 54
+      "id": 56
     },
     {
       "categoria": "bebida",
@@ -721,7 +741,7 @@
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "neutral",
-      "id": 55
+      "id": 57
     },
     {
       "categoria": "bebida",
@@ -731,7 +751,7 @@
       "unidades": 6,
       "volumenMlUnidad": 473,
       "gama": "neutral",
-      "id": 56
+      "id": 58
     },
     {
       "categoria": "bebida",
@@ -741,7 +761,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 57
+      "id": 59
     },
     {
       "categoria": "bebida",
@@ -751,7 +771,37 @@
       "unidades": 4,
       "volumenMlUnidad": 300,
       "gama": "neutral",
-      "id": 58
+      "id": 60
+    },
+    {
+      "categoria": "bebida",
+      "nombre": "Bebida Fanta Original 1.25 L",
+      "tienda": "Jumbo",
+      "precio": 990,
+      "unidades": 1,
+      "volumenMlUnidad": 1250,
+      "gama": "neutral",
+      "id": 61
+    },
+    {
+      "categoria": "bebida",
+      "nombre": "Bebida Fanta Pomelo 250 ml",
+      "tienda": "Jumbo",
+      "precio": 750,
+      "unidades": 1,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 62
+    },
+    {
+      "categoria": "bebida",
+      "nombre": "Pack 6 un. Bebida Fanta 250 cc",
+      "tienda": "Jumbo",
+      "precio": 3990,
+      "unidades": 6,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 63
     },
     {
       "categoria": "bebida",
@@ -761,7 +811,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1750,
       "gama": "neutral",
-      "id": 59
+      "id": 64
     },
     {
       "categoria": "bebida",
@@ -771,7 +821,7 @@
       "unidades": 1,
       "volumenMlUnidad": 600,
       "gama": "neutral",
-      "id": 60
+      "id": 65
     },
     {
       "categoria": "bebida",
@@ -781,7 +831,77 @@
       "unidades": 1,
       "volumenMlUnidad": 2500,
       "gama": "neutral",
-      "id": 61
+      "id": 66
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Caja 24 un. Bebida Energética Red Bull Spring Pomelo Floral 250 cc",
+      "tienda": "Jumbo",
+      "precio": 32990,
+      "unidades": 24,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 67
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Bebida Energética Red Bull Tropical 250 ml",
+      "tienda": "Jumbo",
+      "precio": 1890,
+      "unidades": 1,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 68
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Pack 4 un. Bebida Energética Red Bull Tropical 250 ml",
+      "tienda": "Jumbo",
+      "precio": 5690,
+      "unidades": 4,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 69
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Bebida Energética Red Bull 355 ml",
+      "tienda": "Jumbo",
+      "precio": 2530,
+      "unidades": 1,
+      "volumenMlUnidad": 355,
+      "gama": "neutral",
+      "id": 70
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Bebida Energética Red Bull Sin Azúcar 473 ml",
+      "tienda": "Jumbo",
+      "precio": 3090,
+      "unidades": 1,
+      "volumenMlUnidad": 473,
+      "gama": "neutral",
+      "id": 71
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Pack 6 un. Bebida Energética Red Bull Lata 250 cc",
+      "tienda": "Jumbo",
+      "precio": 10150,
+      "unidades": 6,
+      "volumenMlUnidad": 250,
+      "gama": "neutral",
+      "id": 72
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "Cuaderno Clásico Redbull Racing 7 mm 100 Hojas Torre",
+      "tienda": "Jumbo",
+      "precio": 2490,
+      "unidades": 1,
+      "volumenMlUnidad": 330,
+      "gama": "neutral",
+      "id": 73
     },
     {
       "categoria": "tonica",
@@ -791,7 +911,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 62
+      "id": 74
     },
     {
       "categoria": "tonica",
@@ -801,7 +921,7 @@
       "unidades": 6,
       "volumenMlUnidad": 310,
       "gama": "neutral",
-      "id": 63
+      "id": 75
     },
     {
       "categoria": "tonica",
@@ -811,7 +931,7 @@
       "unidades": 1,
       "volumenMlUnidad": 310,
       "gama": "neutral",
-      "id": 64
+      "id": 76
     },
     {
       "categoria": "tonica",
@@ -821,7 +941,7 @@
       "unidades": 6,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 65
+      "id": 77
     },
     {
       "categoria": "tonica",
@@ -831,7 +951,7 @@
       "unidades": 4,
       "volumenMlUnidad": 200,
       "gama": "neutral",
-      "id": 66
+      "id": 78
     },
     {
       "categoria": "tonica",
@@ -841,7 +961,7 @@
       "unidades": 1,
       "volumenMlUnidad": 200,
       "gama": "neutral",
-      "id": 67
+      "id": 79
     },
     {
       "categoria": "tonica",
@@ -851,7 +971,7 @@
       "unidades": 1,
       "volumenMlUnidad": 355,
       "gama": "neutral",
-      "id": 68
+      "id": 80
     },
     {
       "categoria": "tonica",
@@ -861,77 +981,7 @@
       "unidades": 1,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 69
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Bebida Sprite Sin Azucar 1.25 L",
-      "tienda": "Jumbo",
-      "precio": 990,
-      "unidades": 1,
-      "volumenMlUnidad": 1250,
-      "gama": "neutral",
-      "id": 70
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Bebida Sprite Sin Azúcar 1.5 L",
-      "tienda": "Jumbo",
-      "precio": 2290,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral",
-      "id": 71
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Bebida Sprite retornable 3 L + Envase",
-      "tienda": "Jumbo",
-      "precio": 2690,
-      "unidades": 1,
-      "volumenMlUnidad": 3000,
-      "gama": "neutral",
-      "id": 72
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Pack 6 un. Bebida Sprite Sin Azúcar 220 ml",
-      "tienda": "Jumbo",
-      "precio": 5190,
-      "unidades": 6,
-      "volumenMlUnidad": 220,
-      "gama": "neutral",
-      "id": 73
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Bebida Sprite Sin Azúcar 591 ml",
-      "tienda": "Jumbo",
-      "precio": 1390,
-      "unidades": 1,
-      "volumenMlUnidad": 591,
-      "gama": "neutral",
-      "id": 74
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Pack 6 un. Bebida Sprite Sin Azúcar Lata 350 ml",
-      "tienda": "Jumbo",
-      "precio": 4190,
-      "unidades": 6,
-      "volumenMlUnidad": 350,
-      "gama": "neutral",
-      "id": 75
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Bebida Sprite Zero retornable 2 L + Envase",
-      "tienda": "Jumbo",
-      "precio": 1890,
-      "unidades": 1,
-      "volumenMlUnidad": 2000,
-      "gama": "neutral",
-      "id": 76
+      "id": 81
     },
     {
       "categoria": "jugo_watts",
@@ -941,7 +991,7 @@
       "unidades": 6,
       "volumenMlUnidad": 200,
       "gama": "neutral",
-      "id": 77
+      "id": 82
     },
     {
       "categoria": "jugo_watts",
@@ -951,7 +1001,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "neutral",
-      "id": 78
+      "id": 83
     },
     {
       "categoria": "jugo_watts",
@@ -961,7 +1011,7 @@
       "unidades": 1,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 79
+      "id": 84
     },
     {
       "categoria": "jugo_watts",
@@ -971,7 +1021,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1600,
       "gama": "neutral",
-      "id": 80
+      "id": 85
     },
     {
       "categoria": "jugo_watts",
@@ -981,7 +1031,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 81
+      "id": 86
     },
     {
       "categoria": "jugo_watts",
@@ -991,7 +1041,7 @@
       "unidades": 1,
       "volumenMlUnidad": 300,
       "gama": "neutral",
-      "id": 82
+      "id": 87
     },
     {
       "categoria": "jugo_watts",
@@ -1001,7 +1051,7 @@
       "unidades": 3,
       "volumenMlUnidad": 190,
       "gama": "neutral",
-      "id": 83
+      "id": 88
     },
     {
       "categoria": "hielo",
@@ -1011,7 +1061,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 84
+      "id": 89
     },
     {
       "categoria": "hielo",
@@ -1021,7 +1071,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "neutral",
-      "id": 85
+      "id": 90
     },
     {
       "categoria": "cerveza",
@@ -1031,7 +1081,7 @@
       "unidades": 12,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 86
+      "id": 91
     },
     {
       "categoria": "cerveza",
@@ -1041,7 +1091,7 @@
       "unidades": 1,
       "volumenMlUnidad": 660,
       "gama": "normal",
-      "id": 87
+      "id": 92
     },
     {
       "categoria": "cerveza",
@@ -1051,7 +1101,7 @@
       "unidades": 1,
       "volumenMlUnidad": 500,
       "gama": "sobrado",
-      "id": 88
+      "id": 93
     },
     {
       "categoria": "cerveza",
@@ -1061,7 +1111,7 @@
       "unidades": 1,
       "volumenMlUnidad": 620,
       "gama": "normal",
-      "id": 89
+      "id": 94
     },
     {
       "categoria": "cerveza",
@@ -1071,7 +1121,7 @@
       "unidades": 24,
       "volumenMlUnidad": 330,
       "gama": "rata",
-      "id": 90
+      "id": 95
     },
     {
       "categoria": "cerveza",
@@ -1081,7 +1131,7 @@
       "unidades": 24,
       "volumenMlUnidad": 354,
       "gama": "normal",
-      "id": 91
+      "id": 96
     },
     {
       "categoria": "cerveza",
@@ -1091,7 +1141,7 @@
       "unidades": 12,
       "volumenMlUnidad": 350,
       "gama": "normal",
-      "id": 92
+      "id": 97
     },
     {
       "categoria": "piscola",
@@ -1101,7 +1151,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 93
+      "id": 98
     },
     {
       "categoria": "whiskey",
@@ -1111,7 +1161,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 94
+      "id": 99
     },
     {
       "categoria": "bebida",
@@ -1121,10 +1171,10 @@
       "unidades": 1,
       "volumenMlUnidad": 350,
       "gama": "neutral",
-      "id": 95
+      "id": 100
     },
     {
-      "id": 96,
+      "id": 101,
       "categoria": "cerveza",
       "nombre": "Cerveza Baltica lata 710cc",
       "tienda": "Liquidos",
@@ -1134,7 +1184,7 @@
       "gama": "rata"
     },
     {
-      "id": 97,
+      "id": 102,
       "categoria": "cerveza",
       "nombre": "Cerveza Kunstmann maletín 12x330cc",
       "tienda": "Unimarc",
@@ -1144,7 +1194,7 @@
       "gama": "sobrado"
     },
     {
-      "id": 98,
+      "id": 103,
       "categoria": "vodka",
       "nombre": "Vodka Grey Goose 750ml",
       "tienda": "Unimarc",
@@ -1154,7 +1204,7 @@
       "gama": "sobrado"
     },
     {
-      "id": 99,
+      "id": 104,
       "categoria": "ron",
       "nombre": "Ron Havana Club Añejo 750ml",
       "tienda": "Unimarc",
@@ -1164,7 +1214,7 @@
       "gama": "normal"
     },
     {
-      "id": 100,
+      "id": 105,
       "categoria": "whiskey",
       "nombre": "Whiskey Johnnie Walker Black Label 750ml",
       "tienda": "Unimarc",
@@ -1174,7 +1224,7 @@
       "gama": "sobrado"
     },
     {
-      "id": 101,
+      "id": 106,
       "categoria": "gin",
       "nombre": "Gin Hendrick's 750ml",
       "tienda": "Unimarc",
@@ -1184,7 +1234,7 @@
       "gama": "sobrado"
     },
     {
-      "id": 102,
+      "id": 107,
       "categoria": "bebida",
       "nombre": "Coca-Cola 1L",
       "tienda": "Unimarc",
@@ -1194,7 +1244,7 @@
       "gama": "neutral"
     },
     {
-      "id": 103,
+      "id": 108,
       "categoria": "bebida",
       "nombre": "Coca-Cola 1.5L",
       "tienda": "Unimarc",
@@ -1204,7 +1254,7 @@
       "gama": "neutral"
     },
     {
-      "id": 104,
+      "id": 109,
       "categoria": "bebida",
       "nombre": "Coca-Cola 3L",
       "tienda": "Unimarc",
@@ -1214,7 +1264,7 @@
       "gama": "neutral"
     },
     {
-      "id": 105,
+      "id": 110,
       "categoria": "redbull",
       "nombre": "Red Bull lata 250ml",
       "tienda": "Unimarc",
@@ -1224,7 +1274,7 @@
       "gama": "neutral"
     },
     {
-      "id": 106,
+      "id": 111,
       "categoria": "redbull",
       "nombre": "Red Bull pack 4 latas",
       "tienda": "Unimarc",
@@ -1234,7 +1284,7 @@
       "gama": "neutral"
     },
     {
-      "id": 107,
+      "id": 112,
       "categoria": "tonica",
       "nombre": "Tónica 1.5L",
       "tienda": "Unimarc",
@@ -1244,7 +1294,7 @@
       "gama": "neutral"
     },
     {
-      "id": 108,
+      "id": 113,
       "categoria": "sprite",
       "nombre": "Sprite 1.5L",
       "tienda": "Unimarc",
@@ -1254,7 +1304,7 @@
       "gama": "neutral"
     },
     {
-      "id": 109,
+      "id": 114,
       "categoria": "jugo_watts",
       "nombre": "Jugo Watts 1.5L",
       "tienda": "Unimarc",
@@ -1264,7 +1314,7 @@
       "gama": "neutral"
     },
     {
-      "id": 110,
+      "id": 115,
       "categoria": "hielo",
       "nombre": "Hielo 2kg",
       "tienda": "Unimarc",
