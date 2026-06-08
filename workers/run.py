@@ -125,7 +125,7 @@ def run():
         
     # Build final JSON payload
     final_data = {
-        "timestamp": datetime.datetime.now().isoformat(),
+        "timestamp": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "categorias": existing_data.get("categorias", {}),
         "combinaciones_especiales": existing_data.get("combinaciones_especiales", {}),
         "total": len(merged_products),
