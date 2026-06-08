@@ -1642,12 +1642,18 @@ async function inicializarApp() {
       carreteForm.classList.add("mode-simple");
       carreteForm.classList.remove("mode-pro");
       
-      // Resetear a valores por defecto en modo simple
+      // Resetear a valores por defecto en modo simple (leyendo de los atributos 'selected' del HTML)
       const modoSelect = document.getElementById("modo");
       const gamaSelect = document.getElementById("gama");
       
-      if (modoSelect) modoSelect.value = "previa";
-      if (gamaSelect) gamaSelect.value = "normal";
+      if (modoSelect) {
+        const defaultModo = Array.from(modoSelect.options).filter(opt => opt.hasAttribute('selected')).pop();
+        modoSelect.value = defaultModo ? defaultModo.value : "previa";
+      }
+      if (gamaSelect) {
+        const defaultGama = Array.from(gamaSelect.options).filter(opt => opt.hasAttribute('selected')).pop();
+        gamaSelect.value = defaultGama ? defaultGama.value : "normal";
+      }
       
       if (sinCuotaCheck && sinCuotaCheck.checked) {
         sinCuotaCheck.checked = false;
