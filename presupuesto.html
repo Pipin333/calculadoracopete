@@ -35,7 +35,7 @@
     rel="stylesheet"
   />
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=4.7" />
+  <link rel="stylesheet" href="css/styles.css?v=4.8" />
 </head>
 <body>
   <!-- Banner de encuesta -->
@@ -322,7 +322,13 @@
         document.getElementById('personas').textContent = boleta.personas;
         document.getElementById('aporte').textContent = boleta.sinCuota ? "Sin cuota definida" : formatCLP(boleta.aportePorPersona);
         document.getElementById('presupuestoTotal').textContent = boleta.sinCuota ? "Sin cuota definida" : formatCLP(boleta.presupuestoTotal);
-        document.getElementById('modo').textContent = boleta.modo;
+        const modoLabels = {
+          previa: 'Previa 🥂',
+          trabajo: 'Trabajo mañana ☕',
+          pongamosle: 'Pongámosle 🍻',
+          modo18: 'Modo 18 🇨🇱'
+        };
+        document.getElementById('modo').textContent = modoLabels[boleta.modo] || boleta.modo;
         
         const gamaLabels = {
           rata: 'Rata 🐀',
