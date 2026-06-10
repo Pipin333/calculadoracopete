@@ -480,7 +480,7 @@
       "precio": 6990,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 28
     },
     {
@@ -500,7 +500,7 @@
       "precio": 11490,
       "unidades": 1,
       "volumenMlUnidad": 645,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 30
     },
     {
@@ -510,7 +510,7 @@
       "precio": 4990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
+      "gama": "rata",
       "id": 31
     },
     {
@@ -530,7 +530,7 @@
       "precio": 4990,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "normal",
+      "gama": "rata",
       "id": 33
     },
     {
@@ -560,7 +560,7 @@
       "precio": 5990,
       "unidades": 1,
       "volumenMlUnidad": 950,
-      "gama": "normal",
+      "gama": "rata",
       "id": 36
     },
     {
@@ -570,7 +570,7 @@
       "precio": 5690,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
+      "gama": "rata",
       "id": 37
     },
     {
@@ -580,7 +580,7 @@
       "precio": 7990,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "normal",
+      "gama": "rata",
       "id": 38
     },
     {
@@ -590,7 +590,7 @@
       "precio": 7490,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
+      "gama": "rata",
       "id": 39
     },
     {
@@ -630,7 +630,7 @@
       "precio": 8290,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
+      "gama": "rata",
       "id": 43
     },
     {
@@ -690,7 +690,7 @@
       "precio": 1398,
       "unidades": 1,
       "volumenMlUnidad": 1500,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 49
     },
     {
@@ -700,7 +700,7 @@
       "precio": 12990,
       "unidades": 24,
       "volumenMlUnidad": 220,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 50
     },
     {
@@ -710,7 +710,7 @@
       "precio": 2113,
       "unidades": 1,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 51
     },
     {
@@ -720,7 +720,7 @@
       "precio": 3803,
       "unidades": 6,
       "volumenMlUnidad": 350,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 52
     },
     {
@@ -730,7 +730,7 @@
       "precio": 1350,
       "unidades": 1,
       "volumenMlUnidad": 591,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 53
     },
     {
@@ -740,7 +740,7 @@
       "precio": 5190,
       "unidades": 6,
       "volumenMlUnidad": 220,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 54
     },
     {
@@ -750,7 +750,7 @@
       "precio": 813,
       "unidades": 1,
       "volumenMlUnidad": 473,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 55
     },
     {
@@ -760,7 +760,7 @@
       "precio": 5990,
       "unidades": 6,
       "volumenMlUnidad": 473,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 56
     },
     {
@@ -770,7 +770,7 @@
       "precio": 2050,
       "unidades": 1,
       "volumenMlUnidad": 2000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 57
     },
     {
@@ -780,7 +780,7 @@
       "precio": 4990,
       "unidades": 4,
       "volumenMlUnidad": 300,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 58
     },
     {
@@ -790,7 +790,7 @@
       "precio": 1554,
       "unidades": 1,
       "volumenMlUnidad": 1750,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 59
     },
     {
@@ -800,7 +800,7 @@
       "precio": 878,
       "unidades": 1,
       "volumenMlUnidad": 600,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 60
     },
     {
@@ -810,7 +810,7 @@
       "precio": 2190,
       "unidades": 1,
       "volumenMlUnidad": 2500,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 61
     },
     {
@@ -820,7 +820,7 @@
       "precio": 990,
       "unidades": 1,
       "volumenMlUnidad": 1250,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 62
     },
     {
@@ -830,7 +830,7 @@
       "precio": 1490,
       "unidades": 1,
       "volumenMlUnidad": 1500,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 63
     },
     {
@@ -840,7 +840,7 @@
       "precio": 4190,
       "unidades": 6,
       "volumenMlUnidad": 350,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 64
     },
     {
@@ -850,7 +850,7 @@
       "precio": 3350,
       "unidades": 1,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 65
     },
     {
@@ -860,7 +860,7 @@
       "precio": 1370,
       "unidades": 1,
       "volumenMlUnidad": 591,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 66
     },
     {
@@ -870,7 +870,7 @@
       "precio": 5190,
       "unidades": 6,
       "volumenMlUnidad": 220,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 67
     },
     {
@@ -880,7 +880,7 @@
       "precio": 750,
       "unidades": 1,
       "volumenMlUnidad": 250,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 68
     },
     {
@@ -890,7 +890,7 @@
       "precio": 3990,
       "unidades": 6,
       "volumenMlUnidad": 250,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 69
     },
     {
@@ -900,7 +900,7 @@
       "precio": 1350,
       "unidades": 1,
       "volumenMlUnidad": 600,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 70
     },
     {
@@ -910,7 +910,7 @@
       "precio": 2390,
       "unidades": 1,
       "volumenMlUnidad": 1750,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 71
     },
     {
@@ -920,7 +920,7 @@
       "precio": 1690,
       "unidades": 1,
       "volumenMlUnidad": 1750,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 72
     },
     {
@@ -930,7 +930,7 @@
       "precio": 2140,
       "unidades": 1,
       "volumenMlUnidad": 1500,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 73
     },
     {
@@ -940,7 +940,7 @@
       "precio": 3290,
       "unidades": 1,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 74
     },
     {
@@ -1510,7 +1510,7 @@
       "precio": 8490,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 131
     },
     {
@@ -1520,7 +1520,7 @@
       "precio": 11890,
       "unidades": 1,
       "volumenMlUnidad": 645,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 132
     },
     {
@@ -1560,7 +1560,7 @@
       "precio": 6390,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
+      "gama": "rata",
       "id": 136
     },
     {
@@ -1570,7 +1570,7 @@
       "precio": 6190,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "normal",
+      "gama": "rata",
       "id": 137
     },
     {
@@ -1580,7 +1580,7 @@
       "precio": 4290,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
+      "gama": "rata",
       "id": 138
     },
     {
@@ -1600,7 +1600,7 @@
       "precio": 10790,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "normal",
+      "gama": "rata",
       "id": 140
     },
     {
@@ -1610,7 +1610,7 @@
       "precio": 8190,
       "unidades": 1,
       "volumenMlUnidad": 950,
-      "gama": "normal",
+      "gama": "rata",
       "id": 141
     },
     {
@@ -1620,7 +1620,7 @@
       "precio": 7990,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "normal",
+      "gama": "rata",
       "id": 142
     },
     {
@@ -1630,7 +1630,7 @@
       "precio": 7490,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
+      "gama": "rata",
       "id": 143
     },
     {
@@ -1670,7 +1670,7 @@
       "precio": 10990,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
+      "gama": "rata",
       "id": 147
     },
     {
@@ -1710,7 +1710,7 @@
       "precio": 2000,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 151
     },
     {
@@ -1720,7 +1720,7 @@
       "precio": 2290,
       "unidades": 1,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 152
     },
     {
@@ -1730,7 +1730,7 @@
       "precio": 4290,
       "unidades": 6,
       "volumenMlUnidad": 350,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 153
     },
     {
@@ -1740,7 +1740,7 @@
       "precio": 1990,
       "unidades": 1,
       "volumenMlUnidad": 591,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 154
     },
     {
@@ -1750,7 +1750,7 @@
       "precio": 4990,
       "unidades": 2,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 155
     },
     {
@@ -1760,7 +1760,7 @@
       "precio": 1000,
       "unidades": 1,
       "volumenMlUnidad": 473,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 156
     },
     {
@@ -1770,7 +1770,7 @@
       "precio": 2090,
       "unidades": 1,
       "volumenMlUnidad": 2000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 157
     },
     {
@@ -1780,7 +1780,7 @@
       "precio": 2090,
       "unidades": 1,
       "volumenMlUnidad": 1500,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 158
     },
     {
@@ -1790,7 +1790,7 @@
       "precio": 2000,
       "unidades": 1,
       "volumenMlUnidad": 1250,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 159
     },
     {
@@ -1800,7 +1800,7 @@
       "precio": 1000,
       "unidades": 1,
       "volumenMlUnidad": 600,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 160
     },
     {
@@ -1810,7 +1810,7 @@
       "precio": 2000,
       "unidades": 1,
       "volumenMlUnidad": 1250,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 161
     },
     {
@@ -1820,7 +1820,7 @@
       "precio": 1990,
       "unidades": 1,
       "volumenMlUnidad": 591,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 162
     },
     {
@@ -1830,7 +1830,7 @@
       "precio": 4290,
       "unidades": 6,
       "volumenMlUnidad": 350,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 163
     },
     {
@@ -1840,7 +1840,7 @@
       "precio": 2090,
       "unidades": 1,
       "volumenMlUnidad": 1500,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 164
     },
     {
@@ -1850,7 +1850,7 @@
       "precio": 2350,
       "unidades": 1,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 165
     },
     {
@@ -1860,7 +1860,7 @@
       "precio": 1090,
       "unidades": 1,
       "volumenMlUnidad": 350,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 166
     },
     {
@@ -1870,7 +1870,7 @@
       "precio": 2090,
       "unidades": 1,
       "volumenMlUnidad": 2000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 167
     },
     {
@@ -1880,7 +1880,7 @@
       "precio": 4990,
       "unidades": 2,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 168
     },
     {
@@ -1890,7 +1890,7 @@
       "precio": 1000,
       "unidades": 1,
       "volumenMlUnidad": 600,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 169
     },
     {
@@ -1900,7 +1900,7 @@
       "precio": 12690,
       "unidades": 6,
       "volumenMlUnidad": 350,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 170
     },
     {
@@ -1910,7 +1910,7 @@
       "precio": 2350,
       "unidades": 1,
       "volumenMlUnidad": 3000,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 171
     },
     {
@@ -1920,7 +1920,7 @@
       "precio": 1590,
       "unidades": 1,
       "volumenMlUnidad": 1500,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 172
     },
     {
@@ -1930,7 +1930,7 @@
       "precio": 2000,
       "unidades": 1,
       "volumenMlUnidad": 1250,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 173
     },
     {
@@ -1940,7 +1940,7 @@
       "precio": 4290,
       "unidades": 6,
       "volumenMlUnidad": 310,
-      "gama": "normal",
+      "gama": "neutral",
       "id": 174
     },
     {
@@ -2230,7 +2230,7 @@
       "precio": 1890,
       "unidades": 1,
       "volumenMlUnidad": 500,
-      "gama": "sobrado",
+      "gama": "normal",
       "id": 203
     },
     {
@@ -2250,7 +2250,7 @@
       "precio": 11990,
       "unidades": 24,
       "volumenMlUnidad": 330,
-      "gama": "rata",
+      "gama": "normal",
       "id": 205
     },
     {

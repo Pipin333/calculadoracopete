@@ -194,7 +194,7 @@ def classify_gama(name, brand, category):
     brand_lower = (brand or "").lower()
     
     # Non-alcoholic mixers and ice are always neutral to avoid breaking solver paths
-    if category in ["bebida", "redbull", "tonica", "sprite", "jugo_watts", "hielo"]:
+    if category in ["cola", "fanta", "ginger", "redbull", "tonica", "sprite", "jugo_watts", "hielo"]:
         return "neutral"
         
     # Beer (cerveza)
@@ -207,45 +207,59 @@ def classify_gama(name, brand, category):
         
     # Pisco (piscola)
     if category == "piscola":
-        if any(x in name_lower or x in brand_lower for x in ["capel", "tres erres", "mitjans", "control c", "control"]):
+        if any(x in name_lower or x in brand_lower for x in ["capel", "tres erres", "mitjans", "control c", "control", "la serena"]):
             return "rata"
-        is_premium_name = any(x in name_lower for x in ["nobel", "reservado", "gran pisco", "40°", "40 grados", "46°", "46 grados", "barrica", "premium"])
-        if is_premium_name and ("alto del carmen" in name_lower or "mistral" in name_lower or "bauza" in name_lower or "tres erres" in name_lower):
-            return "sobrado"
-        if "bauza" in name_lower or "bauza" in brand_lower:
-            return "sobrado"
-        return "normal"
-        
-    # Whiskey
-    if category == "whiskey":
-        if any(x in name_lower or x in brand_lower for x in ["sandy mac", "sandy", "vat 69", "vat69", "mitjans"]):
-            return "rata"
-        if "black" in name_lower or "chivas" in name_lower or "chivas" in brand_lower or "glenfiddich" in name_lower or "macallan" in name_lower or "double black" in name_lower or "gold label" in name_lower or "blue label" in name_lower:
+        is_basic_35 = "35°" in name_lower or "35 grados" in name_lower or "especial" in name_lower
+        if is_basic_35 and ("mistral" in name_lower or "alto del carmen" in name_lower):
+            return "normal"
+        is_sobrado_brand = any(x in name_lower or x in brand_lower for x in ["gobernador", "horcón quemado", "horcon quemado", "waqar", "bauzá", "bauza", "diablo"])
+        is_premium_version = any(x in name_lower for x in ["nobel", "reservado", "reservada", "gran pisco", "40°", "40 grados", "46°", "46 grados", "barrica", "premium", "envejecido", "añejado", "edición limitada", "edicion limitada"])
+        if is_sobrado_brand or is_premium_version:
             return "sobrado"
         return "normal"
         
     # Ron
     if category == "ron":
-        if "mitjans" in name_lower or "mitjans" in brand_lower:
-            return "rata"
-        if "12" in name_lower or "zacapa" in name_lower or "zacapa" in brand_lower or "havana 7" in name_lower or "havana club 7" in name_lower:
+        is_sobrado_brand = any(x in name_lower or x in brand_lower for x in ["zacapa", "appleton"])
+        is_sobrado_version = ("havana" in name_lower and "7" in name_lower) or \
+                             ("flor de caña" in name_lower and any(y in name_lower for y in ["12", "15", "18", "25"])) or \
+                             ("flor de cana" in name_lower and any(y in name_lower for y in ["12", "15", "18", "25"]))
+        if is_sobrado_brand or is_sobrado_version:
             return "sobrado"
+        is_basic_pampero = "pampero" in name_lower and not any(y in name_lower for y in ["aniversario", "oro", "seleccion", "selección"])
+        if any(x in name_lower or x in brand_lower for x in ["cabo viejo", "maddero", "sierra morena", "mitjans"]) or is_basic_pampero:
+            return "rata"
         return "normal"
         
     # Vodka
     if category == "vodka":
-        if "mitjans" in name_lower or "mitjans" in brand_lower:
-            return "rata"
-        if any(x in name_lower or x in brand_lower for x in ["grey goose", "ciroc", "belvedere", "ketel"]):
+        if any(x in name_lower or x in brand_lower for x in ["grey goose", "ciroc", "cîroc", "belvedere", "ketel one", "ketel"]):
             return "sobrado"
+        if any(x in name_lower or x in brand_lower for x in ["ustinov", "puklaro", "eristoff", "kova", "gator", "mitjans"]):
+            return "rata"
+        return "normal"
+        
+    # Whiskey
+    if category == "whiskey":
+        is_sobrado_brand = any(x in name_lower or x in brand_lower for x in ["chivas", "glenfiddich", "macallan", "glenlivet", "glenmorangie", "singleton", "talisker", "cardhu"])
+        is_sobrado_version = ("johnnie walker" in name_lower and not any(y in name_lower for y in ["red label", "red", "white"])) or \
+                             ("jack daniel" in name_lower and any(y in name_lower for y in ["single barrel", "gentleman", "gold", "sinatra"]))
+        if is_sobrado_brand or is_sobrado_version:
+            return "sobrado"
+        if any(x in name_lower or x in brand_lower for x in ["blenders pride", "blender's pride", "white horse", "passport", "100 pipers", "sandy mac", "sandy", "vat 69", "vat69", "mitjans"]):
+            return "rata"
         return "normal"
         
     # Gin
     if category == "gin":
-        if "larios" in name_lower or "larios" in brand_lower or "providencia" in name_lower:
-            return "rata"
-        if any(x in name_lower or x in brand_lower for x in ["hendrick", "tanqueray ten", "tanqueray n", "monkey 47", "monkey"]):
+        is_sobrado_brand = any(x in name_lower or x in brand_lower for x in ["hendrick", "monkey 47", "monkey47"])
+        is_sobrado_version = "tanqueray" in name_lower and "ten" in name_lower
+        if is_sobrado_brand or is_sobrado_version:
             return "sobrado"
+        is_basic_larios = "larios" in name_lower and not any(y in name_lower for y in ["12", "rose", "rosé"])
+        is_basic_providencia = "providencia" in name_lower and not any(y in name_lower for y in ["premium", "robusto", "botanico", "botánico"])
+        if any(x in name_lower or x in brand_lower for x in ["lordson", "brighton"]) or is_basic_larios or is_basic_providencia:
+            return "rata"
         return "normal"
         
     # Jaeger
