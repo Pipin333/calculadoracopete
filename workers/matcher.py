@@ -207,7 +207,7 @@ def classify_gama(name, brand, category):
         
     # Pisco (piscola)
     if category == "piscola":
-        if any(x in name_lower or x in brand_lower for x in ["capel", "tres erres", "mitjans", "control c", "control", "la serena"]):
+        if any(x in name_lower or x in brand_lower for x in ["capel", "mitjans", "control c", "control", "la serena"]):
             return "rata"
         is_basic_35 = "35°" in name_lower or "35 grados" in name_lower or "especial" in name_lower
         if is_basic_35 and ("mistral" in name_lower or "alto del carmen" in name_lower):
