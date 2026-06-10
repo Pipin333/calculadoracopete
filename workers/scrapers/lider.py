@@ -1,26 +1,53 @@
 import json
 import re
+import time
+import random
+import base64
 from bs4 import BeautifulSoup
 from scrapers.utils import fetch_html, extract_products_from_json
+from playwright.sync_api import sync_playwright
+from playwright_stealth import stealth_sync
 
 def scrape_with_playwright(url):
-    from playwright.sync_api import sync_playwright
-    print(f"[Lider] Using Playwright fallback for URL: {url}")
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        )
-        try:
-            page.goto(url, timeout=30000)
-            page.wait_for_timeout(5000) # Wait for page load
-            # Extract __NEXT_DATA__ text
-            return page.evaluate("() => document.getElementById('__NEXT_DATA__')?.innerText")
-        except Exception as e:
-            print(f"[Lider Playwright Fallback] Error: {e}")
-            return None
-        finally:
-            browser.close()
+    print(f"[Lider] Using robust Playwright fallback for URL: {url}")
+    
+    MAX_RETRIES = 3
+    for attempt in range(1, MAX_RETRIES + 1):
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            )
+            page = context.new_page()
+            stealth_sync(page)
+            try:
+                # Random delay
+                time.sleep(max(0.5, random.gauss(1.5, 0.5)))
+                page.goto(url, timeout=30000)
+                page.wait_for_timeout(5000) # Wait for page load
+                # Extract __NEXT_DATA__ text
+                result = page.evaluate("() => document.getElementById('__NEXT_DATA__')?.innerText")
+                if result:
+                    browser.close()
+                    return result
+            except Exception as e:
+                print(f"[Lider Playwright Fallback] Error on attempt {attempt}: {e}")
+                if attempt == MAX_RETRIES:
+                    try:
+                        screenshot_bytes = page.screenshot(full_page=False)
+                        b64 = base64.b64encode(screenshot_bytes).decode('utf-8')
+                        print(f"[Lider] FINAL FAILURE SCREENSHOT (Base64): data:image/png;base64,{b64}")
+                    except Exception as ss_e:
+                        print(f"[Lider] Could not capture screenshot: {ss_e}")
+                else:
+                    backoff = 2 ** attempt + random.uniform(0.5, 1.5)
+                    time.sleep(backoff)
+            finally:
+                try:
+                    browser.close()
+                except:
+                    pass
+    return None
 
 def scrape(category, keyword):
     url = f"https://www.lider.cl/supermercado/search?query={keyword}"
