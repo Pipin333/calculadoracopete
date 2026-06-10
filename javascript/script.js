@@ -150,7 +150,7 @@ let COMBINACIONES_ESPECIALES_JSON = {};
  */
 async function cargarConfiguracionDesdeJSON() {
   try {
-    const response = await fetch('json/productos.json');
+    const response = await fetch('json/productos.json?t=' + Date.now());
     const data = await response.json();
     
     CATEGORIAS_JSON = data.categorias || {};
@@ -369,7 +369,7 @@ const productApi = {
     if (this._data) return this._data;
     
     try {
-      const response = await fetch('json/productos.json');
+      const response = await fetch('json/productos.json?t=' + Date.now());
       if (!response.ok) throw new Error('No se pudo cargar productos.json');
       this._data = await response.json();
       return this._data;
