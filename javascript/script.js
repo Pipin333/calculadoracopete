@@ -522,8 +522,7 @@ function getConvenienceBadge(score, isMulti = false) {
 function getRatioBudget(spent, total) {
   if (total <= 0) return "—";
   const percentage = Math.round((spent / total) * 100);
-  const remaining = total - spent;
-  return `${percentage}% utilizado (${formatCLP(remaining)} restante)`;
+  return `${percentage}% utilizado (${formatCLP(spent)} gastado)`;
 }
 
 // ===============================
