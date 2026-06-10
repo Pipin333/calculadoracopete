@@ -7,7 +7,7 @@ import traceback
 import re
 from scrapers.utils import extract_products_from_json
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
-from playwright_stealth import stealth_sync
+from playwright_stealth import Stealth
 
 # Standard DOM crawler JS
 DOM_CRAWLER_JS = """
@@ -148,7 +148,8 @@ def scrape_store(store_name, category, keyword):
     if store_name == "Unimarc":
         direct_url = f"https://www.unimarc.cl/search?q={urllib.parse.quote(keyword)}"
     elif store_name == "Tottus":
-        direct_url = f"https://tottus.falabella.com/tottus-cl/search?Ntt={urllib.parse.quote(keyword)}"
+        direct_url = "https://tottus.cl/"
+        need_homepage_search = True
     elif store_name == "Booz":
         direct_url = f"https://www.booz.cl/busqueda?search={urllib.parse.quote(keyword)}"
     elif store_name == "La Barra":
@@ -156,8 +157,8 @@ def scrape_store(store_name, category, keyword):
     elif store_name == "Liquidos":
         direct_url = f"https://www.liquidos.cl/resultados?busqueda={urllib.parse.quote(keyword)}"
     elif store_name == "miCocaCola":
-        direct_url = "https://andina.micoca-cola.cl/"
-        need_homepage_search = True
+        direct_url = f"https://andina.micoca-cola.cl/{urllib.parse.quote(keyword)}?_q={urllib.parse.quote(keyword)}&map=ft"
+        need_homepage_search = False
     else:
         print(f"[{store_name}] Unknown store.")
         return []
@@ -171,7 +172,7 @@ def scrape_store(store_name, category, keyword):
                 viewport={"width": 1280, "height": 800}
             )
             page = context.new_page()
-            stealth_sync(page) # Enable stealth to evade basic bot detections
+            Stealth().apply_stealth_sync(page) # Enable stealth to evade basic bot detections
             
             intercepted_products = []
             
