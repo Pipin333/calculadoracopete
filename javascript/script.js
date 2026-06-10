@@ -1778,6 +1778,12 @@ form.addEventListener("submit", async function (e) {
   const people = parseInt(document.getElementById("personas").value, 10);
   const aporte = sinCuota ? 0 : parseInt(document.getElementById("aporte").value, 10);
   const mode = document.getElementById("modo").value;
+  
+  if (!sinCuota && aporte === 418) {
+    alert("🍵 Error 418: I'm a teapot\n\n¿$418 pesos de cuota? ¿Qué pretendes comprar, un té en bolsa? Acá tomamos copete, rey.");
+    return;
+  }
+
   const selectedDrinks = getSelectedDrinks();
 
   console.log(`📊 Parámetros del formulario:`);
