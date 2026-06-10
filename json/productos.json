@@ -42,7 +42,7 @@
       "displayName": "Ron"
     },
     "vodka": {
-      "nombre": "Vodka + Watts",
+      "nombre": "Vodka",
       "grupo": "destilado",
       "llevaMixer": true,
       "mixerCategoria": "jugo_watts",

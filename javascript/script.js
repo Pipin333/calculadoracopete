@@ -463,7 +463,7 @@ function getModeLabel(mode) {
 }
 
 function getDrinkLabel(drink) {
-  return OPCIONES_CONSUMO[drink]?.nombre || drink;
+  return OPCIONES_CONSUMO[drink]?.displayName || OPCIONES_CONSUMO[drink]?.nombre || drink;
 }
 
 function actualizarTextoDropdownBebidas() {
@@ -645,8 +645,10 @@ function updateMixerDropdownLabel(bebidaKey) {
     null: "Sin mixer",
     "tonica": "Tónica",
     "redbull": "Energética",
-    "bebida": "Coca-Cola",
+    "cola": "Cola",
     "sprite": "Sprite",
+    "ginger": "Ginger Ale",
+    "fanta": "Fanta/Naranja",
     "jugo_watts": "Jugo Watts"
   };
   
@@ -1528,8 +1530,10 @@ function generarUISelectoresDemixer(bebidaKey) {
     null: "Sin mixer",
     "tonica": "Tónica",
     "redbull": "Energética",
-    "bebida": "Coca-Cola",
+    "cola": "Cola",
     "sprite": "Sprite",
+    "ginger": "Ginger Ale",
+    "fanta": "Fanta/Naranja",
     "jugo_watts": "Jugo Watts"
   };
   
