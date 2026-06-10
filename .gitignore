@@ -25,6 +25,7 @@ tottus_screenshot.png
 unimarc_screenshot.png
 *.html
 *.txt
+!robots.txt
 !workers/requirements.txt
 *.json
 !json/productos.json
