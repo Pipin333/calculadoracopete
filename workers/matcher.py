@@ -117,11 +117,12 @@ def validate_category(name, category):
     """Validates that a product fits the target category (filters out glasses, false search hits, etc.)."""
     name_lower = name.lower()
     
-    # Filter out accessories/glasses/garbage
+    # Filter out accessories/glasses/garbage/chocolates
     accessories = [
         "vaso", "copa", "shoper", "hielera", "dispensador", "polera", "destapador", 
         "cooler", "servicio", "juego de loza", "plancha", "plato", "galleta", "desinfectante",
-        "donut", "rosquilla", "dulce", "limpieza", "aerosol", "detergente", "jabón", "jabon"
+        "donut", "rosquilla", "dulce", "limpieza", "aerosol", "detergente", "jabón", "jabon",
+        "bombón", "bombon", "bombones", "chocolate", "chocolates", "trufa", "trufas"
     ]
     for acc in accessories:
         if acc in name_lower:
@@ -129,9 +130,16 @@ def validate_category(name, category):
                 return False
 
     # Filter out Ready-To-Drink (RTD) / pre-mixed cocktails from pure spirits
-    if category in ["piscola", "ron", "vodka", "whiskey", "gin"]:
-        rtd_keywords = ["coctel", "cóctel", "cocktail", "sour", "ice", "mix", "preparado", "limonada", "cola", "sprite en lata", "lata sprite", "tonic en lata", "cola en lata"]
+    if category in ["piscola", "ron", "vodka", "whiskey", "gin", "jaeger"]:
+        rtd_keywords = ["coctel", "cóctel", "cocktail", "sour", "ice", "mix", "preparado", "limonada", "cola", "sprite en lata", "lata sprite", "tonic en lata", "cola en lata", "lata", "latas"]
         if any(x in name_lower for x in rtd_keywords):
+            return False
+
+    # Filter out alcohol/cocktails from mixer categories (mixers must be non-alcoholic)
+    if category in ["cola", "fanta", "ginger", "redbull", "tonica", "sprite", "jugo_watts"]:
+        has_alcohol_word = re.search(r"\b(pisco|ron|rum|vodka|gin|gintonic|whisky|whiskey|jager|jagermeister|coctel|cóctel|cocktail|sour|licor)\b", name_lower) is not None
+        has_degrees = any(x in name_lower for x in ["5°", "5 grados", "40°", "35°", "grados"])
+        if has_alcohol_word or has_degrees:
             return False
 
     if category == "cerveza":
@@ -154,7 +162,7 @@ def validate_category(name, category):
         return "jager" in name_lower or "jäger" in name_lower
     elif category == "cola":
         # Colas: Coca-Cola, Pepsi y variantes
-        return any(x in name_lower for x in ["coca-cola", "coca cola", "pepsi"]) \
+        return any(x in name_lower for x in ["coca-cola", "coca cola", "pepsi", "sabor original", "bebida original"]) \
             and not any(y in name_lower for y in ["sprite", "canada dry", "7up", "tonica", "tónica", "jugo", "red bull", "redbull"])
     elif category == "fanta":
         # Bebidas de naranja/sabor: Fanta, Crush
