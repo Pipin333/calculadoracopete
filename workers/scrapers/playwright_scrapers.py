@@ -225,7 +225,26 @@ def scrape_store(store_name, category, keyword):
         direct_url = "https://tottus.cl/"
         need_homepage_search = True
     elif store_name == "Booz":
-        direct_url = f"https://www.booz.cl/busqueda?search={urllib.parse.quote(keyword)}"
+        booz_catalogs = {
+            "cerveza": "cervezas",
+            "piscola": "pisco",
+            "ron": "ron",
+            "vodka": "vodka",
+            "whiskey": "whisky",
+            "gin": "gin",
+            "jaeger": "licores",
+            "cola": "bebidas",
+            "fanta": "bebidas",
+            "ginger": "bebidas",
+            "sprite": "bebidas",
+            "redbull": "bebidas",
+            "tonica": "bebidas",
+            "jugo_watts": "bebidas"
+        }
+        if category in booz_catalogs:
+            direct_url = f"https://www.booz.cl/catalogo/{booz_catalogs[category]}"
+        else:
+            direct_url = f"https://www.booz.cl/busqueda?search={urllib.parse.quote(keyword)}"
     elif store_name == "La Barra":
         direct_url = f"https://labarra.cl/buscar?q={urllib.parse.quote(keyword)}"
     elif store_name == "Liquidos":
