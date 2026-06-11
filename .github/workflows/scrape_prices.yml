@@ -62,6 +62,11 @@ jobs:
           cache: 'pip'
           cache-dependency-path: 'workers/requirements.txt'
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r workers/requirements.txt
+
       - name: Download all processed store products
         uses: actions/download-artifact@v4
         with:
