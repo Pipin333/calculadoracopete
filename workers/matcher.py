@@ -281,8 +281,20 @@ def process_product(raw_product):
     if price <= 0 or price > 200000:
         return None
         
+    # Exclude returnable / refill / empty container products across all categories
+    name_lower = name.lower()
+    exclude_keywords = ["retornable", "refill", "no incluye envase", "no incluye envases", "sólo envase", "solo envase", "mas envase", "más envase", "+ envase", "+envase"]
+    if any(x in name_lower for x in exclude_keywords):
+        return None
+        
     brand = raw_product.get("brand") or extract_brand(name)
     vol = extract_volume_ml(name)
+    
+    # Exclude mixer sizes smaller than 1L (1000ml) except for Red Bull/energy drinks
+    mixer_categories = ["cola", "fanta", "ginger", "sprite", "tonica", "jugo_watts"]
+    if category in mixer_categories and vol < 1000:
+        return None
+        
     units = extract_units(name)
     gama = classify_gama(name, brand, category)
     
