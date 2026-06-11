@@ -117,6 +117,17 @@ def validate_category(name, category):
     """Validates that a product fits the target category (filters out glasses, false search hits, etc.)."""
     name_lower = name.lower()
     
+    # Filter out non-drink merchandise, school supplies, clothing, and toys
+    merchandise = [
+        "cuaderno", "libreta", "mochila", "bolso", "cartera", "polerón", "poleron", "polera",
+        "gorro", "jockey", "juguete", "auto", "miniatura", "tazón", "taza", "tazon",
+        "parca", "chaqueta", "estuche", "lápiz", "lapiz", "goma", "regla", "agenda",
+        "termo", "llavero", "sticker", "adhesivo", "juego de mesa", "paraguas", 
+        "audífonos", "audifonos", "parlante", "gorra", "lentes", "anteojos"
+    ]
+    if any(m in name_lower for m in merchandise):
+        return False
+        
     # Filter out accessories/glasses/garbage/chocolates
     accessories = [
         "vaso", "copa", "shoper", "hielera", "dispensador", "polera", "destapador", 
