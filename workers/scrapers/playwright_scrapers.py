@@ -13,57 +13,131 @@ from playwright_stealth import Stealth
 DOM_CRAWLER_JS = """
 () => {
     const cards = [];
+    const seenNames = new Set();
+    
+    const addCard = (name, price, url) => {
+        if (!name || !price) return;
+        name = name.replace(/\\n/g, ' ').trim();
+        if (name.length < 5 || seenNames.has(name.toLowerCase())) return;
+        seenNames.add(name.toLowerCase());
+        cards.push({ name, price, url: url || window.location.href });
+    };
+    
+    // Helper to check if a name is garbage/badge/volume
+    const isGarbageName = (n) => {
+        if (!n) return true;
+        n = n.trim().toLowerCase();
+        if (n.length < 4) return true;
+        if (/^-\\d+%/.test(n) || /\\d+%\\s*off/i.test(n) || n.includes('%')) return true;
+        if (/^\\d+\\s*(cc|ml|l|lt|lts|litro|litros|gr|un|unid|unidades)\\b/i.test(n)) return true;
+        return false;
+    };
+
+    // 1. Link-based grouping (e.g. Booz, Liquidos, Unimarc)
     const links = Array.from(document.querySelectorAll(
         'a[href*="/p/"], a[href*="/producto/"], a[href*="/product/"], a[href*="/productos/"], a[href*="/products/"]'
     ));
-    const seenHrefs = new Set();
     
+    const groups = {};
     for (const link of links) {
         let href = link.getAttribute('href');
         if (!href) continue;
-        
         if (href.startsWith('/')) {
             href = window.location.origin + href;
         }
-        
-        if (seenHrefs.has(href)) continue;
-        seenHrefs.add(href);
-        
-        let container = link;
+        if (!groups[href]) {
+            groups[href] = [];
+        }
+        groups[href].push(link);
+    }
+    
+    for (const [href, linkArray] of Object.entries(groups)) {
         let price = null;
-        let name = null;
+        let bestName = "";
         
-        for (let depth = 0; depth < 10; depth++) {
-            if (!container) break;
-            
+        for (const link of linkArray) {
+            const text = (link.innerText || "").trim();
+            if (text && text.length > bestName.length && !isGarbageName(text) && !text.includes('$')) {
+                bestName = text;
+            }
+        }
+        
+        if (!bestName) {
+            for (const link of linkArray) {
+                const text = (link.innerText || "").trim();
+                if (text && text.length > bestName.length && !text.includes('$')) {
+                    bestName = text;
+                }
+            }
+        }
+        
+        for (const link of linkArray) {
+            let container = link;
+            for (let depth = 0; depth < 10; depth++) {
+                if (!container) break;
+                const text = container.innerText || "";
+                const priceMatch = text.match(/\\$\\s*(\\d{1,3}(\\.\\d{3})*)/);
+                if (priceMatch) {
+                    price = parseInt(priceMatch[1].replace(/\\./g, ''));
+                    if (isGarbageName(bestName)) {
+                        const titleEl = container.querySelector(
+                            'h1, h2, h3, h4, h5, [class*="title"], [class*="name"], [class*="heading"], [data-testid*="name"]'
+                        );
+                        if (titleEl && titleEl.innerText && !isGarbageName(titleEl.innerText)) {
+                            bestName = titleEl.innerText.trim();
+                        }
+                    }
+                    break;
+                }
+                container = container.parentElement;
+            }
+            if (price) break;
+        }
+        
+        if (bestName && price) {
+            addCard(bestName, price, href);
+        }
+    }
+    
+    // 2. Clarity-target container matching (e.g. La Barra)
+    const cardContainers = Array.from(document.querySelectorAll('[data-clarity-target*="Abrir producto"]'));
+    for (const container of cardContainers) {
+        const targetAttr = container.getAttribute('data-clarity-target');
+        const nameMatch = targetAttr.match(/Abrir producto\\s+(.+)$/i);
+        if (nameMatch) {
+            const name = nameMatch[1].trim();
             const text = container.innerText || "";
             const priceMatch = text.match(/\\$\\s*(\\d{1,3}(\\.\\d{3})*)/);
             if (priceMatch) {
-                price = parseInt(priceMatch[1].replace(/\\./g, ''));
-                
-                name = link.innerText || "";
-                if (!name || name.trim().length < 5) {
-                    const titleEl = container.querySelector(
-                        'h1, h2, h3, h4, h5, [class*="title"], [class*="name"], [class*="heading"], [data-testid*="name"]'
-                    );
-                    if (titleEl) name = titleEl.innerText;
-                }
-                
-                if (name && name.trim().length > 3 && !name.includes('$')) {
-                    break;
-                }
+                const price = parseInt(priceMatch[1].replace(/\\./g, ''));
+                addCard(name, price, window.location.href);
             }
-            container = container.parentElement;
-        }
-        
-        if (name && price) {
-            cards.push({
-                name: name.replace(/\\n/g, ' ').trim(),
-                price: price,
-                url: href
-            });
         }
     }
+    
+    // 3. Fallback for containers with class containing "product" or "item" and containing "$"
+    if (cards.length === 0) {
+        const genericContainers = Array.from(document.querySelectorAll(
+            '[class*="product-card"], [class*="ProductCard"], [class*="product_card"], [class*="product-item"], [class*="productItem"]'
+        ));
+        for (const container of genericContainers) {
+            const text = container.innerText || "";
+            const priceMatch = text.match(/\\$\\s*(\\d{1,3}(\\.\\d{3})*)/);
+            if (priceMatch) {
+                const price = parseInt(priceMatch[1].replace(/\\./g, ''));
+                const titleEl = container.querySelector(
+                    'h1, h2, h3, h4, h5, a, [class*="title"], [class*="name"], [class*="heading"], [data-testid*="name"]'
+                );
+                if (titleEl) {
+                    const name = titleEl.innerText.trim();
+                    if (!isGarbageName(name)) {
+                        addCard(name, price, window.location.href);
+                    }
+                }
+            }
+        }
+    }
+    
     return cards;
 }
 """
