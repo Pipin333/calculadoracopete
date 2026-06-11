@@ -10,7 +10,7 @@
 * **Scraping de precios**: Python 3.11 con Playwright y Beautiful Soup 4 para extraer precios reales de supermercados y botillerías.
 * **Automatización (CI/CD)**: GitHub Actions para:
   * Despliegue continuo de la aplicación en GitHub Pages.
-  * Ejecución automática diaria (cron job) de los scrapers para mantener los precios actualizados.
+  * Ejecución automática diaria (cron job) de los scrapers en **paralelo por tienda** para mantener los precios actualizados (~6 minutos totales).
 
 ## 🎯 Características principales
 
@@ -19,27 +19,39 @@
   * `rata` (de combate/universitario: Capel, Eristoff, Blenders Pride, etc.)
   * `normal` (estándar: Mistral 35°, Alto del Carmen 35°, Tres Erres, Absolut, etc.)
   * `sobrado` (premium/alta gama: El Gobernador, Horcón Quemado, Grey Goose, Hendrick's, Jack Daniel's Black, etc.)
-* **Scraping Diario**: Compara automáticamente precios de grandes cadenas en Chile (*Lider, Jumbo, La Barra, Unimarc, Booz, miCocaCola, Líquidos*), seleccionando siempre la opción más económica de cada tienda.
+* **Scraping Paralelo Diario**: Compara automáticamente precios de 6 tiendas en Chile (*Jumbo, Unimarc, La Barra, Booz, miCocaCola, Líquidos*) con scrapers que corren en paralelo en GitHub Actions, seleccionando siempre la opción más económica.
+* **Filtros de Calidad de Productos**: El matcher filtra automáticamente productos no aptos para carrete: retornables, refill, mixers menores a 1L, mercadería (cuadernos, poleras, etc.) y formatos fuera de rango.
 * **Presupuestos compartibles**: Guarda presupuestos en la nube y genera códigos cortos de 6 dígitos (ej: `A8F4D2`) para compartir la boleta con amigos a través de WhatsApp.
 * **Interfaz reactiva y premium**: Control visual mediante sliders para equilibrar el presupuesto entre alcohol y mixers, adaptado con temas oscuros de alta estética.
 * **Huevo de Pascua (Easter Egg)**: Prueba a ingresar exactamente **$418** de cuota individual para ver un error humorístico local (HTTP 418 I'm a teapot).
 
 ## 🗂️ Estructura del proyecto
 
-El proyecto sigue una arquitectura modular en donde las vistas HTML interactúan con submódulos JavaScript para el cálculo y Firebase, mientras que los precios son automatizados mediante scripts en Python.
-
-| Archivo / Carpeta | Rol |
-| --- | --- |
-| `index.html` | Vista principal; formulario de entrada, sliders de presupuesto y panel del calculador interactivo. |
-| `presupuesto.html` | Vista secundaria; renderizado independiente de presupuestos guardados y compartidos por código. |
-| `css/styles.css` | Presentación general y diseño responsivo adaptado con estética premium de modo oscuro. |
-| `javascript/script.js` | Controlador y motor matemático del solver (knapsack solver) e ingeniería de requerimientos. |
-| `javascript/firebase-config.js` | Configuración e inicialización de Firebase Realtime Database. |
-| `javascript/shorturl.js` | Lógica de negocio para persistir presupuestos y recuperar datos por códigos de 6 caracteres. |
-| `json/productos.json` | Base de datos dinámica en formato JSON con la parametrización de categorías y productos actualizados. |
-| `workers/` | Directorio de automatización en Python (scrapers por tienda y el procesador de emparejamiento de productos). |
-| `workers/matcher.py` | Normalizador de nombres, cálculo de volumen total y clasificador de calidad (`gama`). |
-| `.github/workflows/` | Workflows de GitHub Actions para despliegue estático y scraping diario automático a las 04:00 AM UTC. |
+```
+calculadoracopete/
+├── index.html                    Calculadora principal (formulario, sliders, resultados)
+├── presupuesto.html              Boleta compartible (renderizado independiente vía Firebase)
+├── css/styles.css                Presentación y diseño responsivo premium (modo oscuro)
+├── javascript/
+│   ├── script.js                 Orquestador principal + motor matemático (Knapsack DP)
+│   ├── firebase-config.js        Configuración e inicialización de Firebase RTDB
+│   └── shorturl.js               Lógica de generación/recuperación de presupuestos compartidos
+├── json/
+│   └── productos.json            Base de datos dinámica (~167 SKUs actualizados diariamente)
+├── workers/
+│   ├── config.json               Configuración de tiendas activas, categorías y keywords de búsqueda
+│   ├── run.py                    Runner principal con soporte de modos --store, --merge y secuencial
+│   ├── matcher.py                Normalizador, extractor de volumen/unidades y clasificador de gama
+│   ├── requirements.txt          Dependencias Python (requests, beautifulsoup4, playwright, playwright-stealth)
+│   └── scrapers/
+│       ├── jumbo.py              Scraper de Jumbo (HTTP + __REACT_QUERY_STATE__ JSON)
+│       ├── labarra.py            Scraper de La Barra (Playwright + Clarity selectors)
+│       ├── playwright_scrapers.py Scraper genérico de Playwright para Unimarc, Booz, Líquidos, miCocaCola
+│       └── utils.py              Utilidades compartidas (fetch_html, find_key_recursive, extractors)
+└── .github/workflows/
+    ├── scrape_prices.yml         Workflow paralelo: matriz de 6 scrapers + combine-and-deploy
+    └── static.yml                Workflow de despliegue de GitHub Pages
+```
 
 ## 🧪 Cómo utilizarlo
 
@@ -55,50 +67,57 @@ cd calculadoracopete
 
 ### 2. Ejecutar los Scrapers localmente
 
-Si deseas actualizar la base de datos de precios localmente de forma manual, puedes ejecutar el worker en Python:
+El runner soporta tres modos de operación:
 
 ```bash
-# Entrar a la carpeta y preparar el entorno virtual
 cd workers
-python -m venv venv
-source venv/Scripts/activate  # En Windows
-
-# Instalar dependencias y Playwright
 pip install -r requirements.txt
 playwright install chromium
 
-# Ejecutar el scraper
+# Modo completo secuencial (todas las tiendas, backward compatible)
 python run.py
+
+# Modo por tienda (genera json/processed_<Tienda>.json)
+python run.py --store Jumbo
+python run.py --store miCocaCola
+
+# Modo consolidación (lee todos los processed_*.json y actualiza productos.json)
+python run.py --merge
 ```
 
-Esto actualizará de inmediato el archivo `json/productos.json` con los precios limpios y normalizados.
+### 3. Agregar una Tienda Nueva
 
-### 3. Agregar una Bebida Nueva (Sistema Modular)
+1. Implementar el scraper en `workers/scrapers/`.
+2. Agregarlo al registro de `workers/run.py` (sección `scrape_store_products`).
+3. Añadir el nombre a la lista `"stores"` en `workers/config.json`.
+4. Añadir el nombre a la matriz `store:` en `.github/workflows/scrape_prices.yml`.
 
-La app es 100% modular. Para agregar una nueva bebida o categoría sin editar código JS/HTML, solo necesitas editar `json/productos.json` agregando la categoría y el producto en la lista:
+### 4. Agregar una Bebida o Categoría Nueva (Sistema Modular)
+
+La app es 100% modular. Edita `json/productos.json` agregando la categoría y el producto:
 
 ```json
 {
   "categorias": {
     "mi_bebida": {
       "nombre": "Mi Bebida",
-      "grupo": "mix_simple",
+      "grupo": "destilado",
       "llevaMixer": true,
-      "mixerCategoria": "bebida",
+      "mixerCategoria": "cola",
       "mixerFactor": 2,
+      "mixerAlternativas": ["cola", "sprite"],
       "llevaHielo": true,
-      "displayName": "Mi Bebida Display",
-      "esSeleccionable": true
+      "displayName": "Mi Bebida Display"
     }
   },
   "productos": [
-    { 
-      "id": 999, 
-      "categoria": "mi_bebida", 
-      "nombre": "Mi Bebida Premium 750ml", 
-      "tienda": "Lider", 
-      "precio": 10000, 
-      "unidades": 1, 
+    {
+      "id": 999,
+      "categoria": "mi_bebida",
+      "nombre": "Mi Bebida Premium 750ml",
+      "tienda": "Jumbo",
+      "precio": 10000,
+      "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "sobrado"
     }
@@ -106,40 +125,29 @@ La app es 100% modular. Para agregar una nueva bebida o categoría sin editar c�
 }
 ```
 
-📖 **Para una guía completa**, ver: [`docs/MASTER_DOCUMENTATION.md` → "Sistema Modular de Categorías"](docs/MASTER_DOCUMENTATION.md)
+## ⚙️ Pipeline de Scraping (GitHub Actions)
 
-## 🗺️ Roadmap (Abril-Julio 2026)
+El workflow `scrape_prices.yml` corre todos los días a las **04:00 AM UTC** (01:00 AM hora Chile) en dos etapas:
 
-**Estrategia dual:** Mantener v3 en producción mientras se explora v4 en paralelo.
+1. **`scrape-store` (Matriz Paralela)**: Lanza 6 runners simultáneos (uno por tienda). Cada runner instala sus dependencias, ejecuta `python workers/run.py --store <Tienda>` y sube el resultado como artefacto de GitHub.
+2. **`combine-and-deploy`**: Una vez que todos los runners terminan, descarga los artefactos, ejecuta `python workers/run.py --merge` para consolida los archivos por tienda en `json/productos.json`, limpia los temporales y sube el commit final.
 
-### 🎯 Hito 1: Lanzamiento & Recolección de Datos (Marzo)
--   ✅ Aplicación v3 en producción
--   ✅ Google Form de validación (100+ respuestas)
--   ✅ GA4 Analytics integrado
--   ✅ Documentar bugs reportados
+> **Tiempo total de ejecución**: ~6 minutos (vs. 25+ minutos del pipeline secuencial anterior).
 
-### 🔧 Hito 2: Hotfixes v3.1 (Abril-Junio)
--   ✅ Arreglar slider bug detectado
--   ✅ Automatizar scrapers de supermercados (Playwright)
--   ✅ Implementar base de datos dinámica sin recargas en caché
--   ✅ Ajustar reglas de calidad (`gama`) para la realidad chilena
--   ✅ Integrar base de datos y compartición vía Firebase
+## 🗺️ Roadmap (Junio 2026+)
 
-### 🏗️ Hito 3: Tech Spike v4 (Paralelo)
--   🔬 Evaluación de stacks (Python/Flet, FastAPI, etc.)
--   🛜 Prototipo funcional mínimo
+### ✅ Completado (v3.1 - Junio 2026)
+- ✅ Scrapers de supermercados con Playwright (robusto, con stealth y reintentos)
+- ✅ Pipeline paralelo de GitHub Actions (6 runners simultáneos)
+- ✅ Base de datos dinámica con ~167 SKUs validados por tienda
+- ✅ Filtros de calidad: sin retornables, sin refill, sin mercadería, sin mixers pequeños
+- ✅ Clasificación automática de `gama` (rata/normal/sobrado) para destilados
+- ✅ Integración Firebase Realtime Database para presupuestos compartibles
 
-**Para detalles completos, ver:** [`docs/ROADMAP_v4.md`](docs/ROADMAP_v4.md)
-
----
-
-## 🔬 Participar en la Encuesta
-
-¿Quieres ayudar a mejorar Cuánto Rinde?
-
-**👉 [Responde la encuesta aquí](https://forms.gle/Jo2LfY5Uqam4DWEKA)** (3 minutos)
-
-Tu feedback (anonimato garantizado) nos ayuda a validar los consumos estimados y UX.
+### 🔬 Pendiente / Exploración
+- 🔬 Mejorar cobertura de Booz y Líquidos (paginación / "ver más")
+- 🔬 Scraper de La Barra con paginación de resultados
+- 🔬 v4.0: Admin panel, historial de presupuestos, expansión LatAm
 
 ---
 
@@ -147,6 +155,6 @@ Tu feedback (anonimato garantizado) nos ayuda a validar los consumos estimados y
 **Tech Lead / Colaborador:** Chela  
 **QA / Feedback:** Santi  
 
-Cuánto Rinde nació como proyecto personal para resolver un problema cotidiano y se ha convertido en una herramienta útil para planificar carretes de forma eficiente. 
+Cuánto Rinde nació como proyecto personal para resolver un problema cotidiano y se ha convertido en una herramienta útil para planificar carretes de forma eficiente.
 
 ¡**Aporta ideas, reporta bugs o colabora** para seguir mejorándola! 🍻
