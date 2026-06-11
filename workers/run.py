@@ -162,7 +162,7 @@ def run():
         if "productos" in existing_data:
             for old_p in existing_data["productos"]:
                 old_store = old_p.get("tienda")
-                if old_store not in succeeded_stores:
+                if old_store in stores and old_store not in succeeded_stores:
                     merged_products.append(old_p)
                     
         # Assign unique IDs
@@ -224,7 +224,7 @@ def run():
         if "productos" in existing_data:
             for old_p in existing_data["productos"]:
                 old_store = old_p.get("tienda")
-                if old_store not in succeeded_stores:
+                if old_store in stores and old_store not in succeeded_stores:
                     merged_products.append(old_p)
                     
         for idx, p in enumerate(merged_products):
