@@ -154,13 +154,15 @@ def validate_category(name, category):
             return False
 
     if category == "cerveza":
-        # Do NOT allow "pack" or "lata" by themselves as they match cookies, soda, donuts, etc.
-        beer_keywords = ["cerveza", "beer", "pilsen", "lager", "ale", "stout", "ipa", "escudo", "cristal", "becker", "royal", "heineken", "stella", "corona", "kross", "kunstmann", "austral", "budweiser", "coors", "sol", "baltica", "patagonia"]
-        return any(x in name_lower for x in beer_keywords)
+        # Check beer keywords using word boundaries to avoid false substring matches like "cristalino" matching "cristal", or "absolut" matching "sol", etc.
+        beer_words = ["cerveza", "cervezas", "beer", "beers", "pilsen", "pilsener", "pilsner", "lager", "ale", "ales", "stout", "stouts", "ipa", "ipas", "escudo", "cristal", "becker", "royal", "heineken", "stella", "corona", "kross", "kunstmann", "austral", "budweiser", "coors", "sol", "baltica", "patagonia"]
+        pattern = r"\b(" + "|".join(beer_words) + r")\b"
+        return re.search(pattern, name_lower) is not None
     elif category == "piscola":
         return "pisco" in name_lower
     elif category == "ron":
-        return "ron" in name_lower or "rum" in name_lower
+        # Check ron keywords using word boundaries to avoid false matches like "strong" matching "ron"
+        return re.search(r"\b(ron|rones|rum|rums|rhum)\b", name_lower) is not None
     elif category == "vodka":
         return "vodka" in name_lower
     elif category == "whiskey":

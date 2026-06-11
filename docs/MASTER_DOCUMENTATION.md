@@ -1,7 +1,7 @@
 # 📱 CUÁNTO RINDE - Master Documentation
 
-**Versión:** 3.1 (Production)  
-**Estado:** ✅ Activo - Pipeline Paralelo Operacional  
+**Versión:** 5.0 (Modular)  
+**Estado:** ✅ Activo - Arquitectura Modular y Pipeline Paralelo Operacionales  
 **Última Actualización:** Junio 2026  
 **Autores:** Pipin333 + Antigravity AI  
 **Repositorio:** github.com/Pipin333/calculadoracopete
@@ -28,7 +28,7 @@
 
 ## Resumen Ejecutivo
 
-**Cuánto Rinde v3.1** es una calculadora de presupuestos inteligente para eventos sociales chilenos que optimiza automáticamente la compra de bebidas usando un algoritmo de **Programación Dinámica (Knapsack)**. Los precios se actualizan automáticamente todos los días mediante scrapers que corren en paralelo en GitHub Actions, extrayendo datos de **6 tiendas reales** en Chile.
+**Cuánto Rinde v5.0** es una calculadora de presupuestos inteligente para eventos sociales chilenos que optimiza automáticamente la compra de bebidas usando un algoritmo de **Programación Dinámica (Knapsack)**. La lógica del frontend está estructurada en una arquitectura modular de 8 módulos ES6 integrados. Los precios se actualizan automáticamente todos los días mediante scrapers que corren en paralelo en GitHub Actions, extrayendo datos de **6 tiendas reales** en Chile.
 
 ### Puntos Fuertes ✅
 - Algoritmo sofisticado con 5 modos de consumo + análisis multi-tienda
@@ -74,10 +74,18 @@
 │  index.html (Calculadora)  ←→  presupuesto.html (Boleta)      │
 ├────────────────────────────────────────────────────────────────┤
 │                     JAVASCRIPT MODULES                         │
-├─────────────────┬──────────────────┬──────────────────────────┤
-│  script.js      │  shorturl.js     │  firebase-config.js      │
-│  (Knapsack DP)  │  (URL Shortener) │  (DB Operations)         │
-├─────────────────┴──────────────────┴──────────────────────────┤
+├────────────────────────────────────────────────────────────────┤
+│  script.js (Orquestador principal)                             │
+│  ├── config.js (Constantes y reglas de negocio)                │
+│  ├── productApi.js (Carga de JSON y API de productos)          │
+│  ├── helpers.js (Formateo CLP, utilidades DOM y etiquetas)     │
+│  ├── mixerPreferences.js (Estado y selectores de mixer)        │
+│  ├── budgetSliders.js (Sliders de reparto de presupuesto)      │
+│  ├── solver.js (Algoritmo Knapsack DP y lógica de planes)      │
+│  ├── renderer.js (Renderizado de resultados y UI en modal)    │
+│  ├── shorturl.js (URL Shortener)                               │
+│  └── firebase-config.js (Operaciones Firebase RTDB)            │
+├────────────────────────────────────────────────────────────────┤
 │                                                                │
 │  json/productos.json  (cargado via fetch en el cliente)        │
 │                                                                │
@@ -179,7 +187,14 @@ calculadoracopete/
 ├── css/
 │   └── styles.css                    Estilos premium (modo oscuro, Bootstrap custom)
 ├── javascript/
-│   ├── script.js                     Orquestador principal + Knapsack DP
+│   ├── script.js                     Orquestador principal (inicialización y eventos)
+│   ├── config.js                     Constantes, penalizaciones y factores de consumo
+│   ├── productApi.js                 Manejo de productos.json y API de catálogo
+│   ├── helpers.js                    Utilidades DOM, formateo CLP y etiquetas
+│   ├── mixerPreferences.js           Preferencias y selectores dinámicos de mixer
+│   ├── budgetSliders.js              Renderizado y eventos de los sliders de presupuesto
+│   ├── solver.js                     Motor matemático (algoritmo Knapsack DP)
+│   ├── renderer.js                   Pintado de resultados, modal, alertas y compartir
 │   ├── firebase-config.js            Operaciones Firebase RTDB
 │   └── shorturl.js                   Generación y recuperación de códigos cortos
 ├── json/
@@ -201,7 +216,8 @@ calculadoracopete/
 ├── docs/
 │   └── MASTER_DOCUMENTATION.md      ← TÚ ESTÁS AQUÍ
 ├── legacy/
-│   └── script-v3.0-backup.js        Script monolítico previo a modularización (referencia)
+│   ├── script-v3.0-backup.js        Script monolítico antiguo (referencia)
+│   └── script-v4.8-pre-modular.js   Script monolítico de 2103 líneas previo a v5.0 (referencia)
 └── README.md                         Documentación de inicio rápido
 ```
 
@@ -209,16 +225,35 @@ calculadoracopete/
 
 ## Módulos JavaScript
 
+Con la versión 5.0, la lógica se dividió en módulos especializados para mejorar la mantenibilidad, escalabilidad y legibilidad del código:
+
 ```
 index.html
-    └── script.js  (Orquestador)
-         ├── Imports: firebase-config.js, shorturl.js
-         ├── initializeHandlers()
-         ├── attachEventListeners()
-         ├── calcularPresupuesto()  →  Knapsack DP
-         ├── compartirPresupuestoActual()
-         └── cargarConfiguracionDesdeJSON()  →  fetch('json/productos.json')
+    └── script.js (Orquestador principal)
+         ├── Imports:
+         │    ├── config.js
+         │    ├── productApi.js
+         │    ├── helpers.js
+         │    ├── mixerPreferences.js
+         │    ├── budgetSliders.js
+         │    ├── solver.js
+         │    ├── renderer.js
+         │    ├── firebase-config.js
+         │    └── shorturl.js
+         └── Lógica de inicialización (DOM, Checkboxes, EventListeners)
 ```
+
+### Detalle de Responsabilidades por Módulo
+
+1. **`script.js` (Orquestador)**: Inicializa la aplicación, genera dinámicamente los checkboxes de bebidas disponibles en el catálogo, asocia listeners a todos los eventos clave (cambios de inputs, submit) y coordina la ejecución entre el solver y el renderer.
+2. **`config.js`**: Almacena las constantes globales y reglas de negocio. Define los parámetros de consumo por persona por cada modo, factores de hielo, penalizaciones aplicadas por el solver (penalización por packs, penalización por conveniencia, penalización por tienda única), coeficientes estacionales y endpoints de Firebase.
+3. **`productApi.js`**: Encargado de cargar `json/productos.json` y proveer métodos para interactuar con la base de datos de productos (filtrado por categorías seleccionadas, ordenamiento y deduplicación inicial).
+4. **`helpers.js`**: Provee utilidades transversales como formateo de moneda (CLP), generación de etiquetas amigables para bebidas y modos de consumo, y helpers DOM básicos.
+5. **`mixerPreferences.js`**: Gestiona el estado de selección de mezcladores/bebidas de acompañamiento y genera dinámicamente sus controles y selectores en la interfaz.
+6. **`budgetSliders.js`**: Administra la inicialización, eventos de cambio y estados de los sliders que distribuyen el presupuesto entre alcohol, mixers e hielo.
+7. **`solver.js`**: Contiene la lógica del negocio principal y el motor matemático (algoritmo Knapsack de programación dinámica). Construye los requerimientos base de litros y mixers y calcula la estrategia óptima de compra tanto para compra distribuida (Multi-Tienda) como para compra en una sola tienda (Single-Store Plan) aplicando penalizaciones de config.js.
+8. **`renderer.js`**: Responsable exclusivo de pintar la UI final en base a la estrategia arrojada por el solver: renderiza las tarjetas de resultados, el modal de desglose de compra por tienda, los warnings de consumo e integra la opción de compartir.
+9. **`firebase-config.js`** y **`shorturl.js`**: Encargados de la persistencia de boletas en Firebase Realtime Database y del acortamiento de enlaces de presupuestos para compartir en redes sociales.
 
 ### Flujo de Carga de Datos
 
@@ -432,6 +467,16 @@ git push
 ---
 
 ## Notas de Cambios
+
+### v5.0 (Junio 2026) - Arquitectura Modular
+
+#### Rediseño Frontend
+- ✅ División del archivo monolítico `script.js` (~2100 líneas, 69 KB) en **8 módulos ES6+** especializados y un orquestador liviano.
+- ✅ Implementación de un flujo unidireccional de control: Carga -> Selección -> Solver (DP) -> Renderer.
+- ✅ Creación de módulos aislados: `config.js`, `productApi.js`, `helpers.js`, `mixerPreferences.js`, `budgetSliders.js`, `solver.js`, `renderer.js` y `script.js`.
+- ✅ Sin dependencias circulares entre módulos.
+- ✅ Backup de la versión monolítica anterior en `legacy/script-v4.8-pre-modular.js`.
+- ✅ Version bump de scripts en `index.html` a v5.0 (`type="module"`).
 
 ### v3.1 (Junio 2026) - Robustez y Paralelismo
 

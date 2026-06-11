@@ -33,7 +33,14 @@ calculadoracopete/
 ├── presupuesto.html              Boleta compartible (renderizado independiente vía Firebase)
 ├── css/styles.css                Presentación y diseño responsivo premium (modo oscuro)
 ├── javascript/
-│   ├── script.js                 Orquestador principal + motor matemático (Knapsack DP)
+│   ├── script.js                 Orquestador principal (inicialización y eventos)
+│   ├── config.js                 Constantes de consumo, penalizaciones y factores estacionales
+│   ├── productApi.js             Manejo de productos.json y API de catálogo
+│   ├── helpers.js                Utilidades DOM, formateo CLP y etiquetas
+│   ├── mixerPreferences.js       Preferencias y selectores dinámicos de mixer
+│   ├── budgetSliders.js          Sliders de presupuesto (alcohol / mixers / hielo)
+│   ├── solver.js                 Motor de cálculo (algoritmo Knapsack DP)
+│   ├── renderer.js               Renderizado de resultados y UI en modal
 │   ├── firebase-config.js        Configuración e inicialización de Firebase RTDB
 │   └── shorturl.js               Lógica de generación/recuperación de presupuestos compartidos
 ├── json/
@@ -136,9 +143,10 @@ El workflow `scrape_prices.yml` corre todos los días a las **04:00 AM UTC** (01
 
 ## 🗺️ Roadmap (Junio 2026+)
 
-### ✅ Completado (v3.1 - Junio 2026)
-- ✅ Scrapers de supermercados con Playwright (robusto, con stealth y reintentos)
-- ✅ Pipeline paralelo de GitHub Actions (6 runners simultáneos)
+### ✅ Completado (v5.0 - Junio 2026)
+- ✅ Modularización Frontend: División del monolito `script.js` (~2100 líneas) en 8 módulos ES6+ limpios y estructurados.
+- ✅ Scrapers de supermercados con Playwright (robusto, con stealth y reintentos) (v3.1)
+- ✅ Pipeline paralelo de GitHub Actions (6 runners simultáneos) (v3.1)
 - ✅ Base de datos dinámica con ~167 SKUs validados por tienda
 - ✅ Filtros de calidad: sin retornables, sin refill, sin mercadería, sin mixers pequeños
 - ✅ Clasificación automática de `gama` (rata/normal/sobrado) para destilados
