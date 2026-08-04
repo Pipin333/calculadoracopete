@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-03T07:02:09Z",
+  "timestamp": "2026-08-04T06:29:53Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -265,9 +265,9 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Royal Guard Cerveza royal guard cero premium lager botella 6 un de 355 cc",
+      "nombre": "Royal Guard Pack cerveza royal guard golden lager botella 6 un de 355 cc",
       "tienda": "Unimarc",
-      "precio": 6290,
+      "precio": 5790,
       "unidades": 6,
       "volumenMlUnidad": 355,
       "gama": "normal",
@@ -867,7 +867,7 @@
       "categoria": "hielo",
       "nombre": "Nuestra Cocina Hielo nuestra cocina bolsa 1 kg",
       "tienda": "Unimarc",
-      "precio": 760,
+      "precio": 950,
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
@@ -905,23 +905,13 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "24x Cerveza Royal Guard 5.0° Lata 470cc",
+      "nombre": "24x Cerveza Sabores Patagonia Lata 470cc",
       "tienda": "La Barra",
-      "precio": 28760,
+      "precio": 34800,
       "unidades": 1,
       "volumenMlUnidad": 470,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 71
-    },
-    {
-      "categoria": "piscola",
-      "nombre": "Pisco Mistral 35° 1L",
-      "tienda": "La Barra",
-      "precio": 10690,
-      "unidades": 1,
-      "volumenMlUnidad": 1000,
-      "gama": "normal",
-      "id": 72
     },
     {
       "categoria": "piscola",
@@ -931,17 +921,17 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 73
+      "id": 72
     },
     {
       "categoria": "ron",
-      "nombre": "6x Ron Sierra Morena Blanco 39.5° 750cc",
+      "nombre": "Ron Malibu 21° 750 cc",
       "tienda": "La Barra",
-      "precio": 34140,
+      "precio": 12490,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "rata",
-      "id": 74
+      "gama": "normal",
+      "id": 73
     },
     {
       "categoria": "ron",
@@ -951,7 +941,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "sobrado",
-      "id": 75
+      "id": 74
     },
     {
       "categoria": "vodka",
@@ -961,7 +951,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "rata",
-      "id": 76
+      "id": 75
     },
     {
       "categoria": "whiskey",
@@ -971,7 +961,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 77
+      "id": 76
     },
     {
       "categoria": "whiskey",
@@ -981,17 +971,17 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "sobrado",
-      "id": 78
+      "id": 77
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky Ballantine's 7 Años Añejado 40° 700cc",
+      "nombre": "Whisky Ballantine's Wild 30° 700cc",
       "tienda": "La Barra",
-      "precio": 15990,
+      "precio": 11990,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 79
+      "id": 78
     },
     {
       "categoria": "gin",
@@ -1001,7 +991,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 80
+      "id": 79
     },
     {
       "categoria": "gin",
@@ -1011,7 +1001,27 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "rata",
+      "id": 80
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Gin Beefeater London Dry 40° 1L",
+      "tienda": "La Barra",
+      "precio": 18990,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
       "id": 81
+    },
+    {
+      "categoria": "gin",
+      "nombre": "Gin Monkey 47° 500cc",
+      "tienda": "La Barra",
+      "precio": 54990,
+      "unidades": 1,
+      "volumenMlUnidad": 500,
+      "gama": "sobrado",
+      "id": 82
     },
     {
       "categoria": "cola",
@@ -1021,7 +1031,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 82
+      "id": 83
     },
     {
       "categoria": "cola",
@@ -1031,7 +1041,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 83
+      "id": 84
     },
     {
       "categoria": "fanta",
@@ -1041,25 +1051,15 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 84
-    },
-    {
-      "categoria": "ginger",
-      "nombre": "6x Bebida Canada Dry Ginger Ale Zero Botella 1.5L",
-      "tienda": "La Barra",
-      "precio": 12000,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral",
       "id": 85
     },
     {
       "categoria": "ginger",
-      "nombre": "6x Bebida Canada Dry Ginger Ale Botella 3L",
+      "nombre": "6x Agua Tónica Canada Dry Zero Botella 1.5L",
       "tienda": "La Barra",
-      "precio": 19199,
+      "precio": 12000,
       "unidades": 1,
-      "volumenMlUnidad": 3000,
+      "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 86
     },
@@ -1074,6 +1074,16 @@
       "id": 87
     },
     {
+      "categoria": "redbull",
+      "nombre": "4x Bebida Energética Red Bull 250ccc",
+      "tienda": "La Barra",
+      "precio": 7160,
+      "unidades": 1,
+      "volumenMlUnidad": 1500,
+      "gama": "neutral",
+      "id": 88
+    },
+    {
       "categoria": "tonica",
       "nombre": "6x Agua Tónica Canada Dry Zero Botella 1.5L",
       "tienda": "La Barra",
@@ -1081,7 +1091,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 88
+      "id": 89
     },
     {
       "categoria": "tonica",
@@ -1091,7 +1101,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "neutral",
-      "id": 89
+      "id": 90
     },
     {
       "categoria": "cerveza",
@@ -1101,7 +1111,7 @@
       "unidades": 24,
       "volumenMlUnidad": 500,
       "gama": "normal",
-      "id": 90
+      "id": 91
     },
     {
       "categoria": "cerveza",
@@ -1111,7 +1121,7 @@
       "unidades": 24,
       "volumenMlUnidad": 470,
       "gama": "rata",
-      "id": 91
+      "id": 92
     },
     {
       "categoria": "cerveza",
@@ -1121,7 +1131,7 @@
       "unidades": 24,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 92
+      "id": 93
     },
     {
       "categoria": "cerveza",
@@ -1131,77 +1141,7 @@
       "unidades": 24,
       "volumenMlUnidad": 355,
       "gama": "normal",
-      "id": 93
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Kunstmann Valdivia Pale Lager botella 330 CC x12",
-      "tienda": "Liquidos",
-      "precio": 14990,
-      "unidades": 12,
-      "volumenMlUnidad": 330,
-      "gama": "sobrado",
       "id": 94
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Cristal Lata 470 CC x12",
-      "tienda": "Liquidos",
-      "precio": 11990,
-      "unidades": 12,
-      "volumenMlUnidad": 470,
-      "gama": "rata",
-      "id": 95
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Kunstmann Valdivia Pale Lager botella 330 CC",
-      "tienda": "Liquidos",
-      "precio": 1250,
-      "unidades": 1,
-      "volumenMlUnidad": 330,
-      "gama": "sobrado",
-      "id": 96
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Escudo Lata 470 CC",
-      "tienda": "Liquidos",
-      "precio": 990,
-      "unidades": 1,
-      "volumenMlUnidad": 470,
-      "gama": "rata",
-      "id": 97
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Quilmes lata 473 CC x12",
-      "tienda": "Liquidos",
-      "precio": 8990,
-      "unidades": 12,
-      "volumenMlUnidad": 473,
-      "gama": "normal",
-      "id": 98
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Bear Beer Lager lata 500 CC x6",
-      "tienda": "Liquidos",
-      "precio": 4750,
-      "unidades": 6,
-      "volumenMlUnidad": 500,
-      "gama": "normal",
-      "id": 99
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Royal Guard Lager botella 355 CC x6",
-      "tienda": "Liquidos",
-      "precio": 6990,
-      "unidades": 6,
-      "volumenMlUnidad": 355,
-      "gama": "normal",
-      "id": 100
     },
     {
       "categoria": "cerveza",
@@ -1211,7 +1151,77 @@
       "unidades": 24,
       "volumenMlUnidad": 473,
       "gama": "rata",
+      "id": 95
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Kunstmann Valdivia Pale Lager botella 330 CC x12",
+      "tienda": "Liquidos",
+      "precio": 14990,
+      "unidades": 12,
+      "volumenMlUnidad": 330,
+      "gama": "sobrado",
+      "id": 96
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Cristal Lata 470 CC x12",
+      "tienda": "Liquidos",
+      "precio": 11990,
+      "unidades": 12,
+      "volumenMlUnidad": 470,
+      "gama": "rata",
+      "id": 97
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Kunstmann Valdivia Pale Lager botella 330 CC",
+      "tienda": "Liquidos",
+      "precio": 1250,
+      "unidades": 1,
+      "volumenMlUnidad": 330,
+      "gama": "sobrado",
+      "id": 98
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Escudo Lata 470 CC",
+      "tienda": "Liquidos",
+      "precio": 990,
+      "unidades": 1,
+      "volumenMlUnidad": 470,
+      "gama": "rata",
+      "id": 99
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Quilmes lata 473 CC x12",
+      "tienda": "Liquidos",
+      "precio": 8990,
+      "unidades": 12,
+      "volumenMlUnidad": 473,
+      "gama": "normal",
+      "id": 100
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Bear Beer Lager lata 500 CC x6",
+      "tienda": "Liquidos",
+      "precio": 4750,
+      "unidades": 6,
+      "volumenMlUnidad": 500,
+      "gama": "normal",
       "id": 101
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Royal Guard Lager botella 355 CC x6",
+      "tienda": "Liquidos",
+      "precio": 6990,
+      "unidades": 6,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
+      "id": 102
     },
     {
       "categoria": "cerveza",
@@ -1221,7 +1231,7 @@
       "unidades": 1,
       "volumenMlUnidad": 355,
       "gama": "normal",
-      "id": 102
+      "id": 103
     },
     {
       "categoria": "cerveza",
@@ -1230,16 +1240,6 @@
       "precio": 5990,
       "unidades": 6,
       "volumenMlUnidad": 350,
-      "gama": "normal",
-      "id": 103
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Bear Beer Lager lata 500 CC",
-      "tienda": "Liquidos",
-      "precio": 850,
-      "unidades": 1,
-      "volumenMlUnidad": 500,
       "gama": "normal",
       "id": 104
     },
@@ -1595,23 +1595,13 @@
     },
     {
       "categoria": "cola",
-      "nombre": "Coca Cola Zero 3 litros x6",
+      "nombre": "Pepsi Zero Botella 3Lts x6",
       "tienda": "Liquidos",
-      "precio": 18240,
+      "precio": 14940,
       "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
       "id": 140
-    },
-    {
-      "categoria": "cola",
-      "nombre": "Coca Cola Zero Botella 1,5Lts x6",
-      "tienda": "Liquidos",
-      "precio": 11280,
-      "unidades": 6,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral",
-      "id": 141
     },
     {
       "categoria": "cola",
@@ -1620,6 +1610,16 @@
       "precio": 2790,
       "unidades": 1,
       "volumenMlUnidad": 3000,
+      "gama": "neutral",
+      "id": 141
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Coca Cola Botella 1,5Lts x6",
+      "tienda": "Liquidos",
+      "precio": 11280,
+      "unidades": 6,
+      "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 142
     },
@@ -2207,7 +2207,7 @@
       "categoria": "whiskey",
       "nombre": "Whisky White Horse Fine Old 750 ml.",
       "tienda": "miCocaCola",
-      "precio": 6990,
+      "precio": 8990,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "rata",
