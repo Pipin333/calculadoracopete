@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-09T05:06:08Z",
+  "timestamp": "2026-08-10T05:27:45Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -267,7 +267,7 @@
       "categoria": "cerveza",
       "nombre": "Royal Guard Pack cerveza royal guard golden lager botella 6 un de 355 cc",
       "tienda": "Unimarc",
-      "precio": 4990,
+      "precio": 5790,
       "unidades": 6,
       "volumenMlUnidad": 355,
       "gama": "normal",
@@ -315,9 +315,9 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Cristal Cerveza Pack cerveza cristal lata 12 un de 350 cc",
+      "nombre": "Escudo Pack cerveza escudo lata 12 un de 350 cc",
       "tienda": "Unimarc",
-      "precio": 6490,
+      "precio": 6990,
       "unidades": 12,
       "volumenMlUnidad": 350,
       "gama": "rata",
@@ -325,12 +325,12 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Quilmes Pack cerveza quilmes clásica lata 6 un de 473 cc",
+      "nombre": "Becker Pack cerveza becker lata 6 un de 473 cc",
       "tienda": "Unimarc",
-      "precio": 4790,
+      "precio": 4690,
       "unidades": 6,
       "volumenMlUnidad": 473,
-      "gama": "normal",
+      "gama": "rata",
       "id": 13
     },
     {
@@ -377,7 +377,7 @@
       "categoria": "cerveza",
       "nombre": "Stella Artois Pack cerveza stella artois botella 24 un de 330 cc",
       "tienda": "Unimarc",
-      "precio": 12990,
+      "precio": 15990,
       "unidades": 24,
       "volumenMlUnidad": 330,
       "gama": "normal",
@@ -407,7 +407,7 @@
       "categoria": "cerveza",
       "nombre": "Sol Pack cerveza sol botella 12 un de 330 cc",
       "tienda": "Unimarc",
-      "precio": 9990,
+      "precio": 10490,
       "unidades": 12,
       "volumenMlUnidad": 330,
       "gama": "normal",
@@ -437,7 +437,7 @@
       "categoria": "cerveza",
       "nombre": "Quilmes Pack cerveza quilmes clásica lata 12 un de 354 cc",
       "tienda": "Unimarc",
-      "precio": 6990,
+      "precio": 7490,
       "unidades": 12,
       "volumenMlUnidad": 354,
       "gama": "normal",
@@ -457,21 +457,11 @@
       "categoria": "piscola",
       "nombre": "Alto Del Carmen Pisco alto del carmen especial 35° botella 750 cc",
       "tienda": "Unimarc",
-      "precio": 6790,
+      "precio": 6990,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
       "id": 26
-    },
-    {
-      "categoria": "piscola",
-      "nombre": "Artesanos Del Cochiguaz Pisco artesanos del cochiguaz especial 35° botella 700 cc",
-      "tienda": "Unimarc",
-      "precio": 3990,
-      "unidades": 1,
-      "volumenMlUnidad": 700,
-      "gama": "normal",
-      "id": 27
     },
     {
       "categoria": "piscola",
@@ -480,6 +470,16 @@
       "precio": 10890,
       "unidades": 1,
       "volumenMlUnidad": 1500,
+      "gama": "normal",
+      "id": 27
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Artesanos Del Cochiguaz Pisco artesanos del cochiguaz especial 35° botella 700 cc",
+      "tienda": "Unimarc",
+      "precio": 3990,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
       "gama": "normal",
       "id": 28
     },
@@ -535,22 +535,22 @@
     },
     {
       "categoria": "vodka",
-      "nombre": "Eristoff Vodka eristoff original botella 950 cc",
-      "tienda": "Unimarc",
-      "precio": 6690,
-      "unidades": 1,
-      "volumenMlUnidad": 950,
-      "gama": "rata",
-      "id": 34
-    },
-    {
-      "categoria": "vodka",
       "nombre": "Stolichnaya Vodka stoli premium 40° 1000 cc",
       "tienda": "Unimarc",
       "precio": 13590,
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
+      "id": 34
+    },
+    {
+      "categoria": "vodka",
+      "nombre": "Eristoff Vodka eristoff original botella 950 cc",
+      "tienda": "Unimarc",
+      "precio": 7190,
+      "unidades": 1,
+      "volumenMlUnidad": 950,
+      "gama": "rata",
       "id": 35
     },
     {
@@ -695,7 +695,7 @@
     },
     {
       "categoria": "cola",
-      "nombre": "Pepsi Bebida pepsi zero desechable 1.25 l",
+      "nombre": "Pepsi Bebida pepsi desechable 1.25 l",
       "tienda": "Unimarc",
       "precio": 2000,
       "unidades": 1,
@@ -867,7 +867,7 @@
       "categoria": "hielo",
       "nombre": "Nuestra Cocina Hielo nuestra cocina bolsa 1 kg",
       "tienda": "Unimarc",
-      "precio": 950,
+      "precio": 760,
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
@@ -915,7 +915,7 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "24x Cerveza Cristal Sin Alcohol Botella 355cc",
+      "nombre": "24x Pack Cerveza Cristal Mixto (18 con alcohol + 6 sin alcohol) Botella 355cc",
       "tienda": "La Barra",
       "precio": 21161,
       "unidades": 1,
@@ -1397,7 +1397,7 @@
       "categoria": "cerveza",
       "nombre": "Cerveza Budweiser lata 473 CC x6",
       "tienda": "Liquidos",
-      "precio": 4990,
+      "precio": 5490,
       "unidades": 6,
       "volumenMlUnidad": 473,
       "gama": "normal",
@@ -1457,7 +1457,7 @@
       "categoria": "piscola",
       "nombre": "Pisco Alto del Carmen Transparente 40 750 CC",
       "tienda": "Liquidos",
-      "precio": 5790,
+      "precio": 6490,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
@@ -2065,12 +2065,12 @@
     },
     {
       "categoria": "ron",
-      "nombre": "Ron Havana Club Especial 700cc 37,5ºalc.",
+      "nombre": "Ron Quimbaya Silver 700cc",
       "tienda": "Booz",
-      "precio": 9390,
+      "precio": 7990,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "sobrado",
+      "gama": "normal",
       "id": 187
     },
     {
@@ -2335,9 +2335,9 @@
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky White Horse 1,0 lt.",
+      "nombre": "Whisky Sandy Mac 1,0 lt.",
       "tienda": "miCocaCola",
-      "precio": 8490,
+      "precio": 9990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "rata",
@@ -2375,9 +2375,9 @@
     },
     {
       "categoria": "cola",
-      "nombre": "2 Vasos Coca-Cola Mundial 2026",
+      "nombre": "Coca-Cola Zero Azúcar 6 x 1,5 lt.",
       "tienda": "miCocaCola",
-      "precio": 3990,
+      "precio": 10990,
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
