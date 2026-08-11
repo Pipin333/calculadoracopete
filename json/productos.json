@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-10T05:27:45Z",
+  "timestamp": "2026-08-11T05:09:32Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -201,7 +201,7 @@
     }
   },
   "combinaciones_especiales": {},
-  "total": 231,
+  "total": 232,
   "productos": [
     {
       "categoria": "cerveza",
@@ -485,9 +485,9 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Horcon Quemado Pisco horcón quemado 2 años 40° botella 645 cc",
+      "nombre": "Horcon Quemado Pisco horcón quemado 35° añejado botella 645 cc",
       "tienda": "Unimarc",
-      "precio": 12090,
+      "precio": 10890,
       "unidades": 1,
       "volumenMlUnidad": 645,
       "gama": "sobrado",
@@ -695,7 +695,7 @@
     },
     {
       "categoria": "cola",
-      "nombre": "Pepsi Bebida pepsi desechable 1.25 l",
+      "nombre": "Pepsi Bebida pepsi zero desechable 1.25 l",
       "tienda": "Unimarc",
       "precio": 2000,
       "unidades": 1,
@@ -835,7 +835,7 @@
     },
     {
       "categoria": "jugo_watts",
-      "nombre": "Watts Jugo fresco watt's selección naranja mix 1.6 l",
+      "nombre": "Watts Néctar fresco watt's selección mango maracuyá tetra 1.6 l",
       "tienda": "Unimarc",
       "precio": 5790,
       "unidades": 1,
@@ -867,7 +867,7 @@
       "categoria": "hielo",
       "nombre": "Nuestra Cocina Hielo nuestra cocina bolsa 1 kg",
       "tienda": "Unimarc",
-      "precio": 760,
+      "precio": 950,
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
@@ -945,12 +945,12 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Pisco Tres Erres 35° 1L",
+      "nombre": "Pisco Campanario Blanco 40° 1L",
       "tienda": "La Barra",
-      "precio": 8890,
+      "precio": 6590,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 75
     },
     {
@@ -1055,12 +1055,12 @@
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky Ballantine's Finest 40° 1L",
+      "nombre": "Whisky Chivas Regal 12 Años 40° 1L",
       "tienda": "La Barra",
-      "precio": 16990,
+      "precio": 39390,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 86
     },
     {
@@ -2005,21 +2005,21 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "KIT Cerveza Royal: 12x Cerveza Royal Guard en Botella 355cc",
-      "tienda": "Booz",
-      "precio": 13990,
-      "unidades": 1,
-      "volumenMlUnidad": 355,
-      "gama": "normal",
-      "id": 181
-    },
-    {
-      "categoria": "cerveza",
       "nombre": "Kit 12x Cerveza Peroni Nastro Azzurro Botella 330cc",
       "tienda": "Booz",
       "precio": 16990,
       "unidades": 1,
       "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 181
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "KIT Cerveza Royal: 12x Cerveza Royal Guard en Botella 355cc",
+      "tienda": "Booz",
+      "precio": 13990,
+      "unidades": 1,
+      "volumenMlUnidad": 355,
       "gama": "normal",
       "id": 182
     },
@@ -2095,12 +2095,12 @@
     },
     {
       "categoria": "vodka",
-      "nombre": "Vodka Puklaro 750cc 40°alc.",
+      "nombre": "Vodka Stolichnaya 750cc",
       "tienda": "Booz",
-      "precio": 10490,
+      "precio": 10690,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "rata",
+      "gama": "normal",
       "id": 190
     },
     {
@@ -2125,21 +2125,21 @@
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky Glen Turner Rum Cask 700cc",
-      "tienda": "Booz",
-      "precio": 22990,
-      "unidades": 1,
-      "volumenMlUnidad": 700,
-      "gama": "normal",
-      "id": 193
-    },
-    {
-      "categoria": "whiskey",
       "nombre": "Whiskey Jack Daniels 1 Litro 40º alc.",
       "tienda": "Booz",
       "precio": 35990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 193
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "Whisky Glen Turner Rum Cask 700cc",
+      "tienda": "Booz",
+      "precio": 22990,
+      "unidades": 1,
+      "volumenMlUnidad": 700,
       "gama": "normal",
       "id": 194
     },
@@ -2175,21 +2175,21 @@
     },
     {
       "categoria": "ginger",
-      "nombre": "Bebida Canada Dry Ginger Ale Zero 3 L",
-      "tienda": "Booz",
-      "precio": 3190,
-      "unidades": 1,
-      "volumenMlUnidad": 3000,
-      "gama": "neutral",
-      "id": 198
-    },
-    {
-      "categoria": "ginger",
       "nombre": "Bebida Canada Dry Ginger Ale Zero 1.5 L",
       "tienda": "Booz",
       "precio": 2050,
       "unidades": 1,
       "volumenMlUnidad": 1500,
+      "gama": "neutral",
+      "id": 198
+    },
+    {
+      "categoria": "ginger",
+      "nombre": "Bebida Canada Dry Ginger Ale Zero 3 L",
+      "tienda": "Booz",
+      "precio": 3190,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
       "gama": "neutral",
       "id": 199
     },
@@ -2425,13 +2425,23 @@
     },
     {
       "categoria": "ginger",
+      "nombre": "Tri Pack 2 Coca-Cola Light 3,0 lt. + Schweppes Ginger Ale Zero Azúcar 3,0 lt.",
+      "tienda": "miCocaCola",
+      "precio": 8970,
+      "unidades": 2,
+      "volumenMlUnidad": 3000,
+      "gama": "neutral",
+      "id": 223
+    },
+    {
+      "categoria": "ginger",
       "nombre": "Schweppes Ginger Ale Zero Azúcar 3,0 lt.",
       "tienda": "miCocaCola",
       "precio": 2690,
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 223
+      "id": 224
     },
     {
       "categoria": "ginger",
@@ -2441,7 +2451,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 224
+      "id": 225
     },
     {
       "categoria": "sprite",
@@ -2451,7 +2461,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 225
+      "id": 226
     },
     {
       "categoria": "sprite",
@@ -2461,7 +2471,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 226
+      "id": 227
     },
     {
       "categoria": "sprite",
@@ -2471,7 +2481,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2500,
       "gama": "neutral",
-      "id": 227
+      "id": 228
     },
     {
       "categoria": "redbull",
@@ -2481,7 +2491,7 @@
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "neutral",
-      "id": 228
+      "id": 229
     },
     {
       "categoria": "redbull",
@@ -2491,7 +2501,7 @@
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "neutral",
-      "id": 229
+      "id": 230
     },
     {
       "categoria": "tonica",
@@ -2501,7 +2511,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 230
+      "id": 231
     },
     {
       "categoria": "jugo_watts",
@@ -2511,7 +2521,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "neutral",
-      "id": 231
+      "id": 232
     }
   ]
 }
