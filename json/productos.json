@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-12T05:34:18Z",
+  "timestamp": "2026-08-13T05:43:21Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -215,7 +215,7 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Stones Cerveza stones lemon lata 470 cc",
+      "nombre": "Stones Cerveza stones maracuyá lata 470 cc",
       "tienda": "Unimarc",
       "precio": 1000,
       "unidades": 1,
@@ -245,13 +245,23 @@
     },
     {
       "categoria": "cerveza",
+      "nombre": "Escudo Silver Pack cerveza escudo silver lata 6 un de 470 cc",
+      "tienda": "Unimarc",
+      "precio": 3990,
+      "unidades": 6,
+      "volumenMlUnidad": 470,
+      "gama": "rata",
+      "id": 5
+    },
+    {
+      "categoria": "cerveza",
       "nombre": "Corelli Pack cerveza corelli lager lata 6 un de 330 cc",
       "tienda": "Unimarc",
       "precio": 2990,
       "unidades": 6,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 5
+      "id": 6
     },
     {
       "categoria": "cerveza",
@@ -261,16 +271,6 @@
       "unidades": 6,
       "volumenMlUnidad": 355,
       "gama": "normal",
-      "id": 6
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cristal Cerveza Pack cerveza cristal ultra liviana lata 6 un de 470 cc",
-      "tienda": "Unimarc",
-      "precio": 4790,
-      "unidades": 6,
-      "volumenMlUnidad": 470,
-      "gama": "rata",
       "id": 7
     },
     {
@@ -317,7 +317,7 @@
       "categoria": "cerveza",
       "nombre": "Escudo Pack cerveza escudo lata 12 un de 350 cc",
       "tienda": "Unimarc",
-      "precio": 6990,
+      "precio": 6290,
       "unidades": 12,
       "volumenMlUnidad": 350,
       "gama": "rata",
@@ -327,7 +327,7 @@
       "categoria": "cerveza",
       "nombre": "Becker Pack cerveza becker lata 6 un de 473 cc",
       "tienda": "Unimarc",
-      "precio": 4690,
+      "precio": 4390,
       "unidades": 6,
       "volumenMlUnidad": 473,
       "gama": "rata",
@@ -345,9 +345,9 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Leyendas De Origen Cerveza leyendas de origen trauco lata 473 cc",
+      "nombre": "Guinness Cerveza guinness extra stout 5.0° lata 473 cc",
       "tienda": "Unimarc",
-      "precio": 1000,
+      "precio": 3190,
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "normal",
@@ -365,22 +365,22 @@
     },
     {
       "categoria": "cerveza",
+      "nombre": "Stella Artois Pack cerveza stella artois botella 24 un de 330 cc",
+      "tienda": "Unimarc",
+      "precio": 12990,
+      "unidades": 24,
+      "volumenMlUnidad": 330,
+      "gama": "normal",
+      "id": 17
+    },
+    {
+      "categoria": "cerveza",
       "nombre": "Becker Pack cerveza becker lata 24 un de 354 cc",
       "tienda": "Unimarc",
       "precio": 10490,
       "unidades": 24,
       "volumenMlUnidad": 354,
       "gama": "rata",
-      "id": 17
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Stella Artois Pack cerveza stella artois botella 24 un de 330 cc",
-      "tienda": "Unimarc",
-      "precio": 15990,
-      "unidades": 24,
-      "volumenMlUnidad": 330,
-      "gama": "normal",
       "id": 18
     },
     {
@@ -397,7 +397,7 @@
       "categoria": "cerveza",
       "nombre": "Royal Guard Pack cerveza royal guard lata 24 un de 350 cc",
       "tienda": "Unimarc",
-      "precio": 12990,
+      "precio": 12890,
       "unidades": 24,
       "volumenMlUnidad": 350,
       "gama": "normal",
@@ -407,7 +407,7 @@
       "categoria": "cerveza",
       "nombre": "Sol Pack cerveza sol botella 12 un de 330 cc",
       "tienda": "Unimarc",
-      "precio": 10490,
+      "precio": 8990,
       "unidades": 12,
       "volumenMlUnidad": 330,
       "gama": "normal",
@@ -417,7 +417,7 @@
       "categoria": "cerveza",
       "nombre": "Heineken Pack cerveza heineken lata 12 un de 355 cc",
       "tienda": "Unimarc",
-      "precio": 8990,
+      "precio": 8590,
       "unidades": 12,
       "volumenMlUnidad": 355,
       "gama": "normal",
@@ -435,9 +435,9 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Quilmes Pack cerveza quilmes clásica lata 12 un de 354 cc",
+      "nombre": "Stella Artois Pack cerveza stella artois lata 12 un de 354 cc",
       "tienda": "Unimarc",
-      "precio": 7490,
+      "precio": 7990,
       "unidades": 12,
       "volumenMlUnidad": 354,
       "gama": "normal",
@@ -497,7 +497,7 @@
       "categoria": "ron",
       "nombre": "Bacardi Ron bacardi añejo botella 700 cc",
       "tienda": "Unimarc",
-      "precio": 9490,
+      "precio": 7690,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
@@ -507,7 +507,7 @@
       "categoria": "ron",
       "nombre": "Bacardi Ron blanco bacardi superior botella 980 cc",
       "tienda": "Unimarc",
-      "precio": 11990,
+      "precio": 8390,
       "unidades": 1,
       "volumenMlUnidad": 980,
       "gama": "normal",
@@ -545,23 +545,13 @@
     },
     {
       "categoria": "vodka",
-      "nombre": "Eristoff Vodka eristoff original botella 950 cc",
-      "tienda": "Unimarc",
-      "precio": 7190,
-      "unidades": 1,
-      "volumenMlUnidad": 950,
-      "gama": "rata",
-      "id": 35
-    },
-    {
-      "categoria": "vodka",
       "nombre": "Puklaro Vodka puklaro botella 750 cc",
       "tienda": "Unimarc",
       "precio": 8390,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "rata",
-      "id": 36
+      "id": 35
     },
     {
       "categoria": "vodka",
@@ -570,6 +560,16 @@
       "precio": 5890,
       "unidades": 1,
       "volumenMlUnidad": 700,
+      "gama": "rata",
+      "id": 36
+    },
+    {
+      "categoria": "vodka",
+      "nombre": "Eristoff Vodka eristoff original botella 950 cc",
+      "tienda": "Unimarc",
+      "precio": 7190,
+      "unidades": 1,
+      "volumenMlUnidad": 950,
       "gama": "rata",
       "id": 37
     },
@@ -627,7 +627,7 @@
       "categoria": "gin",
       "nombre": "Brighton Gin brighton pink botella 700 cc",
       "tienda": "Unimarc",
-      "precio": 10990,
+      "precio": 9280,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "rata",
@@ -885,12 +885,12 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "24x Cerveza Royal Guard 5.0° Lata 470cc",
+      "nombre": "24x Cerveza Escudo Silver 5.0° Lata 470cc",
       "tienda": "La Barra",
-      "precio": 28760,
+      "precio": 18960,
       "unidades": 1,
       "volumenMlUnidad": 470,
-      "gama": "normal",
+      "gama": "rata",
       "id": 69
     },
     {
@@ -1015,12 +1015,12 @@
     },
     {
       "categoria": "vodka",
-      "nombre": "Vodka Absolut Rainbow 40° 750cc",
+      "nombre": "Vodka Puklaro 40° 750cc",
       "tienda": "La Barra",
-      "precio": 12990,
+      "precio": 10790,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "normal",
+      "gama": "rata",
       "id": 82
     },
     {
@@ -1035,13 +1035,23 @@
     },
     {
       "categoria": "whiskey",
+      "nombre": "Whisky Ballantine's Finest 40° 750cc",
+      "tienda": "La Barra",
+      "precio": 12990,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
+      "gama": "normal",
+      "id": 84
+    },
+    {
+      "categoria": "whiskey",
       "nombre": "Whisky Passport 40° 700cc",
       "tienda": "La Barra",
       "precio": 7390,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "rata",
-      "id": 84
+      "id": 85
     },
     {
       "categoria": "whiskey",
@@ -1050,16 +1060,6 @@
       "precio": 16990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
-      "gama": "normal",
-      "id": 85
-    },
-    {
-      "categoria": "whiskey",
-      "nombre": "Whisky Ballantine's Finest 40° 750cc",
-      "tienda": "La Barra",
-      "precio": 12990,
-      "unidades": 1,
-      "volumenMlUnidad": 750,
       "gama": "normal",
       "id": 86
     },
@@ -1165,7 +1165,7 @@
     },
     {
       "categoria": "ginger",
-      "nombre": "6x Bebida Canada Dry Ginger Ale Zero Botella 3L",
+      "nombre": "6x Bebida Canada Dry Ginger Ale Botella 3L",
       "tienda": "La Barra",
       "precio": 19199,
       "unidades": 1,
@@ -1235,7 +1235,7 @@
     },
     {
       "categoria": "jugo_watts",
-      "nombre": "6x Jugo Frugo Naranja 2L",
+      "nombre": "6x Jugo Frugo Frutilla 2L",
       "tienda": "La Barra",
       "precio": 8400,
       "unidades": 1,
@@ -1315,13 +1315,23 @@
     },
     {
       "categoria": "cerveza",
+      "nombre": "Cerveza Mestra Lager Lata 350cc x24",
+      "tienda": "Liquidos",
+      "precio": 23990,
+      "unidades": 24,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 112
+    },
+    {
+      "categoria": "cerveza",
       "nombre": "Cerveza Kunstmann Valdivia Pale Lager botella 330 CC",
       "tienda": "Liquidos",
       "precio": 1250,
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "sobrado",
-      "id": 112
+      "id": 113
     },
     {
       "categoria": "cerveza",
@@ -1331,7 +1341,7 @@
       "unidades": 1,
       "volumenMlUnidad": 470,
       "gama": "rata",
-      "id": 113
+      "id": 114
     },
     {
       "categoria": "cerveza",
@@ -1341,7 +1351,7 @@
       "unidades": 12,
       "volumenMlUnidad": 473,
       "gama": "normal",
-      "id": 114
+      "id": 115
     },
     {
       "categoria": "cerveza",
@@ -1351,7 +1361,7 @@
       "unidades": 6,
       "volumenMlUnidad": 500,
       "gama": "normal",
-      "id": 115
+      "id": 116
     },
     {
       "categoria": "cerveza",
@@ -1361,7 +1371,7 @@
       "unidades": 6,
       "volumenMlUnidad": 355,
       "gama": "normal",
-      "id": 116
+      "id": 117
     },
     {
       "categoria": "cerveza",
@@ -1371,7 +1381,7 @@
       "unidades": 1,
       "volumenMlUnidad": 355,
       "gama": "normal",
-      "id": 117
+      "id": 118
     },
     {
       "categoria": "cerveza",
@@ -1380,16 +1390,6 @@
       "precio": 5990,
       "unidades": 6,
       "volumenMlUnidad": 350,
-      "gama": "normal",
-      "id": 118
-    },
-    {
-      "categoria": "cerveza",
-      "nombre": "Cerveza Bear Beer Lager lata 500 CC",
-      "tienda": "Liquidos",
-      "precio": 850,
-      "unidades": 1,
-      "volumenMlUnidad": 500,
       "gama": "normal",
       "id": 119
     },
@@ -1654,6 +1654,16 @@
       "id": 145
     },
     {
+      "categoria": "whiskey",
+      "nombre": "Whisky Ballantines Finest Botella 1Lt x6",
+      "tienda": "Liquidos",
+      "precio": 71400,
+      "unidades": 6,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 146
+    },
+    {
       "categoria": "gin",
       "nombre": "Gin Gordons Botella 750cc",
       "tienda": "Liquidos",
@@ -1661,7 +1671,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 146
+      "id": 147
     },
     {
       "categoria": "gin",
@@ -1671,7 +1681,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 147
+      "id": 148
     },
     {
       "categoria": "gin",
@@ -1681,7 +1691,7 @@
       "unidades": 6,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 148
+      "id": 149
     },
     {
       "categoria": "jaeger",
@@ -1691,7 +1701,7 @@
       "unidades": 3,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 149
+      "id": 150
     },
     {
       "categoria": "jaeger",
@@ -1701,7 +1711,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 150
+      "id": 151
     },
     {
       "categoria": "jaeger",
@@ -1711,7 +1721,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 151
+      "id": 152
     },
     {
       "categoria": "cola",
@@ -1721,7 +1731,7 @@
       "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 152
+      "id": 153
     },
     {
       "categoria": "cola",
@@ -1731,7 +1741,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 153
+      "id": 154
     },
     {
       "categoria": "cola",
@@ -1741,7 +1751,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 154
+      "id": 155
     },
     {
       "categoria": "cola",
@@ -1751,7 +1761,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 155
+      "id": 156
     },
     {
       "categoria": "cola",
@@ -1761,7 +1771,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 156
+      "id": 157
     },
     {
       "categoria": "fanta",
@@ -1771,7 +1781,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 157
+      "id": 158
     },
     {
       "categoria": "fanta",
@@ -1781,7 +1791,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 158
+      "id": 159
     },
     {
       "categoria": "ginger",
@@ -1791,7 +1801,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 159
+      "id": 160
     },
     {
       "categoria": "ginger",
@@ -1801,7 +1811,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 160
+      "id": 161
     },
     {
       "categoria": "ginger",
@@ -1811,7 +1821,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 161
+      "id": 162
     },
     {
       "categoria": "sprite",
@@ -1821,7 +1831,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 162
+      "id": 163
     },
     {
       "categoria": "sprite",
@@ -1829,16 +1839,6 @@
       "tienda": "Liquidos",
       "precio": 2390,
       "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral",
-      "id": 163
-    },
-    {
-      "categoria": "sprite",
-      "nombre": "Sprite Zero Botella 1,5Lts x6",
-      "tienda": "Liquidos",
-      "precio": 11340,
-      "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 164
@@ -1995,22 +1995,22 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "KIT Cerveza Royal: 12x Cerveza Royal Guard en Botella 355cc",
-      "tienda": "Booz",
-      "precio": 13990,
-      "unidades": 1,
-      "volumenMlUnidad": 355,
-      "gama": "normal",
-      "id": 180
-    },
-    {
-      "categoria": "cerveza",
       "nombre": "KIT AUSTRAL CALAFATE: 12x Cervezas Austral Calafate en Botella 330cc",
       "tienda": "Booz",
       "precio": 21490,
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "sobrado",
+      "id": 180
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "KIT Cerveza Royal: 12x Cerveza Royal Guard en Botella 355cc",
+      "tienda": "Booz",
+      "precio": 13990,
+      "unidades": 1,
+      "volumenMlUnidad": 355,
+      "gama": "normal",
       "id": 181
     },
     {
@@ -2125,19 +2125,19 @@
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky Glen Turner Rum Cask 700cc",
+      "nombre": "Whisky Glenlivet Founders Reserve Single Malt 700cc 40º alc.",
       "tienda": "Booz",
-      "precio": 22990,
+      "precio": 39990,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
+      "gama": "sobrado",
       "id": 193
     },
     {
       "categoria": "gin",
-      "nombre": "Gin Pajarillo Botella 700cc 47º alc.",
+      "nombre": "Gin Tanqueray 700cc 43.1ºalc.",
       "tienda": "Booz",
-      "precio": 18490,
+      "precio": 19990,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
@@ -2164,8 +2164,8 @@
       "id": 196
     },
     {
-      "categoria": "cola",
-      "nombre": "Bebida Pepsi Zero 1.5 L",
+      "categoria": "ginger",
+      "nombre": "Bebida Canada Dry Ginger Ale Zero 1.5 L",
       "tienda": "Booz",
       "precio": 2050,
       "unidades": 1,
@@ -2175,33 +2175,23 @@
     },
     {
       "categoria": "ginger",
-      "nombre": "Bebida Canada Dry Ginger Ale Zero 1.5 L",
-      "tienda": "Booz",
-      "precio": 2050,
-      "unidades": 1,
-      "volumenMlUnidad": 1500,
-      "gama": "neutral",
-      "id": 198
-    },
-    {
-      "categoria": "ginger",
       "nombre": "Bebida Canada Dry Ginger Ale Zero 3 L",
       "tienda": "Booz",
       "precio": 3190,
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 199
+      "id": 198
     },
     {
       "categoria": "hielo",
-      "nombre": "Hielo Pop Bolsa 2 kg.",
+      "nombre": "Hielo Ice Monkey 2 kg.",
       "tienda": "Booz",
-      "precio": 2290,
+      "precio": 1890,
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 200
+      "id": 199
     },
     {
       "categoria": "hielo",
@@ -2211,7 +2201,7 @@
       "unidades": 6,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 201
+      "id": 200
     },
     {
       "categoria": "cerveza",
@@ -2221,17 +2211,17 @@
       "unidades": 1,
       "volumenMlUnidad": 354,
       "gama": "normal",
-      "id": 202
+      "id": 201
     },
     {
       "categoria": "cerveza",
-      "nombre": "Cerveza Budweiser 5,0° 6 x 330 cc.",
+      "nombre": "Cerveza Cusqueña Golden 4,8° 6 x 330 cc.",
       "tienda": "miCocaCola",
       "precio": 4990,
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 203
+      "id": 202
     },
     {
       "categoria": "cerveza",
@@ -2241,7 +2231,7 @@
       "unidades": 1,
       "volumenMlUnidad": 710,
       "gama": "normal",
-      "id": 204
+      "id": 203
     },
     {
       "categoria": "cerveza",
@@ -2250,6 +2240,16 @@
       "precio": 1090,
       "unidades": 1,
       "volumenMlUnidad": 473,
+      "gama": "normal",
+      "id": 204
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Cerveza Quilmes 4,9° 24 x 300 cc.",
+      "tienda": "miCocaCola",
+      "precio": 14090,
+      "unidades": 1,
+      "volumenMlUnidad": 300,
       "gama": "normal",
       "id": 205
     },
@@ -2415,7 +2415,7 @@
     },
     {
       "categoria": "ginger",
-      "nombre": "Tri Pack 2 Coca-Cola Light 3,0 lt. + Schweppes Ginger Ale Zero Azúcar 3,0 lt.",
+      "nombre": "Tri Pack 2 Coca-Cola Zero Azúcar 3,0 lt. + Schweppes Ginger Ale Zero Azúcar 3,0 lt.",
       "tienda": "miCocaCola",
       "precio": 8050,
       "unidades": 2,
