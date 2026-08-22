@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-21T04:39:08Z",
+  "timestamp": "2026-08-22T04:33:43Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -201,7 +201,7 @@
     }
   },
   "combinaciones_especiales": {},
-  "total": 231,
+  "total": 233,
   "productos": [
     {
       "categoria": "cerveza",
@@ -365,9 +365,9 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Stella Artois Pack cerveza stella artois botella 24 un de 330 cc",
+      "nombre": "Corona Pack cerveza corona extra botella 24 un de 330 cc",
       "tienda": "Unimarc",
-      "precio": 12790,
+      "precio": 21980,
       "unidades": 24,
       "volumenMlUnidad": 330,
       "gama": "normal",
@@ -445,9 +445,9 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Artesanos Del Cochiguaz Pisco artesanos del cochiguaz especial 35° botella 1 l",
+      "nombre": "Tres Erres Pisco tres erres 35° botella 1 l",
       "tienda": "Unimarc",
-      "precio": 5190,
+      "precio": 5890,
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
@@ -1175,13 +1175,23 @@
     },
     {
       "categoria": "redbull",
-      "nombre": "4x Bebida Energética Red Bull Sin Azúcar 250cc",
+      "nombre": "12x Bebida Energética Rockstar 500cc",
+      "tienda": "La Barra",
+      "precio": 16199,
+      "unidades": 1,
+      "volumenMlUnidad": 500,
+      "gama": "neutral",
+      "id": 98
+    },
+    {
+      "categoria": "redbull",
+      "nombre": "4x Bebida Energética Red Bull Tropical 250cc",
       "tienda": "La Barra",
       "precio": 7560,
       "unidades": 1,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 98
+      "id": 99
     },
     {
       "categoria": "redbull",
@@ -1191,7 +1201,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 99
+      "id": 100
     },
     {
       "categoria": "redbull",
@@ -1200,16 +1210,6 @@
       "precio": 27490,
       "unidades": 1,
       "volumenMlUnidad": 355,
-      "gama": "neutral",
-      "id": 100
-    },
-    {
-      "categoria": "redbull",
-      "nombre": "12x Bebida Energética Rockstar 500cc",
-      "tienda": "La Barra",
-      "precio": 16199,
-      "unidades": 1,
-      "volumenMlUnidad": 500,
       "gama": "neutral",
       "id": 101
     },
@@ -1385,13 +1385,23 @@
     },
     {
       "categoria": "cerveza",
+      "nombre": "Cerveza Mestra Lager Lata 350cc x6",
+      "tienda": "Liquidos",
+      "precio": 5990,
+      "unidades": 6,
+      "volumenMlUnidad": 350,
+      "gama": "normal",
+      "id": 119
+    },
+    {
+      "categoria": "cerveza",
       "nombre": "Cerveza Budweiser lata 473 CC x6",
       "tienda": "Liquidos",
       "precio": 5190,
       "unidades": 6,
       "volumenMlUnidad": 473,
       "gama": "normal",
-      "id": 119
+      "id": 120
     },
     {
       "categoria": "cerveza",
@@ -1401,7 +1411,7 @@
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "rata",
-      "id": 120
+      "id": 121
     },
     {
       "categoria": "cerveza",
@@ -1411,7 +1421,7 @@
       "unidades": 6,
       "volumenMlUnidad": 470,
       "gama": "normal",
-      "id": 121
+      "id": 122
     },
     {
       "categoria": "piscola",
@@ -1421,7 +1431,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 122
+      "id": 123
     },
     {
       "categoria": "piscola",
@@ -1431,7 +1441,7 @@
       "unidades": 6,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 123
+      "id": 124
     },
     {
       "categoria": "piscola",
@@ -1441,7 +1451,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 124
+      "id": 125
     },
     {
       "categoria": "piscola",
@@ -1451,7 +1461,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 125
+      "id": 126
     },
     {
       "categoria": "piscola",
@@ -1461,7 +1471,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "normal",
-      "id": 126
+      "id": 127
     },
     {
       "categoria": "ron",
@@ -1471,7 +1481,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 127
+      "id": 128
     },
     {
       "categoria": "ron",
@@ -1481,7 +1491,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 128
+      "id": 129
     },
     {
       "categoria": "ron",
@@ -1491,7 +1501,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 129
+      "id": 130
     },
     {
       "categoria": "ron",
@@ -1501,7 +1511,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1750,
       "gama": "normal",
-      "id": 130
+      "id": 131
     },
     {
       "categoria": "vodka",
@@ -1511,7 +1521,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 131
+      "id": 132
     },
     {
       "categoria": "vodka",
@@ -1521,7 +1531,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 132
+      "id": 133
     },
     {
       "categoria": "vodka",
@@ -1531,7 +1541,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 133
+      "id": 134
     },
     {
       "categoria": "vodka",
@@ -1541,7 +1551,7 @@
       "unidades": 1,
       "volumenMlUnidad": 275,
       "gama": "normal",
-      "id": 134
+      "id": 135
     },
     {
       "categoria": "vodka",
@@ -1551,7 +1561,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "rata",
-      "id": 135
+      "id": 136
     },
     {
       "categoria": "vodka",
@@ -1561,7 +1571,7 @@
       "unidades": 24,
       "volumenMlUnidad": 275,
       "gama": "normal",
-      "id": 136
+      "id": 137
     },
     {
       "categoria": "vodka",
@@ -1571,7 +1581,7 @@
       "unidades": 6,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 137
+      "id": 138
     },
     {
       "categoria": "vodka",
@@ -1581,7 +1591,7 @@
       "unidades": 6,
       "volumenMlUnidad": 700,
       "gama": "rata",
-      "id": 138
+      "id": 139
     },
     {
       "categoria": "whiskey",
@@ -1591,7 +1601,7 @@
       "unidades": 6,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 139
+      "id": 140
     },
     {
       "categoria": "whiskey",
@@ -1601,7 +1611,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 140
+      "id": 141
     },
     {
       "categoria": "whiskey",
@@ -1611,7 +1621,17 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 141
+      "id": 142
+    },
+    {
+      "categoria": "whiskey",
+      "nombre": "Whiskey Jack Daniels N7 Botella 1Lt x4",
+      "tienda": "Liquidos",
+      "precio": 115960,
+      "unidades": 4,
+      "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 143
     },
     {
       "categoria": "whiskey",
@@ -1621,7 +1641,7 @@
       "unidades": 4,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 142
+      "id": 144
     },
     {
       "categoria": "whiskey",
@@ -1631,7 +1651,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 143
+      "id": 145
     },
     {
       "categoria": "whiskey",
@@ -1641,7 +1661,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 144
+      "id": 146
     },
     {
       "categoria": "whiskey",
@@ -1651,7 +1671,7 @@
       "unidades": 3,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 145
+      "id": 147
     },
     {
       "categoria": "gin",
@@ -1661,7 +1681,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 146
+      "id": 148
     },
     {
       "categoria": "gin",
@@ -1671,7 +1691,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 147
+      "id": 149
     },
     {
       "categoria": "gin",
@@ -1681,7 +1701,7 @@
       "unidades": 6,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 148
+      "id": 150
     },
     {
       "categoria": "jaeger",
@@ -1691,7 +1711,7 @@
       "unidades": 3,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 149
+      "id": 151
     },
     {
       "categoria": "jaeger",
@@ -1701,7 +1721,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 150
+      "id": 152
     },
     {
       "categoria": "jaeger",
@@ -1711,7 +1731,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 151
+      "id": 153
     },
     {
       "categoria": "cola",
@@ -1721,7 +1741,7 @@
       "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 152
+      "id": 154
     },
     {
       "categoria": "cola",
@@ -1731,7 +1751,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 153
+      "id": 155
     },
     {
       "categoria": "cola",
@@ -1741,7 +1761,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 154
+      "id": 156
     },
     {
       "categoria": "cola",
@@ -1751,7 +1771,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 155
+      "id": 157
     },
     {
       "categoria": "cola",
@@ -1761,7 +1781,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 156
+      "id": 158
     },
     {
       "categoria": "fanta",
@@ -1771,7 +1791,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 157
+      "id": 159
     },
     {
       "categoria": "fanta",
@@ -1781,7 +1801,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 158
+      "id": 160
     },
     {
       "categoria": "ginger",
@@ -1791,7 +1811,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 159
+      "id": 161
     },
     {
       "categoria": "ginger",
@@ -1801,7 +1821,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 160
+      "id": 162
     },
     {
       "categoria": "ginger",
@@ -1811,7 +1831,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 161
+      "id": 163
     },
     {
       "categoria": "sprite",
@@ -1821,7 +1841,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 162
+      "id": 164
     },
     {
       "categoria": "sprite",
@@ -1831,7 +1851,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 163
+      "id": 165
     },
     {
       "categoria": "sprite",
@@ -1841,7 +1861,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 164
+      "id": 166
     },
     {
       "categoria": "sprite",
@@ -1851,7 +1871,7 @@
       "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 165
+      "id": 167
     },
     {
       "categoria": "redbull",
@@ -1861,7 +1881,7 @@
       "unidades": 6,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 166
+      "id": 168
     },
     {
       "categoria": "redbull",
@@ -1871,7 +1891,7 @@
       "unidades": 1,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 167
+      "id": 169
     },
     {
       "categoria": "redbull",
@@ -1881,7 +1901,7 @@
       "unidades": 1,
       "volumenMlUnidad": 355,
       "gama": "neutral",
-      "id": 168
+      "id": 170
     },
     {
       "categoria": "redbull",
@@ -1891,7 +1911,7 @@
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "neutral",
-      "id": 169
+      "id": 171
     },
     {
       "categoria": "redbull",
@@ -1901,7 +1921,7 @@
       "unidades": 12,
       "volumenMlUnidad": 250,
       "gama": "neutral",
-      "id": 170
+      "id": 172
     },
     {
       "categoria": "tonica",
@@ -1911,7 +1931,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 171
+      "id": 173
     },
     {
       "categoria": "tonica",
@@ -1921,7 +1941,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 172
+      "id": 174
     },
     {
       "categoria": "jugo_watts",
@@ -1931,17 +1951,17 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 173
+      "id": 175
     },
     {
       "categoria": "jugo_watts",
-      "nombre": "Jugo Watts Durazno 1.5L x6",
+      "nombre": "Jugo Watts Naranja 1.5L x6",
       "tienda": "Liquidos",
       "precio": 11940,
       "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 174
+      "id": 176
     },
     {
       "categoria": "hielo",
@@ -1951,7 +1971,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "neutral",
-      "id": 175
+      "id": 177
     },
     {
       "categoria": "hielo",
@@ -1961,7 +1981,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "neutral",
-      "id": 176
+      "id": 178
     },
     {
       "categoria": "hielo",
@@ -1971,7 +1991,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 177
+      "id": 179
     },
     {
       "categoria": "hielo",
@@ -1981,7 +2001,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 178
+      "id": 180
     },
     {
       "categoria": "cerveza",
@@ -1991,7 +2011,7 @@
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "sobrado",
-      "id": 179
+      "id": 181
     },
     {
       "categoria": "piscola",
@@ -2001,7 +2021,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 180
+      "id": 182
     },
     {
       "categoria": "piscola",
@@ -2011,7 +2031,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 181
+      "id": 183
     },
     {
       "categoria": "piscola",
@@ -2021,17 +2041,17 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "sobrado",
-      "id": 182
+      "id": 184
     },
     {
       "categoria": "ron",
-      "nombre": "Ron Barcelo Blanco 37,5º 750cc",
+      "nombre": "Ron Bacardi Carta Blanca 750cc",
       "tienda": "Booz",
-      "precio": 7390,
+      "precio": 10990,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 183
+      "id": 185
     },
     {
       "categoria": "ron",
@@ -2041,7 +2061,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "sobrado",
-      "id": 184
+      "id": 186
     },
     {
       "categoria": "ron",
@@ -2051,7 +2071,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 185
+      "id": 187
     },
     {
       "categoria": "vodka",
@@ -2061,7 +2081,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 186
+      "id": 188
     },
     {
       "categoria": "vodka",
@@ -2071,7 +2091,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 187
+      "id": 189
     },
     {
       "categoria": "vodka",
@@ -2081,7 +2101,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "rata",
-      "id": 188
+      "id": 190
     },
     {
       "categoria": "whiskey",
@@ -2091,7 +2111,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 189
+      "id": 191
     },
     {
       "categoria": "whiskey",
@@ -2101,17 +2121,17 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 190
+      "id": 192
     },
     {
       "categoria": "whiskey",
-      "nombre": "Whisky Glen Turner Rum Cask 700cc",
+      "nombre": "Whisky Glenlivet Founders Reserve Single Malt 700cc 40º alc.",
       "tienda": "Booz",
-      "precio": 22990,
+      "precio": 39990,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "normal",
-      "id": 191
+      "gama": "sobrado",
+      "id": 193
     },
     {
       "categoria": "gin",
@@ -2121,17 +2141,17 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 192
+      "id": 194
     },
     {
       "categoria": "gin",
-      "nombre": "Gin Pueblo 750cc",
+      "nombre": "Gin Gordons London Dry 750cc 37,5º alc.",
       "tienda": "Booz",
       "precio": 12990,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 193
+      "id": 195
     },
     {
       "categoria": "jaeger",
@@ -2141,7 +2161,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 194
+      "id": 196
     },
     {
       "categoria": "cola",
@@ -2151,7 +2171,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 195
+      "id": 197
     },
     {
       "categoria": "ginger",
@@ -2161,7 +2181,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 196
+      "id": 198
     },
     {
       "categoria": "ginger",
@@ -2171,7 +2191,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 197
+      "id": 199
     },
     {
       "categoria": "hielo",
@@ -2181,7 +2201,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 198
+      "id": 200
     },
     {
       "categoria": "hielo",
@@ -2191,7 +2211,7 @@
       "unidades": 6,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
-      "id": 199
+      "id": 201
     },
     {
       "categoria": "cerveza",
@@ -2201,7 +2221,7 @@
       "unidades": 1,
       "volumenMlUnidad": 354,
       "gama": "normal",
-      "id": 200
+      "id": 202
     },
     {
       "categoria": "cerveza",
@@ -2211,7 +2231,7 @@
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "normal",
-      "id": 201
+      "id": 203
     },
     {
       "categoria": "cerveza",
@@ -2221,7 +2241,7 @@
       "unidades": 1,
       "volumenMlUnidad": 710,
       "gama": "normal",
-      "id": 202
+      "id": 204
     },
     {
       "categoria": "cerveza",
@@ -2231,7 +2251,7 @@
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "normal",
-      "id": 203
+      "id": 205
     },
     {
       "categoria": "cerveza",
@@ -2241,7 +2261,7 @@
       "unidades": 1,
       "volumenMlUnidad": 300,
       "gama": "normal",
-      "id": 204
+      "id": 206
     },
     {
       "categoria": "cerveza",
@@ -2251,7 +2271,7 @@
       "unidades": 1,
       "volumenMlUnidad": 355,
       "gama": "normal",
-      "id": 205
+      "id": 207
     },
     {
       "categoria": "cerveza",
@@ -2261,7 +2281,7 @@
       "unidades": 1,
       "volumenMlUnidad": 620,
       "gama": "normal",
-      "id": 206
+      "id": 208
     },
     {
       "categoria": "piscola",
@@ -2271,7 +2291,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "sobrado",
-      "id": 207
+      "id": 209
     },
     {
       "categoria": "ron",
@@ -2281,7 +2301,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "rata",
-      "id": 208
+      "id": 210
     },
     {
       "categoria": "ron",
@@ -2291,7 +2311,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "rata",
-      "id": 209
+      "id": 211
     },
     {
       "categoria": "vodka",
@@ -2301,7 +2321,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 210
+      "id": 212
     },
     {
       "categoria": "vodka",
@@ -2311,7 +2331,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "sobrado",
-      "id": 211
+      "id": 213
     },
     {
       "categoria": "whiskey",
@@ -2321,7 +2341,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "rata",
-      "id": 212
+      "id": 214
     },
     {
       "categoria": "whiskey",
@@ -2331,7 +2351,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "rata",
-      "id": 213
+      "id": 215
     },
     {
       "categoria": "whiskey",
@@ -2341,7 +2361,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "sobrado",
-      "id": 214
+      "id": 216
     },
     {
       "categoria": "gin",
@@ -2351,7 +2371,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 215
+      "id": 217
     },
     {
       "categoria": "gin",
@@ -2361,7 +2381,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 216
+      "id": 218
     },
     {
       "categoria": "cola",
@@ -2371,7 +2391,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 217
+      "id": 219
     },
     {
       "categoria": "cola",
@@ -2381,7 +2401,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 218
+      "id": 220
     },
     {
       "categoria": "fanta",
@@ -2391,7 +2411,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 219
+      "id": 221
     },
     {
       "categoria": "fanta",
@@ -2401,7 +2421,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 220
+      "id": 222
     },
     {
       "categoria": "fanta",
@@ -2411,7 +2431,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2500,
       "gama": "neutral",
-      "id": 221
+      "id": 223
     },
     {
       "categoria": "ginger",
@@ -2421,7 +2441,7 @@
       "unidades": 2,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 222
+      "id": 224
     },
     {
       "categoria": "ginger",
@@ -2431,7 +2451,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 223
+      "id": 225
     },
     {
       "categoria": "ginger",
@@ -2441,7 +2461,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 224
+      "id": 226
     },
     {
       "categoria": "sprite",
@@ -2451,7 +2471,7 @@
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
-      "id": 225
+      "id": 227
     },
     {
       "categoria": "sprite",
@@ -2461,7 +2481,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 226
+      "id": 228
     },
     {
       "categoria": "sprite",
@@ -2471,7 +2491,7 @@
       "unidades": 1,
       "volumenMlUnidad": 2500,
       "gama": "neutral",
-      "id": 227
+      "id": 229
     },
     {
       "categoria": "redbull",
@@ -2481,7 +2501,7 @@
       "unidades": 1,
       "volumenMlUnidad": 473,
       "gama": "neutral",
-      "id": 228
+      "id": 230
     },
     {
       "categoria": "redbull",
@@ -2491,7 +2511,7 @@
       "unidades": 1,
       "volumenMlUnidad": 330,
       "gama": "neutral",
-      "id": 229
+      "id": 231
     },
     {
       "categoria": "tonica",
@@ -2501,7 +2521,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
-      "id": 230
+      "id": 232
     },
     {
       "categoria": "jugo_watts",
@@ -2511,7 +2531,7 @@
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "neutral",
-      "id": 231
+      "id": 233
     }
   ]
 }
