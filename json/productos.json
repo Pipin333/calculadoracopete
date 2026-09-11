@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-10T08:41:51Z",
+  "timestamp": "2026-09-11T08:36:33Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -265,7 +265,7 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Cristal Cerveza Pack cerveza cristal ultra liviana lata 6 un de 470 cc",
+      "nombre": "Escudo Pack cerveza escudo lata 6 un de 470 cc",
       "tienda": "Unimarc",
       "precio": 4790,
       "unidades": 6,
@@ -307,7 +307,7 @@
       "categoria": "cerveza",
       "nombre": "Cristal Cerveza Pack cerveza cristal cero radler sin alcohol lata 6 un de 350 cc",
       "tienda": "Unimarc",
-      "precio": 4690,
+      "precio": 4190,
       "unidades": 6,
       "volumenMlUnidad": 350,
       "gama": "rata",
@@ -335,22 +335,22 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Becker Pack cerveza becker lata 6 un de 473 cc",
-      "tienda": "Unimarc",
-      "precio": 4490,
-      "unidades": 6,
-      "volumenMlUnidad": 473,
-      "gama": "rata",
-      "id": 14
-    },
-    {
-      "categoria": "cerveza",
       "nombre": "Kunstmann Cerveza kunstmann torobayo lata 10 un de 350 cc",
       "tienda": "Unimarc",
       "precio": 12990,
       "unidades": 10,
       "volumenMlUnidad": 350,
       "gama": "sobrado",
+      "id": 14
+    },
+    {
+      "categoria": "cerveza",
+      "nombre": "Becker Pack cerveza becker lata 6 un de 473 cc",
+      "tienda": "Unimarc",
+      "precio": 4490,
+      "unidades": 6,
+      "volumenMlUnidad": 473,
+      "gama": "rata",
       "id": 15
     },
     {
@@ -397,7 +397,7 @@
       "categoria": "cerveza",
       "nombre": "Royal Guard Pack cerveza royal guard lata 24 un de 350 cc",
       "tienda": "Unimarc",
-      "precio": 12890,
+      "precio": 11990,
       "unidades": 24,
       "volumenMlUnidad": 350,
       "gama": "normal",
@@ -405,7 +405,7 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "Sol Pack cerveza sol botella 12 un de 330 cc",
+      "nombre": "Corona Pack cerveza corona extra botella 12 un de 330 cc",
       "tienda": "Unimarc",
       "precio": 8990,
       "unidades": 12,
@@ -427,7 +427,7 @@
       "categoria": "cerveza",
       "nombre": "Quilmes Pack cerveza quilmes clásica botella 24 un de 300 cc",
       "tienda": "Unimarc",
-      "precio": 12990,
+      "precio": 13990,
       "unidades": 24,
       "volumenMlUnidad": 300,
       "gama": "normal",
@@ -915,12 +915,12 @@
     },
     {
       "categoria": "cerveza",
-      "nombre": "6x Cerveza Royal Guard Golden Lager 4.5° Botella 355cc",
+      "nombre": "24x Pack Cerveza Cristal Mixto (18 con alcohol + 6 sin alcohol) Botella 355cc",
       "tienda": "La Barra",
-      "precio": 7190,
+      "precio": 21161,
       "unidades": 1,
       "volumenMlUnidad": 355,
-      "gama": "normal",
+      "gama": "rata",
       "id": 72
     },
     {
@@ -935,9 +935,9 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Pisco Tres Erres 35° 750cc",
+      "nombre": "Pisco Mistral 35° 750cc",
       "tienda": "La Barra",
-      "precio": 7690,
+      "precio": 8990,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
@@ -975,9 +975,9 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Pisco Mistral Selección De Barricas 40° 700cc",
+      "nombre": "Pisco Mistral Gran Nobel 40° 700cc",
       "tienda": "La Barra",
-      "precio": 55990,
+      "precio": 32990,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "sobrado",
@@ -1005,12 +1005,12 @@
     },
     {
       "categoria": "ron",
-      "nombre": "Ron Malibu 21° 750 cc",
+      "nombre": "Ron Sierra Morena Extra Añejo 5 Años 39.5° 750cc",
       "tienda": "La Barra",
-      "precio": 12490,
+      "precio": 9290,
       "unidades": 1,
       "volumenMlUnidad": 750,
-      "gama": "normal",
+      "gama": "rata",
       "id": 81
     },
     {
@@ -1085,7 +1085,7 @@
     },
     {
       "categoria": "gin",
-      "nombre": "Gin Brighton Tangerine 37.5° 700cc",
+      "nombre": "Gin Brighton 37.5° 700cc",
       "tienda": "La Barra",
       "precio": 9990,
       "unidades": 1,
@@ -1425,9 +1425,9 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Pisco Mistral 35° Botella 750cc x6",
+      "nombre": "Pisco Alto del Carmen Transparente 40 750 CC x6",
       "tienda": "Liquidos",
-      "precio": 38400,
+      "precio": 38930,
       "unidades": 6,
       "volumenMlUnidad": 750,
       "gama": "normal",
@@ -1505,23 +1505,13 @@
     },
     {
       "categoria": "vodka",
-      "nombre": "Vodka Stolichnaya 750 CC x6",
-      "tienda": "Liquidos",
-      "precio": 47400,
-      "unidades": 6,
-      "volumenMlUnidad": 750,
-      "gama": "normal",
-      "id": 131
-    },
-    {
-      "categoria": "vodka",
       "nombre": "Vodka Stolichnaya 1 litro",
       "tienda": "Liquidos",
       "precio": 10990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 132
+      "id": 131
     },
     {
       "categoria": "vodka",
@@ -1531,7 +1521,7 @@
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
-      "id": 133
+      "id": 132
     },
     {
       "categoria": "vodka",
@@ -1541,7 +1531,7 @@
       "unidades": 6,
       "volumenMlUnidad": 1000,
       "gama": "normal",
-      "id": 134
+      "id": 133
     },
     {
       "categoria": "vodka",
@@ -1551,7 +1541,7 @@
       "unidades": 1,
       "volumenMlUnidad": 275,
       "gama": "normal",
-      "id": 135
+      "id": 134
     },
     {
       "categoria": "vodka",
@@ -1561,7 +1551,7 @@
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "rata",
-      "id": 136
+      "id": 135
     },
     {
       "categoria": "vodka",
@@ -1570,6 +1560,16 @@
       "precio": 37200,
       "unidades": 24,
       "volumenMlUnidad": 275,
+      "gama": "normal",
+      "id": 136
+    },
+    {
+      "categoria": "vodka",
+      "nombre": "Vodka Absolut Blue Botella 750cc x6",
+      "tienda": "Liquidos",
+      "precio": 69000,
+      "unidades": 6,
+      "volumenMlUnidad": 750,
       "gama": "normal",
       "id": 137
     },
@@ -2065,9 +2065,9 @@
     },
     {
       "categoria": "vodka",
-      "nombre": "Vodka Absolut Blue 750cc",
+      "nombre": "Vodka Stolichnaya 750cc",
       "tienda": "Booz",
-      "precio": 14190,
+      "precio": 10690,
       "unidades": 1,
       "volumenMlUnidad": 750,
       "gama": "normal",
@@ -2145,21 +2145,21 @@
     },
     {
       "categoria": "cola",
-      "nombre": "Bebida Coca-Cola Zero Azúcar 3 L",
-      "tienda": "Booz",
-      "precio": 3490,
-      "unidades": 1,
-      "volumenMlUnidad": 3000,
-      "gama": "neutral",
-      "id": 195
-    },
-    {
-      "categoria": "cola",
       "nombre": "Bebida Coca-Cola Zero Azúcar 1.5 L",
       "tienda": "Booz",
       "precio": 2290,
       "unidades": 1,
       "volumenMlUnidad": 1500,
+      "gama": "neutral",
+      "id": 195
+    },
+    {
+      "categoria": "cola",
+      "nombre": "Bebida Coca-Cola Zero Azúcar 3 L",
+      "tienda": "Booz",
+      "precio": 3490,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
       "gama": "neutral",
       "id": 196
     },
@@ -2195,9 +2195,9 @@
     },
     {
       "categoria": "hielo",
-      "nombre": "Hielo Ice Monkey 2 kg.",
+      "nombre": "Hielo Pop Bolsa 2 kg.",
       "tienda": "Booz",
-      "precio": 1890,
+      "precio": 2290,
       "unidades": 1,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
@@ -2395,9 +2395,9 @@
     },
     {
       "categoria": "cola",
-      "nombre": "Coca-Cola Zero Azúcar 6 x 3,0 lt.",
+      "nombre": "Coca-Cola Zero Azúcar 3,0 lt.",
       "tienda": "miCocaCola",
-      "precio": 16020,
+      "precio": 2690,
       "unidades": 1,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
