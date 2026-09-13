@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-12T08:24:48Z",
+  "timestamp": "2026-09-13T08:49:27Z",
   "categorias": {
     "cerveza": {
       "nombre": "Cerveza",
@@ -1135,27 +1135,27 @@
     },
     {
       "categoria": "fanta",
-      "nombre": "6x Bebida Crush Zero Botella 3L",
-      "tienda": "La Barra",
-      "precio": 19199,
-      "unidades": 1,
-      "volumenMlUnidad": 3000,
-      "gama": "neutral",
-      "id": 94
-    },
-    {
-      "categoria": "fanta",
       "nombre": "6x Bebida Crush Zero Botella 1.5L",
       "tienda": "La Barra",
       "precio": 12000,
       "unidades": 1,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
+      "id": 94
+    },
+    {
+      "categoria": "fanta",
+      "nombre": "6x Bebida Crush Botella 3L",
+      "tienda": "La Barra",
+      "precio": 19199,
+      "unidades": 1,
+      "volumenMlUnidad": 3000,
+      "gama": "neutral",
       "id": 95
     },
     {
       "categoria": "ginger",
-      "nombre": "6x Agua Tónica Canada Dry Zero Botella 1.5L",
+      "nombre": "6x Agua Tónica Canada Dry Botella 1.5L",
       "tienda": "La Barra",
       "precio": 12000,
       "unidades": 1,
@@ -1215,7 +1215,7 @@
     },
     {
       "categoria": "tonica",
-      "nombre": "6x Agua Tónica Canada Dry Zero Botella 1.5L",
+      "nombre": "6x Agua Tónica Canada Dry Botella 1.5L",
       "tienda": "La Barra",
       "precio": 12000,
       "unidades": 1,
@@ -1465,23 +1465,13 @@
     },
     {
       "categoria": "ron",
-      "nombre": "Ron Havana Añejo Especial Botella 1 Lt",
-      "tienda": "Liquidos",
-      "precio": 9800,
-      "unidades": 1,
-      "volumenMlUnidad": 1000,
-      "gama": "normal",
-      "id": 127
-    },
-    {
-      "categoria": "ron",
       "nombre": "Ron Viejo de Caldas Añejo 3 años 700cc",
       "tienda": "Liquidos",
       "precio": 5990,
       "unidades": 1,
       "volumenMlUnidad": 700,
       "gama": "normal",
-      "id": 128
+      "id": 127
     },
     {
       "categoria": "ron",
@@ -1490,6 +1480,16 @@
       "precio": 6990,
       "unidades": 1,
       "volumenMlUnidad": 750,
+      "gama": "normal",
+      "id": 128
+    },
+    {
+      "categoria": "ron",
+      "nombre": "Ron Flor de Caña Blanco Botella 1L",
+      "tienda": "Liquidos",
+      "precio": 11990,
+      "unidades": 1,
+      "volumenMlUnidad": 1000,
       "gama": "normal",
       "id": 129
     },
@@ -1985,21 +1985,21 @@
     },
     {
       "categoria": "piscola",
-      "nombre": "Pisco Alto del Carmen Transparente 750cc 40º alc.",
-      "tienda": "Booz",
-      "precio": 9690,
-      "unidades": 1,
-      "volumenMlUnidad": 750,
-      "gama": "normal",
-      "id": 179
-    },
-    {
-      "categoria": "piscola",
       "nombre": "Pisco Alto del Carmen 1 Litro 35°alc.",
       "tienda": "Booz",
       "precio": 9990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
+      "gama": "normal",
+      "id": 179
+    },
+    {
+      "categoria": "piscola",
+      "nombre": "Pisco Alto del Carmen Transparente 750cc 40º alc.",
+      "tienda": "Booz",
+      "precio": 9690,
+      "unidades": 1,
+      "volumenMlUnidad": 750,
       "gama": "normal",
       "id": 180
     },
@@ -2025,9 +2025,9 @@
     },
     {
       "categoria": "ron",
-      "nombre": "Ron Barcelo Añejo 1 Litro 37,5° alc.",
+      "nombre": "Ron Abuelo Añejo 1 Litro",
       "tienda": "Booz",
-      "precio": 11290,
+      "precio": 10990,
       "unidades": 1,
       "volumenMlUnidad": 1000,
       "gama": "normal",
@@ -2045,12 +2045,12 @@
     },
     {
       "categoria": "ron",
-      "nombre": "Ron Havana Club 3 Años 700cc 37,5º alc.",
+      "nombre": "Ron Quimbaya Gold 700cc",
       "tienda": "Booz",
-      "precio": 9390,
+      "precio": 12990,
       "unidades": 1,
       "volumenMlUnidad": 700,
-      "gama": "sobrado",
+      "gama": "normal",
       "id": 185
     },
     {
