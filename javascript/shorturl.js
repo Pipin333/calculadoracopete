@@ -13,7 +13,8 @@ import {
   guardarPresupuestoFirebase,
   obtenerPresupuestoFirebase,
   eliminarPresupuestoFirebase,
-  verificarConexionFirebase
+  verificarConexionFirebase,
+  registrarEventoTelemetria
 } from './firebase-config.js';
 
 const SHORTURL_CONFIG = {
@@ -93,6 +94,13 @@ async function guardarPresupuestoCorto(presupuestoData) {
     } else {
       console.warn(`⚠️ Firebase no disponible, usando localStorage para: ${id}`);
     }
+
+    // 📈 Registrar telemetría de link compartido
+    registrarEventoTelemetria('compartir_presupuesto', {
+      id: id,
+      personas: presupuestoData?.personas || null,
+      total: presupuestoData?.total || null
+    });
     
     // Guardar en localStorage como backup
     try {

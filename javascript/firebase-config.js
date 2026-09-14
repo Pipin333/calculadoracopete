@@ -6,7 +6,8 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, ref, set, get, remove, query, orderByChild, limitToLast } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, ref, set, get, remove, query, orderByChild, limitToLast, push } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 // Firebase Config - Tu proyecto
 const firebaseConfig = {
@@ -21,21 +22,30 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// IMPORTANTE: Necesitas agregar la URL de tu Realtime Database aquí
-// Si tu RTDB está en región sudamericana, puede ser:
-// - https://calculadoracopete-default-rtdb.firebaseio.com/ (por defecto)
-// - https://calculadoracopete-default-rtdb.sa-east-1.firebasedatabase.app/ (São Paulo)
-// - https://calculadoracopete-default-rtdb.southamerica-east1.firebasedatabase.app/ (Buenos Aires)
+// Initialize Firebase Auth
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
+// Iniciar sesión anónima automáticamente si no hay usuario (para cumplir la regla auth != null)
+try {
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      signInAnonymously(auth).catch((err) => {
+        console.debug("Autenticación anónima opcional omitida:", err?.message || err);
+      });
+    }
+  });
+} catch (e) {
+  // Silent fallback
+}
+
+// IMPORTANTE: URL de tu Realtime Database
 let database;
 try {
   database = getDatabase(app, "https://calculadoracopete-default-rtdb.firebaseio.com/");
   console.log("🔥 Firebase Database inicializado");
 } catch (error) {
-  console.warn("⚠️ No se pudo conectar a Firebase RTDB. Verifica:");
-  console.warn("  1. Que existe una Realtime Database en tu proyecto");
-  console.warn("  2. Que la URL es correcta");
-  console.warn("  3. Que las reglas permiten lecturas/escrituras públicas (test mode)");
+  console.warn("⚠️ No se pudo conectar a Firebase RTDB. Verifica configuración.");
   database = null;
 }
 
@@ -168,14 +178,88 @@ async function verificarConexionFirebase() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// EXPORT FUNCTIONS
+// TELEMETRÍA & ANALYTICS LEAN (Nodo events)
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Registrar un evento de uso en Firebase RTDB de forma no bloqueante
+ * Compatible con la regla: newData.hasChildren(['type', 'timestamp'])
+ * @param {string} type - Tipo de evento ('calculo_presupuesto', 'compartir_presupuesto', 'click_tienda')
+ * @param {object} metadata - Datos asociados al evento
+ */
+async function registrarEventoTelemetria(type, metadata = {}) {
+  try {
+    if (!database) return;
+    const eventsRef = ref(database, 'events');
+    const nuevoEventoRef = push(eventsRef);
+    await set(nuevoEventoRef, {
+      type: type,
+      timestamp: new Date().toISOString(),
+      screen: `${window.innerWidth}x${window.innerHeight}`,
+      ...metadata
+    });
+    console.log(`📈 Evento telemetría registrado en events: ${type}`);
+  } catch (err) {
+    // Falla silenciosa para proteger la UX del usuario
+    console.debug("Telemetría no registrada:", err?.message || err);
+  }
+}
+
+/**
+ * Obtener eventos recientes de telemetría (Solo para Administrador autenticado)
+ * @param {number} limite - Cantidad de eventos a recuperar
+ * @returns {Promise<Array>}
+ */
+async function obtenerTelemetriaFirebase(limite = 200) {
+  try {
+    if (!database) throw new Error("Firebase RTDB no está disponible");
+    const eventsQuery = query(ref(database, 'events'), limitToLast(limite));
+    const snapshot = await get(eventsQuery);
+    if (snapshot.exists()) {
+      const val = snapshot.val();
+      return Object.entries(val).map(([id, item]) => ({ id, ...item }));
+    }
+    return [];
+  } catch (error) {
+    console.error("❌ Error obteniendo eventos:", error);
+    throw error;
+  }
+}
+
+/**
+ * Verificar si un UID tiene rol de Administrador en el nodo users/$uid/isAdmin
+ * @param {string} uid - Firebase UID del usuario
+ * @returns {Promise<boolean>}
+ */
+async function verificarEsAdmin(uid) {
+  if (!database || !uid) return false;
+  try {
+    const adminSnap = await get(ref(database, `users/${uid}/isAdmin`));
+    return adminSnap.exists() && adminSnap.val() === true;
+  } catch (err) {
+    console.warn("No se pudo verificar rol de admin:", err);
+    return false;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EXPORT FUNCTIONS & AUTH
 // ═══════════════════════════════════════════════════════════════════════════
 
 export {
   database,
+  auth,
+  googleProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  signInAnonymously,
+  verificarEsAdmin,
   guardarPresupuestoFirebase,
   obtenerPresupuestoFirebase,
   eliminarPresupuestoFirebase,
   contarPresupuestosFirebase,
-  verificarConexionFirebase
+  verificarConexionFirebase,
+  registrarEventoTelemetria,
+  obtenerTelemetriaFirebase
 };

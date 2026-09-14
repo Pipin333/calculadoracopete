@@ -74,6 +74,8 @@ import {
   compartirPresupuestoActual
 } from './renderer.js';
 
+import { registrarEventoTelemetria } from './firebase-config.js';
+
 // ===============================
 // GENERACIÓN DINÁMICA DE CHECKBOXES
 // ===============================
@@ -435,6 +437,18 @@ form.addEventListener("submit", async function (e) {
   renderPlan(listaMultiTienda, multiPlan);
   renderPlan(listaTiendaUnica, singlePlan);
   renderWarnings(warnings);
+
+  // 📈 Telemetría anónima no bloqueante del cálculo
+  registrarEventoTelemetria('calculo_presupuesto', {
+    personas: people,
+    cuota: sinCuota ? 0 : aporte,
+    sinCuota: sinCuota,
+    modo: mode,
+    bebidas: selectedDrinks,
+    totalOptimo: multiPlan.ok ? multiPlan.total : (singlePlan.ok ? singlePlan.total : 0),
+    tiendas: multiPlan.ok ? multiPlan.stores : (singlePlan.ok ? [singlePlan.store] : []),
+    status: (multiPlan.ok || singlePlan.ok) ? 'exito' : 'sin_solucion'
+  });
 
   if (multiPlan.ok) {
     totalMultiEl.textContent = formatCLP(multiPlan.total);

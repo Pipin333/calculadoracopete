@@ -1,0 +1,66 @@
+{
+  "rules": {
+    "presupuestos": {
+      ".read": "true",
+      ".write": "auth != null",
+      
+      "$presupuestoId": {
+        ".validate": "$presupuestoId.matches(/^[a-zA-Z0-9]{6,8}$/)",
+        ".write": "auth != null",
+        
+        "data": {
+          ".validate": "newData.exists() && newData.hasChildren(['personas', 'aporte', 'modo', 'bebidas'])"
+        },
+        
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        
+        "expiresAt": {
+          ".validate": "newData.isString()"
+        },
+        
+        "viewCount": {
+          ".validate": "newData.isNumber() || !newData.exists()"
+        }
+      }
+    },
+
+    "admin_prices": {
+      ".read": "root.child('users').child(auth.uid).child('isAdmin').val() === true",
+      ".write": "root.child('users').child(auth.uid).child('isAdmin').val() === true",
+      
+      "$productId": {
+        ".validate": "newData.exists() && newData.hasChildren(['nombre', 'categoria', 'prices'])"
+      }
+    },
+
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      
+      "$uid": {
+        ".read": "auth.uid == $uid",
+        ".write": "auth.uid == $uid",
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        "isAdmin": {
+          ".validate": "newData.val() === true || newData.val() === false || !newData.exists()"
+        },
+        "createdAt": {
+          ".validate": "newData.isString()"
+        }
+      }
+    },
+
+    "events": {
+      ".read": "root.child('users').child(auth.uid).child('isAdmin').val() === true",
+      ".write": "auth != null",
+      
+      "$eventId": {
+        ".validate": "newData.exists() && newData.hasChildren(['type', 'timestamp'])"
+      }
+    }
+  }
+}

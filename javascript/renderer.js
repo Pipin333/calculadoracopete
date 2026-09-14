@@ -6,6 +6,21 @@
 import { formatCLP, clearElement, addLi, addLiHtml, getRatioBudget, getConvenienceBadge } from './helpers.js';
 import { summarizeItems } from './solver.js';
 import { crearYCompartirPresupuestoCorto } from './shorturl.js';
+import { registrarEventoTelemetria } from './firebase-config.js';
+
+// Listener global para registrar clicks a tiendas (afiliados / intención de compra)
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('.store-link');
+    if (link) {
+      registrarEventoTelemetria('click_tienda', {
+        tienda: link.dataset.tienda || link.textContent.replace('↗', '').trim(),
+        producto: link.dataset.producto || '',
+        url: link.href
+      });
+    }
+  });
+}
 
 // ===============================
 // LINKS DE TIENDA
@@ -52,7 +67,7 @@ export function renderPlan(listElement, plan) {
 
     for (const item of summarized) {
       const searchUrl = getStoreSearchUrl(item.tienda, item.nombre);
-      const storeLink = `<a href="${searchUrl}" target="_blank" class="store-link">${item.tienda}</a>`;
+      const storeLink = `<a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="store-link" data-tienda="${item.tienda}" data-producto="${item.nombre}">${item.tienda} ↗</a>`;
       addLiHtml(
         listElement,
         `${item.cantidad} x ${item.nombre} (${storeLink}) — ${formatCLP(item.precio * item.cantidad)}`

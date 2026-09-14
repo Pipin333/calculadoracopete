@@ -30,5 +30,7 @@ unimarc_screenshot.png
 *.json
 !json/productos.json
 !workers/config.json
+!database.rules.json
 !index.html
 !presupuesto.html
+!admin.html

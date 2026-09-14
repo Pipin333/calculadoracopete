@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consola de Fundador | Cuánto Rinde</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" />
+
+  <!-- Bootstrap 5.3.3 & Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/styles.css?v=4.8" />
+
+  <!-- Chart.js para visualizaciones ejecutivas -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .kpi-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+    .kpi-value {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 0.25rem;
+    }
+    .kpi-label {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+    .chart-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      min-height: 340px;
+    }
+    .table-dark-custom {
+      --bs-table-bg: transparent;
+      --bs-table-color: var(--text-primary);
+      --bs-table-border-color: rgba(255, 255, 255, 0.06);
+    }
+    .user-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2rem;
+      padding: 0.35rem 1rem;
+    }
+    .uid-badge {
+      font-family: monospace;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px dashed var(--accent-color);
+      color: var(--accent-cyan);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg border-bottom border-white-10 py-3" style="border-color: rgba(255,255,255,0.08) !important;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <span class="fs-4">🍻</span>
+        <span class="fw-bold tracking-tight text-white">Cuánto Rinde</span>
+        <span class="badge bg-indigo text-white ms-2" style="background-color: var(--accent-color);">Fundador</span>
+      </a>
+      
+      <div id="navUserSection" class="d-flex align-items-center gap-3">
+        <!-- Renderizado dinámico de usuario o botón volver -->
+        <a href="index.html" class="btn btn-sm btn-outline-light rounded-pill px-3">
+          <i class="bi bi-arrow-left me-1"></i> Ir a la Web
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <main class="container admin-container flex-grow-1">
+
+    <!-- ESTADO 1: Cargando -->
+    <div id="sectionLoading" class="text-center py-5">
+      <div class="spinner-border text-indigo" style="color: var(--accent-color);" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="text-secondary mt-3">Verificando credenciales de acceso seguro...</p>
+    </div>
+
+    <!-- ESTADO 2: Iniciar Sesión (Público / Desconectado) -->
+    <div id="sectionAuth" class="row justify-content-center py-5 d-none">
+      <div class="col-md-6 col-lg-5">
+        <div class="card p-4 text-center">
+          <div class="mb-3 fs-1">🔐</div>
+          <h2 class="h4 mb-2">Consola de Fundador</h2>
+          <p class="text-secondary small mb-4">
+            Monitoreo en tiempo real de previas calculadas, cuotas promedio y tiendas más populares en Chile.
+          </p>
+          <button id="btnLoginGoogle" class="btn btn-light py-2 fw-semibold d-flex align-items-center justify-content-center gap-2 rounded-pill shadow-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            Entrar con Google
+          </button>
+          <div class="mt-4 pt-3 border-top border-white-10">
+            <span class="text-secondary small">Acceso protegido mediante Firebase Authentication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTADO 3: No Autorizado (UID pendiente en /admins) -->
+    <div id="sectionNoAdmin" class="row justify-content-center py-5 d-none">
+      <div class="col-md-8 col-lg-7">
+        <div class="card p-4 border-warning">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="fs-2 text-warning">⚠️</div>
+            <div>
+              <h3 class="h5 mb-0 text-warning">Acceso no autorizado</h3>
+              <p class="text-secondary small mb-0">Iniciaste sesión, pero tu usuario no está en la lista de administradores.</p>
+            </div>
+          </div>
+          
+          <div class="bg-black bg-opacity-40 p-3 rounded-3 mb-3">
+            <div class="small text-secondary mb-1">Tu Identificador Único de Firebase (UID):</div>
+            <div class="d-flex align-items-center justify-content-between gap-2">
+              <span id="txtUserUID" class="uid-badge text-truncate">Cargando...</span>
+              <button id="btnCopiarUID" class="btn btn-sm btn-outline-info rounded-pill px-3">
+                <i class="bi bi-copy me-1"></i> Copiar UID
+              </button>
+            </div>
+          </div>
+
+          <div class="small text-secondary">
+            <strong>Cómo activar tu acceso (en 30 segundos):</strong>
+            <ol class="mt-2 mb-3 ps-3">
+              <li>Abre tu <a href="https://console.firebase.google.com/project/calculadoracopete/database" target="_blank" class="text-info">Consola de Firebase Realtime Database</a>.</li>
+              <li>Bajo el nodo <code>users</code>, añade tu UID con <code>"isAdmin": true</code>:
+                <pre class="bg-black bg-opacity-50 p-2 rounded mt-1 text-white">"users": {
+  "<span class="text-info" id="snippetUID">TU_UID</span>": {
+    "isAdmin": true,
+    "email": "tu_correo@gmail.com"
+  }
+}</pre>
+              </li>
+              <li>Vuelve a esta pantalla y dale a <strong>Reintentar</strong>.</li>
+            </ol>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button id="btnReintentarAdmin" class="btn btn-outline-light rounded-pill px-4">
+              <i class="bi bi-arrow-clockwise me-1"></i> Ya lo agregué, Reintentar
+            </button>
+            <button id="btnLogoutNoAdmin" class="btn btn-sm btn-outline-danger rounded-pill px-3">Cerrar Sesión</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTADO 4: Dashboard Activo -->
+    <div id="sectionDashboard" class="d-none">
+      
+      <!-- Top Bar: Saludo y Refresh -->
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <div>
+          <h1 class="h3 mb-1">Métricas de Rendimiento</h1>
+          <p class="text-secondary small mb-0">Telemetría anónima de uso y optimización de copete en Chile</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button id="btnRefreshData" class="btn btn-outline-light btn-sm rounded-pill px-3">
+            <i class="bi bi-arrow-clockwise me-1"></i> Actualizar
+          </button>
+          <div class="user-pill d-flex align-items-center gap-2 small">
+            <span id="userBadgeEmail" class="text-white fw-medium">admin</span>
+            <button id="btnLogout" class="btn btn-link text-danger p-0 ms-2 text-decoration-none small" title="Cerrar sesión">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3">
+          <div class="kpi-card">
+            <div class="kpi-label">Cálculos Totales</div>
+            <div id="kpiCalculos" class="kpi-value">—</div>
+            <div class="text-secondary small mt-1"><i class="bi bi-calculator me-1"></i> Eventos registrados</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="kpi-card">
+            <div class="kpi-label">Links Compartidos</div>
+            <div id="kpiCompartidos" class="kpi-value text-info">—</div>
+            <div class="text-secondary small mt-1"><i class="bi bi-share me-1"></i> Presupuestos Firebase</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="kpi-card">
+            <div class="kpi-label">Cuota Promedio</div>
+            <div id="kpiCuotaPromedio" class="kpi-value text-success">—</div>
+            <div class="text-secondary small mt-1"><i class="bi bi-cash-stack me-1"></i> Por persona</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="kpi-card">
+            <div class="kpi-label">Grupo Promedio</div>
+            <div id="kpiPersonasPromedio" class="kpi-value text-warning">—</div>
+            <div class="text-secondary small mt-1"><i class="bi bi-people me-1"></i> Asistentes por junta</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-6">
+          <div class="chart-wrapper">
+            <h3 class="h6 text-uppercase tracking-wider text-secondary mb-3">
+              <i class="bi bi-shop me-1 text-info"></i> Tiendas Más Recomendadas
+            </h3>
+            <div style="height: 260px; position: relative;">
+              <canvas id="chartTiendas"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-wrapper">
+            <h3 class="h6 text-uppercase tracking-wider text-secondary mb-3">
+              <i class="bi bi-cup-straw me-1 text-warning"></i> Tragos Más Populares
+            </h3>
+            <div style="height: 260px; position: relative;">
+              <canvas id="chartBebidas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Feed Table -->
+      <div class="card p-3">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h3 class="h6 text-uppercase tracking-wider text-secondary mb-0">
+            <i class="bi bi-activity me-1 text-danger"></i> Últimos Eventos Registrados
+          </h3>
+          <span id="badgeEventosCount" class="badge bg-dark border border-white-10 text-secondary">0 eventos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-dark-custom align-middle mb-0 small">
+            <thead>
+              <tr class="text-secondary">
+                <th>Fecha / Hora</th>
+                <th>Tipo</th>
+                <th>Personas</th>
+                <th>Cuota</th>
+                <th>Total Optimizado</th>
+                <th>Tiendas Sugeridas</th>
+              </tr>
+            </thead>
+            <tbody id="tableEventosBody">
+              <tr>
+                <td colspan="6" class="text-center py-4 text-secondary">Cargando eventos...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Lógica de Admin con ES Modules -->
+  <script type="module">
+    import {
+      auth,
+      googleProvider,
+      signInWithPopup,
+      signOut,
+      onAuthStateChanged,
+      obtenerTelemetriaFirebase,
+      database
+    } from './javascript/firebase-config.js';
+
+    import { ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+    // Elementos DOM
+    const sectionLoading = document.getElementById('sectionLoading');
+    const sectionAuth = document.getElementById('sectionAuth');
+    const sectionNoAdmin = document.getElementById('sectionNoAdmin');
+    const sectionDashboard = document.getElementById('sectionDashboard');
+
+    const btnLoginGoogle = document.getElementById('btnLoginGoogle');
+    const btnLogout = document.getElementById('btnLogout');
+    const btnLogoutNoAdmin = document.getElementById('btnLogoutNoAdmin');
+    const btnRefreshData = document.getElementById('btnRefreshData');
+    const btnCopiarUID = document.getElementById('btnCopiarUID');
+    const btnReintentarAdmin = document.getElementById('btnReintentarAdmin');
+
+    const txtUserUID = document.getElementById('txtUserUID');
+    const snippetUID = document.getElementById('snippetUID');
+    const userBadgeEmail = document.getElementById('userBadgeEmail');
+
+    let currentUser = null;
+    let chartTiendasInstance = null;
+    let chartBebidasInstance = null;
+
+    // Formateador CLP
+    const formatCLP = (num) => {
+      if (num === null || num === undefined || isNaN(num)) return '$0';
+      return '$' + Math.round(num).toLocaleString('es-CL');
+    };
+
+    // Formatear Fecha Relativa
+    const formatDate = (isoString) => {
+      if (!isoString) return '—';
+      const d = new Date(isoString);
+      return d.toLocaleDateString('es-CL', {
+        day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
+      });
+    };
+
+    // Cambiar estados de vista
+    function showState(state) {
+      sectionLoading.classList.add('d-none');
+      sectionAuth.classList.add('d-none');
+      sectionNoAdmin.classList.add('d-none');
+      sectionDashboard.classList.add('d-none');
+
+      if (state === 'loading') sectionLoading.classList.remove('d-none');
+      if (state === 'auth') sectionAuth.classList.remove('d-none');
+      if (state === 'no-admin') sectionNoAdmin.classList.remove('d-none');
+      if (state === 'dashboard') sectionDashboard.classList.remove('d-none');
+    }
+
+    // Copiar UID
+    btnCopiarUID?.addEventListener('click', () => {
+      if (currentUser?.uid) {
+        navigator.clipboard.writeText(currentUser.uid);
+        btnCopiarUID.innerHTML = '<i class="bi bi-check2 me-1"></i> Copiado!';
+        setTimeout(() => {
+          btnCopiarUID.innerHTML = '<i class="bi bi-copy me-1"></i> Copiar UID';
+        }, 2000);
+      }
+    });
+
+    // Iniciar Sesión con Google
+    btnLoginGoogle?.addEventListener('click', async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+      } catch (err) {
+        console.error("Error en login Google:", err);
+        alert("No se pudo iniciar sesión: " + (err.message || err));
+      }
+    });
+
+    // Cerrar Sesión
+    const handleLogout = async () => {
+      await signOut(auth);
+      showState('auth');
+    };
+    btnLogout?.addEventListener('click', handleLogout);
+    btnLogoutNoAdmin?.addEventListener('click', handleLogout);
+    btnReintentarAdmin?.addEventListener('click', () => checkAdminAndLoad(currentUser));
+    btnRefreshData?.addEventListener('click', () => checkAdminAndLoad(currentUser));
+
+    // Monitorear estado de Auth
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      if (user) {
+        userBadgeEmail.textContent = user.email || user.displayName || 'Fundador';
+        txtUserUID.textContent = user.uid;
+        snippetUID.textContent = user.uid;
+        await checkAdminAndLoad(user);
+      } else {
+        showState('auth');
+      }
+    });
+
+    // Verificar si es admin intentando leer telemetria
+    async function checkAdminAndLoad(user) {
+      showState('loading');
+      try {
+        const eventos = await obtenerTelemetriaFirebase(150);
+        showState('dashboard');
+        renderDashboard(eventos);
+      } catch (err) {
+        console.warn("Permiso denegado al leer telemetría. Usuario no autorizado en /admins:", err);
+        showState('no-admin');
+      }
+    }
+
+    // Renderizar Dashboard y Gráficos
+    function renderDashboard(eventos) {
+      const calculos = eventos.filter(e => (e.type || e.tipo) === 'calculo_presupuesto');
+      const compartidos = eventos.filter(e => (e.type || e.tipo) === 'compartir_presupuesto');
+
+      // KPIs
+      document.getElementById('kpiCalculos').textContent = calculos.length;
+      document.getElementById('kpiCompartidos').textContent = compartidos.length;
+
+      let cuotaAcumulada = 0;
+      let personasAcumuladas = 0;
+      let cuotasValidas = 0;
+
+      const conteoTiendas = {};
+      const conteoBebidas = {};
+
+      calculos.forEach(c => {
+        if (c.cuota && c.cuota > 0) {
+          cuotaAcumulada += c.cuota;
+          cuotasValidas++;
+        }
+        if (c.personas) {
+          personasAcumuladas += c.personas;
+        }
+        if (Array.isArray(c.tiendas)) {
+          c.tiendas.forEach(t => {
+            conteoTiendas[t] = (conteoTiendas[t] || 0) + 1;
+          });
+        }
+        if (Array.isArray(c.bebidas)) {
+          c.bebidas.forEach(b => {
+            conteoBebidas[b] = (conteoBebidas[b] || 0) + 1;
+          });
+        }
+      });
+
+      const cuotaPromedio = cuotasValidas > 0 ? Math.round(cuotaAcumulada / cuotasValidas) : 0;
+      const personasPromedio = calculos.length > 0 ? (personasAcumuladas / calculos.length).toFixed(1) : '0';
+
+      document.getElementById('kpiCuotaPromedio').textContent = formatCLP(cuotaPromedio);
+      document.getElementById('kpiPersonasPromedio').textContent = personasPromedio;
+
+      // Render Charts
+      renderCharts(conteoTiendas, conteoBebidas);
+
+      // Render Table
+      renderTable(eventos);
+    }
+
+    // Render Charts
+    function renderCharts(tiendasMap, bebidasMap) {
+      // 1. Tiendas Chart (Doughnut)
+      const ctxTiendas = document.getElementById('chartTiendas').getContext('2d');
+      const tiendasLabels = Object.keys(tiendasMap);
+      const tiendasData = Object.values(tiendasMap);
+
+      if (chartTiendasInstance) chartTiendasInstance.destroy();
+      chartTiendasInstance = new Chart(ctxTiendas, {
+        type: 'doughnut',
+        data: {
+          labels: tiendasLabels.length ? tiendasLabels : ['Sin datos aún'],
+          datasets: [{
+            data: tiendasData.length ? tiendasData : [1],
+            backgroundColor: [
+              '#6366f1', '#06b6d4', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#9d98b5', font: { family: 'Plus Jakarta Sans' } } }
+          }
+        }
+      });
+
+      // 2. Bebidas Chart (Bar)
+      const ctxBebidas = document.getElementById('chartBebidas').getContext('2d');
+      const bebidasLabels = Object.keys(bebidasMap);
+      const bebidasData = Object.values(bebidasMap);
+
+      if (chartBebidasInstance) chartBebidasInstance.destroy();
+      chartBebidasInstance = new Chart(ctxBebidas, {
+        type: 'bar',
+        data: {
+          labels: bebidasLabels.length ? bebidasLabels : ['Sin datos aún'],
+          datasets: [{
+            label: 'Selecciones',
+            data: bebidasData.length ? bebidasData : [0],
+            backgroundColor: '#06b6d4',
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { ticks: { color: '#9d98b5', precision: 0 }, grid: { color: 'rgba(255,255,255,0.05)' } },
+            x: { ticks: { color: '#9d98b5' }, grid: { display: false } }
+          },
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    }
+
+    // Render Table
+    function renderTable(eventos) {
+      const tbody = document.getElementById('tableEventosBody');
+      const badgeCount = document.getElementById('badgeEventosCount');
+      badgeCount.textContent = `${eventos.length} eventos`;
+
+      if (!eventos.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-secondary">Aún no hay eventos registrados en la base de datos. Haz un cálculo en la web principal para generar el primero.</td></tr>';
+        return;
+      }
+
+      // Invertir para ver los más recientes primero
+      const ordenados = [...eventos].reverse().slice(0, 30);
+
+      tbody.innerHTML = ordenados.map(ev => {
+        const eventType = ev.type || ev.tipo;
+        const isCalculo = eventType === 'calculo_presupuesto';
+        const isShare = eventType === 'compartir_presupuesto';
+        const isClick = eventType === 'click_tienda';
+
+        let tipoBadge = `<span class="badge bg-secondary">Otro</span>`;
+        if (isCalculo) tipoBadge = `<span class="badge bg-primary">Cálculo</span>`;
+        if (isShare) tipoBadge = `<span class="badge bg-info text-dark">Compartir</span>`;
+        if (isClick) tipoBadge = `<span class="badge bg-success">Click Tienda</span>`;
+
+        const tiendas = Array.isArray(ev.tiendas) ? ev.tiendas.join(', ') : (ev.tienda || '—');
+        const personas = ev.personas ? `${ev.personas} pers.` : '—';
+        const cuota = ev.cuota ? formatCLP(ev.cuota) : (ev.sinCuota ? 'Sin cuota' : '—');
+        const total = ev.totalOptimo ? formatCLP(ev.totalOptimo) : (ev.total ? formatCLP(ev.total) : '—');
+
+        return `
+          <tr>
+            <td class="text-secondary">${formatDate(ev.timestamp)}</td>
+            <td>${tipoBadge}</td>
+            <td>${personas}</td>
+            <td>${cuota}</td>
+            <td class="fw-semibold text-white">${total}</td>
+            <td class="text-truncate" style="max-width: 200px;" title="${tiendas}">${tiendas}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+  </script>
+</body>
+</html>
