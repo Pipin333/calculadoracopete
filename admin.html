@@ -732,8 +732,10 @@
     onAuthStateChanged(auth, async (user) => {
       currentUser = user;
       if (user) {
+        console.log("🔐 Usuario conectado:", user.email, "| UID:", user.uid);
         userBadgeEmail.textContent = user.email || user.displayName || 'Fundador';
-        if (txtUserEmailNoAdmin) txtUserEmailNoAdmin.textContent = user.email || 'tu cuenta';
+        userBadgeEmail.title = `UID: ${user.uid}`;
+        if (txtUserEmailNoAdmin) txtUserEmailNoAdmin.textContent = `${user.email} (UID: ${user.uid})`;
         await checkAdminAndLoad(user);
       } else {
         showState('auth');
@@ -902,7 +904,12 @@
         // Revertir en caso de error
         toggle.checked = !isChecked;
         if (item) item.active = !isChecked;
-        showToast(`❌ Error al guardar en Firebase: ${err.message}`, true);
+        console.error("Error al actualizar SKU en Firebase:", err);
+        const isPerm = err?.code === 'PERMISSION_DENIED' || (err?.message && err.message.includes('PERMISSION_DENIED'));
+        const msg = isPerm
+          ? `❌ Permiso denegado: Revisa las Reglas en Firebase Console y que tu UID esté en /admins o /users`
+          : `❌ Error al guardar en Firebase: ${err.message}`;
+        showToast(msg, true);
       }
     });
 
