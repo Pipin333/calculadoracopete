@@ -50,6 +50,25 @@ export const UMBRAL_ADVERTENCIA_DESTILADO_ML = 300;
 export const PENALIZACION_ITEM_COMBINACION = 400; // Penaliza FUERTEMENTE comprar unidades sueltas si hay pack
 export const PENALIZACION_SKU_COMBINACION = 80;   // Bajo: priorizar botellas grandes (2.5L, 3L) aunque sobre
 export const PENALIZACION_SOBRECOMPRA_POR_LITRO = 100; // Permite excedentes marginales en bebidas
+export const BONUS_MARCA_ESTABLECIDA = 500; // Favorece marcas reconocidas frente a genéricas o desconocidas (~$500 CLP de ventaja)
+
+// Lista de marcas líderes y establecidas en Chile
+export const MARCAS_ESTABLECIDAS = [
+  "mistral", "alto del carmen", "artesanos del cochiguaz", "artesanos", "tres erres", "capel", "campanario", "bauza", "horcon quemado", "el gobernador", "control c", "mal paso",
+  "corona", "heineken", "stella artois", "stella", "royal guard", "budweiser", "austral", "cusquena", "cusqueña", "becker", "cristal", "escudo", "kunstmann", "miller", "blue moon", "coors", "kross", "peroni", "sol", "estrella damm",
+  "coca-cola", "coca cola", "sprite", "fanta", "canada dry", "schweppes", "nordic", "pepsi", "red bull", "monster", "watts", "watt's",
+  "absolut", "smirnoff", "grey goose", "stolichnaya", "wyborowa", "finlandia",
+  "havana club", "bacardi", "flor de cana", "flor de caña", "barcelo", "pampero", "appleton",
+  "johnnie walker", "ballantine", "jack daniel", "chivas regal", "jameson", "grant", "sandy mac", "jim beam",
+  "beefeater", "tanqueray", "bombay", "bombay sapphire", "hendrick", "gordon", "bulldog",
+  "jagermeister", "jager", "jägermeister", "ramazzotti", "aperol", "fernet"
+];
+
+export function esMarcaEstablecida(nombre) {
+  if (!nombre) return false;
+  const lower = nombre.toLowerCase();
+  return MARCAS_ESTABLECIDAS.some(m => lower.includes(m));
+}
 
 // A nivel de plan total
 export const PENALIZACION_TIENDA_EXTRA = 25;     // Moderada: permite que usuario elija (single vs multi-tienda)

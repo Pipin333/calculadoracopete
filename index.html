@@ -77,7 +77,29 @@
     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
-  <div class="container py-5">
+  <!-- Barra de Navegación Principal (SoloTodo Style Tabs) -->
+  <header class="border-bottom border-white-10 mb-2" style="background: rgba(10, 7, 22, 0.8); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 1020;">
+    <div class="container py-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <a class="d-flex align-items-center gap-2 text-white text-decoration-none" href="#">
+        <span class="fs-3">🍻</span>
+        <span class="fs-4 fw-bold" style="letter-spacing: -0.02em;">Cuánto Rinde</span>
+      </a>
+      
+      <!-- Selector de Vistas -->
+      <div class="d-flex align-items-center gap-2 p-1 rounded-pill bg-black bg-opacity-40 border border-white-10">
+        <button type="button" class="btn btn-sm rounded-pill px-3 py-2 fw-semibold nav-view-tab active" id="tab-calculadora">
+          ⚡ Calculadora de Carrete
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill px-3 py-2 fw-semibold nav-view-tab" id="tab-catalogo">
+          🛒 Vitrina de Precios <span class="badge text-bg-danger ms-1" style="font-size: 0.68rem;">SoloTodo</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- VISTA 1: CALCULADORA DE CARRETE -->
+  <main id="view-calculadora">
+  <div class="container py-4">
     <div class="row justify-content-center">
       <div class="col-xl-10 col-lg-11">
         <div class="card shadow-sm">
@@ -304,6 +326,90 @@
       </div>
     </div>
   </div>
+  </main>
+
+  <!-- VISTA 2: VITRINA DE PRODUCTOS (SOLOTODO STYLE) -->
+  <section id="view-catalogo" class="container py-4 d-none">
+    <!-- Hero / Header de Vitrina -->
+    <div class="text-center mb-4">
+      <h2 class="fw-bold text-white mb-2">🛒 Vitrina de Precios & Mínimos Históricos</h2>
+      <p class="text-secondary mb-4 mx-auto" style="max-width: 680px;">
+        Compara precios de copete en tiempo real entre <strong>Jumbo, Booz, Líquidos, La Barra, Unimarc y miCocaCola</strong>. Monitorea ofertas con historial de 6 meses.
+      </p>
+
+      <!-- Barra de Búsqueda SoloTodo -->
+      <div class="position-relative mx-auto mb-4" style="max-width: 580px;">
+        <input
+          type="text"
+          id="catalogoSearch"
+          class="form-control form-control-lg rounded-pill ps-5 pe-5 border-white-10"
+          placeholder="Busca un pisco, cerveza, vodka, marca (ej: Mistral, Corona, Coca-Cola)..."
+          style="background: rgba(0, 0, 0, 0.45) !important;"
+        />
+        <span class="position-absolute start-0 top-50 translate-middle-y ms-3 fs-5 opacity-75">🔍</span>
+        <button type="button" id="btnLimpiarBusqueda" class="btn btn-sm btn-link position-absolute end-0 top-50 translate-middle-y me-3 text-secondary text-decoration-none d-none" style="font-size: 1.1rem;">✖</button>
+      </div>
+
+      <!-- Filtros por Categoría (Pills) -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+        <button type="button" class="btn btn-sm rounded-pill px-3 solotodo-cat-pill active" data-cat="todos">
+          Todos
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill px-3 solotodo-cat-pill" data-cat="minimos">
+          🔥 Mínimos Históricos
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill px-3 solotodo-cat-pill" data-cat="cerveza">
+          🍺 Cervezas
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill px-3 solotodo-cat-pill" data-cat="piscola">
+          🥃 Piscos
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill px-3 solotodo-cat-pill" data-cat="destilados">
+          🍸 Destilados
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill px-3 solotodo-cat-pill" data-cat="mixers">
+          🥤 Mixers & Bebidas
+        </button>
+      </div>
+
+      <!-- Barra secundaria: Selector de Tienda, Orden y Contador -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 p-3 rounded-4 bg-black bg-opacity-25 border border-white-10 mb-4">
+        <div class="text-secondary small" id="catalogoCountBadge">
+          Cargando productos...
+        </div>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap ms-auto">
+          <div class="d-flex align-items-center gap-1">
+            <label for="catalogoFiltroTienda" class="form-label mb-0 small text-secondary">Tienda:</label>
+            <select id="catalogoFiltroTienda" class="form-select form-select-sm rounded-pill" style="min-width: 140px;">
+              <option value="todas">Todas las tiendas</option>
+              <option value="Jumbo">Jumbo</option>
+              <option value="Liquidos">Líquidos</option>
+              <option value="Booz">Booz</option>
+              <option value="La Barra">La Barra</option>
+              <option value="Unimarc">Unimarc</option>
+              <option value="miCocaCola">miCocaCola</option>
+            </select>
+          </div>
+
+          <div class="d-flex align-items-center gap-1">
+            <label for="catalogoSortSelect" class="form-label mb-0 small text-secondary">Ordenar:</label>
+            <select id="catalogoSortSelect" class="form-select form-select-sm rounded-pill" style="min-width: 170px;">
+              <option value="minimo">🔥 Mínimo Histórico</option>
+              <option value="precio_asc">💵 Menor Precio</option>
+              <option value="precio_desc">💎 Mayor Precio</option>
+              <option value="nombre">🔤 Nombre (A - Z)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grilla de Tarjetas SoloTodo -->
+    <div class="row g-3 g-md-4" id="catalogoGrid">
+      <!-- Se llena dinámicamente desde catalog.js -->
+    </div>
+  </section>
 
   <!-- Modal Historial de Precios (SoloTodo Style) -->
   <div class="modal fade" id="modalHistorialPrecio" tabindex="-1" aria-labelledby="modalHistorialPrecioLabel" aria-hidden="true">
@@ -359,9 +465,95 @@
     </div>
   </div>
 
+  <!-- Modal Detalle de Producto / "Elige tu tienda" (SoloTodo Style Screenshot 2) -->
+  <div class="modal fade" id="modalSoloTodoDetalle" tabindex="-1" aria-labelledby="solotodoModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content" style="background: var(--card-bg); border: 1px solid var(--card-border); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 1.5rem;">
+        
+        <div class="modal-header border-0 pb-0">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span id="solotodoModalCategory" class="badge text-white px-3 py-1" style="background-color: var(--accent-color); font-size: 0.75rem;">Categoría</span>
+              <span id="solotodoModalFormat" class="badge bg-secondary bg-opacity-50 text-white-50 px-2 py-1" style="font-size: 0.75rem;">Formato</span>
+            </div>
+            <h4 class="modal-title text-white fw-bold" id="solotodoModalTitle">Nombre del Producto</h4>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body pt-3">
+          <div class="row g-4">
+            
+            <!-- Columna Izquierda: Métricas y Gráfico Histórico -->
+            <div class="col-lg-7 border-end-lg border-white-10">
+              <!-- Cajas de Métricas -->
+              <div class="row g-2 mb-3 text-center">
+                <div class="col-3">
+                  <div class="p-2 rounded bg-black bg-opacity-30 border border-white-10">
+                    <div class="text-secondary" style="font-size: 0.7rem;">ACTUAL</div>
+                    <div id="solotodoStatActual" class="fw-bold text-white fs-6">—</div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 rounded bg-black bg-opacity-30 border border-white-10">
+                    <div class="text-secondary" style="font-size: 0.7rem;">MÍNIMO 6M</div>
+                    <div id="solotodoStatMin" class="fw-bold text-success fs-6">—</div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 rounded bg-black bg-opacity-30 border border-white-10">
+                    <div class="text-secondary" style="font-size: 0.7rem;">PROMEDIO</div>
+                    <div id="solotodoStatAvg" class="fw-bold text-info fs-6">—</div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 rounded bg-black bg-opacity-30 border border-white-10">
+                    <div class="text-secondary" style="font-size: 0.7rem;">MÁXIMO</div>
+                    <div id="solotodoStatMax" class="fw-bold text-danger fs-6">—</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gráfico de Línea -->
+              <div class="p-3 rounded-3 bg-black bg-opacity-25 border border-white-10 mb-3" style="height: 250px; position: relative;">
+                <canvas id="chartSolotodoHistorial"></canvas>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span class="text-secondary small" id="solotodoStatObs" style="font-size: 0.78rem;">Datos de retail chileno</span>
+                <button type="button" class="btn btn-sm btn-outline-info rounded-pill px-3" id="btnSolotodoCotizar">
+                  ⚡ Cotizar en Calculadora
+                </button>
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Panel "Elige tu tienda" (SoloTodo Screenshot 2) -->
+            <div class="col-lg-5">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="text-white fw-bold mb-0">🏪 Elige tu tienda</h5>
+                <span class="badge text-bg-warning py-1 px-2" style="font-size: 0.75rem;">Compara & Ahorra</span>
+              </div>
+
+              <!-- Lista de tiendas con precios -->
+              <div id="solotodoStoreList">
+                <!-- Se llena dinámicamente desde catalog.js -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script type="module" src="javascript/script.js?v=5.0"></script>
+  <script type="module" src="javascript/script.js?v=5.1"></script>
 </body>
 </html>

@@ -75,6 +75,7 @@ import {
 } from './renderer.js';
 
 import { registrarEventoTelemetria } from './firebase-config.js';
+import { initCatalog } from './catalog.js';
 
 // ===============================
 // GENERACIÓN DINÁMICA DE CHECKBOXES
@@ -289,6 +290,43 @@ async function inicializarApp() {
       renderBudgetSliders();
     });
   }
+
+  // Conectar pestañas de navegación principal (Calculadora vs Vitrina SoloTodo)
+  const tabCalculadora = document.getElementById("tab-calculadora");
+  const tabCatalogo = document.getElementById("tab-catalogo");
+  const viewCalculadora = document.getElementById("view-calculadora");
+  const viewCatalogo = document.getElementById("view-catalogo");
+
+  function switchToView(viewName) {
+    if (viewName === 'catalogo') {
+      tabCatalogo?.classList.add('active');
+      tabCalculadora?.classList.remove('active');
+      viewCatalogo?.classList.remove('d-none');
+      viewCalculadora?.classList.add('d-none');
+      window.history.replaceState(null, '', '#productos');
+      registrarEventoTelemetria('cambiar_pestana', { destino: 'catalogo' });
+    } else {
+      tabCalculadora?.classList.add('active');
+      tabCatalogo?.classList.remove('active');
+      viewCalculadora?.classList.remove('d-none');
+      viewCatalogo?.classList.add('d-none');
+      window.history.replaceState(null, '', '#calculadora');
+      registrarEventoTelemetria('cambiar_pestana', { destino: 'calculadora' });
+    }
+  }
+
+  if (tabCalculadora && tabCatalogo) {
+    tabCalculadora.addEventListener("click", () => switchToView('calculadora'));
+    tabCatalogo.addEventListener("click", () => switchToView('catalogo'));
+
+    // Soporte para URL Hash directa (#productos o #catalogo)
+    if (window.location.hash === '#productos' || window.location.hash === '#catalogo') {
+      switchToView('catalogo');
+    }
+  }
+
+  // Inicializar vitrina de productos SoloTodo
+  await initCatalog();
   
   console.log(`✅ App inicializada`);
 }

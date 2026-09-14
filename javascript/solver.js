@@ -14,6 +14,8 @@ import {
   PENALIZACION_SKU_PLAN,
   PENALIZACION_ITEM_PLAN,
   PENALIZACION_SOBRECOMPRA_PLAN_POR_LITRO,
+  BONUS_MARCA_ESTABLECIDA,
+  esMarcaEstablecida,
   getFactorEstacional
 } from './config.js';
 import { getOpcionesConsumo, getCategoriasJSON, productApi } from './productApi.js';
@@ -295,12 +297,17 @@ function getCombinationScore(totalCost, items, totalVolume, requiredMl, categori
     ? (sobrecompraMl / 1000) * (PENALIZACION_SOBRECOMPRA_POR_LITRO * 0.4)  // 40% de la penalización
     : (sobrecompraMl / 1000) * PENALIZACION_SOBRECOMPRA_POR_LITRO;
 
+  // BONUS MARCA ESTABLECIDA: favorecer marcas reconocidas y líderes
+  const itemsMarcaConocida = items.filter(it => esMarcaEstablecida(it.nombre)).length;
+  const bonusMarcasEstablecidas = itemsMarcaConocida * BONUS_MARCA_ESTABLECIDA;
+
   return (
     totalCost +
     totalItems * PENALIZACION_ITEM_COMBINACION +
     skuDistintos * PENALIZACION_SKU_COMBINACION +
     penalizacionSobrecompra -
-    bonusBotellasGrandes  // RESTAR el bonus (menor score = mejor)
+    bonusBotellasGrandes -
+    bonusMarcasEstablecidas  // RESTAR el bonus de marca (menor score = preferido)
   );
 }
 
