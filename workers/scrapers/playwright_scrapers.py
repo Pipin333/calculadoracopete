@@ -15,12 +15,12 @@ DOM_CRAWLER_JS = """
     const cards = [];
     const seenNames = new Set();
     
-    const addCard = (name, price, url) => {
+    const addCard = (name, price, url, imageUrl) => {
         if (!name || !price) return;
         name = name.replace(/\\n/g, ' ').trim();
         if (name.length < 5 || seenNames.has(name.toLowerCase())) return;
         seenNames.add(name.toLowerCase());
-        cards.push({ name, price, url: url || window.location.href });
+        cards.push({ name, price, url: url || window.location.href, imageUrl: imageUrl || '' });
     };
     
     // Helper to check if a name is garbage/badge/volume
@@ -54,6 +54,7 @@ DOM_CRAWLER_JS = """
     for (const [href, linkArray] of Object.entries(groups)) {
         let price = null;
         let bestName = "";
+        let imageUrl = "";
         
         for (const link of linkArray) {
             const text = (link.innerText || "").trim();
@@ -75,6 +76,15 @@ DOM_CRAWLER_JS = """
             let container = link;
             for (let depth = 0; depth < 10; depth++) {
                 if (!container) break;
+                if (!imageUrl) {
+                    const img = container.querySelector('img');
+                    if (img) {
+                        const src = img.currentSrc || img.src || img.getAttribute('data-src') || '';
+                        if (src && !src.includes('data:image') && !src.includes('svg')) {
+                            imageUrl = src.startsWith('//') ? ('https:' + src) : src;
+                        }
+                    }
+                }
                 const text = container.innerText || "";
                 const priceMatch = text.match(/\\$\\s*(\\d{1,3}(\\.\\d{3})*)/);
                 if (priceMatch) {
@@ -95,7 +105,7 @@ DOM_CRAWLER_JS = """
         }
         
         if (bestName && price) {
-            addCard(bestName, price, href);
+            addCard(bestName, price, href, imageUrl);
         }
     }
     

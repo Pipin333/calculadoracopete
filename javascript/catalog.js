@@ -474,8 +474,15 @@ export function renderCatalog() {
 
             <!-- Thumbnail / Visual con foto de stock -->
             <div class="solotodo-card-img-wrap mb-3 text-center position-relative">
-              <img src="${item.imagenUrl}" alt="${item.nombrePrincipal}" class="solotodo-product-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('d-none');">
-              <div class="d-none py-3"><span style="font-size: 2.75rem;" role="img" aria-label="${meta.label}">${meta.icon}</span></div>
+              ${item.imagenUrl ? `
+                <img src="${item.imagenUrl}" alt="${item.nombrePrincipal}" class="solotodo-product-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('d-none');">
+                <div class="d-none py-3"><span style="font-size: 2.75rem;" role="img" aria-label="${meta.label}">${meta.icon}</span></div>
+              ` : `
+                <div class="py-3 d-flex flex-column align-items-center justify-content-center">
+                  <span style="font-size: 2.75rem;" role="img" aria-label="${meta.label}">${meta.icon}</span>
+                  <span class="badge bg-dark bg-opacity-75 text-secondary border border-white-10 mt-1 small">${meta.label}</span>
+                </div>
+              `}
               <span class="position-absolute bottom-0 end-0 m-2 badge bg-dark bg-opacity-75 text-secondary border border-white-10" style="font-size: 0.7rem;">
                 ${formatLabel}
               </span>
@@ -536,10 +543,14 @@ export function openProductDetail(groupId) {
   if (catEl) catEl.textContent = `${meta.icon} ${meta.label}`;
   if (formatEl) formatEl.textContent = `${item.volumenTotalMl} ml (${item.unidades > 1 ? `${item.unidades} unidades` : '1 unidad'})`;
   if (imgEl) {
-    imgEl.src = item.imagenUrl;
-    imgEl.alt = item.nombrePrincipal;
-    imgEl.style.display = 'block';
-    imgEl.onerror = () => { imgEl.style.display = 'none'; };
+    if (item.imagenUrl) {
+      imgEl.src = item.imagenUrl;
+      imgEl.alt = item.nombrePrincipal;
+      imgEl.style.display = 'block';
+      imgEl.onerror = () => { imgEl.style.display = 'none'; };
+    } else {
+      imgEl.style.display = 'none';
+    }
   }
 
   // 2. Métricas de Historial (4 cajas)

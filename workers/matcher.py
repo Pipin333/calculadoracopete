@@ -339,7 +339,7 @@ def process_product(raw_product):
     units = extract_units(name)
     gama = classify_gama(name, brand, category)
     
-    return {
+    res = {
         "categoria": category,
         "nombre": name,
         "tienda": raw_product["store"],
@@ -348,3 +348,7 @@ def process_product(raw_product):
         "volumenMlUnidad": vol,
         "gama": gama
     }
+    img = raw_product.get("imageUrl") or raw_product.get("image")
+    if img:
+        res["imagen"] = img
+    return res
