@@ -430,10 +430,21 @@ if (form) {
   e.preventDefault();
   console.log(`\n🚀 Form Submit - Iniciando cálculo de presupuesto`);
 
-  const sinCuota = document.getElementById("sinCuota")?.checked || false;
-  const people = parseInt(document.getElementById("personas").value, 10);
-  const aporte = sinCuota ? 0 : parseInt(document.getElementById("aporte").value, 10);
-  const mode = document.getElementById("modo").value;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Optimizando...';
+  }
+
+  try {
+    // Pequeño yield para permitir repintado inmediato en el navegador
+    await new Promise(r => setTimeout(r, 20));
+
+    const sinCuota = document.getElementById("sinCuota")?.checked || false;
+    const people = parseInt(document.getElementById("personas").value, 10);
+    const aporte = sinCuota ? 0 : parseInt(document.getElementById("aporte").value, 10);
+    const mode = document.getElementById("modo").value;
   
   if (!sinCuota && aporte === 418) {
     alert("🍵 Error 418: I'm a teapot\n\n¿$418 pesos de cuota? ¿Qué pretendes comprar, un té en bolsa? Acá tomamos copete, rey.");
@@ -608,13 +619,19 @@ if (form) {
     singlePlan
   );
 
-  // Conectar botón de compartir
-  const btnCompartir = document.getElementById('btnCompartirPresupuesto');
-  if (btnCompartir && !btnCompartir.__listener_attached) {
-    btnCompartir.__listener_attached = true;
-    btnCompartir.addEventListener('click', async function() {
-      await compartirPresupuestoActual();
-    });
+    // Conectar botón de compartir
+    const btnCompartir = document.getElementById('btnCompartirPresupuesto');
+    if (btnCompartir && !btnCompartir.__listener_attached) {
+      btnCompartir.__listener_attached = true;
+      btnCompartir.addEventListener('click', async function() {
+        await compartirPresupuestoActual();
+      });
+    }
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnContent;
+    }
   }
 });
 }

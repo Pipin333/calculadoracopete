@@ -312,59 +312,207 @@ function getCombinationScore(totalCost, items, totalVolume, requiredMl, categori
 }
 
 // ===============================
-// OPTIMIZACIÓN SIMPLE POR CATEGORÍA (Knapsack DP)
+// OPTIMIZACIÓN SIMPLE POR CATEGORÍA (Knapsack DP de Alto Rendimiento)
 // ===============================
+
+// Popcount rápido para 32-bit integer (hasta 30 SKUs distintos)
+function popcount32(x) {
+  x = x - ((x >>> 1) & 0x55555555);
+  x = (x & 0x33333333) + ((x >>> 2) & 0x33333333);
+  return (((x + (x >>> 4)) & 0x0F0F0F0F) * 0x01010101) >>> 24;
+}
+
+// Popcount para BigInt (en caso de > 30 SKUs)
+function popcountBigInt(x) {
+  let count = 0;
+  while (x > 0n) {
+    x &= (x - 1n);
+    count++;
+  }
+  return count;
+}
+
 function findCheapestCombination(products, requiredMl, categoria = null) {
   if (!products || products.length === 0) return null;
+  if (requiredMl <= 0) return { totalVolume: 0, totalCost: 0, score: 0, items: [] };
 
-  const maxVolume = Math.max(...products.map(p => p.volumenTotalMl));
-  const upperBound = requiredMl + maxVolume * 2;
+  // 1. Precomputar atributos y asignar SKU IDs para seguimiento O(1) con bitmasks
+  const skuMap = new Map();
+  let nextSkuId = 0;
+  const prods = [];
 
-  const dp = Array(upperBound + 1).fill(null);
-  dp[0] = { cost: 0, score: 0, items: [] };
+  for (const p of products) {
+    if (!p || !p.volumenTotalMl || p.volumenTotalMl <= 0 || !p.precio) continue;
+    const key = `${p.tienda}__${p.nombre}`;
+    let skuId = skuMap.get(key);
+    if (skuId === undefined) {
+      skuId = nextSkuId++;
+      skuMap.set(key, skuId);
+    }
+    prods.push({
+      raw: p,
+      vol: p.volumenTotalMl,
+      precio: p.precio,
+      isEstablished: esMarcaEstablecida(p.nombre) ? 1 : 0,
+      bit32: skuId < 30 ? (1 << skuId) : 0,
+      bitBig: 1n << BigInt(skuId)
+    });
+  }
 
-  for (let volume = 0; volume <= upperBound; volume++) {
-    if (!dp[volume]) continue;
+  if (prods.length === 0) return null;
 
-    for (const product of products) {
-      const nextVolume = Math.min(upperBound, volume + product.volumenTotalMl);
-      const nextCost = dp[volume].cost + product.precio;
-      const nextItems = [...dp[volume].items, product];
-      const nextScore = getCombinationScore(nextCost, nextItems, nextVolume, requiredMl, categoria);
+  const is32Bit = skuMap.size <= 30;
+  const maxVolume = Math.max(...prods.map(p => p.vol));
+  const upperBound = requiredMl + maxVolume;
 
-      if (
-        !dp[nextVolume] ||
-        nextScore < dp[nextVolume].score ||
-        (nextScore === dp[nextVolume].score && nextCost < dp[nextVolume].cost)
-      ) {
-        dp[nextVolume] = {
-          cost: nextCost,
-          score: nextScore,
-          items: nextItems
-        };
+  // 2. TypedArrays planos: cero asignaciones de objetos ni arrays durante el loop DP
+  const dpScore = new Float64Array(upperBound + 1).fill(Infinity);
+  const dpCost = new Int32Array(upperBound + 1).fill(1e9);
+  const dpCount = new Int16Array(upperBound + 1).fill(0);
+  const dpBrands = new Int16Array(upperBound + 1).fill(0);
+  const dpParent = new Int32Array(upperBound + 1).fill(-1);
+  const dpProdIdx = new Int16Array(upperBound + 1).fill(-1);
+  const dpMask = is32Bit ? new Int32Array(upperBound + 1) : new Array(upperBound + 1).fill(0n);
+
+  dpScore[0] = 0;
+  dpCost[0] = 0;
+
+  const esBebida = ["bebida", "redbull", "tonica"].includes(categoria);
+  const factorSobrecompra = esBebida 
+    ? (PENALIZACION_SOBRECOMPRA_POR_LITRO * 0.4) 
+    : PENALIZACION_SOBRECOMPRA_POR_LITRO;
+
+  // 3. Loop DP ultrarrápido (V8 JIT optimizado)
+  if (is32Bit) {
+    for (let v = 0; v <= upperBound; v++) {
+      if (dpScore[v] === Infinity) continue;
+
+      const currCost = dpCost[v];
+      const currCount = dpCount[v];
+      const currBrands = dpBrands[v];
+      const currMask = dpMask[v];
+
+      for (let i = 0; i < prods.length; i++) {
+        const p = prods[i];
+        const nextVolume = Math.min(upperBound, v + p.vol);
+        const nextCost = currCost + p.precio;
+        const nextCount = currCount + 1;
+        const nextBrands = currBrands + p.isEstablished;
+        const nextMask = currMask | p.bit32;
+        const skuDistintos = popcount32(nextMask);
+
+        const sobrecompraMl = Math.max(0, nextVolume - requiredMl);
+        const penalizacionSobrecompra = (sobrecompraMl / 1000) * factorSobrecompra;
+
+        const volumePromedio = nextVolume / nextCount;
+        const bonusBotellasGrandes = Math.max(0, (volumePromedio - 1000) / 100);
+        const bonusMarcas = nextBrands * BONUS_MARCA_ESTABLECIDA;
+
+        const nextScore = nextCost +
+          nextCount * PENALIZACION_ITEM_COMBINACION +
+          skuDistintos * PENALIZACION_SKU_COMBINACION +
+          penalizacionSobrecompra -
+          bonusBotellasGrandes -
+          bonusMarcas;
+
+        if (
+          nextScore < dpScore[nextVolume] ||
+          (nextScore === dpScore[nextVolume] && nextCost < dpCost[nextVolume])
+        ) {
+          dpScore[nextVolume] = nextScore;
+          dpCost[nextVolume] = nextCost;
+          dpCount[nextVolume] = nextCount;
+          dpBrands[nextVolume] = nextBrands;
+          dpMask[nextVolume] = nextMask;
+          dpParent[nextVolume] = v;
+          dpProdIdx[nextVolume] = i;
+        }
+      }
+    }
+  } else {
+    for (let v = 0; v <= upperBound; v++) {
+      if (dpScore[v] === Infinity) continue;
+
+      const currCost = dpCost[v];
+      const currCount = dpCount[v];
+      const currBrands = dpBrands[v];
+      const currMask = dpMask[v];
+
+      for (let i = 0; i < prods.length; i++) {
+        const p = prods[i];
+        const nextVolume = Math.min(upperBound, v + p.vol);
+        const nextCost = currCost + p.precio;
+        const nextCount = currCount + 1;
+        const nextBrands = currBrands + p.isEstablished;
+        const nextMask = currMask | p.bitBig;
+        const skuDistintos = popcountBigInt(nextMask);
+
+        const sobrecompraMl = Math.max(0, nextVolume - requiredMl);
+        const penalizacionSobrecompra = (sobrecompraMl / 1000) * factorSobrecompra;
+
+        const volumePromedio = nextVolume / nextCount;
+        const bonusBotellasGrandes = Math.max(0, (volumePromedio - 1000) / 100);
+        const bonusMarcas = nextBrands * BONUS_MARCA_ESTABLECIDA;
+
+        const nextScore = nextCost +
+          nextCount * PENALIZACION_ITEM_COMBINACION +
+          skuDistintos * PENALIZACION_SKU_COMBINACION +
+          penalizacionSobrecompra -
+          bonusBotellasGrandes -
+          bonusMarcas;
+
+        if (
+          nextScore < dpScore[nextVolume] ||
+          (nextScore === dpScore[nextVolume] && nextCost < dpCost[nextVolume])
+        ) {
+          dpScore[nextVolume] = nextScore;
+          dpCost[nextVolume] = nextCost;
+          dpCount[nextVolume] = nextCount;
+          dpBrands[nextVolume] = nextBrands;
+          dpMask[nextVolume] = nextMask;
+          dpParent[nextVolume] = v;
+          dpProdIdx[nextVolume] = i;
+        }
       }
     }
   }
 
-  let best = null;
-  for (let volume = requiredMl; volume <= upperBound; volume++) {
-    if (!dp[volume]) continue;
+  // 4. Identificar el volumen óptimo alcanzado (>= requiredMl)
+  let bestVolume = -1;
+  let bestScore = Infinity;
+  let bestCost = Infinity;
 
+  for (let v = requiredMl; v <= upperBound; v++) {
+    if (dpScore[v] === Infinity) continue;
     if (
-      !best ||
-      dp[volume].score < best.score ||
-      (dp[volume].score === best.score && dp[volume].cost < best.totalCost)
+      dpScore[v] < bestScore ||
+      (dpScore[v] === bestScore && dpCost[v] < bestCost)
     ) {
-      best = {
-        totalVolume: volume,
-        totalCost: dp[volume].cost,
-        score: dp[volume].score,
-        items: dp[volume].items
-      };
+      bestScore = dpScore[v];
+      bestCost = dpCost[v];
+      bestVolume = v;
     }
   }
 
-  return best;
+  if (bestVolume === -1) return null;
+
+  // 5. Backtracking instantáneo: reconstruye los items en O(k) sin haber creado arrays durante el DP
+  const items = [];
+  let curr = bestVolume;
+  while (curr > 0) {
+    const pIdx = dpProdIdx[curr];
+    if (pIdx === -1) break;
+    items.push(prods[pIdx].raw);
+    curr = dpParent[curr];
+  }
+  items.reverse();
+
+  return {
+    totalVolume: bestVolume,
+    totalCost: bestCost,
+    score: bestScore,
+    items
+  };
 }
 
 export function summarizeItems(items) {
@@ -456,6 +604,14 @@ export async function buildSingleStorePlan(requirements) {
 
   const stores = [...new Set(productos.map(p => p.tienda).filter(Boolean))];
 
+  // Pre-cargar productos por categoría una sola vez
+  const categoryProducts = {};
+  for (const req of requirements) {
+    if (!categoryProducts[req.categoria]) {
+      categoryProducts[req.categoria] = await productApi.getProductsByCategory(req.categoria);
+    }
+  }
+
   let bestStorePlan = null;
 
   for (const store of stores) {
@@ -465,8 +621,8 @@ export async function buildSingleStorePlan(requirements) {
     let valid = true;
 
     for (const req of requirements) {
-      // Trae productos de la categoría y deja solo los de la tienda actual
-      const productsInStore = (await productApi.getProductsByCategory(req.categoria))
+      // Filtra de los productos ya cacheados de la categoría los de la tienda actual
+      const productsInStore = (categoryProducts[req.categoria] || [])
         .filter(p => p.tienda === store);
 
       const best = findCheapestCombination(productsInStore, req.requiredMl, req.categoria);
