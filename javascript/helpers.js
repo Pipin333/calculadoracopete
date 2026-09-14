@@ -44,6 +44,94 @@ export function formatCLP(value) {
   }).format(value);
 }
 
+/**
+ * Escapa caracteres especiales para prevenir vulnerabilidades de Cross-Site Scripting (XSS)
+ * @param {string|any} str - Cadena o valor a sanitizar
+ * @returns {string} - Cadena con entidades HTML codificadas
+ */
+export function escapeHTML(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+if (typeof window !== 'undefined') {
+  window.escapeHTML = escapeHTML;
+}
+
+/**
+ * Determina si una tienda es exclusivamente de despacho/delivery online
+ * @param {string} storeName - Nombre de la tienda
+ * @returns {boolean}
+ */
+export function isDeliveryOnlyStore(storeName) {
+  if (!storeName) return false;
+  const name = storeName.toLowerCase();
+  return name.includes("barra") || name.includes("cocacola") || name.includes("coca cola");
+}
+
+/**
+ * Retorna URL de búsqueda en Google Maps para la tienda física más cercana
+ * @param {string} storeName - Nombre de la tienda
+ * @returns {string} - URL de Google Maps Universal Search ($0 costo API)
+ */
+export function getStoreMapsUrl(storeName) {
+  if (!storeName) return '#';
+  const query = encodeURIComponent(`${storeName} supermercado botilleria`);
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}
+
+/**
+ * Construye el mensaje con copy estructurado para grupos de WhatsApp
+ * @param {Object} presupuesto - Objeto presupuesto
+ * @param {string} url - URL corta de la boleta compartible
+ * @returns {string} - Mensaje formateado para WhatsApp
+ */
+export function generarMensajeWhatsApp(presupuesto, url) {
+  if (!presupuesto) return `🍻 Revisa este presupuesto en Cuánto Rinde: ${url}`;
+
+  const personas = presupuesto.personas || 0;
+  const cuota = presupuesto.sinCuota 
+    ? (presupuesto.multiPlan?.total ? Math.ceil(presupuesto.multiPlan.total / (personas || 1)) : 0)
+    : (presupuesto.aporte || 0);
+
+  const total = presupuesto.multiPlan?.total || (personas * cuota);
+  
+  let ahorroTxt = '';
+  if (!presupuesto.sinCuota && presupuesto.presupuestoTotal && presupuesto.multiPlan?.total) {
+    const ahorro = presupuesto.presupuestoTotal - presupuesto.multiPlan.total;
+    if (ahorro > 0) {
+      ahorroTxt = ` (¡Ahorro de ${formatCLP(ahorro)}!)`;
+    }
+  }
+
+  // Extraer tiendas recomendadas únicas
+  const tiendasSet = new Set();
+  if (presupuesto.multiPlan?.allItems) {
+    presupuesto.multiPlan.allItems.forEach(item => {
+      if (item.tienda) tiendasSet.add(item.tienda);
+    });
+  } else if (presupuesto.singlePlan?.store || presupuesto.singlePlan?.tienda) {
+    tiendasSet.add(presupuesto.singlePlan.store || presupuesto.singlePlan.tienda);
+  }
+  const tiendasStr = tiendasSet.size > 0 ? Array.from(tiendasSet).join(' y ') : 'Supermercados locales';
+
+  return `🍻 *Presupuesto Carrete — Cuánto Rinde*
+👥 *Asistentes:* ${personas} personas
+💰 *Cuota:* ${formatCLP(cuota)} c/u
+🛒 *Total canasta:* ${formatCLP(total)}${ahorroTxt}
+🏪 *Comprar en:* ${tiendasStr}
+
+📋 *Revisa la lista completa de compras acá:*
+${url}
+
+💳 ¡Transfieran para ir a comprar antes que cierren! 🚀`;
+}
+
 export function clearElement(element) {
   element.innerHTML = "";
 }

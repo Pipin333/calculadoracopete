@@ -3,9 +3,9 @@
  * Renderizado de planes, estado de presupuesto, warnings y compartir.
  */
 
-import { formatCLP, clearElement, addLi, addLiHtml, getRatioBudget, getConvenienceBadge } from './helpers.js';
+import { formatCLP, clearElement, addLi, addLiHtml, getRatioBudget, getConvenienceBadge, isDeliveryOnlyStore, getStoreMapsUrl, generarMensajeWhatsApp } from './helpers.js';
 import { summarizeItems } from './solver.js';
-import { crearYCompartirPresupuestoCorto } from './shorturl.js';
+import { crearYCompartirPresupuestoCorto, guardarPresupuestoCorto, generarURLCorta } from './shorturl.js';
 import { registrarEventoTelemetria } from './firebase-config.js';
 import { getProductPriceHistory } from './productApi.js';
 
@@ -68,7 +68,12 @@ export function renderPlan(listElement, plan) {
 
     for (const item of summarized) {
       const searchUrl = getStoreSearchUrl(item.tienda, item.nombre);
-      const storeLink = `<a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="store-link" data-tienda="${item.tienda}" data-producto="${item.nombre}">${item.tienda} ↗</a>`;
+      const isDelivery = isDeliveryOnlyStore(item.tienda);
+      const mapsUrl = getStoreMapsUrl(item.tienda);
+      const mapsBadge = isDelivery
+        ? `<span class="badge bg-secondary-subtle text-light border border-secondary ms-1" style="font-size: 0.7rem; font-weight: normal;" title="Tienda online / despacho">🚚 Delivery</span>`
+        : `<a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="badge text-bg-dark border border-secondary text-decoration-none ms-1" style="font-size: 0.7rem; font-weight: normal;" title="Ver local físico más cercano en Google Maps">📍 Mapa</a>`;
+      const storeLink = `<a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="store-link" data-tienda="${item.tienda}" data-producto="${item.nombre}">${item.tienda} ↗</a>${mapsBadge}`;
       
       // Historial & Badges SoloTodo
       const hist = getProductPriceHistory(item.tienda, item.nombre);
@@ -316,6 +321,71 @@ export async function compartirPresupuestoActual() {
     
     console.error('❌ Error durante compartir:', error);
     alert('❌ Error al compartir: ' + error.message);
+  }
+}
+
+/**
+ * Comparte el presupuesto actual por WhatsApp con copy formateado y URL corta
+ */
+export async function compartirPresupuestoWhatsApp() {
+  try {
+    if (!window.currentPresupuesto) {
+      alert('❌ No hay presupuesto para compartir');
+      return;
+    }
+
+    const btnWhatsApp = document.getElementById('btnWhatsAppPresupuesto');
+    const origHtml = btnWhatsApp ? btnWhatsApp.innerHTML : '';
+    if (btnWhatsApp) {
+      btnWhatsApp.disabled = true;
+      btnWhatsApp.innerHTML = '⏳ Preparando WhatsApp...';
+      btnWhatsApp.style.opacity = '0.8';
+    }
+
+    // Intentar obtener o generar URL corta
+    let url = window.location.href;
+    try {
+      const id = await guardarPresupuestoCorto(window.currentPresupuesto);
+      if (id) {
+        url = generarURLCorta(id);
+      }
+    } catch (e) {
+      console.warn('⚠️ No se pudo generar URL corta para WhatsApp, usando URL actual:', e);
+    }
+
+    // Generar mensaje estructurado para WhatsApp
+    const mensaje = generarMensajeWhatsApp(window.currentPresupuesto, url);
+    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensaje)}`;
+
+    // Registrar evento en telemetría
+    try {
+      registrarEventoTelemetria('compartir_whatsapp', {
+        personas: window.currentPresupuesto.personas || 0,
+        total: window.currentPresupuesto.total || 0,
+        modo: window.currentPresupuesto.modo || ''
+      });
+    } catch (_) {}
+
+    // Abrir WhatsApp en nueva pestaña
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+    if (btnWhatsApp) {
+      btnWhatsApp.innerHTML = '✅ ¡Abriendo WhatsApp!';
+      setTimeout(() => {
+        btnWhatsApp.disabled = false;
+        btnWhatsApp.innerHTML = origHtml;
+        btnWhatsApp.style.opacity = '1';
+      }, 2500);
+    }
+  } catch (error) {
+    console.error('❌ Error al compartir por WhatsApp:', error);
+    alert('❌ Error al preparar mensaje de WhatsApp: ' + error.message);
+    const btnWhatsApp = document.getElementById('btnWhatsAppPresupuesto');
+    if (btnWhatsApp) {
+      btnWhatsApp.disabled = false;
+      btnWhatsApp.innerHTML = '💬 Compartir en WhatsApp';
+      btnWhatsApp.style.opacity = '1';
+    }
   }
 }
 

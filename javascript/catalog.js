@@ -5,7 +5,7 @@
  */
 
 import { productApi, getProductPriceHistory, getHistorialPrecios } from './productApi.js';
-import { formatCLP } from './helpers.js';
+import { formatCLP, escapeHTML } from './helpers.js';
 import { getStoreSearchUrl } from './renderer.js';
 import { registrarEventoTelemetria } from './firebase-config.js';
 import { esMarcaEstablecida } from './config.js';
@@ -475,7 +475,7 @@ export function renderCatalog() {
             <!-- Thumbnail / Visual con foto de stock -->
             <div class="solotodo-card-img-wrap mb-3 text-center position-relative">
               ${item.imagenUrl ? `
-                <img src="${item.imagenUrl}" alt="${item.nombrePrincipal}" class="solotodo-product-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('d-none');">
+                <img src="${item.imagenUrl}" alt="${escapeHTML(item.nombrePrincipal)}" class="solotodo-product-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('d-none');">
                 <div class="d-none py-3"><span style="font-size: 2.75rem;" role="img" aria-label="${meta.label}">${meta.icon}</span></div>
               ` : `
                 <div class="py-3 d-flex flex-column align-items-center justify-content-center">
@@ -492,8 +492,8 @@ export function renderCatalog() {
             <div class="text-secondary small mb-1" style="font-size: 0.75rem;">
               ${meta.label} • ${item.volumenTotalMl} ml
             </div>
-            <h6 class="solotodo-title text-white fw-bold mb-2" title="${item.nombrePrincipal}">
-              ${item.nombrePrincipal}
+            <h6 class="solotodo-title text-white fw-bold mb-2" title="${escapeHTML(item.nombrePrincipal)}">
+              ${escapeHTML(item.nombrePrincipal)}
             </h6>
           </div>
 
@@ -685,6 +685,8 @@ function renderStoreComparisonList(item) {
     const isCheapest = v.precio === bestPrice;
     const diff = v.precio - bestPrice;
     const searchUrl = getStoreSearchUrl(v.tienda, v.nombre);
+    const tiendaEscaped = escapeHTML(v.tienda);
+    const nombreEscaped = escapeHTML(v.nombre);
 
     const priceDiffBadge = isCheapest
       ? `<span class="badge text-bg-success py-1 px-2">Mejor precio</span>`
@@ -694,11 +696,11 @@ function renderStoreComparisonList(item) {
       <div class="store-row p-3 rounded-3 mb-2 bg-black bg-opacity-25 border border-white-10 d-flex align-items-center justify-content-between flex-wrap gap-2">
         <div class="d-flex align-items-center gap-3">
           <div class="store-badge-icon rounded-circle d-flex align-items-center justify-content-center fw-bold text-white shadow-sm" style="width: 36px; height: 36px; background: var(--accent-color); font-size: 0.85rem;">
-            ${v.tienda.substring(0, 2).toUpperCase()}
+            ${escapeHTML(v.tienda.substring(0, 2).toUpperCase())}
           </div>
           <div>
-            <div class="text-white fw-bold">${v.tienda}</div>
-            <div class="text-secondary small" style="font-size: 0.75rem;">${v.nombre}</div>
+            <div class="text-white fw-bold">${tiendaEscaped}</div>
+            <div class="text-secondary small" style="font-size: 0.75rem;">${nombreEscaped}</div>
           </div>
         </div>
 
@@ -707,7 +709,7 @@ function renderStoreComparisonList(item) {
             <div class="text-white fw-bold fs-6">${formatCLP(v.precio)}</div>
             ${priceDiffBadge}
           </div>
-          <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary rounded-pill px-3 store-link" data-tienda="${v.tienda}" data-producto="${v.nombre}">
+          <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary rounded-pill px-3 store-link" data-tienda="${tiendaEscaped}" data-producto="${nombreEscaped}">
             Comprar ↗
           </a>
         </div>
@@ -721,7 +723,8 @@ function renderStoreComparisonList(item) {
   if (otherStores.length > 0) {
     const storeChips = otherStores.map(s => {
       const url = getStoreSearchUrl(s, item.nombrePrincipal);
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary rounded-pill py-1 px-2" style="font-size: 0.75rem;">Buscar en ${s} ↗</a>`;
+      const storeNameEscaped = escapeHTML(s);
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary rounded-pill py-1 px-2" style="font-size: 0.75rem;">Buscar en ${storeNameEscaped} ↗</a>`;
     }).join(' ');
 
     otherStoresHtml = `

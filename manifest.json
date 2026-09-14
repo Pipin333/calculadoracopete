@@ -1,0 +1,26 @@
+{
+  "name": "Cuánto Rinde - Calculadora de Copete",
+  "short_name": "Cuánto Rinde",
+  "description": "El optimizador y comparador de copete y bebidas para carretes en Chile.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f0e17",
+  "theme_color": "#6366f1",
+  "lang": "es-CL",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

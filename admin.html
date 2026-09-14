@@ -6,11 +6,21 @@
   <title>Consola de Fundador | Cuánto Rinde</title>
   <meta name="robots" content="noindex, nofollow" />
 
+  <!-- Content Security Policy (CSP) contra XSS y Exfiltración -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.gstatic.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.firebaseio.com wss://*.firebaseio.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.googleapis.com; frame-src 'self' https://calculadoracopete.firebaseapp.com https://accounts.google.com;" />
+
+  <!-- Anti-Clickjacking / Frame Buster -->
+  <script>
+    if (window.top !== window.self) {
+      window.top.location = window.self.location;
+    }
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" />
 
   <!-- Bootstrap 5.3.3 & Fonts -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="css/styles.css?v=4.8" />
 
@@ -273,9 +283,11 @@
       signOut,
       onAuthStateChanged,
       obtenerTelemetriaFirebase,
+      verificarEsAdmin,
       database
     } from './javascript/firebase-config.js';
 
+    import { escapeHTML } from './javascript/helpers.js';
     import { ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
     // Elementos DOM
@@ -355,10 +367,16 @@
       }
     });
 
-    // Verificar si es admin intentando leer telemetria
+    // Verificar si es admin antes de cargar telemetría
     async function checkAdminAndLoad(user) {
       showState('loading');
       try {
+        const esAdmin = await verificarEsAdmin(user.uid);
+        if (!esAdmin) {
+          console.warn("Usuario no registrado como administrador en /admins:", user.uid);
+          showState('no-admin');
+          return;
+        }
         const eventos = await obtenerTelemetriaFirebase(150);
         showState('dashboard');
         renderDashboard(eventos);
@@ -502,14 +520,16 @@
         if (isShare) tipoBadge = `<span class="badge bg-info text-dark">Compartir</span>`;
         if (isClick) tipoBadge = `<span class="badge bg-success">Click Tienda</span>`;
 
-        const tiendas = Array.isArray(ev.tiendas) ? ev.tiendas.join(', ') : (ev.tienda || '—');
-        const personas = ev.personas ? `${ev.personas} pers.` : '—';
-        const cuota = ev.cuota ? formatCLP(ev.cuota) : (ev.sinCuota ? 'Sin cuota' : '—');
-        const total = ev.totalOptimo ? formatCLP(ev.totalOptimo) : (ev.total ? formatCLP(ev.total) : '—');
+        const rawTiendas = Array.isArray(ev.tiendas) ? ev.tiendas.join(', ') : (ev.tienda || '—');
+        const tiendas = escapeHTML(rawTiendas);
+        const personas = ev.personas ? `${escapeHTML(ev.personas)} pers.` : '—';
+        const cuota = ev.cuota ? escapeHTML(formatCLP(ev.cuota)) : (ev.sinCuota ? 'Sin cuota' : '—');
+        const total = ev.totalOptimo ? escapeHTML(formatCLP(ev.totalOptimo)) : (ev.total ? escapeHTML(formatCLP(ev.total)) : '—');
+        const fecha = escapeHTML(formatDate(ev.timestamp));
 
         return `
           <tr>
-            <td class="text-secondary">${formatDate(ev.timestamp)}</td>
+            <td class="text-secondary">${fecha}</td>
             <td>${tipoBadge}</td>
             <td>${personas}</td>
             <td>${cuota}</td>

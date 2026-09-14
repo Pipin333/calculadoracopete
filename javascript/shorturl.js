@@ -35,10 +35,21 @@ const SHORTURL_CONFIG = {
 function generarIDCorto(length = SHORTURL_CONFIG.LENGTH) {
   let result = '';
   const charset = SHORTURL_CONFIG.CHARSET;
+  const charsetLen = charset.length;
   
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * charset.length);
-    result += charset[randomIndex];
+  // CSPRNG seguro (Cryptographically Secure Pseudo-Random Number Generator)
+  const cryptoObj = (typeof window !== 'undefined' && window.crypto) ? window.crypto : (typeof crypto !== 'undefined' ? crypto : null);
+  if (cryptoObj && typeof cryptoObj.getRandomValues === 'function') {
+    const randomBytes = new Uint32Array(length);
+    cryptoObj.getRandomValues(randomBytes);
+    for (let i = 0; i < length; i++) {
+      result += charset[randomBytes[i] % charsetLen];
+    }
+  } else {
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charsetLen);
+      result += charset[randomIndex];
+    }
   }
   
   return result;

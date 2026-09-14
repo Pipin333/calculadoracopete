@@ -71,7 +71,8 @@ import {
   renderPlan,
   renderBudgetState,
   renderWarnings,
-  compartirPresupuestoActual
+  compartirPresupuestoActual,
+  compartirPresupuestoWhatsApp
 } from './renderer.js';
 
 import { registrarEventoTelemetria } from './firebase-config.js';
@@ -363,7 +364,67 @@ async function inicializarApp() {
     console.error(`❌ Error al inicializar catálogo SoloTodo:`, err);
   }
 
+  // Inicializar PWA y Service Worker
+  conectarPWA();
+
   console.log(`✅ App inicializada`);
+}
+
+// ===============================
+// PWA & SERVICE WORKER
+// ===============================
+let deferredPrompt = null;
+
+function conectarPWA() {
+  // 1. Registrar Service Worker
+  if ('serviceWorker' in navigator) {
+    const registerSW = () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => {
+          console.log('✅ Service Worker registrado con éxito:', reg.scope);
+        })
+        .catch(err => {
+          console.warn('⚠️ Falló registro de Service Worker:', err);
+        });
+    };
+
+    if (document.readyState === 'complete') {
+      registerSW();
+    } else {
+      window.addEventListener('load', registerSW);
+    }
+  }
+
+  // 2. Manejar prompt de instalación
+  const btnInstall = document.getElementById('btnInstallPwa');
+  if (btnInstall) {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      btnInstall.classList.remove('d-none');
+    });
+
+    btnInstall.addEventListener('click', async () => {
+      if (!deferredPrompt) {
+        alert('Para instalar CuantoRinde en tu pantalla de inicio:\n• En Android: toca los tres puntos (⋮) y elige "Instalar aplicación" o "Agregar a la pantalla principal".\n• En iPhone (Safari): toca el botón Compartir (⎋) y elige "Agregar al inicio (+)".');
+        return;
+      }
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`PWA prompt outcome: ${outcome}`);
+      deferredPrompt = null;
+      btnInstall.classList.add('d-none');
+    });
+
+    window.addEventListener('appinstalled', () => {
+      console.log('✅ CuantoRinde PWA instalada exitosamente');
+      btnInstall.classList.add('d-none');
+      deferredPrompt = null;
+      try {
+        registrarEventoTelemetria('pwa_instalada', { timestamp: Date.now() });
+      } catch (_) {}
+    });
+  }
 }
 
 // ===============================
@@ -625,6 +686,15 @@ if (form) {
       btnCompartir.__listener_attached = true;
       btnCompartir.addEventListener('click', async function() {
         await compartirPresupuestoActual();
+      });
+    }
+
+    // Conectar botón de compartir por WhatsApp
+    const btnWhatsApp = document.getElementById('btnWhatsAppPresupuesto');
+    if (btnWhatsApp && !btnWhatsApp.__listener_attached) {
+      btnWhatsApp.__listener_attached = true;
+      btnWhatsApp.addEventListener('click', async function() {
+        await compartirPresupuestoWhatsApp();
       });
     }
   } finally {

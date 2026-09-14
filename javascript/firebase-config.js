@@ -227,15 +227,20 @@ async function obtenerTelemetriaFirebase(limite = 200) {
 }
 
 /**
- * Verificar si un UID tiene rol de Administrador en el nodo users/$uid/isAdmin
+ * Verificar si un UID tiene rol de Administrador en el nodo seguro admins/$uid
  * @param {string} uid - Firebase UID del usuario
  * @returns {Promise<boolean>}
  */
 async function verificarEsAdmin(uid) {
   if (!database || !uid) return false;
   try {
-    const adminSnap = await get(ref(database, `users/${uid}/isAdmin`));
-    return adminSnap.exists() && adminSnap.val() === true;
+    const adminSnap = await get(ref(database, `admins/${uid}`));
+    if (adminSnap.exists() && adminSnap.val() === true) {
+      return true;
+    }
+    // Fallback de compatibilidad
+    const userAdminSnap = await get(ref(database, `users/${uid}/isAdmin`));
+    return userAdminSnap.exists() && userAdminSnap.val() === true;
   } catch (err) {
     console.warn("No se pudo verificar rol de admin:", err);
     return false;

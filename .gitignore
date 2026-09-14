@@ -29,6 +29,7 @@ unimarc_screenshot.png
 !robots.txt
 !workers/requirements.txt
 *.json
+!manifest.json
 !json/productos.json
 !json/historial_precios.json
 !workers/config.json
