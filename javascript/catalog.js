@@ -9,6 +9,7 @@ import { formatCLP } from './helpers.js';
 import { getStoreSearchUrl } from './renderer.js';
 import { registrarEventoTelemetria } from './firebase-config.js';
 import { esMarcaEstablecida } from './config.js';
+import { getProductImageUrl } from './productImages.js';
 
 // ===============================
 // ESTADO INTERNO DEL CATÁLOGO
@@ -40,6 +41,7 @@ const CATEGORY_META = {
   redbull: { label: 'Energética', icon: '⚡', group: 'mixer' },
   tonica: { label: 'Agua Tónica', icon: '🥤', group: 'mixer' },
   jugo_watts: { label: 'Jugo Watts', icon: '🧃', group: 'mixer' },
+  combos: { label: 'Packs & Promos', icon: '🎁', group: 'combos' },
   hielo: { label: 'Hielo', icon: '🧊', group: 'otros' }
 };
 
@@ -47,16 +49,198 @@ const CATEGORY_META = {
 const TODAS_LAS_TIENDAS = ['Jumbo', 'Líquidos', 'Booz', 'La Barra', 'Unimarc', 'miCocaCola', 'Lider'];
 
 /**
- * Normaliza nombres para agrupación multi-tienda (ej: "Alto del Carmen 1L 35°" entre tiendas)
+ * Formatea y embellece el nombre del producto eliminando redundancias del scraper y aplicando Title Case.
  */
-function normalizeForGrouping(name) {
-  return (name || '').toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[°º]/g, '')
-    .replace(/\b(pack|cerveza|pisco|botella|lata|unidades|un|de|litro|litros|cc|ml|grados|alc)\b/g, '')
-    .replace(/[^a-z0-9]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+export function formatProductDisplayName(name) {
+  if (!name) return '';
+  let str = name.trim();
+
+  // 1. Eliminar corchetes y etiquetas de scraping como [Exp 30 Sep]
+  str = str.replace(/\[[^\]]*\]/g, '').trim();
+  str = str.replace(/&nbsp;/g, ' ');
+
+  // 2. Normalizar expresiones de volumen
+  str = str.replace(/(\d+[\.,]\d+)\s*(?:l|lt|lts|litro|litros)\b/gi, (m, v) => v.replace(',', '.') + 'L');
+  str = str.replace(/\b(\d+)\s*(?:l|lt|lts|litro|litros)\b/gi, '$1L');
+  str = str.replace(/(\d+)\s*(?:cc|ml)\b/gi, '$1cc');
+  str = str.replace(/[º°]\s*alc\.?/gi, '°');
+
+  // 3. Normalizar notación de packs
+  str = str.replace(/\b(?:botella|lata)?\s*(\d+)\s*(?:un|unid|unidades)\s*(?:de)?\s*(\d+cc|\d+L)\b/gi, 'Pack $1x $2');
+  str = str.replace(/\b(\d+)\s*x\s*(\d+cc|\d+L)\b/gi, 'Pack $1x $2');
+
+  // 4. Eliminar palabras redundantes consecutivas o repetidas por scrapers (ej: "Cristal Cerveza Cerveza cristal...")
+  const tokens = str.split(/\s+/).filter(Boolean);
+  const cleanedTokens = [];
+  const seenRecent = [];
+
+  for (let i = 0; i < tokens.length; i++) {
+    const t = tokens[i];
+    const low = t.toLowerCase().replace(/[^a-z0-9áéíóúüñ]/g, '');
+    if (low.length > 2 && seenRecent.includes(low)) {
+      continue;
+    }
+    cleanedTokens.push(t);
+    if (low.length > 2) {
+      seenRecent.push(low);
+      if (seenRecent.length > 3) seenRecent.shift();
+    }
+  }
+
+  str = cleanedTokens.join(' ');
+
+  // 5. Smart Title Case con preservación de marcas y acrónimos
+  const lowerWords = new Set(['de', 'del', 'la', 'el', 'en', 'con', 'sin', 'y', 'por', 'al', 'un', 'una']);
+  const upperMap = {
+    'coca-cola': 'Coca-Cola',
+    'coca': 'Coca',
+    'cola': 'Cola',
+    'fanta': 'Fanta',
+    'sprite': 'Sprite',
+    'jagermeister': 'Jägermeister',
+    'jager': 'Jäger',
+    'jack': 'Jack',
+    'daniels': "Daniel's",
+    'johnnie': 'Johnnie',
+    'walker': 'Walker',
+    'stella': 'Stella',
+    'artois': 'Artois',
+    'royal': 'Royal',
+    'guard': 'Guard',
+    'ipa': 'IPA',
+    'zero': 'Zero',
+    'azucar': 'Azúcar',
+    'azúcar': 'Azúcar',
+    'light': 'Light',
+    'budweiser': 'Budweiser',
+    'quilmes': 'Quilmes',
+    'heineken': 'Heineken',
+    'corona': 'Corona',
+    'becker': 'Becker',
+    'cristal': 'Cristal',
+    'escudo': 'Escudo',
+    'kunstmann': 'Kunstmann',
+    'austral': 'Austral',
+    'kross': 'Kross',
+    'mistral': 'Mistral',
+    'alto': 'Alto',
+    'carmen': 'Carmen',
+    'absolut': 'Absolut',
+    'smirnoff': 'Smirnoff',
+    'ballantine': "Ballantine's",
+    'chivas': 'Chivas',
+    'beefeater': 'Beefeater',
+    'tanqueray': 'Tanqueray',
+    'ramazzotti': 'Ramazzotti',
+    'redbull': 'Red Bull'
+  };
+
+  const words = str.split(' ');
+  const titled = words.map((w, idx) => {
+    if (/^\d+(?:cc|L|°)$/i.test(w)) return w.toUpperCase().replace('CC', 'cc');
+    if (/^pack$/i.test(w)) return 'Pack';
+    if (/^\d+x$/i.test(w)) return w.toLowerCase();
+
+    const clean = w.toLowerCase().replace(/[^a-z0-9áéíóúüñ]/g, '');
+    if (upperMap[clean]) {
+      return upperMap[clean];
+    }
+
+    if (idx > 0 && lowerWords.has(w.toLowerCase())) {
+      return w.toLowerCase();
+    }
+
+    return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+  });
+
+  return titled.join(' ').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Genera una llave canónica para agrupar productos idénticos o equivalentes entre distintas tiendas.
+ */
+export function getCanonicalProductKey(p) {
+  const name = (p.nombre || '').toLowerCase();
+  const cat = p.categoria || 'otros';
+
+  if (cat === 'combos') {
+    const clean = name.replace(/[^a-z0-9]/g, '');
+    return 'combos__' + clean;
+  }
+
+  // 1. Detección de marca
+  const brands = [
+    'alto del carmen', 'tres erres', 'artesanos del cochiguaz', 'artesanos', 'horcon quemado', 'mistral nobel', 'mistral', 'capel', 'malpaso', 'campanario',
+    'royal guard', 'stella artois', 'corona', 'heineken', 'escudo silver', 'escudo', 'cristal', 'becker', 'kunstmann', 'austral', 'budweiser', 'quilmes', 'sol', 'kross', 'michelob', 'peroni', 'blue moon', 'miller', 'cusquena',
+    'coca-cola', 'coca cola', 'fanta', 'sprite', 'schweppes', 'canada dry', 'pepsi', '7up', 'red bull', 'redbull', 'monster', 'watts',
+    'havana club', 'bacardi', 'flor de cana', 'barcelo', 'sierra morena', 'captain morgan', 'maddero',
+    'absolut', 'smirnoff', 'grey goose', 'skyy', 'stolichnaya', 'serkova',
+    'ballantine', 'johnnie walker', 'chivas regal', 'chivas', 'jack daniel', 'grant', 'jameson', 'black & white', 'sandy mac',
+    'beefeater', 'tanqueray', 'bombay', 'hendrick', 'brighton', 'gordon',
+    'jagermeister', 'jager', 'ramazzotti'
+  ];
+
+  let brandKey = '';
+  for (const b of brands) {
+    if (name.includes(b)) {
+      brandKey = b.replace(/[\s-&]+/g, '_');
+      break;
+    }
+  }
+
+  if (!brandKey) {
+    const cleanTokens = name.replace(/[^a-z0-9]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !['pack', 'cerveza', 'pisco', 'ron', 'vodka', 'whisky', 'botella', 'lata'].includes(w));
+    brandKey = cleanTokens.slice(0, 2).sort().join('_') || 'generico';
+  }
+
+  // 2. Variante / Subtipo
+  let variant = 'std';
+  if (name.includes('zero') || name.includes('sin azucar') || name.includes('sin azúcar')) variant = 'zero';
+  else if (name.includes('light')) variant = 'light';
+  else if (name.includes('original')) variant = 'original';
+  else if (name.includes('transparente')) variant = 'transparente';
+  else if (name.includes('silver')) variant = 'silver';
+  else if (name.includes('amber') || name.includes('ambar')) variant = 'amber';
+  else if (name.includes('golden')) variant = 'golden';
+  else if (name.includes('torobayo')) variant = 'torobayo';
+  else if (name.includes('valdivia')) variant = 'valdivia';
+  else if (name.includes('calafate')) variant = 'calafate';
+  else if (name.includes('lager')) variant = 'lager';
+  else if (name.includes('ipa')) variant = 'ipa';
+  else if (name.includes('black')) variant = 'black';
+  else if (name.includes('maracuya') || name.includes('maracuyá')) variant = 'maracuya';
+  else if (name.includes('agua tonica') || name.includes('tonica') || name.includes('tónica')) variant = 'tonica';
+  else if (name.includes('ginger ale') || name.includes('ginger')) variant = 'ginger';
+
+  let degrees = '';
+  const degMatch = name.match(/(\d{2})[°º]/) || name.match(/(\d{2})\s*(?:grados|alc)/);
+  if (degMatch) {
+    degrees = '_' + degMatch[1] + 'deg';
+  }
+
+  // 3. Unidades y rango de volumen por unidad
+  const unidades = p.unidades || 1;
+  const volUnit = p.volumenMlUnidad || p.volumenTotalMl || 0;
+
+  let unitVolBracket = volUnit;
+  if (volUnit >= 300 && volUnit <= 375) unitVolBracket = 350;
+  else if (volUnit >= 450 && volUnit <= 520) unitVolBracket = 470;
+  else if (volUnit >= 600 && volUnit <= 720 && unidades === 1) unitVolBracket = 650;
+  else if (volUnit >= 700 && volUnit <= 750 && unidades === 1) unitVolBracket = 750;
+  else if (volUnit >= 950 && volUnit <= 1050) unitVolBracket = 1000;
+  else if (volUnit >= 1450 && volUnit <= 1550) unitVolBracket = 1500;
+  else if (volUnit >= 1700 && volUnit <= 1800) unitVolBracket = 1750;
+  else if (volUnit >= 1950 && volUnit <= 2100) unitVolBracket = 2000;
+  else if (volUnit >= 2450 && volUnit <= 2600) unitVolBracket = 2500;
+  else if (volUnit >= 2900 && volUnit <= 3100) unitVolBracket = 3000;
+
+  let packBracket = unidades;
+  if (unidades >= 5 && unidades <= 6) packBracket = 6;
+  else if (unidades >= 10 && unidades <= 12) packBracket = 12;
+  else if (unidades >= 18 && unidades <= 18) packBracket = 18;
+  else if (unidades >= 20 && unidades <= 24) packBracket = 24;
+
+  return `${cat}__${brandKey}__${variant}${degrees}__${packBracket}x${unitVolBracket}`;
 }
 
 /**
@@ -109,14 +293,14 @@ export async function initCatalog() {
 /**
  * Agrupa productos idénticos o equivalentes entre tiendas
  */
+/**
+ * Agrupa productos idénticos o equivalentes entre tiendas usando llaves canónicas
+ */
 function buildGroupedCatalog() {
   const groups = new Map();
 
   allProducts.forEach(p => {
-    const norm = normalizeForGrouping(p.nombre);
-    const words = norm.split(' ').filter(w => w.length > 2).slice(0, 3).sort().join('_');
-    const volKey = Math.round(p.volumenTotalMl / 100) * 100;
-    const groupKey = `${p.categoria}__${words}__${volKey}`;
+    const groupKey = getCanonicalProductKey(p);
 
     if (!groups.has(groupKey)) {
       groups.set(groupKey, []);
@@ -135,9 +319,17 @@ function buildGroupedCatalog() {
     const hasMin = sortedStores.some(s => s.isMin);
     const minDiff = Math.min(...sortedStores.map(s => s.diff || 0));
 
+    // Nombre formateado y foto de stock en alta resolución
+    const nombreFormateado = formatProductDisplayName(cheapest.nombre);
+    const imagenUrl = getProductImageUrl({
+      ...cheapest,
+      nombrePrincipal: nombreFormateado
+    });
+
     return {
       groupId: cheapest.id,
-      nombrePrincipal: cheapest.nombre,
+      nombrePrincipal: nombreFormateado,
+      imagenUrl,
       categoria: cheapest.categoria,
       volumenTotalMl: cheapest.volumenTotalMl,
       unidades: cheapest.unidades,
@@ -280,9 +472,10 @@ export function renderCatalog() {
               ${badgeHtml}
             </div>
 
-            <!-- Thumbnail / Visual -->
-            <div class="solotodo-thumbnail mb-3 text-center position-relative py-3 rounded-3 bg-black bg-opacity-25 border border-white-10">
-              <span style="font-size: 2.75rem;" role="img" aria-label="${meta.label}">${meta.icon}</span>
+            <!-- Thumbnail / Visual con foto de stock -->
+            <div class="solotodo-card-img-wrap mb-3 text-center position-relative">
+              <img src="${item.imagenUrl}" alt="${item.nombrePrincipal}" class="solotodo-product-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('d-none');">
+              <div class="d-none py-3"><span style="font-size: 2.75rem;" role="img" aria-label="${meta.label}">${meta.icon}</span></div>
               <span class="position-absolute bottom-0 end-0 m-2 badge bg-dark bg-opacity-75 text-secondary border border-white-10" style="font-size: 0.7rem;">
                 ${formatLabel}
               </span>
@@ -336,11 +529,18 @@ export function openProductDetail(groupId) {
   const titleEl = document.getElementById('solotodoModalTitle');
   const catEl = document.getElementById('solotodoModalCategory');
   const formatEl = document.getElementById('solotodoModalFormat');
+  const imgEl = document.getElementById('solotodoModalImg');
   const meta = CATEGORY_META[item.categoria] || { label: 'Bebida', icon: '🍾' };
 
   if (titleEl) titleEl.textContent = item.nombrePrincipal;
   if (catEl) catEl.textContent = `${meta.icon} ${meta.label}`;
   if (formatEl) formatEl.textContent = `${item.volumenTotalMl} ml (${item.unidades > 1 ? `${item.unidades} unidades` : '1 unidad'})`;
+  if (imgEl) {
+    imgEl.src = item.imagenUrl;
+    imgEl.alt = item.nombrePrincipal;
+    imgEl.style.display = 'block';
+    imgEl.onerror = () => { imgEl.style.display = 'none'; };
+  }
 
   // 2. Métricas de Historial (4 cajas)
   const hist = item.hist;

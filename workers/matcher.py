@@ -20,6 +20,8 @@ def clean_name(name):
     name = re.sub(r"\s+", " ", name)
     # Remove HTML entities
     name = name.replace("&nbsp;", " ")
+    # Clean up duplicated words like 'Cerveza Cerveza' or 'Cristal Cristal'
+    name = re.sub(r"\b([A-Za-zÀ-ÿ0-9]+)\s+\1\b", r"\1", name, flags=re.IGNORECASE)
     return name.strip()
 
 def extract_brand(name):
@@ -103,14 +105,28 @@ def extract_units(name):
         val = int(x_match.group(1))
         if 2 <= val <= 40:
             return val
-            
+
+    # Match patterns like "6x", "12x", "24x" (e.g. 12x Cerveza Royal Guard)
+    x_match2 = re.search(r"\b(\d+)x\b", name_lower)
+    if x_match2:
+        val = int(x_match2.group(1))
+        if 2 <= val <= 40:
+            return val
+
+    # Match patterns like "6 x 330 cc", "12 x 354 cc", "24 x 300 cc"
+    x_match3 = re.search(r"\b(\d+)\s*x\s*\d+", name_lower)
+    if x_match3:
+        val = int(x_match3.group(1))
+        if 2 <= val <= 40:
+            return val
+
     # Match patterns like "6 un", "12 un", "24 un", "6 unidades"
     un_match = re.search(r"(\d+)\s*(?:un|unid|unidades|latas|botellas)\b", name_lower)
     if un_match:
         val = int(un_match.group(1))
         if 2 <= val <= 50:
             return val
-            
+
     return 1
 
 def validate_category(name, category):
@@ -285,8 +301,20 @@ def process_product(raw_product):
     """Processes, cleans and formats a raw scraped product into the application schema."""
     name = clean_name(raw_product["name"])
     category = raw_product["category"]
+    name_lower = name.lower()
     
-    if not validate_category(name, category):
+    # Detect multi-product combo / pack promos
+    is_combo = (
+        ("+" in name_lower and any(k in name_lower for k in ["hielo", "coca", "fanta", "sprite", "cerveza", "pisco", "schweppes", "ginger"])) or
+        ("pisco" in name_lower and "cerveza" in name_lower) or
+        ("pisco" in name_lower and "coca" in name_lower and "hielo" in name_lower) or
+        ("tri pack" in name_lower and "+" in name_lower) or
+        ("pack" in name_lower and "coca cola" in name_lower and any(s in name_lower for s in ["fanta", "sprite"]))
+    )
+    if is_combo:
+        category = "combos"
+    
+    if category != "combos" and not validate_category(name, category):
         return None
         
     price = raw_product["price"]

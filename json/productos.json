@@ -198,6 +198,17 @@
       "llevaHielo": false,
       "esSeleccionable": false,
       "displayName": "Hielo"
+    },
+    "combos": {
+      "nombre": "Packs y Combos",
+      "grupo": "combos",
+      "llevaMixer": false,
+      "mixerCategoria": null,
+      "mixerFactor": 0,
+      "mixerAlternativas": [],
+      "llevaHielo": false,
+      "displayName": "Packs & Promos",
+      "esSeleccionable": false
     }
   },
   "combinaciones_especiales": {},
@@ -684,7 +695,7 @@
       "id": 48
     },
     {
-      "categoria": "cola",
+      "categoria": "combos",
       "nombre": "Coca Cola Pack bebida coca cola + fanta 2 un de 3 l",
       "tienda": "Unimarc",
       "precio": 5190,
@@ -724,7 +735,7 @@
       "id": 52
     },
     {
-      "categoria": "fanta",
+      "categoria": "combos",
       "nombre": "Coca Cola Pack bebida coca cola + fanta 2 un de 3 l",
       "tienda": "Unimarc",
       "precio": 5190,
@@ -764,7 +775,7 @@
       "id": 56
     },
     {
-      "categoria": "sprite",
+      "categoria": "combos",
       "nombre": "Coca Cola Pack bebida coca cola + sprite sin azúcar 2 un 3 l",
       "tienda": "Unimarc",
       "precio": 5190,
@@ -878,7 +889,7 @@
       "nombre": "4x Cerveza Kunstmann Lager 4.3° Botella 330cc",
       "tienda": "La Barra",
       "precio": 6990,
-      "unidades": 1,
+      "unidades": 4,
       "volumenMlUnidad": 330,
       "gama": "sobrado",
       "id": 68
@@ -888,7 +899,7 @@
       "nombre": "12x Cerveza Kunstmann Valdivia Pale Lager 5.2° Lata 470cc",
       "tienda": "La Barra",
       "precio": 17400,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 470,
       "gama": "sobrado",
       "id": 69
@@ -898,7 +909,7 @@
       "nombre": "6x Cerveza Maracuyá Stones 2.5° Lata 350cc",
       "tienda": "La Barra",
       "precio": 6090,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 350,
       "gama": "normal",
       "id": 70
@@ -908,7 +919,7 @@
       "nombre": "12x Cerveza Kunstmann Valdivia Pale Lager 5.2° Botella 500cc",
       "tienda": "La Barra",
       "precio": 21480,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 500,
       "gama": "sobrado",
       "id": 71
@@ -918,13 +929,13 @@
       "nombre": "12x Cerveza Royal Guard 5.0° Botella 355cc",
       "tienda": "La Barra",
       "precio": 11589,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 355,
       "gama": "normal",
       "id": 72
     },
     {
-      "categoria": "cerveza",
+      "categoria": "combos",
       "nombre": "Pack Pisco Mistral 35° 750cc + 12x Cerveza Royal Guard 5.0° Botella 355cc",
       "tienda": "La Barra",
       "precio": 20580,
@@ -1118,7 +1129,7 @@
       "nombre": "6x Bebida Pepsi Zero Botella 3L",
       "tienda": "La Barra",
       "precio": 18540,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
       "id": 92
@@ -1128,7 +1139,7 @@
       "nombre": "6x Bebida Pepsi Zero Botella 1.5L",
       "tienda": "La Barra",
       "precio": 11400,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 93
@@ -1138,7 +1149,7 @@
       "nombre": "6x Bebida Crush Zero Botella 1.5L",
       "tienda": "La Barra",
       "precio": 12000,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 94
@@ -1148,7 +1159,7 @@
       "nombre": "6x Bebida Crush Botella 3L",
       "tienda": "La Barra",
       "precio": 19199,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
       "id": 95
@@ -1158,7 +1169,7 @@
       "nombre": "6x Agua Tónica Canada Dry Botella 1.5L",
       "tienda": "La Barra",
       "precio": 12000,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 96
@@ -1168,7 +1179,7 @@
       "nombre": "6x Bebida Canada Dry Ginger Ale Botella 3L",
       "tienda": "La Barra",
       "precio": 19199,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
       "id": 97
@@ -1178,7 +1189,7 @@
       "nombre": "4x Bebida Energética Red Bull Sin Azúcar 250cc",
       "tienda": "La Barra",
       "precio": 7560,
-      "unidades": 1,
+      "unidades": 4,
       "volumenMlUnidad": 250,
       "gama": "neutral",
       "id": 98
@@ -1188,7 +1199,7 @@
       "nombre": "4x Bebida Energética Red Bull 250ccc",
       "tienda": "La Barra",
       "precio": 7560,
-      "unidades": 1,
+      "unidades": 4,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 99
@@ -1198,7 +1209,7 @@
       "nombre": "12x Bebida Energética Red Bull 355cc",
       "tienda": "La Barra",
       "precio": 27490,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 355,
       "gama": "neutral",
       "id": 100
@@ -1208,7 +1219,7 @@
       "nombre": "12x Bebida Energética Rockstar 500cc",
       "tienda": "La Barra",
       "precio": 16199,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 500,
       "gama": "neutral",
       "id": 101
@@ -1218,7 +1229,7 @@
       "nombre": "6x Agua Tónica Canada Dry Botella 1.5L",
       "tienda": "La Barra",
       "precio": 12000,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 102
@@ -1228,7 +1239,7 @@
       "nombre": "6x Bebida Isotónica Gatorade Cool Blue 1L",
       "tienda": "La Barra",
       "precio": 9000,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 1000,
       "gama": "neutral",
       "id": 103
@@ -1238,7 +1249,7 @@
       "nombre": "6x Jugo Frugo Frutilla 2L",
       "tienda": "La Barra",
       "precio": 8400,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 2000,
       "gama": "neutral",
       "id": 104
@@ -1934,7 +1945,7 @@
       "id": 173
     },
     {
-      "categoria": "hielo",
+      "categoria": "combos",
       "nombre": "Pisco Tres Erres 35° 1L + Coca Cola Original 3L + Hielo 2kg",
       "tienda": "Liquidos",
       "precio": 8990,
@@ -1944,7 +1955,7 @@
       "id": 174
     },
     {
-      "categoria": "hielo",
+      "categoria": "combos",
       "nombre": "Pisco Alto del Carmen 35° 750cc + Coca Cola Zero 1.5L + Hielo 2kg",
       "tienda": "Liquidos",
       "precio": 8190,
@@ -1964,7 +1975,7 @@
       "id": 176
     },
     {
-      "categoria": "hielo",
+      "categoria": "combos",
       "nombre": "PCK MISTRAL 1L 35 + COCA COLA S/AZUCAR 1.5L + HIELO 2KG",
       "tienda": "Liquidos",
       "precio": 12470,
@@ -1978,7 +1989,7 @@
       "nombre": "[Exp 30 Sep] Kit 12x Cerveza Peroni Nastro Azzurro Botella 330cc",
       "tienda": "Booz",
       "precio": 16990,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 330,
       "gama": "normal",
       "id": 178
@@ -2208,7 +2219,7 @@
       "nombre": "Cerveza Michelob Ultra 4,2° 6 x 330 cc.",
       "tienda": "miCocaCola",
       "precio": 4990,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 330,
       "gama": "normal",
       "id": 201
@@ -2218,7 +2229,7 @@
       "nombre": "Cerveza Stella Artois 5,0° 12 x 354 cc.",
       "tienda": "miCocaCola",
       "precio": 7990,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 354,
       "gama": "normal",
       "id": 202
@@ -2248,7 +2259,7 @@
       "nombre": "Cerveza Quilmes 4,9° 24 x 300 cc.",
       "tienda": "miCocaCola",
       "precio": 13090,
-      "unidades": 1,
+      "unidades": 24,
       "volumenMlUnidad": 300,
       "gama": "normal",
       "id": 205
@@ -2258,7 +2269,7 @@
       "nombre": "Cerveza Modelo Especial 4,5° 4 x 355 cc.",
       "tienda": "miCocaCola",
       "precio": 5290,
-      "unidades": 1,
+      "unidades": 4,
       "volumenMlUnidad": 355,
       "gama": "normal",
       "id": 206
@@ -2268,7 +2279,7 @@
       "nombre": "Cerveza Corona 4,5° 12 x 620 cc.",
       "tienda": "miCocaCola",
       "precio": 13990,
-      "unidades": 1,
+      "unidades": 12,
       "volumenMlUnidad": 620,
       "gama": "normal",
       "id": 207
@@ -2378,7 +2389,7 @@
       "nombre": "Coca-Cola Zero Azúcar 6 x 1,5 lt.",
       "tienda": "miCocaCola",
       "precio": 8990,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 1500,
       "gama": "neutral",
       "id": 218
@@ -2388,7 +2399,7 @@
       "nombre": "Coca-Cola Zero Azúcar 6 x 3,0 lt.",
       "tienda": "miCocaCola",
       "precio": 16020,
-      "unidades": 1,
+      "unidades": 6,
       "volumenMlUnidad": 3000,
       "gama": "neutral",
       "id": 219
@@ -2424,7 +2435,7 @@
       "id": 222
     },
     {
-      "categoria": "ginger",
+      "categoria": "combos",
       "nombre": "Tri Pack 2 Coca-Cola Zero Azúcar 3,0 lt. + Schweppes Ginger Ale Zero Azúcar 3,0 lt.",
       "tienda": "miCocaCola",
       "precio": 8050,
