@@ -197,38 +197,57 @@ function renderizarSelectoresDeMixers() {
 }
 
 // ===============================
-// INICIALIZACIÓN
 // ===============================
-/**
- * Inicializa la app:
- * 1. Carga configuración desde productos.json
- * 2. Construye OPCIONES_CONSUMO
- * 3. Genera checkboxes dinámicamente
- * 4. Inicia listeners
- */
-async function inicializarApp() {
-  console.log(`🚀 Iniciando app...`);
-  
-  // Cargar preferencias de mixer guardadas
-  cargarMixerPreferences();
-  
-  // Cargar JSON
-  const cargado = await cargarConfiguracionDesdeJSON();
-  if (!cargado) {
-    console.error(`❌ No se pudo cargar productos.json`);
-    return;
+// CONTROLES DE NAVEGACIÓN Y VISTAS (SINCRÓNICO)
+// ===============================
+function switchAppView(viewName) {
+  const tabCalculadora = document.getElementById("tab-calculadora");
+  const tabCatalogo = document.getElementById("tab-catalogo");
+  const viewCalculadora = document.getElementById("view-calculadora");
+  const viewCatalogo = document.getElementById("view-catalogo");
+
+  if (viewName === 'catalogo') {
+    tabCatalogo?.classList.add('active');
+    tabCalculadora?.classList.remove('active');
+    viewCatalogo?.classList.remove('d-none');
+    viewCalculadora?.classList.add('d-none');
+    window.history.replaceState(null, '', '#productos');
+    try { registrarEventoTelemetria('cambiar_pestana', { destino: 'catalogo' }); } catch (_) {}
+  } else {
+    tabCalculadora?.classList.add('active');
+    tabCatalogo?.classList.remove('active');
+    viewCalculadora?.classList.remove('d-none');
+    viewCatalogo?.classList.add('d-none');
+    window.history.replaceState(null, '', '#calculadora');
+    try { registrarEventoTelemetria('cambiar_pestana', { destino: 'calculadora' }); } catch (_) {}
   }
-  
-  // Construir opciones
-  setOpcionesConsumo(buildOpcionesConsumoDesdeJSON());
-  
-  // Generar checkboxes
-  generarCheckboxesDinámicos();
-  
+}
+
+function conectarControlesNavegacionYModo() {
+  // Pestañas de navegación principal (Calculadora vs Vitrina SoloTodo)
+  const tabCalculadora = document.getElementById("tab-calculadora");
+  const tabCatalogo = document.getElementById("tab-catalogo");
+
+  if (tabCalculadora && !tabCalculadora.__listener_attached) {
+    tabCalculadora.__listener_attached = true;
+    tabCalculadora.addEventListener("click", () => switchAppView('calculadora'));
+  }
+
+  if (tabCatalogo && !tabCatalogo.__listener_attached) {
+    tabCatalogo.__listener_attached = true;
+    tabCatalogo.addEventListener("click", () => switchAppView('catalogo'));
+  }
+
+  // Soporte directo para hash en la URL (#productos o #catalogo)
+  if (window.location.hash === '#productos' || window.location.hash === '#catalogo') {
+    switchAppView('catalogo');
+  }
+
   // Conectar checkbox sin cuota
   const sinCuotaCheck = document.getElementById("sinCuota");
   const aporteInput = document.getElementById("aporte");
-  if (sinCuotaCheck && aporteInput) {
+  if (sinCuotaCheck && aporteInput && !sinCuotaCheck.__listener_attached) {
+    sinCuotaCheck.__listener_attached = true;
     sinCuotaCheck.addEventListener("change", function() {
       if (this.checked) {
         aporteInput.disabled = true;
@@ -241,23 +260,25 @@ async function inicializarApp() {
       }
     });
   }
-  
+
   // Conectar botones de Modo de Formulario (Simple vs Pro)
   const btnSimple = document.getElementById("btnModoSimple");
   const btnPro = document.getElementById("btnModoPro");
   const carreteForm = document.getElementById("carreteForm");
-  
-  if (btnSimple && btnPro && carreteForm) {
+
+  if (btnSimple && btnPro && carreteForm && !btnSimple.__listener_attached) {
+    btnSimple.__listener_attached = true;
+    btnPro.__listener_attached = true;
+
     btnSimple.addEventListener("click", () => {
       btnSimple.classList.add("active");
       btnPro.classList.remove("active");
       carreteForm.classList.add("mode-simple");
       carreteForm.classList.remove("mode-pro");
-      
-      // Resetear a valores por defecto en modo simple (leyendo de los atributos 'selected' del HTML)
+
       const modoSelect = document.getElementById("modo");
       const gamaSelect = document.getElementById("gama");
-      
+
       if (modoSelect) {
         const defaultModo = Array.from(modoSelect.options).filter(opt => opt.hasAttribute('selected')).pop();
         modoSelect.value = defaultModo ? defaultModo.value : "previa";
@@ -266,7 +287,7 @@ async function inicializarApp() {
         const defaultGama = Array.from(gamaSelect.options).filter(opt => opt.hasAttribute('selected')).pop();
         gamaSelect.value = defaultGama ? defaultGama.value : "normal";
       }
-      
+
       if (sinCuotaCheck && sinCuotaCheck.checked) {
         sinCuotaCheck.checked = false;
         if (aporteInput) {
@@ -275,59 +296,73 @@ async function inicializarApp() {
           aporteInput.value = "5000";
         }
       }
-      
-      // Re-renderizar sliders para actualizar valores equitativos
-      renderBudgetSliders();
+
+      try { renderBudgetSliders(); } catch (_) {}
     });
-    
+
     btnPro.addEventListener("click", () => {
       btnPro.classList.add("active");
       btnSimple.classList.remove("active");
       carreteForm.classList.remove("mode-simple");
       carreteForm.classList.add("mode-pro");
-      
-      // Re-renderizar sliders
-      renderBudgetSliders();
+
+      try { renderBudgetSliders(); } catch (_) {}
     });
   }
+}
 
-  // Conectar pestañas de navegación principal (Calculadora vs Vitrina SoloTodo)
-  const tabCalculadora = document.getElementById("tab-calculadora");
-  const tabCatalogo = document.getElementById("tab-catalogo");
-  const viewCalculadora = document.getElementById("view-calculadora");
-  const viewCatalogo = document.getElementById("view-catalogo");
+// Ejecutar conexión de controles de inmediato si el DOM ya está listo
+if (document.readyState !== "loading") {
+  conectarControlesNavegacionYModo();
+} else {
+  document.addEventListener("DOMContentLoaded", conectarControlesNavegacionYModo);
+}
 
-  function switchToView(viewName) {
-    if (viewName === 'catalogo') {
-      tabCatalogo?.classList.add('active');
-      tabCalculadora?.classList.remove('active');
-      viewCatalogo?.classList.remove('d-none');
-      viewCalculadora?.classList.add('d-none');
-      window.history.replaceState(null, '', '#productos');
-      registrarEventoTelemetria('cambiar_pestana', { destino: 'catalogo' });
-    } else {
-      tabCalculadora?.classList.add('active');
-      tabCatalogo?.classList.remove('active');
-      viewCalculadora?.classList.remove('d-none');
-      viewCatalogo?.classList.add('d-none');
-      window.history.replaceState(null, '', '#calculadora');
-      registrarEventoTelemetria('cambiar_pestana', { destino: 'calculadora' });
-    }
+// ===============================
+// INICIALIZACIÓN DE DATOS (ASÍNCRONO)
+// ===============================
+/**
+ * Inicializa los datos y catálogo de la app:
+ * 1. Carga configuración desde productos.json
+ * 2. Construye OPCIONES_CONSUMO
+ * 3. Genera checkboxes dinámicamente
+ * 4. Inicializa catálogo SoloTodo
+ */
+async function inicializarApp() {
+  console.log(`🚀 Iniciando app y cargando catálogo...`);
+
+  // Asegurar controles interactivos conectados
+  conectarControlesNavegacionYModo();
+
+  // Cargar preferencias de mixer guardadas
+  try {
+    cargarMixerPreferences();
+  } catch (err) {
+    console.warn("Aviso al cargar preferencias mixer:", err);
   }
 
-  if (tabCalculadora && tabCatalogo) {
-    tabCalculadora.addEventListener("click", () => switchToView('calculadora'));
-    tabCatalogo.addEventListener("click", () => switchToView('catalogo'));
-
-    // Soporte para URL Hash directa (#productos o #catalogo)
-    if (window.location.hash === '#productos' || window.location.hash === '#catalogo') {
-      switchToView('catalogo');
+  // Cargar JSON de productos
+  try {
+    const cargado = await cargarConfiguracionDesdeJSON();
+    if (cargado) {
+      setOpcionesConsumo(buildOpcionesConsumoDesdeJSON());
+      generarCheckboxesDinámicos();
+      actualizarTextoDropdownBebidas();
+      renderBudgetSliders();
+    } else {
+      console.error(`❌ No se pudo cargar productos.json`);
     }
+  } catch (err) {
+    console.error(`❌ Error durante carga de productos.json:`, err);
   }
 
   // Inicializar vitrina de productos SoloTodo
-  await initCatalog();
-  
+  try {
+    await initCatalog();
+  } catch (err) {
+    console.error(`❌ Error al inicializar catálogo SoloTodo:`, err);
+  }
+
   console.log(`✅ App inicializada`);
 }
 
@@ -390,7 +425,8 @@ if (document.readyState === "loading") {
 // ===============================
 // FORM SUBMIT
 // ===============================
-form.addEventListener("submit", async function (e) {
+if (form) {
+  form.addEventListener("submit", async function (e) {
   e.preventDefault();
   console.log(`\n🚀 Form Submit - Iniciando cálculo de presupuesto`);
 
@@ -581,3 +617,4 @@ form.addEventListener("submit", async function (e) {
     });
   }
 });
+}

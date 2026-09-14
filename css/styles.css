@@ -727,25 +727,50 @@ h1 {
   opacity: 0.95;
 }
 
-/* ===== SOLOTODO CATALOG & SHOWCASE STYLES ===== */
+/* ===== TOPBAR & VIEW SELECTOR (SEAMLESS DARK) ===== */
+.app-topbar {
+  background: rgba(10, 7, 22, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.view-selector-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+}
+
 .nav-view-tab {
-  color: var(--text-secondary);
   background: transparent;
-  border: 1px solid transparent;
+  color: var(--text-secondary);
+  border: none !important;
+  outline: none !important;
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .nav-view-tab:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-view-tab.active {
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  color: white !important;
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
 }
 
 .solotodo-cat-pill {
