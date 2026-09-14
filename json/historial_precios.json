@@ -1,7 +1,7 @@
 {
- "last_updated": "2026-09-13",
- "total_tracked": 896,
- "all_time_lows_count": 90,
+ "last_updated": "2026-09-14",
+ "total_tracked": 943,
+ "all_time_lows_count": 37,
  "items": {
   "Jumbo___Cerveza Lager lata 470ml": {
    "tienda": "Jumbo",
@@ -6309,10 +6309,14 @@
    "cur": 7990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     7990
+    ],
+    [
+     "2026-09-14",
      7990
     ]
    ]
@@ -6339,11 +6343,11 @@
    "nombre": "Cerveza Leyendas De Origen Trauco Amber Lager 473 cc.",
    "min": 890,
    "max": 1090,
-   "avg": 990,
+   "avg": 957,
    "cur": 890,
    "isMin": true,
-   "diff": -10.1,
-   "obsCount": 2,
+   "diff": -7.0,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6351,6 +6355,10 @@
     ],
     [
      "2026-08-18",
+     890
+    ],
+    [
+     "2026-09-14",
      890
     ]
    ]
@@ -6360,11 +6368,11 @@
    "nombre": "Cerveza Quilmes 4,9° 24 x 300 cc.",
    "min": 13090,
    "max": 14090,
-   "avg": 13590,
+   "avg": 13423,
    "cur": 13090,
    "isMin": true,
-   "diff": -3.7,
-   "obsCount": 2,
+   "diff": -2.5,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6372,6 +6380,10 @@
     ],
     [
      "2026-08-18",
+     13090
+    ],
+    [
+     "2026-09-14",
      13090
     ]
    ]
@@ -6398,11 +6410,11 @@
    "nombre": "Cerveza Modelo Especial 4,5° 4 x 355 cc.",
    "min": 5290,
    "max": 5990,
-   "avg": 5640,
+   "avg": 5523,
    "cur": 5290,
    "isMin": true,
-   "diff": -6.2,
-   "obsCount": 2,
+   "diff": -4.2,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6410,6 +6422,10 @@
     ],
     [
      "2026-07-07",
+     5290
+    ],
+    [
+     "2026-09-14",
      5290
     ]
    ]
@@ -6419,11 +6435,11 @@
    "nombre": "Cerveza Corona 4,5° 12 x 620 cc.",
    "min": 13990,
    "max": 15990,
-   "avg": 14990,
+   "avg": 14657,
    "cur": 13990,
    "isMin": true,
-   "diff": -6.7,
-   "obsCount": 2,
+   "diff": -4.6,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6431,6 +6447,10 @@
     ],
     [
      "2026-08-20",
+     13990
+    ],
+    [
+     "2026-09-14",
      13990
     ]
    ]
@@ -6457,11 +6477,11 @@
    "nombre": "Pisco Hacienda la Torre Reservado 40° 700 ml.",
    "min": 9390,
    "max": 9890,
-   "avg": 9640,
+   "avg": 9557,
    "cur": 9390,
    "isMin": true,
-   "diff": -2.6,
-   "obsCount": 2,
+   "diff": -1.7,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6469,6 +6489,10 @@
     ],
     [
      "2026-08-18",
+     9390
+    ],
+    [
+     "2026-09-14",
      9390
     ]
    ]
@@ -6478,11 +6502,11 @@
    "nombre": "Ron Maddero Dorado 40° 750 ml.",
    "min": 3890,
    "max": 4090,
-   "avg": 3990,
+   "avg": 4023,
    "cur": 4090,
    "isMin": false,
-   "diff": 2.5,
-   "obsCount": 2,
+   "diff": 1.7,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6490,6 +6514,10 @@
     ],
     [
      "2026-07-07",
+     4090
+    ],
+    [
+     "2026-09-14",
      4090
     ]
    ]
@@ -6499,11 +6527,11 @@
    "nombre": "Ron Maddero Dorado 40° 1,0 lt.",
    "min": 4190,
    "max": 4390,
-   "avg": 4290,
+   "avg": 4323,
    "cur": 4390,
    "isMin": false,
-   "diff": 2.3,
-   "obsCount": 2,
+   "diff": 1.5,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6511,6 +6539,10 @@
     ],
     [
      "2026-07-07",
+     4390
+    ],
+    [
+     "2026-09-14",
      4390
     ]
    ]
@@ -6524,10 +6556,14 @@
    "cur": 8490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     8490
+    ],
+    [
+     "2026-09-14",
      8490
     ]
    ]
@@ -6541,10 +6577,14 @@
    "cur": 23190,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     23190
+    ],
+    [
+     "2026-09-14",
      23190
     ]
    ]
@@ -6554,11 +6594,11 @@
    "nombre": "Whisky White Horse Fine Old 750 ml.",
    "min": 6190,
    "max": 8990,
-   "avg": 7290,
+   "avg": 7070,
    "cur": 6190,
    "isMin": true,
-   "diff": -15.1,
-   "obsCount": 4,
+   "diff": -12.4,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -6575,6 +6615,10 @@
     [
      "2026-08-18",
      6190
+    ],
+    [
+     "2026-09-14",
+     6190
     ]
    ]
   },
@@ -6583,11 +6627,11 @@
    "nombre": "Whisky White Horse 1,0 lt.",
    "min": 8490,
    "max": 9990,
-   "avg": 9240,
+   "avg": 8990,
    "cur": 8490,
    "isMin": true,
-   "diff": -8.1,
-   "obsCount": 2,
+   "diff": -5.6,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6595,6 +6639,10 @@
     ],
     [
      "2026-06-16",
+     8490
+    ],
+    [
+     "2026-09-14",
      8490
     ]
    ]
@@ -6608,10 +6656,14 @@
    "cur": 30990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     30990
+    ],
+    [
+     "2026-09-14",
      30990
     ]
    ]
@@ -6625,10 +6677,14 @@
    "cur": 9290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     9290
+    ],
+    [
+     "2026-09-14",
      9290
     ]
    ]
@@ -6638,11 +6694,11 @@
    "nombre": "Gin Gordon&apos;s London Dry Gin 37,5° 750ml.",
    "min": 8490,
    "max": 9290,
-   "avg": 8890,
+   "avg": 9023,
    "cur": 9290,
    "isMin": false,
-   "diff": 4.5,
-   "obsCount": 2,
+   "diff": 3.0,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6650,6 +6706,10 @@
     ],
     [
      "2026-07-15",
+     9290
+    ],
+    [
+     "2026-09-14",
      9290
     ]
    ]
@@ -6680,10 +6740,14 @@
    "cur": 16020,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     16020
+    ],
+    [
+     "2026-09-14",
      16020
     ]
    ]
@@ -6697,10 +6761,14 @@
    "cur": 1890,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1890
+    ],
+    [
+     "2026-09-14",
      1890
     ]
    ]
@@ -6714,10 +6782,14 @@
    "cur": 2690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2690
+    ],
+    [
+     "2026-09-14",
      2690
     ]
    ]
@@ -6727,11 +6799,11 @@
    "nombre": "Fanta Naranja 2,5 lt",
    "min": 2490,
    "max": 2790,
-   "avg": 2665,
+   "avg": 2690,
    "cur": 2790,
    "isMin": false,
-   "diff": 4.7,
-   "obsCount": 4,
+   "diff": 3.7,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -6748,6 +6820,10 @@
     [
      "2026-07-28",
      2790
+    ],
+    [
+     "2026-09-14",
+     2790
     ]
    ]
   },
@@ -6760,10 +6836,14 @@
    "cur": 1890,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1890
+    ],
+    [
+     "2026-09-14",
      1890
     ]
    ]
@@ -6802,10 +6882,14 @@
    "cur": 2690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2690
+    ],
+    [
+     "2026-09-14",
      2690
     ]
    ]
@@ -6819,10 +6903,14 @@
    "cur": 1890,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1890
+    ],
+    [
+     "2026-09-14",
      1890
     ]
    ]
@@ -6832,11 +6920,11 @@
    "nombre": "Sprite 2,5 lt.",
    "min": 2490,
    "max": 2790,
-   "avg": 2665,
+   "avg": 2690,
    "cur": 2790,
    "isMin": false,
-   "diff": 4.7,
-   "obsCount": 4,
+   "diff": 3.7,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -6853,6 +6941,10 @@
     [
      "2026-07-28",
      2790
+    ],
+    [
+     "2026-09-14",
+     2790
     ]
    ]
   },
@@ -6865,10 +6957,14 @@
    "cur": 1690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1690
+    ],
+    [
+     "2026-09-14",
      1690
     ]
    ]
@@ -6878,11 +6974,11 @@
    "nombre": "Pack Monster Energy",
    "min": 8990,
    "max": 9290,
-   "avg": 9140,
+   "avg": 9090,
    "cur": 8990,
    "isMin": true,
-   "diff": -1.6,
-   "obsCount": 2,
+   "diff": -1.1,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6890,6 +6986,10 @@
     ],
     [
      "2026-07-28",
+     8990
+    ],
+    [
+     "2026-09-14",
      8990
     ]
    ]
@@ -6903,10 +7003,14 @@
    "cur": 1890,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1890
+    ],
+    [
+     "2026-09-14",
      1890
     ]
    ]
@@ -6916,11 +7020,11 @@
    "nombre": "Jugo Guallarauco mango piña naranja 1,0 lt",
    "min": 2090,
    "max": 2190,
-   "avg": 2140,
+   "avg": 2123,
    "cur": 2090,
    "isMin": true,
-   "diff": -2.3,
-   "obsCount": 2,
+   "diff": -1.6,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -6928,6 +7032,10 @@
     ],
     [
      "2026-07-28",
+     2090
+    ],
+    [
+     "2026-09-14",
      2090
     ]
    ]
@@ -7164,11 +7272,11 @@
    "nombre": "Corelli Pack cerveza corelli lager lata 6 un de 330 cc",
    "min": 2990,
    "max": 3990,
-   "avg": 3445,
+   "avg": 3407,
    "cur": 2990,
    "isMin": true,
-   "diff": -13.2,
-   "obsCount": 11,
+   "diff": -12.2,
+   "obsCount": 12,
    "pts": [
     [
      "2026-06-11",
@@ -7212,6 +7320,10 @@
     ],
     [
      "2026-08-06",
+     2990
+    ],
+    [
+     "2026-09-14",
      2990
     ]
    ]
@@ -7270,11 +7382,11 @@
    "nombre": "Royal Guard Pack cerveza royal guard golden lager botella 6 un de 355 cc",
    "min": 4190,
    "max": 5790,
-   "avg": 5212,
+   "avg": 5190,
    "cur": 4990,
    "isMin": false,
-   "diff": -4.3,
-   "obsCount": 9,
+   "diff": -3.9,
+   "obsCount": 10,
    "pts": [
     [
      "2026-06-11",
@@ -7311,6 +7423,10 @@
     [
      "2026-08-12",
      4990
+    ],
+    [
+     "2026-09-14",
+     4990
     ]
    ]
   },
@@ -7323,10 +7439,14 @@
    "cur": 1350,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1350
+    ],
+    [
+     "2026-09-14",
      1350
     ]
    ]
@@ -7340,10 +7460,14 @@
    "cur": 1390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1390
+    ],
+    [
+     "2026-09-14",
      1390
     ]
    ]
@@ -7378,11 +7502,11 @@
    "nombre": "Cristal Cerveza Pack cerveza cristal cero radler sin alcohol lata 6 un de 350 cc",
    "min": 4190,
    "max": 5690,
-   "avg": 4815,
+   "avg": 4690,
    "cur": 4190,
    "isMin": true,
-   "diff": -13.0,
-   "obsCount": 4,
+   "diff": -10.7,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -7399,6 +7523,10 @@
     [
      "2026-09-11",
      4190
+    ],
+    [
+     "2026-09-14",
+     4190
     ]
    ]
   },
@@ -7407,11 +7535,11 @@
    "nombre": "Kunstmann Cerveza kunstmann torobayo lata 10 un de 350 cc",
    "min": 9990,
    "max": 13150,
-   "avg": 11641,
+   "avg": 11753,
    "cur": 12990,
    "isMin": false,
-   "diff": 11.6,
-   "obsCount": 11,
+   "diff": 10.5,
+   "obsCount": 12,
    "pts": [
     [
      "2026-06-11",
@@ -7456,6 +7584,10 @@
     [
      "2026-07-20",
      12990
+    ],
+    [
+     "2026-09-14",
+     12990
     ]
    ]
   },
@@ -7481,11 +7613,11 @@
    "nombre": "Cristal Cerveza Pack cerveza cristal lata 18 un de 350 cc",
    "min": 10490,
    "max": 11990,
-   "avg": 11090,
+   "avg": 10990,
    "cur": 10490,
    "isMin": true,
-   "diff": -5.4,
-   "obsCount": 5,
+   "diff": -4.5,
+   "obsCount": 6,
    "pts": [
     [
      "2026-06-11",
@@ -7506,6 +7638,10 @@
     [
      "2026-07-18",
      10490
+    ],
+    [
+     "2026-09-14",
+     10490
     ]
    ]
   },
@@ -7514,11 +7650,11 @@
    "nombre": "Becker Pack cerveza becker lata 6 un de 473 cc",
    "min": 3990,
    "max": 4690,
-   "avg": 4411,
+   "avg": 4415,
    "cur": 4490,
    "isMin": false,
-   "diff": 1.8,
-   "obsCount": 19,
+   "diff": 1.7,
+   "obsCount": 20,
    "pts": [
     [
      "2026-06-11",
@@ -7595,6 +7731,10 @@
     [
      "2026-08-25",
      4490
+    ],
+    [
+     "2026-09-14",
+     4490
     ]
    ]
   },
@@ -7603,11 +7743,11 @@
    "nombre": "Leyendas De Origen Cerveza leyendas de origen trauco lata 473 cc",
    "min": 1000,
    "max": 1390,
-   "avg": 1156,
+   "avg": 1130,
    "cur": 1000,
    "isMin": true,
-   "diff": -13.5,
-   "obsCount": 5,
+   "diff": -11.5,
+   "obsCount": 6,
    "pts": [
     [
      "2026-06-11",
@@ -7627,6 +7767,10 @@
     ],
     [
      "2026-07-18",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -7737,11 +7881,11 @@
    "nombre": "Royal Guard Pack cerveza royal guard lata 24 un de 350 cc",
    "min": 11990,
    "max": 14990,
-   "avg": 13497,
+   "avg": 13437,
    "cur": 11990,
    "isMin": true,
-   "diff": -11.2,
-   "obsCount": 24,
+   "diff": -10.8,
+   "obsCount": 25,
    "pts": [
     [
      "2026-06-11",
@@ -7838,6 +7982,10 @@
     [
      "2026-09-11",
      11990
+    ],
+    [
+     "2026-09-14",
+     11990
     ]
    ]
   },
@@ -7846,11 +7994,11 @@
    "nombre": "Becker Pack cerveza becker lata 24 un de 354 cc",
    "min": 9490,
    "max": 10890,
-   "avg": 10234,
+   "avg": 10237,
    "cur": 10290,
    "isMin": false,
    "diff": 0.5,
-   "obsCount": 16,
+   "obsCount": 17,
    "pts": [
     [
      "2026-06-11",
@@ -7914,6 +8062,10 @@
     ],
     [
      "2026-09-08",
+     10290
+    ],
+    [
+     "2026-09-14",
      10290
     ]
    ]
@@ -8000,11 +8152,11 @@
    "nombre": "Heineken Pack cerveza heineken lata 12 un de 355 cc",
    "min": 7990,
    "max": 11990,
-   "avg": 8757,
+   "avg": 8718,
    "cur": 7990,
    "isMin": true,
-   "diff": -8.8,
-   "obsCount": 19,
+   "diff": -8.4,
+   "obsCount": 20,
    "pts": [
     [
      "2026-06-11",
@@ -8081,6 +8233,10 @@
     [
      "2026-09-08",
      7990
+    ],
+    [
+     "2026-09-14",
+     7990
     ]
    ]
   },
@@ -8089,11 +8245,11 @@
    "nombre": "Stella Artois Pack cerveza stella artois botella 24 un de 330 cc",
    "min": 12790,
    "max": 24990,
-   "avg": 16017,
+   "avg": 15952,
    "cur": 14990,
    "isMin": false,
-   "diff": -6.4,
-   "obsCount": 15,
+   "diff": -6.0,
+   "obsCount": 16,
    "pts": [
     [
      "2026-06-11",
@@ -8154,19 +8310,23 @@
     [
      "2026-08-31",
      14990
+    ],
+    [
+     "2026-09-14",
+     14990
     ]
    ]
   },
   "Unimarc___Quilmes Pack cerveza quilmes clásica botella 24 un de 300 cc": {
    "tienda": "Unimarc",
    "nombre": "Quilmes Pack cerveza quilmes clásica botella 24 un de 300 cc",
-   "min": 11990,
+   "min": 5190,
    "max": 19990,
-   "avg": 13965,
-   "cur": 11990,
+   "avg": 12990,
+   "cur": 5190,
    "isMin": true,
-   "diff": -14.1,
-   "obsCount": 8,
+   "diff": -60.0,
+   "obsCount": 9,
    "pts": [
     [
      "2026-06-11",
@@ -8199,6 +8359,10 @@
     [
      "2026-09-12",
      11990
+    ],
+    [
+     "2026-09-14",
+     5190
     ]
    ]
   },
@@ -8207,11 +8371,11 @@
    "nombre": "Quilmes Pack cerveza quilmes clásica lata 12 un de 354 cc",
    "min": 6490,
    "max": 8990,
-   "avg": 7220,
+   "avg": 7209,
    "cur": 6990,
    "isMin": false,
-   "diff": -3.2,
-   "obsCount": 20,
+   "diff": -3.0,
+   "obsCount": 21,
    "pts": [
     [
      "2026-06-11",
@@ -8292,6 +8456,10 @@
     [
      "2026-09-08",
      6990
+    ],
+    [
+     "2026-09-14",
+     6990
     ]
    ]
   },
@@ -8321,11 +8489,11 @@
    "nombre": "Artesanos Del Cochiguaz Pisco artesanos del cochiguaz especial 35° botella 1 l",
    "min": 4690,
    "max": 5750,
-   "avg": 5214,
+   "avg": 5210,
    "cur": 5190,
    "isMin": false,
-   "diff": -0.5,
-   "obsCount": 5,
+   "diff": -0.4,
+   "obsCount": 6,
    "pts": [
     [
      "2026-06-11",
@@ -8345,6 +8513,10 @@
     ],
     [
      "2026-08-18",
+     5190
+    ],
+    [
+     "2026-09-14",
      5190
     ]
    ]
@@ -8375,11 +8547,11 @@
    "nombre": "Alto Del Carmen Pisco alto del carmen especial botella 1.5 l",
    "min": 10490,
    "max": 12990,
-   "avg": 11501,
+   "avg": 11400,
    "cur": 10490,
    "isMin": true,
-   "diff": -8.8,
-   "obsCount": 9,
+   "diff": -8.0,
+   "obsCount": 10,
    "pts": [
     [
      "2026-06-11",
@@ -8416,6 +8588,10 @@
     [
      "2026-09-08",
      10490
+    ],
+    [
+     "2026-09-14",
+     10490
     ]
    ]
   },
@@ -8424,11 +8600,11 @@
    "nombre": "Bacardi Ron bacardi añejo botella 700 cc",
    "min": 7690,
    "max": 11690,
-   "avg": 9730,
+   "avg": 9663,
    "cur": 8990,
    "isMin": false,
-   "diff": -7.6,
-   "obsCount": 10,
+   "diff": -7.0,
+   "obsCount": 11,
    "pts": [
     [
      "2026-06-11",
@@ -8469,6 +8645,10 @@
     [
      "2026-09-08",
      8990
+    ],
+    [
+     "2026-09-14",
+     8990
     ]
    ]
   },
@@ -8477,11 +8657,11 @@
    "nombre": "Bacardi Ron blanco bacardi superior botella 980 cc",
    "min": 8390,
    "max": 11990,
-   "avg": 10373,
+   "avg": 10604,
    "cur": 11990,
    "isMin": false,
-   "diff": 15.6,
-   "obsCount": 6,
+   "diff": 13.1,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-11",
@@ -8506,6 +8686,10 @@
     [
      "2026-08-18",
      11990
+    ],
+    [
+     "2026-09-14",
+     11990
     ]
    ]
   },
@@ -8514,11 +8698,11 @@
    "nombre": "Sierra Morena Ron blanco sierra morena botella 1 l",
    "min": 6390,
    "max": 7150,
-   "avg": 6770,
+   "avg": 6897,
    "cur": 7150,
    "isMin": false,
-   "diff": 5.6,
-   "obsCount": 2,
+   "diff": 3.7,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -8526,6 +8710,10 @@
     ],
     [
      "2026-06-24",
+     7150
+    ],
+    [
+     "2026-09-14",
      7150
     ]
    ]
@@ -8564,11 +8752,11 @@
    "nombre": "Puklaro Vodka puklaro botella 750 cc",
    "min": 7990,
    "max": 10790,
-   "avg": 9123,
+   "avg": 9019,
    "cur": 8390,
    "isMin": false,
-   "diff": -8.0,
-   "obsCount": 6,
+   "diff": -7.0,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-11",
@@ -8593,6 +8781,10 @@
     [
      "2026-07-20",
      8390
+    ],
+    [
+     "2026-09-14",
+     8390
     ]
    ]
   },
@@ -8601,11 +8793,11 @@
    "nombre": "Ustinov Vodka ustinov original botella 700 cc",
    "min": 3790,
    "max": 5890,
-   "avg": 5068,
+   "avg": 5159,
    "cur": 5890,
    "isMin": false,
-   "diff": 16.2,
-   "obsCount": 8,
+   "diff": 14.2,
+   "obsCount": 9,
    "pts": [
     [
      "2026-06-11",
@@ -8638,6 +8830,10 @@
     [
      "2026-08-31",
      5890
+    ],
+    [
+     "2026-09-14",
+     5890
     ]
    ]
   },
@@ -8646,11 +8842,11 @@
    "nombre": "Eristoff Vodka eristoff original botella 950 cc",
    "min": 6690,
    "max": 8190,
-   "avg": 7502,
+   "avg": 7468,
    "cur": 7190,
    "isMin": false,
-   "diff": -4.2,
-   "obsCount": 8,
+   "diff": -3.7,
+   "obsCount": 9,
    "pts": [
     [
      "2026-06-11",
@@ -8682,6 +8878,10 @@
     ],
     [
      "2026-08-10",
+     7190
+    ],
+    [
+     "2026-09-14",
      7190
     ]
    ]
@@ -8737,11 +8937,11 @@
    "nombre": "Blenders Pride Whisky blenders pride botella 1 l",
    "min": 7490,
    "max": 7750,
-   "avg": 7620,
+   "avg": 7663,
    "cur": 7750,
    "isMin": false,
-   "diff": 1.7,
-   "obsCount": 2,
+   "diff": 1.1,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -8749,6 +8949,10 @@
     ],
     [
      "2026-09-07",
+     7750
+    ],
+    [
+     "2026-09-14",
      7750
     ]
    ]
@@ -8758,11 +8962,11 @@
    "nombre": "Ballantines Whisky ballantines wild cereza botella 700 cc",
    "min": 9490,
    "max": 13690,
-   "avg": 11798,
+   "avg": 11691,
    "cur": 10190,
    "isMin": false,
-   "diff": -13.6,
-   "obsCount": 14,
+   "diff": -12.8,
+   "obsCount": 15,
    "pts": [
     [
      "2026-06-11",
@@ -8819,6 +9023,10 @@
     [
      "2026-09-08",
      10190
+    ],
+    [
+     "2026-09-14",
+     10190
     ]
    ]
   },
@@ -8831,10 +9039,14 @@
    "cur": 21990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     21990
+    ],
+    [
+     "2026-09-14",
      21990
     ]
    ]
@@ -8869,11 +9081,11 @@
    "nombre": "Brighton Gin brighton pink botella 700 cc",
    "min": 9280,
    "max": 10990,
-   "avg": 10420,
+   "avg": 10562,
    "cur": 10990,
    "isMin": false,
-   "diff": 5.5,
-   "obsCount": 3,
+   "diff": 4.1,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -8885,6 +9097,10 @@
     ],
     [
      "2026-08-18",
+     10990
+    ],
+    [
+     "2026-09-14",
      10990
     ]
    ]
@@ -8911,11 +9127,11 @@
    "nombre": "Jagermeister Licor de hierbas jagermeister 700 cc",
    "min": 11490,
    "max": 17490,
-   "avg": 14303,
+   "avg": 14134,
    "cur": 13117,
    "isMin": false,
-   "diff": -8.3,
-   "obsCount": 6,
+   "diff": -7.2,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-11",
@@ -8939,6 +9155,10 @@
     ],
     [
      "2026-09-09",
+     13117
+    ],
+    [
+     "2026-09-14",
      13117
     ]
    ]
@@ -8965,11 +9185,11 @@
    "nombre": "Coca Cola Bebida coca cola original 1 l",
    "min": 1000,
    "max": 2000,
-   "avg": 1667,
+   "avg": 1750,
    "cur": 2000,
    "isMin": false,
-   "diff": 20.0,
-   "obsCount": 3,
+   "diff": 14.3,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -8982,6 +9202,10 @@
     [
      "2026-08-06",
      2000
+    ],
+    [
+     "2026-09-14",
+     2000
     ]
    ]
   },
@@ -8990,11 +9214,11 @@
    "nombre": "Coca Cola Bebida coca cola original desechable 3 l",
    "min": 2550,
    "max": 3290,
-   "avg": 2764,
+   "avg": 2755,
    "cur": 2690,
    "isMin": false,
-   "diff": -2.7,
-   "obsCount": 7,
+   "diff": -2.4,
+   "obsCount": 8,
    "pts": [
     [
      "2026-06-11",
@@ -9023,6 +9247,10 @@
     [
      "2026-08-05",
      2690
+    ],
+    [
+     "2026-09-14",
+     2690
     ]
    ]
   },
@@ -9031,11 +9259,11 @@
    "nombre": "Coca Cola Zero Bebida coca cola zero 1.5 l",
    "min": 2290,
    "max": 4990,
-   "avg": 2990,
+   "avg": 3390,
    "cur": 4990,
    "isMin": false,
-   "diff": 66.9,
-   "obsCount": 4,
+   "diff": 47.2,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -9051,6 +9279,10 @@
     ],
     [
      "2026-08-28",
+     4990
+    ],
+    [
+     "2026-09-14",
      4990
     ]
    ]
@@ -9180,11 +9412,11 @@
    "nombre": "Fanta Bebida fanta sin azúcar desechable 3 l",
    "min": 2590,
    "max": 7200,
-   "avg": 3918,
+   "avg": 3652,
    "cur": 2590,
    "isMin": true,
-   "diff": -33.9,
-   "obsCount": 4,
+   "diff": -29.1,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -9201,6 +9433,10 @@
     [
      "2026-08-05",
      2590
+    ],
+    [
+     "2026-09-14",
+     2590
     ]
    ]
   },
@@ -9209,11 +9445,11 @@
    "nombre": "Canada Dry Bebida canada dry agua tónica zero desechable 1.5 l",
    "min": 1590,
    "max": 2150,
-   "avg": 1943,
+   "avg": 1995,
    "cur": 2150,
    "isMin": false,
-   "diff": 10.7,
-   "obsCount": 3,
+   "diff": 7.8,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -9225,6 +9461,10 @@
     ],
     [
      "2026-09-08",
+     2150
+    ],
+    [
+     "2026-09-14",
      2150
     ]
    ]
@@ -9293,11 +9533,11 @@
    "nombre": "Sprite Bebida sprite zero 1.5 l",
    "min": 2290,
    "max": 5900,
-   "avg": 3218,
+   "avg": 3754,
    "cur": 5900,
    "isMin": false,
-   "diff": 83.3,
-   "obsCount": 4,
+   "diff": 57.2,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -9314,6 +9554,10 @@
     [
      "2026-08-28",
      5900
+    ],
+    [
+     "2026-09-14",
+     5900
     ]
    ]
   },
@@ -9322,11 +9566,11 @@
    "nombre": "Coca Cola Pack bebida coca cola + sprite sin azúcar 2 un 3 l",
    "min": 4990,
    "max": 5390,
-   "avg": 5223,
+   "avg": 5219,
    "cur": 5190,
    "isMin": false,
    "diff": -0.6,
-   "obsCount": 6,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-11",
@@ -9351,6 +9595,10 @@
     [
      "2026-07-18",
      5190
+    ],
+    [
+     "2026-09-14",
+     5190
     ]
    ]
   },
@@ -9359,11 +9607,11 @@
    "nombre": "Red Bull Red bull bebida energética lata 250 ml",
    "min": 3220,
    "max": 4000,
-   "avg": 3610,
+   "avg": 3740,
    "cur": 4000,
    "isMin": false,
-   "diff": 10.8,
-   "obsCount": 2,
+   "diff": 7.0,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -9371,6 +9619,10 @@
     ],
     [
      "2026-06-16",
+     4000
+    ],
+    [
+     "2026-09-14",
      4000
     ]
    ]
@@ -9401,11 +9653,11 @@
    "nombre": "Red Bull Red bull bebida energética lata 355 ml",
    "min": 2000,
    "max": 2490,
-   "avg": 2196,
+   "avg": 2163,
    "cur": 2000,
    "isMin": true,
-   "diff": -8.9,
-   "obsCount": 5,
+   "diff": -7.5,
+   "obsCount": 6,
    "pts": [
     [
      "2026-06-11",
@@ -9426,6 +9678,10 @@
     [
      "2026-07-18",
      2000
+    ],
+    [
+     "2026-09-14",
+     2000
     ]
    ]
   },
@@ -9434,11 +9690,11 @@
    "nombre": "Red Bull Red bull bebida energética lata 473 ml",
    "min": 3150,
    "max": 3290,
-   "avg": 3230,
+   "avg": 3235,
    "cur": 3250,
    "isMin": false,
-   "diff": 0.6,
-   "obsCount": 3,
+   "diff": 0.5,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -9450,6 +9706,10 @@
     ],
     [
      "2026-09-08",
+     3250
+    ],
+    [
+     "2026-09-14",
      3250
     ]
    ]
@@ -9542,11 +9802,11 @@
    "nombre": "Quillayes Jugo de naranja quillayes natural one 1.3 l",
    "min": 5890,
    "max": 6890,
-   "avg": 6565,
+   "avg": 6630,
    "cur": 6890,
    "isMin": false,
-   "diff": 5.0,
-   "obsCount": 4,
+   "diff": 3.9,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -9563,6 +9823,10 @@
     [
      "2026-07-29",
      6890
+    ],
+    [
+     "2026-09-14",
+     6890
     ]
    ]
   },
@@ -9571,11 +9835,11 @@
    "nombre": "Nuestra Cocina Hielo nuestra cocina bolsa 1 kg",
    "min": 760,
    "max": 950,
-   "avg": 859,
+   "avg": 863,
    "cur": 950,
    "isMin": false,
-   "diff": 10.6,
-   "obsCount": 23,
+   "diff": 10.1,
+   "obsCount": 24,
    "pts": [
     [
      "2026-06-11",
@@ -9668,6 +9932,10 @@
     [
      "2026-09-08",
      950
+    ],
+    [
+     "2026-09-14",
+     950
     ]
    ]
   },
@@ -9676,11 +9944,11 @@
    "nombre": "12x Cerveza Patagonia Hoppy Lager 4.8° Botella 330cc",
    "min": 14890,
    "max": 14980,
-   "avg": 14935,
+   "avg": 14939,
    "cur": 14980,
    "isMin": false,
    "diff": 0.3,
-   "obsCount": 10,
+   "obsCount": 11,
    "pts": [
     [
      "2026-06-11",
@@ -9720,6 +9988,10 @@
     ],
     [
      "2026-08-06",
+     14980
+    ],
+    [
+     "2026-09-14",
      14980
     ]
    ]
@@ -9818,10 +10090,14 @@
    "cur": 6590,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     6590
+    ],
+    [
+     "2026-09-14",
      6590
     ]
    ]
@@ -9835,10 +10111,14 @@
    "cur": 33970,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     33970
+    ],
+    [
+     "2026-09-14",
      33970
     ]
    ]
@@ -9852,10 +10132,14 @@
    "cur": 12490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     12490
+    ],
+    [
+     "2026-09-14",
      12490
     ]
    ]
@@ -9869,10 +10153,14 @@
    "cur": 32990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     32990
+    ],
+    [
+     "2026-09-14",
      32990
     ]
    ]
@@ -9928,10 +10216,14 @@
    "cur": 9290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     9290
+    ],
+    [
+     "2026-09-14",
      9290
     ]
    ]
@@ -9962,10 +10254,14 @@
    "cur": 10790,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     10790
+    ],
+    [
+     "2026-09-14",
      10790
     ]
    ]
@@ -9975,11 +10271,11 @@
    "nombre": "Vodka Wyborowa 37.5° 700cc",
    "min": 5490,
    "max": 5990,
-   "avg": 5657,
+   "avg": 5615,
    "cur": 5490,
    "isMin": true,
-   "diff": -3.0,
-   "obsCount": 3,
+   "diff": -2.2,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -9992,6 +10288,10 @@
     [
      "2026-06-29",
      5490
+    ],
+    [
+     "2026-09-14",
+     5490
     ]
    ]
   },
@@ -10000,11 +10300,11 @@
    "nombre": "Whisky Ballantine's Finest 40° 750cc",
    "min": 11990,
    "max": 12990,
-   "avg": 12657,
+   "avg": 12740,
    "cur": 12990,
    "isMin": false,
-   "diff": 2.6,
-   "obsCount": 3,
+   "diff": 2.0,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -10017,6 +10317,10 @@
     [
      "2026-08-06",
      12990
+    ],
+    [
+     "2026-09-14",
+     12990
     ]
    ]
   },
@@ -10025,11 +10329,11 @@
    "nombre": "Whisky Passport 40° 700cc",
    "min": 7390,
    "max": 8190,
-   "avg": 7746,
+   "avg": 7710,
    "cur": 7390,
    "isMin": true,
-   "diff": -4.6,
-   "obsCount": 9,
+   "diff": -4.2,
+   "obsCount": 10,
    "pts": [
     [
      "2026-06-11",
@@ -10066,6 +10370,10 @@
     [
      "2026-09-12",
      7390
+    ],
+    [
+     "2026-09-14",
+     7390
     ]
    ]
   },
@@ -10078,10 +10386,14 @@
    "cur": 16990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     16990
+    ],
+    [
+     "2026-09-14",
      16990
     ]
    ]
@@ -10095,10 +10407,14 @@
    "cur": 175690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     175690
+    ],
+    [
+     "2026-09-14",
      175690
     ]
    ]
@@ -10133,11 +10449,11 @@
    "nombre": "Gin Brighton 37.5° 700cc",
    "min": 9990,
    "max": 10990,
-   "avg": 10323,
+   "avg": 10240,
    "cur": 9990,
    "isMin": true,
-   "diff": -3.2,
-   "obsCount": 3,
+   "diff": -2.4,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -10150,6 +10466,10 @@
     [
      "2026-06-29",
      9990
+    ],
+    [
+     "2026-09-14",
+     9990
     ]
    ]
   },
@@ -10158,11 +10478,11 @@
    "nombre": "Gin Beefeater London Dry 40° 1L",
    "min": 18990,
    "max": 19990,
-   "avg": 19323,
+   "avg": 19240,
    "cur": 18990,
    "isMin": true,
-   "diff": -1.7,
-   "obsCount": 3,
+   "diff": -1.3,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -10175,6 +10495,10 @@
     [
      "2026-06-29",
      18990
+    ],
+    [
+     "2026-09-14",
+     18990
     ]
    ]
   },
@@ -10183,11 +10507,11 @@
    "nombre": "Gin Monkey 47° 500cc",
    "min": 50990,
    "max": 54990,
-   "avg": 52704,
+   "avg": 52490,
    "cur": 50990,
    "isMin": true,
-   "diff": -3.3,
-   "obsCount": 7,
+   "diff": -2.9,
+   "obsCount": 8,
    "pts": [
     [
      "2026-06-11",
@@ -10216,6 +10540,10 @@
     [
      "2026-08-31",
      50990
+    ],
+    [
+     "2026-09-14",
+     50990
     ]
    ]
   },
@@ -10228,10 +10556,14 @@
    "cur": 18540,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     18540
+    ],
+    [
+     "2026-09-14",
      18540
     ]
    ]
@@ -10245,10 +10577,14 @@
    "cur": 11400,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     11400
+    ],
+    [
+     "2026-09-14",
      11400
     ]
    ]
@@ -10296,10 +10632,14 @@
    "cur": 12000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     12000
+    ],
+    [
+     "2026-09-14",
      12000
     ]
    ]
@@ -10313,10 +10653,14 @@
    "cur": 19199,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     19199
+    ],
+    [
+     "2026-09-14",
      19199
     ]
    ]
@@ -10330,10 +10674,14 @@
    "cur": 7560,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     7560
+    ],
+    [
+     "2026-09-14",
      7560
     ]
    ]
@@ -10343,11 +10691,11 @@
    "nombre": "4x Bebida Energética Red Bull 250ccc",
    "min": 7160,
    "max": 7560,
-   "avg": 7427,
+   "avg": 7460,
    "cur": 7560,
    "isMin": false,
-   "diff": 1.8,
-   "obsCount": 3,
+   "diff": 1.3,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -10359,6 +10707,10 @@
     ],
     [
      "2026-08-07",
+     7560
+    ],
+    [
+     "2026-09-14",
      7560
     ]
    ]
@@ -10372,10 +10724,14 @@
    "cur": 16199,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     16199
+    ],
+    [
+     "2026-09-14",
      16199
     ]
    ]
@@ -10389,10 +10745,14 @@
    "cur": 9000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     9000
+    ],
+    [
+     "2026-09-14",
      9000
     ]
    ]
@@ -10406,10 +10766,14 @@
    "cur": 8400,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     8400
+    ],
+    [
+     "2026-09-14",
      8400
     ]
    ]
@@ -10423,10 +10787,14 @@
    "cur": 15450,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     15450
+    ],
+    [
+     "2026-09-14",
      15450
     ]
    ]
@@ -10440,10 +10808,14 @@
    "cur": 15790,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     15790
+    ],
+    [
+     "2026-09-14",
      15790
     ]
    ]
@@ -10457,10 +10829,14 @@
    "cur": 11580,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     11580
+    ],
+    [
+     "2026-09-14",
      11580
     ]
    ]
@@ -10474,10 +10850,14 @@
    "cur": 21490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     21490
+    ],
+    [
+     "2026-09-14",
      21490
     ]
    ]
@@ -10491,10 +10871,14 @@
    "cur": 14400,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     14400
+    ],
+    [
+     "2026-09-14",
      14400
     ]
    ]
@@ -10508,10 +10892,14 @@
    "cur": 14990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     14990
+    ],
+    [
+     "2026-09-14",
      14990
     ]
    ]
@@ -10525,10 +10913,14 @@
    "cur": 11990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     11990
+    ],
+    [
+     "2026-09-14",
      11990
     ]
    ]
@@ -10559,10 +10951,14 @@
    "cur": 1250,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1250
+    ],
+    [
+     "2026-09-14",
      1250
     ]
    ]
@@ -10576,10 +10972,14 @@
    "cur": 990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     990
+    ],
+    [
+     "2026-09-14",
      990
     ]
    ]
@@ -10593,10 +10993,14 @@
    "cur": 8990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     8990
+    ],
+    [
+     "2026-09-14",
      8990
     ]
    ]
@@ -10610,10 +11014,14 @@
    "cur": 4750,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     4750
+    ],
+    [
+     "2026-09-14",
      4750
     ]
    ]
@@ -10627,10 +11035,14 @@
    "cur": 6990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     6990
+    ],
+    [
+     "2026-09-14",
      6990
     ]
    ]
@@ -10644,10 +11056,14 @@
    "cur": 1150,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1150
+    ],
+    [
+     "2026-09-14",
      1150
     ]
    ]
@@ -10657,11 +11073,11 @@
    "nombre": "Cerveza Budweiser lata 473 CC x6",
    "min": 4990,
    "max": 5490,
-   "avg": 5273,
+   "avg": 5233,
    "cur": 4990,
    "isMin": true,
-   "diff": -5.4,
-   "obsCount": 6,
+   "diff": -4.6,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-11",
@@ -10686,6 +11102,10 @@
     [
      "2026-09-01",
      4990
+    ],
+    [
+     "2026-09-14",
+     4990
     ]
    ]
   },
@@ -10698,10 +11118,14 @@
    "cur": 28800,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     28800
+    ],
+    [
+     "2026-09-14",
      28800
     ]
    ]
@@ -10711,11 +11135,11 @@
    "nombre": "Cerveza Heineken lata 470 CC x6",
    "min": 5350,
    "max": 5990,
-   "avg": 5777,
+   "avg": 5830,
    "cur": 5990,
    "isMin": false,
-   "diff": 3.7,
-   "obsCount": 3,
+   "diff": 2.7,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -10727,6 +11151,10 @@
     ],
     [
      "2026-09-01",
+     5990
+    ],
+    [
+     "2026-09-14",
      5990
     ]
    ]
@@ -10770,11 +11198,11 @@
    "nombre": "Pisco Alto del Carmen 1 litro 35 grados",
    "min": 5990,
    "max": 6290,
-   "avg": 6140,
+   "avg": 6190,
    "cur": 6290,
    "isMin": false,
-   "diff": 2.4,
-   "obsCount": 2,
+   "diff": 1.6,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -10782,6 +11210,10 @@
     ],
     [
      "2026-09-08",
+     6290
+    ],
+    [
+     "2026-09-14",
      6290
     ]
    ]
@@ -10791,11 +11223,11 @@
    "nombre": "Pisco Alto del Carmen Transparente 40 750 CC",
    "min": 5790,
    "max": 6590,
-   "avg": 6340,
+   "avg": 6390,
    "cur": 6590,
    "isMin": false,
-   "diff": 3.9,
-   "obsCount": 4,
+   "diff": 3.1,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -10812,6 +11244,10 @@
     [
      "2026-09-08",
      6590
+    ],
+    [
+     "2026-09-14",
+     6590
     ]
    ]
   },
@@ -10824,10 +11260,14 @@
    "cur": 53990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     53990
+    ],
+    [
+     "2026-09-14",
      53990
     ]
    ]
@@ -10862,10 +11302,14 @@
    "cur": 6990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     6990
+    ],
+    [
+     "2026-09-14",
      6990
     ]
    ]
@@ -10879,10 +11323,14 @@
    "cur": 12990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     12990
+    ],
+    [
+     "2026-09-14",
      12990
     ]
    ]
@@ -10909,11 +11357,11 @@
    "nombre": "Vodka Stolichnaya 1 litro",
    "min": 10990,
    "max": 11490,
-   "avg": 11240,
+   "avg": 11157,
    "cur": 10990,
    "isMin": true,
-   "diff": -2.2,
-   "obsCount": 2,
+   "diff": -1.5,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-11",
@@ -10921,6 +11369,10 @@
     ],
     [
      "2026-09-08",
+     10990
+    ],
+    [
+     "2026-09-14",
      10990
     ]
    ]
@@ -10934,10 +11386,14 @@
    "cur": 7140,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     7140
+    ],
+    [
+     "2026-09-14",
      7140
     ]
    ]
@@ -10951,10 +11407,14 @@
    "cur": 63000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     63000
+    ],
+    [
+     "2026-09-14",
      63000
     ]
    ]
@@ -10964,11 +11424,11 @@
    "nombre": "Vodka Spirit Blueberry botella 275 CC",
    "min": 1490,
    "max": 1790,
-   "avg": 1690,
+   "avg": 1715,
    "cur": 1790,
    "isMin": false,
-   "diff": 5.9,
-   "obsCount": 3,
+   "diff": 4.4,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -10980,6 +11440,10 @@
     ],
     [
      "2026-08-05",
+     1790
+    ],
+    [
+     "2026-09-14",
      1790
     ]
    ]
@@ -10993,10 +11457,14 @@
    "cur": 4690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     4690
+    ],
+    [
+     "2026-09-14",
      4690
     ]
    ]
@@ -11010,10 +11478,14 @@
    "cur": 37200,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     37200
+    ],
+    [
+     "2026-09-14",
      37200
     ]
    ]
@@ -11027,10 +11499,14 @@
    "cur": 69000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     69000
+    ],
+    [
+     "2026-09-14",
      69000
     ]
    ]
@@ -11061,10 +11537,14 @@
    "cur": 59950,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     59950
+    ],
+    [
+     "2026-09-14",
      59950
     ]
    ]
@@ -11078,10 +11558,14 @@
    "cur": 9990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     9990
+    ],
+    [
+     "2026-09-14",
      9990
     ]
    ]
@@ -11091,11 +11575,11 @@
    "nombre": "Whisky Ballantines Finest 1 litro",
    "min": 9990,
    "max": 11990,
-   "avg": 11323,
+   "avg": 11490,
    "cur": 11990,
    "isMin": false,
-   "diff": 5.9,
-   "obsCount": 3,
+   "diff": 4.4,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -11107,6 +11591,10 @@
     ],
     [
      "2026-09-01",
+     11990
+    ],
+    [
+     "2026-09-14",
      11990
     ]
    ]
@@ -11120,10 +11608,14 @@
    "cur": 115960,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     115960
+    ],
+    [
+     "2026-09-14",
      115960
     ]
    ]
@@ -11137,10 +11629,14 @@
    "cur": 103960,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     103960
+    ],
+    [
+     "2026-09-14",
      103960
     ]
    ]
@@ -11188,10 +11684,14 @@
    "cur": 77970,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     77970
+    ],
+    [
+     "2026-09-14",
      77970
     ]
    ]
@@ -11218,11 +11718,11 @@
    "nombre": "Gin Tanqueray Botella 700cc",
    "min": 12990,
    "max": 14990,
-   "avg": 14323,
+   "avg": 14133,
    "cur": 12990,
    "isMin": true,
-   "diff": -9.3,
-   "obsCount": 6,
+   "diff": -8.1,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-11",
@@ -11246,6 +11746,10 @@
     ],
     [
      "2026-09-08",
+     12990
+    ],
+    [
+     "2026-09-14",
      12990
     ]
    ]
@@ -11276,10 +11780,14 @@
    "cur": 38970,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     38970
+    ],
+    [
+     "2026-09-14",
      38970
     ]
    ]
@@ -11289,11 +11797,11 @@
    "nombre": "Jagermeister 1 Litro",
    "min": 16990,
    "max": 18990,
-   "avg": 17990,
+   "avg": 18190,
    "cur": 18990,
    "isMin": false,
-   "diff": 5.6,
-   "obsCount": 4,
+   "diff": 4.4,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-11",
@@ -11310,6 +11818,10 @@
     [
      "2026-09-08",
      18990
+    ],
+    [
+     "2026-09-14",
+     18990
     ]
    ]
   },
@@ -11322,10 +11834,14 @@
    "cur": 12990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     12990
+    ],
+    [
+     "2026-09-14",
      12990
     ]
    ]
@@ -11339,10 +11855,14 @@
    "cur": 14940,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     14940
+    ],
+    [
+     "2026-09-14",
      14940
     ]
    ]
@@ -11373,10 +11893,14 @@
    "cur": 11280,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     11280
+    ],
+    [
+     "2026-09-14",
      11280
     ]
    ]
@@ -11390,10 +11914,14 @@
    "cur": 2790,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2790
+    ],
+    [
+     "2026-09-14",
      2790
     ]
    ]
@@ -11407,10 +11935,14 @@
    "cur": 1990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1990
+    ],
+    [
+     "2026-09-14",
      1990
     ]
    ]
@@ -11424,10 +11956,14 @@
    "cur": 2390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2390
+    ],
+    [
+     "2026-09-14",
      2390
     ]
    ]
@@ -11441,10 +11977,14 @@
    "cur": 2390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2390
+    ],
+    [
+     "2026-09-14",
      2390
     ]
    ]
@@ -11458,10 +11998,14 @@
    "cur": 3150,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     3150
+    ],
+    [
+     "2026-09-14",
      3150
     ]
    ]
@@ -11475,10 +12019,14 @@
    "cur": 10440,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     10440
+    ],
+    [
+     "2026-09-14",
      10440
     ]
    ]
@@ -11492,10 +12040,14 @@
    "cur": 2290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2290
+    ],
+    [
+     "2026-09-14",
      2290
     ]
    ]
@@ -11509,10 +12061,14 @@
    "cur": 2990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2990
+    ],
+    [
+     "2026-09-14",
      2990
     ]
    ]
@@ -11526,10 +12082,14 @@
    "cur": 3150,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     3150
+    ],
+    [
+     "2026-09-14",
      3150
     ]
    ]
@@ -11543,10 +12103,14 @@
    "cur": 2390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2390
+    ],
+    [
+     "2026-09-14",
      2390
     ]
    ]
@@ -11560,10 +12124,14 @@
    "cur": 11340,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     11340
+    ],
+    [
+     "2026-09-14",
      11340
     ]
    ]
@@ -11594,10 +12162,14 @@
    "cur": 8340,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     8340
+    ],
+    [
+     "2026-09-14",
      8340
     ]
    ]
@@ -11611,10 +12183,14 @@
    "cur": 1750,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1750
+    ],
+    [
+     "2026-09-14",
      1750
     ]
    ]
@@ -11645,10 +12221,14 @@
    "cur": 2490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2490
+    ],
+    [
+     "2026-09-14",
      2490
     ]
    ]
@@ -11679,10 +12259,14 @@
    "cur": 16680,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     16680
+    ],
+    [
+     "2026-09-14",
      16680
     ]
    ]
@@ -11696,10 +12280,14 @@
    "cur": 2290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2290
+    ],
+    [
+     "2026-09-14",
      2290
     ]
    ]
@@ -11730,10 +12318,14 @@
    "cur": 11940,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     11940
+    ],
+    [
+     "2026-09-14",
      11940
     ]
    ]
@@ -11781,10 +12373,14 @@
    "cur": 1990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1990
+    ],
+    [
+     "2026-09-14",
      1990
     ]
    ]
@@ -11832,10 +12428,14 @@
    "cur": 9690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     9690
+    ],
+    [
+     "2026-09-14",
      9690
     ]
    ]
@@ -11934,10 +12534,14 @@
    "cur": 11990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     11990
+    ],
+    [
+     "2026-09-14",
      11990
     ]
    ]
@@ -11951,10 +12555,14 @@
    "cur": 14390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     14390
+    ],
+    [
+     "2026-09-14",
      14390
     ]
    ]
@@ -12002,10 +12610,14 @@
    "cur": 17490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     17490
+    ],
+    [
+     "2026-09-14",
      17490
     ]
    ]
@@ -12019,10 +12631,14 @@
    "cur": 35990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     35990
+    ],
+    [
+     "2026-09-14",
      35990
     ]
    ]
@@ -12049,11 +12665,11 @@
    "nombre": "Gin Pajarillo Botella 700cc 47º alc.",
    "min": 18490,
    "max": 19990,
-   "avg": 19157,
+   "avg": 19365,
    "cur": 19990,
    "isMin": false,
-   "diff": 4.3,
-   "obsCount": 3,
+   "diff": 3.2,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-11",
@@ -12065,6 +12681,10 @@
     ],
     [
      "2026-09-04",
+     19990
+    ],
+    [
+     "2026-09-14",
      19990
     ]
    ]
@@ -12078,10 +12698,14 @@
    "cur": 12990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     12990
+    ],
+    [
+     "2026-09-14",
      12990
     ]
    ]
@@ -12095,10 +12719,14 @@
    "cur": 17150,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     17150
+    ],
+    [
+     "2026-09-14",
      17150
     ]
    ]
@@ -12137,10 +12765,14 @@
    "cur": 2050,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2050
+    ],
+    [
+     "2026-09-14",
      2050
     ]
    ]
@@ -12171,10 +12803,14 @@
    "cur": 2290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     2290
+    ],
+    [
+     "2026-09-14",
      2290
     ]
    ]
@@ -12264,11 +12900,11 @@
    "nombre": "Escudo Pack cerveza escudo lata 12 un de 350 cc",
    "min": 5990,
    "max": 6990,
-   "avg": 6540,
+   "avg": 6461,
    "cur": 5990,
    "isMin": true,
-   "diff": -8.4,
-   "obsCount": 6,
+   "diff": -7.3,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-12",
@@ -12293,6 +12929,10 @@
     [
      "2026-09-08",
      5990
+    ],
+    [
+     "2026-09-14",
+     5990
     ]
    ]
   },
@@ -12301,11 +12941,11 @@
    "nombre": "Horcon Quemado Pisco horcón quemado 35° añejado botella 645 cc",
    "min": 10490,
    "max": 11890,
-   "avg": 11090,
+   "avg": 11040,
    "cur": 10890,
    "isMin": false,
-   "diff": -1.8,
-   "obsCount": 3,
+   "diff": -1.4,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-12",
@@ -12317,6 +12957,10 @@
     ],
     [
      "2026-08-11",
+     10890
+    ],
+    [
+     "2026-09-14",
      10890
     ]
    ]
@@ -12465,10 +13109,14 @@
    "cur": 22990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-13",
+     22990
+    ],
+    [
+     "2026-09-14",
      22990
     ]
    ]
@@ -12563,11 +13211,11 @@
    "nombre": "Gin Kantal 43° 750 cc",
    "min": 13490,
    "max": 14489,
-   "avg": 14156,
+   "avg": 14239,
    "cur": 14489,
    "isMin": false,
-   "diff": 2.4,
-   "obsCount": 3,
+   "diff": 1.8,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-14",
@@ -12579,6 +13227,10 @@
     ],
     [
      "2026-09-05",
+     14489
+    ],
+    [
+     "2026-09-14",
      14489
     ]
    ]
@@ -12681,11 +13333,11 @@
    "nombre": "Sprite Bebida sprite desechable 3 l",
    "min": 2590,
    "max": 7200,
-   "avg": 3918,
+   "avg": 3652,
    "cur": 2590,
    "isMin": true,
-   "diff": -33.9,
-   "obsCount": 4,
+   "diff": -29.1,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-15",
@@ -12702,6 +13354,10 @@
     [
      "2026-08-05",
      2590
+    ],
+    [
+     "2026-09-14",
+     2590
     ]
    ]
   },
@@ -12714,10 +13370,14 @@
    "cur": 6990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-15",
+     6990
+    ],
+    [
+     "2026-09-14",
      6990
     ]
    ]
@@ -12925,10 +13585,14 @@
    "cur": 20580,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-17",
+     20580
+    ],
+    [
+     "2026-09-14",
      20580
     ]
    ]
@@ -13133,11 +13797,11 @@
    "nombre": "Kross Pack cerveza kross stout botella 4 un de 330 cc",
    "min": 5190,
    "max": 5290,
-   "avg": 5223,
+   "avg": 5215,
    "cur": 5190,
    "isMin": true,
-   "diff": -0.6,
-   "obsCount": 3,
+   "diff": -0.5,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-18",
@@ -13150,6 +13814,10 @@
     [
      "2026-07-18",
      5190
+    ],
+    [
+     "2026-09-14",
+     5190
     ]
    ]
   },
@@ -13158,11 +13826,11 @@
    "nombre": "Corona Pack cerveza corona extra botella 12 un de 330 cc",
    "min": 8990,
    "max": 9990,
-   "avg": 9407,
+   "avg": 9347,
    "cur": 8990,
    "isMin": true,
-   "diff": -4.4,
-   "obsCount": 6,
+   "diff": -3.8,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-18",
@@ -13186,6 +13854,10 @@
     ],
     [
      "2026-09-11",
+     8990
+    ],
+    [
+     "2026-09-14",
      8990
     ]
    ]
@@ -13250,10 +13922,14 @@
    "cur": 10690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-18",
+     10690
+    ],
+    [
+     "2026-09-14",
      10690
     ]
    ]
@@ -13331,11 +14007,11 @@
    "nombre": "Watts Néctar watt's durazno boca ancha 1.5 l",
    "min": 1393,
    "max": 4190,
-   "avg": 3022,
+   "avg": 3019,
    "cur": 3000,
    "isMin": false,
-   "diff": -0.7,
-   "obsCount": 7,
+   "diff": -0.6,
+   "obsCount": 8,
    "pts": [
     [
      "2026-06-19",
@@ -13364,6 +14040,10 @@
     [
      "2026-09-08",
      3000
+    ],
+    [
+     "2026-09-14",
+     3000
     ]
    ]
   },
@@ -13376,10 +14056,14 @@
    "cur": 5990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-19",
+     5990
+    ],
+    [
+     "2026-09-14",
      5990
     ]
    ]
@@ -13393,10 +14077,14 @@
    "cur": 22800,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-19",
+     22800
+    ],
+    [
+     "2026-09-14",
      22800
     ]
    ]
@@ -13516,10 +14204,14 @@
    "cur": 18960,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-20",
+     18960
+    ],
+    [
+     "2026-09-14",
      18960
     ]
    ]
@@ -13973,11 +14665,11 @@
    "nombre": "Alto Del Carmen Pisco alto del carmen especial 35° botella 750 cc",
    "min": 6690,
    "max": 6990,
-   "avg": 6890,
+   "avg": 6902,
    "cur": 6990,
    "isMin": false,
-   "diff": 1.5,
-   "obsCount": 7,
+   "diff": 1.3,
+   "obsCount": 8,
    "pts": [
     [
      "2026-06-24",
@@ -14006,6 +14698,10 @@
     [
      "2026-09-07",
      6990
+    ],
+    [
+     "2026-09-14",
+     6990
     ]
    ]
   },
@@ -14014,11 +14710,11 @@
    "nombre": "Artesanos Del Cochiguaz Pisco artesanos del cochiguaz especial 35° botella 700 cc",
    "min": 3690,
    "max": 4990,
-   "avg": 4061,
+   "avg": 4052,
    "cur": 3990,
    "isMin": false,
-   "diff": -1.7,
-   "obsCount": 7,
+   "diff": -1.5,
+   "obsCount": 8,
    "pts": [
     [
      "2026-06-24",
@@ -14046,6 +14742,10 @@
     ],
     [
      "2026-07-27",
+     3990
+    ],
+    [
+     "2026-09-14",
      3990
     ]
    ]
@@ -14092,11 +14792,11 @@
    "nombre": "Blenders Whisky blenders apple botella 750 cc",
    "min": 8250,
    "max": 8890,
-   "avg": 8570,
+   "avg": 8463,
    "cur": 8250,
    "isMin": true,
-   "diff": -3.7,
-   "obsCount": 2,
+   "diff": -2.5,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-24",
@@ -14104,6 +14804,10 @@
     ],
     [
      "2026-09-04",
+     8250
+    ],
+    [
+     "2026-09-14",
      8250
     ]
    ]
@@ -14113,11 +14817,11 @@
    "nombre": "Gordons Gin gordons london dry botella 750 cc",
    "min": 11990,
    "max": 13590,
-   "avg": 12523,
+   "avg": 12390,
    "cur": 11990,
    "isMin": true,
-   "diff": -4.3,
-   "obsCount": 3,
+   "diff": -3.2,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-24",
@@ -14130,6 +14834,10 @@
     [
      "2026-07-03",
      11990
+    ],
+    [
+     "2026-09-14",
+     11990
     ]
    ]
   },
@@ -14138,11 +14846,11 @@
    "nombre": "Beefeater Gin london dry beefeater botella 1 lt",
    "min": 18890,
    "max": 22850,
-   "avg": 20210,
+   "avg": 19880,
    "cur": 18890,
    "isMin": true,
-   "diff": -6.5,
-   "obsCount": 3,
+   "diff": -5.0,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-24",
@@ -14154,6 +14862,10 @@
     ],
     [
      "2026-07-03",
+     18890
+    ],
+    [
+     "2026-09-14",
      18890
     ]
    ]
@@ -14450,10 +15162,14 @@
    "cur": 21480,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-27",
+     21480
+    ],
+    [
+     "2026-09-14",
      21480
     ]
    ]
@@ -14463,11 +15179,11 @@
    "nombre": "12x Bebida Energética Red Bull 355cc",
    "min": 27490,
    "max": 28800,
-   "avg": 28145,
+   "avg": 27927,
    "cur": 27490,
    "isMin": true,
-   "diff": -2.3,
-   "obsCount": 2,
+   "diff": -1.6,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-27",
@@ -14475,6 +15191,10 @@
     ],
     [
      "2026-06-29",
+     27490
+    ],
+    [
+     "2026-09-14",
      27490
     ]
    ]
@@ -14488,10 +15208,14 @@
    "cur": 12990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-27",
+     12990
+    ],
+    [
+     "2026-09-14",
      12990
     ]
    ]
@@ -14704,11 +15428,11 @@
    "nombre": "Escudo Pack cerveza escudo lata 6 un de 470 cc",
    "min": 4790,
    "max": 5790,
-   "avg": 5290,
+   "avg": 5123,
    "cur": 4790,
    "isMin": true,
-   "diff": -9.5,
-   "obsCount": 2,
+   "diff": -6.5,
+   "obsCount": 3,
    "pts": [
     [
      "2026-07-01",
@@ -14716,6 +15440,10 @@
     ],
     [
      "2026-08-18",
+     4790
+    ],
+    [
+     "2026-09-14",
      4790
     ]
    ]
@@ -14906,10 +15634,14 @@
    "cur": 2000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-02",
+     2000
+    ],
+    [
+     "2026-09-14",
      2000
     ]
    ]
@@ -15037,11 +15769,11 @@
    "nombre": "Gin Gordons Botella 750cc",
    "min": 9690,
    "max": 9990,
-   "avg": 9840,
+   "avg": 9890,
    "cur": 9990,
    "isMin": false,
-   "diff": 1.5,
-   "obsCount": 2,
+   "diff": 1.0,
+   "obsCount": 3,
    "pts": [
     [
      "2026-07-04",
@@ -15049,6 +15781,10 @@
     ],
     [
      "2026-07-28",
+     9990
+    ],
+    [
+     "2026-09-14",
      9990
     ]
    ]
@@ -15062,10 +15798,14 @@
    "cur": 2690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-04",
+     2690
+    ],
+    [
+     "2026-09-14",
      2690
     ]
    ]
@@ -15270,10 +16010,14 @@
    "cur": 10990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-07",
+     10990
+    ],
+    [
+     "2026-09-14",
      10990
     ]
    ]
@@ -15355,10 +16099,14 @@
    "cur": 12000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-09",
+     12000
+    ],
+    [
+     "2026-09-14",
      12000
     ]
    ]
@@ -15474,10 +16222,14 @@
    "cur": 5990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-10",
+     5990
+    ],
+    [
+     "2026-09-14",
      5990
     ]
    ]
@@ -15576,10 +16328,14 @@
    "cur": 6090,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-12",
+     6090
+    ],
+    [
+     "2026-09-14",
      6090
     ]
    ]
@@ -15593,10 +16349,14 @@
    "cur": 21161,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-12",
+     21161
+    ],
+    [
+     "2026-09-14",
      21161
     ]
    ]
@@ -15822,10 +16582,14 @@
    "cur": 19199,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-16",
+     19199
+    ],
+    [
+     "2026-09-14",
      19199
     ]
    ]
@@ -15890,10 +16654,14 @@
    "cur": 5990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-16",
+     5990
+    ],
+    [
+     "2026-09-14",
      5990
     ]
    ]
@@ -15924,10 +16692,14 @@
    "cur": 11340,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-16",
+     11340
+    ],
+    [
+     "2026-09-14",
      11340
     ]
    ]
@@ -15941,10 +16713,14 @@
    "cur": 2390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-16",
+     2390
+    ],
+    [
+     "2026-09-14",
      2390
     ]
    ]
@@ -15971,11 +16747,11 @@
    "nombre": "Watts Jugo fresco watt's selección naranja mix 1.6 l",
    "min": 5790,
    "max": 6690,
-   "avg": 6240,
+   "avg": 6390,
    "cur": 6690,
    "isMin": false,
-   "diff": 7.2,
-   "obsCount": 2,
+   "diff": 4.7,
+   "obsCount": 3,
    "pts": [
     [
      "2026-07-17",
@@ -15983,6 +16759,10 @@
     ],
     [
      "2026-08-12",
+     6690
+    ],
+    [
+     "2026-09-14",
      6690
     ]
    ]
@@ -16183,10 +16963,14 @@
    "cur": 11990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-20",
+     11990
+    ],
+    [
+     "2026-09-14",
      11990
     ]
    ]
@@ -16353,10 +17137,14 @@
    "cur": 8990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-24",
+     8990
+    ],
+    [
+     "2026-09-14",
      8990
     ]
    ]
@@ -16387,10 +17175,14 @@
    "cur": 2490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-25",
+     2490
+    ],
+    [
+     "2026-09-14",
      2490
     ]
    ]
@@ -16404,10 +17196,14 @@
    "cur": 17400,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-26",
+     17400
+    ],
+    [
+     "2026-09-14",
      17400
     ]
    ]
@@ -16527,10 +17323,14 @@
    "cur": 7550,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-02",
+     7550
+    ],
+    [
+     "2026-09-14",
      7550
     ]
    ]
@@ -16544,10 +17344,14 @@
    "cur": 34140,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-02",
+     34140
+    ],
+    [
+     "2026-09-14",
      34140
     ]
    ]
@@ -16616,10 +17420,14 @@
    "cur": 173400,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-03",
+     173400
+    ],
+    [
+     "2026-09-14",
      173400
     ]
    ]
@@ -16671,10 +17479,14 @@
    "cur": 28360,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-05",
+     28360
+    ],
+    [
+     "2026-09-14",
      28360
     ]
    ]
@@ -16722,10 +17534,14 @@
    "cur": 6990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-06",
+     6990
+    ],
+    [
+     "2026-09-14",
      6990
     ]
    ]
@@ -16888,11 +17704,11 @@
    "nombre": "Coca-Cola Zero Azúcar 6 x 1,5 lt.",
    "min": 8990,
    "max": 10990,
-   "avg": 9990,
+   "avg": 9657,
    "cur": 8990,
    "isMin": true,
-   "diff": -10.0,
-   "obsCount": 2,
+   "diff": -6.9,
+   "obsCount": 3,
    "pts": [
     [
      "2026-08-08",
@@ -16900,6 +17716,10 @@
     ],
     [
      "2026-08-18",
+     8990
+    ],
+    [
+     "2026-09-14",
      8990
     ]
    ]
@@ -16951,10 +17771,14 @@
    "cur": 1000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-13",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -17036,10 +17860,14 @@
    "cur": 8050,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-13",
+     8050
+    ],
+    [
+     "2026-09-14",
      8050
     ]
    ]
@@ -17070,10 +17898,14 @@
    "cur": 5290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-17",
+     5290
+    ],
+    [
+     "2026-09-14",
      5290
     ]
    ]
@@ -17087,10 +17919,14 @@
    "cur": 2390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-18",
+     2390
+    ],
+    [
+     "2026-09-14",
      2390
     ]
    ]
@@ -17104,10 +17940,14 @@
    "cur": 4990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-18",
+     4990
+    ],
+    [
+     "2026-09-14",
      4990
     ]
    ]
@@ -17359,10 +18199,14 @@
    "cur": 2290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-28",
+     2290
+    ],
+    [
+     "2026-09-14",
      2290
     ]
    ]
@@ -17393,10 +18237,14 @@
    "cur": 1000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-29",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -17427,10 +18275,14 @@
    "cur": 11589,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-29",
+     11589
+    ],
+    [
+     "2026-09-14",
      11589
     ]
    ]
@@ -17444,10 +18296,14 @@
    "cur": 22090,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-29",
+     22090
+    ],
+    [
+     "2026-09-14",
      22090
     ]
    ]
@@ -17512,10 +18368,14 @@
    "cur": 3000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-02",
+     3000
+    ],
+    [
+     "2026-09-14",
      3000
     ]
    ]
@@ -17546,10 +18406,14 @@
    "cur": 16990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-03",
+     16990
+    ],
+    [
+     "2026-09-14",
      16990
     ]
    ]
@@ -17597,10 +18461,14 @@
    "cur": 2290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-03",
+     2290
+    ],
+    [
+     "2026-09-14",
      2290
     ]
    ]
@@ -17614,10 +18482,14 @@
    "cur": 3490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-03",
+     3490
+    ],
+    [
+     "2026-09-14",
      3490
     ]
    ]
@@ -17631,10 +18503,14 @@
    "cur": 2290,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-03",
+     2290
+    ],
+    [
+     "2026-09-14",
      2290
     ]
    ]
@@ -17648,10 +18524,14 @@
    "cur": 3490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-03",
+     3490
+    ],
+    [
+     "2026-09-14",
      3490
     ]
    ]
@@ -17665,10 +18545,14 @@
    "cur": 6390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-04",
+     6390
+    ],
+    [
+     "2026-09-14",
      6390
     ]
    ]
@@ -17682,10 +18566,14 @@
    "cur": 7890,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-04",
+     7890
+    ],
+    [
+     "2026-09-14",
      7890
     ]
    ]
@@ -17699,10 +18587,14 @@
    "cur": 7490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-04",
+     7490
+    ],
+    [
+     "2026-09-14",
      7490
     ]
    ]
@@ -17801,10 +18693,14 @@
    "cur": 13990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-09",
+     13990
+    ],
+    [
+     "2026-09-14",
      13990
     ]
    ]
@@ -17886,10 +18782,14 @@
    "cur": 38930,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-11",
+     38930
+    ],
+    [
+     "2026-09-14",
      38930
     ]
    ]
@@ -17903,11 +18803,814 @@
    "cur": 9990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-09-12",
      9990
+    ],
+    [
+     "2026-09-14",
+     9990
+    ]
+   ]
+  },
+  "Unimarc___Cristal Cerveza cristal lager botella 650 cc": {
+   "tienda": "Unimarc",
+   "nombre": "Cristal Cerveza cristal lager botella 650 cc",
+   "min": 1000,
+   "max": 1000,
+   "avg": 1000,
+   "cur": 1000,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     1000
+    ]
+   ]
+  },
+  "Unimarc___Escudo Silver Cerveza escudo silver lata 710 cc": {
+   "tienda": "Unimarc",
+   "nombre": "Escudo Silver Cerveza escudo silver lata 710 cc",
+   "min": 2000,
+   "max": 2000,
+   "avg": 2000,
+   "cur": 2000,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     2000
+    ]
+   ]
+  },
+  "Unimarc___Corona Pack cerveza corona extra botella 24 un de 330 cc + 4 garzas cerveceras dkora collection 580 ml": {
+   "tienda": "Unimarc",
+   "nombre": "Corona Pack cerveza corona extra botella 24 un de 330 cc + 4 garzas cerveceras dkora collection 580 ml",
+   "min": 24470,
+   "max": 24470,
+   "avg": 24470,
+   "cur": 24470,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     24470
+    ]
+   ]
+  },
+  "Unimarc___Cristal Cerveza cristal botella 24 un de 355 cc": {
+   "tienda": "Unimarc",
+   "nombre": "Cristal Cerveza cristal botella 24 un de 355 cc",
+   "min": 11990,
+   "max": 11990,
+   "avg": 11990,
+   "cur": 11990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     11990
+    ]
+   ]
+  },
+  "Unimarc___Mistral Pisco mistral 750 cc + vaso": {
+   "tienda": "Unimarc",
+   "nombre": "Mistral Pisco mistral 750 cc + vaso",
+   "min": 7990,
+   "max": 7990,
+   "avg": 7990,
+   "cur": 7990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7990
+    ]
+   ]
+  },
+  "La Barra___24x Cerveza Escudo Silver 5.0° Lata 350cc": {
+   "tienda": "La Barra",
+   "nombre": "24x Cerveza Escudo Silver 5.0° Lata 350cc",
+   "min": 17959,
+   "max": 17959,
+   "avg": 17959,
+   "cur": 17959,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     17959
+    ]
+   ]
+  },
+  "La Barra___24x Cerveza Royal Guard 5.0° Botella 355cc": {
+   "tienda": "La Barra",
+   "nombre": "24x Cerveza Royal Guard 5.0° Botella 355cc",
+   "min": 27560,
+   "max": 27560,
+   "avg": 27560,
+   "cur": 27560,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     27560
+    ]
+   ]
+  },
+  "La Barra___12x Cerveza Royal Guard Sabores Lata 350cc": {
+   "tienda": "La Barra",
+   "nombre": "12x Cerveza Royal Guard Sabores Lata 350cc",
+   "min": 15480,
+   "max": 15480,
+   "avg": 15480,
+   "cur": 15480,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     15480
+    ]
+   ]
+  },
+  "La Barra___18x Cerveza Coors Original 5.0° Lata 350cc": {
+   "tienda": "La Barra",
+   "nombre": "18x Cerveza Coors Original 5.0° Lata 350cc",
+   "min": 16490,
+   "max": 16490,
+   "avg": 16490,
+   "cur": 16490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     16490
+    ]
+   ]
+  },
+  "La Barra___24x Pack Cerveza Cristal Mixto (18 con alcohol + 6 sin alcohol) Lata 350cc": {
+   "tienda": "La Barra",
+   "nombre": "24x Pack Cerveza Cristal Mixto (18 con alcohol + 6 sin alcohol) Lata 350cc",
+   "min": 20360,
+   "max": 20360,
+   "avg": 20360,
+   "cur": 20360,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     20360
+    ]
+   ]
+  },
+  "La Barra___6x Cerveza Kunstmann Torobayo 5.0° Botella 330cc": {
+   "tienda": "La Barra",
+   "nombre": "6x Cerveza Kunstmann Torobayo 5.0° Botella 330cc",
+   "min": 9390,
+   "max": 9390,
+   "avg": 9390,
+   "cur": 9390,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     9390
+    ]
+   ]
+  },
+  "La Barra___3x Pisco Tres Erres 35° 750cc": {
+   "tienda": "La Barra",
+   "nombre": "3x Pisco Tres Erres 35° 750cc",
+   "min": 23071,
+   "max": 23071,
+   "avg": 23071,
+   "cur": 23071,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     23071
+    ]
+   ]
+  },
+  "La Barra___6x Pisco Tres Erres 35° 1L": {
+   "tienda": "La Barra",
+   "nombre": "6x Pisco Tres Erres 35° 1L",
+   "min": 53341,
+   "max": 53341,
+   "avg": 53341,
+   "cur": 53341,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     53341
+    ]
+   ]
+  },
+  "La Barra___Pisco Mistral Nobel Cristalino 40° 750cc + Copa": {
+   "tienda": "La Barra",
+   "nombre": "Pisco Mistral Nobel Cristalino 40° 750cc + Copa",
+   "min": 15990,
+   "max": 15990,
+   "avg": 15990,
+   "cur": 15990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     15990
+    ]
+   ]
+  },
+  "La Barra___6x Whisky Blenders Pride 40° 1L": {
+   "tienda": "La Barra",
+   "nombre": "6x Whisky Blenders Pride 40° 1L",
+   "min": 45540,
+   "max": 45540,
+   "avg": 45540,
+   "cur": 45540,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     45540
+    ]
+   ]
+  },
+  "La Barra___Promo Pisco Mistral 35° 1L + Pepsi Zero 3L": {
+   "tienda": "La Barra",
+   "nombre": "Promo Pisco Mistral 35° 1L + Pepsi Zero 3L",
+   "min": 13780,
+   "max": 13780,
+   "avg": 13780,
+   "cur": 13780,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     13780
+    ]
+   ]
+  },
+  "La Barra___12x Bebida Energética Red Bull Tradicional 250cc": {
+   "tienda": "La Barra",
+   "nombre": "12x Bebida Energética Red Bull Tradicional 250cc",
+   "min": 21490,
+   "max": 21490,
+   "avg": 21490,
+   "cur": 21490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     21490
+    ]
+   ]
+  },
+  "La Barra___24x Bebida Energética Red Bull 250cc": {
+   "tienda": "La Barra",
+   "nombre": "24x Bebida Energética Red Bull 250cc",
+   "min": 45360,
+   "max": 45360,
+   "avg": 45360,
+   "cur": 45360,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     45360
+    ]
+   ]
+  },
+  "La Barra___8x Bebida Energética Red Bull 250cc": {
+   "tienda": "La Barra",
+   "nombre": "8x Bebida Energética Red Bull 250cc",
+   "min": 15120,
+   "max": 15120,
+   "avg": 15120,
+   "cur": 15120,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     15120
+    ]
+   ]
+  },
+  "La Barra___24x Bebida Energética Red Bull Sin Azúcar 355cc": {
+   "tienda": "La Barra",
+   "nombre": "24x Bebida Energética Red Bull Sin Azúcar 355cc",
+   "min": 53990,
+   "max": 53990,
+   "avg": 53990,
+   "cur": 53990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     53990
+    ]
+   ]
+  },
+  "Liquidos___Pack Cervezas 24x austral hoppy lager + 24x austral red 470cc": {
+   "tienda": "Liquidos",
+   "nombre": "Pack Cervezas 24x austral hoppy lager + 24x austral red 470cc",
+   "min": 55990,
+   "max": 55990,
+   "avg": 55990,
+   "cur": 55990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     55990
+    ]
+   ]
+  },
+  "Liquidos___Pisco Tres Erres 35 1 litro 6X": {
+   "tienda": "Liquidos",
+   "nombre": "Pisco Tres Erres 35 1 litro 6X",
+   "min": 32990,
+   "max": 32990,
+   "avg": 32990,
+   "cur": 32990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     32990
+    ]
+   ]
+  },
+  "Liquidos___Pack Alto del Carmen 35° Botella 1Lt + Coca Cola Zero 3Lt": {
+   "tienda": "Liquidos",
+   "nombre": "Pack Alto del Carmen 35° Botella 1Lt + Coca Cola Zero 3Lt",
+   "min": 8990,
+   "max": 8990,
+   "avg": 8990,
+   "cur": 8990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     8990
+    ]
+   ]
+  },
+  "Liquidos___Promo Pisco Mistral 35° 750cc + Coca Cola Original 1,5L": {
+   "tienda": "Liquidos",
+   "nombre": "Promo Pisco Mistral 35° 750cc + Coca Cola Original 1,5L",
+   "min": 7990,
+   "max": 7990,
+   "avg": 7990,
+   "cur": 7990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7990
+    ]
+   ]
+  },
+  "Liquidos___Promo Pisco Alto del Carmen 35° 1L + Coca Cola Zero 1.5L": {
+   "tienda": "Liquidos",
+   "nombre": "Promo Pisco Alto del Carmen 35° 1L + Coca Cola Zero 1.5L",
+   "min": 8190,
+   "max": 8190,
+   "avg": 8190,
+   "cur": 8190,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     8190
+    ]
+   ]
+  },
+  "Liquidos___3x Whisky Chivas Regal 12 Años 1 litro": {
+   "tienda": "Liquidos",
+   "nombre": "3x Whisky Chivas Regal 12 Años 1 litro",
+   "min": 89220,
+   "max": 89220,
+   "avg": 89220,
+   "cur": 89220,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     89220
+    ]
+   ]
+  },
+  "Liquidos___3x Jagermeister 1 Litro": {
+   "tienda": "Liquidos",
+   "nombre": "3x Jagermeister 1 Litro",
+   "min": 47970,
+   "max": 47970,
+   "avg": 47970,
+   "cur": 47970,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     47970
+    ]
+   ]
+  },
+  "Liquidos___4X Red Bull 250cc": {
+   "tienda": "Liquidos",
+   "nombre": "4X Red Bull 250cc",
+   "min": 7290,
+   "max": 7290,
+   "avg": 7290,
+   "cur": 7290,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7290
+    ]
+   ]
+  },
+  "Liquidos___Gin Tanqueray Botella 700cc + Schweppes Tonica Sin Azýcar Botella 1.5L": {
+   "tienda": "Liquidos",
+   "nombre": "Gin Tanqueray Botella 700cc + Schweppes Tonica Sin Azýcar Botella 1.5L",
+   "min": 16490,
+   "max": 16490,
+   "avg": 16490,
+   "cur": 16490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     16490
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Stella Artois 5,0° 24 x 330cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Stella Artois 5,0° 24 x 330cc.",
+   "min": 14490,
+   "max": 14490,
+   "avg": 14490,
+   "cur": 14490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14490
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Becker 4,5° 24 x 354 cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Becker 4,5° 24 x 354 cc.",
+   "min": 9990,
+   "max": 9990,
+   "avg": 9990,
+   "cur": 9990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     9990
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Becker 4,5° 6 x 473 cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Becker 4,5° 6 x 473 cc.",
+   "min": 3190,
+   "max": 3190,
+   "avg": 3190,
+   "cur": 3190,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     3190
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Michelob Ultra 4,2° 12 x 330 cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Michelob Ultra 4,2° 12 x 330 cc.",
+   "min": 10590,
+   "max": 10590,
+   "avg": 10590,
+   "cur": 10590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     10590
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Corona 4,5° 24 x 473 cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Corona 4,5° 24 x 473 cc.",
+   "min": 24090,
+   "max": 24090,
+   "avg": 24090,
+   "cur": 24090,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     24090
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Leyendas De Origen Pincoya Hoppy Lager 6 x 473 cc. + Amber Lager 6 x 473 cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Leyendas De Origen Pincoya Hoppy Lager 6 x 473 cc. + Amber Lager 6 x 473 cc.",
+   "min": 12090,
+   "max": 12090,
+   "avg": 12090,
+   "cur": 12090,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     12090
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Corona 4,5° 18 x 330 cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Corona 4,5° 18 x 330 cc.",
+   "min": 14600,
+   "max": 14600,
+   "avg": 14600,
+   "cur": 14600,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14600
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Corona Cero 0,0° 7 x 330 cc.": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Corona Cero 0,0° 7 x 330 cc.",
+   "min": 5590,
+   "max": 5590,
+   "avg": 5590,
+   "cur": 5590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     5590
+    ]
+   ]
+  },
+  "miCocaCola___Fanta Zero Azucar 6 x 1,5 lt.": {
+   "tienda": "miCocaCola",
+   "nombre": "Fanta Zero Azucar 6 x 1,5 lt.",
+   "min": 7990,
+   "max": 7990,
+   "avg": 7990,
+   "cur": 7990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7990
+    ]
+   ]
+  },
+  "miCocaCola___Fanta Zero Azúcar 6 x 3,0 lt.": {
+   "tienda": "miCocaCola",
+   "nombre": "Fanta Zero Azúcar 6 x 3,0 lt.",
+   "min": 16020,
+   "max": 16020,
+   "avg": 16020,
+   "cur": 16020,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     16020
+    ]
+   ]
+  },
+  "miCocaCola___Schweppes Ginger Ale Zero Azúcar 6 x 3,0 lt.": {
+   "tienda": "miCocaCola",
+   "nombre": "Schweppes Ginger Ale Zero Azúcar 6 x 3,0 lt.",
+   "min": 16020,
+   "max": 16020,
+   "avg": 16020,
+   "cur": 16020,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     16020
+    ]
+   ]
+  },
+  "miCocaCola___Schweppes Ginger Ale Sin Azúcar 6 x 1,5 lt.": {
+   "tienda": "miCocaCola",
+   "nombre": "Schweppes Ginger Ale Sin Azúcar 6 x 1,5 lt.",
+   "min": 7990,
+   "max": 7990,
+   "avg": 7990,
+   "cur": 7990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7990
+    ]
+   ]
+  },
+  "miCocaCola___Alto del Carmen Manzana 750 ml. + Schweppes Ginger Ale Sin Azúcar 6 x 310 ml.": {
+   "tienda": "miCocaCola",
+   "nombre": "Alto del Carmen Manzana 750 ml. + Schweppes Ginger Ale Sin Azúcar 6 x 310 ml.",
+   "min": 14490,
+   "max": 14490,
+   "avg": 14490,
+   "cur": 14490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14490
+    ]
+   ]
+  },
+  "miCocaCola___Sprite Zero Azucar 6 x 1,5 lt.": {
+   "tienda": "miCocaCola",
+   "nombre": "Sprite Zero Azucar 6 x 1,5 lt.",
+   "min": 7990,
+   "max": 7990,
+   "avg": 7990,
+   "cur": 7990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7990
+    ]
+   ]
+  },
+  "miCocaCola___Sprite Zero Azúcar 6 x 3,0 lt.": {
+   "tienda": "miCocaCola",
+   "nombre": "Sprite Zero Azúcar 6 x 3,0 lt.",
+   "min": 16020,
+   "max": 16020,
+   "avg": 16020,
+   "cur": 16020,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     16020
+    ]
+   ]
+  },
+  "miCocaCola___Monster Energy Zero Sugar Green 6 x 473 ml.": {
+   "tienda": "miCocaCola",
+   "nombre": "Monster Energy Zero Sugar Green 6 x 473 ml.",
+   "min": 8990,
+   "max": 8990,
+   "avg": 8990,
+   "cur": 8990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     8990
+    ]
+   ]
+  },
+  "miCocaCola___Schweppes Agua Tónica Sin Azúcar 6 x 1,5 lt.": {
+   "tienda": "miCocaCola",
+   "nombre": "Schweppes Agua Tónica Sin Azúcar 6 x 1,5 lt.",
+   "min": 7990,
+   "max": 7990,
+   "avg": 7990,
+   "cur": 7990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7990
+    ]
+   ]
+  },
+  "miCocaCola___Jugo Guallarauco Naranja 6 x 1,0 lt": {
+   "tienda": "miCocaCola",
+   "nombre": "Jugo Guallarauco Naranja 6 x 1,0 lt",
+   "min": 13990,
+   "max": 13990,
+   "avg": 13990,
+   "cur": 13990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     13990
     ]
    ]
   }
