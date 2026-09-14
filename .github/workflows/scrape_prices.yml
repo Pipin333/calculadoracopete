@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        store: ["Jumbo", "Unimarc", "La Barra", "Liquidos", "Booze", "miCocaCola"]
+        store: ["Lider", "Jumbo", "Unimarc", "La Barra", "Liquidos", "Booze", "miCocaCola"]
 
     steps:
       - name: Checkout repository
@@ -42,11 +42,13 @@ jobs:
         run: |
           python workers/run.py --store "${{ matrix.store }}"
 
-      - name: Upload processed store products
+      - name: Upload processed store products and audit
         uses: actions/upload-artifact@v4
         with:
           name: processed-${{ matrix.store }}
-          path: json/processed_*.json
+          path: |
+            json/processed_*.json
+            json/audit_*.json
 
   combine-and-deploy:
     runs-on: ubuntu-latest
@@ -74,28 +76,30 @@ jobs:
 
       - name: Move artifacts to json directory
         run: |
-          # The download-artifact v4 downloads each artifact into a subdirectory named after the artifact name
-          # E.g., json/artifacts/processed-Jumbo/processed_Jumbo.json
-          # We move them to json/
-          find json/artifacts/ -name "processed_*.json" -exec mv {} json/ \;
+          # Move both processed products and audit files to json/
+          find json/artifacts/ \( -name "processed_*.json" -o -name "audit_*.json" \) -exec mv {} json/ \;
 
-      - name: Run merge script
+      - name: Run merge script & Discord alerts
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_USER_ID: ${{ secrets.DISCORD_USER_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           python workers/run.py --merge
 
       - name: Clean up temporary files
         run: |
-          rm -rf json/artifacts json/processed_*.json
+          rm -rf json/artifacts json/processed_*.json json/audit_*.json
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Check if there are changes in products database or price history
+          # Check if there are changes in products database, price history or review items
           if git status --porcelain json/ | grep -q "json/"; then
             echo "Changes detected in products or price history. Committing..."
-            git add json/productos.json json/historial_precios.json
+            git add json/productos.json json/historial_precios.json json/items_a_revisar.json
             git commit -m "Auto-update drink prices & history (Parallel): $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             git push
           else

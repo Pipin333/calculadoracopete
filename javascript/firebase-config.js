@@ -248,6 +248,72 @@ async function verificarEsAdmin(uid) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// GESTIÓN DE SKUS (sku_status)
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Genera una clave segura y determinista para Firebase RTDB a partir de tienda y nombre
+ * (Evita caracteres prohibidos: . # $ / [ ])
+ * @param {string} tienda
+ * @param {string} nombre
+ * @returns {string}
+ */
+function getSafeSkuKey(tienda, nombre) {
+  if (!tienda || !nombre) return '';
+  const raw = `${tienda.trim()}___${nombre.trim()}`;
+  try {
+    return btoa(encodeURIComponent(raw).replace(/%([0-9A-F]{2})/g, (match, p1) =>
+      String.fromCharCode('0x' + p1)
+    )).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  } catch (e) {
+    return raw.replace(/[^a-zA-Z0-9_-]/g, '_');
+  }
+}
+
+/**
+ * Obtener todos los estados/overrides de SKUs desde Firebase RTDB
+ * @returns {Promise<Object>} Diccionario { [safeSkuKey]: { active: boolean, ... } }
+ */
+async function obtenerSkuStatusFirebase() {
+  try {
+    if (!database) return {};
+    const skuRef = ref(database, 'sku_status');
+    const snap = await get(skuRef);
+    if (snap.exists()) {
+      return snap.val();
+    }
+    return {};
+  } catch (err) {
+    console.warn("⚠️ No se pudo obtener sku_status de Firebase:", err);
+    return {};
+  }
+}
+
+/**
+ * Actualizar estado (activo/inactivo) de un SKU en Firebase RTDB
+ * @param {string} skuKey - Clave generada con getSafeSkuKey
+ * @param {boolean} activo - true para activo, false para desactivado
+ * @param {object} metadata - Información opcional (nombre, tienda, updatedBy, motivo)
+ * @returns {Promise<boolean>}
+ */
+async function actualizarSkuStatusFirebase(skuKey, activo, metadata = {}) {
+  try {
+    if (!database || !skuKey) throw new Error("Base de datos o clave de SKU no disponible");
+    const skuRef = ref(database, `sku_status/${skuKey}`);
+    await set(skuRef, {
+      active: !!activo,
+      updatedAt: new Date().toISOString(),
+      ...metadata
+    });
+    console.log(`✅ SKU ${skuKey} actualizado en Firebase: active=${activo}`);
+    return true;
+  } catch (err) {
+    console.error(`❌ Error actualizando SKU en Firebase:`, err);
+    throw err;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // EXPORT FUNCTIONS & AUTH
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -266,5 +332,9 @@ export {
   contarPresupuestosFirebase,
   verificarConexionFirebase,
   registrarEventoTelemetria,
-  obtenerTelemetriaFirebase
+  obtenerTelemetriaFirebase,
+  getSafeSkuKey,
+  obtenerSkuStatusFirebase,
+  actualizarSkuStatusFirebase
 };
+

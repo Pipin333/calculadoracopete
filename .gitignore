@@ -32,6 +32,7 @@ unimarc_screenshot.png
 !manifest.json
 !json/productos.json
 !json/historial_precios.json
+!json/items_a_revisar.json
 !workers/config.json
 !database.rules.json
 !index.html

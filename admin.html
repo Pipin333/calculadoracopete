@@ -22,14 +22,17 @@
   <!-- Bootstrap 5.3.3 & Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="css/styles.css?v=4.8" />
+  <link rel="stylesheet" href="css/styles.css?v=4.9" />
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Chart.js para visualizaciones ejecutivas -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     .admin-container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
@@ -76,17 +79,95 @@
       border-radius: 2rem;
       padding: 0.35rem 1rem;
     }
-    .uid-badge {
-      font-family: monospace;
-      background: rgba(0, 0, 0, 0.4);
+
+    /* Tabs estilizados */
+    .nav-pills-custom {
+      background: rgba(18, 16, 29, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 2rem;
+      padding: 0.35rem;
+    }
+    .nav-pills-custom .nav-link {
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 1.5rem;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .nav-pills-custom .nav-link.active {
+      background: var(--accent-color);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    /* Badges de Tiendas */
+    .badge-store {
+      font-weight: 600;
+      font-size: 0.75rem;
       padding: 0.25rem 0.6rem;
       border-radius: 0.5rem;
-      border: 1px dashed var(--accent-color);
-      color: var(--accent-cyan);
+    }
+    .badge-store-lider { background: #0071dc; color: #fff; }
+    .badge-store-jumbo { background: #009845; color: #fff; }
+    .badge-store-unimarc { background: #e31837; color: #fff; }
+    .badge-store-liquidos { background: #d97706; color: #fff; }
+    .badge-store-labarra { background: #7c3aed; color: #fff; }
+    .badge-store-booze, .badge-store-booz { background: #2563eb; color: #fff; }
+    .badge-store-micocacola { background: #dc2626; color: #fff; }
+
+    /* Switch de SKU */
+    .form-check-input.sku-switch {
+      cursor: pointer;
+      width: 2.75rem;
+      height: 1.4rem;
+    }
+    .form-check-input.sku-switch:checked {
+      background-color: #10b981;
+      border-color: #10b981;
+    }
+
+    .sku-thumb {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sku-thumb-placeholder {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .toast-container {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1080;
     }
   </style>
 </head>
 <body>
+
+  <!-- Toast Notification Feedback -->
+  <div class="toast-container">
+    <div id="adminToast" class="toast align-items-center text-white bg-dark border border-white-10" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div id="adminToastBody" class="toast-body small fw-medium">
+          Operación exitosa
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg border-bottom border-white-10 py-3" style="border-color: rgba(255,255,255,0.08) !important;">
@@ -98,7 +179,6 @@
       </a>
       
       <div id="navUserSection" class="d-flex align-items-center gap-3">
-        <!-- Renderizado dinámico de usuario o botón volver -->
         <a href="index.html" class="btn btn-sm btn-outline-light rounded-pill px-3">
           <i class="bi bi-arrow-left me-1"></i> Ir a la Web
         </a>
@@ -124,7 +204,7 @@
           <div class="mb-3 fs-1">🔐</div>
           <h2 class="h4 mb-2">Consola de Fundador</h2>
           <p class="text-secondary small mb-4">
-            Monitoreo en tiempo real de previas calculadas, cuotas promedio y tiendas más populares en Chile.
+            Monitoreo en tiempo real de previas, control de inventario SKU por SKU y auditoría de precios en Chile.
           </p>
           <button id="btnLoginGoogle" class="btn btn-light py-2 fw-semibold d-flex align-items-center justify-content-center gap-2 rounded-pill shadow-sm">
             <svg width="18" height="18" viewBox="0 0 24 24">
@@ -169,8 +249,8 @@
       <!-- Top Bar: Saludo y Refresh -->
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
         <div>
-          <h1 class="h3 mb-1">Métricas de Rendimiento</h1>
-          <p class="text-secondary small mb-0">Telemetría anónima de uso y optimización de copete en Chile</p>
+          <h1 class="h3 mb-1">Consola de Control</h1>
+          <p class="text-secondary small mb-0">Gestión de catálogo SKU a SKU, alertas de auditoría y métricas de consumo</p>
         </div>
         <div class="d-flex align-items-center gap-2">
           <button id="btnRefreshData" class="btn btn-outline-light btn-sm rounded-pill px-3">
@@ -185,89 +265,285 @@
         </div>
       </div>
 
-      <!-- KPI Cards -->
-      <div class="row g-3 mb-4">
-        <div class="col-6 col-lg-3">
-          <div class="kpi-card">
-            <div class="kpi-label">Cálculos Totales</div>
-            <div id="kpiCalculos" class="kpi-value">—</div>
-            <div class="text-secondary small mt-1"><i class="bi bi-calculator me-1"></i> Eventos registrados</div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3">
-          <div class="kpi-card">
-            <div class="kpi-label">Links Compartidos</div>
-            <div id="kpiCompartidos" class="kpi-value text-info">—</div>
-            <div class="text-secondary small mt-1"><i class="bi bi-share me-1"></i> Presupuestos Firebase</div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3">
-          <div class="kpi-card">
-            <div class="kpi-label">Cuota Promedio</div>
-            <div id="kpiCuotaPromedio" class="kpi-value text-success">—</div>
-            <div class="text-secondary small mt-1"><i class="bi bi-cash-stack me-1"></i> Por persona</div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3">
-          <div class="kpi-card">
-            <div class="kpi-label">Grupo Promedio</div>
-            <div id="kpiPersonasPromedio" class="kpi-value text-warning">—</div>
-            <div class="text-secondary small mt-1"><i class="bi bi-people me-1"></i> Asistentes por junta</div>
-          </div>
-        </div>
-      </div>
+      <!-- Navigation Tabs -->
+      <ul class="nav nav-pills nav-pills-custom mb-4" id="adminTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="tabMetricsBtn" data-bs-toggle="pill" data-bs-target="#tabMetrics" type="button" role="tab">
+            <i class="bi bi-graph-up me-2"></i>Telemetría & KPIs
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tabSkusBtn" data-bs-toggle="pill" data-bs-target="#tabSkus" type="button" role="tab">
+            <i class="bi bi-box-seam me-2"></i>Gestión de SKUs <span id="badgeSkusTotal" class="badge bg-secondary ms-1">0</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tabAlertsBtn" data-bs-toggle="pill" data-bs-target="#tabAlerts" type="button" role="tab">
+            <i class="bi bi-bell me-2"></i>Alertas & Auditoría <span id="badgeAlertsCount" class="badge bg-danger ms-1">0</span>
+          </button>
+        </li>
+      </ul>
 
-      <!-- Charts Section -->
-      <div class="row g-3 mb-4">
-        <div class="col-lg-6">
-          <div class="chart-wrapper">
-            <h3 class="h6 text-uppercase tracking-wider text-secondary mb-3">
-              <i class="bi bi-shop me-1 text-info"></i> Tiendas Más Recomendadas
-            </h3>
-            <div style="height: 260px; position: relative;">
-              <canvas id="chartTiendas"></canvas>
+      <div class="tab-content" id="adminTabsContent">
+        
+        <!-- =================================================================== -->
+        <!-- TAB 1: TELEMETRÍA Y MÉTRICAS -->
+        <!-- =================================================================== -->
+        <div class="tab-pane fade show active" id="tabMetrics" role="tabpanel">
+          
+          <!-- KPI Cards -->
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-lg-3">
+              <div class="kpi-card">
+                <div class="kpi-label">Cálculos Totales</div>
+                <div id="kpiCalculos" class="kpi-value">—</div>
+                <div class="text-secondary small mt-1"><i class="bi bi-calculator me-1"></i> Eventos registrados</div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="kpi-card">
+                <div class="kpi-label">Links Compartidos</div>
+                <div id="kpiCompartidos" class="kpi-value text-info">—</div>
+                <div class="text-secondary small mt-1"><i class="bi bi-share me-1"></i> Presupuestos Firebase</div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="kpi-card">
+                <div class="kpi-label">Cuota Promedio</div>
+                <div id="kpiCuotaPromedio" class="kpi-value text-success">—</div>
+                <div class="text-secondary small mt-1"><i class="bi bi-cash-stack me-1"></i> Por persona</div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="kpi-card">
+                <div class="kpi-label">Grupo Promedio</div>
+                <div id="kpiPersonasPromedio" class="kpi-value text-warning">—</div>
+                <div class="text-secondary small mt-1"><i class="bi bi-people me-1"></i> Asistentes por junta</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="chart-wrapper">
-            <h3 class="h6 text-uppercase tracking-wider text-secondary mb-3">
-              <i class="bi bi-cup-straw me-1 text-warning"></i> Tragos Más Populares
-            </h3>
-            <div style="height: 260px; position: relative;">
-              <canvas id="chartBebidas"></canvas>
+
+          <!-- Charts Section -->
+          <div class="row g-3 mb-4">
+            <div class="col-lg-6">
+              <div class="chart-wrapper">
+                <h3 class="h6 text-uppercase tracking-wider text-secondary mb-3">
+                  <i class="bi bi-shop me-1 text-info"></i> Tiendas Más Recomendadas
+                </h3>
+                <div style="height: 260px; position: relative;">
+                  <canvas id="chartTiendas"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="chart-wrapper">
+                <h3 class="h6 text-uppercase tracking-wider text-secondary mb-3">
+                  <i class="bi bi-cup-straw me-1 text-warning"></i> Tragos Más Populares
+                </h3>
+                <div style="height: 260px; position: relative;">
+                  <canvas id="chartBebidas"></canvas>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Live Feed Table -->
-      <div class="card p-3">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h3 class="h6 text-uppercase tracking-wider text-secondary mb-0">
-            <i class="bi bi-activity me-1 text-danger"></i> Últimos Eventos Registrados
-          </h3>
-          <span id="badgeEventosCount" class="badge bg-dark border border-white-10 text-secondary">0 eventos</span>
+          <!-- Live Feed Table -->
+          <div class="card p-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h3 class="h6 text-uppercase tracking-wider text-secondary mb-0">
+                <i class="bi bi-activity me-1 text-danger"></i> Últimos Eventos Registrados
+              </h3>
+              <span id="badgeEventosCount" class="badge bg-dark border border-white-10 text-secondary">0 eventos</span>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-dark-custom align-middle mb-0 small">
+                <thead>
+                  <tr class="text-secondary">
+                    <th>Fecha / Hora</th>
+                    <th>Tipo</th>
+                    <th>Personas</th>
+                    <th>Cuota</th>
+                    <th>Total Optimizado</th>
+                    <th>Tiendas Sugeridas</th>
+                  </tr>
+                </thead>
+                <tbody id="tableEventosBody">
+                  <tr>
+                    <td colspan="6" class="text-center py-4 text-secondary">Cargando eventos...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
-        <div class="table-responsive">
-          <table class="table table-dark-custom align-middle mb-0 small">
-            <thead>
-              <tr class="text-secondary">
-                <th>Fecha / Hora</th>
-                <th>Tipo</th>
-                <th>Personas</th>
-                <th>Cuota</th>
-                <th>Total Optimizado</th>
-                <th>Tiendas Sugeridas</th>
-              </tr>
-            </thead>
-            <tbody id="tableEventosBody">
-              <tr>
-                <td colspan="6" class="text-center py-4 text-secondary">Cargando eventos...</td>
-              </tr>
-            </tbody>
-          </table>
+
+        <!-- =================================================================== -->
+        <!-- TAB 2: GESTIÓN DE SKUS (ACTIVAR / DESACTIVAR) -->
+        <!-- =================================================================== -->
+        <div class="tab-pane fade" id="tabSkus" role="tabpanel">
+          
+          <!-- Resumen de SKUs -->
+          <div class="row g-3 mb-4">
+            <div class="col-4">
+              <div class="kpi-card py-3">
+                <div class="kpi-label">Total en Catálogo</div>
+                <div id="skuKpiTotal" class="kpi-value fs-2 text-white">0</div>
+                <div class="text-secondary small mt-1">SKUs procesados</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="kpi-card py-3">
+                <div class="kpi-label">Activos en Vivo</div>
+                <div id="skuKpiActivos" class="kpi-value fs-2 text-success">0</div>
+                <div class="text-secondary small mt-1">Disponibles en calculadora</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="kpi-card py-3">
+                <div class="kpi-label">Desactivados</div>
+                <div id="skuKpiInactivos" class="kpi-value fs-2 text-danger">0</div>
+                <div class="text-secondary small mt-1">Excluidos del Knapsack</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra de Filtros y Búsqueda -->
+          <div class="card p-3 mb-3">
+            <div class="row g-2 align-items-center">
+              <div class="col-md-4">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-dark border-white-10 text-secondary"><i class="bi bi-search"></i></span>
+                  <input type="text" id="skuSearchInput" class="form-control form-control-sm bg-dark text-white border-white-10" placeholder="Buscar por nombre, marca..." />
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <select id="skuStoreFilter" class="form-select form-select-sm bg-dark text-white border-white-10">
+                  <option value="">Todas las Tiendas</option>
+                  <option value="Lider">Líder</option>
+                  <option value="Jumbo">Jumbo</option>
+                  <option value="Unimarc">Unimarc</option>
+                  <option value="Liquidos">Líquidos</option>
+                  <option value="La Barra">La Barra</option>
+                  <option value="Booze">Booz</option>
+                  <option value="miCocaCola">miCocaCola</option>
+                </select>
+              </div>
+              <div class="col-6 col-md-3">
+                <select id="skuCategoryFilter" class="form-select form-select-sm bg-dark text-white border-white-10">
+                  <option value="">Todas las Categorías</option>
+                  <option value="piscola">Pisco (Piscola)</option>
+                  <option value="cerveza">Cerveza</option>
+                  <option value="ron">Ron</option>
+                  <option value="vodka">Vodka</option>
+                  <option value="whiskey">Whisky</option>
+                  <option value="gin">Gin</option>
+                  <option value="jaeger">Jägermeister</option>
+                  <option value="cola">Bebida Cola</option>
+                  <option value="sprite">Sprite / Blanca</option>
+                  <option value="ginger">Ginger Ale</option>
+                  <option value="tonica">Tónica</option>
+                  <option value="redbull">Red Bull</option>
+                  <option value="jugo_watts">Jugo</option>
+                  <option value="hielo">Hielo</option>
+                  <option value="combos">Combos / Promos</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <select id="skuStatusFilter" class="form-select form-select-sm bg-dark text-white border-white-10">
+                  <option value="">Todos los Estados</option>
+                  <option value="active">Solo Activos</option>
+                  <option value="inactive">Solo Desactivados</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabla de SKUs -->
+          <div class="card p-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span id="skuCountInfo" class="text-secondary small">Cargando inventario...</span>
+              <span class="badge bg-dark border border-white-10 text-secondary">Control en Tiempo Real con Firebase</span>
+            </div>
+            <div class="table-responsive" style="max-height: 560px; overflow-y: auto;">
+              <table class="table table-dark-custom align-middle mb-0 small">
+                <thead class="sticky-top bg-dark" style="z-index: 2;">
+                  <tr class="text-secondary">
+                    <th style="width: 50px;"></th>
+                    <th>Producto & Marca</th>
+                    <th>Tienda</th>
+                    <th>Categoría</th>
+                    <th>Gama</th>
+                    <th>Formato</th>
+                    <th>Precio</th>
+                    <th class="text-center" style="width: 110px;">Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="tableSkusBody">
+                  <tr>
+                    <td colspan="8" class="text-center py-4 text-secondary">Cargando productos desde productos.json...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
+
+        <!-- =================================================================== -->
+        <!-- TAB 3: ALERTAS Y AUDITORÍA DE FALSOS POSITIVOS -->
+        <!-- =================================================================== -->
+        <div class="tab-pane fade" id="tabAlerts" role="tabpanel">
+          
+          <!-- Banner Discord Webhook -->
+          <div class="card p-3 mb-4 border-warning" style="background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.25) !important;">
+            <div class="d-flex align-items-start gap-3">
+              <div class="fs-2 text-warning"><i class="bi bi-discord"></i></div>
+              <div class="flex-grow-1">
+                <h3 class="h6 text-white fw-bold mb-1">Guardian de Catálogo & Alertas a Discord</h3>
+                <p class="text-secondary small mb-2">
+                  El motor auditor en <code>workers/matcher.py</code> analiza cada producto scrapeado en busca de mercancía escolar/ropa (ej. <em>cuadernos Red Bull Racing</em>), RTDs o mezclas en lata con marcas padre (ej. <em>Jack & Coke, Absolut Sprite, Smirnoff Ice</em>) y aperitivos fuera de lugar.
+                </p>
+                <div class="d-flex flex-wrap align-items-center gap-2 small">
+                  <span class="badge bg-dark border border-white-10 text-secondary"><i class="bi bi-key me-1"></i> Secreto: DISCORD_WEBHOOK_URL</span>
+                  <span class="text-secondary">• Las alertas se despachan automáticamente en cada corrida de GitHub Actions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabla de Auditoría / Items a Revisar -->
+          <div class="card p-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h3 class="h6 text-uppercase tracking-wider text-secondary mb-0">
+                <i class="bi bi-shield-exclamation me-1 text-warning"></i> Items Detectados por Auditoría
+              </h3>
+              <span id="badgeAlertsTotal" class="badge bg-dark border border-white-10 text-secondary">0 items</span>
+            </div>
+            <div class="table-responsive" style="max-height: 520px; overflow-y: auto;">
+              <table class="table table-dark-custom align-middle mb-0 small">
+                <thead class="sticky-top bg-dark" style="z-index: 2;">
+                  <tr class="text-secondary">
+                    <th>Tienda</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Tipo de Alerta</th>
+                    <th>Motivo Detectado</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="tableAlertsBody">
+                  <tr>
+                    <td colspan="7" class="text-center py-4 text-secondary">No hay items sospechosos pendientes de revisión en este momento.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
@@ -284,11 +560,14 @@
       onAuthStateChanged,
       obtenerTelemetriaFirebase,
       verificarEsAdmin,
-      database
+      database,
+      getSafeSkuKey,
+      obtenerSkuStatusFirebase,
+      actualizarSkuStatusFirebase
     } from './javascript/firebase-config.js';
 
+    import { productApi } from './javascript/productApi.js';
     import { escapeHTML } from './javascript/helpers.js';
-    import { ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
     // Elementos DOM
     const sectionLoading = document.getElementById('sectionLoading');
@@ -304,9 +583,42 @@
     const txtUserEmailNoAdmin = document.getElementById('txtUserEmailNoAdmin');
     const userBadgeEmail = document.getElementById('userBadgeEmail');
 
+    // Elementos de SKUs
+    const skuKpiTotal = document.getElementById('skuKpiTotal');
+    const skuKpiActivos = document.getElementById('skuKpiActivos');
+    const skuKpiInactivos = document.getElementById('skuKpiInactivos');
+    const badgeSkusTotal = document.getElementById('badgeSkusTotal');
+    const tableSkusBody = document.getElementById('tableSkusBody');
+    const skuCountInfo = document.getElementById('skuCountInfo');
+
+    const skuSearchInput = document.getElementById('skuSearchInput');
+    const skuStoreFilter = document.getElementById('skuStoreFilter');
+    const skuCategoryFilter = document.getElementById('skuCategoryFilter');
+    const skuStatusFilter = document.getElementById('skuStatusFilter');
+
+    // Elementos de Alertas
+    const badgeAlertsCount = document.getElementById('badgeAlertsCount');
+    const badgeAlertsTotal = document.getElementById('badgeAlertsTotal');
+    const tableAlertsBody = document.getElementById('tableAlertsBody');
+
+    // Toast
+    const adminToastEl = document.getElementById('adminToast');
+    const adminToastBody = document.getElementById('adminToastBody');
+    const toastInstance = new bootstrap.Toast(adminToastEl, { delay: 3000 });
+
+    function showToast(message, isDanger = false) {
+      adminToastBody.textContent = message;
+      adminToastEl.classList.remove('bg-danger', 'bg-dark', 'bg-success');
+      adminToastEl.classList.add(isDanger ? 'bg-danger' : 'bg-dark');
+      toastInstance.show();
+    }
+
     let currentUser = null;
     let chartTiendasInstance = null;
     let chartBebidasInstance = null;
+    let allProducts = [];
+    let skuStatusMap = {};
+    let auditItems = [];
 
     // Formateador CLP
     const formatCLP = (num) => {
@@ -322,6 +634,36 @@
         day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
       });
     };
+
+    // Helper estilo de badge para tienda
+    function getStoreBadgeClass(store) {
+      const s = (store || '').toLowerCase().replace(/\s+/g, '');
+      if (s.includes('lider')) return 'badge-store-lider';
+      if (s.includes('jumbo')) return 'badge-store-jumbo';
+      if (s.includes('unimarc')) return 'badge-store-unimarc';
+      if (s.includes('liquidos')) return 'badge-store-liquidos';
+      if (s.includes('labarra')) return 'badge-store-labarra';
+      if (s.includes('booz')) return 'badge-store-booze';
+      if (s.includes('micocacola')) return 'badge-store-micocacola';
+      return 'bg-secondary';
+    }
+
+    // Helper icono para categorías
+    function getCategoryEmoji(cat) {
+      const c = (cat || '').toLowerCase();
+      if (c === 'piscola') return '🍇';
+      if (c === 'cerveza') return '🍺';
+      if (c === 'ron') return '🥃';
+      if (c === 'vodka') return '🍸';
+      if (c === 'whiskey') return '🥃';
+      if (c === 'gin') return '🍸';
+      if (c === 'jaeger') return '🦌';
+      if (c === 'cola' || c === 'sprite' || c === 'fanta' || c === 'ginger' || c === 'tonica') return '🥤';
+      if (c === 'redbull') return '⚡';
+      if (c === 'hielo') return '🧊';
+      if (c === 'combos') return '🎁';
+      return '🍹';
+    }
 
     // Cambiar estados de vista
     function showState(state) {
@@ -367,7 +709,7 @@
       }
     });
 
-    // Verificar si es admin antes de cargar telemetría
+    // Verificar si es admin antes de cargar datos
     async function checkAdminAndLoad(user) {
       showState('loading');
       try {
@@ -377,13 +719,217 @@
           showState('no-admin');
           return;
         }
-        const eventos = await obtenerTelemetriaFirebase(150);
+
+        // Cargar en paralelo: Telemetría, Inventario SKUs y Alertas
         showState('dashboard');
-        renderDashboard(eventos);
+        await Promise.allSettled([
+          loadTelemetry(),
+          loadSkuInventory(),
+          loadAuditAlerts()
+        ]);
       } catch (err) {
-        console.warn("Permiso denegado al leer telemetría. Usuario no autorizado en /admins:", err);
+        console.warn("Permiso denegado al leer panel de admin:", err);
         showState('no-admin');
       }
+    }
+
+    // 1. Cargar Telemetría
+    async function loadTelemetry() {
+      try {
+        const eventos = await obtenerTelemetriaFirebase(150);
+        renderDashboard(eventos);
+      } catch (e) {
+        console.warn("Error cargando telemetría:", e);
+      }
+    }
+
+    // 2. Cargar Inventario de SKUs y Estados de Firebase
+    async function loadSkuInventory() {
+      try {
+        skuStatusMap = await obtenerSkuStatusFirebase();
+        allProducts = await productApi.getAllProducts();
+
+        // Enriquecer con safeKey y estado activo
+        allProducts.forEach(p => {
+          const safeKey = p.safeKey || getSafeSkuKey(p.tienda, p.nombre);
+          p.safeKey = safeKey;
+          // Un SKU está activo si en Firebase no está marcado explícitamente active === false
+          p.active = !(skuStatusMap[safeKey] && skuStatusMap[safeKey].active === false);
+        });
+
+        badgeSkusTotal.textContent = allProducts.length;
+        filterAndRenderSkus();
+      } catch (e) {
+        console.error("Error cargando SKUs:", e);
+        tableSkusBody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-danger">Error cargando productos.json: ${e.message}</td></tr>`;
+      }
+    }
+
+    // Filtrar y renderizar SKUs
+    function filterAndRenderSkus() {
+      const qText = (skuSearchInput.value || '').toLowerCase().trim();
+      const qStore = skuStoreFilter.value;
+      const qCat = skuCategoryFilter.value;
+      const qStatus = skuStatusFilter.value;
+
+      const filtered = allProducts.filter(p => {
+        if (qStore && p.tienda !== qStore) return false;
+        if (qCat && p.categoria !== qCat) return false;
+        if (qStatus === 'active' && !p.active) return false;
+        if (qStatus === 'inactive' && p.active) return false;
+        if (qText) {
+          const matchName = (p.nombre || '').toLowerCase().includes(qText);
+          const matchBrand = (p.brand || '').toLowerCase().includes(qText);
+          if (!matchName && !matchBrand) return false;
+        }
+        return true;
+      });
+
+      // Actualizar contadores
+      const totalCount = allProducts.length;
+      const activeCount = allProducts.filter(p => p.active).length;
+      const inactiveCount = totalCount - activeCount;
+
+      skuKpiTotal.textContent = totalCount;
+      skuKpiActivos.textContent = activeCount;
+      skuKpiInactivos.textContent = inactiveCount;
+      skuCountInfo.textContent = `Mostrando ${filtered.length} de ${totalCount} productos`;
+
+      if (!filtered.length) {
+        tableSkusBody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-secondary">No se encontraron productos con los filtros seleccionados.</td></tr>`;
+        return;
+      }
+
+      // Renderizar filas
+      tableSkusBody.innerHTML = filtered.map((p, idx) => {
+        const safeKey = p.safeKey;
+        const isChecked = p.active ? 'checked' : '';
+        const storeBadge = getStoreBadgeClass(p.tienda);
+        const emoji = getCategoryEmoji(p.categoria);
+        const formato = `${p.unidades || 1} x ${p.volumenMlUnidad || 0}ml`;
+        const gamaBadge = p.gama === 'rata' ? 'bg-danger' : (p.gama === 'sobrado' ? 'bg-warning text-dark' : 'bg-secondary');
+
+        const imgHtml = p.imagen
+          ? `<img src="${escapeHTML(p.imagen)}" class="sku-thumb" alt="" onerror="this.outerHTML='<div class=\\\'sku-thumb-placeholder\\\'>${emoji}</div>'" />`
+          : `<div class="sku-thumb-placeholder">${emoji}</div>`;
+
+        return `
+          <tr data-key="${escapeHTML(safeKey)}">
+            <td>${imgHtml}</td>
+            <td>
+              <div class="fw-semibold text-white text-truncate" style="max-width: 280px;" title="${escapeHTML(p.nombre)}">${escapeHTML(p.nombre)}</div>
+              ${p.brand ? `<div class="text-secondary small">${escapeHTML(p.brand)}</div>` : ''}
+            </td>
+            <td><span class="badge ${storeBadge} badge-store">${escapeHTML(p.tienda)}</span></td>
+            <td><span class="text-secondary">${escapeHTML(p.categoria)}</span></td>
+            <td><span class="badge ${gamaBadge}">${escapeHTML(p.gama || 'normal')}</span></td>
+            <td class="text-secondary">${formato}</td>
+            <td class="fw-bold text-white">${formatCLP(p.precio)}</td>
+            <td class="text-center">
+              <div class="form-check form-switch d-inline-block m-0">
+                <input class="form-check-input sku-switch btn-toggle-sku" type="checkbox" role="switch"
+                  data-key="${escapeHTML(safeKey)}"
+                  data-name="${escapeHTML(p.nombre)}"
+                  data-store="${escapeHTML(p.tienda)}"
+                  ${isChecked} />
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Toggle de Activación / Desactivación de SKU
+    tableSkusBody.addEventListener('change', async (e) => {
+      const toggle = e.target.closest('.btn-toggle-sku');
+      if (!toggle) return;
+
+      const safeKey = toggle.dataset.key;
+      const isChecked = toggle.checked;
+      const pName = toggle.dataset.name;
+      const pStore = toggle.dataset.store;
+
+      // Actualizar estado local optimista
+      const item = allProducts.find(p => p.safeKey === safeKey);
+      if (item) item.active = isChecked;
+      if (!skuStatusMap[safeKey]) skuStatusMap[safeKey] = {};
+      skuStatusMap[safeKey].active = isChecked;
+
+      // Actualizar KPIs
+      const activeCount = allProducts.filter(p => p.active).length;
+      skuKpiActivos.textContent = activeCount;
+      skuKpiInactivos.textContent = allProducts.length - activeCount;
+
+      try {
+        await actualizarSkuStatusFirebase(safeKey, isChecked, {
+          nombre: pName,
+          tienda: pStore,
+          updatedBy: currentUser?.email || 'fundador'
+        });
+        showToast(isChecked ? `✅ SKU Activado: ${pName}` : `🛑 SKU Desactivado: ${pName}`);
+      } catch (err) {
+        // Revertir en caso de error
+        toggle.checked = !isChecked;
+        if (item) item.active = !isChecked;
+        showToast(`❌ Error al guardar en Firebase: ${err.message}`, true);
+      }
+    });
+
+    // Eventos de Filtro
+    skuSearchInput.addEventListener('input', filterAndRenderSkus);
+    skuStoreFilter.addEventListener('change', filterAndRenderSkus);
+    skuCategoryFilter.addEventListener('change', filterAndRenderSkus);
+    skuStatusFilter.addEventListener('change', filterAndRenderSkus);
+
+    // 3. Cargar Alertas y Auditoría de Falsos Positivos
+    async function loadAuditAlerts() {
+      try {
+        const res = await fetch('json/items_a_revisar.json?t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          auditItems = data.items || [];
+        } else {
+          auditItems = [];
+        }
+      } catch (err) {
+        auditItems = [];
+      }
+
+      badgeAlertsCount.textContent = auditItems.length;
+      badgeAlertsTotal.textContent = `${auditItems.length} items`;
+
+      if (!auditItems.length) {
+        tableAlertsBody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-secondary"><i class="bi bi-shield-check text-success me-1"></i> Todo limpio. No hay falsos positivos ni alertas pendientes.</td></tr>`;
+        return;
+      }
+
+      tableAlertsBody.innerHTML = auditItems.map(item => {
+        const storeBadge = getStoreBadgeClass(item.store);
+        const flag = item.flag_type || 'AUDIT';
+        let flagBadge = 'bg-warning text-dark';
+        if (flag.includes('MERCHANDISE')) flagBadge = 'bg-danger text-white';
+        if (flag.includes('RTD')) flagBadge = 'bg-info text-dark';
+        if (flag.includes('PRICE')) flagBadge = 'bg-secondary text-white';
+
+        const isFiltered = (item.action || '').includes('RECHAZADO');
+        const actionBadge = isFiltered
+          ? `<span class="badge bg-success"><i class="bi bi-shield-check me-1"></i>Filtrado Auto</span>`
+          : `<span class="badge bg-danger"><i class="bi bi-exclamation-triangle me-1"></i>En Catálogo</span>`;
+
+        const safeKey = getSafeSkuKey(item.store, item.name);
+
+        return `
+          <tr>
+            <td><span class="badge ${storeBadge} badge-store">${escapeHTML(item.store)}</span></td>
+            <td class="fw-semibold text-white">${escapeHTML(item.name)}</td>
+            <td><span class="text-secondary">${escapeHTML(item.category)}</span></td>
+            <td class="text-white">${formatCLP(item.price)}</td>
+            <td><span class="badge ${flagBadge}">${escapeHTML(flag)}</span></td>
+            <td class="text-secondary small" style="max-width: 260px;">${escapeHTML(item.reason || 'Sospechoso')}</td>
+            <td>${actionBadge}</td>
+          </tr>
+        `;
+      }).join('');
     }
 
     // Renderizar Dashboard y Gráficos
@@ -450,7 +996,7 @@
           datasets: [{
             data: tiendasData.length ? tiendasData : [1],
             backgroundColor: [
-              '#6366f1', '#06b6d4', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'
+              '#6366f1', '#06b6d4', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#0071dc'
             ],
             borderWidth: 0
           }]
@@ -506,7 +1052,6 @@
         return;
       }
 
-      // Invertir para ver los más recientes primero
       const ordenados = [...eventos].reverse().slice(0, 30);
 
       tbody.innerHTML = ordenados.map(ev => {

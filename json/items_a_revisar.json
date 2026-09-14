@@ -1,0 +1,78 @@
+{
+  "timestamp": "2026-09-14T11:30:00Z",
+  "total": 8,
+  "items": [
+    {
+      "name": "6x Bebida Pepsi Zero Botella 3L",
+      "store": "La Barra",
+      "category": "cola",
+      "price": 18540,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($18540)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "6x Bebida Crush Botella 3L",
+      "store": "La Barra",
+      "category": "fanta",
+      "price": 19199,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($19199)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "6x Bebida Canada Dry Ginger Ale Botella 3L",
+      "store": "La Barra",
+      "category": "ginger",
+      "price": 19199,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($19199)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Vodka Spirit Blueberry botella 275 CC",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 1790,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1790)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Coca-Cola Zero Azúcar 6 x 3,0 lt.",
+      "store": "miCocaCola",
+      "category": "cola",
+      "price": 16020,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($16020)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Fanta Zero Azúcar 6 x 3,0 lt.",
+      "store": "miCocaCola",
+      "category": "fanta",
+      "price": 16020,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($16020)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Schweppes Ginger Ale Zero Azúcar 6 x 3,0 lt.",
+      "store": "miCocaCola",
+      "category": "ginger",
+      "price": 16020,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($16020)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Sprite Zero Azúcar 6 x 3,0 lt.",
+      "store": "miCocaCola",
+      "category": "sprite",
+      "price": 16020,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($16020)",
+      "action": "REQUIERE_REVISION"
+    }
+  ]
+}

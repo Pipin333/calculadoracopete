@@ -8,6 +8,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from scrapers import lider, jumbo, labarra, playwright_scrapers
 import matcher
+import discord_notifier
 
 import argparse
 
@@ -46,16 +47,28 @@ def scrape_store_products(store, search_queries):
     return raw_results
 
 def process_raw_results(raw_results):
-    """Processes, validates and matches raw results using the matcher."""
+    """Processes, validates and matches raw results using the matcher, and audits for suspicious items."""
     processed_products = []
+    flagged_items = []
+    seen_flagged = set()
+    
     for raw_p in raw_results:
         try:
             matched = matcher.process_product(raw_p)
             if matched:
                 processed_products.append(matched)
+                
+            # Auditar producto para detectar falsos positivos, RTD de marcas padre, etc.
+            audit_info = matcher.audit_product(raw_p, is_valid_match=bool(matched))
+            if audit_info:
+                flag_key = f"{audit_info.get('store')}_{audit_info.get('name')}_{audit_info.get('flag_type')}"
+                if flag_key not in seen_flagged:
+                    seen_flagged.add(flag_key)
+                    flagged_items.append(audit_info)
         except Exception as e:
             print(f"Error processing raw product {raw_p.get('name')}: {e}")
-    return processed_products
+            
+    return processed_products, flagged_items
 
 def run():
     parser = argparse.ArgumentParser(description="Cuanto Rinde Scraper & Merger")
@@ -99,17 +112,21 @@ def run():
         raw_results = scrape_store_products(store, search_queries)
         print(f"Scraping complete. Scraped {len(raw_results)} raw products.")
         
-        processed_products = process_raw_results(raw_results)
-        print(f"Matched and validated {len(processed_products)} products.")
+        processed_products, flagged_items = process_raw_results(raw_results)
+        print(f"Matched and validated {len(processed_products)} products. Flagged {len(flagged_items)} items for review.")
         
         # Save to store-specific file
         store_clean = store.replace(" ", "_")
         store_output_path = os.path.join(base_dir, "json", f"processed_{store_clean}.json")
+        store_audit_path = os.path.join(base_dir, "json", f"audit_{store_clean}.json")
         try:
             os.makedirs(os.path.dirname(store_output_path), exist_ok=True)
             with open(store_output_path, "w", encoding="utf-8") as f:
                 json.dump(processed_products, f, indent=2, ensure_ascii=False)
+            with open(store_audit_path, "w", encoding="utf-8") as f:
+                json.dump(flagged_items, f, indent=2, ensure_ascii=False)
             print(f"SUCCESS: Wrote store-specific processed results to {store_output_path}")
+            print(f"SUCCESS: Wrote store-specific audit items to {store_audit_path}")
         except Exception as e:
             print(f"Error writing store output file: {e}")
             sys.exit(1)
@@ -123,11 +140,13 @@ def run():
         print(f"==========================================")
         
         all_processed = []
+        all_flagged = []
         succeeded_stores = set()
         
         for store in stores:
             store_clean = store.replace(" ", "_")
             store_file_path = os.path.join(base_dir, "json", f"processed_{store_clean}.json")
+            store_audit_path = os.path.join(base_dir, "json", f"audit_{store_clean}.json")
             if os.path.exists(store_file_path):
                 try:
                     with open(store_file_path, "r", encoding="utf-8") as f:
@@ -139,6 +158,14 @@ def run():
                     print(f"Error loading processed file for {store}: {e}")
             else:
                 print(f"WARNING: No processed file found for {store} at {store_file_path}. Will use fallback data.")
+
+            if os.path.exists(store_audit_path):
+                try:
+                    with open(store_audit_path, "r", encoding="utf-8") as f:
+                        store_audits = json.load(f)
+                    all_flagged.extend(store_audits)
+                except Exception as e:
+                    print(f"Error loading audit file for {store}: {e}")
 
         # Group and deduplicate to select the cheapest option per unique combination
         cheapest_lookup = {}
@@ -182,6 +209,24 @@ def run():
                 json.dump(final_data, f, indent=2, ensure_ascii=False)
             print(f"\nSUCCESS: Consolidated products database written to {output_path} ({len(merged_products)} total products).")
             
+            # Guardar items sospechosos en json/items_a_revisar.json
+            review_file_path = os.path.join(base_dir, "json", "items_a_revisar.json")
+            try:
+                with open(review_file_path, "w", encoding="utf-8") as f:
+                    json.dump({
+                        "timestamp": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                        "total": len(all_flagged),
+                        "items": all_flagged
+                    }, f, indent=2, ensure_ascii=False)
+                print(f"SUCCESS: Wrote {len(all_flagged)} audit items to {review_file_path}")
+            except Exception as e:
+                print(f"Warning: Could not save review items: {e}")
+                
+            # Enviar alertas a Discord si hay items sospechosos
+            if all_flagged:
+                print(f"[Discord] Enviando alertas para {len(all_flagged)} items sospechosos...")
+                discord_notifier.send_discord_alert(all_flagged)
+
             # Actualizar historial de precios automáticamente
             try:
                 import price_history
@@ -208,8 +253,9 @@ def run():
             
         print(f"\nScraping complete. Total raw products scraped: {len(raw_results)}")
         
-        processed_products = process_raw_results(raw_results)
+        processed_products, flagged_items = process_raw_results(raw_results)
         print(f"Total matched and validated products: {len(processed_products)}")
+        print(f"Total flagged items for audit: {len(flagged_items)}")
         
         cheapest_lookup = {}
         for p in processed_products:
@@ -251,6 +297,22 @@ def run():
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(final_data, f, indent=2, ensure_ascii=False)
             print(f"\nSUCCESS: Updated products database written to {output_path} ({len(merged_products)} total products).")
+            
+            # Guardar items a revisar
+            review_file_path = os.path.join(base_dir, "json", "items_a_revisar.json")
+            try:
+                with open(review_file_path, "w", encoding="utf-8") as f:
+                    json.dump({
+                        "timestamp": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                        "total": len(flagged_items),
+                        "items": flagged_items
+                    }, f, indent=2, ensure_ascii=False)
+            except Exception as e:
+                pass
+                
+            if flagged_items:
+                discord_notifier.send_discord_alert(flagged_items)
+                
         except Exception as e:
             print(f"Error writing output file: {e}")
 

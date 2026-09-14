@@ -28,6 +28,14 @@
       }
     },
 
+    "sku_status": {
+      ".read": "true",
+      ".write": "root.child('admins').child(auth.uid).val() === true",
+      "$skuKey": {
+        ".validate": "newData.hasChild('active')"
+      }
+    },
+
     "admins": {
       ".read": "auth != null",
       ".write": "false"

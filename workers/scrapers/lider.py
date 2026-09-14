@@ -50,7 +50,7 @@ def scrape_with_playwright(url):
     return None
 
 def scrape(category, keyword):
-    url = f"https://www.lider.cl/supermercado/search?query={keyword}"
+    url = f"https://www.lider.cl/catalogo/search?query={keyword}"
     print(f"[Lider] Scraping keyword '{keyword}' for category '{category}'...")
     
     html = fetch_html(url)
@@ -75,7 +75,22 @@ def scrape(category, keyword):
         
     try:
         data = json.loads(next_data_str)
-        raw_products = extract_products_from_json(data, "products")
+        raw_products = []
+        
+        # 1. Extracción primaria: initialData.searchResult.itemStacks
+        try:
+            init_data = data.get("props", {}).get("pageProps", {}).get("initialData", {})
+            search_res = init_data.get("searchResult", {})
+            stacks = search_res.get("itemStacks", [])
+            if stacks and isinstance(stacks, list):
+                raw_products = stacks[0].get("items", [])
+        except Exception as e:
+            print(f"[Lider] Error extrayendo itemStacks: {e}")
+            
+        # 2. Fallback de extracción recursiva si itemStacks no trajo productos
+        if not raw_products:
+            raw_products = extract_products_from_json(data, "products")
+            
         print(f"[Lider] Found {len(raw_products)} raw items in state.")
         
         scraped_products = []
@@ -84,9 +99,9 @@ def scrape(category, keyword):
             if not name:
                 continue
                 
-            # Try to get price
+            # Extraer precio (campo numérico directo o desde priceInfo)
             price = item.get("price")
-            if not price and "priceInfo" in item:
+            if price is None and "priceInfo" in item:
                 p_info = item["priceInfo"]
                 if isinstance(p_info, dict):
                     if "currentPrice" in p_info and isinstance(p_info["currentPrice"], dict):
@@ -100,13 +115,15 @@ def scrape(category, keyword):
                 continue
                 
             brand = item.get("brand") or ""
+            image = item.get("image") or item.get("thumbnailImage")
             
             scraped_products.append({
                 "name": name,
                 "price": int(price),
                 "brand": brand,
                 "store": "Lider",
-                "category": category
+                "category": category,
+                "imageUrl": image if isinstance(image, str) else None
             })
             
         print(f"[Lider] Successfully parsed {len(scraped_products)} products for keyword '{keyword}'")

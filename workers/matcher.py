@@ -139,7 +139,8 @@ def validate_category(name, category):
         "gorro", "jockey", "juguete", "auto", "miniatura", "tazón", "taza", "tazon",
         "parca", "chaqueta", "estuche", "lápiz", "lapiz", "goma", "regla", "agenda",
         "termo", "llavero", "sticker", "adhesivo", "juego de mesa", "paraguas", 
-        "audífonos", "audifonos", "parlante", "gorra", "lentes", "anteojos"
+        "audífonos", "audifonos", "parlante", "gorra", "lentes", "anteojos",
+        "racing", "f1", "formula 1", "red bull racing", "scuderia"
     ]
     if any(m in name_lower for m in merchandise):
         return False
@@ -156,9 +157,14 @@ def validate_category(name, category):
             if name_lower.startswith(acc) or f"set {acc}" in name_lower or f"juego {acc}" in name_lower or category in ["cerveza", "piscola", "ron", "vodka", "whiskey", "gin", "jaeger"]:
                 return False
 
-    # Filter out Ready-To-Drink (RTD) / pre-mixed cocktails from pure spirits
+    # Filter out Ready-To-Drink (RTD) / pre-mixed cocktails and Spritz from pure spirits
     if category in ["piscola", "ron", "vodka", "whiskey", "gin", "jaeger"]:
-        rtd_keywords = ["coctel", "cóctel", "cocktail", "sour", "ice", "mix", "preparado", "limonada", "cola", "sprite en lata", "lata sprite", "tonic en lata", "cola en lata", "lata", "latas"]
+        rtd_keywords = [
+            "coctel", "cóctel", "cocktail", "sour", "ice", "mix", "preparado", 
+            "limonada", "cola", "coke", "coca", "sprite", "fanta", "tonic", "tónica", 
+            "seltzer", "hard seltzer", "rtd", "ready to drink", "spritz", "aperol", "ramazzotti",
+            "mojito", "caipirinha", "lata", "latas", "en lata"
+        ]
         if any(x in name_lower for x in rtd_keywords):
             return False
 
@@ -352,3 +358,102 @@ def process_product(raw_product):
     if img:
         res["imagen"] = img
     return res
+
+def audit_product(raw_product, is_valid_match=False):
+    """
+    Audita un producto y detecta falsos positivos, artículos de merchandise/escolar,
+    RTDs o pre-mezclas en lata con marcas padre (ej. Jack Daniel's & Coke, Absolut Sprite),
+    spritz desubicados y anomalías de precios.
+    """
+    name = raw_product.get("name", "")
+    name_lower = name.lower()
+    category = raw_product.get("category", "")
+    price = raw_product.get("price", 0)
+    store = raw_product.get("store", "")
+    
+    # 1. Merchandise escolar, ropa o accesorios no bebestibles (ej. Cuaderno Red Bull Racing)
+    merch_keywords = [
+        "cuaderno", "libreta", "mochila", "bolso", "cartera", "polerón", "poleron", "polera",
+        "gorro", "jockey", "juguete", "auto", "miniatura", "tazón", "taza", "tazon",
+        "parca", "chaqueta", "estuche", "lápiz", "lapiz", "goma", "regla", "agenda",
+        "termo", "llavero", "sticker", "adhesivo", "juego de mesa", "paraguas", 
+        "audífonos", "audifonos", "parlante", "gorra", "lentes", "anteojos",
+        "racing", "f1", "formula 1", "red bull racing", "scuderia"
+    ]
+    matched_merch = [m for m in merch_keywords if m in name_lower]
+    if matched_merch:
+        return {
+            "name": name,
+            "store": store,
+            "category": category,
+            "price": price,
+            "flag_type": "MERCHANDISE_FALSE_POSITIVE",
+            "reason": f"Artículo no bebestible/merchandise detectado ('{matched_merch[0]}')",
+            "action": "RECHAZADO_AUTOMATICAMENTE" if not is_valid_match else "REQUIERE_REVISION"
+        }
+        
+    # 2. RTDs / Pre-mezclas usando marcas padre (ej. Jack & Coke, Absolut Sprite, Smirnoff Ice)
+    spirit_brands = [
+        "jack daniel", "jack", "absolut", "smirnoff", "bacardi", "mistral", 
+        "alto del carmen", "capel", "campari", "tanqueray", "gordon", "beefeater", 
+        "chivas", "johnnie walker", "jim beam"
+    ]
+    mix_cues = [
+        "coke", "coca", "cola", "sprite", "fanta", "ice", "mix", "soda", "sour", 
+        "mojito", "seltzer", "hard seltzer", "lata", "latas", "rtd", "ready to drink", 
+        "cóctel", "coctel", "cocktail", "preparado", "limonada", "tonic", "tónica"
+    ]
+    
+    matched_spirit = [b for b in spirit_brands if b in name_lower]
+    matched_mix = [m for m in mix_cues if m in name_lower]
+    
+    is_pure_spirit_cat = category in ["piscola", "ron", "vodka", "whiskey", "gin", "jaeger"]
+    
+    if is_pure_spirit_cat and matched_spirit and matched_mix:
+        return {
+            "name": name,
+            "store": store,
+            "category": category,
+            "price": price,
+            "flag_type": "RTD_PARENT_BRAND",
+            "reason": f"Posible RTD / Pre-mezcla de marca padre ('{matched_spirit[0]}' con '{matched_mix[0]}')",
+            "action": "RECHAZADO_AUTOMATICAMENTE" if not is_valid_match else "REQUIERE_REVISION"
+        }
+
+    # 3. Spritz y Aperitivos en categorías de destilados puros
+    if any(s in name_lower for s in ["spritz", "aperol", "ramazzotti", "hugo", "chandon garden"]):
+        if category in ["cerveza", "piscola", "ron", "vodka", "whiskey", "gin", "jaeger"]:
+            return {
+                "name": name,
+                "store": store,
+                "category": category,
+                "price": price,
+                "flag_type": "SPRITZ_APERITIF",
+                "reason": f"Aperitivo Spritz/Italiano detectado en categoría pura '{category}'",
+                "action": "RECHAZADO_AUTOMATICAMENTE" if not is_valid_match else "REQUIERE_REVISION"
+            }
+
+    # 4. Anomalías de Precios
+    if is_pure_spirit_cat and price > 0 and price < 2500:
+        return {
+            "name": name,
+            "store": store,
+            "category": category,
+            "price": price,
+            "flag_type": "PRICE_ANOMALOUS_LOW",
+            "reason": f"Precio sospechosamente bajo para destilado (${price})",
+            "action": "REQUIERE_REVISION"
+        }
+    if category in ["cola", "fanta", "ginger", "sprite", "tonica", "jugo_watts"] and price > 15000:
+        return {
+            "name": name,
+            "store": store,
+            "category": category,
+            "price": price,
+            "flag_type": "PRICE_ANOMALOUS_HIGH",
+            "reason": f"Precio excesivamente alto para mixer/bebida (${price})",
+            "action": "REQUIERE_REVISION"
+        }
+
+    return None
+

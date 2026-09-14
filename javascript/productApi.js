@@ -5,6 +5,8 @@
  * Estado compartido: CATEGORIAS_JSON, COMBINACIONES_ESPECIALES_JSON, OPCIONES_CONSUMO
  */
 
+import { obtenerSkuStatusFirebase, getSafeSkuKey } from './firebase-config.js';
+
 // ===============================
 // ESTADO COMPARTIDO
 // ===============================
@@ -12,6 +14,7 @@ let CATEGORIAS_JSON = {};
 let COMBINACIONES_ESPECIALES_JSON = {};
 let OPCIONES_CONSUMO = {};
 let HISTORIAL_PRECIOS = {};
+let SKU_STATUS_CACHE = {};
 
 // Getters/Setters para acceso desde otros módulos
 export function getCategoriasJSON() { return CATEGORIAS_JSON; }
@@ -126,32 +129,80 @@ const mockProducts = []; // Fallback vacío — ahora se usa productos.json
 
 export const productApi = {
   _data: null,
+  _skuStatus: null,
   
   async _loadData() {
-    if (this._data) return this._data;
-    
-    try {
-      const response = await fetch('json/productos.json?t=' + Date.now());
-      if (!response.ok) throw new Error('No se pudo cargar productos.json');
-      this._data = await response.json();
-      return this._data;
-    } catch (error) {
-      console.warn(`Error cargando productos.json: ${error.message}`);
-      return { timestamp: new Date().toISOString(), total: mockProducts.length, productos: mockProducts };
+    if (!this._data) {
+      try {
+        const response = await fetch('json/productos.json?t=' + Date.now());
+        if (!response.ok) throw new Error('No se pudo cargar productos.json');
+        this._data = await response.json();
+      } catch (error) {
+        console.warn(`Error cargando productos.json: ${error.message}`);
+        this._data = { timestamp: new Date().toISOString(), total: mockProducts.length, productos: mockProducts };
+      }
     }
+
+    // Cargar sku_status de Firebase de forma no bloqueante
+    if (!this._skuStatus) {
+      try {
+        this._skuStatus = await obtenerSkuStatusFirebase();
+        SKU_STATUS_CACHE = this._skuStatus || {};
+      } catch (err) {
+        console.warn("No se pudo cargar sku_status:", err);
+        this._skuStatus = {};
+      }
+    }
+
+    return this._data;
+  },
+
+  async reloadSkuStatus() {
+    try {
+      this._skuStatus = await obtenerSkuStatusFirebase();
+      SKU_STATUS_CACHE = this._skuStatus || {};
+      return this._skuStatus;
+    } catch (e) {
+      return {};
+    }
+  },
+
+  async getAllProducts() {
+    const data = await this._loadData();
+    const statusMap = this._skuStatus || {};
+    return (data.productos || []).map(p => {
+      const safeKey = getSafeSkuKey(p.tienda, p.nombre);
+      const isExplicitlyInactive = statusMap[safeKey] && statusMap[safeKey].active === false;
+      return {
+        ...p,
+        safeKey,
+        active: !isExplicitlyInactive,
+        statusMeta: statusMap[safeKey] || null
+      };
+    });
   },
   
   async getProductsByCategory(category) {
     const data = await this._loadData();
+    const statusMap = this._skuStatus || {};
     
     // Read selected gama from DOM (fall back to 'normal' if element doesn't exist)
     const gamaSelect = document.getElementById("gama");
     const selectedGama = gamaSelect ? gamaSelect.value : "normal";
     
-    // Filter by category
-    let filtered = data.productos.filter(p => p.categoria === category);
+    // 1. Filter by category
+    let filtered = (data.productos || []).filter(p => p.categoria === category);
+
+    // 2. Filter out deactivated SKUs from Firebase sku_status
+    filtered = filtered.filter(p => {
+      const safeKey = getSafeSkuKey(p.tienda, p.nombre);
+      if (statusMap[safeKey] && statusMap[safeKey].active === false) {
+        return false;
+      }
+      return true;
+    });
     
-    // Filter by gama (mixers and ice are neutral, so they are always included)
+    // 3. Filter by gama (mixers and ice are neutral, so they are always included)
     const allowedProducts = filtered.filter(p => {
       const pGama = p.gama || "normal"; // Default if missing
       return pGama === selectedGama || pGama === "neutral";
