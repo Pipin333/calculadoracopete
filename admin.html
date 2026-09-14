@@ -132,49 +132,22 @@
       </div>
     </div>
 
-    <!-- ESTADO 3: No Autorizado (UID pendiente en /admins) -->
+    <!-- ESTADO 3: No Autorizado (403 Genérico Seguro) -->
     <div id="sectionNoAdmin" class="row justify-content-center py-5 d-none">
-      <div class="col-md-8 col-lg-7">
-        <div class="card p-4 border-warning">
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="fs-2 text-warning">⚠️</div>
-            <div>
-              <h3 class="h5 mb-0 text-warning">Acceso no autorizado</h3>
-              <p class="text-secondary small mb-0">Iniciaste sesión, pero tu usuario no está en la lista de administradores.</p>
-            </div>
-          </div>
-          
-          <div class="bg-black bg-opacity-40 p-3 rounded-3 mb-3">
-            <div class="small text-secondary mb-1">Tu Identificador Único de Firebase (UID):</div>
-            <div class="d-flex align-items-center justify-content-between gap-2">
-              <span id="txtUserUID" class="uid-badge text-truncate">Cargando...</span>
-              <button id="btnCopiarUID" class="btn btn-sm btn-outline-info rounded-pill px-3">
-                <i class="bi bi-copy me-1"></i> Copiar UID
-              </button>
-            </div>
-          </div>
-
-          <div class="small text-secondary">
-            <strong>Cómo activar tu acceso (en 30 segundos):</strong>
-            <ol class="mt-2 mb-3 ps-3">
-              <li>Abre tu <a href="https://console.firebase.google.com/project/calculadoracopete/database" target="_blank" class="text-info">Consola de Firebase Realtime Database</a>.</li>
-              <li>Bajo el nodo <code>users</code>, añade tu UID con <code>"isAdmin": true</code>:
-                <pre class="bg-black bg-opacity-50 p-2 rounded mt-1 text-white">"users": {
-  "<span class="text-info" id="snippetUID">TU_UID</span>": {
-    "isAdmin": true,
-    "email": "tu_correo@gmail.com"
-  }
-}</pre>
-              </li>
-              <li>Vuelve a esta pantalla y dale a <strong>Reintentar</strong>.</li>
-            </ol>
-          </div>
-
-          <div class="d-flex justify-content-between">
-            <button id="btnReintentarAdmin" class="btn btn-outline-light rounded-pill px-4">
-              <i class="bi bi-arrow-clockwise me-1"></i> Ya lo agregué, Reintentar
+      <div class="col-md-6 col-lg-5">
+        <div class="card p-4 text-center">
+          <div class="fs-1 text-danger mb-2">🚫</div>
+          <h3 class="h5 mb-2 text-white fw-bold">Acceso Denegado</h3>
+          <p class="text-secondary small mb-4">
+            Esta consola es de uso exclusivo para el equipo fundador de Cuánto Rinde. Tu cuenta (<span id="txtUserEmailNoAdmin" class="text-white fw-medium"></span>) no posee permisos de acceso.
+          </p>
+          <div class="d-flex justify-content-center gap-2">
+            <a href="index.html" class="btn btn-sm btn-outline-light rounded-pill px-4 py-2">
+              <i class="bi bi-arrow-left me-1"></i> Volver a la Web
+            </a>
+            <button id="btnLogoutNoAdmin" class="btn btn-sm btn-danger rounded-pill px-4 py-2">
+              Cerrar Sesión
             </button>
-            <button id="btnLogoutNoAdmin" class="btn btn-sm btn-outline-danger rounded-pill px-3">Cerrar Sesión</button>
           </div>
         </div>
       </div>
@@ -315,11 +288,8 @@
     const btnLogout = document.getElementById('btnLogout');
     const btnLogoutNoAdmin = document.getElementById('btnLogoutNoAdmin');
     const btnRefreshData = document.getElementById('btnRefreshData');
-    const btnCopiarUID = document.getElementById('btnCopiarUID');
-    const btnReintentarAdmin = document.getElementById('btnReintentarAdmin');
 
-    const txtUserUID = document.getElementById('txtUserUID');
-    const snippetUID = document.getElementById('snippetUID');
+    const txtUserEmailNoAdmin = document.getElementById('txtUserEmailNoAdmin');
     const userBadgeEmail = document.getElementById('userBadgeEmail');
 
     let currentUser = null;
@@ -354,17 +324,6 @@
       if (state === 'dashboard') sectionDashboard.classList.remove('d-none');
     }
 
-    // Copiar UID
-    btnCopiarUID?.addEventListener('click', () => {
-      if (currentUser?.uid) {
-        navigator.clipboard.writeText(currentUser.uid);
-        btnCopiarUID.innerHTML = '<i class="bi bi-check2 me-1"></i> Copiado!';
-        setTimeout(() => {
-          btnCopiarUID.innerHTML = '<i class="bi bi-copy me-1"></i> Copiar UID';
-        }, 2000);
-      }
-    });
-
     // Iniciar Sesión con Google
     btnLoginGoogle?.addEventListener('click', async () => {
       try {
@@ -382,7 +341,6 @@
     };
     btnLogout?.addEventListener('click', handleLogout);
     btnLogoutNoAdmin?.addEventListener('click', handleLogout);
-    btnReintentarAdmin?.addEventListener('click', () => checkAdminAndLoad(currentUser));
     btnRefreshData?.addEventListener('click', () => checkAdminAndLoad(currentUser));
 
     // Monitorear estado de Auth
@@ -390,8 +348,7 @@
       currentUser = user;
       if (user) {
         userBadgeEmail.textContent = user.email || user.displayName || 'Fundador';
-        txtUserUID.textContent = user.uid;
-        snippetUID.textContent = user.uid;
+        if (txtUserEmailNoAdmin) txtUserEmailNoAdmin.textContent = user.email || 'tu cuenta';
         await checkAdminAndLoad(user);
       } else {
         showState('auth');
