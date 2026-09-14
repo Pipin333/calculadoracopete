@@ -153,6 +153,39 @@
       right: 1.5rem;
       z-index: 1080;
     }
+
+    /* Columnas ordenables y botones de orden */
+    .th-sortable {
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+    .th-sortable:hover {
+      color: #fff !important;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    .th-sortable.active-sort {
+      color: #a5b4fc !important;
+    }
+    .btn-sku-sort {
+      font-size: 0.74rem;
+      padding: 0.22rem 0.6rem;
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
+      background: rgba(0, 0, 0, 0.25);
+      transition: all 0.15s ease;
+    }
+    .btn-sku-sort:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .btn-sku-sort.active {
+      background: var(--accent-color) !important;
+      color: #fff !important;
+      border-color: var(--accent-color) !important;
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.35);
+    }
   </style>
 </head>
 <body>
@@ -458,22 +491,63 @@
 
           <!-- Tabla de SKUs -->
           <div class="card p-3">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span id="skuCountInfo" class="text-secondary small">Cargando inventario...</span>
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+              <div class="d-flex flex-wrap align-items-center gap-2">
+                <span id="skuCountInfo" class="text-secondary small">Cargando inventario...</span>
+                <div class="vr bg-secondary opacity-50 d-none d-sm-inline" style="height: 18px;"></div>
+                
+                <!-- Botones de Ordenamiento Ascendente / Descendente -->
+                <div class="d-flex align-items-center gap-1 flex-wrap">
+                  <span class="text-secondary small me-1"><i class="bi bi-sort-down text-primary"></i> Ordenar:</span>
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Botones de ordenamiento">
+                    <button type="button" class="btn btn-sku-sort" id="btnSortPrecioAsc" data-sort="precio" data-dir="asc" title="Ordenar por menor precio primero">
+                      💵 Menor Precio <i class="bi bi-arrow-up"></i>
+                    </button>
+                    <button type="button" class="btn btn-sku-sort" id="btnSortPrecioDesc" data-sort="precio" data-dir="desc" title="Ordenar por mayor precio primero">
+                      💎 Mayor Precio <i class="bi bi-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-sku-sort active" id="btnSortNombreAsc" data-sort="nombre" data-dir="asc" title="Ordenar por nombre (A a Z)">
+                      🔤 A - Z <i class="bi bi-arrow-up"></i>
+                    </button>
+                    <button type="button" class="btn btn-sku-sort" id="btnSortNombreDesc" data-sort="nombre" data-dir="desc" title="Ordenar por nombre (Z a A)">
+                      🔤 Z - A <i class="bi bi-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-sku-sort" id="btnSortEstadoDesc" data-sort="active" data-dir="desc" title="Mostrar activos primero">
+                      🟢 Activos
+                    </button>
+                    <button type="button" class="btn btn-sku-sort" id="btnSortEstadoAsc" data-sort="active" data-dir="asc" title="Mostrar desactivados primero">
+                      🛑 Inactivos
+                    </button>
+                  </div>
+                </div>
+              </div>
               <span class="badge bg-dark border border-white-10 text-secondary">Control en Tiempo Real con Firebase</span>
             </div>
+
             <div class="table-responsive" style="max-height: 560px; overflow-y: auto;">
               <table class="table table-dark-custom align-middle mb-0 small">
                 <thead class="sticky-top bg-dark" style="z-index: 2;">
                   <tr class="text-secondary">
                     <th style="width: 50px;"></th>
-                    <th>Producto & Marca</th>
-                    <th>Tienda</th>
-                    <th>Categoría</th>
-                    <th>Gama</th>
+                    <th class="th-sortable" data-sort="nombre" title="Click para ordenar por Producto & Marca">
+                      Producto & Marca <span class="sort-icon ms-1" id="iconSort-nombre"><i class="bi bi-sort-alpha-down text-primary"></i></span>
+                    </th>
+                    <th class="th-sortable" data-sort="tienda" title="Click para ordenar por Tienda">
+                      Tienda <span class="sort-icon ms-1" id="iconSort-tienda"><i class="bi bi-arrow-down-up opacity-50"></i></span>
+                    </th>
+                    <th class="th-sortable" data-sort="categoria" title="Click para ordenar por Categoría">
+                      Categoría <span class="sort-icon ms-1" id="iconSort-categoria"><i class="bi bi-arrow-down-up opacity-50"></i></span>
+                    </th>
+                    <th class="th-sortable" data-sort="gama" title="Click para ordenar por Gama">
+                      Gama <span class="sort-icon ms-1" id="iconSort-gama"><i class="bi bi-arrow-down-up opacity-50"></i></span>
+                    </th>
                     <th>Formato</th>
-                    <th>Precio</th>
-                    <th class="text-center" style="width: 110px;">Estado</th>
+                    <th class="th-sortable" data-sort="precio" title="Click para ordenar por Precio">
+                      Precio <span class="sort-icon ms-1" id="iconSort-precio"><i class="bi bi-arrow-down-up opacity-50"></i></span>
+                    </th>
+                    <th class="text-center th-sortable" style="width: 110px;" data-sort="active" title="Click para ordenar por Estado">
+                      Estado <span class="sort-icon ms-1" id="iconSort-active"><i class="bi bi-arrow-down-up opacity-50"></i></span>
+                    </th>
                   </tr>
                 </thead>
                 <tbody id="tableSkusBody">
@@ -650,6 +724,8 @@
     let allProducts = [];
     let skuStatusMap = {};
     let auditItems = [];
+    let skuSortColumn = 'nombre';
+    let skuSortDirection = 'asc';
 
     // Formateador CLP
     const formatCLP = (num) => {
@@ -797,6 +873,8 @@
         tableSkusBody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-danger">Error cargando productos.json: ${e.message}</td></tr>`;
       }
     }
+    window._loadSkuInventory = loadSkuInventory;
+    window._filterAndRenderSkus = filterAndRenderSkus;
 
     // Filtrar y renderizar SKUs
     function filterAndRenderSkus() {
@@ -827,6 +905,36 @@
       skuKpiActivos.textContent = activeCount;
       skuKpiInactivos.textContent = inactiveCount;
       skuCountInfo.textContent = `Mostrando ${filtered.length} de ${totalCount} productos`;
+
+      // Ordenamiento Dinámico (Ascendente / Descendente)
+      filtered.sort((a, b) => {
+        let res = 0;
+        if (skuSortColumn === 'precio') {
+          const pA = Number(a.precio) || 0;
+          const pB = Number(b.precio) || 0;
+          res = pA - pB;
+        } else if (skuSortColumn === 'active') {
+          const actA = a.active ? 1 : 0;
+          const actB = b.active ? 1 : 0;
+          res = actA - actB;
+        } else if (skuSortColumn === 'gama') {
+          const gamaWeight = { rata: 1, normal: 2, sobrado: 3 };
+          const gA = gamaWeight[a.gama] || 2;
+          const gB = gamaWeight[b.gama] || 2;
+          res = gA - gB;
+        } else if (skuSortColumn === 'tienda') {
+          res = (a.tienda || '').localeCompare(b.tienda || '', 'es-CL');
+        } else if (skuSortColumn === 'categoria') {
+          res = (a.categoria || '').localeCompare(b.categoria || '', 'es-CL');
+        } else {
+          // Default: nombre
+          res = (a.nombre || '').localeCompare(b.nombre || '', 'es-CL');
+        }
+        return skuSortDirection === 'asc' ? res : -res;
+      });
+
+      // Refrescar indicadores visuales de botones y encabezados
+      updateSortUI();
 
       if (!filtered.length) {
         tableSkusBody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-secondary">No se encontraron productos con los filtros seleccionados.</td></tr>`;
@@ -918,6 +1026,69 @@
     skuStoreFilter.addEventListener('change', filterAndRenderSkus);
     skuCategoryFilter.addEventListener('change', filterAndRenderSkus);
     skuStatusFilter.addEventListener('change', filterAndRenderSkus);
+
+    // Actualizar estados visuales de los controles de ordenamiento
+    function updateSortUI() {
+      // 1. Botones de orden rápido
+      document.querySelectorAll('.btn-sku-sort').forEach(btn => {
+        const isMatch = btn.dataset.sort === skuSortColumn && btn.dataset.dir === skuSortDirection;
+        btn.classList.toggle('active', isMatch);
+      });
+
+      // 2. Encabezados th ordenables
+      const sortableCols = ['nombre', 'tienda', 'categoria', 'gama', 'precio', 'active'];
+      sortableCols.forEach(col => {
+        const th = document.querySelector(`.th-sortable[data-sort="${col}"]`);
+        const iconEl = document.getElementById(`iconSort-${col}`);
+        if (!th || !iconEl) return;
+
+        if (skuSortColumn === col) {
+          th.classList.add('active-sort');
+          if (col === 'precio') {
+            iconEl.innerHTML = skuSortDirection === 'asc'
+              ? '<i class="bi bi-sort-numeric-down text-success"></i>'
+              : '<i class="bi bi-sort-numeric-up text-danger"></i>';
+          } else if (col === 'nombre' || col === 'tienda' || col === 'categoria') {
+            iconEl.innerHTML = skuSortDirection === 'asc'
+              ? '<i class="bi bi-sort-alpha-down text-primary"></i>'
+              : '<i class="bi bi-sort-alpha-up text-primary"></i>';
+          } else {
+            iconEl.innerHTML = skuSortDirection === 'asc'
+              ? '<i class="bi bi-arrow-up text-primary"></i>'
+              : '<i class="bi bi-arrow-down text-primary"></i>';
+          }
+        } else {
+          th.classList.remove('active-sort');
+          iconEl.innerHTML = '<i class="bi bi-arrow-down-up opacity-50"></i>';
+        }
+      });
+    }
+
+    // Listener para botones de orden rápido
+    document.querySelectorAll('.btn-sku-sort').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sortField = btn.dataset.sort;
+        const sortDir = btn.dataset.dir;
+        skuSortColumn = sortField;
+        skuSortDirection = sortDir;
+        filterAndRenderSkus();
+      });
+    });
+
+    // Listener para clic en encabezados de columna de la tabla
+    document.querySelectorAll('.th-sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const sortField = th.dataset.sort;
+        if (!sortField) return;
+        if (skuSortColumn === sortField) {
+          skuSortDirection = skuSortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+          skuSortColumn = sortField;
+          skuSortDirection = 'asc';
+        }
+        filterAndRenderSkus();
+      });
+    });
 
     // 3. Cargar Alertas y Auditoría de Falsos Positivos
     async function loadAuditAlerts() {
