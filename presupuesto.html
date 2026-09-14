@@ -175,11 +175,8 @@
 
           <!-- Botones de acción -->
           <div class="botones-accion">
-            <button class="btn btn-success" id="btnCompartirWhatsApp" style="background-color: #25d366; border-color: #25d366; color: #fff; font-weight: 600;">
-              💬 Enviar a WhatsApp
-            </button>
-            <button class="btn btn-dark" id="btnCompartir">
-              📋 Copiar Enlace
+            <button class="btn btn-primary" id="btnCompartir">
+              📋 Copiar Resumen y Enlace
             </button>
             <button class="btn btn-outline-secondary" id="btnImprimir">
               🖨️ Imprimir Boleta
@@ -196,7 +193,7 @@
   </div>
 
   <script type="module">
-    import { obtenerPresupuestoCorto, obtenerIDCortoDeURL } from './javascript/shorturl.js';
+    import { obtenerPresupuestoCorto, obtenerIDCortoDeURL, copiarTextoAlPortapapeles } from './javascript/shorturl.js';
     import { isDeliveryOnlyStore, getStoreMapsUrl, generarMensajeWhatsApp } from './javascript/helpers.js';
     
     /**
@@ -209,7 +206,6 @@
       cargarPresupuesto();
       
       // Conectar botones
-      document.getElementById('btnCompartirWhatsApp').addEventListener('click', compartirPresupuestoWhatsApp);
       document.getElementById('btnCompartir').addEventListener('click', compartirPresupuesto);
       document.getElementById('btnVolver').addEventListener('click', () => {
         window.location.href = 'index.html';
@@ -407,7 +403,7 @@
         } else {
           const ahorroMulti = boleta.presupuestoTotal - boleta.multiTienda.total;
           const ahorroMultiPct = boleta.presupuestoTotal > 0 ? Math.round((ahorroMulti / boleta.presupuestoTotal) * 100) : 0;
-          document.getElementById('ahorroMulti').textContent = `Ahorra $${formatCLP(ahorroMulti)} (${ahorroMultiPct}%)`;
+          document.getElementById('ahorroMulti').textContent = `Ahorra ${formatCLP(ahorroMulti)} (${ahorroMultiPct}%)`;
         }
         document.getElementById('totalMulti').textContent = formatCLP(boleta.multiTienda.total);
         
@@ -471,7 +467,7 @@
         } else {
           const ahorroUnica = boleta.presupuestoTotal - boleta.tiendaUnica.total;
           const ahorroUnicaPct = boleta.presupuestoTotal > 0 ? Math.round((ahorroUnica / boleta.presupuestoTotal) * 100) : 0;
-          document.getElementById('ahorroUnica').textContent = `Ahorra $${formatCLP(ahorroUnica)} (${ahorroUnicaPct}%)`;
+          document.getElementById('ahorroUnica').textContent = `Ahorra ${formatCLP(ahorroUnica)} (${ahorroUnicaPct}%)`;
         }
 
         // Items tienda única (sin repetir tienda)
@@ -510,34 +506,29 @@
     }
 
     async function compartirPresupuesto() {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        const successMsg = document.getElementById('successMsg');
-        if (successMsg) {
-          successMsg.textContent = '✅ ¡Enlace copiado al portapapeles!';
-          successMsg.classList.remove('hidden');
-          setTimeout(() => {
-            successMsg.classList.add('hidden');
-          }, 3000);
-        }
-      } catch (error) {
-        console.error('Error compartiendo:', error);
-        prompt('Copia el enlace manualmente:', window.location.href);
-      }
-    }
-
-    function compartirPresupuestoWhatsApp() {
       if (!currentPresupuestoData) {
-        alert('Aún no se ha cargado el presupuesto para compartir');
+        alert('Aún no se ha cargado el presupuesto');
         return;
       }
       try {
         const mensaje = generarMensajeWhatsApp(currentPresupuestoData, window.location.href);
-        const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensaje)}`;
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
-      } catch (err) {
-        console.error('Error al generar WhatsApp:', err);
-        alert('Error al abrir WhatsApp: ' + err.message);
+        const copiado = await copiarTextoAlPortapapeles(mensaje);
+        const successMsg = document.getElementById('successMsg');
+
+        if (copiado) {
+          if (successMsg) {
+            successMsg.textContent = '✅ ¡Resumen y enlace copiados! Listo para pegar en WhatsApp o cualquier chat.';
+            successMsg.classList.remove('hidden');
+            setTimeout(() => {
+              successMsg.classList.add('hidden');
+            }, 3500);
+          }
+        } else {
+          prompt('Copia este resumen para compartir:', mensaje);
+        }
+      } catch (error) {
+        console.error('Error compartiendo:', error);
+        prompt('Copia el enlace manualmente:', window.location.href);
       }
     }
 

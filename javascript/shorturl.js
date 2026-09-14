@@ -357,29 +357,28 @@ function obtenerPresupuestoDeURLCorta() {
 }
 
 /**
- * Copia URL corta al portapapeles - ROBUSTO
- * @param {string} id - ID corto del presupuesto
+/**
+ * Copia cualquier texto al portapapeles de forma robusta (móvil y desktop)
+ * @param {string} texto - Texto a copiar
  * @returns {Promise<boolean>}
  */
-async function copiarURLCortaAlPortapapeles(id) {
+async function copiarTextoAlPortapapeles(texto) {
+  if (!texto) return false;
   try {
-    const url = generarURLCorta(id);
-    
-    // Método 1: Clipboard API (Chrome, Edge, Firefox, Opera)
+    // Método 1: Clipboard API (Chrome, Edge, Safari iOS 13.4+, Firefox)
     if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
       try {
-        await navigator.clipboard.writeText(url);
-        console.log('✅ URL copiada con Clipboard API');
+        await navigator.clipboard.writeText(texto);
+        console.log('✅ Texto copiado con Clipboard API');
         return true;
       } catch (clipError) {
         console.warn('⚠️ Clipboard API falló:', clipError.message);
-        // Continuar con fallback
       }
     }
     
-    // Método 2: document.execCommand (fallback para navegadores antiguos)
+    // Método 2: document.execCommand (fallback robusto para navegadores antiguos / móviles)
     const textarea = document.createElement('textarea');
-    textarea.value = url;
+    textarea.value = texto;
     textarea.style.position = 'fixed';
     textarea.style.left = '-9999px';
     textarea.style.top = '-9999px';
@@ -388,9 +387,9 @@ async function copiarURLCortaAlPortapapeles(id) {
     
     document.body.appendChild(textarea);
     
-    // En iOS, necesitamos hacer focus
+    // En iOS, necesitamos seleccionar rango
     if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-      textarea.setSelectionRange(0, url.length);
+      textarea.setSelectionRange(0, texto.length);
     } else {
       textarea.select();
     }
@@ -399,16 +398,26 @@ async function copiarURLCortaAlPortapapeles(id) {
     document.body.removeChild(textarea);
     
     if (success) {
-      console.log('✅ URL copiada con execCommand');
+      console.log('✅ Texto copiado con execCommand');
       return true;
     } else {
       console.warn('⚠️ execCommand retornó false');
       return false;
     }
   } catch (error) {
-    console.error('❌ Error copiando URL corta:', error);
+    console.error('❌ Error copiando texto al portapapeles:', error);
     return false;
   }
+}
+
+/**
+ * Copia URL corta al portapapeles - ROBUSTO
+ * @param {string} id - ID corto del presupuesto
+ * @returns {Promise<boolean>}
+ */
+async function copiarURLCortaAlPortapapeles(id) {
+  const url = generarURLCorta(id);
+  return copiarTextoAlPortapapeles(url);
 }
 
 /**
@@ -608,6 +617,7 @@ export {
   obtenerIDCortoDeURL,
   obtenerPresupuestoDeURLCorta,
   copiarURLCortaAlPortapapeles,
+  copiarTextoAlPortapapeles,
   crearYCompartirPresupuestoCorto,
   exportarTodosPresupuestos,
   descargarPresupuestosJSON,

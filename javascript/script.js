@@ -71,10 +71,10 @@ import {
   renderPlan,
   renderBudgetState,
   renderWarnings,
-  compartirPresupuestoActual,
-  compartirPresupuestoWhatsApp
+  compartirPresupuestoActual
 } from './renderer.js';
 
+import { guardarPresupuestoCorto, generarURLCorta } from './shorturl.js';
 import { registrarEventoTelemetria } from './firebase-config.js';
 import { initCatalog } from './catalog.js';
 
@@ -680,21 +680,22 @@ if (form) {
     singlePlan
   );
 
-    // Conectar botón de compartir
+    // Pre-generar ID corto en background para que el copiado al portapapeles sea instantáneo
+    try {
+      guardarPresupuestoCorto(window.currentPresupuesto).then(id => {
+        if (id && window.currentPresupuesto) {
+          window.currentPresupuesto.shortId = id;
+          window.currentPresupuesto.shortUrl = generarURLCorta(id);
+        }
+      }).catch(() => {});
+    } catch (_) {}
+
+    // Conectar botón de compartir (copia el resumen formateado completo)
     const btnCompartir = document.getElementById('btnCompartirPresupuesto');
     if (btnCompartir && !btnCompartir.__listener_attached) {
       btnCompartir.__listener_attached = true;
       btnCompartir.addEventListener('click', async function() {
         await compartirPresupuestoActual();
-      });
-    }
-
-    // Conectar botón de compartir por WhatsApp
-    const btnWhatsApp = document.getElementById('btnWhatsAppPresupuesto');
-    if (btnWhatsApp && !btnWhatsApp.__listener_attached) {
-      btnWhatsApp.__listener_attached = true;
-      btnWhatsApp.addEventListener('click', async function() {
-        await compartirPresupuestoWhatsApp();
       });
     }
   } finally {

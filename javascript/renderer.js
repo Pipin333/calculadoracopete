@@ -3,9 +3,9 @@
  * Renderizado de planes, estado de presupuesto, warnings y compartir.
  */
 
-import { formatCLP, clearElement, addLi, addLiHtml, getRatioBudget, getConvenienceBadge, isDeliveryOnlyStore, getStoreMapsUrl, generarMensajeWhatsApp } from './helpers.js';
+import { formatCLP, clearElement, addLi, addLiHtml, getRatioBudget, getConvenienceBadge, isDeliveryOnlyStore, getStoreMapsUrl, generarMensajeWhatsApp, escapeHTML } from './helpers.js';
 import { summarizeItems } from './solver.js';
-import { crearYCompartirPresupuestoCorto, guardarPresupuestoCorto, generarURLCorta } from './shorturl.js';
+import { crearYCompartirPresupuestoCorto, guardarPresupuestoCorto, generarURLCorta, copiarTextoAlPortapapeles } from './shorturl.js';
 import { registrarEventoTelemetria } from './firebase-config.js';
 import { getProductPriceHistory } from './productApi.js';
 
@@ -179,6 +179,9 @@ export function renderWarnings(warnings) {
 /**
  * Comparte el presupuesto actual usando URL corta
  */
+/**
+ * Copia el resumen formateado con emojis, cuota y enlace para WhatsApp/chat
+ */
 export async function compartirPresupuestoActual() {
   try {
     if (!window.currentPresupuesto) {
@@ -189,205 +192,93 @@ export async function compartirPresupuestoActual() {
     const btnCompartir = document.getElementById('btnCompartirPresupuesto');
     const msgDiv = document.getElementById('msgCompartir');
     
-    if (!btnCompartir) {
-      console.warn('⚠️ Botón compartir no encontrado');
-      return;
-    }
+    if (!btnCompartir) return;
 
-    // Animación: cambiar botón a "cargando"
     const textOriginal = btnCompartir.innerHTML;
     btnCompartir.disabled = true;
-    btnCompartir.innerHTML = '⏳ Compartiendo...';
+    btnCompartir.innerHTML = '⏳ Copiando resumen...';
     btnCompartir.style.opacity = '0.7';
 
-    // Usar sistema de URL corta mejorado
-    const resultado = await crearYCompartirPresupuestoCorto(window.currentPresupuesto);
+    // Obtener ID corto (si ya fue pre-generado, se usa de inmediato; si no, se guarda)
+    let url = window.currentPresupuesto.shortUrl;
+    if (!url) {
+      const id = await guardarPresupuestoCorto(window.currentPresupuesto);
+      if (id) {
+        url = generarURLCorta(id);
+        window.currentPresupuesto.shortId = id;
+        window.currentPresupuesto.shortUrl = url;
+      } else {
+        url = window.location.href;
+      }
+    }
 
-    if (resultado.success) {
-      // ✅ TODO BIEN - Copiar exitosa
-      console.log(`✅ Compartir exitoso: ${resultado.id}`);
+    // Generar el copy con formato completo para WhatsApp o chats
+    const textoCompleto = generarMensajeWhatsApp(window.currentPresupuesto, url);
+
+    // Copiar al portapapeles de forma robusta (Clipboard API + fallback textarea)
+    const copiado = await copiarTextoAlPortapapeles(textoCompleto);
+
+    if (copiado) {
+      console.log('✅ Resumen con formato copiado al portapapeles');
       
-      // Mostrar mensaje elegante
       if (msgDiv) {
-        msgDiv.innerHTML = `✅ ¡Compartido! Enlace copiado`;
+        msgDiv.innerHTML = `✅ ¡Resumen copiado! Listo para pegar en WhatsApp o chat`;
         msgDiv.style.display = 'block';
         msgDiv.style.opacity = '0';
         msgDiv.style.transition = 'opacity 0.3s ease-in';
-        msgDiv.classList.remove('error-msg');
+        msgDiv.classList.remove('error-msg', 'warning-msg');
         msgDiv.classList.add('success-msg');
-        
-        // Trigger animación fade-in
-        setTimeout(() => {
-          msgDiv.style.opacity = '1';
-        }, 10);
+        setTimeout(() => { msgDiv.style.opacity = '1'; }, 10);
       }
-      
-      // Cambiar botón a estado exitoso
-      btnCompartir.innerHTML = '✅ ¡Compartido!';
+
+      btnCompartir.innerHTML = '✅ ¡Copiado con formato!';
+      btnCompartir.classList.remove('btn-primary', 'btn-outline-light');
       btnCompartir.classList.add('btn-success');
-      
-      // Auto-reset del botón después de 3 segundos
+
       setTimeout(() => {
         if (msgDiv) msgDiv.style.opacity = '0';
         btnCompartir.disabled = false;
         btnCompartir.innerHTML = textOriginal;
         btnCompartir.style.opacity = '1';
         btnCompartir.classList.remove('btn-success');
-        
+        btnCompartir.classList.add('btn-primary');
         setTimeout(() => {
           if (msgDiv) msgDiv.style.display = 'none';
         }, 300);
-      }, 3000);
-    } else if (resultado.id && !resultado.success) {
-      // ⚠️ PARCIAL - Se guardó pero no se copió
-      console.warn(`⚠️ Presupuesto guardado (${resultado.id}) pero copy falló`);
-      
-      // Mostrar URL manualmente
+      }, 3500);
+    } else {
+      console.warn('⚠️ No se pudo copiar automáticamente');
       if (msgDiv) {
         msgDiv.innerHTML = `
           <div style="text-align: left; line-height: 1.4; font-size: 0.85rem;">
-            ⚠️ <strong>Guardado en la base de datos</strong> (pero el navegador bloqueó la copia automática).<br/>
-            <span class="text-secondary small">Copia el enlace manualmente:</span><br/>
-            <code style="background: rgba(0, 0, 0, 0.3); color: #fff; padding: 0.4rem 0.6rem; border-radius: 6px; display: block; margin-top: 0.5rem; word-break: break-all; border: 1px solid rgba(255, 255, 255, 0.15); font-family: monospace;">
-              ${resultado.url}
-            </code>
+            ⚠️ <strong>Copia el resumen manualmente:</strong><br/>
+            <textarea readonly style="width: 100%; height: 90px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 6px; font-size: 0.78rem; font-family: monospace;">${escapeHTML(textoCompleto)}</textarea>
           </div>
         `;
         msgDiv.style.display = 'block';
-        msgDiv.style.opacity = '0';
-        msgDiv.style.transition = 'opacity 0.3s ease-in';
-        msgDiv.classList.add('warning-msg');
-        msgDiv.classList.remove('success-msg');
-        msgDiv.classList.remove('error-msg');
-        
-        setTimeout(() => {
-          msgDiv.style.opacity = '1';
-        }, 10);
+        msgDiv.style.opacity = '1';
       }
-      
       btnCompartir.innerHTML = '⚠️ Copiar manualmente';
-      btnCompartir.classList.add('btn-warning');
-      
       setTimeout(() => {
-        if (msgDiv) msgDiv.style.opacity = '0';
         btnCompartir.disabled = false;
         btnCompartir.innerHTML = textOriginal;
         btnCompartir.style.opacity = '1';
-        btnCompartir.classList.remove('btn-warning');
-        
-        setTimeout(() => {
-          if (msgDiv) msgDiv.style.display = 'none';
-        }, 300);
-      }, 5000);
-    } else {
-      // ❌ ERROR TOTAL
-      console.error(`❌ Error compartiendo: ${resultado.error}`);
-      
-      if (msgDiv) {
-        msgDiv.innerHTML = `❌ Error: ${resultado.error}`;
-        msgDiv.style.display = 'block';
-        msgDiv.style.opacity = '0';
-        msgDiv.style.transition = 'opacity 0.3s ease-in';
-        msgDiv.classList.add('error-msg');
-        msgDiv.classList.remove('success-msg');
-        
-        setTimeout(() => {
-          msgDiv.style.opacity = '1';
-        }, 10);
-      }
-      
-      btnCompartir.innerHTML = '❌ Error - Intenta de nuevo';
-      btnCompartir.classList.add('btn-danger');
-      
-      setTimeout(() => {
-        if (msgDiv) msgDiv.style.opacity = '0';
-        btnCompartir.disabled = false;
-        btnCompartir.innerHTML = textOriginal;
-        btnCompartir.style.opacity = '1';
-        btnCompartir.classList.remove('btn-danger');
-        
-        setTimeout(() => {
-          if (msgDiv) msgDiv.style.display = 'none';
-        }, 300);
-      }, 5000);
+      }, 4000);
     }
   } catch (error) {
-    // Error no manejado
+    console.error('❌ Error copiando resumen:', error);
+    alert('❌ Error al copiar: ' + error.message);
     const btnCompartir = document.getElementById('btnCompartirPresupuesto');
-    const textOriginal = btnCompartir.getAttribute('data-original-text') || '📋 Compartir';
-    btnCompartir.disabled = false;
-    btnCompartir.innerHTML = textOriginal;
-    btnCompartir.style.opacity = '1';
-    
-    console.error('❌ Error durante compartir:', error);
-    alert('❌ Error al compartir: ' + error.message);
-  }
-}
-
-/**
- * Comparte el presupuesto actual por WhatsApp con copy formateado y URL corta
- */
-export async function compartirPresupuestoWhatsApp() {
-  try {
-    if (!window.currentPresupuesto) {
-      alert('❌ No hay presupuesto para compartir');
-      return;
-    }
-
-    const btnWhatsApp = document.getElementById('btnWhatsAppPresupuesto');
-    const origHtml = btnWhatsApp ? btnWhatsApp.innerHTML : '';
-    if (btnWhatsApp) {
-      btnWhatsApp.disabled = true;
-      btnWhatsApp.innerHTML = '⏳ Preparando WhatsApp...';
-      btnWhatsApp.style.opacity = '0.8';
-    }
-
-    // Intentar obtener o generar URL corta
-    let url = window.location.href;
-    try {
-      const id = await guardarPresupuestoCorto(window.currentPresupuesto);
-      if (id) {
-        url = generarURLCorta(id);
-      }
-    } catch (e) {
-      console.warn('⚠️ No se pudo generar URL corta para WhatsApp, usando URL actual:', e);
-    }
-
-    // Generar mensaje estructurado para WhatsApp
-    const mensaje = generarMensajeWhatsApp(window.currentPresupuesto, url);
-    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensaje)}`;
-
-    // Registrar evento en telemetría
-    try {
-      registrarEventoTelemetria('compartir_whatsapp', {
-        personas: window.currentPresupuesto.personas || 0,
-        total: window.currentPresupuesto.total || 0,
-        modo: window.currentPresupuesto.modo || ''
-      });
-    } catch (_) {}
-
-    // Abrir WhatsApp en nueva pestaña
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
-
-    if (btnWhatsApp) {
-      btnWhatsApp.innerHTML = '✅ ¡Abriendo WhatsApp!';
-      setTimeout(() => {
-        btnWhatsApp.disabled = false;
-        btnWhatsApp.innerHTML = origHtml;
-        btnWhatsApp.style.opacity = '1';
-      }, 2500);
-    }
-  } catch (error) {
-    console.error('❌ Error al compartir por WhatsApp:', error);
-    alert('❌ Error al preparar mensaje de WhatsApp: ' + error.message);
-    const btnWhatsApp = document.getElementById('btnWhatsAppPresupuesto');
-    if (btnWhatsApp) {
-      btnWhatsApp.disabled = false;
-      btnWhatsApp.innerHTML = '💬 Compartir en WhatsApp';
-      btnWhatsApp.style.opacity = '1';
+    if (btnCompartir) {
+      btnCompartir.disabled = false;
+      btnCompartir.innerHTML = '📋 Copiar Resumen y Enlace';
+      btnCompartir.style.opacity = '1';
     }
   }
 }
+
+// Alias para compatibilidad
+export const compartirPresupuestoWhatsApp = compartirPresupuestoActual;
 
 // ===============================
 // MODAL HISTORIAL DE PRECIOS (SoloTodo Style)
