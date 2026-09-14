@@ -376,10 +376,18 @@ async function inicializarApp() {
 let deferredPrompt = null;
 
 function conectarPWA() {
-  // 1. Registrar Service Worker
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const btnInstall = document.getElementById('btnInstallPwa');
+  const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  const isInApp = /FBAN|FBAV|Instagram|WhatsApp|Line|Twitter|Snapchat/i.test(navigator.userAgent);
+
+  // 1. Registrar Service Worker con resolución dinámica de directorio base
   if ('serviceWorker' in navigator) {
     const registerSW = () => {
-      navigator.serviceWorker.register('./sw.js')
+      const pathname = window.location.pathname;
+      const baseDir = pathname.endsWith('/') ? pathname : pathname.substring(0, pathname.lastIndexOf('/') + 1);
+      const swUrl = `${baseDir}sw.js`;
+      navigator.serviceWorker.register(swUrl, { scope: baseDir })
         .then(reg => {
           console.log('✅ Service Worker registrado con éxito:', reg.scope);
         })
@@ -395,36 +403,106 @@ function conectarPWA() {
     }
   }
 
-  // 2. Manejar prompt de instalación
-  const btnInstall = document.getElementById('btnInstallPwa');
-  if (btnInstall) {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      btnInstall.classList.remove('d-none');
-    });
+  // 2. Si la app ya está corriendo instalada (standalone), ocultar botón
+  if (isStandalone) {
+    if (btnInstall) btnInstall.classList.add('d-none');
+    return;
+  }
 
+  // 3. Capturar beforeinstallprompt en Android / Chrome
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (btnInstall) {
+      btnInstall.classList.remove('d-none');
+    }
+  });
+
+  // 4. En dispositivos móviles o iOS, asegurar que el botón de instalación siempre esté accesible
+  if (btnInstall && (isIos || isInApp || window.innerWidth <= 768)) {
+    btnInstall.classList.remove('d-none');
+  }
+
+  // 5. Manejar click en botón instalar
+  if (btnInstall) {
     btnInstall.addEventListener('click', async () => {
-      if (!deferredPrompt) {
-        alert('Para instalar CuantoRinde en tu pantalla de inicio:\n• En Android: toca los tres puntos (⋮) y elige "Instalar aplicación" o "Agregar a la pantalla principal".\n• En iPhone (Safari): toca el botón Compartir (⎋) y elige "Agregar al inicio (+)".');
+      // Si el navegador soporta el prompt nativo de Chrome/Edge, dispararlo directamente
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`PWA prompt outcome: ${outcome}`);
+        deferredPrompt = null;
+        btnInstall.classList.add('d-none');
         return;
       }
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`PWA prompt outcome: ${outcome}`);
-      deferredPrompt = null;
-      btnInstall.classList.add('d-none');
-    });
 
-    window.addEventListener('appinstalled', () => {
-      console.log('✅ CuantoRinde PWA instalada exitosamente');
-      btnInstall.classList.add('d-none');
-      deferredPrompt = null;
-      try {
-        registrarEventoTelemetria('pwa_instalada', { timestamp: Date.now() });
-      } catch (_) {}
+      // Si es iOS o no hay deferredPrompt aún, mostrar modal con guía interactiva
+      mostrarInstruccionesPwa(isIos, isInApp);
     });
   }
+
+  window.addEventListener('appinstalled', () => {
+    console.log('✅ CuantoRinde PWA instalada exitosamente');
+    if (btnInstall) btnInstall.classList.add('d-none');
+    deferredPrompt = null;
+    try {
+      registrarEventoTelemetria('pwa_instalada', { timestamp: Date.now() });
+    } catch (_) {}
+  });
+}
+
+function mostrarInstruccionesPwa(isIos, isInApp) {
+  const modalEl = document.getElementById('modalInstalarPwa');
+  const modalBody = document.getElementById('pwaModalBody');
+  if (!modalEl || !modalBody) return;
+
+  if (isInApp) {
+    modalBody.innerHTML = `
+      <div class="text-center mb-3">
+        <span class="fs-1">🌐</span>
+        <h6 class="fw-bold mt-2 text-white">Abre en tu navegador predeterminado</h6>
+        <p class="text-secondary small">Estás navegando dentro de WhatsApp o redes sociales, donde no se permite instalar aplicaciones a la pantalla de inicio.</p>
+      </div>
+      <ol class="small text-start ps-3 mb-0 text-light">
+        <li class="mb-2">Toca los <strong>tres puntos (⋮)</strong> o el botón <strong>Compartir (⎋)</strong> en la barra superior/inferior.</li>
+        <li>Selecciona <strong>"Abrir en Chrome"</strong> o <strong>"Abrir en Safari"</strong> para instalarla en 1 segundo.</li>
+      </ol>
+    `;
+  } else if (isIos) {
+    modalBody.innerHTML = `
+      <div class="text-center mb-3">
+        <span class="fs-1">🍏</span>
+        <h6 class="fw-bold mt-2 text-white">Instalar en iPhone o iPad</h6>
+        <p class="text-secondary small">Agrega Cuánto Rinde a tu pantalla de inicio como una app nativa en 2 toques:</p>
+      </div>
+      <div class="bg-dark-subtle p-3 rounded-3 border border-secondary mb-3">
+        <ol class="small text-start ps-3 mb-0 text-light">
+          <li class="mb-2">Toca el botón <strong>Compartir</strong> <span class="badge bg-secondary px-2 py-1">⎋</span> (en la barra inferior de Safari).</li>
+          <li class="mb-2">Desliza la lista de opciones y presiona <strong>"Agregar a pantalla de inicio"</strong> <span class="badge bg-secondary px-2 py-1">➕</span>.</li>
+          <li>Toca <strong>"Agregar"</strong> arriba a la derecha. ¡Listo! Tendrás el icono 🍻 en tu celular.</li>
+        </ol>
+      </div>
+    `;
+  } else {
+    modalBody.innerHTML = `
+      <div class="text-center mb-3">
+        <span class="fs-1">🤖</span>
+        <h6 class="fw-bold mt-2 text-white">Instalar en Android / Chrome</h6>
+        <p class="text-secondary small">Para tener el acceso directo en tu pantalla de inicio:</p>
+      </div>
+      <div class="bg-dark-subtle p-3 rounded-3 border border-secondary mb-3">
+        <ol class="small text-start ps-3 mb-0 text-light">
+          <li class="mb-2">Toca el menú de <strong>tres puntos (⋮)</strong> en la esquina superior de Chrome.</li>
+          <li class="mb-2">Selecciona <strong>"Instalar aplicación"</strong> o <strong>"Agregar a la pantalla principal"</strong>.</li>
+          <li>Confirma la instalación para disfrutar de acceso instantáneo sin barras de navegación.</li>
+        </ol>
+      </div>
+    `;
+  }
+
+  // @ts-ignore
+  const modalInstance = new bootstrap.Modal(modalEl);
+  modalInstance.show();
 }
 
 // ===============================

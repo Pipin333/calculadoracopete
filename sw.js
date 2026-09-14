@@ -3,12 +3,14 @@
  * Habilita instalación en pantalla de inicio y arranque instantáneo.
  */
 
-const CACHE_NAME = 'cuantorinde-v1.0';
+const CACHE_NAME = 'cuantorinde-v1.1';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './presupuesto.html',
-  './css/styles.css?v=5.3',
+  './terminos.html',
+  './privacidad.html',
+  './css/styles.css?v=5.5',
   './manifest.json',
   './assets/icon-192.png',
   './assets/icon-512.png',
@@ -16,15 +18,27 @@ const STATIC_ASSETS = [
   './javascript/solver.js',
   './javascript/catalog.js',
   './javascript/helpers.js',
-  './javascript/renderer.js'
+  './javascript/renderer.js',
+  './javascript/productApi.js',
+  './javascript/productImages.js',
+  './javascript/budgetSliders.js',
+  './javascript/mixerPreferences.js',
+  './javascript/shorturl.js',
+  './javascript/config.js'
 ];
 
-// Instalación: Cachear assets estáticos del App Shell
+// Instalación: Cachear assets estáticos del App Shell de forma resiliente
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('⚡ [PWA] Cacheando App Shell');
-      return cache.addAll(STATIC_ASSETS);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      console.log('⚡ [PWA] Cacheando App Shell resiliente');
+      for (const asset of STATIC_ASSETS) {
+        try {
+          await cache.add(asset);
+        } catch (err) {
+          console.warn('[PWA] Advertencia cacheando recurso individual:', asset, err);
+        }
+      }
     }).then(() => self.skipWaiting())
   );
 });
