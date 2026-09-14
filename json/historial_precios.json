@@ -1,6 +1,6 @@
 {
  "last_updated": "2026-09-14",
- "total_tracked": 948,
+ "total_tracked": 1049,
  "all_time_lows_count": 38,
  "items": {
   "Jumbo___Cerveza Lager lata 470ml": {
@@ -1402,11 +1402,11 @@
    "nombre": "Pack 24 un. Cerveza Coors Lager 5.0° 355 cc",
    "min": 13990,
    "max": 14990,
-   "avg": 14423,
-   "cur": 14990,
-   "isMin": false,
-   "diff": 3.9,
-   "obsCount": 6,
+   "avg": 14361,
+   "cur": 13990,
+   "isMin": true,
+   "diff": -2.6,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-07",
@@ -1431,6 +1431,10 @@
     [
      "2026-07-14",
      14990
+    ],
+    [
+     "2026-09-14",
+     13990
     ]
    ]
   },
@@ -1490,11 +1494,11 @@
    "nombre": "Pack 24 un. Cerveza Stella Artois Lager 5.2° 330 cc",
    "min": 13974,
    "max": 15490,
-   "avg": 14611,
-   "cur": 14990,
+   "avg": 14487,
+   "cur": 13990,
    "isMin": false,
-   "diff": 2.6,
-   "obsCount": 4,
+   "diff": -3.4,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-07",
@@ -1511,6 +1515,10 @@
     [
      "2026-07-21",
      14990
+    ],
+    [
+     "2026-09-14",
+     13990
     ]
    ]
   },
@@ -1542,13 +1550,13 @@
   "Jumbo___Pack 18 un. Cerveza Royal Guard Premium Lager 5.0° 355 cc": {
    "tienda": "Jumbo",
    "nombre": "Pack 18 un. Cerveza Royal Guard Premium Lager 5.0° 355 cc",
-   "min": 11990,
+   "min": 9990,
    "max": 12990,
-   "avg": 12657,
-   "cur": 12990,
-   "isMin": false,
-   "diff": 2.6,
-   "obsCount": 3,
+   "avg": 11990,
+   "cur": 9990,
+   "isMin": true,
+   "diff": -16.7,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-07",
@@ -1561,6 +1569,10 @@
     [
      "2026-06-22",
      12990
+    ],
+    [
+     "2026-09-14",
+     9990
     ]
    ]
   },
@@ -1653,10 +1665,14 @@
    "cur": 1000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -1720,10 +1736,14 @@
    "cur": 8390,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     8390
+    ],
+    [
+     "2026-09-14",
      8390
     ]
    ]
@@ -1737,10 +1757,14 @@
    "cur": 6490,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     6490
+    ],
+    [
+     "2026-09-14",
      6490
     ]
    ]
@@ -1765,13 +1789,13 @@
   "Jumbo___Pack 24 un. Cerveza Royal Guard Lager 5.0° Lata 350 cc": {
    "tienda": "Jumbo",
    "nombre": "Pack 24 un. Cerveza Royal Guard Lager 5.0° Lata 350 cc",
-   "min": 13490,
+   "min": 13290,
    "max": 13990,
-   "avg": 13740,
-   "cur": 13490,
+   "avg": 13676,
+   "cur": 13290,
    "isMin": true,
-   "diff": -1.8,
-   "obsCount": 6,
+   "diff": -2.8,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-07",
@@ -1796,6 +1820,10 @@
     [
      "2026-07-21",
      13490
+    ],
+    [
+     "2026-09-14",
+     13290
     ]
    ]
   },
@@ -1804,11 +1832,11 @@
    "nombre": "Pack 24 un. Cerveza Budweiser 24.5° Lata 354 cc",
    "min": 12354,
    "max": 14490,
-   "avg": 13467,
-   "cur": 13990,
+   "avg": 13385,
+   "cur": 12890,
    "isMin": false,
-   "diff": 3.9,
-   "obsCount": 6,
+   "diff": -3.7,
+   "obsCount": 7,
    "pts": [
     [
      "2026-06-07",
@@ -1833,6 +1861,10 @@
     [
      "2026-07-21",
      13990
+    ],
+    [
+     "2026-09-14",
+     12890
     ]
    ]
   },
@@ -1986,12 +2018,12 @@
    "tienda": "Jumbo",
    "nombre": "Pisco Alto del Carmen Especial 35° Botella 1.5 L",
    "min": 9743,
-   "max": 12990,
-   "avg": 10968,
-   "cur": 10990,
+   "max": 13530,
+   "avg": 11480,
+   "cur": 13530,
    "isMin": false,
-   "diff": 0.2,
-   "obsCount": 4,
+   "diff": 17.9,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-07",
@@ -2008,6 +2040,10 @@
     [
      "2026-07-06",
      10990
+    ],
+    [
+     "2026-09-14",
+     13530
     ]
    ]
   },
@@ -2016,11 +2052,11 @@
    "nombre": "Pisco Artesanos del Cochiguaz Especial 35° 1 L",
    "min": 4490,
    "max": 5450,
-   "avg": 4970,
+   "avg": 4810,
    "cur": 4490,
    "isMin": true,
-   "diff": -9.7,
-   "obsCount": 2,
+   "diff": -6.7,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -2028,6 +2064,10 @@
     ],
     [
      "2026-06-23",
+     4490
+    ],
+    [
+     "2026-09-14",
      4490
     ]
    ]
@@ -2037,11 +2077,11 @@
    "nombre": "Pisco El Gobernador 35° Botella 700 cc",
    "min": 6990,
    "max": 7290,
-   "avg": 7140,
-   "cur": 7290,
+   "avg": 7157,
+   "cur": 7190,
    "isMin": false,
-   "diff": 2.1,
-   "obsCount": 2,
+   "diff": 0.5,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -2050,6 +2090,10 @@
     [
      "2026-06-28",
      7290
+    ],
+    [
+     "2026-09-14",
+     7190
     ]
    ]
   },
@@ -2108,11 +2152,11 @@
    "nombre": "Ron Bacardi Carta Blanca 40° 700 cc",
    "min": 7990,
    "max": 9990,
-   "avg": 8990,
-   "cur": 9990,
-   "isMin": false,
-   "diff": 11.1,
-   "obsCount": 2,
+   "avg": 8657,
+   "cur": 7990,
+   "isMin": true,
+   "diff": -7.7,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -2121,6 +2165,10 @@
     [
      "2026-06-23",
      9990
+    ],
+    [
+     "2026-09-14",
+     7990
     ]
    ]
   },
@@ -2129,11 +2177,11 @@
    "nombre": "Ron Maddero Blanco 40° 750 cc",
    "min": 3990,
    "max": 4990,
-   "avg": 4490,
-   "cur": 3990,
-   "isMin": true,
-   "diff": -11.1,
-   "obsCount": 2,
+   "avg": 4390,
+   "cur": 4190,
+   "isMin": false,
+   "diff": -4.6,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -2142,6 +2190,10 @@
     [
      "2026-06-23",
      3990
+    ],
+    [
+     "2026-09-14",
+     4190
     ]
    ]
   },
@@ -2150,11 +2202,11 @@
    "nombre": "Ron Bacardí Carta Blanca 40° 980 cc",
    "min": 9990,
    "max": 11990,
-   "avg": 10990,
-   "cur": 9990,
-   "isMin": true,
-   "diff": -9.1,
-   "obsCount": 2,
+   "avg": 11323,
+   "cur": 11990,
+   "isMin": false,
+   "diff": 5.9,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -2163,6 +2215,10 @@
     [
      "2026-06-26",
      9990
+    ],
+    [
+     "2026-09-14",
+     11990
     ]
    ]
   },
@@ -2213,11 +2269,11 @@
    "nombre": "Vodka Eristoff Original 37.5° 950 cc",
    "min": 5990,
    "max": 7690,
-   "avg": 6840,
+   "avg": 7123,
    "cur": 7690,
    "isMin": false,
-   "diff": 12.4,
-   "obsCount": 2,
+   "diff": 8.0,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -2225,6 +2281,10 @@
     ],
     [
      "2026-06-23",
+     7690
+    ],
+    [
+     "2026-09-14",
      7690
     ]
    ]
@@ -2309,16 +2369,20 @@
    "tienda": "Jumbo",
    "nombre": "Whisky Blenders Pride 40° 1 L",
    "min": 7490,
-   "max": 7490,
-   "avg": 7490,
-   "cur": 7490,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 7890,
+   "avg": 7690,
+   "cur": 7890,
+   "isMin": false,
+   "diff": 2.6,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
      7490
+    ],
+    [
+     "2026-09-14",
+     7890
     ]
    ]
   },
@@ -2356,10 +2420,14 @@
    "cur": 15990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     15990
+    ],
+    [
+     "2026-09-14",
      15990
     ]
    ]
@@ -2719,16 +2787,20 @@
    "tienda": "Jumbo",
    "nombre": "Agua Tónica Canada Dry Zero 1.5 L",
    "min": 1490,
-   "max": 1490,
-   "avg": 1490,
-   "cur": 1490,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 1590,
+   "avg": 1540,
+   "cur": 1590,
+   "isMin": false,
+   "diff": 3.2,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
      1490
+    ],
+    [
+     "2026-09-14",
+     1590
     ]
    ]
   },
@@ -3127,10 +3199,14 @@
    "cur": 1000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -3140,11 +3216,11 @@
    "nombre": "Hielo Whisky Bolsa 2 kg",
    "min": 1600,
    "max": 1640,
-   "avg": 1620,
+   "avg": 1627,
    "cur": 1640,
    "isMin": false,
-   "diff": 1.2,
-   "obsCount": 2,
+   "diff": 0.8,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -3152,6 +3228,10 @@
     ],
     [
      "2026-06-18",
+     1640
+    ],
+    [
+     "2026-09-14",
      1640
     ]
    ]
@@ -3399,11 +3479,11 @@
    "nombre": "Licor Jägermeister 35° 700 cc",
    "min": 11990,
    "max": 17190,
-   "avg": 14590,
-   "cur": 11990,
-   "isMin": true,
-   "diff": -17.8,
-   "obsCount": 2,
+   "avg": 15190,
+   "cur": 16390,
+   "isMin": false,
+   "diff": 7.9,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -3412,6 +3492,10 @@
     [
      "2026-06-23",
      11990
+    ],
+    [
+     "2026-09-14",
+     16390
     ]
    ]
   },
@@ -3420,11 +3504,11 @@
    "nombre": "Licor Jägermeister 35° 1 L",
    "min": 22990,
    "max": 23640,
-   "avg": 23315,
+   "avg": 23207,
    "cur": 22990,
    "isMin": true,
-   "diff": -1.4,
-   "obsCount": 2,
+   "diff": -0.9,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-07",
@@ -3432,6 +3516,10 @@
     ],
     [
      "2026-06-08",
+     22990
+    ],
+    [
+     "2026-09-14",
      22990
     ]
    ]
@@ -3445,10 +3533,14 @@
    "cur": 33990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     33990
+    ],
+    [
+     "2026-09-14",
      33990
     ]
    ]
@@ -3521,10 +3613,14 @@
    "cur": 32990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     32990
+    ],
+    [
+     "2026-09-14",
      32990
     ]
    ]
@@ -3538,10 +3634,14 @@
    "cur": 1890,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     1890
+    ],
+    [
+     "2026-09-14",
      1890
     ]
    ]
@@ -3610,10 +3710,14 @@
    "cur": 10150,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-07",
+     10150
+    ],
+    [
+     "2026-09-14",
      10150
     ]
    ]
@@ -3737,11 +3841,11 @@
    "nombre": "Bebida Energética Red Bull Sin Azúcar 355 ml",
    "min": 2490,
    "max": 2530,
-   "avg": 2510,
+   "avg": 2503,
    "cur": 2490,
    "isMin": true,
-   "diff": -0.8,
-   "obsCount": 2,
+   "diff": -0.5,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-08",
@@ -3750,6 +3854,10 @@
     [
      "2026-06-08",
      2490
+    ],
+    [
+     "2026-09-14",
+     2490
     ]
    ]
   },
@@ -3757,12 +3865,12 @@
    "tienda": "Jumbo",
    "nombre": "Jugo Selección Watt's Mango Maracuyá 1 L",
    "min": 2090,
-   "max": 2190,
-   "avg": 2140,
-   "cur": 2190,
+   "max": 2290,
+   "avg": 2190,
+   "cur": 2290,
    "isMin": false,
-   "diff": 2.3,
-   "obsCount": 2,
+   "diff": 4.6,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-08",
@@ -3771,6 +3879,10 @@
     [
      "2026-06-23",
      2190
+    ],
+    [
+     "2026-09-14",
+     2290
     ]
    ]
   },
@@ -5285,11 +5397,11 @@
    "nombre": "Bebida Pepsi Zero 3 L",
    "min": 2113,
    "max": 3250,
-   "avg": 2682,
-   "cur": 3250,
+   "avg": 2623,
+   "cur": 2390,
    "isMin": false,
-   "diff": 21.2,
-   "obsCount": 4,
+   "diff": -8.9,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-08",
@@ -5306,6 +5418,10 @@
     [
      "2026-06-11",
      3250
+    ],
+    [
+     "2026-09-14",
+     2390
     ]
    ]
   },
@@ -5576,10 +5692,14 @@
    "cur": 3090,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-08",
+     3090
+    ],
+    [
+     "2026-09-14",
      3090
     ]
    ]
@@ -5901,13 +6021,13 @@
   "Jumbo___Pack 18 un. Cerveza Sol Lager 4.5° 330 cc": {
    "tienda": "Jumbo",
    "nombre": "Pack 18 un. Cerveza Sol Lager 4.5° 330 cc",
-   "min": 12490,
+   "min": 9990,
    "max": 13990,
-   "avg": 13157,
-   "cur": 12990,
-   "isMin": false,
-   "diff": -1.3,
-   "obsCount": 3,
+   "avg": 12365,
+   "cur": 9990,
+   "isMin": true,
+   "diff": -19.2,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-09",
@@ -5920,6 +6040,10 @@
     [
      "2026-07-21",
      12990
+    ],
+    [
+     "2026-09-14",
+     9990
     ]
    ]
   },
@@ -5964,13 +6088,13 @@
   "Jumbo___Pack 12 un. Cerveza Quilmes Lager 4.9° 354 cc": {
    "tienda": "Jumbo",
    "nombre": "Pack 12 un. Cerveza Quilmes Lager 4.9° 354 cc",
-   "min": 7290,
+   "min": 6990,
    "max": 7490,
-   "avg": 7390,
-   "cur": 7290,
+   "avg": 7257,
+   "cur": 6990,
    "isMin": true,
-   "diff": -1.4,
-   "obsCount": 2,
+   "diff": -3.7,
+   "obsCount": 3,
    "pts": [
     [
      "2026-06-09",
@@ -5979,6 +6103,10 @@
     [
      "2026-07-07",
      7290
+    ],
+    [
+     "2026-09-14",
+     6990
     ]
    ]
   },
@@ -7091,10 +7219,14 @@
    "cur": 4990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     4990
+    ],
+    [
+     "2026-09-14",
      4990
     ]
    ]
@@ -7140,34 +7272,42 @@
   "Jumbo___Bebida 7Up 1.5 L": {
    "tienda": "Jumbo",
    "nombre": "Bebida 7Up 1.5 L",
-   "min": 2150,
+   "min": 1590,
    "max": 2150,
-   "avg": 2150,
-   "cur": 2150,
+   "avg": 1870,
+   "cur": 1590,
    "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "diff": -15.0,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
      2150
+    ],
+    [
+     "2026-09-14",
+     1590
     ]
    ]
   },
   "Jumbo___Bebida 7Up 3 L": {
    "tienda": "Jumbo",
    "nombre": "Bebida 7Up 3 L",
-   "min": 3290,
+   "min": 2390,
    "max": 3290,
-   "avg": 3290,
-   "cur": 3290,
+   "avg": 2840,
+   "cur": 2390,
    "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "diff": -15.8,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
      3290
+    ],
+    [
+     "2026-09-14",
+     2390
     ]
    ]
   },
@@ -12853,11 +12993,11 @@
    "nombre": "Gin Beefeater Dry 40° 1000 cc",
    "min": 15043,
    "max": 21490,
-   "avg": 18266,
-   "cur": 21490,
+   "avg": 18101,
+   "cur": 17440,
    "isMin": false,
-   "diff": 17.7,
-   "obsCount": 4,
+   "diff": -3.7,
+   "obsCount": 5,
    "pts": [
     [
      "2026-06-12",
@@ -12874,6 +13014,10 @@
     [
      "2026-07-14",
      21490
+    ],
+    [
+     "2026-09-14",
+     17440
     ]
    ]
   },
@@ -13032,10 +13176,14 @@
    "cur": 2150,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-13",
+     2150
+    ],
+    [
+     "2026-09-14",
      2150
     ]
    ]
@@ -13066,10 +13214,14 @@
    "cur": 5690,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-13",
+     5690
+    ],
+    [
+     "2026-09-14",
      5690
     ]
    ]
@@ -13711,10 +13863,14 @@
    "cur": 5790,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-18",
+     5790
+    ],
+    [
+     "2026-09-14",
      5790
     ]
    ]
@@ -13798,17 +13954,21 @@
   "Jumbo___Bebida Canada Dry Ginger Ale Zero 3 L": {
    "tienda": "Jumbo",
    "nombre": "Bebida Canada Dry Ginger Ale Zero 3 L",
-   "min": 3290,
+   "min": 2390,
    "max": 3290,
-   "avg": 3290,
-   "cur": 3290,
+   "avg": 2840,
+   "cur": 2390,
    "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "diff": -15.8,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-18",
      3290
+    ],
+    [
+     "2026-09-14",
+     2390
     ]
    ]
   },
@@ -14366,17 +14526,21 @@
   "Jumbo___Pack 6 un. Cerveza Royal Guard Golden Lager 4.5° 355 cc": {
    "tienda": "Jumbo",
    "nombre": "Pack 6 un. Cerveza Royal Guard Golden Lager 4.5° 355 cc",
-   "min": 5490,
+   "min": 4990,
    "max": 5490,
-   "avg": 5490,
-   "cur": 5490,
+   "avg": 5240,
+   "cur": 4990,
    "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "diff": -4.8,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-23",
      5490
+    ],
+    [
+     "2026-09-14",
+     4990
     ]
    ]
   },
@@ -14384,16 +14548,20 @@
    "tienda": "Jumbo",
    "nombre": "Pack 6 un. Cerveza Budweiser Lager Sin Alcohol 330 cc",
    "min": 4194,
-   "max": 4194,
-   "avg": 4194,
-   "cur": 4194,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 4990,
+   "avg": 4592,
+   "cur": 4990,
+   "isMin": false,
+   "diff": 8.7,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-23",
      4194
+    ],
+    [
+     "2026-09-14",
+     4990
     ]
    ]
   },
@@ -14485,34 +14653,42 @@
   "Jumbo___Vodka Puklaro 40° 750 cc": {
    "tienda": "Jumbo",
    "nombre": "Vodka Puklaro 40° 750 cc",
-   "min": 8250,
+   "min": 8190,
    "max": 8250,
-   "avg": 8250,
-   "cur": 8250,
+   "avg": 8220,
+   "cur": 8190,
    "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "diff": -0.4,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-23",
      8250
+    ],
+    [
+     "2026-09-14",
+     8190
     ]
    ]
   },
   "Jumbo___Vodka Eristoff Original 37.5° 700 cc": {
    "tienda": "Jumbo",
    "nombre": "Vodka Eristoff Original 37.5° 700 cc",
-   "min": 5490,
+   "min": 4990,
    "max": 5490,
-   "avg": 5490,
-   "cur": 5490,
+   "avg": 5240,
+   "cur": 4990,
    "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "diff": -4.8,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-23",
      5490
+    ],
+    [
+     "2026-09-14",
+     4990
     ]
    ]
   },
@@ -14549,16 +14725,20 @@
    "tienda": "Jumbo",
    "nombre": "Jugo Fresco Watt's Naranja Mix 1.6 L",
    "min": 4790,
-   "max": 4790,
-   "avg": 4790,
-   "cur": 4790,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 4990,
+   "avg": 4890,
+   "cur": 4990,
+   "isMin": false,
+   "diff": 2.0,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-23",
      4790
+    ],
+    [
+     "2026-09-14",
+     4990
     ]
    ]
   },
@@ -14604,16 +14784,20 @@
    "tienda": "Jumbo",
    "nombre": "Pack 6 un. Cerveza Becker Lager 4.5° 473 cc",
    "min": 4390,
-   "max": 4390,
-   "avg": 4390,
-   "cur": 4390,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 4490,
+   "avg": 4440,
+   "cur": 4490,
+   "isMin": false,
+   "diff": 1.1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-24",
      4390
+    ],
+    [
+     "2026-09-14",
+     4490
     ]
    ]
   },
@@ -15147,33 +15331,41 @@
    "tienda": "Jumbo",
    "nombre": "Bebida Crush 1.5 L",
    "min": 1490,
-   "max": 1490,
-   "avg": 1490,
-   "cur": 1490,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 1590,
+   "avg": 1540,
+   "cur": 1590,
+   "isMin": false,
+   "diff": 3.2,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-27",
      1490
+    ],
+    [
+     "2026-09-14",
+     1590
     ]
    ]
   },
   "Jumbo___Bebida Crush 3 L": {
    "tienda": "Jumbo",
    "nombre": "Bebida Crush 3 L",
-   "min": 3290,
+   "min": 2390,
    "max": 3290,
-   "avg": 3290,
-   "cur": 3290,
+   "avg": 2840,
+   "cur": 2390,
    "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "diff": -15.8,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-27",
      3290
+    ],
+    [
+     "2026-09-14",
+     2390
     ]
    ]
   },
@@ -15265,16 +15457,20 @@
    "tienda": "Jumbo",
    "nombre": "Pack 6 un. Cerveza Mahou 5 Estrellas Pale Lager 5.5° 250 cc",
    "min": 4152,
-   "max": 4152,
-   "avg": 4152,
-   "cur": 4152,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 5190,
+   "avg": 4671,
+   "cur": 5190,
+   "isMin": false,
+   "diff": 11.1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-28",
      4152
+    ],
+    [
+     "2026-09-14",
+     5190
     ]
    ]
   },
@@ -15299,16 +15495,20 @@
    "tienda": "Jumbo",
    "nombre": "Cerveza Mahou Lager 4.7° 500 cc",
    "min": 872,
-   "max": 872,
-   "avg": 872,
-   "cur": 872,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 1090,
+   "avg": 981,
+   "cur": 1090,
+   "isMin": false,
+   "diff": 11.1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-29",
      872
+    ],
+    [
+     "2026-09-14",
+     1090
     ]
    ]
   },
@@ -15334,11 +15534,11 @@
    "nombre": "Pisco Horcón Quemado Artesanal Añejado 35° 645 cc",
    "min": 9990,
    "max": 11490,
-   "avg": 10490,
-   "cur": 9990,
-   "isMin": true,
-   "diff": -4.8,
-   "obsCount": 3,
+   "avg": 10615,
+   "cur": 10990,
+   "isMin": false,
+   "diff": 3.5,
+   "obsCount": 4,
    "pts": [
     [
      "2026-06-29",
@@ -15351,6 +15551,10 @@
     [
      "2026-07-16",
      9990
+    ],
+    [
+     "2026-09-14",
+     10990
     ]
    ]
   },
@@ -15574,10 +15778,14 @@
    "cur": 1000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-02",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -15995,16 +16203,20 @@
    "tienda": "Jumbo",
    "nombre": "Gin Brighton Pink 37.5° 700 cc",
    "min": 7693,
-   "max": 7693,
-   "avg": 7693,
-   "cur": 7693,
-   "isMin": true,
-   "diff": 0.0,
-   "obsCount": 1,
+   "max": 11590,
+   "avg": 9642,
+   "cur": 11590,
+   "isMin": false,
+   "diff": 20.2,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-07",
      7693
+    ],
+    [
+     "2026-09-14",
+     11590
     ]
    ]
   },
@@ -16301,10 +16513,14 @@
    "cur": 48990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-11",
+     48990
+    ],
+    [
+     "2026-09-14",
      48990
     ]
    ]
@@ -17059,10 +17275,14 @@
    "cur": 1750,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-07-22",
+     1750
+    ],
+    [
+     "2026-09-14",
      1750
     ]
    ]
@@ -19724,6 +19944,1723 @@
     [
      "2026-09-14",
      10990
+    ]
+   ]
+  },
+  "Lider___Cerveza Lata Lager": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Lata Lager",
+   "min": 5290,
+   "max": 5290,
+   "avg": 5290,
+   "cur": 5290,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     5290
+    ]
+   ]
+  },
+  "Lider___Cerveza Corona Lager 4,5° Pack 6 Botella.": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Corona Lager 4,5° Pack 6 Botella.",
+   "min": 6890,
+   "max": 6890,
+   "avg": 6890,
+   "cur": 6890,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     6890
+    ]
+   ]
+  },
+  "Lider___Cerveza Marzen Lager 4 pack 330 ml": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Marzen Lager 4 pack 330 ml",
+   "min": 9960,
+   "max": 9960,
+   "avg": 9960,
+   "cur": 9960,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     9960
+    ]
+   ]
+  },
+  "Lider___Cerveza Sol Lager 4.5° 330 cc Pack 18 un": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Sol Lager 4.5° 330 cc Pack 18 un",
+   "min": 14990,
+   "max": 14990,
+   "avg": 14990,
+   "cur": 14990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14990
+    ]
+   ]
+  },
+  "Lider___12X Cerveza Peroni Lager Botellín 5,1° 330Cc": {
+   "tienda": "Lider",
+   "nombre": "12X Cerveza Peroni Lager Botellín 5,1° 330Cc",
+   "min": 9990,
+   "max": 9990,
+   "avg": 9990,
+   "cur": 9990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     9990
+    ]
+   ]
+  },
+  "Lider___24x Cerveza Budweiser Botellín 4.8° 330cc": {
+   "tienda": "Lider",
+   "nombre": "24x Cerveza Budweiser Botellín 4.8° 330cc",
+   "min": 23990,
+   "max": 23990,
+   "avg": 23990,
+   "cur": 23990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     23990
+    ]
+   ]
+  },
+  "Lider___Cerveza Altamira Pinche Lager 6x473cc": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Altamira Pinche Lager 6x473cc",
+   "min": 14940,
+   "max": 14940,
+   "avg": 14940,
+   "cur": 14940,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14940
+    ]
+   ]
+  },
+  "Lider___Cerveza Heineken Lata 355cc Pack 12 un": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Heineken Lata 355cc Pack 12 un",
+   "min": 9990,
+   "max": 9990,
+   "avg": 9990,
+   "cur": 9990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     9990
+    ]
+   ]
+  },
+  "Lider___x24 Cerveza Royal Guard Lata 470cc": {
+   "tienda": "Lider",
+   "nombre": "x24 Cerveza Royal Guard Lata 470cc",
+   "min": 24490,
+   "max": 24490,
+   "avg": 24490,
+   "cur": 24490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     24490
+    ]
+   ]
+  },
+  "Lider___Entrenubes (Pale Lager) 6 Pack 470ml Cerveza LOA 6 Pack": {
+   "tienda": "Lider",
+   "nombre": "Entrenubes (Pale Lager) 6 Pack 470ml Cerveza LOA 6 Pack",
+   "min": 19490,
+   "max": 19490,
+   "avg": 19490,
+   "cur": 19490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     19490
+    ]
+   ]
+  },
+  "Lider___Pack 12 cervezas rubias 473 cc c/u": {
+   "tienda": "Lider",
+   "nombre": "Pack 12 cervezas rubias 473 cc c/u",
+   "min": 35990,
+   "max": 35990,
+   "avg": 35990,
+   "cur": 35990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     35990
+    ]
+   ]
+  },
+  "Lider___24x Cerveza Budweiser Lata 354cc": {
+   "tienda": "Lider",
+   "nombre": "24x Cerveza Budweiser Lata 354cc",
+   "min": 14990,
+   "max": 14990,
+   "avg": 14990,
+   "cur": 14990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14990
+    ]
+   ]
+  },
+  "Lider___Pack 24 Cervezas Quilmes Lata 473cc": {
+   "tienda": "Lider",
+   "nombre": "Pack 24 Cervezas Quilmes Lata 473cc",
+   "min": 21090,
+   "max": 21090,
+   "avg": 21090,
+   "cur": 21090,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     21090
+    ]
+   ]
+  },
+  "Lider___Lata de cerveza para asar aves de corral, marca, acero, 15 x 15 cm, plateada": {
+   "tienda": "Lider",
+   "nombre": "Lata de cerveza para asar aves de corral, marca, acero, 15 x 15 cm, plateada",
+   "min": 34990,
+   "max": 34990,
+   "avg": 34990,
+   "cur": 34990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     34990
+    ]
+   ]
+  },
+  "Lider___Cerveza 4,5G Becker Lata 473Cc": {
+   "tienda": "Lider",
+   "nombre": "Cerveza 4,5G Becker Lata 473Cc",
+   "min": 18990,
+   "max": 18990,
+   "avg": 18990,
+   "cur": 18990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     18990
+    ]
+   ]
+  },
+  "Lider___Caja Guarda Corchos 40x30 Cm Colección Cerveza": {
+   "tienda": "Lider",
+   "nombre": "Caja Guarda Corchos 40x30 Cm Colección Cerveza",
+   "min": 53990,
+   "max": 53990,
+   "avg": 53990,
+   "cur": 53990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     53990
+    ]
+   ]
+  },
+  "Lider___El Tarro De Jugo De 4L Organiza El Recipiente De La Tetera Fría Para El Agua Fría De La Cerveza Del Jardín": {
+   "tienda": "Lider",
+   "nombre": "El Tarro De Jugo De 4L Organiza El Recipiente De La Tetera Fría Para El Agua Fría De La Cerveza Del Jardín",
+   "min": 45532,
+   "max": 45532,
+   "avg": 45532,
+   "cur": 45532,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     45532
+    ]
+   ]
+  },
+  "Lider___8 Latas Cerveza Artesanal CODA Red Ale": {
+   "tienda": "Lider",
+   "nombre": "8 Latas Cerveza Artesanal CODA Red Ale",
+   "min": 19900,
+   "max": 19900,
+   "avg": 19900,
+   "cur": 19900,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     19900
+    ]
+   ]
+  },
+  "Lider___Papel de regalo SHSEEN 50 x 70 cm Cerveza Vintage – Pack de 2": {
+   "tienda": "Lider",
+   "nombre": "Papel de regalo SHSEEN 50 x 70 cm Cerveza Vintage – Pack de 2",
+   "min": 23990,
+   "max": 23990,
+   "avg": 23990,
+   "cur": 23990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     23990
+    ]
+   ]
+  },
+  "Lider___Cerveza Tradicional Superior Light Beer 3.5° Pack 6 Botella": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Tradicional Superior Light Beer 3.5° Pack 6 Botella",
+   "min": 6900,
+   "max": 6900,
+   "avg": 6900,
+   "cur": 6900,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     6900
+    ]
+   ]
+  },
+  "Lider___Jarra de cerveza de plástico transparente 591 ml con asa – Pack de 12": {
+   "tienda": "Lider",
+   "nombre": "Jarra de cerveza de plástico transparente 591 ml con asa – Pack de 12",
+   "min": 108990,
+   "max": 108990,
+   "avg": 108990,
+   "cur": 108990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     108990
+    ]
+   ]
+  },
+  "Lider___Cerveza Torres Del Paine Helles Bock 6.1° Pack 4 Botella": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Torres Del Paine Helles Bock 6.1° Pack 4 Botella",
+   "min": 6990,
+   "max": 6990,
+   "avg": 6990,
+   "cur": 6990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     6990
+    ]
+   ]
+  },
+  "Lider___Cerveza Royal Guard Botellin 355ml x6": {
+   "tienda": "Lider",
+   "nombre": "Cerveza Royal Guard Botellin 355ml x6",
+   "min": 8990,
+   "max": 8990,
+   "avg": 8990,
+   "cur": 8990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     8990
+    ]
+   ]
+  },
+  "Lider___24X Cerveza Coors Botellín 5° 355Cc": {
+   "tienda": "Lider",
+   "nombre": "24X Cerveza Coors Botellín 5° 355Cc",
+   "min": 17990,
+   "max": 17990,
+   "avg": 17990,
+   "cur": 17990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     17990
+    ]
+   ]
+  },
+  "Lider___Pisco Especial 35° Botella": {
+   "tienda": "Lider",
+   "nombre": "Pisco Especial 35° Botella",
+   "min": 5990,
+   "max": 5990,
+   "avg": 5990,
+   "cur": 5990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     5990
+    ]
+   ]
+  },
+  "Lider___Pisco Alto del Carmen 35° 1.5 Lt. X6": {
+   "tienda": "Lider",
+   "nombre": "Pisco Alto del Carmen 35° 1.5 Lt. X6",
+   "min": 51490,
+   "max": 51490,
+   "avg": 51490,
+   "cur": 51490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     51490
+    ]
+   ]
+  },
+  "Lider___6x Pisco Alto del Carmen 35° 1000cc": {
+   "tienda": "Lider",
+   "nombre": "6x Pisco Alto del Carmen 35° 1000cc",
+   "min": 37990,
+   "max": 37990,
+   "avg": 37990,
+   "cur": 37990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     37990
+    ]
+   ]
+  },
+  "Lider___6x Pisco Alto Del Carmen 35° 750cc": {
+   "tienda": "Lider",
+   "nombre": "6x Pisco Alto Del Carmen 35° 750cc",
+   "min": 36590,
+   "max": 36590,
+   "avg": 36590,
+   "cur": 36590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     36590
+    ]
+   ]
+  },
+  "Lider___Pack Pisco Bou Legado 1 Bou Legado Roble 40º 750 ML + 1 Bou Legado Blanco 40º 375 ML": {
+   "tienda": "Lider",
+   "nombre": "Pack Pisco Bou Legado 1 Bou Legado Roble 40º 750 ML + 1 Bou Legado Blanco 40º 375 ML",
+   "min": 41990,
+   "max": 41990,
+   "avg": 41990,
+   "cur": 41990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     41990
+    ]
+   ]
+  },
+  "Lider___Ron Añejo 7 Años 750cc": {
+   "tienda": "Lider",
+   "nombre": "Ron Añejo 7 Años 750cc",
+   "min": 17990,
+   "max": 17990,
+   "avg": 17990,
+   "cur": 17990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     17990
+    ]
+   ]
+  },
+  "Lider___Ron Añejo Blanco Superior 700ml": {
+   "tienda": "Lider",
+   "nombre": "Ron Añejo Blanco Superior 700ml",
+   "min": 13990,
+   "max": 13990,
+   "avg": 13990,
+   "cur": 13990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     13990
+    ]
+   ]
+  },
+  "Lider___Pack x 12 Ron Blanco Añejado Mitjans 1000 cc": {
+   "tienda": "Lider",
+   "nombre": "Pack x 12 Ron Blanco Añejado Mitjans 1000 cc",
+   "min": 52990,
+   "max": 52990,
+   "avg": 52990,
+   "cur": 52990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     52990
+    ]
+   ]
+  },
+  "Lider___Vodka Original Premium 37,5° Botella": {
+   "tienda": "Lider",
+   "nombre": "Vodka Original Premium 37,5° Botella",
+   "min": 4590,
+   "max": 4590,
+   "avg": 4590,
+   "cur": 4590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     4590
+    ]
+   ]
+  },
+  "Lider___Vodka Jolly Skull Apple 20° 1000Cc": {
+   "tienda": "Lider",
+   "nombre": "Vodka Jolly Skull Apple 20° 1000Cc",
+   "min": 16990,
+   "max": 16990,
+   "avg": 16990,
+   "cur": 16990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     16990
+    ]
+   ]
+  },
+  "Lider___12x Vodka Spirit Pineapple 5,5º 275cc": {
+   "tienda": "Lider",
+   "nombre": "12x Vodka Spirit Pineapple 5,5º 275cc",
+   "min": 19980,
+   "max": 19980,
+   "avg": 19980,
+   "cur": 19980,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     19980
+    ]
+   ]
+  },
+  "Lider___Vodka Stolichnaya Botellón 40° 1750Cc": {
+   "tienda": "Lider",
+   "nombre": "Vodka Stolichnaya Botellón 40° 1750Cc",
+   "min": 24490,
+   "max": 24490,
+   "avg": 24490,
+   "cur": 24490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     24490
+    ]
+   ]
+  },
+  "Lider___Vodka Alquimist Apeach 38° 700cc": {
+   "tienda": "Lider",
+   "nombre": "Vodka Alquimist Apeach 38° 700cc",
+   "min": 14990,
+   "max": 14990,
+   "avg": 14990,
+   "cur": 14990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14990
+    ]
+   ]
+  },
+  "Lider___Whisky Cinnamon 33° Botella": {
+   "tienda": "Lider",
+   "nombre": "Whisky Cinnamon 33° Botella",
+   "min": 13990,
+   "max": 13990,
+   "avg": 13990,
+   "cur": 13990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     13990
+    ]
+   ]
+  },
+  "Lider___12x Whisky Johnnie Walker Red Label Botella 750ml": {
+   "tienda": "Lider",
+   "nombre": "12x Whisky Johnnie Walker Red Label Botella 750ml",
+   "min": 126190,
+   "max": 126190,
+   "avg": 126190,
+   "cur": 126190,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     126190
+    ]
+   ]
+  },
+  "Lider___Whisky Chivas Regal 12 Años 40° 1000Cc": {
+   "tienda": "Lider",
+   "nombre": "Whisky Chivas Regal 12 Años 40° 1000Cc",
+   "min": 37990,
+   "max": 37990,
+   "avg": 37990,
+   "cur": 37990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     37990
+    ]
+   ]
+  },
+  "Lider___Whisky Chivas Regal 16 Años Charles Leclerc 40° 700cc": {
+   "tienda": "Lider",
+   "nombre": "Whisky Chivas Regal 16 Años Charles Leclerc 40° 700cc",
+   "min": 60990,
+   "max": 60990,
+   "avg": 60990,
+   "cur": 60990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     60990
+    ]
+   ]
+  },
+  "Lider___Decantador De Whisky Con Forma De Cabeza De Caballo, Ideal Para Fiestas De Cumpleaños, Día Del Padre Y Graduación, 350 Ml": {
+   "tienda": "Lider",
+   "nombre": "Decantador De Whisky Con Forma De Cabeza De Caballo, Ideal Para Fiestas De Cumpleaños, Día Del Padre Y Graduación, 350 Ml",
+   "min": 45257,
+   "max": 45257,
+   "avg": 45257,
+   "cur": 45257,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     45257
+    ]
+   ]
+  },
+  "Lider___Decantador De Whisky 1500ml Transparente Para Regalos De Vacaciones Hogar Comedor Adultos": {
+   "tienda": "Lider",
+   "nombre": "Decantador De Whisky 1500ml Transparente Para Regalos De Vacaciones Hogar Comedor Adultos",
+   "min": 93407,
+   "max": 93407,
+   "avg": 93407,
+   "cur": 93407,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     93407
+    ]
+   ]
+  },
+  "Lider___Gin Bombay Sapphire London Dry Gin 40° 750cc x3": {
+   "tienda": "Lider",
+   "nombre": "Gin Bombay Sapphire London Dry Gin 40° 750cc x3",
+   "min": 41090,
+   "max": 41090,
+   "avg": 41090,
+   "cur": 41090,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     41090
+    ]
+   ]
+  },
+  "Lider___Gin Gabrí Patagonia": {
+   "tienda": "Lider",
+   "nombre": "Gin Gabrí Patagonia",
+   "min": 11990,
+   "max": 11990,
+   "avg": 11990,
+   "cur": 11990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     11990
+    ]
+   ]
+  },
+  "Lider___Gin Erva Botella 200 ml": {
+   "tienda": "Lider",
+   "nombre": "Gin Erva Botella 200 ml",
+   "min": 11990,
+   "max": 11990,
+   "avg": 11990,
+   "cur": 11990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     11990
+    ]
+   ]
+  },
+  "Lider___Gin Boolton Dry 700cc 40°": {
+   "tienda": "Lider",
+   "nombre": "Gin Boolton Dry 700cc 40°",
+   "min": 7390,
+   "max": 7390,
+   "avg": 7390,
+   "cur": 7390,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7390
+    ]
+   ]
+  },
+  "Lider___Gin Bombay Sapphire London Dry Gin 40° 750cc x6": {
+   "tienda": "Lider",
+   "nombre": "Gin Bombay Sapphire London Dry Gin 40° 750cc x6",
+   "min": 78890,
+   "max": 78890,
+   "avg": 78890,
+   "cur": 78890,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     78890
+    ]
+   ]
+  },
+  "Lider___Pack 2 Cojines Chenille Espiga Hojas 45x45 cm Elegantes Decorativos - Colección Niebla Modelo Ginebra": {
+   "tienda": "Lider",
+   "nombre": "Pack 2 Cojines Chenille Espiga Hojas 45x45 cm Elegantes Decorativos - Colección Niebla Modelo Ginebra",
+   "min": 17990,
+   "max": 17990,
+   "avg": 17990,
+   "cur": 17990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     17990
+    ]
+   ]
+  },
+  "Lider___Jagermeister 35º 700 cc": {
+   "tienda": "Lider",
+   "nombre": "Jagermeister 35º 700 cc",
+   "min": 13690,
+   "max": 13690,
+   "avg": 13690,
+   "cur": 13690,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     13690
+    ]
+   ]
+  },
+  "Lider___Cojín Plutus Brands Plutus Jager Dotz Luxury 30 x 50 cm": {
+   "tienda": "Lider",
+   "nombre": "Cojín Plutus Brands Plutus Jager Dotz Luxury 30 x 50 cm",
+   "min": 196990,
+   "max": 196990,
+   "avg": 196990,
+   "cur": 196990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     196990
+    ]
+   ]
+  },
+  "Lider___Coca Cola Jarra Termica Teteras Cafe O Te Acero inoxidable 1600ml Blanco": {
+   "tienda": "Lider",
+   "nombre": "Coca Cola Jarra Termica Teteras Cafe O Te Acero inoxidable 1600ml Blanco",
+   "min": 34990,
+   "max": 34990,
+   "avg": 34990,
+   "cur": 34990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     34990
+    ]
+   ]
+  },
+  "Lider___Latas coleccionables de Coca-Cola con forma de peluche de peluche de 5 pulgadas": {
+   "tienda": "Lider",
+   "nombre": "Latas coleccionables de Coca-Cola con forma de peluche de peluche de 5 pulgadas",
+   "min": 37990,
+   "max": 37990,
+   "avg": 37990,
+   "cur": 37990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     37990
+    ]
+   ]
+  },
+  "Lider___Mininevera CURTIS Pepsi de 6 latas y 4 litros para el hogar y el coche, color azul": {
+   "tienda": "Lider",
+   "nombre": "Mininevera CURTIS Pepsi de 6 latas y 4 litros para el hogar y el coche, color azul",
+   "min": 67990,
+   "max": 67990,
+   "avg": 67990,
+   "cur": 67990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     67990
+    ]
+   ]
+  },
+  "Lider___Masticables Fanta Mentos 140 g": {
+   "tienda": "Lider",
+   "nombre": "Masticables Fanta Mentos 140 g",
+   "min": 3990,
+   "max": 3990,
+   "avg": 3990,
+   "cur": 3990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     3990
+    ]
+   ]
+  },
+  "Lider___Figura de acción Marvel Hasbro Legends The Eternals Sprite": {
+   "tienda": "Lider",
+   "nombre": "Figura de acción Marvel Hasbro Legends The Eternals Sprite",
+   "min": 19990,
+   "max": 19990,
+   "avg": 19990,
+   "cur": 19990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     19990
+    ]
+   ]
+  },
+  "Lider___Red Bull Bebida Energética Pack 8 Latas Tropical 250Ml": {
+   "tienda": "Lider",
+   "nombre": "Red Bull Bebida Energética Pack 8 Latas Tropical 250Ml",
+   "min": 13760,
+   "max": 13760,
+   "avg": 13760,
+   "cur": 13760,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     13760
+    ]
+   ]
+  },
+  "Lider___12x Bebida Energética Red Bull 250cc": {
+   "tienda": "Lider",
+   "nombre": "12x Bebida Energética Red Bull 250cc",
+   "min": 18990,
+   "max": 18990,
+   "avg": 18990,
+   "cur": 18990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     18990
+    ]
+   ]
+  },
+  "Lider___Red Bull Bebida Energética Pack 16 Latas Arándanos 250Ml": {
+   "tienda": "Lider",
+   "nombre": "Red Bull Bebida Energética Pack 16 Latas Arándanos 250Ml",
+   "min": 27520,
+   "max": 27520,
+   "avg": 27520,
+   "cur": 27520,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     27520
+    ]
+   ]
+  },
+  "Lider___Red Bull Bebida Energética Pack 24 Latas Acaí 250Ml": {
+   "tienda": "Lider",
+   "nombre": "Red Bull Bebida Energética Pack 24 Latas Acaí 250Ml",
+   "min": 41280,
+   "max": 41280,
+   "avg": 41280,
+   "cur": 41280,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     41280
+    ]
+   ]
+  },
+  "Lider___Red Bull Bebida Energética Pack 18 Latas Sin Azúcar 250Ml": {
+   "tienda": "Lider",
+   "nombre": "Red Bull Bebida Energética Pack 18 Latas Sin Azúcar 250Ml",
+   "min": 30960,
+   "max": 30960,
+   "avg": 30960,
+   "cur": 30960,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     30960
+    ]
+   ]
+  },
+  "Lider___Música Red Bull No Love Lost Edición Deluxe": {
+   "tienda": "Lider",
+   "nombre": "Música Red Bull No Love Lost Edición Deluxe",
+   "min": 31990,
+   "max": 31990,
+   "avg": 31990,
+   "cur": 31990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     31990
+    ]
+   ]
+  },
+  "Lider___Bebida Energizante Sandía x 250 mL Líquido": {
+   "tienda": "Lider",
+   "nombre": "Bebida Energizante Sandía x 250 mL Líquido",
+   "min": 2300,
+   "max": 2300,
+   "avg": 2300,
+   "cur": 2300,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     2300
+    ]
+   ]
+  },
+  "Lider___Bebida Energética Sabor Fruta Del Dragón Lata": {
+   "tienda": "Lider",
+   "nombre": "Bebida Energética Sabor Fruta Del Dragón Lata",
+   "min": 1790,
+   "max": 1790,
+   "avg": 1790,
+   "cur": 1790,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     1790
+    ]
+   ]
+  },
+  "Lider___Bebida Energética Original Lata": {
+   "tienda": "Lider",
+   "nombre": "Bebida Energética Original Lata",
+   "min": 1512,
+   "max": 1512,
+   "avg": 1512,
+   "cur": 1512,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     1512
+    ]
+   ]
+  },
+  "Lider___Bebida Energética Sin Azúcar Pack 4 Latas": {
+   "tienda": "Lider",
+   "nombre": "Bebida Energética Sin Azúcar Pack 4 Latas",
+   "min": 6880,
+   "max": 6880,
+   "avg": 6880,
+   "cur": 6880,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     6880
+    ]
+   ]
+  },
+  "Lider___Shampoo Podium Hybrid Ceramic 473 Ml Sio2 Red Bull": {
+   "tienda": "Lider",
+   "nombre": "Shampoo Podium Hybrid Ceramic 473 Ml Sio2 Red Bull",
+   "min": 22990,
+   "max": 22990,
+   "avg": 22990,
+   "cur": 22990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     22990
+    ]
+   ]
+  },
+  "Lider___Clamato Jugo de Tomate con Caldo de Almejas 1.89L": {
+   "tienda": "Lider",
+   "nombre": "Clamato Jugo de Tomate con Caldo de Almejas 1.89L",
+   "min": 9990,
+   "max": 9990,
+   "avg": 9990,
+   "cur": 9990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     9990
+    ]
+   ]
+  },
+  "Lider___Jugo Natural de Manzana Mott's 3.79 L": {
+   "tienda": "Lider",
+   "nombre": "Jugo Natural de Manzana Mott's 3.79 L",
+   "min": 18990,
+   "max": 18990,
+   "avg": 18990,
+   "cur": 18990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     18990
+    ]
+   ]
+  },
+  "Lider___Bolsa de hielo aislamiento portátil bolsa térmica": {
+   "tienda": "Lider",
+   "nombre": "Bolsa de hielo aislamiento portátil bolsa térmica",
+   "min": 18990,
+   "max": 18990,
+   "avg": 18990,
+   "cur": 18990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     18990
+    ]
+   ]
+  },
+  "Lider___4 bloques de hielo, bolsas de hielo, bolsas de almuerzo, accesorios, bloques de congelador, paquete frío para senderismo, barbacoa, viajes, playa, pes 100 ml": {
+   "tienda": "Lider",
+   "nombre": "4 bloques de hielo, bolsas de hielo, bolsas de almuerzo, accesorios, bloques de congelador, paquete frío para senderismo, barbacoa, viajes, playa, pes 100 ml",
+   "min": 40073,
+   "max": 40073,
+   "avg": 40073,
+   "cur": 40073,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     40073
+    ]
+   ]
+  },
+  "Lider___Bolsa De Hielo Para Transportar Neveras Portátiles, Paquete De Congelador Para Viajes Por Carretera, Pesca Y Acampada, 800 Ml": {
+   "tienda": "Lider",
+   "nombre": "Bolsa De Hielo Para Transportar Neveras Portátiles, Paquete De Congelador Para Viajes Por Carretera, Pesca Y Acampada, 800 Ml",
+   "min": 31537,
+   "max": 31537,
+   "avg": 31537,
+   "cur": 31537,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     31537
+    ]
+   ]
+  },
+  "Lider___Bolsa De Hielo Para Transportar Neveras Portátiles, Paquete De Congelador Para Viajes Por Carretera, Pesca Y Acampada, 500 Ml": {
+   "tienda": "Lider",
+   "nombre": "Bolsa De Hielo Para Transportar Neveras Portátiles, Paquete De Congelador Para Viajes Por Carretera, Pesca Y Acampada, 500 Ml",
+   "min": 25355,
+   "max": 25355,
+   "avg": 25355,
+   "cur": 25355,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     25355
+    ]
+   ]
+  },
+  "Lider___Bolsa de Hielo FANBODTA 14,5 cm Reutilizable (Pack de 2)": {
+   "tienda": "Lider",
+   "nombre": "Bolsa de Hielo FANBODTA 14,5 cm Reutilizable (Pack de 2)",
+   "min": 22990,
+   "max": 22990,
+   "avg": 22990,
+   "cur": 22990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     22990
+    ]
+   ]
+  },
+  "Lider___Bolsas de Hielo Vakly Grandes Reutilizables 1.9L [Paquete de 5] con Correas": {
+   "tienda": "Lider",
+   "nombre": "Bolsas de Hielo Vakly Grandes Reutilizables 1.9L [Paquete de 5] con Correas",
+   "min": 35990,
+   "max": 35990,
+   "avg": 35990,
+   "cur": 35990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     35990
+    ]
+   ]
+  },
+  "Lider___Bolsa de Hielo Reutilizable Strapt Ice 19x46 cm con Correa Ajustable": {
+   "tienda": "Lider",
+   "nombre": "Bolsa de Hielo Reutilizable Strapt Ice 19x46 cm con Correa Ajustable",
+   "min": 71990,
+   "max": 71990,
+   "avg": 71990,
+   "cur": 71990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     71990
+    ]
+   ]
+  },
+  "Lider___Bolsa de hielo NatraCure FlexiKold, extra grande, gel suave, 33 x 55 cm": {
+   "tienda": "Lider",
+   "nombre": "Bolsa de hielo NatraCure FlexiKold, extra grande, gel suave, 33 x 55 cm",
+   "min": 63990,
+   "max": 63990,
+   "avg": 63990,
+   "cur": 63990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     63990
+    ]
+   ]
+  },
+  "Lider___Bolsas de Hielo Fit & Fresh 13 cm x 12 cm Rosa - Pack de 4": {
+   "tienda": "Lider",
+   "nombre": "Bolsas de Hielo Fit & Fresh 13 cm x 12 cm Rosa - Pack de 4",
+   "min": 29990,
+   "max": 29990,
+   "avg": 29990,
+   "cur": 29990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     29990
+    ]
+   ]
+  },
+  "Lider___Bolsa de hielo en gel Glacial Comfort grande para lesiones de 15 x 11 cm": {
+   "tienda": "Lider",
+   "nombre": "Bolsa de hielo en gel Glacial Comfort grande para lesiones de 15 x 11 cm",
+   "min": 42990,
+   "max": 42990,
+   "avg": 42990,
+   "cur": 42990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     42990
+    ]
+   ]
+  },
+  "Lider___Hielo Xxl Grande 1 Kg Reutilizable 5 °c 13 X 10 Cm": {
+   "tienda": "Lider",
+   "nombre": "Hielo Xxl Grande 1 Kg Reutilizable 5 °c 13 X 10 Cm",
+   "min": 50990,
+   "max": 50990,
+   "avg": 50990,
+   "cur": 50990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     50990
+    ]
+   ]
+  },
+  "Lider___Paquete De Hielo Reutilizable 11 X 14 5 Cm 2 Paquetes Xl": {
+   "tienda": "Lider",
+   "nombre": "Paquete De Hielo Reutilizable 11 X 14 5 Cm 2 Paquetes Xl",
+   "min": 47990,
+   "max": 47990,
+   "avg": 47990,
+   "cur": 47990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     47990
+    ]
+   ]
+  },
+  "Jumbo___Pack 4 un. Cerveza Estrella Galicia Premium Lager 4.7° 330 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Pack 4 un. Cerveza Estrella Galicia Premium Lager 4.7° 330 cc",
+   "min": 5092,
+   "max": 5092,
+   "avg": 5092,
+   "cur": 5092,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     5092
+    ]
+   ]
+  },
+  "Jumbo___Cerveza Duff Lager 5.0° Lata 330 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Cerveza Duff Lager 5.0° Lata 330 cc",
+   "min": 1190,
+   "max": 1190,
+   "avg": 1190,
+   "cur": 1190,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     1190
+    ]
+   ]
+  },
+  "Jumbo___Pack 12 un. Cerveza Miller Lager 4.7° 355 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Pack 12 un. Cerveza Miller Lager 4.7° 355 cc",
+   "min": 11990,
+   "max": 11990,
+   "avg": 11990,
+   "cur": 11990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     11990
+    ]
+   ]
+  },
+  "Jumbo___Cerveza Royal Guard Premium Lager 5.0° Lata 710 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Cerveza Royal Guard Premium Lager 5.0° Lata 710 cc",
+   "min": 1850,
+   "max": 1850,
+   "avg": 1850,
+   "cur": 1850,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     1850
+    ]
+   ]
+  },
+  "Jumbo___Pack 6 un. Bebida Canada Dry Ginger Ale Lata 350 ml": {
+   "tienda": "Jumbo",
+   "nombre": "Pack 6 un. Bebida Canada Dry Ginger Ale Lata 350 ml",
+   "min": 4290,
+   "max": 4290,
+   "avg": 4290,
+   "cur": 4290,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     4290
+    ]
+   ]
+  },
+  "Jumbo___Pack 12 un. Cerveza Kross Golden Ale 5.3° 330 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Pack 12 un. Cerveza Kross Golden Ale 5.3° 330 cc",
+   "min": 14590,
+   "max": 14590,
+   "avg": 14590,
+   "cur": 14590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14590
+    ]
+   ]
+  },
+  "Jumbo___Pisco Bauzá 35° 750 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Pisco Bauzá 35° 750 cc",
+   "min": 6290,
+   "max": 6290,
+   "avg": 6290,
+   "cur": 6290,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     6290
+    ]
+   ]
+  },
+  "Jumbo___Ron Barceló Añejo 37.5° 1000 ml": {
+   "tienda": "Jumbo",
+   "nombre": "Ron Barceló Añejo 37.5° 1000 ml",
+   "min": 12990,
+   "max": 12990,
+   "avg": 12990,
+   "cur": 12990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     12990
+    ]
+   ]
+  },
+  "Jumbo___Vodka Stoli Premium 40° 1 L": {
+   "tienda": "Jumbo",
+   "nombre": "Vodka Stoli Premium 40° 1 L",
+   "min": 14490,
+   "max": 14490,
+   "avg": 14490,
+   "cur": 14490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     14490
+    ]
+   ]
+  },
+  "Jumbo___Whisky White Horse 40° 750 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Whisky White Horse 40° 750 cc",
+   "min": 7990,
+   "max": 7990,
+   "avg": 7990,
+   "cur": 7990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7990
+    ]
+   ]
+  },
+  "Jumbo___Whisky Ballantine's 7 Años 40° 700 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Whisky Ballantine's 7 Años 40° 700 cc",
+   "min": 12990,
+   "max": 12990,
+   "avg": 12990,
+   "cur": 12990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     12990
+    ]
+   ]
+  },
+  "Jumbo___Gin Kantal 43° Botella 750 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Gin Kantal 43° Botella 750 cc",
+   "min": 12450,
+   "max": 12450,
+   "avg": 12450,
+   "cur": 12450,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     12450
+    ]
+   ]
+  },
+  "Jumbo___Gin Monkey 47 Schwarzwald Dry 47° 500 cc": {
+   "tienda": "Jumbo",
+   "nombre": "Gin Monkey 47 Schwarzwald Dry 47° 500 cc",
+   "min": 47990,
+   "max": 47990,
+   "avg": 47990,
+   "cur": 47990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     47990
+    ]
+   ]
+  },
+  "Jumbo___Bebida Coca-Cola Zero 2 L": {
+   "tienda": "Jumbo",
+   "nombre": "Bebida Coca-Cola Zero 2 L",
+   "min": 2590,
+   "max": 2590,
+   "avg": 2590,
+   "cur": 2590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     2590
+    ]
+   ]
+  },
+  "Jumbo___Pack 3 un. Bebidas Coca-Cola Zero + Sprite 3 L": {
+   "tienda": "Jumbo",
+   "nombre": "Pack 3 un. Bebidas Coca-Cola Zero + Sprite 3 L",
+   "min": 6880,
+   "max": 6880,
+   "avg": 6880,
+   "cur": 6880,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     6880
+    ]
+   ]
+  },
+  "Jumbo___Pack Bebida Coca-Cola Zero 3 L + Sprite Zero 3 L": {
+   "tienda": "Jumbo",
+   "nombre": "Pack Bebida Coca-Cola Zero 3 L + Sprite Zero 3 L",
+   "min": 5490,
+   "max": 5490,
+   "avg": 5490,
+   "cur": 5490,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     5490
+    ]
+   ]
+  },
+  "Jumbo___Bebida Fanta Sin Azúcar 1.75 L": {
+   "tienda": "Jumbo",
+   "nombre": "Bebida Fanta Sin Azúcar 1.75 L",
+   "min": 2590,
+   "max": 2590,
+   "avg": 2590,
+   "cur": 2590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     2590
+    ]
+   ]
+  },
+  "Jumbo___Bebida Canada Dry Ginger Ale Zero 1.5 L": {
+   "tienda": "Jumbo",
+   "nombre": "Bebida Canada Dry Ginger Ale Zero 1.5 L",
+   "min": 1590,
+   "max": 1590,
+   "avg": 1590,
+   "cur": 1590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     1590
+    ]
+   ]
+  },
+  "Jumbo___Bebida Sprite 1.75 L": {
+   "tienda": "Jumbo",
+   "nombre": "Bebida Sprite 1.75 L",
+   "min": 2590,
+   "max": 2590,
+   "avg": 2590,
+   "cur": 2590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     2590
+    ]
+   ]
+  },
+  "Jumbo___Jugo Guallarauco Naranja 1.5 L": {
+   "tienda": "Jumbo",
+   "nombre": "Jugo Guallarauco Naranja 1.5 L",
+   "min": 7590,
+   "max": 7590,
+   "avg": 7590,
+   "cur": 7590,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     7590
     ]
    ]
   }

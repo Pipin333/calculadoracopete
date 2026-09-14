@@ -45,8 +45,8 @@ const CATEGORY_META = {
   hielo: { label: 'Hielo', icon: '🧊', group: 'otros' }
 };
 
-// Tiendas soportadas en retail chileno
-const TODAS_LAS_TIENDAS = ['Jumbo', 'Líquidos', 'Booz', 'La Barra', 'Unimarc', 'miCocaCola', 'Lider'];
+// Tiendas soportadas en retail chileno (100% presencial y supermercados)
+const TODAS_LAS_TIENDAS = ['Lider', 'Jumbo', 'Unimarc', 'Líquidos'];
 
 /**
  * Formatea y embellece el nombre del producto eliminando redundancias del scraper y aplicando Title Case.

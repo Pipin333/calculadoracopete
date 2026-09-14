@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        store: ["Lider", "Jumbo", "Unimarc", "La Barra", "Liquidos", "Booze", "miCocaCola"]
+        store: ["Lider", "Jumbo", "Unimarc", "Liquidos"]
 
     steps:
       - name: Checkout repository
