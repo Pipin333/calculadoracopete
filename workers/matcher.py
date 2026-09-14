@@ -1,4 +1,35 @@
+import os
+import json
 import re
+
+# Reglas negativas aprendidas desde Firebase RTDB por deshabilitación de administradores
+LEARNED_RULES_PATH = os.path.join(os.path.dirname(__file__), "learned_negative_rules.json")
+_LEARNED_RULES_CACHE = None
+
+def get_learned_rules(force_reload=False):
+    global _LEARNED_RULES_CACHE
+    if _LEARNED_RULES_CACHE is not None and not force_reload:
+        return _LEARNED_RULES_CACHE
+        
+    if os.path.exists(LEARNED_RULES_PATH):
+        try:
+            with open(LEARNED_RULES_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                _LEARNED_RULES_CACHE = {
+                    "exact_names": set(data.get("exact_names", [])),
+                    "exact_keys": set(data.get("exact_keys", [])),
+                    "learned_keywords": data.get("learned_keywords", [])
+                }
+                return _LEARNED_RULES_CACHE
+        except Exception as e:
+            print(f"Warning: Error cargando {LEARNED_RULES_PATH}: {e}")
+            
+    _LEARNED_RULES_CACHE = {
+        "exact_names": set(),
+        "exact_keys": set(),
+        "learned_keywords": []
+    }
+    return _LEARNED_RULES_CACHE
 
 # List of common alcohol brands to extract if missing
 BRANDS = [
@@ -131,8 +162,18 @@ def extract_units(name):
 
 def validate_category(name, category):
     """Validates that a product fits the target category (filters out glasses, false search hits, etc.)."""
+    name_clean = clean_name(name).lower()
     name_lower = name.lower()
     
+    # 0. Reglas negativas aprendidas de administradores en Firebase RTDB
+    learned = get_learned_rules()
+    if name_clean in learned.get("exact_names", set()):
+        return False
+        
+    for kw in learned.get("learned_keywords", []):
+        if kw in name_lower:
+            return False
+            
     # Filter out non-drink merchandise, school supplies, clothing, and toys
     merchandise = [
         "cuaderno", "libreta", "mochila", "bolso", "cartera", "polerón", "poleron", "polera",
@@ -219,6 +260,15 @@ def validate_category(name, category):
         is_powder = any(x in name_lower for x in ["polvo", "sobre", "livean", "zuko", "tang", "yupi"])
         return is_juice and not is_powder
     elif category == "hielo":
+        non_consumable_ice = [
+            "reutilizable", "reutilizables", "gel", "compresa", "compresas", 
+            "lesion", "lesiones", "herida", "heridas", "alivio", "nevera", 
+            "congelador", "bloque", "bloques", "terapéutico", "terapeutico", 
+            "acero", "inoxidable", "máquina", "maquina", "cubitera", "molde", 
+            "moldes", "térmica", "termica", "tina", "rodillo", "skincare", "patines"
+        ]
+        if any(x in name_lower for x in non_consumable_ice):
+            return False
         return "hielo" in name_lower
         
     return True
@@ -366,11 +416,28 @@ def audit_product(raw_product, is_valid_match=False):
     spritz desubicados y anomalías de precios.
     """
     name = raw_product.get("name", "")
+    name_clean = clean_name(name).lower()
     name_lower = name.lower()
     category = raw_product.get("category", "")
     price = raw_product.get("price", 0)
     store = raw_product.get("store", "")
     
+    # 0. Falsos positivos de Marketplace detectados por reglas aprendidas
+    learned = get_learned_rules()
+    exact_matched = name_clean in learned.get("exact_names", set())
+    matched_kws = [kw for kw in learned.get("learned_keywords", []) if kw in name_lower]
+    if exact_matched or matched_kws:
+        cue = "SKU desactivado por admin" if exact_matched else f"Keyword '{matched_kws[0]}'"
+        return {
+            "name": name,
+            "store": store,
+            "category": category,
+            "price": price,
+            "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+            "reason": f"Falso positivo de marketplace aprendido ({cue})",
+            "action": "RECHAZADO_AUTOMATICAMENTE" if not is_valid_match else "REQUIERE_REVISION"
+        }
+        
     # 1. Merchandise escolar, ropa o accesorios no bebestibles (ej. Cuaderno Red Bull Racing)
     merch_keywords = [
         "cuaderno", "libreta", "mochila", "bolso", "cartera", "polerón", "poleron", "polera",

@@ -49,6 +49,17 @@ def scrape_with_playwright(url):
                     pass
     return None
 
+ALLOWED_LIDER_DEPARTMENTS = {
+    "bebidas y licores",
+    "supermercado",
+    "congelados",
+    "abarrotes",
+    "lácteos y frescos",
+    "lacteos y frescos",
+    "despensa",
+    "mundo bebidas"
+}
+
 def scrape(category, keyword):
     url = f"https://www.lider.cl/catalogo/search?query={keyword}"
     print(f"[Lider] Scraping keyword '{keyword}' for category '{category}'...")
@@ -98,6 +109,15 @@ def scrape(category, keyword):
             name = item.get("name") or item.get("displayName") or item.get("skuDisplayName")
             if not name:
                 continue
+
+            # Filtrar departamentos no alimenticios de marketplace (Decohogar, Electrohogar, Deportes, etc.)
+            item_cat = item.get("category")
+            if item_cat and isinstance(item_cat, dict):
+                path = item_cat.get("path")
+                if path and isinstance(path, list) and len(path) > 0:
+                    root_name = str(path[0].get("name", "")).strip().lower()
+                    if root_name and root_name not in ALLOWED_LIDER_DEPARTMENTS:
+                        continue
                 
             # Extraer precio (campo numérico directo o desde priceInfo)
             price = item.get("price")

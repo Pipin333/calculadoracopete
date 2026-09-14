@@ -87,6 +87,15 @@ def run():
     
     print(f"Starting Cuánto Rinde Price Scraper at {datetime.datetime.now()}")
     print(f"Output path: {output_path}")
+
+    # Sincronizar reglas negativas aprendidas desde Firebase RTDB antes de scrapear/mergear
+    try:
+        import feedback_learner
+        print("Sincronizando feedback de administradores desde Firebase RTDB...")
+        feedback_learner.sync_and_save_rules()
+        matcher.get_learned_rules(force_reload=True)
+    except Exception as e:
+        print(f"Warning: No se pudieron sincronizar las reglas de feedback: {e}")
     
     # Load existing productos.json to preserve categories and fallback products
     existing_data = {}
@@ -187,10 +196,16 @@ def run():
         merged_products.extend(fresh_products)
         
         if "productos" in existing_data:
+            learned_rules = matcher.get_learned_rules()
+            exact_bl = learned_rules.get("exact_names", set())
             for old_p in existing_data["productos"]:
                 old_store = old_p.get("tienda")
                 if old_store in stores and old_store not in succeeded_stores:
-                    merged_products.append(old_p)
+                    name_clean = matcher.clean_name(old_p.get("nombre", "")).lower()
+                    if name_clean in exact_bl:
+                        continue
+                    if old_p.get("categoria") == "combos" or matcher.validate_category(old_p.get("nombre", ""), old_p.get("categoria", "")):
+                        merged_products.append(old_p)
                     
         # Assign unique IDs
         for idx, p in enumerate(merged_products):
@@ -276,10 +291,16 @@ def run():
         merged_products.extend(fresh_products)
         
         if "productos" in existing_data:
+            learned_rules = matcher.get_learned_rules()
+            exact_bl = learned_rules.get("exact_names", set())
             for old_p in existing_data["productos"]:
                 old_store = old_p.get("tienda")
                 if old_store in stores and old_store not in succeeded_stores:
-                    merged_products.append(old_p)
+                    name_clean = matcher.clean_name(old_p.get("nombre", "")).lower()
+                    if name_clean in exact_bl:
+                        continue
+                    if old_p.get("categoria") == "combos" or matcher.validate_category(old_p.get("nombre", ""), old_p.get("categoria", "")):
+                        merged_products.append(old_p)
                     
         for idx, p in enumerate(merged_products):
             p["id"] = idx + 1
