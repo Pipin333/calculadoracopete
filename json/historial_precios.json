@@ -1,7 +1,7 @@
 {
  "last_updated": "2026-09-14",
- "total_tracked": 943,
- "all_time_lows_count": 37,
+ "total_tracked": 948,
+ "all_time_lows_count": 38,
  "items": {
   "Jumbo___Cerveza Lager lata 470ml": {
    "tienda": "Jumbo",
@@ -6397,10 +6397,14 @@
    "cur": 1000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -7189,11 +7193,11 @@
    "nombre": "Becker Cerveza becker classic lager lata 710 cc",
    "min": 1000,
    "max": 1290,
-   "avg": 1116,
+   "avg": 1097,
    "cur": 1000,
    "isMin": true,
-   "diff": -10.4,
-   "obsCount": 5,
+   "diff": -8.8,
+   "obsCount": 6,
    "pts": [
     [
      "2026-06-11",
@@ -7214,6 +7218,10 @@
     [
      "2026-07-18",
      1000
+    ],
+    [
+     "2026-09-14",
+     1000
     ]
    ]
   },
@@ -7226,10 +7234,14 @@
    "cur": 1000,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     1000
+    ],
+    [
+     "2026-09-14",
      1000
     ]
    ]
@@ -7994,10 +8006,10 @@
    "nombre": "Becker Pack cerveza becker lata 24 un de 354 cc",
    "min": 9490,
    "max": 10890,
-   "avg": 10237,
-   "cur": 10290,
+   "avg": 10272,
+   "cur": 10890,
    "isMin": false,
-   "diff": 0.5,
+   "diff": 6.0,
    "obsCount": 17,
    "pts": [
     [
@@ -8066,7 +8078,7 @@
     ],
     [
      "2026-09-14",
-     10290
+     10890
     ]
    ]
   },
@@ -8320,12 +8332,12 @@
   "Unimarc___Quilmes Pack cerveza quilmes clásica botella 24 un de 300 cc": {
    "tienda": "Unimarc",
    "nombre": "Quilmes Pack cerveza quilmes clásica botella 24 un de 300 cc",
-   "min": 5190,
+   "min": 11990,
    "max": 19990,
-   "avg": 12990,
-   "cur": 5190,
-   "isMin": true,
-   "diff": -60.0,
+   "avg": 14634,
+   "cur": 19990,
+   "isMin": false,
+   "diff": 36.6,
    "obsCount": 9,
    "pts": [
     [
@@ -8362,7 +8374,7 @@
     ],
     [
      "2026-09-14",
-     5190
+     19990
     ]
    ]
   },
@@ -9127,10 +9139,10 @@
    "nombre": "Jagermeister Licor de hierbas jagermeister 700 cc",
    "min": 11490,
    "max": 17490,
-   "avg": 14134,
-   "cur": 13117,
+   "avg": 14259,
+   "cur": 13990,
    "isMin": false,
-   "diff": -7.2,
+   "diff": -1.9,
    "obsCount": 7,
    "pts": [
     [
@@ -9159,7 +9171,7 @@
     ],
     [
      "2026-09-14",
-     13117
+     13990
     ]
    ]
   },
@@ -9835,10 +9847,10 @@
    "nombre": "Nuestra Cocina Hielo nuestra cocina bolsa 1 kg",
    "min": 760,
    "max": 950,
-   "avg": 863,
-   "cur": 950,
-   "isMin": false,
-   "diff": 10.1,
+   "avg": 855,
+   "cur": 760,
+   "isMin": true,
+   "diff": -11.1,
    "obsCount": 24,
    "pts": [
     [
@@ -9935,7 +9947,7 @@
     ],
     [
      "2026-09-14",
-     950
+     760
     ]
    ]
   },
@@ -12145,10 +12157,14 @@
    "cur": 17940,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-11",
+     17940
+    ],
+    [
+     "2026-09-14",
      17940
     ]
    ]
@@ -13568,10 +13584,14 @@
    "cur": 14380,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-17",
+     14380
+    ],
+    [
+     "2026-09-14",
      14380
     ]
    ]
@@ -14242,10 +14262,14 @@
    "cur": 1890,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-06-20",
+     1890
+    ],
+    [
+     "2026-09-14",
      1890
     ]
    ]
@@ -17843,10 +17867,14 @@
    "cur": 39990,
    "isMin": true,
    "diff": 0.0,
-   "obsCount": 1,
+   "obsCount": 2,
    "pts": [
     [
      "2026-08-13",
+     39990
+    ],
+    [
+     "2026-09-14",
      39990
     ]
    ]
@@ -18823,7 +18851,7 @@
    "avg": 1000,
    "cur": 1000,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18857,7 +18885,7 @@
    "avg": 24470,
    "cur": 24470,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18874,7 +18902,7 @@
    "avg": 11990,
    "cur": 11990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18891,7 +18919,7 @@
    "avg": 7990,
    "cur": 7990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18908,7 +18936,7 @@
    "avg": 17959,
    "cur": 17959,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18925,7 +18953,7 @@
    "avg": 27560,
    "cur": 27560,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18942,7 +18970,7 @@
    "avg": 15480,
    "cur": 15480,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18959,7 +18987,7 @@
    "avg": 16490,
    "cur": 16490,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -18976,7 +19004,7 @@
    "avg": 20360,
    "cur": 20360,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19010,7 +19038,7 @@
    "avg": 23071,
    "cur": 23071,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19027,7 +19055,7 @@
    "avg": 53341,
    "cur": 53341,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19044,7 +19072,7 @@
    "avg": 15990,
    "cur": 15990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19061,7 +19089,7 @@
    "avg": 45540,
    "cur": 45540,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19078,7 +19106,7 @@
    "avg": 13780,
    "cur": 13780,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19095,7 +19123,7 @@
    "avg": 21490,
    "cur": 21490,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19112,7 +19140,7 @@
    "avg": 45360,
    "cur": 45360,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19129,7 +19157,7 @@
    "avg": 15120,
    "cur": 15120,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19146,7 +19174,7 @@
    "avg": 53990,
    "cur": 53990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19163,7 +19191,7 @@
    "avg": 55990,
    "cur": 55990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19180,7 +19208,7 @@
    "avg": 32990,
    "cur": 32990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19197,7 +19225,7 @@
    "avg": 8990,
    "cur": 8990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19214,7 +19242,7 @@
    "avg": 7990,
    "cur": 7990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19231,7 +19259,7 @@
    "avg": 8190,
    "cur": 8190,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19248,7 +19276,7 @@
    "avg": 89220,
    "cur": 89220,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19265,7 +19293,7 @@
    "avg": 47970,
    "cur": 47970,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19282,7 +19310,7 @@
    "avg": 7290,
    "cur": 7290,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19299,7 +19327,7 @@
    "avg": 16490,
    "cur": 16490,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19316,7 +19344,7 @@
    "avg": 14490,
    "cur": 14490,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19333,7 +19361,7 @@
    "avg": 9990,
    "cur": 9990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19350,7 +19378,7 @@
    "avg": 3190,
    "cur": 3190,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19367,7 +19395,7 @@
    "avg": 10590,
    "cur": 10590,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19384,7 +19412,7 @@
    "avg": 24090,
    "cur": 24090,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19401,7 +19429,7 @@
    "avg": 12090,
    "cur": 12090,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19418,7 +19446,7 @@
    "avg": 14600,
    "cur": 14600,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19435,7 +19463,7 @@
    "avg": 5590,
    "cur": 5590,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19452,7 +19480,7 @@
    "avg": 7990,
    "cur": 7990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19469,7 +19497,7 @@
    "avg": 16020,
    "cur": 16020,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19486,7 +19514,7 @@
    "avg": 16020,
    "cur": 16020,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19503,7 +19531,7 @@
    "avg": 7990,
    "cur": 7990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19520,7 +19548,7 @@
    "avg": 14490,
    "cur": 14490,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19537,7 +19565,7 @@
    "avg": 7990,
    "cur": 7990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19554,7 +19582,7 @@
    "avg": 16020,
    "cur": 16020,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19571,7 +19599,7 @@
    "avg": 8990,
    "cur": 8990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19588,7 +19616,7 @@
    "avg": 7990,
    "cur": 7990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
@@ -19605,12 +19633,97 @@
    "avg": 13990,
    "cur": 13990,
    "isMin": true,
-   "diff": 0,
+   "diff": 0.0,
    "obsCount": 1,
    "pts": [
     [
      "2026-09-14",
      13990
+    ]
+   ]
+  },
+  "La Barra___6x Cerveza Kunstmann Lager Blanc 4.5° Botella 330cc": {
+   "tienda": "La Barra",
+   "nombre": "6x Cerveza Kunstmann Lager Blanc 4.5° Botella 330cc",
+   "min": 8990,
+   "max": 8990,
+   "avg": 8990,
+   "cur": 8990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     8990
+    ]
+   ]
+  },
+  "La Barra___24x Pack Cerveza Heineken Mixto (18 con alcohol + 6 sin alcohol) Botella 330cc": {
+   "tienda": "La Barra",
+   "nombre": "24x Pack Cerveza Heineken Mixto (18 con alcohol + 6 sin alcohol) Botella 330cc",
+   "min": 27860,
+   "max": 27860,
+   "avg": 27860,
+   "cur": 27860,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     27860
+    ]
+   ]
+  },
+  "La Barra___Promo Pisco Tres Erres 35° 1L + Pepsi Zero 1.5L": {
+   "tienda": "La Barra",
+   "nombre": "Promo Pisco Tres Erres 35° 1L + Pepsi Zero 1.5L",
+   "min": 10790,
+   "max": 10790,
+   "avg": 10790,
+   "cur": 10790,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     10790
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Michelob Ultra 4,2 ° 24 x 710 cc": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Michelob Ultra 4,2 ° 24 x 710 cc",
+   "min": 21390,
+   "max": 21390,
+   "avg": 21390,
+   "cur": 21390,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     21390
+    ]
+   ]
+  },
+  "miCocaCola___Cerveza Michelob Ultra 4,2 ° 12 x 710 cc": {
+   "tienda": "miCocaCola",
+   "nombre": "Cerveza Michelob Ultra 4,2 ° 12 x 710 cc",
+   "min": 10990,
+   "max": 10990,
+   "avg": 10990,
+   "cur": 10990,
+   "isMin": true,
+   "diff": 0,
+   "obsCount": 1,
+   "pts": [
+    [
+     "2026-09-14",
+     10990
     ]
    ]
   }
