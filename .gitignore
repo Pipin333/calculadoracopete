@@ -12,6 +12,7 @@ ENV/
 env/
 
 # Debug and temporary files
+scratch/
 *.log
 *debug*.png
 lider_playwright_debug.png
@@ -29,6 +30,7 @@ unimarc_screenshot.png
 !workers/requirements.txt
 *.json
 !json/productos.json
+!json/historial_precios.json
 !workers/config.json
 !database.rules.json
 !index.html

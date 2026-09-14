@@ -181,6 +181,14 @@ def run():
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(final_data, f, indent=2, ensure_ascii=False)
             print(f"\nSUCCESS: Consolidated products database written to {output_path} ({len(merged_products)} total products).")
+            
+            # Actualizar historial de precios automáticamente
+            try:
+                import price_history
+                price_history.update_history_with_current(final_data)
+            except Exception as e:
+                print(f"Warning: Could not update price history: {e}")
+                
         except Exception as e:
             print(f"Error writing output file: {e}")
             sys.exit(1)

@@ -7,6 +7,7 @@ import { formatCLP, clearElement, addLi, addLiHtml, getRatioBudget, getConvenien
 import { summarizeItems } from './solver.js';
 import { crearYCompartirPresupuestoCorto } from './shorturl.js';
 import { registrarEventoTelemetria } from './firebase-config.js';
+import { getProductPriceHistory } from './productApi.js';
 
 // Listener global para registrar clicks a tiendas (afiliados / intención de compra)
 if (typeof document !== 'undefined') {
@@ -68,9 +69,23 @@ export function renderPlan(listElement, plan) {
     for (const item of summarized) {
       const searchUrl = getStoreSearchUrl(item.tienda, item.nombre);
       const storeLink = `<a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="store-link" data-tienda="${item.tienda}" data-producto="${item.nombre}">${item.tienda} ↗</a>`;
+      
+      // Historial & Badges SoloTodo
+      const hist = getProductPriceHistory(item.tienda, item.nombre);
+      let badgeHtml = '';
+      if (hist) {
+        if (hist.isMin && hist.obsCount > 1 && hist.max > hist.min) {
+          badgeHtml = ` <button type="button" class="btn btn-link p-0 text-decoration-none price-history-trigger" data-tienda="${item.tienda}" data-producto="${item.nombre}" title="Mínimo histórico en 6 meses. Haz click para ver gráfico."><span class="badge text-bg-danger ms-1" style="font-size: 0.72rem; cursor: pointer;">🔥 Mínimo Histórico</span></button>`;
+        } else if (hist.diff <= -8) {
+          badgeHtml = ` <button type="button" class="btn btn-link p-0 text-decoration-none price-history-trigger" data-tienda="${item.tienda}" data-producto="${item.nombre}" title="Precio ${Math.abs(hist.diff)}% bajo promedio. Haz click para ver gráfico."><span class="badge text-bg-success ms-1" style="font-size: 0.72rem; cursor: pointer;">📉 ${hist.diff}% vs prom.</span></button>`;
+        } else if (hist.obsCount > 1) {
+          badgeHtml = ` <button type="button" class="btn btn-link p-0 text-decoration-none text-secondary price-history-trigger ms-1" data-tienda="${item.tienda}" data-producto="${item.nombre}" style="font-size: 0.75rem;" title="Ver historial de precios">📊</button>`;
+        }
+      }
+
       addLiHtml(
         listElement,
-        `${item.cantidad} x ${item.nombre} (${storeLink}) — ${formatCLP(item.precio * item.cantidad)}`
+        `${item.cantidad} x ${item.nombre} (${storeLink})${badgeHtml} — ${formatCLP(item.precio * item.cantidad)}`
       );
     }
   }
@@ -302,4 +317,115 @@ export async function compartirPresupuestoActual() {
     console.error('❌ Error durante compartir:', error);
     alert('❌ Error al compartir: ' + error.message);
   }
+}
+
+// ===============================
+// MODAL HISTORIAL DE PRECIOS (SoloTodo Style)
+// ===============================
+let chartHistorialInstance = null;
+
+export function abrirModalHistorial(tienda, nombre) {
+  const hist = getProductPriceHistory(tienda, nombre);
+  if (!hist) return;
+
+  const modalEl = document.getElementById('modalHistorialPrecio');
+  if (!modalEl) return;
+
+  const labelEl = document.getElementById('modalHistorialPrecioLabel');
+  const badgeTiendaEl = document.getElementById('historialBadgeTienda');
+  const actualEl = document.getElementById('historialPrecioActual');
+  const minEl = document.getElementById('historialPrecioMin');
+  const avgEl = document.getElementById('historialPrecioAvg');
+  const maxEl = document.getElementById('historialPrecioMax');
+  const obsEl = document.getElementById('historialObservaciones');
+  const btnIr = document.getElementById('btnHistorialIrTienda');
+
+  if (labelEl) labelEl.textContent = nombre;
+  if (badgeTiendaEl) badgeTiendaEl.textContent = tienda;
+  if (actualEl) actualEl.textContent = formatCLP(hist.cur);
+  if (minEl) minEl.textContent = formatCLP(hist.min);
+  if (avgEl) avgEl.textContent = formatCLP(hist.avg);
+  if (maxEl) maxEl.textContent = formatCLP(hist.max);
+  if (obsEl) obsEl.textContent = `${hist.obsCount} registros de precio en los últimos 6 meses`;
+
+  if (btnIr) {
+    btnIr.href = getStoreSearchUrl(tienda, nombre);
+    btnIr.textContent = `Comprar en ${tienda} ↗`;
+  }
+
+  // Gráfico Chart.js
+  const canvas = document.getElementById('chartHistorialPrecio');
+  if (canvas && typeof Chart !== 'undefined') {
+    const ctx = canvas.getContext('2d');
+    if (chartHistorialInstance) chartHistorialInstance.destroy();
+
+    const labels = (hist.pts || []).map(p => {
+      const d = new Date(p[0] + 'T00:00:00');
+      return d.toLocaleDateString('es-CL', { month: 'short', day: 'numeric' });
+    });
+    const dataPrices = (hist.pts || []).map(p => p[1]);
+
+    chartHistorialInstance = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Precio ($CLP)',
+          data: dataPrices,
+          borderColor: '#06b6d4',
+          backgroundColor: 'rgba(6, 182, 212, 0.12)',
+          fill: true,
+          tension: 0.15,
+          borderWidth: 2,
+          pointRadius: labels.length > 20 ? 2 : 4,
+          pointHoverRadius: 6,
+          pointBackgroundColor: '#06b6d4'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            ticks: {
+              color: '#9d98b5',
+              callback: v => '$' + Math.round(v).toLocaleString('es-CL')
+            },
+            grid: { color: 'rgba(255,255,255,0.06)' }
+          },
+          x: {
+            ticks: { color: '#9d98b5', maxTicksLimit: 7 },
+            grid: { display: false }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: c => 'Precio: $' + Math.round(c.parsed.y).toLocaleString('es-CL')
+            }
+          }
+        }
+      }
+    });
+  }
+
+  if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+    const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    bsModal.show();
+  }
+}
+
+// Listener para abrir el modal de historial al clickear el badge o botón
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.price-history-trigger');
+    if (trigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      const tienda = trigger.dataset.tienda;
+      const producto = trigger.dataset.producto;
+      abrirModalHistorial(tienda, producto);
+    }
+  });
 }

@@ -11,12 +11,19 @@
 let CATEGORIAS_JSON = {};
 let COMBINACIONES_ESPECIALES_JSON = {};
 let OPCIONES_CONSUMO = {};
+let HISTORIAL_PRECIOS = {};
 
 // Getters/Setters para acceso desde otros módulos
 export function getCategoriasJSON() { return CATEGORIAS_JSON; }
 export function getCombinacionesEspecialesJSON() { return COMBINACIONES_ESPECIALES_JSON; }
 export function getOpcionesConsumo() { return OPCIONES_CONSUMO; }
 export function setOpcionesConsumo(value) { OPCIONES_CONSUMO = value; }
+export function getHistorialPrecios() { return HISTORIAL_PRECIOS; }
+export function getProductPriceHistory(tienda, nombre) {
+  if (!HISTORIAL_PRECIOS || !HISTORIAL_PRECIOS.items || !tienda || !nombre) return null;
+  const key = `${tienda.trim()}___${nombre.trim()}`;
+  return HISTORIAL_PRECIOS.items[key] || null;
+}
 
 // ===============================
 // BUILDER AUTOMÁTICO DESDE productos.json
@@ -50,6 +57,17 @@ export async function cargarConfiguracionDesdeJSON() {
     console.log(`📥 Configuración cargada desde productos.json`);
     console.log(`   📊 Categorías: ${Object.keys(CATEGORIAS_JSON).length}`);
     console.log(`   🔗 Combinaciones: ${Object.keys(COMBINACIONES_ESPECIALES_JSON).length}`);
+    
+    // Cargar historial de precios de retail (opcional y no bloqueante)
+    try {
+      const histResponse = await fetch('json/historial_precios.json?t=' + Date.now());
+      if (histResponse.ok) {
+        HISTORIAL_PRECIOS = await histResponse.json();
+        console.log(`📈 Historial de precios cargado: ${HISTORIAL_PRECIOS.total_tracked || 0} SKUs rastreados`);
+      }
+    } catch (histError) {
+      console.warn('⚠️ No se pudo cargar historial de precios:', histError);
+    }
     
     return true;
   } catch (error) {
