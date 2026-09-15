@@ -1,50 +1,23 @@
 {
-  "timestamp": "2026-09-14T15:12:31Z",
-  "total": 276,
+  "timestamp": "2026-09-15T09:14:59Z",
+  "total": 123,
   "items": [
     {
-      "name": "Casa De Muñecas En Miniatura Cerveza Bebida Caja Modelo Juguete Casa De Muñecas Decoración Rojo",
+      "name": "Pack Pisco Bou Legado Roble 40º mas Copa",
       "store": "Lider",
-      "category": "cerveza",
-      "price": 22143,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('juguete')",
+      "category": "piscola",
+      "price": 24990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'copa')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Cajas De Bebidas De Cerveza En Miniatura Para Casa De Muñecas, Modelo De Vaso De Cerveza De Juguete Para Casa De Muñecas, Verde",
+      "name": "Pack Ron Viejo De Caldas Roble Blanco 40° 700cc + Coctelera",
       "store": "Lider",
-      "category": "cerveza",
-      "price": 25990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('juguete')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Enfriador de latas con aislamiento al vacío, soporte para bebidas de 420ml, taza de café reutilizable, soporte portátil para botellas de cerveza para Blanco",
-      "store": "Lider",
-      "category": "cerveza",
-      "price": 37068,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Enfriador de latas con aislamiento al vacío, soporte para bebidas de 420ml, taza de café reutilizable, soporte portátil para botellas de cerveza para Rosa",
-      "store": "Lider",
-      "category": "cerveza",
-      "price": 37068,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Enfriador de latas con aislamiento al vacío, soporte para bebidas de 420ml, taza de café reutilizable, soporte portátil para botellas de cerveza para Negro",
-      "store": "Lider",
-      "category": "cerveza",
-      "price": 37068,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
+      "category": "ron",
+      "price": 7990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'coctelera')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -84,48 +57,12 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Lentes de Sol Buhu Ginebra Dorado UV400",
+      "name": "Pac 35g+ 2 Vasos Shot",
       "store": "Lider",
-      "category": "gin",
-      "price": 69900,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('lentes')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo Taza de Café Frío O Caliente Vaso Térmico, 390 ML Azul",
-      "store": "Lider",
-      "category": "cola",
-      "price": 16390,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo Taza de Café Frío O Caliente Vaso Térmico, 590 ML Rosa",
-      "store": "Lider",
-      "category": "cola",
+      "category": "jaeger",
       "price": 23990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo Taza de Café Frío O Caliente Vaso Térmico, 550ML Negro",
-      "store": "Lider",
-      "category": "cola",
-      "price": 21990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo Taza de Café Frío O Caliente Vaso Térmico, 550ML Rojo",
-      "store": "Lider",
-      "category": "cola",
-      "price": 21990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'vaso')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -136,150 +73,6 @@
       "flag_type": "PRICE_ANOMALOUS_HIGH",
       "reason": "Precio excesivamente alto para mixer/bebida ($17990)",
       "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "COCA COLA GERM Termo Clásico Oficial 700ml Frío O Caliente Vaso Térmico Naranja",
-      "store": "Lider",
-      "category": "cola",
-      "price": 23990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo Taza de Café Frío O Caliente Vaso Térmico, 550ML Blanco",
-      "store": "Lider",
-      "category": "cola",
-      "price": 21990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA GERM Termo Ice Cream Termo Clásico Oficial 500ml Frío O Caliente Vaso Térmico Rosa",
-      "store": "Lider",
-      "category": "cola",
-      "price": 23990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA GERM Termo Ice Cream Termo Clásico Oficial 500ml Frío O Caliente Vaso Térmico Rojo",
-      "store": "Lider",
-      "category": "cola",
-      "price": 23990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo Súper Tumbler Mug Vaso 1200ML Frío O Caliente Vaso Térmico Rojo",
-      "store": "Lider",
-      "category": "cola",
-      "price": 30990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo Taza de Café Frío O Caliente Vaso Térmico, 590 ML Blanco",
-      "store": "Lider",
-      "category": "cola",
-      "price": 23990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA Germ Termo 1200 ML Frío O Caliente Botella Térmica Trébol Blanco",
-      "store": "Lider",
-      "category": "cola",
-      "price": 30990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Coca Cola Jarra Termica Teteras Cafe O Te Acero inoxidable 1600ml Blanco",
-      "store": "Lider",
-      "category": "cola",
-      "price": 34990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($34990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "COCA COLA GERM Termo Energía Clásico Oficial 580ml Frío O Caliente Vaso Térmico Rojo",
-      "store": "Lider",
-      "category": "cola",
-      "price": 23990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Barbie Coca-Cola Después de la Caminata",
-      "store": "Lider",
-      "category": "cola",
-      "price": 70990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($70990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "COCA COLA GERM Botella Térmica Wild 600ml 20oz Frío O Caliente Vaso Rosa",
-      "store": "Lider",
-      "category": "cola",
-      "price": 24990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($24990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "COCA COLA Germ Termo Cool Tumbler Mug Vaso 1200ML Frío O Caliente Vaso Térmico Rojo",
-      "store": "Lider",
-      "category": "cola",
-      "price": 28990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "COCA COLA GERM Botella Térmica Wild 600ml 20oz Frío O Caliente Vaso Negro",
-      "store": "Lider",
-      "category": "cola",
-      "price": 23990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($23990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "COCA COLA Germ Termo Cool Tumbler Mug Vaso 1200ML Frío O Caliente Vaso Térmico Blanco Categoría",
-      "store": "Lider",
-      "category": "cola",
-      "price": 28990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Camiseta Coca-Cola Eighties Coke para hombre en color carbón - XL",
-      "store": "Lider",
-      "category": "cola",
-      "price": 38990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($38990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Cocacola Germ Termo Taza de Café Frío O Caliente Vaso, 390 ML Rojo",
-      "store": "Lider",
-      "category": "cola",
-      "price": 16390,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
       "name": "Bebidas Cherry Lata 12 X 355 Ml",
@@ -294,153 +87,9 @@
       "name": "Bebidas Vainilla Lata 12 X 355 Ml",
       "store": "Lider",
       "category": "cola",
-      "price": 19980,
+      "price": 17990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($19980)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Abridor de botellas Coca-Cola TableCraft Mini de metal cromado",
-      "store": "Lider",
-      "category": "cola",
-      "price": 56990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($56990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Modelo diecast Coca-Cola 1/64 autobús Routemaster de Londres de 12 cm",
-      "store": "Lider",
-      "category": "cola",
-      "price": 36990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Cocacola GERM Termo Energía Clásico Oficial 580ml Frio Calientes Negro",
-      "store": "Lider",
-      "category": "cola",
-      "price": 23990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Modelo diecast de tractor y remolque Coca-Cola a escala 1/50",
-      "store": "Lider",
-      "category": "cola",
-      "price": 94990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($94990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set de vehículos de juguete 1/72 camionetas clásicas (Ford F1 1948, VW T1 1962 y Chevrolet 3100 1953)",
-      "store": "Lider",
-      "category": "cola",
-      "price": 43990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('juguete')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Latas coleccionables de Coca-Cola con forma de peluche de peluche de 5 pulgadas",
-      "store": "Lider",
-      "category": "cola",
-      "price": 37990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($37990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Vasos De Plástico Rojos 710ml Paquete De 6",
-      "store": "Lider",
-      "category": "cola",
-      "price": 60990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($60990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Botella Super Tumbler GE-CK23AW-B71 1200ML Blanco",
-      "store": "Lider",
-      "category": "cola",
-      "price": 30990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($30990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Cocacola Mega Tumbler Clásico De 1100ml Frío O Caliente Blanco",
-      "store": "Lider",
-      "category": "cola",
-      "price": 25990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($25990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Polera Hombre YOU Coca Cola  Blanco",
-      "store": "Lider",
-      "category": "cola",
-      "price": 19990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('polera')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Polera Mujer YOU Coca Cola",
-      "store": "Lider",
-      "category": "cola",
-      "price": 19690,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('polera')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Polera Mujer YOU Coca Cola Rosado",
-      "store": "Lider",
-      "category": "cola",
-      "price": 19690,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('polera')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Polera Hombre YOU Coca Cola Coke Gris",
-      "store": "Lider",
-      "category": "cola",
-      "price": 10990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('polera')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Polera Hombre YOU Coca Cola Negro",
-      "store": "Lider",
-      "category": "cola",
-      "price": 10990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('polera')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Polera Mujer YOU Coca Cola Cherry Rosado",
-      "store": "Lider",
-      "category": "cola",
-      "price": 19690,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('polera')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Vehículo fundido a presión Coca-Cola 1945, con paneles de reparto, escala 1:43.",
-      "store": "Lider",
-      "category": "cola",
-      "price": 42990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($42990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($17990)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -462,40 +111,13 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Mininevera CURTIS Pepsi de 6 latas y 4 litros para el hogar y el coche, color azul",
+      "name": "Masticables Fanta Mentos 140 g",
       "store": "Lider",
-      "category": "cola",
-      "price": 67990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($67990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Botella SodaStream Wild Cherry Pepsi compatible",
-      "store": "Lider",
-      "category": "cola",
-      "price": 35990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($35990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Invicta Pro Diver Cuarzo Esfera Negra Pepsi Bezel Watc Hombre",
-      "store": "Lider",
-      "category": "cola",
-      "price": 126990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($126990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "CD de música Virgin Pepsi Chart 2002 - Importado",
-      "store": "Lider",
-      "category": "cola",
-      "price": 41990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($41990)",
-      "action": "REQUIERE_REVISION"
+      "category": "fanta",
+      "price": 2790,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
       "name": "Pack Uva 12 X 355 Ml",
@@ -510,31 +132,13 @@
       "name": "Bebidas Frutilla Lata 12 X 355 Ml",
       "store": "Lider",
       "category": "fanta",
-      "price": 20990,
+      "price": 17990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($20990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($17990)",
       "action": "REQUIERE_REVISION"
     },
     {
       "name": "Bebidas Durazno Lata 12 X 355 Ml",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 20990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($20990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Bloques de construcción Lego Super Heroes Vengador Fanta (76245)",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 38990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($38990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Esmalte de uñas Sally Hansen Xtreme Wear Fanta-Seas 12ml",
       "store": "Lider",
       "category": "fanta",
       "price": 17990,
@@ -543,274 +147,31 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "orange crush bass 50 amplificador de bajo",
+      "name": "Moto Batería Eléctrico Infantil Atlas Naranja Juguete",
       "store": "Lider",
       "category": "fanta",
-      "price": 420001,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($420001)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Orange CRUSH-12WTS Amplificador de Guitarra",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 139000,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($139000)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Orange Crush 20RT Amplificador de Guitarra 20W con Cable de 3 m - Paquete",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 375990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($375990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Tineta Esmalte al Agua Extracubriente - Naranja - 4-D - Pinturas Profesionales Chile",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 104990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($104990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador Combo Bajo 25w Crush Bass Orange",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 260001,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($260001)",
-      "action": "REQUIERE_REVISION"
+      "price": 64990,
+      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
+      "reason": "Artículo no bebestible/merchandise detectado ('juguete')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
       "name": "Tinta de tatuaje Perma Blend Orange Crush, naranja brillante, 15 ml, vegana",
       "store": "Lider",
       "category": "fanta",
-      "price": 60990,
+      "price": 67990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($60990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($67990)",
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Amplificador Orange Crush 12 Negro 12W con Cable de Guitarra de 3m",
+      "name": "Moto Batería Eléctrico Infantil Terra Naranja Juguete",
       "store": "Lider",
       "category": "fanta",
-      "price": 230990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($230990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Tineta Pintura Impermeabilizante para Fachadas - Naranja - 4-D - Pinturas Profesionales Chile",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 129990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($129990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador para Guitarra Orange Crush 35 RT",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 325990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($325990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador Combo De Guitarra Orange Crush 20",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 130490,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($130490)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador Combo Guitarra Orange Crush Mini OS-D",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 62990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Tineta Latex Extracubriente - Naranja - 4-D - Pinturas Profesionales Chile",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 89990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($89990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador Para Bajo Orange CRUSH BASS 25",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 200690,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($200690)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador para Guitarra Orange Crush 20RT",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 190790,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($190790)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Combo Amplificador De Guitarra Mini Orange Crush Mini BK",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 62990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Tineta Esmalte al Agua Extracubriente - Terracota - 5-T - Pinturas Profesionales Chile",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 104990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($104990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Combo Amplificador De Guitarra Orange Crush 20RT BK",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 190790,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($190790)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Combo Amplificador De Bajo Orange Crush Bass 50 BK",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 359090,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($359090)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Combo Amplificador De Guitarra Orange Crush 20 BK",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 130490,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($130490)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Combo Amplificador De Guitarra Electrica Orange Crush 12",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 116990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($116990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador de guitarra Orange Crush 12 12 W 6 con combinación de altavoces",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 223990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($223990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador Combo Guitarra Orange Crush 20RT",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 416990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($416990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador Combo De Bajo Orange Crush Bass 100",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 589490,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($589490)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador de guitarra Orange Crush 20 Twin-Channel 20W",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 326990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($326990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Amplificador de bajo Orange Glenn Hughes Crush Bass 50 50W 1x12\"",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 730990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($730990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Combo Amplificador De Bajo Orange Crush Bass 25 BK",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 200690,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($200690)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set de sellos Contact USA Mediano de 84 piezas, Naranja Crush",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 84990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($84990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Colorete Revolution Beauty London Orange Crush",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 22990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($22990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Vinilo LP Republic Records 400 Degreez Orange Crush 2",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 73990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($73990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Blush Tint e.l.f. Sheer For It Vegan Orange Crush multiusos",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 21990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($21990)",
-      "action": "REQUIERE_REVISION"
+      "price": 68990,
+      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
+      "reason": "Artículo no bebestible/merchandise detectado ('juguete')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
       "name": "Bebidas Ginger Ale Cranberry Lata Canada Dry 12 x 355 ml",
@@ -822,543 +183,39 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Ginger Beer Natural La Hacienda - Mixer Moscow Mule - 24 Pack",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 47990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($47990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Colonia Ginger Apple Jewel 250ml (nueva Coleccion)",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 15990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($15990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Ginger Apple Jewel Locion 236ml (nueva Coleccion)",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 15990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($15990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Ginger Tumeric Pinneaple Pack X 12 Unidades",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 40932,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($40932)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Ginger Jar Porcelana Tanque De Almacenamiento Oriental Para Armario Mostrador Oficina 18cmx18cmx38cm",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 141191,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($141191)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
       "name": "Ginger Funda Protectora Universal para Reposacabezas de Coche, Funda Elástica para Reposacabezas de Asiento de Auto, Funda de Tela Antipolvo, Accesorios de Interior 2 Piezas",
       "store": "Lider",
       "category": "ginger",
       "price": 23400,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'funda')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Ginger Burst Jabón De Manos Y Cuerpo Salado De Para - Gel De Baño",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 32990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($32990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Ginger Toalla de playa de secado rápido con diseño temático, regalo para mujeres y niñas, ideal para cumpleaños, fans, amantes de la música, uso en la playa o al aire libre, 78 × 180 cm",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 32240,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($32240)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Perfume Nordic Elements Water Edt 100 Ml Para Hombre",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 32990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($32990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Nordic Astronaut Pen Portalápices Pen Cup Resina Duradera Para El Hogar Oficina Blanco",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 49530,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($49530)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set Nordic Work MDF - Natural",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 235990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($235990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Nordic Snacks Plato De Frutas Con Tapas Bandeja De Condimentos Para Sala De Estar Nut White",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 87755,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($87755)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Velador Nordic 1 cajon",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 39990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($39990)",
-      "action": "REQUIERE_REVISION"
     },
     {
       "name": "Nordic Sputnik Chandelier E27 Base Luz De Techo Empotrada Para Apartamento 9 Cabezas Blanco",
       "store": "Lider",
       "category": "ginger",
-      "price": 100745,
+      "price": 113990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($100745)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($113990)",
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Nordic Egg Tart Mushroom Lámpara de mesa Lámpara de escritorio LED Moderna Moda 3 colores cambiantes INS Atmósfera Estudio para oficina Sala , AMARILLO",
+      "name": "Gomitas Nordic Naturals Dha Tropical Punch 30 Unidades Niños",
       "store": "Lider",
       "category": "ginger",
-      "price": 111219,
+      "price": 38990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($111219)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Nordic Hamstring Curl Correa Entrenamiento Ajustable Acolchado Tobillo Bar Gimnasio Negro",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 53990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($53990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Velador Nordic C/Cajon Maderado",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 39990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($39990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Nordic Egg Tart Mushroom Lámpara de mesa Lámpara de escritorio LED Moderna Moda 3 colores cambiantes INS Atmósfera Estudio para oficina Sala , Blanco",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 130817,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($130817)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Nordic Macrame Lamp Shade Lamp Shade Tejido a mano Decorativo Colgante Cubierta de luz de techo para mesa de comedor Oficina Hogar Decoración del",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 83078,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($83078)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Silla Nordic Felpa Gold - Beige",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 64990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($64990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Silla Nordic Lino Gold - Beige",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 64990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($64990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Silla Nordic Lino Black - Beige",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 64990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($64990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Silla Nordic Sitial Felpa Black Beige",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 64990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($64990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Nordic Caddy Plato Para Servir 6 Tazones Con Tapa Para Aperitivos Party Caddy",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 65990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('tazon')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Silla Nordic Acolchada Velvet - Gris",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 54990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($54990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Nordic Ware ProForm Bundt Pan con asas, 12 tazas, standart Nordic Ware Nordic Ware",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 43990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Sartén Nordic Ware de 25 cm con recubrimiento cerámico",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 74990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($74990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Bakeware Nordic Ware Naturals, juego de dos medias sábanas con 1/8 de sábana",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 71990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($71990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Bakeware Nordic Ware Naturals, octava hoja, paquete de 2 unidades, aluminio",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 36990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($36990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Bakeware Nordic Ware ProForm de aluminio gris de 10 pulgadas",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 55990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($55990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Pincel Nordic Ware para batidora de pastelería con mango de madera de haya",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 29990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($29990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Bundtlette Nordic Ware de 6 tazas, bandeja de aluminio fundido",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 72990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('taza')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Griddle Nordic Ware, cuadrado, aluminio, antiadherente, 28 cm",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 59990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($59990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Sartén Nordic Ware de aluminio basáltico de 26 cm con revestimiento cerámico",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 107990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($107990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Dispensador de jabón espumoso Ginger Lily Farms 425 ml (pack de 2)",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 21990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($21990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jabón Líquido Para Platos Aroma A Albahaca 1 Litro",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 62990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($38990)",
       "action": "REQUIERE_REVISION"
     },
     {
       "name": "Detergente para Lavavajillas Ginger Lily Farms 3,8 L sin Fragancia",
       "store": "Lider",
       "category": "ginger",
-      "price": 69990,
+      "price": 71990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($69990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Gel de baño Ginger Lily Farms Salon con aceite de argán 100% puro, 1 litro",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 100990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($100990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Manteca Corporal Ginger Lily Farms Whipped 1670 g Sin Fragancia",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 82990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($82990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Espumante Mela Light Ginger Extra Brut 6,9° 750 ml 45 Kcal/100 ml",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 16990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($16990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Perfume Twilly Eau Ginger Edp 85Ml Mujer",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 86990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($86990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Perfume Origins Ginger Essence Sensuous Skin 100 ml",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 89990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($89990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Aros Swarovski Mujer Ginger Earrings 5548108",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 144990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($144990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Sudadera con capucha GAP para hombre con el logotipo de Heritage Rich Ginger, talla XS",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 62990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Perfume Hermès Twilly Eau Ginger EDP 2 ml para mujer",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 25990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($25990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Florero De Cerámica Arreglo Floral Coleccionable Escritorio Porcelana Ginger Jar XS Gold",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 161409,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($161409)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Airboy Jengibre Ginger Root Raiz De Jengibre 3850mg 120 Caps",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 59990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($59990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Blush Clinique Cheek Pop Ginger Pop",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 62990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Floreros De Cerámica Almacenamiento Dormitorio Fiesta Organizador Porcelana Ginger Jar 37cmx29cm",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 134758,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($134758)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Zapatilla Reebok Gl 1100 Hombre Ginger Root",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 59491,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($59491)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Home Spray 03; Bergamota Ginger 500 ml",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 17900,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($17900)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Florero Templo Tarro Almacenamiento Cerámica Ginger Jar Oro Grano 7x7x13in",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 197655,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($197655)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Florero De Cerámica Ginger Jar Con Líneas Geométricas Con Tapa Esmaltada Delicada 17x17x31cm",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 126080,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($126080)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Florero De Cerámica Arreglo Floral Coleccionable Escritorio Porcelana Ginger Jar S Oro",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 183948,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($183948)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Pack 6 Té Tess Ginger Mojito",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 18000,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($18000)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Florero De Cerámica Organizador Almacenamiento Flores Titulares Porcelana Ginger Jar 32x17cm",
-      "store": "Lider",
-      "category": "ginger",
-      "price": 143690,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($143690)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Cartucho de repuesto para filtro de baño Sprite Showers BBC Pure",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 33990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($33990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Filtro de ducha Sprite Industries SL2-CM Slim-Line 2 Chrome",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 47990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($47990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Cartucho de repuesto para filtro de ducha Sprite Showers SLC-R",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 35990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($35990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Filtro para regadera Sprite SL2-BN Universal Slim-Line2, níquel cepillado",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 53990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($53990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($71990)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -1371,84 +228,12 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Figura de acción Marvel Hasbro Legends The Eternals Sprite",
+      "name": "Kit de actualización de extrusora YOOPAI CR Sprite Direct Drive para Ender 3",
       "store": "Lider",
       "category": "sprite",
-      "price": 19990,
+      "price": 131990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Muñeca Barbie Dreamtopia Rainbow Cove Sprite Red Hair",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 65990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($65990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Muñeca Barbie Dreamtopia Rainbow Cove Sprite Blue Hair",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 37990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($37990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Reloj de pared JONES CLOCKS® Sprite Modern Retro 25 cm amarillo",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 66990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($66990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Muñeca Barbie Dreamtopia Rainbow Cove Sprite Pink Hair",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 34990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($34990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Cámara Ilford Sprite 35-II con película analógica 35mm incluida",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 110990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($110990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Cámara Analógica Ilford Sprite 35-II 35mm con Película Kodak",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 110990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($110990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Botella coleccionable Disney Star Wars Sprite Galaxy's Edge",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 43990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($43990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Figura Twink Sprite Temporada De Invierno 6 Cm",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 24990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($24990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($131990)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -1461,124 +246,7 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Kit de actualización de extrusora YOOPAI CR Sprite Direct Drive para Ender 3",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 131990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($131990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Figura de vinilo coleccionable Funko Pop Fantasia 2000 Spring Sprite",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 44990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($44990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Tarjeta pop‑up de cumpleaños Lovepop 'That's Coo' 5×7",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 31990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($31990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "¡pop Up Sorpresa! Spidey Y Sus Sorprendentes Amigos 7",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 18050,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($18050)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Disfraz estadounidense con barba y bigote postizos de 7 cm de largo",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 24990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($24990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Juego de edredón Sunny Side Up Bluey & Friends Full, 7 piezas",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 110990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($110990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Maquillaje Make Up For Ever Artist Color Crayon 7 ml Mujer",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 41990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($41990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Herramienta de Pesca de Almacenamiento de Tacos para Pescar Caja Práctica -up 7 Contenedores de Bobina de Hilo Container Fly Binding Estación de Encua",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 55048,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($55048)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Maquillaje Make Up For Ever Artist Color Crayon 7 g Mujer",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 41990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($41990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Juego de cartas Mattel Games UNO: Wilderness 7 Years and Up",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 34990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($34990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set de actividades Just Play Shimmercorns Light Up Unicorn, 7 unidades",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 44990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($44990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Figura de acción Close Up King Kong of Skull Island de 7 pulgadas",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 83990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($83990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "LEGO Marvel Super Heroes Spider-Man: Ghost Rider Team-up 7",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 221990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($221990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Sérum Voluminizador de Labios Revlon PhotoReady 002 Fill Her Up 7 ml",
+      "name": "Libro Clarion Little Bat Up All Day – Edades 4‑7",
       "store": "Lider",
       "category": "sprite",
       "price": 25990,
@@ -1590,180 +258,9 @@
       "name": "Libro ilustrado Clarion \"Speak Up\" para niños de 4 a 7 años",
       "store": "Lider",
       "category": "sprite",
-      "price": 29990,
+      "price": 30990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($29990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Pañales tipo Pull‑up Pura talla 7 (37+ libras) 102 unidades",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 142990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($142990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Juego Super Mario Blow Up Shaky Tower Epoch 7 Figuras",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 40990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($40990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Red Bull F1 Rb21 2025 #22 Yuki Tsunoda Escala 1/43 Bburago",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 27990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('f1')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Mochila Red Bull Racing F1 Castore Navy",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 82990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('mochila')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Pijama Oracle Red Bull Racing Talla M",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 21990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('racing')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Pijama Oracle Racing Talla M Color Gris",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 22990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('racing')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Jockey Red Bull Racing Camper Blue New Era",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 34990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('jockey')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Bloques de construcción Oracle Red Bull Racing Rb20 F1",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 44990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('racing')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "LEGO Speed Champions Red Bull Racing RB20 F1 251 piezas",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 42990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('racing')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Jockey New Era Red Bull Oracle Racing Azul Snap",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 44990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('jockey')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Auto a control remoto Red Bull Oracle Formula 1 Escala 1:12",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 39990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Termo Botella Termica F1 Max Red Bull blanco 10",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 16990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('termo')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Mini Cuaderno Fórmula 1 Red Bull, Tamaño A6",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 5000,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('cuaderno')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Set LEGO Technic Auto Oracle Red Bull Racing RB20 F1 Kit 42206",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 379990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Termo Botella Térmica Auto Red Bull Racing F1 Carrera blanco",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 16990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Auto F1 Red Bull RB16B Max Verstappen escala 1:43 #3",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 125990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Auto F1 Red Bull RB16B Max Verstappen escala 1:43 #2",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 125990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Auto F1 Red Bull RB16B Max Verstappen escala 1:43",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 125990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Loción Tónica Piel Sensible.",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 18990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($18990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($30990)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -1776,174 +273,12 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Bruma Tónica Facial Sia Botanics 118 ml Nopal Aloe",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 416990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($416990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadillas Tónicas Faciales con Centella de Mixson para el Cuidado de la Piel, 120 Unidades",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 30990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($30990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set Tónica Viola 3/4-1/2 Pirastro",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 99900,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($99900)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Crema Tónica Permanente Demi Tone Gloss Champagne Bubbles",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 40990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($40990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
       "name": "Toallitas Tónicas Skincare Junkie Pore Therapy Diarias 50 Piezas",
       "store": "Lider",
       "category": "tonica",
       "price": 98990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
       "reason": "Precio excesivamente alto para mixer/bebida ($98990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Crema Tónica Semipermanente Chi Tone Gloss Sea Sand",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 40990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($40990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Mezcla tónica Centella Asiatica, 300 ml, hidratación de 24 horas",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 37990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($37990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Agua tónica Beauty of Joseon con esencia de ginseng, 150 ml",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 40990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($40990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadillas tónicas exfoliantes celimax Ji.Woo.Gae Heartleaf BHA (60)",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 41990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($41990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadillas tónicas Genabelle Melacare Jelly Touch 120 ml",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 51990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($51990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadillas Tónicas Faciales De Colágeno Y Ceramida 100 Almohadillas",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 50990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($50990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Mezcla Tónica Bifida De 150 Ml 5 07 Fl Oz Para El Cuidado De Barrera Hidratante",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 30990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($30990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Crema tónica e hidratante para la piel LANEIGE con ceramidas",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 60990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($60990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadilla tónica Essence Pyunkang Yul Nourish Hidratante 70 unidades",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 32990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($32990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Loción Tónica Clear Essence Exclusive Glow 237 ml",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 35990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($35990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadillas tónicas HANYUL Artemisia Soothing con ácido hialurónico, 60 unidades",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 52990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($52990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Crema tónica Facial Mist IRECIPE Aqua Phytoplex, 60 ml",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 22990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($22990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Colonia tónica para después del afeitado Rolda Sunset para hombre 430 ml",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 36990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($36990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadillas tónicas The Face Shop Tea Tree Exfoliant AHA BHA PHA",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 54990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($54990)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -1956,103 +291,22 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Toallitas Tónicas Calmantes y Refrescantes DearMYDEW HYCICA 70 Unidades 150 ml",
+      "name": "Mezcla tónica Bifida 300 ml",
       "store": "Lider",
       "category": "tonica",
-      "price": 59990,
+      "price": 41990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($59990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($41990)",
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Toallitas Tónicas SKINFOOD Durazno Algodón Zinc PCA 165 mL (70 Toallitas)",
+      "name": "Clamato Jugo de Tomate con Caldo de Almejas 1.89L",
       "store": "Lider",
-      "category": "tonica",
-      "price": 414990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($414990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "MIXSOON - Almohadillas tónicas para bífida (120 almohadillas)",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 31168,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($31168)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Mixsoon Almohadillas Tónicas Faciales Bean para el Cuidado de la Piel, 120 Unidades",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 35900,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($35900)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set Pirastro Viola Tónica Set Mittel Envelope 422021",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 99900,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($99900)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set Pirastro Violín 3/4 - 1/2 Tónica Set E-Ball M 412041",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 62900,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62900)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Set Pirastro Violín Tónica Set E-Gold Label 412027",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 62900,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62900)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Resina Pirastro Tonica 902800",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 23490,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($23490)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "MIXSOON - Almohadillas tónicas Galactomyces (120 almohadillas)",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 40990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($40990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Almohadillas Exfoliantes Glycolic Acid 200 Almohadillas Tónicas Para Rostro",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 77990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($77990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Funda Multiherramienta De Piel Tónica Para Cinturón Bolsa Compacta Edc",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 62990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($62990)",
-      "action": "REQUIERE_REVISION"
+      "category": "jugo_watts",
+      "price": 9990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
       "name": "Jugo de Durazno x24",
@@ -2079,6 +333,96 @@
       "price": 23990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
       "reason": "Precio excesivamente alto para mixer/bebida ($23990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Jugo de Durazno con Jalea de Coco x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 23990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($23990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Jugo de Sandía con Jalea de Coco x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 23990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($23990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Jugo de Frutilla con Semilla Albahaca x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 19990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Néctar Naranja, pack 24 unidades, Lata 650 ml",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 49000,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($49000)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "JUGO NAWON PIÑA x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 17500,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Jugo de Frutilla x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 17500,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Jugo de Sandía con Semilla de Albahaca x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 19990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Néctar Uva, pack 24 unidades, Lata 650 ml",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 49000,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($49000)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Jugo de Durazno con Semilla de Albahaca x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 19990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "JUGO NAWON MIX FRUTAL x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 17500,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -2109,120 +453,12 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "JUGO NAWON MIX FRUTAL x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 17500,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Néctar Uva, pack 24 unidades, Lata 650 ml",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 49000,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($49000)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
       "name": "Néctar Sandía, pack 24 unidades, Lata 650 ml",
       "store": "Lider",
       "category": "jugo_watts",
       "price": 49000,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
       "reason": "Precio excesivamente alto para mixer/bebida ($49000)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Sandía con Jalea de Coco x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 23990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($23990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Durazno con Jalea de Coco x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 23990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($23990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Durazno con Semilla de Albahaca x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 19990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "JUGO NAWON PIÑA x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 17500,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Frutilla x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 17500,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Néctar Naranja, pack 24 unidades, Lata 650 ml",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 49000,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($49000)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Frutilla con Semilla Albahaca x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 19990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Sandía con Semilla de Albahaca x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 19990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Guayaba Rosa x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 17500,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jugo de Mango con Semilla de Albahaca x24",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 19990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -2253,12 +489,21 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Jugo Natural de Manzana Mott's 3.79 L",
+      "name": "Jugo de Mango con Semilla de Albahaca x24",
       "store": "Lider",
       "category": "jugo_watts",
-      "price": 18990,
+      "price": 19990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($18990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($19990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Jugo de Guayaba Rosa x24",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 17500,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($17500)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -2269,42 +514,6 @@
       "flag_type": "PRICE_ANOMALOUS_HIGH",
       "reason": "Precio excesivamente alto para mixer/bebida ($21168)",
       "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Bolsa para patines, bolsa para zapatos de patinaje, bolsos portátiles para niños, bolsa para patines en línea, bolsa para patinaje sobre hielo, bolsa",
-      "store": "Lider",
-      "category": "hielo",
-      "price": 50717,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('bolso')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Fabricador de Hielo Igloo Autolimpiante Portátil 11,8 kg/Día",
-      "store": "Lider",
-      "category": "hielo",
-      "price": 170990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Máquina de hielo Igloo automática autolimpiante 12 kg/24 h Aqua",
-      "store": "Lider",
-      "category": "hielo",
-      "price": 170990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Máquina de hielo Silonn Nugget 15 kg/24 h, silenciosa y autolimpiante",
-      "store": "Lider",
-      "category": "hielo",
-      "price": 361990,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('auto')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
       "name": "Vodka Absolut y Sprite Lata 5° 269 cc",
@@ -2485,6 +694,420 @@
       "flag_type": "MERCHANDISE_FALSE_POSITIVE",
       "reason": "Artículo no bebestible/merchandise detectado ('auto')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Mistral  Pisco mistral 750 cc + vaso",
+      "store": "Unimarc",
+      "category": "piscola",
+      "price": 7990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'vaso')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Dr. Lemon  Cóctel de frutos rojos con vodka dr lemon botella 275ml",
+      "store": "Unimarc",
+      "category": "vodka",
+      "price": 1000,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1000)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Absolut  Cóctel vodka absolute con sprite lata 269 cc",
+      "store": "Unimarc",
+      "category": "vodka",
+      "price": 2150,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('absolut' con 'sprite')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Baileys  Crema whisky baileys 750 cc",
+      "store": "Unimarc",
+      "category": "whiskey",
+      "price": 15990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'crema')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Kantal  Gin tropical kantal lata 470 cc",
+      "store": "Unimarc",
+      "category": "gin",
+      "price": 2090,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2090)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Kantal  Gin berries kantal lata 470 cc",
+      "store": "Unimarc",
+      "category": "gin",
+      "price": 2090,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2090)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Kantal  Gin summer kantal lata 470 cc",
+      "store": "Unimarc",
+      "category": "gin",
+      "price": 2090,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2090)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Kantal  Gin tonic kantal lata 470 cc",
+      "store": "Unimarc",
+      "category": "gin",
+      "price": 2090,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2090)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Rexona  Desodorante rexona men corporal ocean rush crema 75 gr",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 5000,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'crema')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Ambrosoli  Gelatina ambrosoli naranja 100 g",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 790,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'gel')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Bresler  Pack paleta helado frugelé bresler frambuesa naranja piña 18 un",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 5650,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'gel')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Nuestra Cocina  Gelatina nuestra cocina con stevia sabor naranja 22.5 g",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 690,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'gel')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Line Up  Paraguas plegable line up 1 un (color al azar)",
+      "store": "Unimarc",
+      "category": "sprite",
+      "price": 3990,
+      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
+      "reason": "Artículo no bebestible/merchandise detectado ('paraguas')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Line Up  Paraguas largo line up 1 un (color al azar)",
+      "store": "Unimarc",
+      "category": "sprite",
+      "price": 3990,
+      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
+      "reason": "Artículo no bebestible/merchandise detectado ('paraguas')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Berryvita  Jugo concentrado berryvita cranberry 1 l",
+      "store": "Unimarc",
+      "category": "jugo_watts",
+      "price": 15590,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($15590)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Pack Alto del Carmen 35° Botella 1Lt + Coca Cola Zero 3Lt",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 8990,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('alto del carmen' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Promo Alto del Carmen 35° Botella 1Lt + Coca Cola 3Lt",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 8990,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('alto del carmen' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Promo Alto del Carmen 35° Botella 1Lt + Coca Cola Light 3Lt",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 8990,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('alto del carmen' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Pisco Alto del Carmen Transparente 750cc + Coca Cola Zero 1.5Lt",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 8790,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('alto del carmen' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Promo Pisco Alto del Carmen 35 Botella 1.5 Lts + Coca Cola Zero 3Lts",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 12190,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('alto del carmen' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Promo Pisco Mistral 1L 35° + Coca Cola 3L",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 9890,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('mistral' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Sprite Zero Botella 1,5Lts",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 2390,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2390)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Promo Pisco Alto del Carmen 35° 1L + Coca Cola Zero 1.5L",
+      "store": "Liquidos",
+      "category": "piscola",
+      "price": 8190,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('alto del carmen' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Bebida T�nica Britvic Ginger Beer 200 CC",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 1990,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Vodka Spirit Blueberry botella 275 CC",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 1790,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1790)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Canada Dry Tónica Botella 1.5L",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 2290,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2290)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Bebida Canada Dry Ginger Ale lata 350 CC",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 950,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($950)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Vodka Spirit Mojito Botella 275cc",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 1790,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1790)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Spirit Vodka Apple Botella 275cc",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 1790,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1790)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Vodka Spirit Passion Fruit Botella 275cc",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 1790,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1790)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Spirit Vodka Pineapple Botella 275cc",
+      "store": "Liquidos",
+      "category": "vodka",
+      "price": 1790,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1790)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Canada Dry Ginger Ale Zero botella 1.5 litros",
+      "store": "Liquidos",
+      "category": "gin",
+      "price": 2290,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2290)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Canada Dry Ginger Ale Botella 1.5Lts",
+      "store": "Liquidos",
+      "category": "gin",
+      "price": 2290,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($2290)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Agua T�nica Britvic botella 200 CC",
+      "store": "Liquidos",
+      "category": "gin",
+      "price": 1990,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Promo Pisco Mistral 35° 750cc + Coca Cola Original 1,5L",
+      "store": "Liquidos",
+      "category": "gin",
+      "price": 7990,
+      "flag_type": "RTD_PARENT_BRAND",
+      "reason": "Posible RTD / Pre-mezcla de marca padre ('mistral' con 'coca')",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Coca Cola Zero 3 litros x6",
+      "store": "Liquidos",
+      "category": "cola",
+      "price": 18240,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($18240)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Coca Cola normal 3 litros x6",
+      "store": "Liquidos",
+      "category": "cola",
+      "price": 18240,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($18240)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Coca Cola Light Botella 3Lts x6",
+      "store": "Liquidos",
+      "category": "cola",
+      "price": 18240,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($18240)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Pack Gin Bombay Sapphire Botella 750cc + Canada Dry Tonica Botella 1.5Lts",
+      "store": "Liquidos",
+      "category": "ginger",
+      "price": 15990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($15990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Bebida Schweppes Gingel Aler Botella 1.5L",
+      "store": "Liquidos",
+      "category": "ginger",
+      "price": 2590,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'gel')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Bebida Schweppes Gingel Aler Sin Azucar Botella 1.5L",
+      "store": "Liquidos",
+      "category": "ginger",
+      "price": 2590,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'gel')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Bebida Schweppes Gingel Aler Botella 1.5L x6",
+      "store": "Liquidos",
+      "category": "ginger",
+      "price": 11940,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'gel')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Bebida Schweppes Gingel Aler Sin Azucar Botella 1.5L x6",
+      "store": "Liquidos",
+      "category": "ginger",
+      "price": 11940,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'gel')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Sprite Zero Botella 3Lts x6",
+      "store": "Liquidos",
+      "category": "sprite",
+      "price": 17940,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($17940)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Gin Tanqueray Botella 700cc + Schweppes Tonica Sin Azýcar Botella 1.5L",
+      "store": "Liquidos",
+      "category": "tonica",
+      "price": 16490,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($16490)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Gin Tanqueray Botella 700cc + Schweppes Tonica Botella 1.5L",
+      "store": "Liquidos",
+      "category": "tonica",
+      "price": 16490,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($16490)",
+      "action": "REQUIERE_REVISION"
     }
   ]
 }
