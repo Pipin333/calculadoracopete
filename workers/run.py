@@ -59,7 +59,11 @@ def process_raw_results(raw_results):
                 processed_products.append(matched)
                 
             # Auditar producto para detectar falsos positivos, RTD de marcas padre, etc.
-            audit_info = matcher.audit_product(raw_p, is_valid_match=bool(matched))
+            # Usar la categoría normalizada por el matcher si fue clasificada exitosamente (evita falsas alarmas de precio anómalo)
+            product_for_audit = dict(raw_p)
+            if matched and matched.get("categoria"):
+                product_for_audit["category"] = matched["categoria"]
+            audit_info = matcher.audit_product(product_for_audit, is_valid_match=bool(matched))
             if audit_info:
                 flag_key = f"{audit_info.get('store')}_{audit_info.get('name')}_{audit_info.get('flag_type')}"
                 if flag_key not in seen_flagged:

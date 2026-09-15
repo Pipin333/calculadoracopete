@@ -6,7 +6,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, ref, set, get, remove, query, orderByChild, limitToLast, push } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, ref, set, update, get, remove, query, orderByChild, limitToLast, push } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 // Firebase Config - Tu proyecto
@@ -300,7 +300,7 @@ async function actualizarSkuStatusFirebase(skuKey, activo, metadata = {}) {
   try {
     if (!database || !skuKey) throw new Error("Base de datos o clave de SKU no disponible");
     const skuRef = ref(database, `sku_status/${skuKey}`);
-    await set(skuRef, {
+    await update(skuRef, {
       active: !!activo,
       updatedAt: new Date().toISOString(),
       ...metadata
@@ -309,6 +309,30 @@ async function actualizarSkuStatusFirebase(skuKey, activo, metadata = {}) {
     return true;
   } catch (err) {
     console.error(`❌ Error actualizando SKU en Firebase:`, err);
+    throw err;
+  }
+}
+
+/**
+ * Actualizar categoría reasignada de un SKU en Firebase RTDB
+ * @param {string} skuKey - Clave generada con getSafeSkuKey
+ * @param {string} nuevaCategoria - Nueva categoría (ej. 'gin', 'combos', etc.)
+ * @param {object} metadata - Información opcional (nombre, tienda, updatedBy)
+ * @returns {Promise<boolean>}
+ */
+async function actualizarSkuCategoriaFirebase(skuKey, nuevaCategoria, metadata = {}) {
+  try {
+    if (!database || !skuKey) throw new Error("Base de datos o clave de SKU no disponible");
+    const skuRef = ref(database, `sku_status/${skuKey}`);
+    await update(skuRef, {
+      categoria: nuevaCategoria,
+      updatedAt: new Date().toISOString(),
+      ...metadata
+    });
+    console.log(`✅ SKU ${skuKey} categoría actualizada a '${nuevaCategoria}' en Firebase`);
+    return true;
+  } catch (err) {
+    console.error(`❌ Error actualizando categoría de SKU en Firebase:`, err);
     throw err;
   }
 }
@@ -335,6 +359,8 @@ export {
   obtenerTelemetriaFirebase,
   getSafeSkuKey,
   obtenerSkuStatusFirebase,
-  actualizarSkuStatusFirebase
+  actualizarSkuStatusFirebase,
+  actualizarSkuCategoriaFirebase
 };
+
 

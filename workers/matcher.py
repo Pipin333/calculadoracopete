@@ -1,10 +1,34 @@
 import os
 import json
 import re
+import base64
+
+def get_safe_sku_key(store, name):
+    """Genera la clave safeKey base64 idéntica a la usada en Firebase y el frontend."""
+    s = f"{store or ''}_{name or ''}".strip().lower().encode("utf-8")
+    return base64.urlsafe_b64encode(s).decode("ascii").rstrip("=")
 
 # Reglas negativas aprendidas desde Firebase RTDB por deshabilitación de administradores
 LEARNED_RULES_PATH = os.path.join(os.path.dirname(__file__), "learned_negative_rules.json")
 _LEARNED_RULES_CACHE = None
+
+# Reglas de categorías reasignadas por administradores en Firebase RTDB
+LEARNED_CATEGORY_OVERRIDES_PATH = os.path.join(os.path.dirname(__file__), "learned_category_overrides.json")
+_LEARNED_CATEGORY_CACHE = None
+
+def get_learned_category_overrides(force_reload=False):
+    global _LEARNED_CATEGORY_CACHE
+    if _LEARNED_CATEGORY_CACHE is not None and not force_reload:
+        return _LEARNED_CATEGORY_CACHE
+    if os.path.exists(LEARNED_CATEGORY_OVERRIDES_PATH):
+        try:
+            with open(LEARNED_CATEGORY_OVERRIDES_PATH, "r", encoding="utf-8") as f:
+                _LEARNED_CATEGORY_CACHE = json.load(f)
+                return _LEARNED_CATEGORY_CACHE
+        except Exception as e:
+            print(f"Warning: Error cargando {LEARNED_CATEGORY_OVERRIDES_PATH}: {e}")
+    _LEARNED_CATEGORY_CACHE = {}
+    return _LEARNED_CATEGORY_CACHE
 
 def get_learned_rules(force_reload=False):
     global _LEARNED_RULES_CACHE
@@ -358,17 +382,56 @@ def process_product(raw_product):
     name = clean_name(raw_product["name"])
     category = raw_product["category"]
     name_lower = name.lower()
+    store = raw_product.get("store", "")
+
+    # 1. Reglas aprendidas de categorías reasignadas por administradores en Firebase
+    safe_key = get_safe_sku_key(store, name)
+    overrides = get_learned_category_overrides()
+    if safe_key in overrides and overrides[safe_key].get("categoria"):
+        category = overrides[safe_key]["categoria"]
     
-    # Detect multi-product combo / pack promos
+    # 2. Detección de combos o packs promocionales
     is_combo = (
-        ("+" in name_lower and any(k in name_lower for k in ["hielo", "coca", "fanta", "sprite", "cerveza", "pisco", "schweppes", "ginger"])) or
+        ("+" in name_lower and any(k in name_lower for k in [
+            "hielo", "coca", "fanta", "sprite", "cerveza", "pisco", "schweppes", "ginger",
+            "tonica", "tónica", "gin", "vodka", "ron", "whisky", "whiskey", "redbull", "red bull"
+        ])) or
+        (("pack" in name_lower or "botella" in name_lower) and "+" in name_lower) or
         ("pisco" in name_lower and "cerveza" in name_lower) or
         ("pisco" in name_lower and "coca" in name_lower and "hielo" in name_lower) or
         ("tri pack" in name_lower and "+" in name_lower) or
         ("pack" in name_lower and "coca cola" in name_lower and any(s in name_lower for s in ["fanta", "sprite"]))
     )
-    if is_combo:
+    if is_combo and category != "combos" and not (safe_key in overrides):
         category = "combos"
+
+    # 3. Precedencia estricta: Si un mixer fue scrapeado con alcohol/destilado, corregir categoría
+    mixer_categories = ["cola", "fanta", "ginger", "sprite", "tonica", "jugo_watts"]
+    if category in mixer_categories:
+        has_gin = re.search(r"\b(gin|tanqueray|bombay|beefeater|hendrick|larios|gordons|bulldog|malfy)\b", name_lower)
+        has_pisco = re.search(r"\b(pisco|mistral|alto del carmen|campanario|control c|capel|malpaso|horcon quemado|tres erres)\b", name_lower)
+        has_vodka = re.search(r"\b(vodka|absolut|smirnoff|stoli|grey goose|ciroc|skyy)\b", name_lower)
+        has_ron = re.search(r"\b(ron|bacardi|havana|barcelo|flor de caña|flor de cana|pampero|zacapa)\b", name_lower)
+        has_whiskey = re.search(r"\b(whisky|whiskey|johnnie|jack daniel|chivas|ballantine|jameson|jim beam|grant's|grants)\b", name_lower)
+        has_jaeger = re.search(r"\b(jager|jäger|jagermeister|jägermeister)\b", name_lower)
+        has_cerveza = re.search(r"\b(cerveza|cervezas|heineken|corona|stella|kunstmann|kross|austral|budweiser|becker|escudo|cristal|royal guard|coors)\b", name_lower)
+
+        if is_combo or "+" in name_lower:
+            category = "combos"
+        elif has_gin:
+            category = "gin"
+        elif has_pisco:
+            category = "piscola"
+        elif has_vodka:
+            category = "vodka"
+        elif has_ron:
+            category = "ron"
+        elif has_whiskey:
+            category = "whiskey"
+        elif has_jaeger:
+            category = "jaeger"
+        elif has_cerveza:
+            category = "cerveza"
     
     if category != "combos" and not validate_category(name, category):
         return None

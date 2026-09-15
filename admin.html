@@ -222,6 +222,24 @@
       font-size: 0.72rem;
       padding: 0.15rem 0.5rem;
     }
+    .batch-bar {
+      border-radius: 12px;
+      animation: fadeInDown 0.2s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-check-input:checked {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+    .btn-row-change-cat.active {
+      background-color: var(--accent-color) !important;
+      color: #fff !important;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -525,6 +543,58 @@
             </div>
           </div>
 
+          <!-- Barra de Acciones en Lote para SKUs -->
+          <div id="batchSkusBar" class="card p-2 px-3 mb-3 bg-dark border-primary batch-bar d-none" style="background: rgba(99, 102, 241, 0.1) !important; border-color: rgba(99, 102, 241, 0.35) !important;">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+              <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-primary text-white fw-bold px-2 py-1" id="batchSkusCountBadge">0 seleccionados</span>
+                <span class="text-white-50 small">Acciones masivas disponibles para los SKUs seleccionados</span>
+              </div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <!-- Dropdown Cambiar Categoría en Lote -->
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle rounded-pill px-3" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btnBatchSkusCatDropdown">
+                    <i class="bi bi-tag me-1"></i> Cambiar Categoría
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark shadow" style="max-height: 280px; overflow-y: auto; font-size: 0.8rem; z-index: 1050;">
+                    <li><h6 class="dropdown-header text-white-50 text-uppercase tracking-wider small py-1">Asignar a los seleccionados:</h6></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="gin">🍸 Gin</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="combos">🎁 Combos / Promos</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="piscola">🍇 Pisco (Piscola)</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="cerveza">🍺 Cerveza</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="vodka">🍸 Vodka</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="ron">🥃 Ron</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="whiskey">🥃 Whisky</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="jaeger">🦌 Jägermeister</button></li>
+                    <li><hr class="dropdown-divider my-1"></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="tonica">🥤 Tónica</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="cola">🥤 Bebida Cola</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="sprite">🥤 Sprite / Blanca</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="fanta">🥤 Fanta / Naranja</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="ginger">🥤 Ginger Ale</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="redbull">⚡ Energética</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="skus" data-cat="hielo">🧊 Hielo</button></li>
+                  </ul>
+                </div>
+
+                <!-- Desactivar en Lote -->
+                <button type="button" class="btn btn-sm btn-outline-danger rounded-pill px-3" id="btnBatchSkusDeactivate">
+                  <i class="bi bi-ban me-1"></i> Bloquear
+                </button>
+
+                <!-- Reactivar en Lote -->
+                <button type="button" class="btn btn-sm btn-outline-success rounded-pill px-3" id="btnBatchSkusReactivate">
+                  <i class="bi bi-arrow-counterclockwise me-1"></i> Reactivar
+                </button>
+
+                <!-- Limpiar Selección -->
+                <button type="button" class="btn btn-sm btn-link text-secondary text-decoration-none px-2" id="btnBatchSkusClear">
+                  <i class="bi bi-x-circle me-1"></i> Deseleccionar
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- Tabla de SKUs -->
           <div class="card p-3">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
@@ -564,6 +634,9 @@
               <table class="table table-dark-custom align-middle mb-0 small">
                 <thead class="sticky-top bg-dark" style="z-index: 2;">
                   <tr class="text-secondary">
+                    <th style="width: 38px;" class="text-center">
+                      <input type="checkbox" class="form-check-input" id="checkSelectAllSkus" title="Seleccionar todos los visibles" />
+                    </th>
                     <th style="width: 50px;"></th>
                     <th class="th-sortable" data-sort="nombre" title="Click para ordenar por Producto & Marca">
                       Producto & Marca <span class="sort-icon ms-1" id="iconSort-nombre"><i class="bi bi-sort-alpha-down text-primary"></i></span>
@@ -588,7 +661,7 @@
                 </thead>
                 <tbody id="tableSkusBody">
                   <tr>
-                    <td colspan="8" class="text-center py-4 text-secondary">Cargando productos desde productos.json...</td>
+                    <td colspan="9" class="text-center py-4 text-secondary">Cargando productos desde productos.json...</td>
                   </tr>
                 </tbody>
               </table>
@@ -659,6 +732,58 @@
             </div>
           </div>
 
+          <!-- Barra de Acciones en Lote para Alertas -->
+          <div id="batchAlertsBar" class="card p-2 px-3 mb-3 bg-dark border-warning batch-bar d-none" style="background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.35) !important;">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+              <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-warning text-dark fw-bold px-2 py-1" id="batchAlertsCountBadge">0 seleccionados</span>
+                <span class="text-white-50 small">Acciones masivas disponibles para las alertas seleccionadas</span>
+              </div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <!-- Dropdown Cambiar Categoría en Lote -->
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-warning dropdown-toggle rounded-pill px-3" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btnBatchAlertsCatDropdown">
+                    <i class="bi bi-tag me-1"></i> Cambiar Categoría
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark shadow" style="max-height: 280px; overflow-y: auto; font-size: 0.8rem; z-index: 1050;">
+                    <li><h6 class="dropdown-header text-white-50 text-uppercase tracking-wider small py-1">Asignar a las alertas seleccionadas:</h6></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="gin">🍸 Gin</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="combos">🎁 Combos / Promos</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="piscola">🍇 Pisco (Piscola)</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="cerveza">🍺 Cerveza</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="vodka">🍸 Vodka</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="ron">🥃 Ron</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="whiskey">🥃 Whisky</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="jaeger">🦌 Jägermeister</button></li>
+                    <li><hr class="dropdown-divider my-1"></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="tonica">🥤 Tónica</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="cola">🥤 Bebida Cola</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="sprite">🥤 Sprite / Blanca</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="fanta">🥤 Fanta / Naranja</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="ginger">🥤 Ginger Ale</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="redbull">⚡ Energética</button></li>
+                    <li><button class="dropdown-item py-1 small btn-apply-batch-cat" data-target="alerts" data-cat="hielo">🧊 Hielo</button></li>
+                  </ul>
+                </div>
+
+                <!-- Desactivar en Lote -->
+                <button type="button" class="btn btn-sm btn-outline-danger rounded-pill px-3" id="btnBatchAlertsDeactivate">
+                  <i class="bi bi-ban me-1"></i> Bloquear
+                </button>
+
+                <!-- Reactivar en Lote -->
+                <button type="button" class="btn btn-sm btn-outline-success rounded-pill px-3" id="btnBatchAlertsReactivate">
+                  <i class="bi bi-arrow-counterclockwise me-1"></i> Reactivar
+                </button>
+
+                <!-- Limpiar Selección -->
+                <button type="button" class="btn btn-sm btn-link text-secondary text-decoration-none px-2" id="btnBatchAlertsClear">
+                  <i class="bi bi-x-circle me-1"></i> Deseleccionar
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- Tabla de Auditoría / Items a Revisar -->
           <div class="card p-3">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
@@ -701,6 +826,9 @@
               <table class="table table-dark-custom align-middle mb-0 small">
                 <thead class="sticky-top bg-dark" style="z-index: 2;">
                   <tr class="text-secondary">
+                    <th style="width: 38px;" class="text-center">
+                      <input type="checkbox" class="form-check-input" id="checkSelectAllAlerts" title="Seleccionar todos los visibles" />
+                    </th>
                     <th class="th-sortable-alert" data-sort="store" title="Click para ordenar por Tienda">
                       Tienda <span class="sort-icon-alert ms-1" id="iconAlertSort-store"><i class="bi bi-arrow-down-up opacity-50"></i></span>
                     </th>
@@ -724,7 +852,7 @@
                 </thead>
                 <tbody id="tableAlertsBody">
                   <tr>
-                    <td colspan="7" class="text-center py-4 text-secondary">No hay items sospechosos pendientes de revisión en este momento.</td>
+                    <td colspan="8" class="text-center py-4 text-secondary">No hay items sospechosos pendientes de revisión en este momento.</td>
                   </tr>
                 </tbody>
               </table>
@@ -786,7 +914,8 @@
       database,
       getSafeSkuKey,
       obtenerSkuStatusFirebase,
-      actualizarSkuStatusFirebase
+      actualizarSkuStatusFirebase,
+      actualizarSkuCategoriaFirebase
     } from './javascript/firebase-config.js';
 
     import { productApi } from './javascript/productApi.js';
@@ -819,6 +948,14 @@
     const skuCategoryFilter = document.getElementById('skuCategoryFilter');
     const skuStatusFilter = document.getElementById('skuStatusFilter');
 
+    // Elementos Batch SKUs
+    const batchSkusBar = document.getElementById('batchSkusBar');
+    const batchSkusCountBadge = document.getElementById('batchSkusCountBadge');
+    const checkSelectAllSkus = document.getElementById('checkSelectAllSkus');
+    const btnBatchSkusDeactivate = document.getElementById('btnBatchSkusDeactivate');
+    const btnBatchSkusReactivate = document.getElementById('btnBatchSkusReactivate');
+    const btnBatchSkusClear = document.getElementById('btnBatchSkusClear');
+
     // Elementos de Alertas
     const badgeAlertsCount = document.getElementById('badgeAlertsCount');
     const badgeAlertsTotal = document.getElementById('badgeAlertsTotal');
@@ -828,6 +965,14 @@
     const alertFlagFilter = document.getElementById('alertFlagFilter');
     const alertActionFilter = document.getElementById('alertActionFilter');
     const btnBulkDeactivateAlerts = document.getElementById('btnBulkDeactivateAlerts');
+
+    // Elementos Batch Alertas
+    const batchAlertsBar = document.getElementById('batchAlertsBar');
+    const batchAlertsCountBadge = document.getElementById('batchAlertsCountBadge');
+    const checkSelectAllAlerts = document.getElementById('checkSelectAllAlerts');
+    const btnBatchAlertsDeactivate = document.getElementById('btnBatchAlertsDeactivate');
+    const btnBatchAlertsReactivate = document.getElementById('btnBatchAlertsReactivate');
+    const btnBatchAlertsClear = document.getElementById('btnBatchAlertsClear');
 
     // Toast
     const adminToastEl = document.getElementById('adminToast');
@@ -851,6 +996,59 @@
     let skuSortDirection = 'asc';
     let alertSortColumn = 'priority';
     let alertSortDirection = 'asc';
+
+    // Estado de selección múltiple (Batch)
+    const selectedSkuKeys = new Set();
+    const selectedAlertKeys = new Set();
+
+    // Categorías oficiales disponibles para reasignación
+    const ALL_CATEGORIES = [
+      { id: 'piscola', name: 'Pisco (Piscola)', emoji: '🍇' },
+      { id: 'cerveza', name: 'Cerveza', emoji: '🍺' },
+      { id: 'ron', name: 'Ron', emoji: '🥃' },
+      { id: 'vodka', name: 'Vodka', emoji: '🍸' },
+      { id: 'whiskey', name: 'Whisky', emoji: '🥃' },
+      { id: 'gin', name: 'Gin', emoji: '🍸' },
+      { id: 'jaeger', name: 'Jägermeister', emoji: '🦌' },
+      { id: 'combos', name: 'Combos / Promos', emoji: '🎁' },
+      { id: 'cola', name: 'Bebida Cola', emoji: '🥤' },
+      { id: 'sprite', name: 'Sprite / Blanca', emoji: '🥤' },
+      { id: 'fanta', name: 'Fanta / Naranja', emoji: '🥤' },
+      { id: 'ginger', name: 'Ginger Ale', emoji: '🥤' },
+      { id: 'tonica', name: 'Tónica', emoji: '🥤' },
+      { id: 'redbull', name: 'Red Bull / Energética', emoji: '⚡' },
+      { id: 'jugo_watts', name: 'Jugo', emoji: '🧃' },
+      { id: 'hielo', name: 'Hielo', emoji: '🧊' }
+    ];
+
+    function renderCategoryDropdown(currentCat, safeKey, pName, pStore) {
+      const emoji = getCategoryEmoji(currentCat);
+      const itemsHtml = ALL_CATEGORIES.map(c => `
+        <li>
+          <button class="dropdown-item py-1 small btn-row-change-cat ${c.id === currentCat ? 'active' : ''}" type="button"
+            data-key="${escapeHTML(safeKey)}"
+            data-cat="${c.id}"
+            data-name="${escapeHTML(pName)}"
+            data-store="${escapeHTML(pStore)}">
+            <span class="me-1">${c.emoji}</span> ${c.name}
+          </button>
+        </li>
+      `).join('');
+
+      return `
+        <div class="dropdown d-inline-block">
+          <button class="btn btn-xs btn-outline-secondary dropdown-toggle text-white py-0 px-2 rounded-pill d-inline-flex align-items-center gap-1"
+            type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Click para cambiar categoría">
+            <span>${emoji}</span>
+            <span>${escapeHTML(currentCat)}</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark shadow" style="max-height: 280px; overflow-y: auto; font-size: 0.8rem; z-index: 1050;">
+            <li><h6 class="dropdown-header text-white-50 text-uppercase tracking-wider small py-1">Reasignar Categoría</h6></li>
+            ${itemsHtml}
+          </ul>
+        </div>
+      `;
+    }
 
     // Formateador CLP
     const formatCLP = (num) => {
@@ -1059,10 +1257,11 @@
       });
 
       // Refrescar indicadores visuales de botones y encabezados
-      updateSortUI();
+      // Actualizar barra batch
+      updateBatchSkusUI();
 
       if (!filtered.length) {
-        tableSkusBody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-secondary">No se encontraron productos con los filtros seleccionados.</td></tr>`;
+        tableSkusBody.innerHTML = `<tr><td colspan="9" class="text-center py-4 text-secondary">No se encontraron productos con los filtros seleccionados.</td></tr>`;
         return;
       }
 
@@ -1070,6 +1269,7 @@
       tableSkusBody.innerHTML = filtered.map((p, idx) => {
         const safeKey = p.safeKey;
         const isChecked = p.active ? 'checked' : '';
+        const isSelected = selectedSkuKeys.has(safeKey) ? 'checked' : '';
         const storeBadge = getStoreBadgeClass(p.tienda);
         const emoji = getCategoryEmoji(p.categoria);
         const formato = `${p.unidades || 1} x ${p.volumenMlUnidad || 0}ml`;
@@ -1081,13 +1281,16 @@
 
         return `
           <tr data-key="${escapeHTML(safeKey)}">
+            <td class="text-center">
+              <input type="checkbox" class="form-check-input check-sku-item" data-key="${escapeHTML(safeKey)}" ${isSelected} />
+            </td>
             <td>${imgHtml}</td>
             <td>
               <div class="fw-semibold text-white text-truncate" style="max-width: 280px;" title="${escapeHTML(p.nombre)}">${escapeHTML(p.nombre)}</div>
               ${p.brand ? `<div class="text-secondary small">${escapeHTML(p.brand)}</div>` : ''}
             </td>
             <td><span class="badge ${storeBadge} badge-store">${escapeHTML(p.tienda)}</span></td>
-            <td><span class="text-secondary">${escapeHTML(p.categoria)}</span></td>
+            <td>${renderCategoryDropdown(p.categoria, safeKey, p.nombre, p.tienda)}</td>
             <td><span class="badge ${gamaBadge}">${escapeHTML(p.gama || 'normal')}</span></td>
             <td class="text-secondary">${formato}</td>
             <td class="fw-bold text-white">${formatCLP(p.precio)}</td>
@@ -1229,9 +1432,13 @@
         auditItems = [];
       }
 
-      // Precalcular safeKey para cada item de auditoría
+      // Precalcular safeKey y sincronizar categoría reasignada de Firebase para cada item de auditoría
       auditItems.forEach(item => {
-        item.safeKey = item.safeKey || getSafeSkuKey(item.store, item.name);
+        const safeKey = item.safeKey || getSafeSkuKey(item.store, item.name);
+        item.safeKey = safeKey;
+        if (skuStatusMap[safeKey] && skuStatusMap[safeKey].categoria) {
+          item.category = skuStatusMap[safeKey].categoria;
+        }
       });
 
       badgeAlertsCount.textContent = auditItems.length;
@@ -1317,9 +1524,10 @@
 
       // Refrescar indicadores visuales de botones y encabezados de alertas
       updateAlertSortUI();
+      updateBatchAlertsUI();
 
       if (!filtered.length) {
-        tableAlertsBody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-secondary"><i class="bi bi-funnel text-secondary me-1"></i> No se encontraron alertas con los filtros seleccionados.</td></tr>`;
+        tableAlertsBody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-secondary"><i class="bi bi-funnel text-secondary me-1"></i> No se encontraron alertas con los filtros seleccionados.</td></tr>`;
         return;
       }
 
@@ -1332,7 +1540,18 @@
         if (flag.includes('PRICE')) flagBadge = 'bg-secondary text-white';
 
         const safeKey = item.safeKey;
+        const isSelected = selectedAlertKeys.has(safeKey) ? 'checked' : '';
         const itemStatus = getAuditItemStatus(item);
+
+        // Si la categoría fue reasignada y ya no es un mixer, actualizar badge de alerta
+        let displayFlag = flag;
+        let displayFlagBadge = flagBadge;
+        let displayReason = item.reason || 'Sospechoso';
+        if (flag === 'PRICE_ANOMALOUS_HIGH' && !['cola', 'fanta', 'ginger', 'sprite', 'tonica', 'jugo_watts'].includes(item.category)) {
+          displayFlag = 'CORREGIDO';
+          displayFlagBadge = 'bg-success text-white';
+          displayReason = `Reclasificado a ${item.category} (precio válido para licor/combo)`;
+        }
 
         let actionHtml = '';
         if (itemStatus === 'disabled') {
@@ -1382,14 +1601,17 @@
 
         return `
           <tr data-key="${escapeHTML(safeKey)}">
+            <td class="text-center">
+              <input type="checkbox" class="form-check-input check-alert-item" data-key="${escapeHTML(safeKey)}" ${isSelected} />
+            </td>
             <td><span class="badge ${storeBadge} badge-store">${escapeHTML(item.store)}</span></td>
             <td>
               <div class="fw-semibold text-white text-truncate" style="max-width: 280px;" title="${escapeHTML(item.name)}">${escapeHTML(item.name)}</div>
             </td>
-            <td><span class="text-secondary">${escapeHTML(item.category)}</span></td>
+            <td>${renderCategoryDropdown(item.category, safeKey, item.name, item.store)}</td>
             <td class="text-white fw-bold">${formatCLP(item.price)}</td>
-            <td><span class="badge ${flagBadge}">${escapeHTML(flag)}</span></td>
-            <td class="text-secondary small" style="max-width: 240px;">${escapeHTML(item.reason || 'Sospechoso')}</td>
+            <td><span class="badge ${displayFlagBadge}">${escapeHTML(displayFlag)}</span></td>
+            <td class="text-secondary small" style="max-width: 240px;">${escapeHTML(displayReason)}</td>
             <td class="text-center">${actionHtml}</td>
           </tr>
         `;
@@ -1578,6 +1800,332 @@
         }
         filterAndRenderAlerts();
       });
+    });
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // GESTIÓN DE ACCIONES EN LOTE Y CAMBIO DE CATEGORÍAS
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // Actualizar UI de barra Batch para SKUs
+    function updateBatchSkusUI() {
+      if (!batchSkusBar) return;
+      const count = selectedSkuKeys.size;
+      batchSkusBar.classList.toggle('d-none', count === 0);
+      if (batchSkusCountBadge) {
+        batchSkusCountBadge.textContent = `${count} seleccionado${count === 1 ? '' : 's'}`;
+      }
+
+      if (checkSelectAllSkus) {
+        const visibleRows = Array.from(tableSkusBody.querySelectorAll('tr[data-key]'));
+        const visibleKeys = visibleRows.map(r => r.dataset.key).filter(Boolean);
+        if (!visibleKeys.length) {
+          checkSelectAllSkus.checked = false;
+          checkSelectAllSkus.indeterminate = false;
+        } else {
+          const selectedVisible = visibleKeys.filter(k => selectedSkuKeys.has(k)).length;
+          checkSelectAllSkus.checked = selectedVisible === visibleKeys.length;
+          checkSelectAllSkus.indeterminate = selectedVisible > 0 && selectedVisible < visibleKeys.length;
+        }
+      }
+    }
+
+    // Actualizar UI de barra Batch para Alertas
+    function updateBatchAlertsUI() {
+      if (!batchAlertsBar) return;
+      const count = selectedAlertKeys.size;
+      batchAlertsBar.classList.toggle('d-none', count === 0);
+      if (batchAlertsCountBadge) {
+        batchAlertsCountBadge.textContent = `${count} seleccionado${count === 1 ? '' : 's'}`;
+      }
+
+      if (checkSelectAllAlerts) {
+        const visibleRows = Array.from(tableAlertsBody.querySelectorAll('tr[data-key]'));
+        const visibleKeys = visibleRows.map(r => r.dataset.key).filter(Boolean);
+        if (!visibleKeys.length) {
+          checkSelectAllAlerts.checked = false;
+          checkSelectAllAlerts.indeterminate = false;
+        } else {
+          const selectedVisible = visibleKeys.filter(k => selectedAlertKeys.has(k)).length;
+          checkSelectAllAlerts.checked = selectedVisible === visibleKeys.length;
+          checkSelectAllAlerts.indeterminate = selectedVisible > 0 && selectedVisible < visibleKeys.length;
+        }
+      }
+    }
+
+    // 1. Checkboxes de selección individual en filas
+    tableSkusBody?.addEventListener('change', (e) => {
+      const cb = e.target.closest('.check-sku-item');
+      if (!cb) return;
+      const key = cb.dataset.key;
+      if (cb.checked) {
+        selectedSkuKeys.add(key);
+      } else {
+        selectedSkuKeys.delete(key);
+      }
+      updateBatchSkusUI();
+    });
+
+    tableAlertsBody?.addEventListener('change', (e) => {
+      const cb = e.target.closest('.check-alert-item');
+      if (!cb) return;
+      const key = cb.dataset.key;
+      if (cb.checked) {
+        selectedAlertKeys.add(key);
+      } else {
+        selectedAlertKeys.delete(key);
+      }
+      updateBatchAlertsUI();
+    });
+
+    // 2. Select All en encabezado
+    checkSelectAllSkus?.addEventListener('change', (e) => {
+      const isChecked = e.target.checked;
+      const rows = tableSkusBody.querySelectorAll('tr[data-key]');
+      rows.forEach(r => {
+        const k = r.dataset.key;
+        if (!k) return;
+        if (isChecked) selectedSkuKeys.add(k);
+        else selectedSkuKeys.delete(k);
+        const input = r.querySelector('.check-sku-item');
+        if (input) input.checked = isChecked;
+      });
+      updateBatchSkusUI();
+    });
+
+    checkSelectAllAlerts?.addEventListener('change', (e) => {
+      const isChecked = e.target.checked;
+      const rows = tableAlertsBody.querySelectorAll('tr[data-key]');
+      rows.forEach(r => {
+        const k = r.dataset.key;
+        if (!k) return;
+        if (isChecked) selectedAlertKeys.add(k);
+        else selectedAlertKeys.delete(k);
+        const input = r.querySelector('.check-alert-item');
+        if (input) input.checked = isChecked;
+      });
+      updateBatchAlertsUI();
+    });
+
+    // 3. Botones para deseleccionar
+    btnBatchSkusClear?.addEventListener('click', () => {
+      selectedSkuKeys.clear();
+      tableSkusBody.querySelectorAll('.check-sku-item').forEach(cb => cb.checked = false);
+      updateBatchSkusUI();
+    });
+
+    btnBatchAlertsClear?.addEventListener('click', () => {
+      selectedAlertKeys.clear();
+      tableAlertsBody.querySelectorAll('.check-alert-item').forEach(cb => cb.checked = false);
+      updateBatchAlertsUI();
+    });
+
+    // 4. Cambio de categoría a nivel de FILA INDIVIDUAL (.btn-row-change-cat)
+    document.addEventListener('click', async (e) => {
+      const btn = e.target.closest('.btn-row-change-cat');
+      if (!btn) return;
+      e.preventDefault();
+
+      const safeKey = btn.dataset.key;
+      const newCat = btn.dataset.cat;
+      const pName = btn.dataset.name;
+      const pStore = btn.dataset.store;
+      if (!safeKey || !newCat) return;
+
+      try {
+        await actualizarSkuCategoriaFirebase(safeKey, newCat, {
+          nombre: pName,
+          tienda: pStore,
+          updatedBy: currentUser?.email || 'admin-category'
+        });
+
+        if (!skuStatusMap[safeKey]) skuStatusMap[safeKey] = {};
+        skuStatusMap[safeKey].categoria = newCat;
+
+        // Actualizar en allProducts
+        const prod = allProducts.find(p => p.safeKey === safeKey);
+        if (prod) prod.categoria = newCat;
+
+        // Actualizar en auditItems
+        const alertItem = auditItems.find(a => a.safeKey === safeKey);
+        if (alertItem) {
+          alertItem.category = newCat;
+        }
+
+        filterAndRenderAlerts();
+        filterAndRenderSkus();
+        showToast(`🏷 Categoría reasignada a "${newCat}": ${pName}`);
+      } catch (err) {
+        console.error("Error al actualizar categoría en Firebase:", err);
+        showToast(`❌ Error al cambiar categoría: ${err.message}`, true);
+      }
+    });
+
+    // 5. Cambio de categoría EN LOTE (.btn-apply-batch-cat)
+    document.addEventListener('click', async (e) => {
+      const btn = e.target.closest('.btn-apply-batch-cat');
+      if (!btn) return;
+      e.preventDefault();
+
+      const target = btn.dataset.target; // 'skus' o 'alerts'
+      const newCat = btn.dataset.cat;
+      const keySet = target === 'skus' ? selectedSkuKeys : selectedAlertKeys;
+
+      if (!keySet || keySet.size === 0) {
+        showToast('ℹ No hay productos seleccionados para reasignar categoría.');
+        return;
+      }
+
+      const confirmed = window.confirm(`¿Reasignar categoría a "${newCat}" para los ${keySet.size} producto(s) seleccionado(s)?`);
+      if (!confirmed) return;
+
+      const keysArray = Array.from(keySet);
+      let successCount = 0;
+
+      for (const key of keysArray) {
+        // Obtener metadatos desde allProducts o auditItems
+        const prod = allProducts.find(p => p.safeKey === key);
+        const alertItem = auditItems.find(a => a.safeKey === key);
+        const name = prod?.nombre || alertItem?.name || '';
+        const store = prod?.tienda || alertItem?.store || '';
+
+        try {
+          await actualizarSkuCategoriaFirebase(key, newCat, {
+            nombre: name,
+            tienda: store,
+            updatedBy: currentUser?.email || 'admin-batch-category'
+          });
+
+          if (!skuStatusMap[key]) skuStatusMap[key] = {};
+          skuStatusMap[key].categoria = newCat;
+
+          if (prod) prod.categoria = newCat;
+          if (alertItem) alertItem.category = newCat;
+          successCount++;
+        } catch (err) {
+          console.warn(`Error reasignando categoría de ${key}:`, err);
+        }
+      }
+
+      keySet.clear();
+      filterAndRenderAlerts();
+      filterAndRenderSkus();
+      showToast(`🏷 Se reasignaron ${successCount} productos a la categoría "${newCat}".`);
+    });
+
+    // 6. Desactivar / Reactivar EN LOTE para SKUs
+    btnBatchSkusDeactivate?.addEventListener('click', async () => {
+      if (!selectedSkuKeys.size) return;
+      if (!confirm(`¿Bloquear los ${selectedSkuKeys.size} SKUs seleccionados?`)) return;
+
+      const keys = Array.from(selectedSkuKeys);
+      let count = 0;
+      for (const key of keys) {
+        const prod = allProducts.find(p => p.safeKey === key);
+        try {
+          await actualizarSkuStatusFirebase(key, false, {
+            nombre: prod?.nombre || '',
+            tienda: prod?.tienda || '',
+            updatedBy: currentUser?.email || 'admin-batch-skus'
+          });
+          if (!skuStatusMap[key]) skuStatusMap[key] = {};
+          skuStatusMap[key].active = false;
+          if (prod) prod.active = false;
+          count++;
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+      selectedSkuKeys.clear();
+      filterAndRenderSkus();
+      filterAndRenderAlerts();
+      showToast(`🛑 Se bloquearon ${count} SKUs.`);
+    });
+
+    btnBatchSkusReactivate?.addEventListener('click', async () => {
+      if (!selectedSkuKeys.size) return;
+      if (!confirm(`¿Reactivar los ${selectedSkuKeys.size} SKUs seleccionados?`)) return;
+
+      const keys = Array.from(selectedSkuKeys);
+      let count = 0;
+      for (const key of keys) {
+        const prod = allProducts.find(p => p.safeKey === key);
+        try {
+          await actualizarSkuStatusFirebase(key, true, {
+            nombre: prod?.nombre || '',
+            tienda: prod?.tienda || '',
+            updatedBy: currentUser?.email || 'admin-batch-skus'
+          });
+          if (!skuStatusMap[key]) skuStatusMap[key] = {};
+          skuStatusMap[key].active = true;
+          if (prod) prod.active = true;
+          count++;
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+      selectedSkuKeys.clear();
+      filterAndRenderSkus();
+      filterAndRenderAlerts();
+      showToast(`✅ Se reactivaron ${count} SKUs.`);
+    });
+
+    // 7. Desactivar / Reactivar EN LOTE para Alertas
+    btnBatchAlertsDeactivate?.addEventListener('click', async () => {
+      if (!selectedAlertKeys.size) return;
+      if (!confirm(`¿Bloquear las ${selectedAlertKeys.size} alertas seleccionadas?`)) return;
+
+      const keys = Array.from(selectedAlertKeys);
+      let count = 0;
+      for (const key of keys) {
+        const alertItem = auditItems.find(a => a.safeKey === key);
+        try {
+          await actualizarSkuStatusFirebase(key, false, {
+            nombre: alertItem?.name || '',
+            tienda: alertItem?.store || '',
+            updatedBy: currentUser?.email || 'admin-batch-alerts'
+          });
+          if (!skuStatusMap[key]) skuStatusMap[key] = {};
+          skuStatusMap[key].active = false;
+          const prod = allProducts.find(p => p.safeKey === key);
+          if (prod) prod.active = false;
+          count++;
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+      selectedAlertKeys.clear();
+      filterAndRenderAlerts();
+      filterAndRenderSkus();
+      showToast(`🛑 Se bloquearon ${count} alertas en Firebase.`);
+    });
+
+    btnBatchAlertsReactivate?.addEventListener('click', async () => {
+      if (!selectedAlertKeys.size) return;
+      if (!confirm(`¿Reactivar las ${selectedAlertKeys.size} alertas seleccionadas?`)) return;
+
+      const keys = Array.from(selectedAlertKeys);
+      let count = 0;
+      for (const key of keys) {
+        const alertItem = auditItems.find(a => a.safeKey === key);
+        try {
+          await actualizarSkuStatusFirebase(key, true, {
+            nombre: alertItem?.name || '',
+            tienda: alertItem?.store || '',
+            updatedBy: currentUser?.email || 'admin-batch-alerts'
+          });
+          if (!skuStatusMap[key]) skuStatusMap[key] = {};
+          skuStatusMap[key].active = true;
+          const prod = allProducts.find(p => p.safeKey === key);
+          if (prod) prod.active = true;
+          count++;
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+      selectedAlertKeys.clear();
+      filterAndRenderAlerts();
+      filterAndRenderSkus();
+      showToast(`✅ Se reactivaron ${count} alertas en Firebase.`);
     });
 
     // Renderizar Dashboard y Gráficos

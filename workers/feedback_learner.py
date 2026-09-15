@@ -128,30 +128,79 @@ def extract_negative_rules(deactivated_items):
         "learned_keywords": sorted(list(learned_keywords))
     }
 
+OUTPUT_CATEGORY_OVERRIDES_PATH = os.path.join(os.path.dirname(__file__), "learned_category_overrides.json")
+
+def fetch_sku_data():
+    """Descarga los SKUs marcados desde Firebase Realtime Database."""
+    print(f"[Learner] Consultando Firebase RTDB en {FIREBASE_RTDB_URL}...")
+    try:
+        req = urllib.request.urlopen(FIREBASE_RTDB_URL, timeout=8)
+        raw_data = json.loads(req.read().decode('utf-8'))
+        if not raw_data:
+            print("[Learner] No se encontraron registros de sku_status en Firebase.")
+            return [], {}
+
+        deactivated = []
+        category_overrides = {}
+
+        for key, item in raw_data.items():
+            if not isinstance(item, dict):
+                continue
+            if item.get("active") is False:
+                deactivated.append({
+                    "safeKey": key,
+                    "nombre": item.get("nombre", ""),
+                    "tienda": item.get("tienda", ""),
+                    "updatedAt": item.get("updatedAt", ""),
+                    "updatedBy": item.get("updatedBy", "")
+                })
+            if item.get("categoria"):
+                category_overrides[key] = {
+                    "categoria": item.get("categoria"),
+                    "nombre": item.get("nombre", ""),
+                    "tienda": item.get("tienda", ""),
+                    "updatedAt": item.get("updatedAt", "")
+                }
+
+        print(f"[Learner] Se obtuvieron {len(deactivated)} SKUs desactivados y {len(category_overrides)} categorías reasignadas.")
+        return deactivated, category_overrides
+    except Exception as e:
+        print(f"[Learner] Error consultando Firebase: {e}")
+        return [], {}
+
 def sync_and_save_rules():
     """Ejecuta el ciclo de aprendizaje completo y guarda las reglas en JSON."""
-    deactivated = fetch_deactivated_skus()
+    deactivated, category_overrides = fetch_sku_data()
+
+    # 1. Reglas negativas
     if not deactivated:
         if os.path.exists(OUTPUT_RULES_PATH):
             print("[Learner] Conservando reglas negativas previas existentes.")
             with open(OUTPUT_RULES_PATH, "r", encoding="utf-8") as f:
-                return json.load(f)
-        rules = {
-            "total_deactivated": 0,
-            "exact_keys": [],
-            "exact_names": [],
-            "learned_keywords": sorted(KNOWN_MARKETPLACE_PATTERNS)
-        }
+                rules = json.load(f)
+        else:
+            rules = {
+                "total_deactivated": 0,
+                "exact_keys": [],
+                "exact_names": [],
+                "learned_keywords": sorted(KNOWN_MARKETPLACE_PATTERNS)
+            }
     else:
         rules = extract_negative_rules(deactivated)
 
     with open(OUTPUT_RULES_PATH, "w", encoding="utf-8") as f:
         json.dump(rules, f, ensure_ascii=False, indent=2)
 
+    # 2. Reglas de categorías reasignadas por admin
+    if category_overrides or not os.path.exists(OUTPUT_CATEGORY_OVERRIDES_PATH):
+        with open(OUTPUT_CATEGORY_OVERRIDES_PATH, "w", encoding="utf-8") as f:
+            json.dump(category_overrides, f, ensure_ascii=False, indent=2)
+
     print(f"[Learner] Reglas aprendidas guardadas con éxito en {OUTPUT_RULES_PATH}:")
     print(f"  • {len(rules['exact_keys'])} SKUs exactos bloqueados.")
     print(f"  • {len(rules['exact_names'])} nombres bloqueados.")
     print(f"  • {len(rules['learned_keywords'])} palabras clave de marketplace identificadas.")
+    print(f"  • {len(category_overrides)} categorías reasignadas por administradores en {OUTPUT_CATEGORY_OVERRIDES_PATH}.")
     return rules
 
 if __name__ == "__main__":

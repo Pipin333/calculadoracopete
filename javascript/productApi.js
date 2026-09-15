@@ -173,8 +173,10 @@ export const productApi = {
     return (data.productos || []).map(p => {
       const safeKey = getSafeSkuKey(p.tienda, p.nombre);
       const isExplicitlyInactive = statusMap[safeKey] && statusMap[safeKey].active === false;
+      const categoriaOverride = (statusMap[safeKey] && statusMap[safeKey].categoria) ? statusMap[safeKey].categoria : p.categoria;
       return {
         ...p,
+        categoria: categoriaOverride,
         safeKey,
         active: !isExplicitlyInactive,
         statusMeta: statusMap[safeKey] || null
@@ -190,8 +192,12 @@ export const productApi = {
     const gamaSelect = document.getElementById("gama");
     const selectedGama = gamaSelect ? gamaSelect.value : "normal";
     
-    // 1. Filter by category
-    let filtered = (data.productos || []).filter(p => p.categoria === category);
+    // 1. Filter by category (including category overrides)
+    let filtered = (data.productos || []).map(p => {
+      const safeKey = getSafeSkuKey(p.tienda, p.nombre);
+      const categoriaOverride = (statusMap[safeKey] && statusMap[safeKey].categoria) ? statusMap[safeKey].categoria : p.categoria;
+      return { ...p, categoria: categoriaOverride };
+    }).filter(p => p.categoria === category);
 
     // 2. Filter out deactivated SKUs from Firebase sku_status
     filtered = filtered.filter(p => {
