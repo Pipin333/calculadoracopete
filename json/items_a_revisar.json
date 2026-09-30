@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-29T10:26:32Z",
-  "total": 399,
+  "timestamp": "2026-09-30T10:22:24Z",
+  "total": 371,
   "items": [
     {
       "name": "Cerveza Lata Sin Alcohol",
@@ -24,7 +24,7 @@
       "name": "Cerveza Double Tasty West Coast Ipa 12 Latas Sin Alcohol",
       "store": "Lider",
       "category": "cerveza",
-      "price": 73990,
+      "price": 71990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'alcohol')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -34,15 +34,6 @@
       "store": "Lider",
       "category": "cerveza",
       "price": 7790,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'alcohol')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Cerveza sin alcohol Athletic Brewing 355 ml (pack de 6)",
-      "store": "Lider",
-      "category": "cerveza",
-      "price": 38990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'alcohol')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -72,24 +63,6 @@
       "price": 18990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'blanco')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Pisco Bou Legado Blanco 40º Moscatel 750 ml",
-      "store": "Lider",
-      "category": "piscola",
-      "price": 19990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'blanco')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Pisco Sour Premium Mango Maracuya, 1 litro",
-      "store": "Lider",
-      "category": "piscola",
-      "price": 13900,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -210,33 +183,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Pack Whisky Guilligans 40° 750cc + Vaso",
-      "store": "Lider",
-      "category": "combos",
-      "price": 16990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'vaso')",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Gin Zero Alcohol Botella",
-      "store": "Lider",
-      "category": "gin",
-      "price": 21990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'alcohol')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Gin Praga Sin Alcohol 0.0° 700cc",
-      "store": "Lider",
-      "category": "gin",
-      "price": 14990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'alcohol')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Decomural Gin To My Tonic Alcohol Love WS-41457",
       "store": "Lider",
       "category": "gin",
@@ -273,15 +219,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Carro VW Escarabajo 1967 Coca-Cola con Remolque Teardrop",
-      "store": "Lider",
-      "category": "cola",
-      "price": 58990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Bebidas Naranja Crema Lata Coca Cola 355 ml",
       "store": "Lider",
       "category": "cola",
@@ -291,40 +228,13 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Alcancía Botella Coca-Cola 53 cm Verde Azulado Neón – Fabricada en EE. UU.",
-      "store": "Lider",
-      "category": "cola",
-      "price": 65990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($65990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
       "name": "Té sin azúcar Beverage Gold Peak Tea, 500 ml, paquete de 6 unidades, Coca-Cola",
       "store": "Lider",
       "category": "cola",
-      "price": 42990,
+      "price": 39990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
       "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Letrero de neón Pepsi LED USB 43 cm – American Art Decor",
-      "store": "Lider",
-      "category": "cola",
-      "price": 83990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'letrero')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Soda Mix SodaStream Pepsi Limón-Lima Serie Starry de 440 ml",
-      "store": "Lider",
-      "category": "cola",
-      "price": 44990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($44990)",
-      "action": "REQUIERE_REVISION"
     },
     {
       "name": "Masticables Fanta Mentos 140 g",
@@ -345,7 +255,7 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Bebidas Frutilla Lata Fanta 355 ml",
+      "name": "Bebidas Durazno Lata Fanta 355 ml",
       "store": "Lider",
       "category": "fanta",
       "price": 1690,
@@ -363,7 +273,7 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Bebidas Durazno Lata Fanta 355 ml",
+      "name": "Bebidas Frutilla Lata Fanta 355 ml",
       "store": "Lider",
       "category": "fanta",
       "price": 1690,
@@ -375,27 +285,36 @@
       "name": "Cabezal Amplificador Orange Super Crush 100W, 2 canales, clase A/B",
       "store": "Lider",
       "category": "fanta",
-      "price": 987990,
+      "price": 1009990,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($987990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($1009990)",
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Estampillas alfabéticas Contact Crafts 150 piezas Orange Crush",
-      "store": "Lider",
-      "category": "fanta",
-      "price": 108990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($108990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Jabón Líquido para Platos Ginger Lily Farms 710 ml Manzana y Pera",
+      "name": "Ginger Beer Natural La Hacienda - Mixer Moscow Mule - 24 Pack",
       "store": "Lider",
       "category": "ginger",
-      "price": 24990,
+      "price": 47990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($47990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Ginger Beer Natural La Salvaje - La Hacienda - Mixer Moscow Mule - 24 Pack",
+      "store": "Lider",
+      "category": "ginger",
+      "price": 47990,
+      "flag_type": "PRICE_ANOMALOUS_HIGH",
+      "reason": "Precio excesivamente alto para mixer/bebida ($47990)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
+      "name": "Alfombra Nordic Sheep 61 cm x 91 cm, pelo largo, color beige",
+      "store": "Lider",
+      "category": "ginger",
+      "price": 119990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'jabón')",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'nordic')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -417,12 +336,12 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Colonia en aerosol Demeter Fresh Ginger, 120 ml, unisex",
+      "name": "Abanico Plegable Chino Desmarcar Ginger",
       "store": "Lider",
       "category": "ginger",
-      "price": 144990,
+      "price": 26000,
       "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($144990)",
+      "reason": "Precio excesivamente alto para mixer/bebida ($26000)",
       "action": "REQUIERE_REVISION"
     },
     {
@@ -435,55 +354,10 @@
       "action": "REQUIERE_REVISION"
     },
     {
-      "name": "Cámara Ilford Sprite 35-II reutilizable de película 35 mm",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 68990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'reutilizable')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Cámara Ilford Sprite 35-II Negra",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 71990,
-      "flag_type": "PRICE_ANOMALOUS_HIGH",
-      "reason": "Precio excesivamente alto para mixer/bebida ($71990)",
-      "action": "REQUIERE_REVISION"
-    },
-    {
-      "name": "Cámara de cine Ilford Sprite 35-II, reutilizable, 35 mm, analógica, rojo/negro",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 74990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'reutilizable')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Cámara de cine analógica Ilford Sprite 35-II reutilizable 35 mm azul/negra",
-      "store": "Lider",
-      "category": "sprite",
-      "price": 68990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'reutilizable')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Red Bull Bebida Energética Pack 12 Latas Sandía 250Ml",
       "store": "Lider",
       "category": "redbull",
       "price": 15761,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'sandía')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Red Bull Bebida Energética Pack 8 Latas Sandía 250Ml",
-      "store": "Lider",
-      "category": "redbull",
-      "price": 12990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'sandía')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -502,6 +376,24 @@
       "store": "Lider",
       "category": "redbull",
       "price": 26990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'sandía')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Red Bull Bebida Energética Pack 8 Latas Sandía 250Ml",
+      "store": "Lider",
+      "category": "redbull",
+      "price": 12990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'sandía')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Red Bull Bebida Energética Pack 24 Latas Sandía 250Ml",
+      "store": "Lider",
+      "category": "redbull",
+      "price": 32990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'sandía')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -534,15 +426,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Agua Tónica Light Pepino - La Hacienda - 6 Pack",
-      "store": "Lider",
-      "category": "tonica",
-      "price": 12990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Agua Tónica Light Pepino - La Hacienda - 24 Pack",
       "store": "Lider",
       "category": "tonica",
@@ -552,16 +435,16 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Almohadilla tónica facial NEAF NEAF Soothing Calm con extracto de hoja de corazón",
+      "name": "Agua Tónica Light Pepino - La Hacienda - 6 Pack",
       "store": "Lider",
       "category": "tonica",
-      "price": 53990,
+      "price": 12990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'neaf')",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Four Pack Agua Tonica Blossom",
+      "name": "Four Pack Agua Tonica Light",
       "store": "Lider",
       "category": "tonica",
       "price": 6990,
@@ -579,7 +462,7 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Four Pack Agua Tonica Light",
+      "name": "Four Pack Agua Tonica Blossom",
       "store": "Lider",
       "category": "tonica",
       "price": 6990,
@@ -597,21 +480,21 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Néctar Naranja Light 0% Azúcar Añadida Botella",
-      "store": "Lider",
-      "category": "jugo_watts",
-      "price": 2490,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Néctar de Durazno Botella",
       "store": "Lider",
       "category": "jugo_watts",
       "price": 3490,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'durazno')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Néctar Naranja Light 0% Azúcar Añadida Botella",
+      "store": "Lider",
+      "category": "jugo_watts",
+      "price": 2490,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -633,19 +516,19 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Jugo de Piña con Semilla Albahaca x24",
+      "name": "Jugo de Durazno x24",
       "store": "Lider",
       "category": "jugo_watts",
-      "price": 19990,
+      "price": 17500,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Jugo de Durazno x24",
+      "name": "Jugo de Piña con Semilla Albahaca x24",
       "store": "Lider",
       "category": "jugo_watts",
-      "price": 17500,
+      "price": 19990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -900,15 +783,6 @@
       "price": 59990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'patines')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Bolsas de Hielo Fit & Fresh 13 cm x 12 cm Rosa - Pack de 4",
-      "store": "Lider",
-      "category": "hielo",
-      "price": 31990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -1200,6 +1074,15 @@
       "action": "REQUIERE_REVISION"
     },
     {
+      "name": "Bebida Ginger Beer Ewu Maracuyá Lata 350 cc",
+      "store": "Jumbo",
+      "category": "gin",
+      "price": 1790,
+      "flag_type": "PRICE_ANOMALOUS_LOW",
+      "reason": "Precio sospechosamente bajo para destilado ($1790)",
+      "action": "REQUIERE_REVISION"
+    },
+    {
       "name": "Bebida Fever Tree Ginger Beer 200 cc",
       "store": "Jumbo",
       "category": "gin",
@@ -1380,21 +1263,21 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Cuaderno Clásico Redbull Racing 7 mm 100 Hojas Torre",
-      "store": "Jumbo",
-      "category": "redbull",
-      "price": 2490,
-      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
-      "reason": "Artículo no bebestible/merchandise detectado ('cuaderno')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Auto Redbull RB20 Verstappen 1:24 con Casco",
       "store": "Jumbo",
       "category": "redbull",
       "price": 48990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (SKU desactivado por admin)",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Cuaderno Clásico Redbull Racing 7 mm 100 Hojas Torre",
+      "store": "Jumbo",
+      "category": "redbull",
+      "price": 2490,
+      "flag_type": "MERCHANDISE_FALSE_POSITIVE",
+      "reason": "Artículo no bebestible/merchandise detectado ('cuaderno')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -1506,19 +1389,19 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Agua Tónica 355 cc",
+      "name": "Agua Tónica Imperdibile Dry Bitter 200 ml",
       "store": "Jumbo",
       "category": "tonica",
-      "price": 1890,
+      "price": 1490,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Agua Tónica Imperdibile Dry Bitter 200 ml",
+      "name": "Agua Tónica 355 cc",
       "store": "Jumbo",
       "category": "tonica",
-      "price": 1490,
+      "price": 1890,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -1641,6 +1524,15 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Néctar Watt's Tuti Frutilla 1.5 L",
+      "store": "Jumbo",
+      "category": "jugo_watts",
+      "price": 1990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'frutilla')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Jugo Selección Watt's Mango Maracuyá 1 L",
       "store": "Jumbo",
       "category": "jugo_watts",
@@ -1743,7 +1635,7 @@
       "name": "Jugo Fresco Watt's Naranja Mix 1.6 L",
       "store": "Jumbo",
       "category": "jugo_watts",
-      "price": 6200,
+      "price": 5990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -1767,15 +1659,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Néctar Watt's Tuttifrutilla 200 ml",
-      "store": "Jumbo",
-      "category": "jugo_watts",
-      "price": 2290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'frutilla')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Jugo Watt's Selección Naranja Valencia 350 cc",
       "store": "Jumbo",
       "category": "jugo_watts",
@@ -1791,6 +1674,15 @@
       "price": 2290,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Néctar Watt's Tuttifrutilla 200 ml",
+      "store": "Jumbo",
+      "category": "jugo_watts",
+      "price": 2290,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'frutilla')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -1884,21 +1776,21 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Jugo Guallarauco 100% Naranja 1 L",
-      "store": "Jumbo",
-      "category": "jugo_watts",
-      "price": 2790,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Néctar del Valle Durazno 0% Azúcar Añadida 1.5 L",
       "store": "Jumbo",
       "category": "jugo_watts",
       "price": 1790,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'durazno')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Jugo Guallarauco 100% Naranja 1 L",
+      "store": "Jumbo",
+      "category": "jugo_watts",
+      "price": 2790,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -1920,15 +1812,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Néctar del Valle Naranja 0% Azúcar Añadida 1.5 L",
-      "store": "Jumbo",
-      "category": "jugo_watts",
-      "price": 1790,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Néctar Guallarauco Mango 0% Azúcar Añadida 1 L",
       "store": "Jumbo",
       "category": "jugo_watts",
@@ -1938,21 +1821,21 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Néctar del Valle Naranja 0% Azúcar Añadida 1.5 L",
+      "store": "Jumbo",
+      "category": "jugo_watts",
+      "price": 1790,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Jugo en Polvo Livean Piña 7 g",
       "store": "Jumbo",
       "category": "jugo_watts",
       "price": 300,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Caja 24 un. Néctar Andina Durazno Light 200 ml",
-      "store": "Jumbo",
-      "category": "jugo_watts",
-      "price": 9190,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'durazno')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -1974,6 +1857,15 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Jugo en Polvo Vivo Naranja 7 g",
+      "store": "Jumbo",
+      "category": "jugo_watts",
+      "price": 290,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Jugo en Polvo Livean Pera Agua 7 g",
       "store": "Jumbo",
       "category": "jugo_watts",
@@ -1983,12 +1875,21 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Jugo en Polvo Vivo Naranja 7 g",
+      "name": "Jugo en Polvo Livean Mango 7 g",
       "store": "Jumbo",
       "category": "jugo_watts",
-      "price": 290,
+      "price": 300,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Jugo en Polvo Livean Frutilla 7 g",
+      "store": "Jumbo",
+      "category": "jugo_watts",
+      "price": 300,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'frutilla')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -2010,15 +1911,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Jugo en Polvo Livean Mango 7 g",
-      "store": "Jumbo",
-      "category": "jugo_watts",
-      "price": 300,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Royal Guard  Cerveza royal guard lager cero alcohol botella 355 cc",
       "store": "Unimarc",
       "category": "cerveza",
@@ -2031,9 +1923,36 @@
       "name": "Stones  Cerveza stones maracuyá lata 6 un de 350 cc",
       "store": "Unimarc",
       "category": "cerveza",
-      "price": 5290,
+      "price": 8990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'stones')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Stones  Cerveza stones berries lata 6 un de 350 ml",
+      "store": "Unimarc",
+      "category": "cerveza",
+      "price": 8990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'stones')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Stones  Cerveza stones mango lata 6 un de 350 ml",
+      "store": "Unimarc",
+      "category": "cerveza",
+      "price": 8990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Stones  Cerveza stones piña lata 6 un de 350 ml",
+      "store": "Unimarc",
+      "category": "cerveza",
+      "price": 8990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -2046,39 +1965,12 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Stones  Cerveza stones berries lata 6 un de 350 ml",
-      "store": "Unimarc",
-      "category": "cerveza",
-      "price": 5290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'stones')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Stones  Cerveza stones mango lata 6 un de 350 ml",
-      "store": "Unimarc",
-      "category": "cerveza",
-      "price": 5290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Cristal Cerveza  Pack cerveza cristal cero sin alcohol lata 6 un de 350 cc",
       "store": "Unimarc",
       "category": "cerveza",
       "price": 4490,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'alcohol')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Stones  Cerveza stones piña lata 6 un de 350 ml",
-      "store": "Unimarc",
-      "category": "cerveza",
-      "price": 5290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -2103,7 +1995,7 @@
       "name": "Stones  Pack cerveza lemon stones lata 6 un de 350 cc",
       "store": "Unimarc",
       "category": "cerveza",
-      "price": 5290,
+      "price": 8990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'stones')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -2115,6 +2007,15 @@
       "price": 6990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'alcohol')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Tres Erres  Pisco tres erres mango maracuyá botella 1 lt",
+      "store": "Unimarc",
+      "category": "piscola",
+      "price": 6590,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -2307,6 +2208,15 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Fanta  Fanta naranja full sugar 1.5 lt pet",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 2390,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Fanta  Fanta naranja full sugar 3 lt pet",
       "store": "Unimarc",
       "category": "fanta",
@@ -2334,15 +2244,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Fanta  Fanta naranja full sugar 1.5 lt pet",
-      "store": "Unimarc",
-      "category": "fanta",
-      "price": 2390,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Rexona  Desodorante rexona men corporal ocean rush crema 75 gr",
       "store": "Unimarc",
       "category": "fanta",
@@ -2355,7 +2256,7 @@
       "name": "Frutas Y Verduras  Naranja malla 2 kg",
       "store": "Unimarc",
       "category": "fanta",
-      "price": 2232,
+      "price": 2790,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -2388,10 +2289,28 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Andina  Pack néctar andina naranja light 6 un de 200 ml",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 2000,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Suerox  Bebida isotónica suerox naranja 630 ml",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 2290,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Frutas Y Verduras  Naranja granel 500 g",
       "store": "Unimarc",
       "category": "fanta",
-      "price": 580,
+      "price": 725,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -2478,6 +2397,15 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Vivo  Compota vivo break avena yoghurt naranja y plátano 90 gr",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 960,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Nestle  Jalea nestlé naranja pote 110 g",
       "store": "Unimarc",
       "category": "fanta",
@@ -2487,10 +2415,19 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Sprim  Jugo en polvo sprim naranja rinde 1 l",
+      "name": "Quinta  Torta panqueque sabor naranja quinta 1 un",
       "store": "Unimarc",
       "category": "fanta",
-      "price": 1280,
+      "price": 13690,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Gatorade  Bebida isotónica gatorade naranja 1 l",
+      "store": "Unimarc",
+      "category": "fanta",
+      "price": 1790,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -2505,10 +2442,10 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Quinta  Torta panqueque sabor naranja quinta 1 un",
+      "name": "Quillayes  Jugo de naranja quillayes natural one 1.3 l",
       "store": "Unimarc",
       "category": "fanta",
-      "price": 13690,
+      "price": 5590,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -2586,24 +2523,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Andina  Pack néctar andina naranja light 6 un de 200 ml",
-      "store": "Unimarc",
-      "category": "fanta",
-      "price": 2000,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Suerox  Bebida isotónica suerox naranja 630 ml",
-      "store": "Unimarc",
-      "category": "fanta",
-      "price": 2290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Powerade  Bebida isotónica powerade naranja 1.1 l",
       "store": "Unimarc",
       "category": "fanta",
@@ -2616,7 +2535,7 @@
       "name": "Watts  Mermelada watt's sabor naranja frasco 500 g",
       "store": "Unimarc",
       "category": "fanta",
-      "price": 4890,
+      "price": 4950,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -2649,30 +2568,12 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Quillayes  Jugo de naranja quillayes natural one 1.3 l",
-      "store": "Unimarc",
-      "category": "fanta",
-      "price": 6890,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Sofruco  Naranja sofruco malla 3 kg",
       "store": "Unimarc",
       "category": "fanta",
-      "price": 6392,
+      "price": 7990,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Livean  Jalea livean naranja libre de azúcar 20 g",
-      "store": "Unimarc",
-      "category": "fanta",
-      "price": 880,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'jalea')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -2685,21 +2586,12 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Guallarauco  Néctar guallarauco naranja mix 1 l",
+      "name": "Livean  Jalea livean naranja libre de azúcar 20 g",
       "store": "Unimarc",
       "category": "fanta",
-      "price": 3190,
+      "price": 880,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Mizos  Galletas de arroz mizos chocolate naranja 150 g",
-      "store": "Unimarc",
-      "category": "fanta",
-      "price": 4090,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'jalea')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -2757,15 +2649,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Schweppes  Bebida agua tónica schweppes lata 6 un de 310 ml",
-      "store": "Unimarc",
-      "category": "tonica",
-      "price": 4390,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Schweppes  Bebida agua tónica schweppes sin azúcar desechable 1.5 l",
       "store": "Unimarc",
       "category": "tonica",
@@ -2779,6 +2662,15 @@
       "store": "Unimarc",
       "category": "tonica",
       "price": 2390,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Schweppes  Bebida agua tónica schweppes lata 6 un de 310 ml",
+      "store": "Unimarc",
+      "category": "tonica",
+      "price": 4390,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -2808,60 +2700,6 @@
       "price": 7350,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'agua')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Jugo fresco watt's selección 100% naranja 1 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 5190,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Jugo fresco watt's selección naranja tetra 1.6 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 7750,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Jugo exprimido de naranja selección watts 1.5 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 8990,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Jugo fresco watt's selección naranja mix 1.6 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 6690,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Jugo fresco watt's selección naranja y piña 1.6 lt",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 7650,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Jugo fresco watt's selección naranja y zanahoria 1.6 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 7890,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -2928,141 +2766,6 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
-      "name": "Watts  Néctar watt's selección mango maracuya 1 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 3650,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Pack néctar watt's durazno 6 un de 200 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 2290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'durazno')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Pack néctar watt's piña 6 un de 200 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 2290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Pack néctar watt's piña light 6 un de 200 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 2290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Pack néctar watt's tuttifrutilla 6 un de 200 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 2290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'frutilla')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar watt's selección naranja valencia 1 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 3650,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Pack néctar watt's naranja light 6 un de 200 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 2290,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar watt's selección piña guayaba 1 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 3650,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar watt's naranja boca ancha 300 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 1750,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar watt's durazno boca ancha 300 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 1750,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'durazno')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar fresco watt's selección mango maracuyá 1 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 3850,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar watt's selección naranja valencia 350 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 1690,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar watt's tutti frutilla boca ancha 300 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 1750,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'frutilla')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar watt's selección piña guayaba 350 ml",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 1690,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
-      "name": "Watts  Néctar fresco watt's selección mango maracuyá tetra 1.6 l",
-      "store": "Unimarc",
-      "category": "jugo_watts",
-      "price": 6690,
-      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
-      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
-      "action": "RECHAZADO_AUTOMATICAMENTE"
-    },
-    {
       "name": "Del Valle  Néctar del valle piña botella 1 l",
       "store": "Unimarc",
       "category": "jugo_watts",
@@ -3081,12 +2784,30 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Watts  Néctar watt's selección mango maracuya 1 l",
+      "store": "Unimarc",
+      "category": "jugo_watts",
+      "price": 3650,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Guallarauco  Néctar guallarauco mango 0% azúcar añadida 1 l",
       "store": "Unimarc",
       "category": "jugo_watts",
       "price": 2350,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'mango')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Guallarauco  Néctar guallarauco naranja mix 1 l",
+      "store": "Unimarc",
+      "category": "jugo_watts",
+      "price": 3190,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
@@ -3099,10 +2820,28 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Watts  Néctar watt's selección naranja valencia 1 l",
+      "store": "Unimarc",
+      "category": "jugo_watts",
+      "price": 3650,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Soprole  Néctar soprole piña 1 l",
       "store": "Unimarc",
       "category": "jugo_watts",
       "price": 980,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
+      "name": "Watts  Néctar watt's selección piña guayaba 1 l",
+      "store": "Unimarc",
+      "category": "jugo_watts",
+      "price": 3650,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'piña')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
@@ -3144,10 +2883,19 @@
       "action": "RECHAZADO_AUTOMATICAMENTE"
     },
     {
+      "name": "Watts  Jugo exprimido de naranja selección watts 1.5 l",
+      "store": "Unimarc",
+      "category": "jugo_watts",
+      "price": 8990,
+      "flag_type": "MARKETPLACE_FALSE_POSITIVE",
+      "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
+      "action": "RECHAZADO_AUTOMATICAMENTE"
+    },
+    {
       "name": "Guallarauco  Jugo guallarauco naranja mix tetra 1.5 l",
       "store": "Unimarc",
       "category": "jugo_watts",
-      "price": 6350,
+      "price": 6450,
       "flag_type": "MARKETPLACE_FALSE_POSITIVE",
       "reason": "Falso positivo de marketplace aprendido (Keyword 'naranja')",
       "action": "RECHAZADO_AUTOMATICAMENTE"
