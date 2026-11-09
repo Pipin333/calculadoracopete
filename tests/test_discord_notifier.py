@@ -82,18 +82,17 @@ class TestDiscordNotifier(unittest.TestCase):
             user_id="123456"
         )
         self.assertTrue(result)
-        mock_dm.assert_called()
-        mock_webhook.assert_called()
+        mock_dm.assert_called_once()
+        mock_webhook.assert_called_once()
 
-    @patch("discord_notifier.time.sleep")
     @patch("discord_notifier._send_embeds_destination")
-    def test_max_chunks_limit(self, mock_send, mock_sleep):
-        """Verifica que no se envíen más chunks que MAX_ALERT_CHUNKS."""
+    def test_single_message_consolidation(self, mock_send):
+        """Verifica que incluso con cientos de items se envíe un ÚNICO mensaje consolidado."""
         mock_send.return_value = True
-        # Crear 80 items (8 chunks de 10)
+        # Crear 100 items sospechosos
         items = [
             {"name": f"Item {i}", "store": "Lider", "price": 1000, "reason": "Test"}
-            for i in range(80)
+            for i in range(100)
         ]
 
         result = discord_notifier.send_discord_alert(
@@ -101,8 +100,17 @@ class TestDiscordNotifier(unittest.TestCase):
             webhook_url="https://discord.com/api/webhooks/123/xyz"
         )
         self.assertTrue(result)
-        # Debe limitar a MAX_ALERT_CHUNKS = 5
-        self.assertEqual(mock_send.call_count, discord_notifier.MAX_ALERT_CHUNKS)
+        # Debe enviar exactamente 1 mensaje
+        self.assertEqual(mock_send.call_count, 1)
+
+        # Verificar que el embed contenga el campo resumen con enlace a la consola
+        embeds_sent = mock_send.call_args[0][0]
+        self.assertEqual(len(embeds_sent), 1)
+        fields = embeds_sent[0]["fields"]
+        # MAX_PREVIEW_ITEMS (8) + 1 campo resumen = 9 campos
+        self.assertEqual(len(fields), discord_notifier.MAX_PREVIEW_ITEMS + 1)
+        self.assertIn("Consola de Fundador", fields[-1]["value"])
+        self.assertIn("+92", fields[-1]["name"])
 
 
 if __name__ == "__main__":

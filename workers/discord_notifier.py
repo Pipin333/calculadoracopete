@@ -1,8 +1,9 @@
 """Notificador y auditor de alertas hacia Discord para Cuánto Rinde.
 
 Soporta envío mediante Mensaje Directo (DM) vía Bot Tooodles o Webhook de canal,
-con reintentos automáticos ante rate-limiting (HTTP 429), limitación de ráfagas
-y fallback automático a Webhook en caso de fallo del bot.
+con reintentos automáticos ante rate-limiting (HTTP 429), envío en un único
+mensaje consolidado (resumen + muestra de productos) y fallback automático
+a Webhook en caso de fallo del bot.
 """
 
 import datetime
@@ -19,9 +20,7 @@ if hasattr(sys.stdout, 'reconfigure'):
     except Exception:
         pass
 
-MAX_ALERT_CHUNKS = 5
-CHUNK_SIZE = 10
-INTER_CHUNK_SLEEP_SECONDS = 1.0
+MAX_PREVIEW_ITEMS = 8
 
 
 def format_clp(amount: Any) -> str:
@@ -142,7 +141,6 @@ def _send_embeds_destination(
     url: Optional[str],
 ) -> bool:
     """Despacha un conjunto de embeds intentando DM y aplicando fallback a Webhook si aplica."""
-    sent_by_dm = False
     if token and target_user:
         sent_by_dm = send_discord_dm(token, target_user, embeds)
         if sent_by_dm:
@@ -164,12 +162,12 @@ def send_discord_alert(
     title: Optional[str] = None,
     is_test: bool = False,
 ) -> bool:
-    """Envía una alerta formateada a Discord.
+    """Envía una alerta consolidada en un único mensaje a Discord.
 
     Prioridad y Resiliencia:
     1. Si hay DISCORD_BOT_TOKEN y DISCORD_USER_ID, intenta enviar DM privado vía Tooodles.
     2. Si el DM falla (ej. token caducado HTTP 401) o no está configurado, hace fallback automático a DISCORD_WEBHOOK_URL.
-    3. Limita los lotes a un máximo para evitar saturación y spam en el canal, pausando entre lotes contra HTTP 429.
+    3. Envía siempre un único mensaje conciso con la muestra de productos y el enlace a la Consola de Fundador.
 
     Args:
         flagged_items: Lista de productos sospechosos detectados por el matcher/auditor.
@@ -180,7 +178,7 @@ def send_discord_alert(
         is_test: Si es True, despacha un mensaje de bienvenida/verificación de conectividad.
 
     Returns:
-        bool: True si todas las entregas tuvieron éxito o no había items que reportar.
+        bool: True si el envío tuvo éxito o no había items que reportar.
     """
     token = bot_token or os.environ.get("DISCORD_BOT_TOKEN") or os.environ.get("token_priv")
     target_user = user_id or os.environ.get("DISCORD_USER_ID")
@@ -204,7 +202,7 @@ def send_discord_alert(
             "title": "🎶 Tooodles: Test de Alertas Cuánto Rinde",
             "description": (
                 "¡Hola! Tu bot **Tooodles** está conectado correctamente.\n"
-                "A partir de ahora, cada vez que el scraper diario detecte un falso positivo o item sospechoso, te avisará directamente."
+                "A partir de ahora, cada vez que el scraper diario detecte alertas de catálogo o precios, te enviará un único resumen aquí con enlace directo a la consola."
             ),
             "color": 0x10B981,  # Verde esmeralda
             "timestamp": now_iso,
@@ -216,73 +214,54 @@ def send_discord_alert(
         }
         return _send_embeds_destination([test_embed], token, target_user, url)
 
-    # Batching en grupos de CHUNK_SIZE productos para no exceder límites de Discord
-    all_chunks = [flagged_items[i:i + CHUNK_SIZE] for i in range(0, len(flagged_items), CHUNK_SIZE)]
     total_items = len(flagged_items)
-    total_chunks = len(all_chunks)
+    preview_items = flagged_items[:MAX_PREVIEW_ITEMS]
+    omitted_items = total_items - len(preview_items)
 
-    # Limitar la cantidad máxima de chunks enviados en un solo ciclo
-    chunks_to_send = all_chunks[:MAX_ALERT_CHUNKS]
-    omitted_items = total_items - sum(len(c) for c in chunks_to_send)
+    embed_title = title or f"🚨 Alerta de Catálogo: {total_items} Items a Revisar"
 
-    all_success = True
+    fields = []
+    for item in preview_items:
+        name = item.get("name", "Producto Desconocido")
+        store = item.get("store", "Tienda")
+        cat = item.get("category", "General")
+        price = format_clp(item.get("price", 0))
+        reason = item.get("reason", "Item sospechoso detectado")
+        flag = item.get("flag_type", "AUDIT")
+        action = item.get("action", "REQUIERE_REVISION")
 
-    for idx, chunk in enumerate(chunks_to_send):
-        embed_title = title or f"🚨 Alerta de Catálogo: {total_items} Items a Revisar"
-        if total_chunks > 1:
-            embed_title += f" (Parte {idx + 1}/{len(chunks_to_send)})"
+        action_badge = "🛡️ Filtrado automáticamente" if "RECHAZADO" in action else "⚠️ Requiere revisión manual"
 
-        fields = []
-        for item in chunk:
-            name = item.get("name", "Producto Desconocido")
-            store = item.get("store", "Tienda")
-            cat = item.get("category", "General")
-            price = format_clp(item.get("price", 0))
-            reason = item.get("reason", "Item sospechoso detectado")
-            flag = item.get("flag_type", "AUDIT")
-            action = item.get("action", "REQUIERE_REVISION")
-
-            action_badge = "🛡️ Filtrado automáticamente" if "RECHAZADO" in action else "⚠️ Requiere revisión manual"
-
-            fields.append({
-                "name": f"[{store}] {name[:60]}",
-                "value": (
-                    f"**Categoría:** `{cat}` | **Precio:** `{price}` | **Tipo:** `{flag}`\n"
-                    f"**Motivo:** {reason}\n"
-                    f"**Acción:** {action_badge}"
-                ),
-                "inline": False,
-            })
-
-        # Si es el último chunk y quedaron items sin mostrar, agregar campo resumen
-        if idx == len(chunks_to_send) - 1 and omitted_items > 0:
-            fields.append({
-                "name": f"ℹ️ +{omitted_items} productos adicionales en cola",
-                "value": "Para ver el catálogo completo de alertas, consulta la [Consola de Fundador](https://calculadoracopete.firebaseapp.com/admin.html).",
-                "inline": False,
-            })
-
-        embed = {
-            "title": embed_title,
-            "description": (
-                f"Detecté **{len(chunk)}** productos durante el scraping que requieren tu atención.\n"
-                f"Puedes revisarlos o desactivar SKUs en la [Consola de Fundador](https://calculadoracopete.firebaseapp.com/admin.html)."
+        fields.append({
+            "name": f"[{store}] {name[:60]}",
+            "value": (
+                f"**Categoría:** `{cat}` | **Precio:** `{price}` | **Tipo:** `{flag}`\n"
+                f"**Motivo:** {reason}\n"
+                f"**Acción:** {action_badge}"
             ),
-            "color": 0xF59E0B,  # Ámbar advertencia
-            "timestamp": now_iso,
-            "footer": {"text": "Tooodles • Cuánto Rinde Guardian"},
-            "fields": fields,
-        }
+            "inline": False,
+        })
 
-        ok = _send_embeds_destination([embed], token, target_user, url)
-        if not ok:
-            all_success = False
+    if omitted_items > 0:
+        fields.append({
+            "name": f"ℹ️ +{omitted_items} productos adicionales en espera",
+            "value": "Revisa y gestiona el catálogo completo en la [Consola de Fundador](https://calculadoracopete.firebaseapp.com/admin.html).",
+            "inline": False,
+        })
 
-        # Pausa de cortesía entre ráfagas para evitar HTTP 429
-        if idx < len(chunks_to_send) - 1:
-            time.sleep(INTER_CHUNK_SLEEP_SECONDS)
+    embed = {
+        "title": embed_title,
+        "description": (
+            f"El scraper diario detectó **{total_items}** productos que requieren atención.\n"
+            f"Puedes desactivar SKUs o corregir categorías en la [Consola de Fundador](https://calculadoracopete.firebaseapp.com/admin.html)."
+        ),
+        "color": 0xF59E0B,  # Ámbar advertencia
+        "timestamp": now_iso,
+        "footer": {"text": "Tooodles • Cuánto Rinde Guardian"},
+        "fields": fields,
+    }
 
-    return all_success
+    return _send_embeds_destination([embed], token, target_user, url)
 
 
 if __name__ == "__main__":
